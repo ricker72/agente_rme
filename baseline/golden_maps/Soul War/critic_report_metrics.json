@@ -1,0 +1,18 @@
+{
+  "map_name": "soul_war_300",
+  "overall_score": 61.65448512865825,
+  "visual_score": 48.02323232323232,
+  "navigation_score": 85.0,
+  "density_score": 42.46141694314816,
+  "spawn_score": 58.0,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 74.5,
+  "pathfinding_score": 84.44444444444444,
+  "issue_count": 12,
+  "recommendation_count": 7,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:21.723507",
+  "version": "1.0"
+}

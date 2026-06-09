@@ -1,0 +1,801 @@
+{
+  "source": "output/issavi.otbm",
+  "map_size": {
+    "width": 36,
+    "height": 36
+  },
+  "floors": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "tile_count": 3184,
+  "item_count": 4,
+  "top_tiles": {
+    "ground_406": 1888,
+    "ground_1495": 1284,
+    "ground_2162": 4,
+    "ground_2054": 4,
+    "ground_1386": 3,
+    "ground_3214": 1
+  },
+  "top_items": {
+    "item_{'id': 2016}": 4
+  },
+  "total_tile_types": 6,
+  "total_item_types": 1,
+  "houses": [],
+  "house_count": 0,
+  "spawns": [
+    {
+      "monster": "Dragon",
+      "x": 30,
+      "y": 35,
+      "z": 7,
+      "radius": 3,
+      "respawn": 600,
+      "direction": 2
+    },
+    {
+      "monster": "Dragon",
+      "x": 30,
+      "y": 35,
+      "z": 7,
+      "radius": 3,
+      "respawn": 600,
+      "direction": 2
+    },
+    {
+      "monster": "Dragon",
+      "x": 30,
+      "y": 35,
+      "z": 7,
+      "radius": 3,
+      "respawn": 600,
+      "direction": 2
+    },
+    {
+      "monster": "Dragon",
+      "x": 30,
+      "y": 35,
+      "z": 7,
+      "radius": 3,
+      "respawn": 600,
+      "direction": 2
+    }
+  ],
+  "spawn_count": 4,
+  "waypoints": [
+    {
+      "name": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "x": 10,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_dest",
+      "x": 30,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_(12, 5)_(28, 35)",
+      "x": 12,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_dest",
+      "x": 28,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "x": 10,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_dest",
+      "x": 30,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_(12, 5)_(28, 35)",
+      "x": 12,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_dest",
+      "x": 28,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "x": 10,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_dest",
+      "x": 30,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_(12, 5)_(28, 35)",
+      "x": 12,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_dest",
+      "x": 28,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "x": 10,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_ladder_dest",
+      "x": 30,
+      "y": 35,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_(12, 5)_(28, 35)",
+      "x": 12,
+      "y": 5,
+      "z": 7
+    },
+    {
+      "name": "Shortcut_teleport_dest",
+      "x": 28,
+      "y": 35,
+      "z": 7
+    }
+  ],
+  "waypoint_count": 16,
+  "zones": [],
+  "style": "unknown",
+  "patterns": [
+    {
+      "pattern": "issavi_otbm",
+      "source": "issavi.otbm",
+      "width": 36,
+      "height": 36,
+      "style": "unknown",
+      "floors": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "ground_stats": {
+        "ground_1495": 1284,
+        "ground_406": 1888,
+        "ground_2162": 4,
+        "ground_2054": 4,
+        "ground_3214": 1,
+        "ground_1386": 3
+      },
+      "wall_stats": {},
+      "decoration_stats": {},
+      "metadata": {
+        "tile_count": 3184
+      }
+    }
+  ],
+  "path_analysis": {
+    "total_waypoints": 16,
+    "waypoint_distances": [
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 0,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_dest",
+        "to": "Shortcut_teleport_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_teleport_dest",
+        "to": "Shortcut_ladder_dest",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      },
+      {
+        "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+        "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+        "distance": 2,
+        "same_floor": true
+      }
+    ],
+    "nearest_waypoint_to_spawns": [
+      {
+        "spawn_monster": "Dragon",
+        "spawn_x": 30,
+        "spawn_y": 35,
+        "waypoint": "Shortcut_ladder_dest",
+        "waypoint_x": 30,
+        "waypoint_y": 35,
+        "distance": 0
+      },
+      {
+        "spawn_monster": "Dragon",
+        "spawn_x": 30,
+        "spawn_y": 35,
+        "waypoint": "Shortcut_ladder_dest",
+        "waypoint_x": 30,
+        "waypoint_y": 35,
+        "distance": 0
+      },
+      {
+        "spawn_monster": "Dragon",
+        "spawn_x": 30,
+        "spawn_y": 35,
+        "waypoint": "Shortcut_ladder_dest",
+        "waypoint_x": 30,
+        "waypoint_y": 35,
+        "distance": 0
+      },
+      {
+        "spawn_monster": "Dragon",
+        "spawn_x": 30,
+        "spawn_y": 35,
+        "waypoint": "Shortcut_ladder_dest",
+        "waypoint_x": 30,
+        "waypoint_y": 35,
+        "distance": 0
+      }
+    ],
+    "path_graph": {
+      "nodes": [
+        {
+          "name": "Shortcut_ladder_(10, 5)_(30, 35)",
+          "x": 10,
+          "y": 5,
+          "z": 7
+        },
+        {
+          "name": "Shortcut_ladder_dest",
+          "x": 30,
+          "y": 35,
+          "z": 7
+        },
+        {
+          "name": "Shortcut_teleport_(12, 5)_(28, 35)",
+          "x": 12,
+          "y": 5,
+          "z": 7
+        },
+        {
+          "name": "Shortcut_teleport_dest",
+          "x": 28,
+          "y": 35,
+          "z": 7
+        }
+      ],
+      "edges": [
+        {
+          "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+          "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+          "distance": 0
+        },
+        {
+          "from": "Shortcut_ladder_dest",
+          "to": "Shortcut_ladder_dest",
+          "distance": 0
+        },
+        {
+          "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+          "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+          "distance": 0
+        },
+        {
+          "from": "Shortcut_teleport_dest",
+          "to": "Shortcut_teleport_dest",
+          "distance": 0
+        },
+        {
+          "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+          "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+          "distance": 2
+        },
+        {
+          "from": "Shortcut_ladder_dest",
+          "to": "Shortcut_teleport_dest",
+          "distance": 2
+        },
+        {
+          "from": "Shortcut_teleport_(12, 5)_(28, 35)",
+          "to": "Shortcut_teleport_dest",
+          "distance": 46
+        },
+        {
+          "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+          "to": "Shortcut_teleport_dest",
+          "distance": 48
+        },
+        {
+          "from": "Shortcut_ladder_dest",
+          "to": "Shortcut_teleport_(12, 5)_(28, 35)",
+          "distance": 48
+        },
+        {
+          "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+          "to": "Shortcut_ladder_dest",
+          "distance": 50
+        }
+      ]
+    },
+    "connectivity_summary": "16 waypoints, 120 connections, avg distance: 26",
+    "furthest_waypoints": {
+      "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "to": "Shortcut_ladder_dest",
+      "distance": 50,
+      "same_floor": true
+    },
+    "closest_waypoints": {
+      "from": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "to": "Shortcut_ladder_(10, 5)_(30, 35)",
+      "distance": 0,
+      "same_floor": true
+    },
+    "clustering": [
+      {
+        "cluster_id": 1,
+        "center_x": 20,
+        "center_y": 20,
+        "size": 16,
+        "members": [
+          "Shortcut_ladder_(10, 5)_(30, 35)",
+          "Shortcut_ladder_dest",
+          "Shortcut_teleport_(12, 5)_(28, 35)",
+          "Shortcut_teleport_dest",
+          "Shortcut_ladder_(10, 5)_(30, 35)",
+          "Shortcut_ladder_dest",
+          "Shortcut_teleport_(12, 5)_(28, 35)",
+          "Shortcut_teleport_dest",
+          "Shortcut_ladder_(10, 5)_(30, 35)",
+          "Shortcut_ladder_dest"
+        ]
+      }
+    ]
+  },
+  "density_analysis": {
+    "map_area": 1296,
+    "total_tiles": 3184,
+    "total_items": 4,
+    "total_spawns": 4,
+    "tile_density": {
+      "total_density": 2.4568,
+      "top_types": [
+        {
+          "type": "ground_406",
+          "count": 1888,
+          "percentage": 59.3
+        },
+        {
+          "type": "ground_1495",
+          "count": 1284,
+          "percentage": 40.33
+        },
+        {
+          "type": "ground_2162",
+          "count": 4,
+          "percentage": 0.13
+        },
+        {
+          "type": "ground_2054",
+          "count": 4,
+          "percentage": 0.13
+        },
+        {
+          "type": "ground_1386",
+          "count": 3,
+          "percentage": 0.09
+        },
+        {
+          "type": "ground_3214",
+          "count": 1,
+          "percentage": 0.03
+        }
+      ],
+      "unique_tile_types": 6
+    },
+    "item_density": {
+      "items_per_tile": 0.001,
+      "total_items": 4,
+      "unique_item_types": 1,
+      "top_items": [
+        {
+          "item": "item_{'id': 2016}",
+          "count": 4,
+          "percentage": 100.0
+        }
+      ]
+    },
+    "spawn_density": {
+      "spawns_per_sq": 0.003086,
+      "spawns_per_100sq": 30.86,
+      "unique_monsters": 1,
+      "concentration_center": {
+        "x": 30,
+        "y": 35
+      },
+      "concentration_zone": "SE"
+    },
+    "overall_density_score": 49.3,
+    "density_category": "medium",
+    "spawn_heatmap": [
+      {
+        "col": 0,
+        "row": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 35,
+        "y2": 35,
+        "spawn_count": 4,
+        "density": 0.0016
+      }
+    ],
+    "floor_distribution": {
+      "by_floor": {
+        "7": 4
+      },
+      "dominant_floor": 7
+    },
+    "items_per_tile": 0.001,
+    "spawns_per_tile": 0.00126
+  },
+  "architecture_analysis": {
+    "structural_composition": {
+      "categories": {
+        "misc": 100.0
+      },
+      "total_tiles": 3184,
+      "dominant_category": "misc",
+      "is_urban": false,
+      "is_dungeon": false
+    },
+    "urban_zones": {
+      "zone_type": "wilderness",
+      "house_count": 0,
+      "urban_tile_count": 0
+    },
+    "wall_analysis": {
+      "total_walls": 0,
+      "wall_types": 0,
+      "wall_distribution": {}
+    },
+    "door_analysis": {
+      "total_doors": 0,
+      "door_types": 0,
+      "door_distribution": {}
+    },
+    "building_category": {
+      "building_type": "wilderness",
+      "house_density_per_10ksq": 0.0,
+      "spawn_density_per_100sq": 0.31,
+      "has_temple": false
+    },
+    "infrastructure_score": {
+      "total_score": 15.0,
+      "infrastructure_level": "minimal",
+      "breakdown": {
+        "house_score": 0.0,
+        "road_score": 0.0,
+        "waypoint_score": 15,
+        "item_score": 0.0
+      }
+    },
+    "zone_classification": [
+      {
+        "zone": "hunting",
+        "spawn_count": 4,
+        "unique_monsters": 1,
+        "description": "Hunting zone with 4 spawns"
+      }
+    ],
+    "complexity_metrics": {
+      "complexity_score": 14.0,
+      "complexity_level": "minimal",
+      "components": {
+        "unique_tile_types": 6,
+        "unique_item_types": 1,
+        "structures": 0,
+        "spawn_variety": 1,
+        "waypoint_count": 16
+      }
+    }
+  }
+}

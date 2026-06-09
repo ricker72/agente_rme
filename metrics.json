@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-06-09T05:45:00.856098+00:00",
+  "uptime_seconds": 0.0,
+  "cpu_percent": 0.0,
+  "memory_mb": 0.0,
+  "memory_peak_mb": 0.0,
+  "errors_total": 0,
+  "generations_total": 0,
+  "last_generation_ms": 0.0,
+  "otbm": {
+    "tiles": 0,
+    "items": 0,
+    "spawns": 0,
+    "regions": 0,
+    "last_export_ms": 0.0
+  },
+  "agents": {}
+}

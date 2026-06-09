@@ -1,0 +1,437 @@
+{
+  "created_at": "2026-06-08T16:26:32.852981+00:00",
+  "total_entries": 845,
+  "sources": [
+    "orcsoberfest",
+    "yalahar",
+    "venore",
+    "asura",
+    "hellgate",
+    "carlin",
+    "darashia",
+    "thais",
+    "issavi",
+    "ankrahmun",
+    "krailos",
+    "feyrist",
+    "vippre",
+    "edron",
+    "roshamuul"
+  ],
+  "counts_by_type": {
+    "cities": 113,
+    "hunts": 178,
+    "boss_rooms": 122,
+    "raids": 0,
+    "quests": 100,
+    "regions": 22,
+    "biomes": 15,
+    "spawns": 195,
+    "waypoints": 100
+  },
+  "counts_by_biome": {
+    "issavi": 70,
+    "venore": 67,
+    "darashia": 67,
+    "carlin": 53,
+    "ankrahmun": 48,
+    "edron": 46,
+    "feyrist": 45,
+    "yalahar": 34,
+    "krailos": 34,
+    "orcsoberfest": 31,
+    "thais": 30,
+    "hellgate": 30,
+    "asura": 29,
+    "vippre": 27,
+    "roshamuul": 19,
+    "Orcsoberfest": 1,
+    "Yalahar": 1,
+    "Venore": 1,
+    "Asura": 1,
+    "Hellgate": 1,
+    "Carlin": 1,
+    "Darashia": 1,
+    "Thais": 1,
+    "Issavi": 1,
+    "Ankrahmun": 1,
+    "Krailos": 1,
+    "Feyrist": 1,
+    "Vippre": 1,
+    "Edron": 1,
+    "Roshamuul": 1
+  },
+  "top_themes": [
+    {
+      "name": "issavi",
+      "count": 70
+    },
+    {
+      "name": "venore",
+      "count": 67
+    },
+    {
+      "name": "darashia",
+      "count": 67
+    },
+    {
+      "name": "carlin",
+      "count": 53
+    },
+    {
+      "name": "ankrahmun",
+      "count": 48
+    }
+  ],
+  "top_cities": [
+    {
+      "name": "Darashia_0",
+      "id": "60b34a92b3950b1b",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 100,
+      "max_level": 500,
+      "tags": []
+    },
+    {
+      "name": "Edron_1",
+      "id": "748e9b6f483d8b28",
+      "source": "yalahar",
+      "biome": "yalahar",
+      "min_level": 100,
+      "max_level": 500,
+      "tags": []
+    },
+    {
+      "name": "Vippre_2",
+      "id": "98cbd2e6613df08f",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 100,
+      "max_level": 500,
+      "tags": []
+    },
+    {
+      "name": "Feyrist_2",
+      "id": "d9091a8d54764abf",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 100,
+      "max_level": 500,
+      "tags": []
+    },
+    {
+      "name": "Vippre_4",
+      "id": "7d7425f00cef6a6d",
+      "source": "venore",
+      "biome": "venore",
+      "min_level": 100,
+      "max_level": 500,
+      "tags": []
+    }
+  ],
+  "top_hunts": [
+    {
+      "name": "lair_orcsoberfest_hunt_0",
+      "id": "7f8afed98b2aa9a0",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 157,
+      "max_level": 320,
+      "tags": [
+        "linear"
+      ]
+    },
+    {
+      "name": "circular_orcsoberfest_hunt_0",
+      "id": "fda42445f4142c02",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 174,
+      "max_level": 507,
+      "tags": [
+        "circular",
+        "circular_route"
+      ]
+    },
+    {
+      "name": "lair_yalahar_hunt_1",
+      "id": "99941ec9000fbc5d",
+      "source": "yalahar",
+      "biome": "yalahar",
+      "min_level": 245,
+      "max_level": 332,
+      "tags": [
+        "linear"
+      ]
+    },
+    {
+      "name": "lower_yalahar_hunt_1",
+      "id": "cc09d463a4242e11",
+      "source": "yalahar",
+      "biome": "yalahar",
+      "min_level": 244,
+      "max_level": 530,
+      "tags": [
+        "linear"
+      ]
+    },
+    {
+      "name": "outer_orcsoberfest_hunt_2",
+      "id": "8d59cd986fc0ffc4",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 71,
+      "max_level": 484,
+      "tags": [
+        "circular"
+      ]
+    }
+  ],
+  "top_boss_rooms": [
+    {
+      "name": "throne_arena_orcsoberfest_0",
+      "id": "d106afc8b4017d9e",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 300,
+      "max_level": 600,
+      "tags": [
+        "boss",
+        "circular",
+        "boss"
+      ]
+    },
+    {
+      "name": "lair_orcsoberfest_hunt_0",
+      "id": "2d3ff2c043824c29",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 157,
+      "max_level": 320,
+      "tags": [
+        "linear",
+        "boss"
+      ]
+    },
+    {
+      "name": "pit_arena_yalahar_1",
+      "id": "c7d25fddfec5b716",
+      "source": "yalahar",
+      "biome": "yalahar",
+      "min_level": 300,
+      "max_level": 600,
+      "tags": [
+        "boss",
+        "circular",
+        "boss"
+      ]
+    },
+    {
+      "name": "lair_yalahar_hunt_1",
+      "id": "2b46b5e67afa4155",
+      "source": "yalahar",
+      "biome": "yalahar",
+      "min_level": 245,
+      "max_level": 332,
+      "tags": [
+        "linear",
+        "boss"
+      ]
+    },
+    {
+      "name": "throne_arena_orcsoberfest_2",
+      "id": "897a4f53a2847fc1",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 300,
+      "max_level": 600,
+      "tags": [
+        "boss",
+        "circular",
+        "boss"
+      ]
+    }
+  ],
+  "top_quests": [
+    {
+      "name": "quest_orcsoberfest_0",
+      "id": "97b1cb8b3421f93d",
+      "source": "orcsoberfest",
+      "biome": "generic",
+      "min_level": 1,
+      "max_level": 9999,
+      "tags": [
+        "quest"
+      ]
+    },
+    {
+      "name": "quest_yalahar_1",
+      "id": "9bd1e728159c84a5",
+      "source": "yalahar",
+      "biome": "generic",
+      "min_level": 1,
+      "max_level": 9999,
+      "tags": [
+        "quest"
+      ]
+    },
+    {
+      "name": "quest_orcsoberfest_2",
+      "id": "571451c3acf41408",
+      "source": "orcsoberfest",
+      "biome": "generic",
+      "min_level": 1,
+      "max_level": 9999,
+      "tags": [
+        "quest"
+      ]
+    },
+    {
+      "name": "quest_venore_3",
+      "id": "5d9c1a74d809b64a",
+      "source": "venore",
+      "biome": "generic",
+      "min_level": 1,
+      "max_level": 9999,
+      "tags": [
+        "quest"
+      ]
+    },
+    {
+      "name": "quest_venore_4",
+      "id": "8ec510b094056606",
+      "source": "venore",
+      "biome": "generic",
+      "min_level": 1,
+      "max_level": 9999,
+      "tags": [
+        "quest"
+      ]
+    }
+  ],
+  "top_regions": [
+    {
+      "name": "lair_orcsoberfest_hunt_0",
+      "id": "15f5582cf3bebf63",
+      "source": "orcsoberfest",
+      "biome": "orcsoberfest",
+      "min_level": 157,
+      "max_level": 320,
+      "tags": [
+        "linear",
+        "dungeon"
+      ]
+    },
+    {
+      "name": "lair_yalahar_hunt_1",
+      "id": "0a9085f08a20cf67",
+      "source": "yalahar",
+      "biome": "yalahar",
+      "min_level": 245,
+      "max_level": 332,
+      "tags": [
+        "linear",
+        "dungeon"
+      ]
+    },
+    {
+      "name": "lair_hellgate_hunt_6",
+      "id": "f8c70bf0c19f3232",
+      "source": "hellgate",
+      "biome": "hellgate",
+      "min_level": 70,
+      "max_level": 548,
+      "tags": [
+        "circular",
+        "dungeon"
+      ]
+    },
+    {
+      "name": "lair_darashia_hunt_11",
+      "id": "d6235520ba0ec626",
+      "source": "darashia",
+      "biome": "darashia",
+      "min_level": 249,
+      "max_level": 538,
+      "tags": [
+        "linear",
+        "dungeon"
+      ]
+    },
+    {
+      "name": "lair_ankrahmun_hunt_17",
+      "id": "200d909a4d6ea4ac",
+      "source": "ankrahmun",
+      "biome": "ankrahmun",
+      "min_level": 127,
+      "max_level": 487,
+      "tags": [
+        "linear",
+        "dungeon"
+      ]
+    }
+  ],
+  "top_biomes": [
+    {
+      "name": "Orcsoberfest",
+      "id": "8dd3caaf8ba3eddb",
+      "source": "orcsoberfest",
+      "biome": "Orcsoberfest",
+      "min_level": 157,
+      "max_level": 320,
+      "tags": [
+        "orcsoberfest",
+        "biome"
+      ]
+    },
+    {
+      "name": "Yalahar",
+      "id": "988960ea3a48c15f",
+      "source": "yalahar",
+      "biome": "Yalahar",
+      "min_level": 245,
+      "max_level": 332,
+      "tags": [
+        "yalahar",
+        "biome"
+      ]
+    },
+    {
+      "name": "Venore",
+      "id": "9a0fff82e3674bb7",
+      "source": "venore",
+      "biome": "Venore",
+      "min_level": 83,
+      "max_level": 489,
+      "tags": [
+        "venore",
+        "biome"
+      ]
+    },
+    {
+      "name": "Asura",
+      "id": "140ecdb8a9007100",
+      "source": "asura",
+      "biome": "Asura",
+      "min_level": 141,
+      "max_level": 571,
+      "tags": [
+        "asura",
+        "biome"
+      ]
+    },
+    {
+      "name": "Hellgate",
+      "id": "10b3ed5d99a060d6",
+      "source": "hellgate",
+      "biome": "Hellgate",
+      "min_level": 70,
+      "max_level": 548,
+      "tags": [
+        "hellgate",
+        "biome"
+      ]
+    }
+  ]
+}

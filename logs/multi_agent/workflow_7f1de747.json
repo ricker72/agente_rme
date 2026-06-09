@@ -1,0 +1,20 @@
+{
+  "workflow_id": "7f1de747",
+  "prompt": "Generate Issavi city",
+  "status": "completed",
+  "tasks": {},
+  "current_agent": null,
+  "errors": [],
+  "started_at": "2026-06-07T05:53:41.852238",
+  "completed_at": "2026-06-07T05:53:41.854507",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

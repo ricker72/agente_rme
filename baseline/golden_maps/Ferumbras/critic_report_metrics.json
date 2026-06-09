@@ -1,0 +1,18 @@
+{
+  "map_name": "ancient_temple_300",
+  "overall_score": 67.24524236607976,
+  "visual_score": 80.82910740053597,
+  "navigation_score": 85.0,
+  "density_score": 73.10443355566466,
+  "spawn_score": 31.08163265306122,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 95.2734693877551,
+  "pathfinding_score": 84.59183673469389,
+  "issue_count": 8,
+  "recommendation_count": 6,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:22.180597",
+  "version": "1.0"
+}

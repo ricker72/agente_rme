@@ -1,0 +1,18 @@
+{
+  "map_name": "djinn_arena_300",
+  "overall_score": 53.80590909090909,
+  "visual_score": 68.20202020202021,
+  "navigation_score": 85.0,
+  "density_score": 80.0,
+  "spawn_score": 10.0,
+  "hunt_score": 50.0,
+  "boss_score": 21.46666666666667,
+  "city_score": 60.0,
+  "decor_score": 38.75,
+  "pathfinding_score": 80.0,
+  "issue_count": 12,
+  "recommendation_count": 8,
+  "critical_issues": 1,
+  "generated_at": "2026-06-08T15:14:22.072689",
+  "version": "1.0"
+}

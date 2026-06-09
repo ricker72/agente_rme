@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monsters>
+    <monster name="Azure Frog" file="amphibics/azure_frog.lua"/>
+    <monster name="Bog Frog" file="amphibics/bog_frog.lua"/>
+    <monster name="Coral Frog" file="amphibics/coral_frog.lua"/>
+    <monster name="Crimson Frog" file="amphibics/crimson_frog.lua"/>
+    <monster name="Deathspawn" file="amphibics/deathspawn.lua"/>
+    <monster name="Filth Toad" file="amphibics/filth_toad.lua"/>
+    <monster name="Green Frog" file="amphibics/green_frog.lua"/>
+    <monster name="Infernal Frog" file="amphibics/infernal_frog.lua"/>
+    <monster name="Makara" file="amphibics/makara.lua"/>
+    <monster name="Orchid Frog" file="amphibics/orchid_frog.lua"/>
+    <monster name="Salamander" file="amphibics/salamander.lua"/>
+    <monster name="Toad" file="amphibics/toad.lua"/>
+    <monster name="Abyssal Calamary" file="aquatics/abyssal_calamary.lua"/>
+    <monster name="Blood Crab" file="aquatics/blood_crab.lua"/>
+    <monster name="Calamary" file="aquatics/calamary.lua"/>
+    <monster name="Crab" file="aquatics/crab.lua"/>
+    <monster name="Crustacea Gigantica" file="aquatics/crustacea_gigantica.lua"/>
+    <monster name="Deathling Scout" file="aquatics/deathling_scout.lua"/>
+    <monster name="Deathling Spellsinger" file="aquatics/deathling_spellsinger.lua"/>
+    <monster name="Deepling Brawler" file="aquatics/deepling_brawler.lua"/>
+    <monster name="Deepling Elite" file="aquatics/deepling_elite.lua"/>
+    <monster name="Deepling Guard" file="aquatics/deepling_guard.lua"/>
+    <monster name="Deepling Master Librarian" file="aquatics/deepling_master_librarian.lua"/>
+    <monster name="Deepling Scout" file="aquatics/deepling_scout.lua"/>
+    <monster name="Deepling Spellsinger" file="aquatics/deepling_spellsinger.lua"/>
+    <monster name="Deepling Tyrant" file="aquatics/deepling_tyrant.lua"/>
+    <monster name="Deepling Warrior" file="aquatics/deepling_warrior.lua"/>
+    <monster name="Deepling Worker" file="aquatics/deepling_worker.lua"/>
+    <monster name="Deepsea Blood Crab" file="aquatics/deepsea_blood_crab.lua"/>
+    <monster name="Fish" file="aquatics/fish.lua"/>
+    <monster name="Jellyfish" file="aquatics/jellyfish.lua"/>
+    <monster name="Manta Ray" file="aquatics/manta_ray.lua"/>
+    <monster name="Northern Pike" file="aquatics/northern_pike.lua"/>
+    <monster name="Quara Constrictor" file="aquatics/quara_constrictor.lua"/>
+    <monster name="Quara Constrictor Scout" file="aquatics/quara_constrictor_scout.lua"/>
+    <monster name="Quara Hydromancer" file="aquatics/quara_hydromancer.lua"/>
+    <monster name="Quara Hydromancer Scout" file="aquatics/quara_hydromancer_scout.lua"/>
+    <monster name="Quara Looter" file="aquatics/quara_looter.lua"/>
+    <monster name="Quara Mantassin" file="aquatics/quara_mantassin.lua"/>
+    <monster name="Quara Mantassin Scout" file="aquatics/quara_mantassin_scout.lua"/>
+    <monster name="Quara Pincher" file="aquatics/quara_pincher.lua"/>
+    <monster name="Quara Pincher Scout" file="aquatics/quara_pincher_scout.lua"/>
+    <monster name="Quara Plunderer" file="aquatics/quara_plunderer.lua"/>
+    <monster name="Quara Predator" file="aquatics/quara_predator.lua"/>
+    <monster name="Quara Predator Scout" file="aquatics/quara_predator_scout.lua"/>
+    <monster name="Quara Raider" file="aquatics/quara_raider.lua"/>
+    <monster name="Renegade Quara Constrictor" file="aquatics/renegade_quara_constrictor.lua"/>
+    <monster name="Renegade Quara Hydromancer" file="aquatics/renegade_quara_hydromancer.lua"/>
+    <monster name="Renegade Quara Mantassin" file="aquatics/renegade_quara_mantassin.lua"/>
+    <monster name="Renegade Quara Pincher" file="aquatics/renegade_quara_pincher.lua"/>
+    <monster name="Renegade Quara Predator" file="aquatics/renegade_quara_predator.lua"/>
+    <monster name="Shark" file="aquatics/shark.lua"/>
+    <monster name="Agressive Chicken" file="birds/agressive_chicken.lua"/>
+    <monster name="Agrestic Chicken" file="birds/agrestic_chicken.lua"/>
+    <monster name="Berserker Chicken" file="birds/berserker_chicken.lua"/>
+    <monster name="Cave Parrot" file="birds/cave_parrot.lua"/>
+    <monster name="Chicken" file="birds/chicken.lua"/>
+    <monster name="Demon Parrot" file="birds/demon_parrot.lua"/>
+    <monster name="Dire Penguin" file="birds/dire_penguin.lua"/>
+    <monster name="Flamingo" file="birds/flamingo.lua"/>
+    <monster name="Headpecker" file="birds/headpecker.lua"/>
+    <monster name="Jungle Moa" file="birds/jungle_moa.lua"/>
+    <monster name="Marsh Stalker" file="birds/marsh_stalker.lua"/>
+    <monster name="Parrot" file="birds/parrot.lua"/>
+    <monster name="Penguin" file="birds/penguin.lua"/>
+    <monster name="Pigeon" file="birds/pigeon.lua"/>
+    <monster name="Seagull" file="birds/seagull.lua"/>
+    <monster name="Tame Terror Bird" file="birds/tame_terror_bird.lua"/>
+    <monster name="Terror Bird" file="birds/terror_bird.lua"/>
+    <monster name="Ahau" file="bosses/ahau.lua"/>
+    <monster name="Alchemist Container" file="bosses/alchemist_container.lua"/>
+    <monster name="Antenna" file="bosses/antenna.lua"/>
+    <monster name="Apocalypse" file="bosses/apocalypse.lua"/>
+    <monster name="Apprentice Sheng" file="bosses/apprentice_sheng.lua"/>
+    <monster name="Armenius" file="bosses/armenius.lua"/>
+    <monster name="Bakragore" file="bosses/bakragore.lua"/>
+    <monster name="Bazir" file="bosses/bazir.lua"/>
+    <monster name="Bibby Bloodbath" file="bosses/bibby_bloodbath.lua"/>
+    <monster name="Big Boss Trolliver" file="bosses/big_boss_trolliver.lua"/>
+    <monster name="Black Knight" file="bosses/black_knight.lua"/>
+    <monster name="Brain Head" file="bosses/brain_head.lua"/>
+    <monster name="Brain Parasite" file="bosses/brain_parasite.lua"/>
+    <monster name="Bullwark" file="bosses/bullwark.lua"/>
+    <monster name="Cerebellum" file="bosses/cerebellum.lua"/>
+    <monster name="Chagorz" file="bosses/chagorz.lua"/>
+    <monster name="Chikhaton" file="bosses/chikhaton.lua"/>
+    <monster name="Cublarc The Plunderer" file="bosses/cublarc_the_plunderer.lua"/>
+    <monster name="Custodian" file="bosses/custodian.lua"/>
+    <monster name="Dharalion" file="bosses/dharalion.lua"/>
+    <monster name="Diblis The Fair" file="bosses/diblis_the_fair.lua"/>
+    <monster name="Diseased Bill" file="bosses/diseased_bill.lua"/>
+    <monster name="Diseased Dan" file="bosses/diseased_dan.lua"/>
+    <monster name="Diseased Fred" file="bosses/diseased_fred.lua"/>
+    <monster name="Doctor Marrow" file="bosses/doctor_marrow.lua"/>
+    <monster name="Ekatrix" file="bosses/ekatrix.lua"/>
+    <monster name="Elvira Hammerthrust" file="bosses/elvira_hammerthrust.lua"/>
+    <monster name="Energized Raging Mage" file="bosses/energized_raging_mage.lua"/>
+    <monster name="Fleshslicer" file="bosses/fleshslicer.lua"/>
+    <monster name="Freegoiz" file="bosses/freegoiz.lua"/>
+    <monster name="Gaffir" file="bosses/gaffir.lua"/>
+    <monster name="General Murius" file="bosses/general_murius.lua"/>
+    <monster name="Glitterscale" file="bosses/glitterscale.lua"/>
+    <monster name="Gorga" file="bosses/gorga.lua"/>
+    <monster name="Grandfather Tridian" file="bosses/grandfather_tridian.lua"/>
+    <monster name="Gravelord Oshuran" file="bosses/gravelord_oshuran.lua"/>
+    <monster name="Groam" file="bosses/groam.lua"/>
+    <monster name="Guard Captain Quaid" file="bosses/guard_captain_quaid.lua"/>
+    <monster name="Hairman The Huge" file="bosses/hairman_the_huge.lua"/>
+    <monster name="Heoni" file="bosses/heoni.lua"/>
+    <monster name="High Templar Cobrass" file="bosses/high_templar_cobrass.lua"/>
+    <monster name="Ichgahal" file="bosses/ichgahal.lua"/>
+    <monster name="Incredibly Old Witch" file="bosses/incredibly_old_witch.lua"/>
+    <monster name="Infernatil" file="bosses/infernatil.lua"/>
+    <monster name="Jesse The Wicked" file="bosses/jesse_the_wicked.lua"/>
+    <monster name="Koshei The Deathless" file="bosses/koshei_the_deathless.lua"/>
+    <monster name="Kraknaknork'S Demon" file="bosses/kraknaknork's_demon.lua"/>
+    <monster name="Kraknaknork" file="bosses/kraknaknork.lua"/>
+    <monster name="Kroazur" file="bosses/kroazur.lua"/>
+    <monster name="Lisa" file="bosses/lisa.lua"/>
+    <monster name="Mad Mage" file="bosses/mad_mage.lua"/>
+    <monster name="Mad Technomancer" file="bosses/mad_technomancer.lua"/>
+    <monster name="Mitmah Vanguard" file="bosses/mitmah_vanguard.lua"/>
+    <monster name="Morbol" file="bosses/morbol.lua"/>
+    <monster name="Morik The Gladiator" file="bosses/morik_the_gladiator.lua"/>
+    <monster name="Mornenion" file="bosses/mornenion.lua"/>
+    <monster name="Morshabaal" file="bosses/morshabaal.lua"/>
+    <monster name="Munster" file="bosses/munster.lua"/>
+    <monster name="Murcion" file="bosses/murcion.lua"/>
+    <monster name="Pythius The Rotten" file="bosses/pythius_the_rotten.lua"/>
+    <monster name="Raging Mage" file="bosses/raging_mage.lua"/>
+    <monster name="Raxias" file="bosses/raxias.lua"/>
+    <monster name="Renegade Orc" file="bosses/renegade_orc.lua"/>
+    <monster name="Robby The Reckless" file="bosses/robby_the_reckless.lua"/>
+    <monster name="Rukor Zad" file="bosses/rukor_zad.lua"/>
+    <monster name="Smuggler Baron Silvertoe" file="bosses/smuggler_baron_silvertoe.lua"/>
+    <monster name="Spider Queen" file="bosses/spider_queen.lua"/>
+    <monster name="Splasher" file="bosses/splasher.lua"/>
+    <monster name="Sugar Daddy" file="bosses/sugar_daddy.lua"/>
+    <monster name="Sugar Mommy" file="bosses/sugar_mommy.lua"/>
+    <monster name="Teleskor" file="bosses/teleskor.lua"/>
+    <monster name="The Abomination" file="bosses/the_abomination.lua"/>
+    <monster name="The Astral Source" file="bosses/the_astral_source.lua"/>
+    <monster name="The Big Bad One" file="bosses/the_big_bad_one.lua"/>
+    <monster name="The Blightfather" file="bosses/the_blightfather.lua"/>
+    <monster name="The Book Of Death" file="bosses/the_book_of_death.lua"/>
+    <monster name="The Brainstealer" file="bosses/the_brainstealer.lua"/>
+    <monster name="The Collector" file="bosses/the_collector.lua"/>
+    <monster name="The Evil Eye" file="bosses/the_evil_eye.lua"/>
+    <monster name="The First Dragon" file="bosses/the_first_dragon.lua"/>
+    <monster name="The Flaming Orchid" file="bosses/the_flaming_orchid.lua"/>
+    <monster name="The Frog Prince" file="bosses/the_frog_prince.lua"/>
+    <monster name="The Monster" file="bosses/the_monster.lua"/>
+    <monster name="The Rootkraken" file="bosses/the_rootkraken.lua"/>
+    <monster name="Vemiath" file="bosses/vemiath.lua"/>
+    <monster name="Verminor" file="bosses/verminor.lua"/>
+    <monster name="Visco" file="bosses/visco.lua"/>
+    <monster name="Warlord Ruzad" file="bosses/warlord_ruzad.lua"/>
+    <monster name="Weakened Demon" file="bosses/weakened_demon.lua"/>
+    <monster name="Weakened Shlorg" file="bosses/weakened_shlorg.lua"/>
+    <monster name="Williwasp" file="bosses/williwasp.lua"/>
+    <monster name="Yaga The Crone" file="bosses/yaga_the_crone.lua"/>
+    <monster name="Zarabustor" file="bosses/zarabustor.lua"/>
+    <monster name="Zavarash" file="bosses/zavarash.lua"/>
+    <monster name="Zevelon Duskbringer" file="bosses/zevelon_duskbringer.lua"/>
+    <monster name="Zoralurk" file="bosses/zoralurk.lua"/>
+    <monster name="Zushuka" file="bosses/zushuka.lua"/>
+    <monster name="Animated Snowman" file="constructs/animated_snowman.lua"/>
+    <monster name="Biting Book" file="constructs/biting_book.lua"/>
+    <monster name="Clay Guardian" file="constructs/clay_guardian.lua"/>
+    <monster name="Damaged Crystal Golem" file="constructs/damaged_crystal_golem.lua"/>
+    <monster name="Damaged Worker Golem" file="constructs/damaged_worker_golem.lua"/>
+    <monster name="Diamond Servant" file="constructs/diamond_servant.lua"/>
+    <monster name="Diamond Servant Replica" file="constructs/diamond_servant_replica.lua"/>
+    <monster name="Enraged Crystal Golem" file="constructs/enraged_crystal_golem.lua"/>
+    <monster name="Eternal Guardian" file="constructs/eternal_guardian.lua"/>
+    <monster name="Gingerbread Men" file="constructs/gingerbread_men.lua"/>
+    <monster name="Glooth Golem" file="constructs/glooth_golem.lua"/>
+    <monster name="Goggle Cake" file="constructs/goggle_cake.lua"/>
+    <monster name="Golden Servant" file="constructs/golden_servant.lua"/>
+    <monster name="Golden Servant Replica" file="constructs/golden_servant_replica.lua"/>
+    <monster name="Ice Golem" file="constructs/ice_golem.lua"/>
+    <monster name="Infected Weeper" file="constructs/infected_weeper.lua"/>
+    <monster name="Iron Servant" file="constructs/iron_servant.lua"/>
+    <monster name="Iron Servant Replica" file="constructs/iron_servant_replica.lua"/>
+    <monster name="Lava Golem" file="constructs/lava_golem.lua"/>
+    <monster name="Magma Crawler" file="constructs/magma_crawler.lua"/>
+    <monster name="Metal Gargoyle" file="constructs/metal_gargoyle.lua"/>
+    <monster name="Orewalker" file="constructs/orewalker.lua"/>
+    <monster name="Rustheap Golem" file="constructs/rustheap_golem.lua"/>
+    <monster name="Sandstone Scorpion" file="constructs/sandstone_scorpion.lua"/>
+    <monster name="Shrieking Cry-Stal" file="constructs/shrieking_cry-stal.lua"/>
+    <monster name="Stone Devourer" file="constructs/stone_devourer.lua"/>
+    <monster name="Stone Golem" file="constructs/stone_golem.lua"/>
+    <monster name="Walker" file="constructs/walker.lua"/>
+    <monster name="War Golem" file="constructs/war_golem.lua"/>
+    <monster name="Weeper" file="constructs/weeper.lua"/>
+    <monster name="Worker Golem" file="constructs/worker_golem.lua"/>
+    <monster name="Brittle Skeleton" file="dawnport/brittle_skeleton.lua"/>
+    <monster name="Crazed Dwarf" file="dawnport/crazed_dwarf.lua"/>
+    <monster name="Dawn Bat" file="dawnport/dawn_bat.lua"/>
+    <monster name="Dawn Scorpion" file="dawnport/dawn_scorpion.lua"/>
+    <monster name="Dawnfly" file="dawnport/dawnfly.lua"/>
+    <monster name="Juvenile Cyclops" file="dawnport/juvenile_cyclops.lua"/>
+    <monster name="Lesser Fire Devil" file="dawnport/lesser_fire_devil.lua"/>
+    <monster name="Meadow Strider" file="dawnport/meadow_strider.lua"/>
+    <monster name="Mountain Troll" file="dawnport/mountain_troll.lua"/>
+    <monster name="Muglex Clan Assassin" file="dawnport/muglex_clan_assassin.lua"/>
+    <monster name="Muglex Clan Footman" file="dawnport/muglex_clan_footman.lua"/>
+    <monster name="Muglex Clan Scavenger" file="dawnport/muglex_clan_scavenger.lua"/>
+    <monster name="Sacred Snake" file="dawnport/sacred_snake.lua"/>
+    <monster name="Salamander Trainer" file="dawnport/salamander_trainer.lua"/>
+    <monster name="Scar Tribe Shaman" file="dawnport/scar_tribe_shaman.lua"/>
+    <monster name="Scar Tribe Warrior" file="dawnport/scar_tribe_warrior.lua"/>
+    <monster name="Spidris Elitesumom" file="dawnport/spidris_elitesumom.lua"/>
+    <monster name="Troll-Trained Salamander" file="dawnport/troll-trained_salamander.lua"/>
+    <monster name="Troll Marauder" file="dawnport/troll_marauder.lua"/>
+    <monster name="Woodling" file="dawnport/woodling.lua"/>
+    <monster name="Askarak Demon" file="demons/askarak_demon.lua"/>
+    <monster name="Askarak Lord" file="demons/askarak_lord.lua"/>
+    <monster name="Askarak Prince" file="demons/askarak_prince.lua"/>
+    <monster name="Brinebrute Inferniarch" file="demons/brinebrute_inferniarch.lua"/>
+    <monster name="Broodrider Inferniarch" file="demons/broodrider_inferniarch.lua"/>
+    <monster name="Dark Torturer" file="demons/dark_torturer.lua"/>
+    <monster name="Dawnfire Asura" file="demons/dawnfire_asura.lua"/>
+    <monster name="Demon" file="demons/demon.lua"/>
+    <monster name="Demon Outcast" file="demons/demon_outcast.lua"/>
+    <monster name="Destroyer" file="demons/destroyer.lua"/>
+    <monster name="Diabolic Imp" file="demons/diabolic_imp.lua"/>
+    <monster name="Duskbringer" file="demons/duskbringer.lua"/>
+    <monster name="Fire Devil" file="demons/fire_devil.lua"/>
+    <monster name="Floating Savant" file="demons/floating_savant.lua"/>
+    <monster name="Frost Flower Asura" file="demons/frost_flower_asura.lua"/>
+    <monster name="Fury" file="demons/fury.lua"/>
+    <monster name="Gorger Inferniarch" file="demons/gorger_inferniarch.lua"/>
+    <monster name="Gozzler" file="demons/gozzler.lua"/>
+    <monster name="Grimeleech" file="demons/grimeleech.lua"/>
+    <monster name="Hellfire Fighter" file="demons/hellfire_fighter.lua"/>
+    <monster name="Hellflayer" file="demons/hellflayer.lua"/>
+    <monster name="Hellhound" file="demons/hellhound.lua"/>
+    <monster name="Hellhunter Inferniarch" file="demons/hellhunter_inferniarch.lua"/>
+    <monster name="Hellspawn" file="demons/hellspawn.lua"/>
+    <monster name="Herald Of Gloom" file="demons/herald_of_gloom.lua"/>
+    <monster name="Juggernaut" file="demons/juggernaut.lua"/>
+    <monster name="Midnight Asura" file="demons/midnight_asura.lua"/>
+    <monster name="Nightfiend" file="demons/nightfiend.lua"/>
+    <monster name="Plaguesmith" file="demons/plaguesmith.lua"/>
+    <monster name="Shaburak Demon" file="demons/shaburak_demon.lua"/>
+    <monster name="Shaburak Lord" file="demons/shaburak_lord.lua"/>
+    <monster name="Shaburak Prince" file="demons/shaburak_prince.lua"/>
+    <monster name="Shadow Hound" file="demons/shadow_hound.lua"/>
+    <monster name="Sineater Inferniarch" file="demons/sineater_inferniarch.lua"/>
+    <monster name="Spellreaper Inferniarch" file="demons/spellreaper_inferniarch.lua"/>
+    <monster name="True Dawnfire Asura" file="demons/true_dawnfire_asura.lua"/>
+    <monster name="True Frost Flower Asura" file="demons/true_frost_flower_asura.lua"/>
+    <monster name="True Midnight Asura" file="demons/true_midnight_asura.lua"/>
+    <monster name="Vexclaw" file="demons/vexclaw.lua"/>
+    <monster name="Dragolisk" file="dragons/dragolisk.lua"/>
+    <monster name="Dragon" file="dragons/dragon.lua"/>
+    <monster name="Dragon Hatchling" file="dragons/dragon_hatchling.lua"/>
+    <monster name="Dragon Lord" file="dragons/dragon_lord.lua"/>
+    <monster name="Dragon Lord Hatchling" file="dragons/dragon_lord_hatchling.lua"/>
+    <monster name="Draken Abomination" file="dragons/draken_abomination.lua"/>
+    <monster name="Draken Elite" file="dragons/draken_elite.lua"/>
+    <monster name="Draken Spellweaver" file="dragons/draken_spellweaver.lua"/>
+    <monster name="Draken Warmaster" file="dragons/draken_warmaster.lua"/>
+    <monster name="Elder Wyrm" file="dragons/elder_wyrm.lua"/>
+    <monster name="Frost Dragon" file="dragons/frost_dragon.lua"/>
+    <monster name="Frost Dragon Hatchling" file="dragons/frost_dragon_hatchling.lua"/>
+    <monster name="Ghastly Dragon" file="dragons/ghastly_dragon.lua"/>
+    <monster name="Hydra" file="dragons/hydra.lua"/>
+    <monster name="Mega Dragon" file="dragons/mega_dragon.lua"/>
+    <monster name="War Dragon" file="dragons/war_dragon.lua"/>
+    <monster name="Wyrm" file="dragons/wyrm.lua"/>
+    <monster name="Candy Floss Elemental" file="elementals/candy_floss_elemental.lua"/>
+    <monster name="Cliff Strider" file="elementals/cliff_strider.lua"/>
+    <monster name="Earth Elemental" file="elementals/earth_elemental.lua"/>
+    <monster name="Energy Elemental" file="elementals/energy_elemental.lua"/>
+    <monster name="Fire Elemental" file="elementals/fire_elemental.lua"/>
+    <monster name="Foam Stalker" file="elementals/foam_stalker.lua"/>
+    <monster name="High Voltage Elemental" file="elementals/high_voltage_elemental.lua"/>
+    <monster name="Honey Elemental" file="elementals/honey_elemental.lua"/>
+    <monster name="Ironblight" file="elementals/ironblight.lua"/>
+    <monster name="Knowledge Elemental" file="elementals/knowledge_elemental.lua"/>
+    <monster name="Lava Lurker" file="elementals/lava_lurker.lua"/>
+    <monster name="Massive Earth Elemental" file="elementals/massive_earth_elemental.lua"/>
+    <monster name="Massive Energy Elemental" file="elementals/massive_energy_elemental.lua"/>
+    <monster name="Massive Fire Elemental" file="elementals/massive_fire_elemental.lua"/>
+    <monster name="Massive Water Elemental" file="elementals/massive_water_elemental.lua"/>
+    <monster name="Raging Fire" file="elementals/raging_fire.lua"/>
+    <monster name="Ravenous Lava Lurker" file="elementals/ravenous_lava_lurker.lua"/>
+    <monster name="Sulphur Spouter" file="elementals/sulphur_spouter.lua"/>
+    <monster name="Water Elemental" file="elementals/water_elemental.lua"/>
+    <monster name="Bones" file="event_creatures/bones.lua"/>
+    <monster name="Eclipse Knight" file="event_creatures/eclipse_knight.lua"/>
+    <monster name="Essence Of Darkness" file="event_creatures/essence_of_darkness.lua"/>
+    <monster name="Fluffy" file="event_creatures/fluffy.lua"/>
+    <monster name="Grynch Clan Goblin" file="event_creatures/grynch_clan_goblin.lua"/>
+    <monster name="Hacker" file="event_creatures/hacker.lua"/>
+    <monster name="Memory Of A Banshee" file="event_creatures/memory_creatures/memory_of_a_banshee.lua"/>
+    <monster name="Memory Of A Book" file="event_creatures/memory_creatures/memory_of_a_book.lua"/>
+    <monster name="Memory Of A Carnisylvan" file="event_creatures/memory_creatures/memory_of_a_carnisylvan.lua"/>
+    <monster name="Memory Of A Dwarf" file="event_creatures/memory_creatures/memory_of_a_dwarf.lua"/>
+    <monster name="Memory Of A Faun" file="event_creatures/memory_creatures/memory_of_a_faun.lua"/>
+    <monster name="Memory Of A Frazzlemaw" file="event_creatures/memory_creatures/memory_of_a_frazzlemaw.lua"/>
+    <monster name="Memory Of A Fungus" file="event_creatures/memory_creatures/memory_of_a_fungus.lua"/>
+    <monster name="Memory Of A Golem" file="event_creatures/memory_creatures/memory_of_a_golem.lua"/>
+    <monster name="Memory Of A Hero" file="event_creatures/memory_creatures/memory_of_a_hero.lua"/>
+    <monster name="Memory Of A Hydra" file="event_creatures/memory_creatures/memory_of_a_hydra.lua"/>
+    <monster name="Memory Of A Lizard" file="event_creatures/memory_creatures/memory_of_a_lizard.lua"/>
+    <monster name="Memory Of A Mammoth" file="event_creatures/memory_creatures/memory_of_a_mammoth.lua"/>
+    <monster name="Memory Of A Manticore" file="event_creatures/memory_creatures/memory_of_a_manticore.lua"/>
+    <monster name="Memory Of A Pirate" file="event_creatures/memory_creatures/memory_of_a_pirate.lua"/>
+    <monster name="Memory Of A Scarab" file="event_creatures/memory_creatures/memory_of_a_scarab.lua"/>
+    <monster name="Memory Of A Shaper" file="event_creatures/memory_creatures/memory_of_a_shaper.lua"/>
+    <monster name="Memory Of A Vampire" file="event_creatures/memory_creatures/memory_of_a_vampire.lua"/>
+    <monster name="Memory Of A Werelion" file="event_creatures/memory_creatures/memory_of_a_werelion.lua"/>
+    <monster name="Memory Of A Wolf" file="event_creatures/memory_creatures/memory_of_a_wolf.lua"/>
+    <monster name="Memory Of A Yalahari" file="event_creatures/memory_creatures/memory_of_a_yalahari.lua"/>
+    <monster name="Memory Of An Amazon" file="event_creatures/memory_creatures/memory_of_an_amazon.lua"/>
+    <monster name="Memory Of An Elf" file="event_creatures/memory_creatures/memory_of_an_elf.lua"/>
+    <monster name="Memory Of An Insectoid" file="event_creatures/memory_creatures/memory_of_an_insectoid.lua"/>
+    <monster name="Memory Of An Ogre" file="event_creatures/memory_creatures/memory_of_an_ogre.lua"/>
+    <monster name="Minishabaal" file="event_creatures/minishabaal.lua"/>
+    <monster name="Party Skeleton" file="event_creatures/party_skeleton.lua"/>
+    <monster name="Pinata Dragon" file="event_creatures/pinata_dragon.lua"/>
+    <monster name="Primitive" file="event_creatures/primitive.lua"/>
+    <monster name="Spectral Scum" file="event_creatures/spectral_scum.lua"/>
+    <monster name="The Halloween Hare" file="event_creatures/the_halloween_hare.lua"/>
+    <monster name="The Mutated Pumpkin" file="event_creatures/the_mutated_pumpkin.lua"/>
+    <monster name="Undead Minion" file="event_creatures/undead_minion.lua"/>
+    <monster name="Breach Brood" file="extra_dimensional/breach_brood.lua"/>
+    <monster name="Dread Intruder" file="extra_dimensional/dread_intruder.lua"/>
+    <monster name="Instable Breach Brood" file="extra_dimensional/instable_breach_brood.lua"/>
+    <monster name="Instable Sparkion" file="extra_dimensional/instable_sparkion.lua"/>
+    <monster name="Mitmah Scout" file="extra_dimensional/mitmah_scout.lua"/>
+    <monster name="Mitmah Seer" file="extra_dimensional/mitmah_seer.lua"/>
+    <monster name="Reality Reaver" file="extra_dimensional/reality_reaver.lua"/>
+    <monster name="Sparkion" file="extra_dimensional/sparkion.lua"/>
+    <monster name="Stabilizing Dread Intruder" file="extra_dimensional/stabilizing_dread_intruder.lua"/>
+    <monster name="Stabilizing Reality Reaver" file="extra_dimensional/stabilizing_reality_reaver.lua"/>
+    <monster name="Yielothax" file="extra_dimensional/yielothax.lua"/>
+    <monster name="Druid Familiar" file="familiars/druid_familiar.lua"/>
+    <monster name="Knight Familiar" file="familiars/knight_familiar.lua"/>
+    <monster name="Monk Familiar" file="familiars/monk_familiar.lua"/>
+    <monster name="Paladin Familiar" file="familiars/paladin_familiar.lua"/>
+    <monster name="Sorcerer Familiar" file="familiars/sorcerer_familiar.lua"/>
+    <monster name="Angry Sugar Fairy" file="fey/angry_sugar_fairy.lua"/>
+    <monster name="Arctic Faun" file="fey/arctic_faun.lua"/>
+    <monster name="Boogy" file="fey/boogy.lua"/>
+    <monster name="Cream Blob" file="fey/cream_blob.lua"/>
+    <monster name="Dark Faun" file="fey/dark_faun.lua"/>
+    <monster name="Dryad" file="fey/dryad.lua"/>
+    <monster name="Faun" file="fey/faun.lua"/>
+    <monster name="Fruit Drop" file="fey/fruit_drop.lua"/>
+    <monster name="Nymph" file="fey/nymph.lua"/>
+    <monster name="Pixie" file="fey/pixie.lua"/>
+    <monster name="Pooka" file="fey/pooka.lua"/>
+    <monster name="Sugar Cube" file="fey/sugar_cube.lua"/>
+    <monster name="Sugar Cube Worker" file="fey/sugar_cube_worker.lua"/>
+    <monster name="Swan Maiden" file="fey/swan_maiden.lua"/>
+    <monster name="Tainted Soul" file="fey/tainted_soul.lua"/>
+    <monster name="Truffle" file="fey/truffle.lua"/>
+    <monster name="Truffle Cook" file="fey/truffle_cook.lua"/>
+    <monster name="Twisted Pooka" file="fey/twisted_pooka.lua"/>
+    <monster name="Wisp" file="fey/wisp.lua"/>
+    <monster name="Beast Hulking Prehemoth" file="giants/beast_hulking_prehemoth.lua"/>
+    <monster name="Behemoth" file="giants/behemoth.lua"/>
+    <monster name="Cyclops" file="giants/cyclops.lua"/>
+    <monster name="Cyclops Drone" file="giants/cyclops_drone.lua"/>
+    <monster name="Cyclops Smith" file="giants/cyclops_smith.lua"/>
+    <monster name="Frost Giant" file="giants/frost_giant.lua"/>
+    <monster name="Frost Giantess" file="giants/frost_giantess.lua"/>
+    <monster name="Hulking Prehemoth" file="giants/hulking_prehemoth.lua"/>
+    <monster name="Ogre Brute" file="giants/ogre_brute.lua"/>
+    <monster name="Ogre Rowdy" file="giants/ogre_rowdy.lua"/>
+    <monster name="Ogre Ruffian" file="giants/ogre_ruffian.lua"/>
+    <monster name="Ogre Sage" file="giants/ogre_sage.lua"/>
+    <monster name="Ogre Savage" file="giants/ogre_savage.lua"/>
+    <monster name="Ogre Shaman" file="giants/ogre_shaman.lua"/>
+    <monster name="Orclops Doomhauler" file="giants/orclops_doomhauler.lua"/>
+    <monster name="Orclops Ravager" file="giants/orclops_ravager.lua"/>
+    <monster name="Broken Shaper" file="humanoids/broken_shaper.lua"/>
+    <monster name="Bulltaur Alchemist" file="humanoids/bulltaur_alchemist.lua"/>
+    <monster name="Bulltaur Brute" file="humanoids/bulltaur_brute.lua"/>
+    <monster name="Bulltaur Forgepriest" file="humanoids/bulltaur_forgepriest.lua"/>
+    <monster name="Chakoya Toolshaper" file="humanoids/chakoya_toolshaper.lua"/>
+    <monster name="Chakoya Tribewarden" file="humanoids/chakoya_tribewarden.lua"/>
+    <monster name="Chakoya Windcaller" file="humanoids/chakoya_windcaller.lua"/>
+    <monster name="Cheese Thief" file="humanoids/cheese_thief.lua"/>
+    <monster name="Corym Charlatan" file="humanoids/corym_charlatan.lua"/>
+    <monster name="Corym Skirmisher" file="humanoids/corym_skirmisher.lua"/>
+    <monster name="Corym Vanguard" file="humanoids/corym_vanguard.lua"/>
+    <monster name="Crazed Summer Rearguard" file="humanoids/crazed_summer_rearguard.lua"/>
+    <monster name="Crazed Summer Vanguard" file="humanoids/crazed_summer_vanguard.lua"/>
+    <monster name="Crazed Winter Rearguard" file="humanoids/crazed_winter_rearguard.lua"/>
+    <monster name="Crazed Winter Vanguard" file="humanoids/crazed_winter_vanguard.lua"/>
+    <monster name="Dwarf" file="humanoids/dwarf.lua"/>
+    <monster name="Dwarf Geomancer" file="humanoids/dwarf_geomancer.lua"/>
+    <monster name="Dwarf Guard" file="humanoids/dwarf_guard.lua"/>
+    <monster name="Dwarf Henchman" file="humanoids/dwarf_henchman.lua"/>
+    <monster name="Dwarf Miner" file="humanoids/dwarf_miner.lua"/>
+    <monster name="Dwarf Soldier" file="humanoids/dwarf_soldier.lua"/>
+    <monster name="Dworc Fleshhunter" file="humanoids/dworc_fleshhunter.lua"/>
+    <monster name="Dworc Venomsniper" file="humanoids/dworc_venomsniper.lua"/>
+    <monster name="Dworc Voodoomaster" file="humanoids/dworc_voodoomaster.lua"/>
+    <monster name="Elf" file="humanoids/elf.lua"/>
+    <monster name="Elf Arcanist" file="humanoids/elf_arcanist.lua"/>
+    <monster name="Elf Overseer" file="humanoids/elf_overseer.lua"/>
+    <monster name="Elf Scout" file="humanoids/elf_scout.lua"/>
+    <monster name="Elite Pirat" file="humanoids/elite_pirat.lua"/>
+    <monster name="Enslaved Dwarf" file="humanoids/enslaved_dwarf.lua"/>
+    <monster name="Execowtioner" file="humanoids/execowtioner.lua"/>
+    <monster name="Firestarter" file="humanoids/firestarter.lua"/>
+    <monster name="Frost Troll" file="humanoids/frost_troll.lua"/>
+    <monster name="Furious Orc Berserker" file="humanoids/furious_orc_berserker.lua"/>
+    <monster name="Furious Troll" file="humanoids/furious_troll.lua"/>
+    <monster name="Gloom Maw" file="humanoids/gloom_maw.lua"/>
+    <monster name="Glooth Powered Minotaur" file="humanoids/glooth_powered_minotaur.lua"/>
+    <monster name="Goblin" file="humanoids/goblin.lua"/>
+    <monster name="Goblin Assassin" file="humanoids/goblin_assassin.lua"/>
+    <monster name="Goblin Leader" file="humanoids/goblin_leader.lua"/>
+    <monster name="Goblin Scavenger" file="humanoids/goblin_scavenger.lua"/>
+    <monster name="Insane Siren" file="humanoids/insane_siren.lua"/>
+    <monster name="Island Troll" file="humanoids/island_troll.lua"/>
+    <monster name="Little Corym Charlatan" file="humanoids/little_corym_charlatan.lua"/>
+    <monster name="Lost Basher" file="humanoids/lost_basher.lua"/>
+    <monster name="Lost Berserker" file="humanoids/lost_berserker.lua"/>
+    <monster name="Lost Exile" file="humanoids/lost_exile.lua"/>
+    <monster name="Lost Husher" file="humanoids/lost_husher.lua"/>
+    <monster name="Lost Thrower" file="humanoids/lost_thrower.lua"/>
+    <monster name="Minotaur" file="humanoids/minotaur.lua"/>
+    <monster name="Minotaur Amazon" file="humanoids/minotaur_amazon.lua"/>
+    <monster name="Minotaur Archer" file="humanoids/minotaur_archer.lua"/>
+    <monster name="Minotaur Bruiser" file="humanoids/minotaur_bruiser.lua"/>
+    <monster name="Minotaur Cult Follower" file="humanoids/minotaur_cult_follower.lua"/>
+    <monster name="Minotaur Cult Prophet" file="humanoids/minotaur_cult_prophet.lua"/>
+    <monster name="Minotaur Cult Zealot" file="humanoids/minotaur_cult_zealot.lua"/>
+    <monster name="Minotaur Guard" file="humanoids/minotaur_guard.lua"/>
+    <monster name="Minotaur Hunter" file="humanoids/minotaur_hunter.lua"/>
+    <monster name="Minotaur Invader" file="humanoids/minotaur_invader.lua"/>
+    <monster name="Minotaur Mage" file="humanoids/minotaur_mage.lua"/>
+    <monster name="Minotaur Occultist" file="humanoids/minotaur_occultist.lua"/>
+    <monster name="Minotaur Poacher" file="humanoids/minotaur_poacher.lua"/>
+    <monster name="Minotaur Totem" file="humanoids/minotaur_totem.lua"/>
+    <monster name="Mooh'Tah Warrior" file="humanoids/mooh'tah_warrior.lua"/>
+    <monster name="Moohtant" file="humanoids/moohtant.lua"/>
+    <monster name="Norcferatu Heartless" file="humanoids/norcferatu_heartless.lua"/>
+    <monster name="Norcferatu Minion" file="humanoids/norcferatu_minion.lua"/>
+    <monster name="Norcferatu Nightweaver" file="humanoids/norcferatu_nightweaver.lua"/>
+    <monster name="Orc" file="humanoids/orc.lua"/>
+    <monster name="Orc Berserker" file="humanoids/orc_berserker.lua"/>
+    <monster name="Orc Leader" file="humanoids/orc_leader.lua"/>
+    <monster name="Orc Marauder" file="humanoids/orc_marauder.lua"/>
+    <monster name="Orc Rider" file="humanoids/orc_rider.lua"/>
+    <monster name="Orc Shaman" file="humanoids/orc_shaman.lua"/>
+    <monster name="Orc Spearman" file="humanoids/orc_spearman.lua"/>
+    <monster name="Orc Warlord" file="humanoids/orc_warlord.lua"/>
+    <monster name="Orc Warrior" file="humanoids/orc_warrior.lua"/>
+    <monster name="Pirat Artillerist" file="humanoids/pirat_artillerist.lua"/>
+    <monster name="Pirat Bombardier" file="humanoids/pirat_bombardier.lua"/>
+    <monster name="Pirat Cutthroat" file="humanoids/pirat_cutthroat.lua"/>
+    <monster name="Pirat Mate" file="humanoids/pirat_mate.lua"/>
+    <monster name="Pirat Scoundrel" file="humanoids/pirat_scoundrel.lua"/>
+    <monster name="Running Elite Orc Guard" file="humanoids/running_elite_orc_guard.lua"/>
+    <monster name="Shaper Matriarch" file="humanoids/shaper_matriarch.lua"/>
+    <monster name="Soul-Broken Harbinger" file="humanoids/soul-broken_harbinger.lua"/>
+    <monster name="Swamp Troll" file="humanoids/swamp_troll.lua"/>
+    <monster name="Troll" file="humanoids/troll.lua"/>
+    <monster name="Troll Champion" file="humanoids/troll_champion.lua"/>
+    <monster name="Troll Guard" file="humanoids/troll_guard.lua"/>
+    <monster name="Troll Legionnaire" file="humanoids/troll_legionnaire.lua"/>
+    <monster name="Twisted Shaper" file="humanoids/twisted_shaper.lua"/>
+    <monster name="Varg" file="humanoids/varg.lua"/>
+    <monster name="Worm Priestess" file="humanoids/worm_priestess.lua"/>
+    <monster name="Young Troll" file="humanoids/young_troll.lua"/>
+    <monster name="Acolyte Of Darkness" file="humans/acolyte_of_darkness.lua"/>
+    <monster name="Acolyte Of The Cult" file="humans/acolyte_of_the_cult.lua"/>
+    <monster name="Adept Of The Cult" file="humans/adept_of_the_cult.lua"/>
+    <monster name="Adventurer" file="humans/adventurer.lua"/>
+    <monster name="Amazon" file="humans/amazon.lua"/>
+    <monster name="Angry Adventurer" file="humans/angry_adventurer.lua"/>
+    <monster name="Assassin" file="humans/assassin.lua"/>
+    <monster name="Bandit" file="humans/bandit.lua"/>
+    <monster name="Barbarian Bloodwalker" file="humans/barbarian_bloodwalker.lua"/>
+    <monster name="Barbarian Brutetamer" file="humans/barbarian_brutetamer.lua"/>
+    <monster name="Barbarian Headsplitter" file="humans/barbarian_headsplitter.lua"/>
+    <monster name="Barbarian Skullhunter" file="humans/barbarian_skullhunter.lua"/>
+    <monster name="Black Sphinx Acolyte" file="humans/black_sphinx_acolyte.lua"/>
+    <monster name="Blood Hand" file="humans/blood_hand.lua"/>
+    <monster name="Blood Priest" file="humans/blood_priest.lua"/>
+    <monster name="Bride Of Night" file="humans/bride of night.lua"/>
+    <monster name="Burning Gladiator" file="humans/burning_gladiator.lua"/>
+    <monster name="Carnisylvan Sapling" file="humans/carnisylvan_sapling.lua"/>
+    <monster name="Cobra Assassin" file="humans/cobra_assassin.lua"/>
+    <monster name="Cobra Scout" file="humans/cobra_scout.lua"/>
+    <monster name="Cobra Vizier" file="humans/cobra_vizier.lua"/>
+    <monster name="Crazed Beggar" file="humans/crazed_beggar.lua"/>
+    <monster name="Crypt Defiler" file="humans/crypt_defiler.lua"/>
+    <monster name="Dark Apprentice" file="humans/dark_apprentice.lua"/>
+    <monster name="Dark Carnisylvan" file="humans/dark_carnisylvan.lua"/>
+    <monster name="Dark Magician" file="humans/dark_magician.lua"/>
+    <monster name="Dark Monk" file="humans/dark_monk.lua"/>
+    <monster name="Doomsday Cultist" file="humans/doomsday_cultist.lua"/>
+    <monster name="Enlightened Of The Cult" file="humans/enlightened_of_the_cult.lua"/>
+    <monster name="Feverish Citizen" file="humans/feverish_citizen.lua"/>
+    <monster name="Gang Member" file="humans/gang_member.lua"/>
+    <monster name="Gladiator" file="humans/gladiator.lua"/>
+    <monster name="Glooth Bandit" file="humans/glooth_bandit.lua"/>
+    <monster name="Glooth Brigand" file="humans/glooth_brigand.lua"/>
+    <monster name="Grave Robber" file="humans/grave_robber.lua"/>
+    <monster name="Hardened Usurper Archer" file="humans/hardened_usurper_archer.lua"/>
+    <monster name="Hardened Usurper Knight" file="humans/hardened_usurper_knight.lua"/>
+    <monster name="Hardened Usurper Warlock" file="humans/hardened_usurper_warlock.lua"/>
+    <monster name="Hero" file="humans/hero.lua"/>
+    <monster name="Hulking Carnisylvan" file="humans/hulking_carnisylvan.lua"/>
+    <monster name="Hunter" file="humans/hunter.lua"/>
+    <monster name="Ice Witch" file="humans/ice_witch.lua"/>
+    <monster name="Infernalist" file="humans/infernalist.lua"/>
+    <monster name="Lion Archer" file="humans/lion_archer.lua"/>
+    <monster name="Lion Knight" file="humans/lion_knight.lua"/>
+    <monster name="Lion Warlock" file="humans/lion_warlock.lua"/>
+    <monster name="Mad Scientist" file="humans/mad_scientist.lua"/>
+    <monster name="Midnight Warrior" file="humans/midnight_warrior.lua"/>
+    <monster name="Monk" file="humans/monk.lua"/>
+    <monster name="Monk Of The Order" file="humans/monk_of_the_order.lua"/>
+    <monster name="Mutated Human" file="humans/mutated_human.lua"/>
+    <monster name="Necromancer" file="humans/necromancer.lua"/>
+    <monster name="Necromancer Servant" file="humans/necromancer_servant.lua"/>
+    <monster name="Nomad" file="humans/nomad.lua"/>
+    <monster name="Nomad Blue" file="humans/nomad_blue.lua"/>
+    <monster name="Nomad Female" file="humans/nomad_female.lua"/>
+    <monster name="Novice Of The Cult" file="humans/novice_of_the_cult.lua"/>
+    <monster name="Pirate Buccaneer" file="humans/pirate_buccaneer.lua"/>
+    <monster name="Pirate Corsair" file="humans/pirate_corsair.lua"/>
+    <monster name="Pirate Cutthroat" file="humans/pirate_cutthroat.lua"/>
+    <monster name="Pirate Marauder" file="humans/pirate_marauder.lua"/>
+    <monster name="Poacher" file="humans/poacher.lua"/>
+    <monster name="Poisonous Carnisylvan" file="humans/poisonous_carnisylvan.lua"/>
+    <monster name="Priestess" file="humans/priestess.lua"/>
+    <monster name="Priestess Of The Wild Sun" file="humans/priestess_of_the_wild_sun.lua"/>
+    <monster name="Renegade Knight" file="humans/renegade_knight.lua"/>
+    <monster name="Shadow Pupil" file="humans/shadow_pupil.lua"/>
+    <monster name="Smuggler" file="humans/smuggler.lua"/>
+    <monster name="Stalker" file="humans/stalker.lua"/>
+    <monster name="Usurper Archer" file="humans/usurper_archer.lua"/>
+    <monster name="Usurper Knight" file="humans/usurper_knight.lua"/>
+    <monster name="Usurper Warlock" file="humans/usurper_warlock.lua"/>
+    <monster name="Valkyrie" file="humans/valkyrie.lua"/>
+    <monster name="Vicious Squire" file="humans/vicious_squire.lua"/>
+    <monster name="Vile Grandmaster" file="humans/vile_grandmaster.lua"/>
+    <monster name="Warlock" file="humans/warlock.lua"/>
+    <monster name="Wild Warrior" file="humans/wild_warrior.lua"/>
+    <monster name="Witch" file="humans/witch.lua"/>
+    <monster name="Bluebeak" file="inkborn/bluebeak.lua"/>
+    <monster name="Bramble Wyrmling" file="inkborn/bramble_wyrmling.lua"/>
+    <monster name="Cinder Wyrmling" file="inkborn/cinder_wyrmling.lua"/>
+    <monster name="Crusader" file="inkborn/crusader.lua"/>
+    <monster name="Crusader Guardian" file="inkborn/crusader_guardian.lua"/>
+    <monster name="Hawk Hopper" file="inkborn/hawk_hopper.lua"/>
+    <monster name="Headwalker" file="inkborn/headwalker.lua"/>
+    <monster name="Ink Splash" file="inkborn/ink_splash.lua"/>
+    <monster name="Lion Hydra" file="inkborn/lion_hydra.lua"/>
+    <monster name="Shell Drake" file="inkborn/shell_drake.lua"/>
+    <monster name="Vicious Ink Splash" file="inkborn/vicious_ink_splash.lua"/>
+    <monster name="Cunning Werepanther" file="lycanthropes/cunning_werepanther.lua"/>
+    <monster name="Feral Werecrocodile" file="lycanthropes/feral_werecrocodile.lua"/>
+    <monster name="Werebadger" file="lycanthropes/werebadger.lua"/>
+    <monster name="Werebear" file="lycanthropes/werebear.lua"/>
+    <monster name="Wereboar" file="lycanthropes/wereboar.lua"/>
+    <monster name="Werecrocodile" file="lycanthropes/werecrocodile.lua"/>
+    <monster name="Werefox" file="lycanthropes/werefox.lua"/>
+    <monster name="Werehyaena" file="lycanthropes/werehyaena.lua"/>
+    <monster name="Werehyaena Shaman" file="lycanthropes/werehyaena_shaman.lua"/>
+    <monster name="Werelion" file="lycanthropes/werelion.lua"/>
+    <monster name="Werelioness" file="lycanthropes/werelioness.lua"/>
+    <monster name="Werepanther" file="lycanthropes/werepanther.lua"/>
+    <monster name="Weretiger" file="lycanthropes/weretiger.lua"/>
+    <monster name="Werewolf" file="lycanthropes/werewolf.lua"/>
+    <monster name="White Weretiger" file="lycanthropes/white_weretiger.lua"/>
+    <monster name="Animated Feather" file="magicals/animated_feather.lua"/>
+    <monster name="Arachnophobica" file="magicals/arachnophobica.lua"/>
+    <monster name="Armadile" file="magicals/armadile.lua"/>
+    <monster name="Bashmu" file="magicals/bashmu.lua"/>
+    <monster name="Blue Djinn" file="magicals/blue_djinn.lua"/>
+    <monster name="Bog Raider" file="magicals/bog_raider.lua"/>
+    <monster name="Bonelord" file="magicals/bonelord.lua"/>
+    <monster name="Brain Squid" file="magicals/brain_squid.lua"/>
+    <monster name="Braindeath" file="magicals/braindeath.lua"/>
+    <monster name="Burning Book" file="magicals/burning_book.lua"/>
+    <monster name="Candy Horror" file="magicals/candy_horror.lua"/>
+    <monster name="Choking Fear" file="magicals/choking_fear.lua"/>
+    <monster name="Crypt Warden" file="magicals/crypt_warden.lua"/>
+    <monster name="Crystalcrusher" file="magicals/crystalcrusher.lua"/>
+    <monster name="Cursed Book" file="magicals/cursed_book.lua"/>
+    <monster name="Dragonling" file="magicals/dragonling.lua"/>
+    <monster name="Efreet" file="magicals/efreet.lua"/>
+    <monster name="Elder Bonelord" file="magicals/elder_bonelord.lua"/>
+    <monster name="Energetic Book" file="magicals/energetic_book.lua"/>
+    <monster name="Energuardian Of Tales" file="magicals/energuardian_of_tales.lua"/>
+    <monster name="Enfeebled Silencer" file="magicals/enfeebled_silencer.lua"/>
+    <monster name="Fahim The Wise" file="magicals/fahim_the_wise.lua"/>
+    <monster name="Feral Sphinx" file="magicals/feral_sphinx.lua"/>
+    <monster name="Feversleep" file="magicals/feversleep.lua"/>
+    <monster name="Flying Book" file="magicals/flying_book.lua"/>
+    <monster name="Forest Fury" file="magicals/forest_fury.lua"/>
+    <monster name="Frazzlemaw" file="magicals/frazzlemaw.lua"/>
+    <monster name="Gargoyle" file="magicals/gargoyle.lua"/>
+    <monster name="Gazer" file="magicals/gazer.lua"/>
+    <monster name="Girtablilu Warrior" file="magicals/girtablilu_warrior.lua"/>
+    <monster name="Green Djinn" file="magicals/green_djinn.lua"/>
+    <monster name="Gryphon" file="magicals/gryphon.lua"/>
+    <monster name="Guardian Of Tales" file="magicals/guardian_of_tales.lua"/>
+    <monster name="Guzzlemaw" file="magicals/guzzlemaw.lua"/>
+    <monster name="Icecold Book" file="magicals/icecold_book.lua"/>
+    <monster name="Juvenile Bashmu" file="magicals/juvenile_bashmu.lua"/>
+    <monster name="Lamassu" file="magicals/lamassu.lua"/>
+    <monster name="Lumbering Carnivor" file="magicals/lumbering_carnivor.lua"/>
+    <monster name="Manticore" file="magicals/manticore.lua"/>
+    <monster name="Marid" file="magicals/marid.lua"/>
+    <monster name="Medusa" file="magicals/medusa.lua"/>
+    <monster name="Menacing Carnivor" file="magicals/menacing_carnivor.lua"/>
+    <monster name="Merikh The Slaughterer" file="magicals/merikh_the_slaughterer.lua"/>
+    <monster name="Midnight Panther" file="magicals/midnight_panther.lua"/>
+    <monster name="Nibblemaw" file="magicals/nibblemaw.lua"/>
+    <monster name="Nightmare" file="magicals/nightmare.lua"/>
+    <monster name="Nightmare Scion" file="magicals/nightmare_scion.lua"/>
+    <monster name="Nightstalker" file="magicals/nightstalker.lua"/>
+    <monster name="Phantasm" file="magicals/phantasm.lua"/>
+    <monster name="Phantasm Summon" file="magicals/phantasm_summon.lua"/>
+    <monster name="Rage Squid" file="magicals/rage_squid.lua"/>
+    <monster name="Retching Horror" file="magicals/retching_horror.lua"/>
+    <monster name="Rorc" file="magicals/rorc.lua"/>
+    <monster name="Shiversleep" file="magicals/shiversleep.lua"/>
+    <monster name="Shock Head" file="magicals/shock_head.lua"/>
+    <monster name="Sight Of Surrender" file="magicals/sight_of_surrender.lua"/>
+    <monster name="Silencer" file="magicals/silencer.lua"/>
+    <monster name="Sphinx" file="magicals/sphinx.lua"/>
+    <monster name="Spiky Carnivor" file="magicals/spiky_carnivor.lua"/>
+    <monster name="Squid Warden" file="magicals/squid_warden.lua"/>
+    <monster name="Terrorsleep" file="magicals/terrorsleep.lua"/>
+    <monster name="Thanatursus" file="magicals/thanatursus.lua"/>
+    <monster name="Venerable Girtablilu" file="magicals/venerable_girtablilu.lua"/>
+    <monster name="Weakened Frazzlemaw" file="magicals/weakened_frazzlemaw.lua"/>
+    <monster name="Badger" file="mammals/badger.lua"/>
+    <monster name="Bat" file="mammals/bat.lua"/>
+    <monster name="Bear" file="mammals/bear.lua"/>
+    <monster name="Black Sheep" file="mammals/black_sheep.lua"/>
+    <monster name="Boar" file="mammals/boar.lua"/>
+    <monster name="Brown Horse" file="mammals/brown_horse.lua"/>
+    <monster name="Cat" file="mammals/cat.lua"/>
+    <monster name="Cave Rat" file="mammals/cave_rat.lua"/>
+    <monster name="Clomp" file="mammals/clomp.lua"/>
+    <monster name="Crystal Wolf" file="mammals/crystal_wolf.lua"/>
+    <monster name="Deer" file="mammals/deer.lua"/>
+    <monster name="Desperate White Deer" file="mammals/desperate_white_deer.lua"/>
+    <monster name="Dog" file="mammals/dog.lua"/>
+    <monster name="Donkey" file="mammals/donkey.lua"/>
+    <monster name="Doom Deer" file="mammals/doom_deer.lua"/>
+    <monster name="Dromedary" file="mammals/dromedary.lua"/>
+    <monster name="Elephant" file="mammals/elephant.lua"/>
+    <monster name="Enraged Squirrel" file="mammals/enraged_squirrel.lua"/>
+    <monster name="Enraged White Deer" file="mammals/enraged_white_deer.lua"/>
+    <monster name="Evil Sheep" file="mammals/evil_sheep.lua"/>
+    <monster name="Evil Sheep Lord" file="mammals/evil_sheep_lord.lua"/>
+    <monster name="Exotic Bat" file="mammals/exotic_bat.lua"/>
+    <monster name="Fox" file="mammals/fox.lua"/>
+    <monster name="Ghoulish Hyaena" file="mammals/ghoulish_hyaena.lua"/>
+    <monster name="Giant Beaver" file="mammals/giant_beaver.lua"/>
+    <monster name="Gloom Wolf" file="mammals/gloom_wolf.lua"/>
+    <monster name="Gnarlhound" file="mammals/gnarlhound.lua"/>
+    <monster name="Gore Horn" file="mammals/gore_horn.lua"/>
+    <monster name="Gorerilla" file="mammals/gorerilla.lua"/>
+    <monster name="Grey Horse" file="mammals/grey_horse.lua"/>
+    <monster name="Horse" file="mammals/horse.lua"/>
+    <monster name="Hot Dog" file="mammals/hot_dog.lua"/>
+    <monster name="Husky" file="mammals/husky.lua"/>
+    <monster name="Hyaena" file="mammals/hyaena.lua"/>
+    <monster name="Killer Rabbit" file="mammals/killer_rabbit.lua"/>
+    <monster name="Kongra" file="mammals/kongra.lua"/>
+    <monster name="Lion" file="mammals/lion.lua"/>
+    <monster name="Mammoth" file="mammals/mammoth.lua"/>
+    <monster name="Merlkin" file="mammals/merlkin.lua"/>
+    <monster name="Modified Gnarlhound" file="mammals/modified_gnarlhound.lua"/>
+    <monster name="Mole" file="mammals/mole.lua"/>
+    <monster name="Mushroom Sniffer" file="mammals/mushroom_sniffer.lua"/>
+    <monster name="Mutated Bat" file="mammals/mutated_bat.lua"/>
+    <monster name="Mutated Rat" file="mammals/mutated_rat.lua"/>
+    <monster name="Mutated Tiger" file="mammals/mutated_tiger.lua"/>
+    <monster name="Nighthunter" file="mammals/nighthunter.lua"/>
+    <monster name="Noble Lion" file="mammals/noble_lion.lua"/>
+    <monster name="Panda" file="mammals/panda.lua"/>
+    <monster name="Parder" file="mammals/parder.lua"/>
+    <monster name="Pig" file="mammals/pig.lua"/>
+    <monster name="Polar Bear" file="mammals/polar_bear.lua"/>
+    <monster name="Poodle" file="mammals/poodle.lua"/>
+    <monster name="Rabbit" file="mammals/rabbit.lua"/>
+    <monster name="Rat" file="mammals/rat.lua"/>
+    <monster name="Roaring Lion" file="mammals/roaring_lion.lua"/>
+    <monster name="Sabretooth" file="mammals/sabretooth.lua"/>
+    <monster name="Sheep" file="mammals/sheep.lua"/>
+    <monster name="Sibang" file="mammals/sibang.lua"/>
+    <monster name="Silver Rabbit" file="mammals/silver_rabbit.lua"/>
+    <monster name="Skunk" file="mammals/skunk.lua"/>
+    <monster name="Squirrel" file="mammals/squirrel.lua"/>
+    <monster name="Starving Wolf" file="mammals/starving_wolf.lua"/>
+    <monster name="Stone Rhino" file="mammals/stone_rhino.lua"/>
+    <monster name="Terrified Elephant" file="mammals/terrified_elephant.lua"/>
+    <monster name="Thieving Squirrel" file="mammals/thieving_squirrel.lua"/>
+    <monster name="Thornfire Wolf" file="mammals/thornfire_wolf.lua"/>
+    <monster name="Tiger" file="mammals/tiger.lua"/>
+    <monster name="Vampire Bat" file="mammals/vampire_bat.lua"/>
+    <monster name="Vampire Pig" file="mammals/vampire_pig.lua"/>
+    <monster name="Vulcongra" file="mammals/vulcongra.lua"/>
+    <monster name="War Wolf" file="mammals/war_wolf.lua"/>
+    <monster name="Water Buffalo" file="mammals/water_buffalo.lua"/>
+    <monster name="White Deer" file="mammals/white_deer.lua"/>
+    <monster name="White Lion" file="mammals/white_lion.lua"/>
+    <monster name="White Tiger" file="mammals/white_tiger.lua"/>
+    <monster name="Wild Dog" file="mammals/wild_dog.lua"/>
+    <monster name="Wild Horse" file="mammals/wild_horse.lua"/>
+    <monster name="Winter Wolf" file="mammals/winter_wolf.lua"/>
+    <monster name="Wolf" file="mammals/wolf.lua"/>
+    <monster name="Yeti" file="mammals/yeti.lua"/>
+    <monster name="Muglex Clan Chief" file="newhaven_update_2025/bosses/muglex_clan_chief.lua"/>
+    <monster name="The Corruptor" file="newhaven_update_2025/bosses/the_corruptor.lua"/>
+    <monster name="Corrupted Ghost" file="newhaven_update_2025/corrupted_ghost.lua"/>
+    <monster name="Corrupted Skeleton" file="newhaven_update_2025/corrupted_skeleton.lua"/>
+    <monster name="Old Bear" file="nostalgia/old_bear.lua"/>
+    <monster name="Old Bonelord" file="nostalgia/old_bonelord.lua"/>
+    <monster name="Old Bug" file="nostalgia/old_bug.lua"/>
+    <monster name="Old Giant Spider" file="nostalgia/old_giant_spider.lua"/>
+    <monster name="Old Pig" file="nostalgia/old_pig.lua"/>
+    <monster name="Old Spider" file="nostalgia/old_spider.lua"/>
+    <monster name="Old Wasp" file="nostalgia/old_wasp.lua"/>
+    <monster name="Old Wolf" file="nostalgia/old_wolf.lua"/>
+    <monster name="Bane Bringer" file="plants/bane_bringer.lua"/>
+    <monster name="Carniphila" file="plants/carniphila.lua"/>
+    <monster name="Glooth Anemone" file="plants/glooth_anemone.lua"/>
+    <monster name="Haunted Treeling" file="plants/haunted_treeling.lua"/>
+    <monster name="Hideous Fungus" file="plants/hideous_fungus.lua"/>
+    <monster name="Humongous Fungus" file="plants/humongous_fungus.lua"/>
+    <monster name="Leaf Golem" file="plants/leaf_golem.lua"/>
+    <monster name="Omnivora" file="plants/omnivora.lua"/>
+    <monster name="Rootthing Amber Shaper" file="plants/rootthing_amber_shaper.lua"/>
+    <monster name="Rootthing Bug Tracker" file="plants/rootthing_bug_tracker.lua"/>
+    <monster name="Rootthing Nutshell" file="plants/rootthing_nutshell.lua"/>
+    <monster name="Spit Nettle" file="plants/spit_nettle.lua"/>
+    <monster name="Stalking Stalk" file="plants/stalking_stalk.lua"/>
+    <monster name="Swampling" file="plants/swampling.lua"/>
+    <monster name="Wilting Leaf Golem" file="plants/wilting_leaf_golem.lua"/>
+    <monster name="Ratmiral Blackwhiskers" file="quests/a_pirates_tail_quest/ratmiral_blackwhiskers.lua"/>
+    <monster name="Tentuglys Head" file="quests/a_pirates_tail_quest/tentuglys_head.lua"/>
+    <monster name="Megasylvan Yselda" file="quests/adventures_of_galthen/megasylvan_yselda.lua"/>
+    <monster name="Katex Blood Tongue" file="quests/ancient_feud/katex_blood_tongue.lua"/>
+    <monster name="Srezz Yellow Eyes" file="quests/ancient_feud/srezz_yellow_eyes.lua"/>
+    <monster name="Utua Stone Sting" file="quests/ancient_feud/utua_stone_sting.lua"/>
+    <monster name="Yirkas Blue Scales" file="quests/ancient_feud/yirkas_blue_scales.lua"/>
+    <monster name="Ashmunrah" file="quests/ancient_tombs/ashmunrah.lua"/>
+    <monster name="Dipthrah" file="quests/ancient_tombs/dipthrah.lua"/>
+    <monster name="Horestis" file="quests/ancient_tombs/horestis.lua"/>
+    <monster name="Mahrdis" file="quests/ancient_tombs/mahrdis.lua"/>
+    <monster name="Morguthis" file="quests/ancient_tombs/morguthis.lua"/>
+    <monster name="Omruc" file="quests/ancient_tombs/omruc.lua"/>
+    <monster name="Rahemos" file="quests/ancient_tombs/rahemos.lua"/>
+    <monster name="Shredderthrower" file="quests/ancient_tombs/shredderthrower.lua"/>
+    <monster name="Thalas" file="quests/ancient_tombs/thalas.lua"/>
+    <monster name="Vashresamun" file="quests/ancient_tombs/vashresamun.lua"/>
+    <monster name="Angry Demon" file="quests/annihilator/angry_demon.lua"/>
+    <monster name="Blight Mariner" file="quests/between_the_lines/blight_mariner.lua"/>
+    <monster name="Inkwing" file="quests/between_the_lines/inkwing.lua"/>
+    <monster name="Sir Leonard" file="quests/between_the_lines/sir_leonard.lua"/>
+    <monster name="Sir Leopold" file="quests/between_the_lines/sir_leopold.lua"/>
+    <monster name="Tropical Desolator" file="quests/between_the_lines/tropical_desolator.lua"/>
+    <monster name="Vladrukh" file="quests/between_the_lines/vladrukh.lua"/>
+    <monster name="Wrathful Archivist" file="quests/between_the_lines/wrathful_archivist.lua"/>
+    <monster name="Abyssador" file="quests/bigfoots_burden/bosses/abyssador.lua"/>
+    <monster name="Deathstrike" file="quests/bigfoots_burden/bosses/deathstrike.lua"/>
+    <monster name="Gnomevil" file="quests/bigfoots_burden/bosses/gnomevil.lua"/>
+    <monster name="Humorless Fungus" file="quests/bigfoots_burden/humorless_fungus.lua"/>
+    <monster name="Minion Of Versperoth" file="quests/bigfoots_burden/minion_of_versperoth.lua"/>
+    <monster name="Strange Slime" file="quests/bigfoots_burden/strange_slime.lua"/>
+    <monster name="Versperoth" file="quests/bigfoots_burden/versperoth.lua"/>
+    <monster name="Angry Orc Ancestor Spirit" file="quests/bloody_tusks/angry_orc_ancestor_spirit.lua"/>
+    <monster name="Blind Monstrosity" file="quests/bloody_tusks/blind_monstrosity.lua"/>
+    <monster name="Blood Guardian" file="quests/bloody_tusks/blood_guardian.lua"/>
+    <monster name="Blood Totem" file="quests/bloody_tusks/blood_totem.lua"/>
+    <monster name="Digestive Ooze" file="quests/bloody_tusks/digestive_ooze.lua"/>
+    <monster name="Norcferatu Abomination" file="quests/bloody_tusks/norcferatu_abomination.lua"/>
+    <monster name="Vampiric Essence" file="quests/bloody_tusks/vampiric_essence.lua"/>
+    <monster name="Vampiric Flesh" file="quests/bloody_tusks/vampiric_flesh.lua"/>
+    <monster name="Animated Clomp" file="quests/cults_of_tibia/animated_clomp.lua"/>
+    <monster name="Animated Cyclops" file="quests/cults_of_tibia/animated_cyclops.lua"/>
+    <monster name="Animated Guzzlemaw" file="quests/cults_of_tibia/animated_guzzlemaw.lua"/>
+    <monster name="Animated Moohtant" file="quests/cults_of_tibia/animated_moohtant.lua"/>
+    <monster name="Animated Mummy" file="quests/cults_of_tibia/animated_mummy.lua"/>
+    <monster name="Animated Ogre Brute" file="quests/cults_of_tibia/animated_ogre_brute.lua"/>
+    <monster name="Animated Ogre Savage" file="quests/cults_of_tibia/animated_ogre_savage.lua"/>
+    <monster name="Animated Ogre Shaman" file="quests/cults_of_tibia/animated_ogre_shaman.lua"/>
+    <monster name="Animated Rhino" file="quests/cults_of_tibia/animated_rhino.lua"/>
+    <monster name="Animated Rotworm" file="quests/cults_of_tibia/animated_rotworm.lua"/>
+    <monster name="Animated Skunk" file="quests/cults_of_tibia/animated_skunk.lua"/>
+    <monster name="Animated Stone Golem" file="quests/cults_of_tibia/animated_stone_golem.lua"/>
+    <monster name="Barkless Devotee" file="quests/cults_of_tibia/barkless_devotee.lua"/>
+    <monster name="Barkless Fanatic" file="quests/cults_of_tibia/barkless_fanatic.lua"/>
+    <monster name="Dorokoll The Mystic" file="quests/cults_of_tibia/bosses/dorokoll_the_mystic.lua"/>
+    <monster name="Dorokoll The Mystic Stop" file="quests/cults_of_tibia/bosses/dorokoll_the_mystic_stop.lua"/>
+    <monster name="Eliz The Unyielding" file="quests/cults_of_tibia/bosses/eliz_the_unyielding.lua"/>
+    <monster name="Eliz The Unyielding Stop" file="quests/cults_of_tibia/bosses/eliz_the_unyielding_stop.lua"/>
+    <monster name="Eshtaba The Conjurer" file="quests/cults_of_tibia/bosses/eshtaba_the_conjurer.lua"/>
+    <monster name="Eshtaba The Conjurer Stop" file="quests/cults_of_tibia/bosses/eshtaba_the_conjurer_stop.lua"/>
+    <monster name="Essence Of Malice" file="quests/cults_of_tibia/bosses/essence_of_malice.lua"/>
+    <monster name="Last Planegazer" file="quests/cults_of_tibia/bosses/last_planegazer.lua"/>
+    <monster name="Leiden" file="quests/cults_of_tibia/bosses/leiden.lua"/>
+    <monster name="Malkhar Deathbringer" file="quests/cults_of_tibia/bosses/malkhar_deathbringer.lua"/>
+    <monster name="Malkhar Deathbringer Stop" file="quests/cults_of_tibia/bosses/malkhar_deathbringer_stop.lua"/>
+    <monster name="Mezlon The Defiler" file="quests/cults_of_tibia/bosses/mezlon_the_defiler.lua"/>
+    <monster name="Mezlon The Defiler Stop" file="quests/cults_of_tibia/bosses/mezlon_the_defiler_stop.lua"/>
+    <monster name="Containment Crystal" file="quests/cults_of_tibia/bosses/pillars/containment_crystal.lua"/>
+    <monster name="Destroyed Pillar" file="quests/cults_of_tibia/bosses/pillars/destroyed_pillar.lua"/>
+    <monster name="Pillar Of Death" file="quests/cults_of_tibia/bosses/pillars/pillar_of_death.lua"/>
+    <monster name="Pillar Of Draining" file="quests/cults_of_tibia/bosses/pillars/pillar_of_draining.lua"/>
+    <monster name="Pillar Of Healing" file="quests/cults_of_tibia/bosses/pillars/pillar_of_healing.lua"/>
+    <monster name="Pillar Of Protection" file="quests/cults_of_tibia/bosses/pillars/pillar_of_protection.lua"/>
+    <monster name="Pillar Of Summoning" file="quests/cults_of_tibia/bosses/pillars/pillar_of_summoning.lua"/>
+    <monster name="Ravenous Hunger" file="quests/cults_of_tibia/bosses/ravenous_hunger.lua"/>
+    <monster name="Dark Soul" file="quests/cults_of_tibia/bosses/summons/dark_soul.lua"/>
+    <monster name="Dread Minion" file="quests/cults_of_tibia/bosses/summons/dread_minion.lua"/>
+    <monster name="Enraged Sand Brood" file="quests/cults_of_tibia/bosses/summons/enraged_sand_brood.lua"/>
+    <monster name="Freed Soul" file="quests/cults_of_tibia/bosses/summons/freed_soul.lua"/>
+    <monster name="Liquor Spirit" file="quests/cults_of_tibia/bosses/summons/liquor_spirit.lua"/>
+    <monster name="Sand Brood" file="quests/cults_of_tibia/bosses/summons/sand_brood.lua"/>
+    <monster name="Sand Vortex" file="quests/cults_of_tibia/bosses/summons/sand_vortex.lua"/>
+    <monster name="Security Golem" file="quests/cults_of_tibia/bosses/summons/security_golem.lua"/>
+    <monster name="Soul Reaper" file="quests/cults_of_tibia/bosses/summons/soul_reaper.lua"/>
+    <monster name="Sphere Of Wrath" file="quests/cults_of_tibia/bosses/summons/sphere_of_wrath.lua"/>
+    <monster name="Stolen Soul" file="quests/cults_of_tibia/bosses/summons/stolen_soul.lua"/>
+    <monster name="Vermin Swarm" file="quests/cults_of_tibia/bosses/summons/vermin_swarm.lua"/>
+    <monster name="Voidshard" file="quests/cults_of_tibia/bosses/summons/voidshard.lua"/>
+    <monster name="The Armored Voidborn" file="quests/cults_of_tibia/bosses/the_armored_voidborn.lua"/>
+    <monster name="The Corruptor Of Souls" file="quests/cults_of_tibia/bosses/the_corruptor_of_souls.lua"/>
+    <monster name="The False God" file="quests/cults_of_tibia/bosses/the_false_god.lua"/>
+    <monster name="The Remorseless Corruptor" file="quests/cults_of_tibia/bosses/the_remorseless_corruptor.lua"/>
+    <monster name="The Sandking" file="quests/cults_of_tibia/bosses/the_sandking.lua"/>
+    <monster name="The Sandking Fake" file="quests/cults_of_tibia/bosses/the_sandking_fake.lua"/>
+    <monster name="The Sinister Hermit Clean" file="quests/cults_of_tibia/bosses/the_sinister_hermit_clean.lua"/>
+    <monster name="The Sinister Hermit Dirty" file="quests/cults_of_tibia/bosses/the_sinister_hermit_dirty.lua"/>
+    <monster name="The Souldespoiler" file="quests/cults_of_tibia/bosses/the_souldespoiler.lua"/>
+    <monster name="The Source Of Corruption" file="quests/cults_of_tibia/bosses/the_source_of_corruption.lua"/>
+    <monster name="The Unarmored Voidborn" file="quests/cults_of_tibia/bosses/the_unarmored_voidborn.lua"/>
+    <monster name="Wine Cask" file="quests/cults_of_tibia/bosses/wine_cask.lua"/>
+    <monster name="Zarcorix Of Yalahar" file="quests/cults_of_tibia/bosses/zarcorix_of_yalahar.lua"/>
+    <monster name="Containment Machine" file="quests/cults_of_tibia/containment_machine.lua"/>
+    <monster name="Cult Believer" file="quests/cults_of_tibia/cult_believer.lua"/>
+    <monster name="Cult Enforcer" file="quests/cults_of_tibia/cult_enforcer.lua"/>
+    <monster name="Cult Scholar" file="quests/cults_of_tibia/cult_scholar.lua"/>
+    <monster name="Goldhanded Cultist" file="quests/cults_of_tibia/goldhanded_cultist.lua"/>
+    <monster name="Goldhanded Cultist Bride" file="quests/cults_of_tibia/goldhanded_cultist_bride.lua"/>
+    <monster name="Minotaur Idol" file="quests/cults_of_tibia/minotaur_idol.lua"/>
+    <monster name="Misguided Bully" file="quests/cults_of_tibia/misguided_bully.lua"/>
+    <monster name="Misguided Shadow" file="quests/cults_of_tibia/misguided_shadow.lua"/>
+    <monster name="Misguided Thief" file="quests/cults_of_tibia/misguided_thief.lua"/>
+    <monster name="Orc Cult Fanatic" file="quests/cults_of_tibia/orc_cult_fanatic.lua"/>
+    <monster name="Orc Cult Inquisitor" file="quests/cults_of_tibia/orc_cult_inquisitor.lua"/>
+    <monster name="Orc Cult Minion" file="quests/cults_of_tibia/orc_cult_minion.lua"/>
+    <monster name="Orc Cult Priest" file="quests/cults_of_tibia/orc_cult_priest.lua"/>
+    <monster name="Orc Cultist" file="quests/cults_of_tibia/orc_cultist.lua"/>
+    <monster name="Aggressive Lava" file="quests/dangerous_depth/aggressive_lava.lua"/>
+    <monster name="Aggressive Matter" file="quests/dangerous_depth/aggressive_matter.lua"/>
+    <monster name="Ancient Spawn Of Morgathla" file="quests/dangerous_depth/bosses/ancient_spawn_of_morgathla.lua"/>
+    <monster name="The Baron From Below" file="quests/dangerous_depth/bosses/the_baron_from_below.lua"/>
+    <monster name="The Count Of The Core" file="quests/dangerous_depth/bosses/the_count_of_the_core.lua"/>
+    <monster name="The Duke Of The Depths" file="quests/dangerous_depth/bosses/the_duke_of_the_depths.lua"/>
+    <monster name="The Duke Of The Depths Immortal" file="quests/dangerous_depth/bosses/the_duke_of_the_depths_immortal.lua"/>
+    <monster name="The Hungry Baron From Below" file="quests/dangerous_depth/bosses/the_hungry_baron_from_below.lua"/>
+    <monster name="Captured Dwarf" file="quests/dangerous_depth/captured_dwarf.lua"/>
+    <monster name="Ember Beast" file="quests/dangerous_depth/ember_beast.lua"/>
+    <monster name="Fiery Blood" file="quests/dangerous_depth/fiery_blood.lua"/>
+    <monster name="Fiery Heart" file="quests/dangerous_depth/fiery_heart.lua"/>
+    <monster name="Gnome Pack Crawler" file="quests/dangerous_depth/gnome_pack_crawler.lua"/>
+    <monster name="Lava Lurker Attendant" file="quests/dangerous_depth/lava_lurker_attendant.lua"/>
+    <monster name="Lost Gnome" file="quests/dangerous_depth/lost_gnome.lua"/>
+    <monster name="Makeshift Home" file="quests/dangerous_depth/makeshift_home.lua"/>
+    <monster name="Organic Matter" file="quests/dangerous_depth/organic_matter.lua"/>
+    <monster name="Snail Slime" file="quests/dangerous_depth/snail_slime.lua"/>
+    <monster name="Canopic Jar" file="quests/dark_trails/canopic_jar.lua"/>
+    <monster name="Death Priest Shargon" file="quests/dark_trails/death_priest_shargon.lua"/>
+    <monster name="Depowered Minotaur" file="quests/dark_trails/depowered_minotaur.lua"/>
+    <monster name="Greater Canopic Jar" file="quests/dark_trails/greater_canopic_jar.lua"/>
+    <monster name="Greater Death Minion" file="quests/dark_trails/greater_death_minion.lua"/>
+    <monster name="Lesser Death Minion" file="quests/dark_trails/lesser_death_minion.lua"/>
+    <monster name="Superior Death Minion" file="quests/dark_trails/superior_death_minion.lua"/>
+    <monster name="The Ravager" file="quests/dark_trails/the_ravager.lua"/>
+    <monster name="Tremor Worm" file="quests/dark_trails/tremor_worm.lua"/>
+    <monster name="Brother Worm" file="quests/feaster_of_souls/brother_worm.lua"/>
+    <monster name="Irgix The Flimsy" file="quests/feaster_of_souls/irgix_the_flimsy.lua"/>
+    <monster name="The Dread Maiden" file="quests/feaster_of_souls/the_dread_maiden.lua"/>
+    <monster name="The Fear Feaster" file="quests/feaster_of_souls/the_fear_feaster.lua"/>
+    <monster name="The Pale Worm" file="quests/feaster_of_souls/the_pale_worm.lua"/>
+    <monster name="The Unwelcome" file="quests/feaster_of_souls/the_unwelcome.lua"/>
+    <monster name="Unaz The Mean" file="quests/feaster_of_souls/unaz_the_mean.lua"/>
+    <monster name="Vok The Freakish" file="quests/feaster_of_souls/vok_the_freakish.lua"/>
+    <monster name="Wormling" file="quests/feaster_of_souls/wormling.lua"/>
+    <monster name="Ascending Ferumbras" file="quests/ferumbras_ascension/bosses/ascending_ferumbras.lua"/>
+    <monster name="Death Dragon" file="quests/ferumbras_ascension/bosses/death_dragon.lua"/>
+    <monster name="Destabilized Ferumbras" file="quests/ferumbras_ascension/bosses/destabilized_ferumbras.lua"/>
+    <monster name="Enraged Soul" file="quests/ferumbras_ascension/bosses/enraged_soul.lua"/>
+    <monster name="Ferumbras Mortal Shell" file="quests/ferumbras_ascension/bosses/ferumbras_mortal_shell.lua"/>
+    <monster name="Ferumbras Soul Splinter" file="quests/ferumbras_ascension/bosses/ferumbras_soul_splinter.lua"/>
+    <monster name="Mazoran" file="quests/ferumbras_ascension/bosses/mazoran.lua"/>
+    <monster name="Plagirath" file="quests/ferumbras_ascension/bosses/plagirath.lua"/>
+    <monster name="Ragiaz" file="quests/ferumbras_ascension/bosses/ragiaz.lua"/>
+    <monster name="Razzagorn" file="quests/ferumbras_ascension/bosses/razzagorn.lua"/>
+    <monster name="Redeemed Soul" file="quests/ferumbras_ascension/bosses/redeemed_soul.lua"/>
+    <monster name="Shulgrax" file="quests/ferumbras_ascension/bosses/shulgrax.lua"/>
+    <monster name="Sin Devourer" file="quests/ferumbras_ascension/bosses/sin_devourer.lua"/>
+    <monster name="Tarbaz" file="quests/ferumbras_ascension/bosses/tarbaz.lua"/>
+    <monster name="The Lord Of The Lice" file="quests/ferumbras_ascension/bosses/the_lord_of_the_lice.lua"/>
+    <monster name="The Shatterer" file="quests/ferumbras_ascension/bosses/the_shatterer.lua"/>
+    <monster name="Zamulosh" file="quests/ferumbras_ascension/bosses/zamulosh.lua"/>
+    <monster name="Zamulosh2" file="quests/ferumbras_ascension/bosses/zamulosh2.lua"/>
+    <monster name="Zamulosh3" file="quests/ferumbras_ascension/bosses/zamulosh3.lua"/>
+    <monster name="Damned Soul" file="quests/ferumbras_ascension/damned_soul.lua"/>
+    <monster name="Desperate Soul" file="quests/ferumbras_ascension/desperate_soul.lua"/>
+    <monster name="Disgusting Ooze" file="quests/ferumbras_ascension/disgusting_ooze.lua"/>
+    <monster name="Ferumbras Essence" file="quests/ferumbras_ascension/ferumbras_essence.lua"/>
+    <monster name="Lovely Deer" file="quests/ferumbras_ascension/lovely/lovely_deer.lua"/>
+    <monster name="Lovely Frazzlemaw" file="quests/ferumbras_ascension/lovely/lovely_frazzlemaw.lua"/>
+    <monster name="Lovely Polar Bear" file="quests/ferumbras_ascension/lovely/lovely_polar_bear.lua"/>
+    <monster name="Lovely Rotworm" file="quests/ferumbras_ascension/lovely/lovely_rotworm.lua"/>
+    <monster name="Lovely Scorpion" file="quests/ferumbras_ascension/lovely/lovely_scorpion.lua"/>
+    <monster name="Lovely Snake" file="quests/ferumbras_ascension/lovely/lovely_snake.lua"/>
+    <monster name="Lovely Souleater" file="quests/ferumbras_ascension/lovely/lovely_souleater.lua"/>
+    <monster name="Lovely Yielothax" file="quests/ferumbras_ascension/lovely/lovely_yielothax.lua"/>
+    <monster name="Rage Of Mazoran" file="quests/ferumbras_ascension/rage_of_mazoran.lua"/>
+    <monster name="Enthralled Demon" file="quests/ferumbras_ascension/summons/enthralled_demon.lua"/>
+    <monster name="Rift Fragment" file="quests/ferumbras_ascension/summons/rift_fragment.lua"/>
+    <monster name="Rift Invader" file="quests/ferumbras_ascension/summons/rift_invader.lua"/>
+    <monster name="Bone Capsule" file="quests/ferumbras_ascension/traps/bone_capsule.lua"/>
+    <monster name="Despair" file="quests/ferumbras_ascension/traps/despair.lua"/>
+    <monster name="Electric Sparks" file="quests/ferumbras_ascension/traps/electric_sparks.lua"/>
+    <monster name="Eruption Of Destruction" file="quests/ferumbras_ascension/traps/eruption_of_destruction.lua"/>
+    <monster name="Guilt" file="quests/ferumbras_ascension/traps/guilt.lua"/>
+    <monster name="Void" file="quests/ferumbras_ascension/traps/void.lua"/>
+    <monster name="Animated Sword" file="quests/forgotten_knowledge/animated_sword.lua"/>
+    <monster name="Baby Dragon" file="quests/forgotten_knowledge/baby_dragon.lua"/>
+    <monster name="Dragonking Zyrtarch" file="quests/forgotten_knowledge/bosses/dragonking_zyrtarch.lua"/>
+    <monster name="Lady Tenebris" file="quests/forgotten_knowledge/bosses/lady_tenebris.lua"/>
+    <monster name="Lloyd" file="quests/forgotten_knowledge/bosses/lloyd.lua"/>
+    <monster name="Melting Frozen Horror" file="quests/forgotten_knowledge/bosses/melting_frozen_horror.lua"/>
+    <monster name="Mounted Thorn Knight" file="quests/forgotten_knowledge/bosses/mounted_thorn_knight.lua"/>
+    <monster name="Solid Frozen Horror" file="quests/forgotten_knowledge/bosses/solid_frozen_horror.lua"/>
+    <monster name="Soul Of Dragonking Zyrtarch" file="quests/forgotten_knowledge/bosses/soul_of_dragonking_zyrtarch.lua"/>
+    <monster name="The Blazing Time Guardian" file="quests/forgotten_knowledge/bosses/the_blazing_time_guardian.lua"/>
+    <monster name="The Enraged Thorn Knight" file="quests/forgotten_knowledge/bosses/the_enraged_thorn_knight.lua"/>
+    <monster name="The Freezing Time Guardian" file="quests/forgotten_knowledge/bosses/the_freezing_time_guardian.lua"/>
+    <monster name="The Last Lore Keeper" file="quests/forgotten_knowledge/bosses/the_last_lore_keeper.lua"/>
+    <monster name="The Shielded Thorn Knight" file="quests/forgotten_knowledge/bosses/the_shielded_thorn_knight.lua"/>
+    <monster name="The Time Guardian" file="quests/forgotten_knowledge/bosses/the_time_guardian.lua"/>
+    <monster name="Thorn Steed" file="quests/forgotten_knowledge/bosses/thorn_steed.lua"/>
+    <monster name="Bound Astral Power" file="quests/forgotten_knowledge/bound_astral_power.lua"/>
+    <monster name="Corrupted Soul" file="quests/forgotten_knowledge/corrupted_soul.lua"/>
+    <monster name="Cosmic Energy Prism A" file="quests/forgotten_knowledge/cosmic_energy_prism_a.lua"/>
+    <monster name="Cosmic Energy Prism A Invu" file="quests/forgotten_knowledge/cosmic_energy_prism_a_invu.lua"/>
+    <monster name="Cosmic Energy Prism B" file="quests/forgotten_knowledge/cosmic_energy_prism_b.lua"/>
+    <monster name="Cosmic Energy Prism B Invu" file="quests/forgotten_knowledge/cosmic_energy_prism_b_invu.lua"/>
+    <monster name="Cosmic Energy Prism C" file="quests/forgotten_knowledge/cosmic_energy_prism_c.lua"/>
+    <monster name="Cosmic Energy Prism C Invu" file="quests/forgotten_knowledge/cosmic_energy_prism_c_invu.lua"/>
+    <monster name="Cosmic Energy Prism D" file="quests/forgotten_knowledge/cosmic_energy_prism_d.lua"/>
+    <monster name="Cosmic Energy Prism D Invu" file="quests/forgotten_knowledge/cosmic_energy_prism_d_invu.lua"/>
+    <monster name="Dragon Egg" file="quests/forgotten_knowledge/dragon_egg.lua"/>
+    <monster name="Dragon Servant" file="quests/forgotten_knowledge/dragon_servant.lua"/>
+    <monster name="Frozen Man" file="quests/forgotten_knowledge/frozen_man.lua"/>
+    <monster name="Frozen Minion" file="quests/forgotten_knowledge/frozen_minion.lua"/>
+    <monster name="Icicle" file="quests/forgotten_knowledge/icicle.lua"/>
+    <monster name="Lost Time" file="quests/forgotten_knowledge/lost_time.lua"/>
+    <monster name="Possessed Tree" file="quests/forgotten_knowledge/possessed_tree.lua"/>
+    <monster name="Shadow Fiend" file="quests/forgotten_knowledge/shadow_fiend.lua"/>
+    <monster name="Shadow Tentacle" file="quests/forgotten_knowledge/shadow_tentacle.lua"/>
+    <monster name="Soulcatcher" file="quests/forgotten_knowledge/soulcatcher.lua"/>
+    <monster name="Sword Of Vengeance" file="quests/forgotten_knowledge/sword_of_vengeance.lua"/>
+    <monster name="The Distorted Astral Source" file="quests/forgotten_knowledge/the_distorted_astral_source.lua"/>
+    <monster name="Thorn Minion" file="quests/forgotten_knowledge/thorn_minion.lua"/>
+    <monster name="Time Keeper" file="quests/forgotten_knowledge/time_keeper.lua"/>
+    <monster name="Time Waster" file="quests/forgotten_knowledge/time_waster.lua"/>
+    <monster name="Unbound Blightwalker" file="quests/forgotten_knowledge/unbound_blightwalker.lua"/>
+    <monster name="Unbound Defiler" file="quests/forgotten_knowledge/unbound_defiler.lua"/>
+    <monster name="Unbound Demon" file="quests/forgotten_knowledge/unbound_demon.lua"/>
+    <monster name="Unbound Demon Outcast" file="quests/forgotten_knowledge/unbound_demon_outcast.lua"/>
+    <monster name="Black Cobra" file="quests/grave_danger/black_cobra.lua"/>
+    <monster name="Count Vlarkorth" file="quests/grave_danger/bosses/count_vlarkorth.lua"/>
+    <monster name="Duke Krule" file="quests/grave_danger/bosses/duke_krule.lua"/>
+    <monster name="Earl Osam" file="quests/grave_danger/bosses/earl_osam.lua"/>
+    <monster name="King Zelos" file="quests/grave_danger/bosses/king_zelos.lua"/>
+    <monster name="Lord Azaram" file="quests/grave_danger/bosses/lord_azaram.lua"/>
+    <monster name="Scarlett Etzel" file="quests/grave_danger/bosses/scarlett_etzel.lua"/>
+    <monster name="Sir Baeloc" file="quests/grave_danger/bosses/sir_baeloc.lua"/>
+    <monster name="Sir Nictros" file="quests/grave_danger/bosses/sir_nictros.lua"/>
+    <monster name="Cart Packed With Gold" file="quests/grave_danger/cart_packed_with_gold.lua"/>
+    <monster name="Condensed Sins" file="quests/grave_danger/condensed_sins.lua"/>
+    <monster name="Dark Druid" file="quests/grave_danger/dark_druid.lua"/>
+    <monster name="Dark Knight" file="quests/grave_danger/dark_knight.lua"/>
+    <monster name="Dark Paladin" file="quests/grave_danger/dark_paladin.lua"/>
+    <monster name="Dark Sorcerer" file="quests/grave_danger/dark_sorcerer.lua"/>
+    <monster name="Fetter" file="quests/grave_danger/fetter.lua"/>
+    <monster name="Frozen Soul" file="quests/grave_danger/frozen_soul.lua"/>
+    <monster name="Retainer Of Baeloc" file="quests/grave_danger/retainer_of_baeloc.lua"/>
+    <monster name="Risen Soldier" file="quests/grave_danger/risen_soldier.lua"/>
+    <monster name="Shard Of Magnor" file="quests/grave_danger/shard_of_magnor.lua"/>
+    <monster name="Soul Scourge" file="quests/grave_danger/soul_scourge.lua"/>
+    <monster name="Soulless Minion" file="quests/grave_danger/soulless_minion.lua"/>
+    <monster name="Squire Of Nictros" file="quests/grave_danger/squire_of_nictros.lua"/>
+    <monster name="Vampiric Blood" file="quests/grave_danger/vampiric_blood.lua"/>
+    <monster name="Aftershock" file="quests/heart_of_destruction/aftershock.lua"/>
+    <monster name="Anomaly" file="quests/heart_of_destruction/anomaly.lua"/>
+    <monster name="Charged Anomaly" file="quests/heart_of_destruction/charged_anomaly.lua"/>
+    <monster name="Charged Disruption" file="quests/heart_of_destruction/charged_disruption.lua"/>
+    <monster name="Charger" file="quests/heart_of_destruction/charger.lua"/>
+    <monster name="Charging Outburst" file="quests/heart_of_destruction/charging_outburst.lua"/>
+    <monster name="Crackler" file="quests/heart_of_destruction/crackler.lua"/>
+    <monster name="Damage Resonance" file="quests/heart_of_destruction/damage_resonance.lua"/>
+    <monster name="Depolarized Crackler" file="quests/heart_of_destruction/depolarized_crackler.lua"/>
+    <monster name="Disruption" file="quests/heart_of_destruction/disruption.lua"/>
+    <monster name="Eradicator" file="quests/heart_of_destruction/eradicator.lua"/>
+    <monster name="Eradicator2" file="quests/heart_of_destruction/eradicator2.lua"/>
+    <monster name="Foreshock" file="quests/heart_of_destruction/foreshock.lua"/>
+    <monster name="Frenzy" file="quests/heart_of_destruction/frenzy.lua"/>
+    <monster name="Greed" file="quests/heart_of_destruction/greed.lua"/>
+    <monster name="Outburst" file="quests/heart_of_destruction/outburst.lua"/>
+    <monster name="Overcharge" file="quests/heart_of_destruction/overcharge.lua"/>
+    <monster name="Overcharged Disruption" file="quests/heart_of_destruction/overcharged_disruption.lua"/>
+    <monster name="Realityquake" file="quests/heart_of_destruction/realityquake.lua"/>
+    <monster name="Rupture" file="quests/heart_of_destruction/rupture.lua"/>
+    <monster name="Spark Of Destruction" file="quests/heart_of_destruction/spark_of_destruction.lua"/>
+    <monster name="The Destruction" file="quests/heart_of_destruction/the_destruction.lua"/>
+    <monster name="The Hunger" file="quests/heart_of_destruction/the_hunger.lua"/>
+    <monster name="The Rage" file="quests/heart_of_destruction/the_rage.lua"/>
+    <monster name="Unstable Spark" file="quests/heart_of_destruction/unstable_spark.lua"/>
+    <monster name="World Devourer" file="quests/heart_of_destruction/world_devourer.lua"/>
+    <monster name="Deep Terror" file="quests/hero_of_rathleton/deep_terror.lua"/>
+    <monster name="Empowered Glooth Horror" file="quests/hero_of_rathleton/empowered_glooth_horror.lua"/>
+    <monster name="Energy Pulse" file="quests/hero_of_rathleton/energy_pulse.lua"/>
+    <monster name="Feeble Glooth Horror" file="quests/hero_of_rathleton/feeble_glooth_horror.lua"/>
+    <monster name="Glooth-Generator" file="quests/hero_of_rathleton/glooth-generator.lua"/>
+    <monster name="Glooth Horror" file="quests/hero_of_rathleton/glooth_horror.lua"/>
+    <monster name="Glooth Masher" file="quests/hero_of_rathleton/glooth_masher.lua"/>
+    <monster name="Glooth Slasher" file="quests/hero_of_rathleton/glooth_slasher.lua"/>
+    <monster name="Glooth Trasher" file="quests/hero_of_rathleton/glooth_trasher.lua"/>
+    <monster name="Professor Maxxen" file="quests/hero_of_rathleton/professor_maxxen.lua"/>
+    <monster name="Strong Glooth Horror" file="quests/hero_of_rathleton/strong_glooth_horror.lua"/>
+    <monster name="Tentacle Of The Deep Terror" file="quests/hero_of_rathleton/tentacle_of_the_deep_terror.lua"/>
+    <monster name="Weakened Glooth Horror" file="quests/hero_of_rathleton/weakened_glooth_horror.lua"/>
+    <monster name="Cave Spider" file="quests/hidden_threats/cave_spider.lua"/>
+    <monster name="Azerus" file="quests/in_service_of_yalahar/azerus.lua"/>
+    <monster name="Azerus2" file="quests/in_service_of_yalahar/azerus2.lua"/>
+    <monster name="Inky" file="quests/in_service_of_yalahar/inky.lua"/>
+    <monster name="Rift Brood" file="quests/in_service_of_yalahar/rift_brood.lua"/>
+    <monster name="Rift Lord" file="quests/in_service_of_yalahar/rift_lord.lua"/>
+    <monster name="Rift Phantom" file="quests/in_service_of_yalahar/rift_phantom.lua"/>
+    <monster name="Rift Scythe" file="quests/in_service_of_yalahar/rift_scythe.lua"/>
+    <monster name="Rift Worm" file="quests/in_service_of_yalahar/rift_worm.lua"/>
+    <monster name="Sharptooth" file="quests/in_service_of_yalahar/sharptooth.lua"/>
+    <monster name="Tormented Ghost" file="quests/in_service_of_yalahar/tormented_ghost.lua"/>
+    <monster name="Yalahari" file="quests/in_service_of_yalahar/yalahari.lua"/>
+    <monster name="Boogey" file="quests/isle_of_evil/boogey.lua"/>
+    <monster name="Dirtbeard" file="quests/isle_of_evil/dirtbeard.lua"/>
+    <monster name="Doctor Perhaps" file="quests/isle_of_evil/doctor_perhaps.lua"/>
+    <monster name="Evil Mastermind" file="quests/isle_of_evil/evil_mastermind.lua"/>
+    <monster name="Mephiles" file="quests/isle_of_evil/mephiles.lua"/>
+    <monster name="Monstor" file="quests/isle_of_evil/monstor.lua"/>
+    <monster name="Bretzecutioner" file="quests/killing_in_the_name_of/bretzecutioner.lua"/>
+    <monster name="Bruise Payne" file="quests/killing_in_the_name_of/bruise_payne.lua"/>
+    <monster name="Deathbine" file="quests/killing_in_the_name_of/deathbine.lua"/>
+    <monster name="Demodras" file="quests/killing_in_the_name_of/demodras.lua"/>
+    <monster name="Esmeralda" file="quests/killing_in_the_name_of/esmeralda.lua"/>
+    <monster name="Ethershreck" file="quests/killing_in_the_name_of/ethershreck.lua"/>
+    <monster name="Fazzrah" file="quests/killing_in_the_name_of/fazzrah.lua"/>
+    <monster name="Flameborn" file="quests/killing_in_the_name_of/flameborn.lua"/>
+    <monster name="Fleshcrawler" file="quests/killing_in_the_name_of/fleshcrawler.lua"/>
+    <monster name="Gorgo" file="quests/killing_in_the_name_of/gorgo.lua"/>
+    <monster name="Hemming" file="quests/killing_in_the_name_of/hemming.lua"/>
+    <monster name="Hide" file="quests/killing_in_the_name_of/hide.lua"/>
+    <monster name="Kerberos" file="quests/killing_in_the_name_of/kerberos.lua"/>
+    <monster name="Leviathan" file="quests/killing_in_the_name_of/leviathan.lua"/>
+    <monster name="Paiz The Pauperizer" file="quests/killing_in_the_name_of/paiz_the_pauperizer.lua"/>
+    <monster name="Ribstride" file="quests/killing_in_the_name_of/ribstride.lua"/>
+    <monster name="Shardhead" file="quests/killing_in_the_name_of/shardhead.lua"/>
+    <monster name="Stonecracker" file="quests/killing_in_the_name_of/stonecracker.lua"/>
+    <monster name="Sulphur Scuttler" file="quests/killing_in_the_name_of/sulphur_scuttler.lua"/>
+    <monster name="The Bloodtusk" file="quests/killing_in_the_name_of/the_bloodtusk.lua"/>
+    <monster name="The Bloodweb" file="quests/killing_in_the_name_of/the_bloodweb.lua"/>
+    <monster name="The Many" file="quests/killing_in_the_name_of/the_many.lua"/>
+    <monster name="The Noxious Spawn" file="quests/killing_in_the_name_of/the_noxious_spawn.lua"/>
+    <monster name="The Old Widow" file="quests/killing_in_the_name_of/the_old_widow.lua"/>
+    <monster name="The Snapper" file="quests/killing_in_the_name_of/the_snapper.lua"/>
+    <monster name="Thul" file="quests/killing_in_the_name_of/thul.lua"/>
+    <monster name="Tiquandas Revenge" file="quests/killing_in_the_name_of/tiquandas_revenge.lua"/>
+    <monster name="Tormentor" file="quests/killing_in_the_name_of/tormentor.lua"/>
+    <monster name="Tromphonyte" file="quests/killing_in_the_name_of/tromphonyte.lua"/>
+    <monster name="Zanakeph" file="quests/killing_in_the_name_of/zanakeph.lua"/>
+    <monster name="A Shielded Astral Glyph" file="quests/kilmaresh/a_shielded_astral_glyph.lua"/>
+    <monster name="Amenef The Burning" file="quests/kilmaresh/amenef_the_burning.lua"/>
+    <monster name="An Astral Glyph" file="quests/kilmaresh/an_astral_glyph.lua"/>
+    <monster name="Bragrumol" file="quests/kilmaresh/bragrumol.lua"/>
+    <monster name="Earworm" file="quests/kilmaresh/earworm.lua"/>
+    <monster name="Mozradek" file="quests/kilmaresh/mozradek.lua"/>
+    <monster name="Neferi The Spy" file="quests/kilmaresh/neferi_the_spy.lua"/>
+    <monster name="Sister Hetai" file="quests/kilmaresh/sister_hetai.lua"/>
+    <monster name="Sun-Marked Goanna" file="quests/kilmaresh/sun-marked_goanna.lua"/>
+    <monster name="Urmahlullu The Immaculate" file="quests/kilmaresh/urmahlullu_the_immaculate.lua"/>
+    <monster name="Urmahlullu The Tamed" file="quests/kilmaresh/urmahlullu_the_tamed.lua"/>
+    <monster name="Urmahlullu The Weakened" file="quests/kilmaresh/urmahlullu_the_weakened.lua"/>
+    <monster name="Wildness Of Urmahlullu" file="quests/kilmaresh/wildness_of_urmahlullu.lua"/>
+    <monster name="Wisdom Of Urmahlullu" file="quests/kilmaresh/wisdom_of_urmahlullu.lua"/>
+    <monster name="Xogixath" file="quests/kilmaresh/xogixath.lua"/>
+    <monster name="Jaul" file="quests/liquid_black/jaul.lua"/>
+    <monster name="Obujos" file="quests/liquid_black/obujos.lua"/>
+    <monster name="Tanjis" file="quests/liquid_black/tanjis.lua"/>
+    <monster name="Timira The Many-Headed" file="quests/marapur/timira_the_many-headed.lua"/>
+    <monster name="An Observer Eye" file="quests/mysterious_ornate_chest/an_observer_eye.lua"/>
+    <monster name="An Observer Eye (Imune)" file="quests/mysterious_ornate_chest/an_observer_eye_(imune).lua"/>
+    <monster name="Reflection Of Mawhawk" file="quests/mysterious_ornate_chest/reflection_of_mawhawk.lua"/>
+    <monster name="Reflection Of Obujos" file="quests/mysterious_ornate_chest/reflection_of_obujos.lua"/>
+    <monster name="Ugly Monster" file="quests/mysterious_ornate_chest/ugly_monster.lua"/>
+    <monster name="Arbaziloth" file="quests/no_rest_for_the_wicked/arbaziloth.lua"/>
+    <monster name="Gralvalon" file="quests/no_rest_for_the_wicked/gralvalon.lua"/>
+    <monster name="Imp Minion" file="quests/no_rest_for_the_wicked/imp_minion.lua"/>
+    <monster name="Malvaroth" file="quests/no_rest_for_the_wicked/malvaroth.lua"/>
+    <monster name="Overcharged Demon" file="quests/no_rest_for_the_wicked/overcharged_demon.lua"/>
+    <monster name="The Forgemaster" file="quests/no_rest_for_the_wicked/the_forgemaster.lua"/>
+    <monster name="Twisterror" file="quests/no_rest_for_the_wicked/twisterror.lua"/>
+    <monster name="Weakened Arbaziloth" file="quests/no_rest_for_the_wicked/weakened_arbaziloth.lua"/>
+    <monster name="Countess Sorrow" file="quests/pits_of_inferno/countess_sorrow.lua"/>
+    <monster name="Demon Goblin" file="quests/pits_of_inferno/demon_goblin.lua"/>
+    <monster name="Dracola" file="quests/pits_of_inferno/dracola.lua"/>
+    <monster name="Flamethrower" file="quests/pits_of_inferno/flamethrower.lua"/>
+    <monster name="Massacre" file="quests/pits_of_inferno/massacre.lua"/>
+    <monster name="Mr. Punish" file="quests/pits_of_inferno/mr._punish.lua"/>
+    <monster name="The Handmaiden" file="quests/pits_of_inferno/the_handmaiden.lua"/>
+    <monster name="The Imperor" file="quests/pits_of_inferno/the_imperor.lua"/>
+    <monster name="The Plasmother" file="quests/pits_of_inferno/the_plasmother.lua"/>
+    <monster name="Lava Creature" file="quests/primal_ordeal_quest/lava_creature.lua"/>
+    <monster name="Magma Bubble" file="quests/primal_ordeal_quest/magma_bubble.lua"/>
+    <monster name="Magma Crystal" file="quests/primal_ordeal_quest/magma_crystal.lua"/>
+    <monster name="Plunder Patriarch" file="quests/primal_ordeal_quest/plunder_patriarch.lua"/>
+    <monster name="The End Of Days" file="quests/primal_ordeal_quest/the_end_of_days.lua"/>
+    <monster name="The Primal Menace" file="quests/primal_ordeal_quest/the_primal_menace.lua"/>
+    <monster name="Unchained Fire" file="quests/primal_ordeal_quest/unchained_fire.lua"/>
+    <monster name="Bad Dream" file="quests/roshamuul/bad_dream.lua"/>
+    <monster name="Flame Of Omrafir" file="quests/roshamuul/flame_of_omrafir.lua"/>
+    <monster name="Gaz'Haragoth" file="quests/roshamuul/gaz'haragoth.lua"/>
+    <monster name="Horadron" file="quests/roshamuul/horadron.lua"/>
+    <monster name="Minion Of Gaz'Haragoth" file="quests/roshamuul/minion_of_gaz'haragoth.lua"/>
+    <monster name="Nightmare Of Gaz'Haragoth" file="quests/roshamuul/nightmare_of_gaz'haragoth.lua"/>
+    <monster name="Omrafir" file="quests/roshamuul/omrafir.lua"/>
+    <monster name="Prince Drazzak" file="quests/roshamuul/prince_drazzak.lua"/>
+    <monster name="Terofar" file="quests/roshamuul/terofar.lua"/>
+    <monster name="Ayana The Crimson Curse" file="quests/rotten_bood/ayana the crimson curse.lua"/>
+    <monster name="Bloated Man-Maggot" file="quests/rotten_bood/bloated_man-maggot.lua"/>
+    <monster name="Converter" file="quests/rotten_bood/converter.lua"/>
+    <monster name="Darklight Construct" file="quests/rotten_bood/darklight_construct.lua"/>
+    <monster name="Darklight Emitter" file="quests/rotten_bood/darklight_emitter.lua"/>
+    <monster name="Darklight Matter" file="quests/rotten_bood/darklight_matter.lua"/>
+    <monster name="Darklight Source" file="quests/rotten_bood/darklight_source.lua"/>
+    <monster name="Darklight Striker" file="quests/rotten_bood/darklight_striker.lua"/>
+    <monster name="Echo Of Chagorz" file="quests/rotten_bood/echo_of_chagorz.lua"/>
+    <monster name="Echo Of Ichgahal" file="quests/rotten_bood/echo_of_ichgahal.lua"/>
+    <monster name="Echo Of Murcion" file="quests/rotten_bood/echo_of_murcion.lua"/>
+    <monster name="Echo Of Vemiath" file="quests/rotten_bood/echo_of_vemiath.lua"/>
+    <monster name="Elder Bloodjaw" file="quests/rotten_bood/elder_bloodjaw.lua"/>
+    <monster name="Foxmouse" file="quests/rotten_bood/foxmouse.lua"/>
+    <monster name="Meandering Mushroom" file="quests/rotten_bood/meandering_mushroom.lua"/>
+    <monster name="Mushroom" file="quests/rotten_bood/mushroom.lua"/>
+    <monster name="Mycobiontic Beetle" file="quests/rotten_bood/mycobiontic_beetle.lua"/>
+    <monster name="Oozing Carcass" file="quests/rotten_bood/oozing_carcass.lua"/>
+    <monster name="Oozing Corpus" file="quests/rotten_bood/oozing_corpus.lua"/>
+    <monster name="Rotten Man-Maggot" file="quests/rotten_bood/rotten_man-maggot.lua"/>
+    <monster name="Sopping Carcass" file="quests/rotten_bood/sopping_carcass.lua"/>
+    <monster name="Sopping Corpus" file="quests/rotten_bood/sopping_corpus.lua"/>
+    <monster name="Walking Pillar" file="quests/rotten_bood/walking_pillar.lua"/>
+    <monster name="Wandering Pillar" file="quests/rotten_bood/wandering_pillar.lua"/>
+    <monster name="Travelling Merchant" file="quests/rottin_wood_and_the_married_men_quest/travelling_merchant.lua"/>
+    <monster name="Aspect Of Power" file="quests/soul_war/aspect_of_power.lua"/>
+    <monster name="Dreadful Disruptor" file="quests/soul_war/dreadful_disruptor.lua"/>
+    <monster name="Dreadful Harvester" file="quests/soul_war/dreadful_harvester.lua"/>
+    <monster name="Goshnar'S Megalomania Blue" file="quests/soul_war/goshnar's_megalomania_blue.lua"/>
+    <monster name="Goshnar'S Megalomania Green" file="quests/soul_war/goshnar's_megalomania_green.lua"/>
+    <monster name="Goshnar'S Megalomania Purple" file="quests/soul_war/goshnar's_megalomania_purple.lua"/>
+    <monster name="Goshnars Cruelty" file="quests/soul_war/goshnars_cruelty.lua"/>
+    <monster name="Goshnars Greed" file="quests/soul_war/goshnars_greed.lua"/>
+    <monster name="Goshnars Hatred" file="quests/soul_war/goshnars_hatred.lua"/>
+    <monster name="Goshnars Malice" file="quests/soul_war/goshnars_malice.lua"/>
+    <monster name="Goshnars Spite" file="quests/soul_war/goshnars_spite.lua"/>
+    <monster name="Greedbeast" file="quests/soul_war/greedbeast.lua"/>
+    <monster name="Hazardous Phantom" file="quests/soul_war/hazardous_phantom.lua"/>
+    <monster name="Malicious Soul" file="quests/soul_war/malicious_soul.lua"/>
+    <monster name="Mean Maw" file="quests/soul_war/mean_maw.lua"/>
+    <monster name="Mirror Image" file="quests/soul_war/mirror_image.lua"/>
+    <monster name="Bony Sea Devil" file="quests/soul_war/normal_monsters/bony_sea_devil.lua"/>
+    <monster name="Brachiodemon" file="quests/soul_war/normal_monsters/brachiodemon.lua"/>
+    <monster name="Branchy Crawler" file="quests/soul_war/normal_monsters/branchy_crawler.lua"/>
+    <monster name="Ashes Of Burning Hatred" file="quests/soul_war/normal_monsters/burning_hatred/ashes_of_burning_hatred.lua"/>
+    <monster name="Blaze Of Burning Hatred" file="quests/soul_war/normal_monsters/burning_hatred/blaze_of_burning_hatred.lua"/>
+    <monster name="Flame Of Burning Hatred" file="quests/soul_war/normal_monsters/burning_hatred/flame_of_burning_hatred.lua"/>
+    <monster name="Spark Of Burning Hatred" file="quests/soul_war/normal_monsters/burning_hatred/spark_of_burning_hatred.lua"/>
+    <monster name="Symbol Of Hatred" file="quests/soul_war/normal_monsters/burning_hatred/symbol_of_hatred.lua"/>
+    <monster name="Capricious Phantom" file="quests/soul_war/normal_monsters/capricious_phantom.lua"/>
+    <monster name="Distorted Phantom" file="quests/soul_war/normal_monsters/distorted_phantom.lua"/>
+    <monster name="Druid'S Apparition" file="quests/soul_war/normal_monsters/druid's_apparition.lua"/>
+    <monster name="A Greedy Eye" file="quests/soul_war/normal_monsters/furious_crater/a_greedy_eye.lua"/>
+    <monster name="Cloak Of Terror" file="quests/soul_war/normal_monsters/furious_crater/cloak_of_terror.lua"/>
+    <monster name="Courage Leech" file="quests/soul_war/normal_monsters/furious_crater/courage_leech.lua"/>
+    <monster name="Poor Soul" file="quests/soul_war/normal_monsters/furious_crater/poor_soul.lua"/>
+    <monster name="Vibrant Phantom" file="quests/soul_war/normal_monsters/furious_crater/vibrant_phantom.lua"/>
+    <monster name="Hateful Soul" file="quests/soul_war/normal_monsters/hateful_soul.lua"/>
+    <monster name="Infernal Demon" file="quests/soul_war/normal_monsters/infernal_demon.lua"/>
+    <monster name="Infernal Phantom" file="quests/soul_war/normal_monsters/infernal_phantom.lua"/>
+    <monster name="Knight'S Apparition" file="quests/soul_war/normal_monsters/knight's_apparition.lua"/>
+    <monster name="Many Faces" file="quests/soul_war/normal_monsters/many_faces.lua"/>
+    <monster name="Greater Splinter Of Madness" file="quests/soul_war/normal_monsters/megalomania_room/greater_splinter_of_madness.lua"/>
+    <monster name="Lesser Splinter Of Madness" file="quests/soul_war/normal_monsters/megalomania_room/lesser_splinter_of_madness.lua"/>
+    <monster name="Mighty Splinter Of Madness" file="quests/soul_war/normal_monsters/megalomania_room/mighty_splinter_of_madness.lua"/>
+    <monster name="Necromantic Focus" file="quests/soul_war/normal_monsters/megalomania_room/necromantic_focus.lua"/>
+    <monster name="Monk'S Apparition" file="quests/soul_war/normal_monsters/monk's_apparition.lua"/>
+    <monster name="Mould Phantom" file="quests/soul_war/normal_monsters/mould_phantom.lua"/>
+    <monster name="Paladin'S Apparition" file="quests/soul_war/normal_monsters/paladin's_apparition.lua"/>
+    <monster name="Rotten Golem" file="quests/soul_war/normal_monsters/rotten_golem.lua"/>
+    <monster name="Sorcerer'S Apparition" file="quests/soul_war/normal_monsters/sorcerer's_apparition.lua"/>
+    <monster name="Turbulent Elemental" file="quests/soul_war/normal_monsters/turbulent_elemental.lua"/>
+    <monster name="Powerful Soul" file="quests/soul_war/powerful_soul.lua"/>
+    <monster name="Soul Cage" file="quests/soul_war/soul_cage.lua"/>
+    <monster name="Soul Sphere" file="quests/soul_war/soul_sphere.lua"/>
+    <monster name="Soulsnatcher" file="quests/soul_war/soulsnatcher.lua"/>
+    <monster name="Spiteful Spitter" file="quests/soul_war/spiteful_spitter.lua"/>
+    <monster name="Strong Soul" file="quests/soul_war/strong_soul.lua"/>
+    <monster name="Weak Soul" file="quests/soul_war/weak_soul.lua"/>
+    <monster name="Weeping Soul" file="quests/soul_war/weeping_soul.lua"/>
+    <monster name="Achad" file="quests/svargrond_arena/greenhorn/achad.lua"/>
+    <monster name="Axeitus Headbanger" file="quests/svargrond_arena/greenhorn/axeitus_headbanger.lua"/>
+    <monster name="Bloodpaw" file="quests/svargrond_arena/greenhorn/bloodpaw.lua"/>
+    <monster name="Bovinus" file="quests/svargrond_arena/greenhorn/bovinus.lua"/>
+    <monster name="Colerian The Barbarian" file="quests/svargrond_arena/greenhorn/colerian_the_barbarian.lua"/>
+    <monster name="Cursed Gladiator" file="quests/svargrond_arena/greenhorn/cursed_gladiator.lua"/>
+    <monster name="Frostfur" file="quests/svargrond_arena/greenhorn/frostfur.lua"/>
+    <monster name="Orcus The Cruel" file="quests/svargrond_arena/greenhorn/orcus_the_cruel.lua"/>
+    <monster name="Rocky" file="quests/svargrond_arena/greenhorn/rocky.lua"/>
+    <monster name="The Hairy One" file="quests/svargrond_arena/greenhorn/the_hairy_one.lua"/>
+    <monster name="Avalanche" file="quests/svargrond_arena/scrapper/avalanche.lua"/>
+    <monster name="Drasilla" file="quests/svargrond_arena/scrapper/drasilla.lua"/>
+    <monster name="Grimgor Guteater" file="quests/svargrond_arena/scrapper/grimgor_guteater.lua"/>
+    <monster name="Kreebosh The Exile" file="quests/svargrond_arena/scrapper/kreebosh_the_exile.lua"/>
+    <monster name="Slim" file="quests/svargrond_arena/scrapper/slim.lua"/>
+    <monster name="Spirit Of Earth" file="quests/svargrond_arena/scrapper/spirit_of_earth.lua"/>
+    <monster name="Spirit Of Fire" file="quests/svargrond_arena/scrapper/spirit_of_fire.lua"/>
+    <monster name="Spirit Of Water" file="quests/svargrond_arena/scrapper/spirit_of_water.lua"/>
+    <monster name="The Dark Dancer" file="quests/svargrond_arena/scrapper/the_dark_dancer.lua"/>
+    <monster name="The Hag" file="quests/svargrond_arena/scrapper/the_hag.lua"/>
+    <monster name="Darakan The Executioner" file="quests/svargrond_arena/warlord/darakan_the_executioner.lua"/>
+    <monster name="Deathbringer" file="quests/svargrond_arena/warlord/deathbringer.lua"/>
+    <monster name="Fallen Mooh'Tah Master Ghar" file="quests/svargrond_arena/warlord/fallen_mooh'tah_master_ghar.lua"/>
+    <monster name="Gnorre Chyllson" file="quests/svargrond_arena/warlord/gnorre_chyllson.lua"/>
+    <monster name="Norgle Glacierbeard" file="quests/svargrond_arena/warlord/norgle_glacierbeard.lua"/>
+    <monster name="Svoren The Mad" file="quests/svargrond_arena/warlord/svoren_the_mad.lua"/>
+    <monster name="The Masked Marauder" file="quests/svargrond_arena/warlord/the_masked_marauder.lua"/>
+    <monster name="The Obliverator" file="quests/svargrond_arena/warlord/the_obliverator.lua"/>
+    <monster name="The Pit Lord" file="quests/svargrond_arena/warlord/the_pit_lord.lua"/>
+    <monster name="Webster" file="quests/svargrond_arena/warlord/webster.lua"/>
+    <monster name="Black Vixen" file="quests/the_curse_spreads/black_vixen.lua"/>
+    <monster name="Bloodback" file="quests/the_curse_spreads/bloodback.lua"/>
+    <monster name="Darkfang" file="quests/the_curse_spreads/darkfang.lua"/>
+    <monster name="Feroxa" file="quests/the_curse_spreads/feroxa.lua"/>
+    <monster name="Feroxa2" file="quests/the_curse_spreads/feroxa2.lua"/>
+    <monster name="Feroxa3" file="quests/the_curse_spreads/feroxa3.lua"/>
+    <monster name="Feroxa4" file="quests/the_curse_spreads/feroxa4.lua"/>
+    <monster name="Feroxa5" file="quests/the_curse_spreads/feroxa5.lua"/>
+    <monster name="Shadowpelt" file="quests/the_curse_spreads/shadowpelt.lua"/>
+    <monster name="Sharpclaw" file="quests/the_curse_spreads/sharpclaw.lua"/>
+    <monster name="Alptramun" file="quests/the_dream_courts/bosses/alptramun.lua"/>
+    <monster name="Faceless Bane" file="quests/the_dream_courts/bosses/faceless_bane.lua"/>
+    <monster name="Izcandar The Banished" file="quests/the_dream_courts/bosses/izcandar_the_banished.lua"/>
+    <monster name="Malofur Mangrinder" file="quests/the_dream_courts/bosses/malofur_mangrinder.lua"/>
+    <monster name="Maxxenius" file="quests/the_dream_courts/bosses/maxxenius.lua"/>
+    <monster name="Plagueroot" file="quests/the_dream_courts/bosses/plagueroot.lua"/>
+    <monster name="The Nightmare Beast" file="quests/the_dream_courts/bosses/the_nightmare_beast.lua"/>
+    <monster name="Generator" file="quests/the_dream_courts/generator.lua"/>
+    <monster name="Horrible Dream" file="quests/the_dream_courts/horrible_dream.lua"/>
+    <monster name="Lucifuga Aranea" file="quests/the_dream_courts/lucifuga_aranea.lua"/>
+    <monster name="Mind-Wrecking Dream" file="quests/the_dream_courts/mind-wrecking_dream.lua"/>
+    <monster name="Nightmare Tendril" file="quests/the_dream_courts/nightmare_tendril.lua"/>
+    <monster name="Nightmarish Dream" file="quests/the_dream_courts/nightmarish_dream.lua"/>
+    <monster name="Plant Abomination" file="quests/the_dream_courts/plant_abomination.lua"/>
+    <monster name="Plant Attendant" file="quests/the_dream_courts/plant_attendant.lua"/>
+    <monster name="The Cold Of Winter" file="quests/the_dream_courts/the_cold_of_winter.lua"/>
+    <monster name="The Heat Of Summer" file="quests/the_dream_courts/the_heat_of_summer.lua"/>
+    <monster name="Unpleasant Dream" file="quests/the_dream_courts/unpleasant_dream.lua"/>
+    <monster name="Whirling Blades" file="quests/the_dream_courts/whirling_blades.lua"/>
+    <monster name="Blazing Fire Elemental" file="quests/the_elemental_spheres/blazing_fire_elemental.lua"/>
+    <monster name="Blistering Fire Elemental" file="quests/the_elemental_spheres/blistering_fire_elemental.lua"/>
+    <monster name="Charged Energy Elemental" file="quests/the_elemental_spheres/charged_energy_elemental.lua"/>
+    <monster name="Earth Overlord" file="quests/the_elemental_spheres/earth_overlord.lua"/>
+    <monster name="Energy Overlord" file="quests/the_elemental_spheres/energy_overlord.lua"/>
+    <monster name="Fire Overlord" file="quests/the_elemental_spheres/fire_overlord.lua"/>
+    <monster name="Flickering Spirit Elemental" file="quests/the_elemental_spheres/flickering_spirit_elemental.lua"/>
+    <monster name="Ice Overlord" file="quests/the_elemental_spheres/ice_overlord.lua"/>
+    <monster name="Jagged Earth Elemental" file="quests/the_elemental_spheres/jagged_earth_elemental.lua"/>
+    <monster name="Lord Of The Elements" file="quests/the_elemental_spheres/lord_of_the_elements.lua"/>
+    <monster name="Muddy Earth Elemental" file="quests/the_elemental_spheres/muddy_earth_elemental.lua"/>
+    <monster name="Overcharged Energy Elemental" file="quests/the_elemental_spheres/overcharged_energy_elemental.lua"/>
+    <monster name="Psychic Spirit Elemental" file="quests/the_elemental_spheres/psychic_spirit_elemental.lua"/>
+    <monster name="Roaring Water Elemental" file="quests/the_elemental_spheres/roaring_water_elemental.lua"/>
+    <monster name="Slick Water Elemental" file="quests/the_elemental_spheres/slick_water_elemental.lua"/>
+    <monster name="Spirit Overlord" file="quests/the_elemental_spheres/spirit_overlord.lua"/>
+    <monster name="Blue Butterfly" file="quests/the_explorer_society/blue_butterfly.lua"/>
+    <monster name="Red Butterfly" file="quests/the_explorer_society/red_butterfly.lua"/>
+    <monster name="Yellow Butterfly" file="quests/the_explorer_society/yellow_butterfly.lua"/>
+    <monster name="Angry Plant" file="quests/the_first_dragon/angry_plant.lua"/>
+    <monster name="Fallen Challenger" file="quests/the_first_dragon/bosses/fallen_challenger.lua"/>
+    <monster name="Gelidrazah The Frozen" file="quests/the_first_dragon/bosses/gelidrazah_the_frozen.lua"/>
+    <monster name="Kalyassa" file="quests/the_first_dragon/bosses/kalyassa.lua"/>
+    <monster name="Tazhadur" file="quests/the_first_dragon/bosses/tazhadur.lua"/>
+    <monster name="Zorvorax" file="quests/the_first_dragon/bosses/zorvorax.lua"/>
+    <monster name="Dragon Essence" file="quests/the_first_dragon/dragon_essence.lua"/>
+    <monster name="Dragon Warden" file="quests/the_first_dragon/dragon_warden.lua"/>
+    <monster name="Dragon Wrath" file="quests/the_first_dragon/dragon_wrath.lua"/>
+    <monster name="Haunted Dragon" file="quests/the_first_dragon/haunted_dragon.lua"/>
+    <monster name="Ice Dragon" file="quests/the_first_dragon/ice_dragon.lua"/>
+    <monster name="Somewhat Beatable" file="quests/the_first_dragon/somewhat_beatable.lua"/>
+    <monster name="Spirit Of Fertility" file="quests/the_first_dragon/spirit_of_fertility.lua"/>
+    <monster name="Unbeatable Dragon" file="quests/the_first_dragon/unbeatable_dragon.lua"/>
+    <monster name="A Carved Stone Tile" file="quests/the_inquisition/a_carved_stone_tile.lua"/>
+    <monster name="Annihilon" file="quests/the_inquisition/annihilon.lua"/>
+    <monster name="Dreadbeast" file="quests/the_inquisition/dreadbeast.lua"/>
+    <monster name="Eye Of The Seven" file="quests/the_inquisition/eye_of_the_seven.lua"/>
+    <monster name="Golgordan" file="quests/the_inquisition/golgordan.lua"/>
+    <monster name="Hellgorak" file="quests/the_inquisition/hellgorak.lua"/>
+    <monster name="Latrivan" file="quests/the_inquisition/latrivan.lua"/>
+    <monster name="Madareth" file="quests/the_inquisition/madareth.lua"/>
+    <monster name="The Count" file="quests/the_inquisition/the_count.lua"/>
+    <monster name="The Weakened Count" file="quests/the_inquisition/the_weakened_count.lua"/>
+    <monster name="Ungreez" file="quests/the_inquisition/ungreez.lua"/>
+    <monster name="Ushuriel" file="quests/the_inquisition/ushuriel.lua"/>
+    <monster name="Zugurosh" file="quests/the_inquisition/zugurosh.lua"/>
+    <monster name="Baron Brute" file="quests/the_new_frontier/baron_brute.lua"/>
+    <monster name="Coldheart" file="quests/the_new_frontier/coldheart.lua"/>
+    <monster name="Doomhowl" file="quests/the_new_frontier/doomhowl.lua"/>
+    <monster name="Dreadwing" file="quests/the_new_frontier/dreadwing.lua"/>
+    <monster name="Fatality" file="quests/the_new_frontier/fatality.lua"/>
+    <monster name="Haunter" file="quests/the_new_frontier/haunter.lua"/>
+    <monster name="Incineron" file="quests/the_new_frontier/incineron.lua"/>
+    <monster name="Menace" file="quests/the_new_frontier/menace.lua"/>
+    <monster name="Mooh'Tah Master" file="quests/the_new_frontier/mooh'tah_master.lua"/>
+    <monster name="Rocko" file="quests/the_new_frontier/rocko.lua"/>
+    <monster name="Shard Of Corruption" file="quests/the_new_frontier/shard_of_corruption.lua"/>
+    <monster name="The Axeorcist" file="quests/the_new_frontier/the_axeorcist.lua"/>
+    <monster name="The Dreadorian" file="quests/the_new_frontier/the_dreadorian.lua"/>
+    <monster name="Tirecz" file="quests/the_new_frontier/tirecz.lua"/>
+    <monster name="Tremorak" file="quests/the_new_frontier/tremorak.lua"/>
+    <monster name="Ancient Lion Archer" file="quests/the_order_of_lion/bosses/ancient_lion_archer.lua"/>
+    <monster name="Ancient Lion Knight" file="quests/the_order_of_lion/bosses/ancient_lion_knight.lua"/>
+    <monster name="Ancient Lion Warlock" file="quests/the_order_of_lion/bosses/ancient_lion_warlock.lua"/>
+    <monster name="Drume" file="quests/the_order_of_lion/bosses/drume.lua"/>
+    <monster name="Kesar" file="quests/the_order_of_lion/bosses/kesar.lua"/>
+    <monster name="Lion Commander" file="quests/the_order_of_lion/lion_commander.lua"/>
+    <monster name="Usurper Commander" file="quests/the_order_of_lion/usurper_commander.lua"/>
+    <monster name="Baleful Bunny" file="quests/the_percht_queens_island/baleful_bunny.lua"/>
+    <monster name="Bonny Bunny" file="quests/the_percht_queens_island/bonny_bunny.lua"/>
+    <monster name="Bright Percht Sleigh" file="quests/the_percht_queens_island/bright_percht_sleigh.lua"/>
+    <monster name="Cold Percht Sleigh" file="quests/the_percht_queens_island/cold_percht_sleigh.lua"/>
+    <monster name="Dark Percht Sleigh" file="quests/the_percht_queens_island/dark_percht_sleigh.lua"/>
+    <monster name="Percht" file="quests/the_percht_queens_island/percht.lua"/>
+    <monster name="Percht Minion" file="quests/the_percht_queens_island/percht_minion.lua"/>
+    <monster name="Schiach" file="quests/the_percht_queens_island/schiach.lua"/>
+    <monster name="The Percht Queen" file="quests/the_percht_queens_island/the_percht_queen.lua"/>
+    <monster name="Warm Fire" file="quests/the_percht_queens_island/warm_fire.lua"/>
+    <monster name="Biting Cold" file="quests/the_secret_library/biting_cold.lua"/>
+    <monster name="Bone Jaw" file="quests/the_secret_library/bone_jaw.lua"/>
+    <monster name="Brokul" file="quests/the_secret_library/bosses/brokul.lua"/>
+    <monster name="Ghulosh" file="quests/the_secret_library/bosses/ghulosh.lua"/>
+    <monster name="Gorzindel" file="quests/the_secret_library/bosses/gorzindel.lua"/>
+    <monster name="Grand Canon Dominus" file="quests/the_secret_library/bosses/grand_canon_dominus.lua"/>
+    <monster name="Grand Chaplain Gaunder" file="quests/the_secret_library/bosses/grand_chaplain_gaunder.lua"/>
+    <monster name="Grand Commander Soeren" file="quests/the_secret_library/bosses/grand_commander_soeren.lua"/>
+    <monster name="Grand Master Oberon" file="quests/the_secret_library/bosses/grand_master_oberon.lua"/>
+    <monster name="Grand Master Oberon Functions" file="quests/the_secret_library/bosses/grand_master_oberon_functions.lua"/>
+    <monster name="Preceptor Lazare" file="quests/the_secret_library/bosses/preceptor_lazare.lua"/>
+    <monster name="Thawing Dragon Lord" file="quests/the_secret_library/bosses/thawing_dragon_lord.lua"/>
+    <monster name="The Scourge Of Oblivion" file="quests/the_secret_library/bosses/the_scourge_of_oblivion.lua"/>
+    <monster name="Brother Chill" file="quests/the_secret_library/brother_chill.lua"/>
+    <monster name="Brother Freeze" file="quests/the_secret_library/brother_freeze.lua"/>
+    <monster name="Concentrated Death" file="quests/the_secret_library/concentrated_death.lua"/>
+    <monster name="Dark Knowledge" file="quests/the_secret_library/dark_knowledge.lua"/>
+    <monster name="Dazed Leaf Golem" file="quests/the_secret_library/dazed_leaf_golem.lua"/>
+    <monster name="Demon Blood" file="quests/the_secret_library/demon_blood.lua"/>
+    <monster name="Demon Slave" file="quests/the_secret_library/demon_slave.lua"/>
+    <monster name="Force Field" file="quests/the_secret_library/force_field.lua"/>
+    <monster name="Furious Scorpion" file="quests/the_secret_library/furious_scorpion.lua"/>
+    <monster name="Ghulosh' Deathgaze" file="quests/the_secret_library/ghulosh'_deathgaze.lua"/>
+    <monster name="Imp Intruder" file="quests/the_secret_library/imp_intruder.lua"/>
+    <monster name="Invading Demon" file="quests/the_secret_library/invading_demon.lua"/>
+    <monster name="Jailer" file="quests/the_secret_library/jailer.lua"/>
+    <monster name="Knowledge Raider" file="quests/the_secret_library/knowledge_raider.lua"/>
+    <monster name="Librarian" file="quests/the_secret_library/librarian.lua"/>
+    <monster name="Lokathmor" file="quests/the_secret_library/lokathmor.lua"/>
+    <monster name="Lokathmor Stuck" file="quests/the_secret_library/lokathmor_stuck.lua"/>
+    <monster name="Malicious Minion" file="quests/the_secret_library/malicious_minion.lua"/>
+    <monster name="Mazzinor" file="quests/the_secret_library/mazzinor.lua"/>
+    <monster name="Mean Minion" file="quests/the_secret_library/mean_minion.lua"/>
+    <monster name="Neutral Deepling Warrior" file="quests/the_secret_library/neutral_deepling_warrior.lua"/>
+    <monster name="Oberons Bile" file="quests/the_secret_library/oberons_bile.lua"/>
+    <monster name="Oberons Hate" file="quests/the_secret_library/oberons_hate.lua"/>
+    <monster name="Oberons Ire" file="quests/the_secret_library/oberons_ire.lua"/>
+    <monster name="Oberons Spite" file="quests/the_secret_library/oberons_spite.lua"/>
+    <monster name="Ravenous Beyondling" file="quests/the_secret_library/ravenous_beyondling.lua"/>
+    <monster name="Rift Breacher" file="quests/the_secret_library/rift_breacher.lua"/>
+    <monster name="Rift Minion" file="quests/the_secret_library/rift_minion.lua"/>
+    <monster name="Rift Spawn" file="quests/the_secret_library/rift_spawn.lua"/>
+    <monster name="Spawn Of Havoc" file="quests/the_secret_library/spawn_of_havoc.lua"/>
+    <monster name="Stolen Knowledge Of Armor" file="quests/the_secret_library/stolen_knowledge_of_armor.lua"/>
+    <monster name="Stolen Knowledge Of Healing" file="quests/the_secret_library/stolen_knowledge_of_healing.lua"/>
+    <monster name="Stolen Knowledge Of Lifesteal" file="quests/the_secret_library/stolen_knowledge_of_lifesteal.lua"/>
+    <monster name="Stolen Knowledge Of Spells" file="quests/the_secret_library/stolen_knowledge_of_spells.lua"/>
+    <monster name="Stolen Knowledge Of Summoning" file="quests/the_secret_library/stolen_knowledge_of_summoning.lua"/>
+    <monster name="Stolen Tome Of Portals" file="quests/the_secret_library/stolen_tome_of_portals.lua"/>
+    <monster name="Supercharged Mazzinor" file="quests/the_secret_library/supercharged_mazzinor.lua"/>
+    <monster name="The Blazing Rose" file="quests/the_secret_library/the_blazing_rose.lua"/>
+    <monster name="The Book Of Secrets" file="quests/the_secret_library/the_book_of_secrets.lua"/>
+    <monster name="The Devourer Of Secrets" file="quests/the_secret_library/the_devourer_of_secrets.lua"/>
+    <monster name="The Diamond Blossom" file="quests/the_secret_library/the_diamond_blossom.lua"/>
+    <monster name="The Lily Of Night" file="quests/the_secret_library/the_lily_of_night.lua"/>
+    <monster name="The Scion Of Havoc" file="quests/the_secret_library/the_scion_of_havoc.lua"/>
+    <monster name="The Spellstealer" file="quests/the_secret_library/the_spellstealer.lua"/>
+    <monster name="War Servant" file="quests/the_secret_library/war_servant.lua"/>
+    <monster name="Wild Knowledge" file="quests/the_secret_library/wild_knowledge.lua"/>
+    <monster name="Yalahari Despoiler" file="quests/the_secret_library/yalahari_despoiler.lua"/>
+    <monster name="Dragon Hoard" file="quests/twenty_years_a_cook/bosses/dragon_hoard.lua"/>
+    <monster name="Fury Of The Emperor" file="quests/wrath_of_the_emperor/fury_of_the_emperor.lua"/>
+    <monster name="Lizard Abomination" file="quests/wrath_of_the_emperor/lizard_abomination.lua"/>
+    <monster name="Mutated Zalamon" file="quests/wrath_of_the_emperor/mutated_zalamon.lua"/>
+    <monster name="Scorn Of The Emperor" file="quests/wrath_of_the_emperor/scorn_of_the_emperor.lua"/>
+    <monster name="Snake God Essence" file="quests/wrath_of_the_emperor/snake_god_essence.lua"/>
+    <monster name="Snake Thing" file="quests/wrath_of_the_emperor/snake_thing.lua"/>
+    <monster name="Spite Of The Emperor" file="quests/wrath_of_the_emperor/spite_of_the_emperor.lua"/>
+    <monster name="The Keeper" file="quests/wrath_of_the_emperor/the_keeper.lua"/>
+    <monster name="Wrath Of The Emperor" file="quests/wrath_of_the_emperor/wrath_of_the_emperor.lua"/>
+    <monster name="Arachir The Ancient One" file="raids/arachir_the_ancient_one.lua"/>
+    <monster name="Barbaria" file="raids/barbaria.lua"/>
+    <monster name="Battlemaster Zunzu" file="raids/battlemaster_zunzu.lua"/>
+    <monster name="Brutus Bloodbeard" file="raids/brutus_bloodbeard.lua"/>
+    <monster name="Captain Jones" file="raids/captain_jones.lua"/>
+    <monster name="Chayenne" file="raids/chayenne.lua"/>
+    <monster name="Chizzoron The Distorter" file="raids/chizzoron_the_distorter.lua"/>
+    <monster name="Control Tower" file="raids/control_tower.lua"/>
+    <monster name="Deadeye Devious" file="raids/deadeye_devious.lua"/>
+    <monster name="Draptor" file="raids/draptor.lua"/>
+    <monster name="Egg The Welter" file="raids/egg_the_welter.lua"/>
+    <monster name="Fernfang" file="raids/fernfang.lua"/>
+    <monster name="Ferumbras" file="raids/ferumbras.lua"/>
+    <monster name="Fleabringer" file="raids/fleabringer.lua"/>
+    <monster name="Foreman Kneebiter" file="raids/foreman_kneebiter.lua"/>
+    <monster name="Frost Servant" file="raids/frost_servant.lua"/>
+    <monster name="Furyosa" file="raids/furyosa.lua"/>
+    <monster name="Ghazbaran" file="raids/ghazbaran.lua"/>
+    <monster name="Giant Spider Wyda" file="raids/giant_spider_wyda.lua"/>
+    <monster name="Glooth Battery" file="raids/glooth_battery.lua"/>
+    <monster name="Glooth Bomb" file="raids/glooth_bomb.lua"/>
+    <monster name="Glooth Fairy" file="raids/glooth_fairy.lua"/>
+    <monster name="Grand Mother Foulscale" file="raids/grand_mother_foulscale.lua"/>
+    <monster name="Grorlam" file="raids/grorlam.lua"/>
+    <monster name="Hirintror" file="raids/hirintror.lua"/>
+    <monster name="Lethal Lissy" file="raids/lethal_lissy.lua"/>
+    <monster name="Man In The Cave" file="raids/man_in_the_cave.lua"/>
+    <monster name="Mawhawk" file="raids/mawhawk.lua"/>
+    <monster name="Morgaroth" file="raids/morgaroth.lua"/>
+    <monster name="Necropharus" file="raids/necropharus.lua"/>
+    <monster name="Ocyakao" file="raids/ocyakao.lua"/>
+    <monster name="Orc Armor" file="raids/orc_armor.lua"/>
+    <monster name="Orc Helmet" file="raids/orc_helmet.lua"/>
+    <monster name="Orc Sam Backpack" file="raids/orc_sam_backpack.lua"/>
+    <monster name="Orc Shield" file="raids/orc_shield.lua"/>
+    <monster name="Orshabaal" file="raids/orshabaal.lua"/>
+    <monster name="Ron The Ripper" file="raids/ron_the_ripper.lua"/>
+    <monster name="Rottie The Rotworm" file="raids/rottie_the_rotworm.lua"/>
+    <monster name="Rotworm Queen" file="raids/rotworm_queen.lua"/>
+    <monster name="Sir Valorcrest" file="raids/sir_valorcrest.lua"/>
+    <monster name="Spawn Of The Welter" file="raids/spawn_of_the_welter.lua"/>
+    <monster name="Spyrat Facing East" file="raids/spyrat_facing_east.lua"/>
+    <monster name="Spyrat Facing North" file="raids/spyrat_facing_north.lua"/>
+    <monster name="Spyrat Facing South" file="raids/spyrat_facing_south.lua"/>
+    <monster name="Spyrat Facing West" file="raids/spyrat_facing_west.lua"/>
+    <monster name="The Horned Fox" file="raids/the_horned_fox.lua"/>
+    <monster name="The Pale Count" file="raids/the_pale_count.lua"/>
+    <monster name="The Voice Of Ruin" file="raids/the_voice_of_ruin.lua"/>
+    <monster name="The Welter" file="raids/the_welter.lua"/>
+    <monster name="Tyrn" file="raids/tyrn.lua"/>
+    <monster name="White Pale" file="raids/white_pale.lua"/>
+    <monster name="Xenia" file="raids/xenia.lua"/>
+    <monster name="Yakchal" file="raids/yakchal.lua"/>
+    <monster name="Zomba" file="raids/zomba.lua"/>
+    <monster name="Zulazza The Corruptor" file="raids/zulazza_the_corruptor.lua"/>
+    <monster name="Adult Goanna" file="reptiles/adult_goanna.lua"/>
+    <monster name="Boar Man" file="reptiles/boar_man.lua"/>
+    <monster name="Carnivostrich" file="reptiles/carnivostrich.lua"/>
+    <monster name="Cobra" file="reptiles/cobra.lua"/>
+    <monster name="Corrupt Naga" file="reptiles/corrupt_naga.lua"/>
+    <monster name="Crape Man" file="reptiles/crape_man.lua"/>
+    <monster name="Crocodile" file="reptiles/crocodile.lua"/>
+    <monster name="Dreadmaw" file="reptiles/dreadmaw.lua"/>
+    <monster name="Emerald Tortoise" file="reptiles/emerald_tortoise.lua"/>
+    <monster name="Fungosaurus" file="reptiles/fungosaurus.lua"/>
+    <monster name="Harpy" file="reptiles/harpy.lua"/>
+    <monster name="Killer Caiman" file="reptiles/killer_caiman.lua"/>
+    <monster name="Liodile" file="reptiles/liodile.lua"/>
+    <monster name="Lizard Chosen" file="reptiles/lizard_chosen.lua"/>
+    <monster name="Lizard Dragon Priest" file="reptiles/lizard_dragon_priest.lua"/>
+    <monster name="Lizard High Guard" file="reptiles/lizard_high_guard.lua"/>
+    <monster name="Lizard Legionnaire" file="reptiles/lizard_legionnaire.lua"/>
+    <monster name="Lizard Magistratus" file="reptiles/lizard_magistratus.lua"/>
+    <monster name="Lizard Noble" file="reptiles/lizard_noble.lua"/>
+    <monster name="Lizard Sentinel" file="reptiles/lizard_sentinel.lua"/>
+    <monster name="Lizard Snakecharmer" file="reptiles/lizard_snakecharmer.lua"/>
+    <monster name="Lizard Templar" file="reptiles/lizard_templar.lua"/>
+    <monster name="Lizard Zaogun" file="reptiles/lizard_zaogun.lua"/>
+    <monster name="Mantosaurus" file="reptiles/mantosaurus.lua"/>
+    <monster name="Mercurial Menace" file="reptiles/mercurial_menace.lua"/>
+    <monster name="Naga Archer" file="reptiles/naga_archer.lua"/>
+    <monster name="Naga Warrior" file="reptiles/naga_warrior.lua"/>
+    <monster name="Noxious Ripptor" file="reptiles/noxious_ripptor.lua"/>
+    <monster name="Rhindeer" file="reptiles/rhindeer.lua"/>
+    <monster name="Rogue Naga" file="reptiles/rogue_naga.lua"/>
+    <monster name="Sea Serpent" file="reptiles/sea_serpent.lua"/>
+    <monster name="Seacrest Serpent" file="reptiles/seacrest_serpent.lua"/>
+    <monster name="Serpent Spawn" file="reptiles/serpent_spawn.lua"/>
+    <monster name="Snake" file="reptiles/snake.lua"/>
+    <monster name="Stampor" file="reptiles/stampor.lua"/>
+    <monster name="Stonerefiner" file="reptiles/stonerefiner.lua"/>
+    <monster name="Thornback Tortoise" file="reptiles/thornback_tortoise.lua"/>
+    <monster name="Tortoise" file="reptiles/tortoise.lua"/>
+    <monster name="Two-Headed Turtle" file="reptiles/two-headed_turtle.lua"/>
+    <monster name="Wyvern" file="reptiles/wyvern.lua"/>
+    <monster name="Young Goanna" file="reptiles/young_goanna.lua"/>
+    <monster name="Young Sea Serpent" file="reptiles/young_sea_serpent.lua"/>
+    <monster name="Acid Blob" file="slimes/acid_blob.lua"/>
+    <monster name="Death Blob" file="slimes/death_blob.lua"/>
+    <monster name="Defiler" file="slimes/defiler.lua"/>
+    <monster name="Devourer" file="slimes/devourer.lua"/>
+    <monster name="Glooth Blob" file="slimes/glooth_blob.lua"/>
+    <monster name="Ink Blob" file="slimes/ink_blob.lua"/>
+    <monster name="Mercury Blob" file="slimes/mercury_blob.lua"/>
+    <monster name="Midnight Spawn" file="slimes/midnight_spawn.lua"/>
+    <monster name="Slime" file="slimes/slime.lua"/>
+    <monster name="Son Of Verminor" file="slimes/son_of_verminor.lua"/>
+    <monster name="Squidgy Slime" file="slimes/squidgy_slime.lua"/>
+    <monster name="Target Dummy" file="trainers/target_dummy.lua"/>
+    <monster name="Deathslicer" file="traps/deathslicer.lua"/>
+    <monster name="Deaththrower" file="traps/deaththrower.lua"/>
+    <monster name="Demon Summoner" file="traps/demon_summoner.lua"/>
+    <monster name="Floor Blob" file="traps/floor_blob.lua"/>
+    <monster name="Hell Hole" file="traps/hell_hole.lua"/>
+    <monster name="Hive Pore" file="traps/hive_pore.lua"/>
+    <monster name="Lavahole" file="traps/lavahole.lua"/>
+    <monster name="Magic Pillar" file="traps/magic_pillar.lua"/>
+    <monster name="Magicthrower" file="traps/magicthrower.lua"/>
+    <monster name="Mechanical Fighter" file="traps/mechanical_fighter.lua"/>
+    <monster name="Mimic" file="traps/mimic.lua"/>
+    <monster name="Pillar" file="traps/pillar.lua"/>
+    <monster name="Plaguethrower" file="traps/plaguethrower.lua"/>
+    <monster name="Bane Of Light" file="undeads/bane_of_light.lua"/>
+    <monster name="Banshee" file="undeads/banshee.lua"/>
+    <monster name="Betrayed Wraith" file="undeads/betrayed_wraith.lua"/>
+    <monster name="Blightwalker" file="undeads/blightwalker.lua"/>
+    <monster name="Blood Beast" file="undeads/blood_beast.lua"/>
+    <monster name="Bonebeast" file="undeads/bonebeast.lua"/>
+    <monster name="Burster Spectre" file="undeads/burster_spectre.lua"/>
+    <monster name="Crypt Shambler" file="undeads/crypt_shambler.lua"/>
+    <monster name="Crypt Warrior" file="undeads/crypt_warrior.lua"/>
+    <monster name="Cursed Ape" file="undeads/cursed_ape.lua"/>
+    <monster name="Cursed Prospector" file="undeads/cursed_prospector.lua"/>
+    <monster name="Death Priest" file="undeads/death_priest.lua"/>
+    <monster name="Demon Skeleton" file="undeads/demon_skeleton.lua"/>
+    <monster name="Dworc Shadowstalker" file="undeads/dworc_shadowstalker.lua"/>
+    <monster name="Elder Mummy" file="undeads/elder_mummy.lua"/>
+    <monster name="Evil Prospector" file="undeads/evil_prospector.lua"/>
+    <monster name="Falcon Knight" file="undeads/falcon_knight.lua"/>
+    <monster name="Falcon Paladin" file="undeads/falcon_paladin.lua"/>
+    <monster name="Flimsy Lost Soul" file="undeads/flimsy_lost_soul.lua"/>
+    <monster name="Freakish Lost Soul" file="undeads/freakish_lost_soul.lua"/>
+    <monster name="Gazer Spectre" file="undeads/gazer_spectre.lua"/>
+    <monster name="Ghost" file="undeads/ghost.lua"/>
+    <monster name="Ghost Wolf" file="undeads/ghost_wolf.lua"/>
+    <monster name="Ghoul" file="undeads/ghoul.lua"/>
+    <monster name="Grave Guard" file="undeads/grave_guard.lua"/>
+    <monster name="Gravedigger" file="undeads/gravedigger.lua"/>
+    <monster name="Grim Reaper" file="undeads/grim_reaper.lua"/>
+    <monster name="Hand Of Cursed Fate" file="undeads/hand_of_cursed_fate.lua"/>
+    <monster name="Honour Guard" file="undeads/honour_guard.lua"/>
+    <monster name="Iks Ahpututu" file="undeads/iks_ahpututu.lua"/>
+    <monster name="Iks Aucar" file="undeads/iks_aucar.lua"/>
+    <monster name="Iks Chuka" file="undeads/iks_chuka.lua"/>
+    <monster name="Iks Churrascan" file="undeads/iks_churrascan.lua"/>
+    <monster name="Iks Pututu" file="undeads/iks_pututu.lua"/>
+    <monster name="Iks Yapunac" file="undeads/iks_yapunac.lua"/>
+    <monster name="Lich" file="undeads/lich.lua"/>
+    <monster name="Lost Soul" file="undeads/lost_soul.lua"/>
+    <monster name="Mean Lost Soul" file="undeads/mean_lost_soul.lua"/>
+    <monster name="Mummy" file="undeads/mummy.lua"/>
+    <monster name="Orclops Bloodbreaker" file="undeads/orclops_bloodbreaker.lua"/>
+    <monster name="Pirate Ghost" file="undeads/pirate_ghost.lua"/>
+    <monster name="Pirate Skeleton" file="undeads/pirate_skeleton.lua"/>
+    <monster name="Putrid Mummy" file="undeads/putrid_mummy.lua"/>
+    <monster name="Ripper Spectre" file="undeads/ripper_spectre.lua"/>
+    <monster name="Rot Elemental" file="undeads/rot_elemental.lua"/>
+    <monster name="Skeleton" file="undeads/skeleton.lua"/>
+    <monster name="Skeleton Elite Warrior" file="undeads/skeleton_elite_warrior.lua"/>
+    <monster name="Skeleton Warrior" file="undeads/skeleton_warrior.lua"/>
+    <monster name="Souleater" file="undeads/souleater.lua"/>
+    <monster name="Spectre" file="undeads/spectre.lua"/>
+    <monster name="Tarnished Spirit" file="undeads/tarnished_spirit.lua"/>
+    <monster name="Tomb Servant" file="undeads/tomb_servant.lua"/>
+    <monster name="Undead Cavebear" file="undeads/undead_cavebear.lua"/>
+    <monster name="Undead Dragon" file="undeads/undead_dragon.lua"/>
+    <monster name="Undead Elite Gladiator" file="undeads/undead_elite_gladiator.lua"/>
+    <monster name="Undead Gladiator" file="undeads/undead_gladiator.lua"/>
+    <monster name="Undead Mine Worker" file="undeads/undead_mine_worker.lua"/>
+    <monster name="Undead Prospector" file="undeads/undead_prospector.lua"/>
+    <monster name="Vampire" file="undeads/vampire.lua"/>
+    <monster name="Vampire Bride" file="undeads/vampire_bride.lua"/>
+    <monster name="Vampire Viscount" file="undeads/vampire_viscount.lua"/>
+    <monster name="Vicious Manbat" file="undeads/vicious_manbat.lua"/>
+    <monster name="White Shade" file="undeads/white_shade.lua"/>
+    <monster name="Zombie" file="undeads/zombie.lua"/>
+    <monster name="Afflicted Strider" file="vermins/afflicted_strider.lua"/>
+    <monster name="Ancient Scarab" file="vermins/ancient_scarab.lua"/>
+    <monster name="Blemished Spawn" file="vermins/blemished_spawn.lua"/>
+    <monster name="Brimstone Bug" file="vermins/brimstone_bug.lua"/>
+    <monster name="Bug" file="vermins/bug.lua"/>
+    <monster name="Burrowing Beetle" file="vermins/burrowing_beetle.lua"/>
+    <monster name="Butterfly" file="vermins/butterfly.lua"/>
+    <monster name="Carrion Worm" file="vermins/carrion_worm.lua"/>
+    <monster name="Cave Chimera" file="vermins/cave_chimera.lua"/>
+    <monster name="Cave Devourer" file="vermins/cave_devourer.lua"/>
+    <monster name="Centipede" file="vermins/centipede.lua"/>
+    <monster name="Chasm Spawn" file="vermins/chasm_spawn.lua"/>
+    <monster name="Cockroach" file="vermins/cockroach.lua"/>
+    <monster name="Crawler" file="vermins/crawler.lua"/>
+    <monster name="Crystal Spider" file="vermins/crystal_spider.lua"/>
+    <monster name="Deepworm" file="vermins/deepworm.lua"/>
+    <monster name="Diremaw" file="vermins/diremaw.lua"/>
+    <monster name="Drillworm" file="vermins/drillworm.lua"/>
+    <monster name="Emerald Damselfly" file="vermins/emerald_damselfly.lua"/>
+    <monster name="Enpa Yolo" file="vermins/enpa_yolo.lua"/>
+    <monster name="Exotic Cave Spider" file="vermins/exotic_cave_spider.lua"/>
+    <monster name="Eyeless Devourer" file="vermins/eyeless_devourer.lua"/>
+    <monster name="Giant Spider" file="vermins/giant_spider.lua"/>
+    <monster name="Hibernal Moth" file="vermins/hibernal_moth.lua"/>
+    <monster name="Hive Overseer" file="vermins/hive_overseer.lua"/>
+    <monster name="Insect Swarm" file="vermins/insect_swarm.lua"/>
+    <monster name="Insectoid Scout" file="vermins/insectoid_scout.lua"/>
+    <monster name="Insectoid Worker" file="vermins/insectoid_worker.lua"/>
+    <monster name="Kollos" file="vermins/kollos.lua"/>
+    <monster name="Lacewing Moth" file="vermins/lacewing_moth.lua"/>
+    <monster name="Ladybug" file="vermins/ladybug.lua"/>
+    <monster name="Lancer Beetle" file="vermins/lancer_beetle.lua"/>
+    <monster name="Larva" file="vermins/larva.lua"/>
+    <monster name="Lavafungus" file="vermins/lavafungus.lua"/>
+    <monster name="Lavaworm" file="vermins/lavaworm.lua"/>
+    <monster name="Lesser Swarmer" file="vermins/lesser_swarmer.lua"/>
+    <monster name="Parasite" file="vermins/parasite.lua"/>
+    <monster name="Poison Spider" file="vermins/poison_spider.lua"/>
+    <monster name="Rotworm" file="vermins/rotworm.lua"/>
+    <monster name="Sacred Spider" file="vermins/sacred_spider.lua"/>
+    <monster name="Sandcrawler" file="vermins/sandcrawler.lua"/>
+    <monster name="Scarab" file="vermins/scarab.lua"/>
+    <monster name="Scorpion" file="vermins/scorpion.lua"/>
+    <monster name="Slug" file="vermins/slug.lua"/>
+    <monster name="Spider" file="vermins/spider.lua"/>
+    <monster name="Spidris" file="vermins/spidris.lua"/>
+    <monster name="Spidris Elite" file="vermins/spidris_elite.lua"/>
+    <monster name="Spitter" file="vermins/spitter.lua"/>
+    <monster name="Streaked Devourer" file="vermins/streaked_devourer.lua"/>
+    <monster name="Sulphider" file="vermins/sulphider.lua"/>
+    <monster name="Swarmer" file="vermins/swarmer.lua"/>
+    <monster name="Swarmer Hatchling" file="vermins/swarmer_hatchling.lua"/>
+    <monster name="Tarantula" file="vermins/tarantula.lua"/>
+    <monster name="Terramite" file="vermins/terramite.lua"/>
+    <monster name="Tremendous Tyrant" file="vermins/tremendous_tyrant.lua"/>
+    <monster name="Tunnel Tyrant" file="vermins/tunnel_tyrant.lua"/>
+    <monster name="Undertaker" file="vermins/undertaker.lua"/>
+    <monster name="Varnished Diremaw" file="vermins/varnished_diremaw.lua"/>
+    <monster name="Wailing Widow" file="vermins/wailing_widow.lua"/>
+    <monster name="Wasp" file="vermins/wasp.lua"/>
+    <monster name="Waspoid" file="vermins/waspoid.lua"/>
+    <monster name="Wiggler" file="vermins/wiggler.lua"/>
+    <monster name="Wild Fire Magic" file="wild_magics/wild_fire_magic.lua"/>
+    <monster name="Wild Fury Magic" file="wild_magics/wild_fury_magic.lua"/>
+    <monster name="Wild Nature Magic" file="wild_magics/wild_nature_magic.lua"/>
+    <monster name="Wild Water Magic" file="wild_magics/wild_water_magic.lua"/>
+    <monster name="Bone Bear" file="winter_update_2025/bone_bear.lua"/>
+    <monster name="Adlerauge" file="winter_update_2025/bosses/adlerauge.lua"/>
+    <monster name="Adventurer Group" file="winter_update_2025/bosses/adventurer_group.lua"/>
+    <monster name="Bone Overlord" file="winter_update_2025/bosses/bone_overlord.lua"/>
+    <monster name="Clavius" file="winter_update_2025/bosses/clavius.lua"/>
+    <monster name="Court Warlock" file="winter_update_2025/bosses/court_warlock.lua"/>
+    <monster name="Eldritch Dragon Lord" file="winter_update_2025/bosses/eldritch_dragon_lord.lua"/>
+    <monster name="Fiona Firstdream" file="winter_update_2025/bosses/fiona_firstdream.lua"/>
+    <monster name="Grendel Greenlunch" file="winter_update_2025/bosses/grendel_greenlunch.lua"/>
+    <monster name="Ice Horror" file="winter_update_2025/bosses/ice_horror.lua"/>
+    <monster name="Michael The Stalwart" file="winter_update_2025/bosses/michael_the_stalwart.lua"/>
+    <monster name="Nigel Neverguess" file="winter_update_2025/bosses/nigel_neverguess.lua"/>
+    <monster name="Overseer Osverger" file="winter_update_2025/bosses/overseer_osverger.lua"/>
+    <monster name="Percy Peacetinker" file="winter_update_2025/bosses/percy_peacetinker.lua"/>
+    <monster name="The Gravedigger" file="winter_update_2025/bosses/the_gravedigger.lua"/>
+    <monster name="Yorik Youngbook" file="winter_update_2025/bosses/yorik_youngbook.lua"/>
+    <monster name="Creepy Crawler" file="winter_update_2025/creepy_crawler.lua"/>
+    <monster name="Crypt Construct" file="winter_update_2025/crypt_construct.lua"/>
+    <monster name="Crypt Fiend" file="winter_update_2025/crypt_fiend.lua"/>
+    <monster name="Crypt Mage" file="winter_update_2025/crypt_mage.lua"/>
+    <monster name="Cyclursus" file="winter_update_2025/cyclursus.lua"/>
+    <monster name="Day Night Harpy" file="winter_update_2025/day_night_harpy.lua"/>
+    <monster name="Destrier" file="winter_update_2025/destrier.lua"/>
+    <monster name="Haunted Hunter" file="winter_update_2025/haunted_hunter.lua"/>
+    <monster name="Imperial" file="winter_update_2025/imperial.lua"/>
+    <monster name="Night Harpy" file="winter_update_2025/night_harpy.lua"/>
+    <monster name="An Eye" file="winter_update_2025/quests/an_eye.lua"/>
+    <monster name="Bone Barrier" file="winter_update_2025/quests/bone_barrier.lua"/>
+    <monster name="Bonelord Totem" file="winter_update_2025/quests/bonelord_totem.lua"/>
+    <monster name="Bonelords Phylactery" file="winter_update_2025/quests/bonelords_phylactery.lua"/>
+    <monster name="Bright Crystal" file="winter_update_2025/quests/bright_crystal.lua"/>
+    <monster name="Elyraxa Spirit" file="winter_update_2025/quests/elyraxa_spirit.lua"/>
+    <monster name="Elyraxs Soulcage" file="winter_update_2025/quests/elyraxs_soulcage.lua"/>
+    <monster name="Energised Raubritter" file="winter_update_2025/quests/energised_raubritter.lua"/>
+    <monster name="Enthralled Dragon" file="winter_update_2025/quests/enthralled_dragon.lua"/>
+    <monster name="Eruption" file="winter_update_2025/quests/eruption.lua"/>
+    <monster name="Fatal Bug" file="winter_update_2025/quests/fatal_bug.lua"/>
+    <monster name="Flame Totem" file="winter_update_2025/quests/flame_totem.lua"/>
+    <monster name="Frozen Raubritter" file="winter_update_2025/quests/frozen_raubritter.lua"/>
+    <monster name="Ice Blockade" file="winter_update_2025/quests/ice_blockade.lua"/>
+    <monster name="Ice Crawler" file="winter_update_2025/quests/ice_crawler.lua"/>
+    <monster name="Myzaretha Spirit" file="winter_update_2025/quests/myzaretha_spirit.lua"/>
+    <monster name="Myzareths Soulcage" file="winter_update_2025/quests/myzareths_soulcage.lua"/>
+    <monster name="Poisoned Raubritter" file="winter_update_2025/quests/poisoned_raubritter.lua"/>
+    <monster name="Pulsating Lava" file="winter_update_2025/quests/pulsating_lava.lua"/>
+    <monster name="Raging Raubritter" file="winter_update_2025/quests/raging_raubritter.lua"/>
+    <monster name="Scaritha Spirit" file="winter_update_2025/quests/scaritha_spirit.lua"/>
+    <monster name="Scariths Soulcage" file="winter_update_2025/quests/scariths_soulcage.lua"/>
+    <monster name="Tamed Frazzlemaw" file="winter_update_2025/quests/tamed_frazzlemaw.lua"/>
+    <monster name="Zharvorina Spirit" file="winter_update_2025/quests/zharvorina_spirit.lua"/>
+    <monster name="Zharvorins Soulcage" file="winter_update_2025/quests/zharvorins_soulcage.lua"/>
+    <monster name="Raubritter Chastener" file="winter_update_2025/raubritter_chastener.lua"/>
+    <monster name="Raubritter Marksman" file="winter_update_2025/raubritter_marksman.lua"/>
+    <monster name="Raubritter Skirmisher" file="winter_update_2025/raubritter_skirmisher.lua"/>
+    <monster name="Roaming Dread" file="winter_update_2025/roaming_dread.lua"/>
+    <monster name="Stag" file="winter_update_2025/stag.lua"/>
+    <monster name="Walking Dread" file="winter_update_2025/walking_dread.lua"/>
+</monsters>

@@ -1,0 +1,102 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\samatha\OneDrive\Desktop\agente_rme
+configfile: pyproject.toml
+plugins: anyio-4.13.0, cov-7.1.0
+collecting ... collected 81 items
+
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_executes_with_valid_prompt PASSED [  1%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_returns_plan_dict PASSED [  2%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_issavi_theme PASSED [  3%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_roshamuul_theme PASSED [  4%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_both_themes PASSED [  6%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_no_specific_theme PASSED [  7%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_respects_world_dimensions PASSED [  8%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_metrics_present PASSED [  9%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_empty_prompt_returns_error PASSED [ 11%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_none_prompt_returns_error PASSED [ 12%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_prompt_from_parameters PASSED [ 13%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_plan_has_themes PASSED [ 14%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_logger_uses_agent_id PASSED [ 16%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_issavi PASSED [ 17%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_roshamuul PASSED [ 18%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_both_themes PASSED [ 19%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_default PASSED [ 20%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_structure PASSED [ 22%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_path PASSED [ 23%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_handles_exception PASSED [ 24%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_get_architect_returns_cached PASSED [ 25%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_get_architect_fallback_on_import_error PASSED [ 27%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentHappyPath::test_mapper_executes_with_world_plan PASSED [ 28%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentHappyPath::test_mapper_input_from_context PASSED [ 29%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentHappyPath::test_mapper_with_tile_count_in_report PASSED [ 30%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentHappyPath::test_mapper_normalizes_list_tiles_to_dict PASSED [ 32%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentHappyPath::test_mapper_with_empty_world_plan PASSED [ 33%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentHappyPath::test_mapper_with_none_input PASSED [ 34%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_fallback_has_output PASSED [ 35%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_fallback_includes_theme PASSED [ 37%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_logger_uses_agent_id PASSED [ 38%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_with_invalid_world_plan PASSED [ 39%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_metrics_present PASSED [ 40%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_with_existing_tiles_dict PASSED [ 41%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_with_list_tiles PASSED [ 43%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_handles_exception PASSED [ 44%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_with_issavi_plan PASSED [ 45%]
+tests/agents/test_mapper_agent_coverage.py::TestMapperAgentErrorHandling::test_mapper_world_to_dict_preserves_data PASSED [ 46%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_executes_with_world PASSED [ 48%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_extracts_issavi_theme PASSED [ 49%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_extracts_roshamuul_theme PASSED [ 50%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_extracts_soul_war_theme PASSED [ 51%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_default_theme PASSED [ 53%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_with_explicit_theme PASSED [ 54%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_level_range_in_report PASSED [ 55%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentHappyPath::test_quest_with_world_in_context PASSED [ 56%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_with_none_input PASSED [ 58%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_with_empty_dict PASSED [ 59%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_logger_uses_agent_id PASSED [ 60%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_metrics_present PASSED [ 61%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_fallback_has_campaign_structure PASSED [ 62%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_extract_theme_library PASSED [ 64%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_extract_theme_falcon PASSED [ 65%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_extract_theme_cobra PASSED [ 66%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_extract_theme_darashia PASSED [ 67%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_extract_theme_case_insensitive PASSED [ 69%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_extract_theme_fallback PASSED [ 70%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_fallback_campaign_direct PASSED [ 71%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_resolve_world_with_dict PASSED [ 72%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_resolve_world_passthrough PASSED [ 74%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_get_generators_cached PASSED [ 75%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_handles_exception PASSED [ 76%]
+tests/agents/test_quest_agent_coverage.py::TestQuestAgentErrorHandling::test_quest_with_npc_count PASSED [ 77%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_executes_with_world PASSED [ 79%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_with_full_context PASSED [ 80%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_validates_world_model PASSED [ 81%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_validates_campaign PASSED [ 82%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_validates_playtest PASSED [ 83%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_validates_artifacts PASSED [ 85%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentHappyPath::test_qa_computes_overall_score PASSED [ 86%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_with_none_input PASSED [ 87%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_with_empty_dict PASSED [ 88%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_with_invalid_input PASSED [ 90%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_logger_uses_agent_id PASSED [ 91%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_metrics_present PASSED [ 92%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_empty_campaign_fails PASSED [ 93%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_handles_world_model_with_world_validator PASSED [ 95%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_with_artifacts_existing_files PASSED [ 96%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_playtest_with_full_data PASSED [ 97%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_validates_full_artifacts PASSED [ 98%]
+tests/agents/test_qa_agent_coverage.py::TestQAAgentErrorHandling::test_qa_handles_exception PASSED [100%]
+
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.14.5-final-0 _______________
+
+Name                                        Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------------
+agente_rme\core\agents\architect_agent.py      54      2    96%   69-70
+agente_rme\core\agents\mapper_agent.py         59      9    85%   34, 38-40, 64, 92, 108-109, 114
+agente_rme\core\agents\qa_agent.py             81     24    70%   39, 42-44, 75-83, 154-170
+agente_rme\core\agents\quest_agent.py          77     12    84%   41-43, 49-50, 81-86, 129-130
+-------------------------------------------------------------------------
+TOTAL                                         271     47    83%
+============================= 81 passed in 2.73s ==============================

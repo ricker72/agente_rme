@@ -1,0 +1,104 @@
+[
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "0e824807-ad9e-44a1-bd5e-f3cb82d4c769",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:49:27.251418"
+  },
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "0e824807-ad9e-44a1-bd5e-f3cb82d4c769",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:49:27.251418"
+  },
+  {
+    "prompt": "Compact desert city Issavi style",
+    "result_id": "c5cbb35c-2252-43eb-82a9-855d9f6ed1cf",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:49:31.346205"
+  },
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "0e824807-ad9e-44a1-bd5e-f3cb82d4c769",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:49:27.251418"
+  },
+  {
+    "prompt": "Compact desert city Issavi style",
+    "result_id": "c5cbb35c-2252-43eb-82a9-855d9f6ed1cf",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:49:31.346205"
+  },
+  {
+    "prompt": "Large endgame continent 3 cities 8 hunts 5 bosses 2 raids",
+    "result_id": "03425f68-4150-476e-a646-54a7d44d2780",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6034989845311948,
+      "playtest": 0.3,
+      "navigation": 0.45,
+      "density": 0.5995695677517712,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6034989845311948
+    ],
+    "timestamp": "2026-06-08T13:49:50.456447"
+  }
+]

@@ -1,0 +1,114 @@
+{
+  "pipeline": "agente_rme E2E Pipeline",
+  "timestamp": "2026-06-06T22:50:00",
+  "status": "VERIFIED - ALL CLEAR",
+  "summary": {
+    "prompt": "Create Issavi + Roshamuul expansion for levels 300-500 with 3 hunts, 2 bosses, a raid and a quest main",
+    "stages_completed": 13,
+    "stages_failed": 0,
+    "total_time_seconds": 0.336,
+    "world_tiles": 2500,
+    "world_regions": 1
+  },
+  "pipeline_stages": [
+    {
+      "stage": "parse_prompt",
+      "status": "PASSED",
+      "module": "core.prompt_interpreter.PromptInterpreter",
+      "details": "Themes resolved: Issavi, Roshamuul"
+    },
+    {
+      "stage": "generate_world",
+      "status": "PASSED",
+      "module": "core.world_engine.WorldGenerator",
+      "details": "2500 tiles generated"
+    },
+    {
+      "stage": "expand_world",
+      "status": "PASSED",
+      "module": "core.expansion.expansion_ai.ExpansionAI",
+      "details": "Regions expanded successfully"
+    },
+    {
+      "stage": "playtest",
+      "status": "PASSED",
+      "module": "core.playtest.playtest_engine.PlaytestEngine",
+      "details": "Playability report generated"
+    },
+    {
+      "stage": "balance",
+      "status": "PASSED",
+      "module": "core.balance.balance_engine.BalanceEngine",
+      "details": "World balanced"
+    },
+    {
+      "stage": "generate_campaign",
+      "status": "PASSED",
+      "module": "core.campaign.campaign_generator.CampaignGenerator",
+      "details": "Campaign with story, factions, NPCs, bosses, raids generated"
+    },
+    {
+      "stage": "preview",
+      "status": "PASSED",
+      "module": "core.preview.preview_generator.PreviewGenerator",
+      "details": "preview.png, minimap, ASCII report generated"
+    },
+    {
+      "stage": "lua_export",
+      "status": "PASSED",
+      "module": "core.lua.lua_generator.LuaGenerator",
+      "details": "185,012 bytes of RME-compatible Lua script"
+    },
+    {
+      "stage": "otbm_export",
+      "status": "PASSED",
+      "module": "core.otbm.OTBMExporter",
+      "details": "25,442 bytes, valid OTBM format"
+    },
+    {
+      "stage": "otbm_import",
+      "status": "PASSED",
+      "module": "core.otbm.OTBMImporter",
+      "details": "2500 tiles imported from OTBM binary"
+    },
+    {
+      "stage": "map_analysis",
+      "status": "PASSED",
+      "module": "core.analyzer.MapAnalyzer",
+      "details": "Tiles, floors, houses, waypoints, zones analyzed"
+    },
+    {
+      "stage": "evolution",
+      "status": "PASSED",
+      "module": "core.evolution.EvolutionEngine",
+      "details": "Patterns evolved"
+    },
+    {
+      "stage": "otbm_re_export",
+      "status": "PASSED",
+      "module": "core.otbm.OTBMExporter",
+      "details": "Round-trip validated successfully"
+    }
+  ],
+  "audit_metadata": {
+    "audit_timestamp": "2026-06-06T22:50:00",
+    "tests_total": 1249,
+    "tests_passed": 1249,
+    "tests_failed": 0,
+    "coverage_core": "54% (2,908 stmts)",
+    "coverage_global": "62% (23,938 stmts)",
+    "last_audit_previous_failures": 6,
+    "last_audit_current_failures": 0,
+    "legacy_issues_corrected": [
+      "test_sprint1_hunt_generator - HuntGenerator API fixed",
+      "test_sprint1_spawn_generator - HuntGenerator API fixed",
+      "test_sprint1_lua_generator - HuntGenerator API fixed",
+      "test_sprint1_preview_generator - HuntGenerator API fixed",
+      "test_balance_modules - BalanceEngine.analyze_zone() fixed",
+      "test_pipeline_cli - pipeline_runner.py fixed"
+    ],
+    "hito26_blocked": false,
+    "hito26_reason": "No blockers found. All 1249 tests pass (0 failures). Pipeline E2E: 13/13 stages PASSED. All Hitos 10-25 functional.",
+    "status": "ALL_CRITICAL_TESTS_GREEN"
+  }
+}

@@ -1,0 +1,5 @@
+<monsters>
+  <monster name="Crypt Warden" respawn="60" />
+  <monster name="Demon" respawn="60" />
+  <monster name="Skeleton" respawn="60" />
+</monsters>

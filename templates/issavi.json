@@ -1,0 +1,7 @@
+{
+  "theme": "issavi",
+  "grounds": [415, 393, 421],
+  "walls": [1495, 1496, 1497],
+  "decorations": [2153, 2117, 1803],
+  "monsters": ["Frazzlemaw", "Sphinx", "Cloak Of Terror"]
+}

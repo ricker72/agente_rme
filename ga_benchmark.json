@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-06-09T05:40:51.755568+00:00",
+  "version": "Agente RME v1.0.0 GA",
+  "benchmark": {
+    "count": 500,
+    "successful": 500,
+    "failed": 0,
+    "success_rate": 1.0,
+    "elapsed_seconds": 2.195,
+    "worlds_per_second": 227.84,
+    "score": {
+      "avg": 62.94,
+      "min": 62.94,
+      "max": 62.94
+    },
+    "generation_ms": {
+      "avg": 4.39,
+      "min": 2.94,
+      "max": 9.34
+    },
+    "memory_mb": {
+      "avg": 0.0,
+      "peak": 0.0
+    },
+    "cpu_percent_avg": 0.0,
+    "tiles": {
+      "avg": 144.0,
+      "min": 144,
+      "max": 144
+    },
+    "regions": {
+      "avg": 1.0,
+      "min": 1,
+      "max": 1
+    },
+    "failures_sample": []
+  },
+  "ga_status": "PASS"
+}

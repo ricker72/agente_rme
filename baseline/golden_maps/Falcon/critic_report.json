@@ -1,0 +1,431 @@
+{
+  "map_name": "falcon_150",
+  "overall_score": 68.7,
+  "visual_score": 68.44,
+  "navigation_score": 85.0,
+  "density_score": 58.86,
+  "spawn_score": 67.0,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 95.0,
+  "decor_score": 82.53,
+  "pathfinding_score": 84.2,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 68.44,
+      "max_value": 100.0,
+      "ratio": 0.6844,
+      "breakdown": {
+        "quantity": 11.62,
+        "content_ratio": 44.48,
+        "density": 100.0,
+        "variety": 100.0,
+        "consistency": 100.0,
+        "total_tiles": 625.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 58.86,
+      "max_value": 100.0,
+      "ratio": 0.5886,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 41.76,
+        "spawn_ratio": 4.8,
+        "concentration": 53.69,
+        "avg_items_per_tile": 1.25,
+        "max_items_per_tile": 5
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 67.0,
+      "max_value": 100.0,
+      "ratio": 0.67,
+      "breakdown": {
+        "density_score": 96.0,
+        "distance_score": 46.67,
+        "zone_coverage": 100.0,
+        "spawn_density": 4.8
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {
+        "hunt_count": 1.0,
+        "min_hunt_score": 50.0,
+        "max_hunt_score": 50.0
+      },
+      "notes": ""
+    },
+    "boss": {
+      "category": "boss",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No boss arenas detected"
+    },
+    "city": {
+      "category": "city",
+      "value": 95.0,
+      "max_value": 100.0,
+      "ratio": 0.95,
+      "breakdown": {
+        "city_count": 1.0,
+        "min_city_score": 95.0
+      },
+      "notes": ""
+    },
+    "decor": {
+      "category": "decor",
+      "value": 82.53,
+      "max_value": 100.0,
+      "ratio": 0.8253,
+      "breakdown": {
+        "variety_score": 100.0,
+        "repetition_score": 100.0,
+        "coverage": 41.76,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 22.0,
+      "max_value": 100.0,
+      "ratio": 0.22,
+      "breakdown": {
+        "region_count": 4.0,
+        "empty_regions": 4.0,
+        "level_issues": 0.0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 84.2,
+      "max_value": 100.0,
+      "ratio": 0.842,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 84.0,
+        "astar_path_length": 30.0
+      },
+      "notes": "Entry point: (16, 11, 7), reachable: 625/625"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,24,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(24,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,5)",
+      "message": "Spawn cluster of 4 creatures at (0, 5)",
+      "details": {
+        "cluster_size": 4
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(1,13)",
+      "message": "Spawn cluster of 2 creatures at (1, 13)",
+      "details": {
+        "cluster_size": 2
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(2,2)",
+      "message": "Spawn cluster of 2 creatures at (2, 2)",
+      "details": {
+        "cluster_size": 2
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "hunt_falcon",
+      "message": "Region 'hunt_falcon' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_falcon",
+      "message": "Region 'city_falcon' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_falcon_depot",
+      "message": "Region 'city_falcon_depot' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_falcon_temple",
+      "message": "Region 'city_falcon_temple' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(24,24,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(24,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Spread spawn clusters",
+      "description": "Some spawns are clustered very close together. Spread them out for better gameplay.",
+      "category": "spawn",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define boss arenas",
+      "description": "Add zones with names containing 'boss', 'arena', 'throne' or 'lair'.",
+      "category": "boss",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: hunt_falcon, city_falcon, city_falcon_depot, city_falcon_temple. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Reduce navigation bottlenecks",
+      "description": "Add secondary routes around bottleneck tiles to improve movement.",
+      "category": "pathfinding",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.0359,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 625,
+        "grounded_tiles": 625,
+        "useful_tiles": 278,
+        "content_ratio": 0.4448,
+        "avg_items_per_tile": 1.25,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.0064,
+        "total_grounded": 625
+      },
+      "density": {
+        "total_tiles": 625,
+        "grounded_tiles": 625,
+        "tiles_with_items": 261,
+        "tiles_with_spawns": 30,
+        "bbox_area": 625,
+        "zone_density": {
+          "unzoned": 0.4176
+        }
+      },
+      "spawn": {
+        "total_spawns": 30,
+        "grounded_tiles": 625,
+        "spawn_density": 0.048,
+        "min_distance": 2,
+        "max_distance": 6,
+        "avg_distance": 3.5,
+        "cluster_count": 8,
+        "zone_coverage": 1.0
+      },
+      "hunt": {
+        "hunts": 1,
+        "per_hunt": [
+          {
+            "name": "hunt_falcon",
+            "size": 0,
+            "spawns": 0,
+            "centroid": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "boss": {
+        "bosses": 0
+      },
+      "city": {
+        "cities": 1,
+        "per_city": [
+          {
+            "name": "city_falcon",
+            "services": {
+              "depot": 1,
+              "temple": 1
+            },
+            "tiles": 0,
+            "street_score": 100.0,
+            "depot_score": 100.0,
+            "temple_score": 100.0,
+            "npc_score": 50.0
+          }
+        ]
+      },
+      "decor": {
+        "variety": 526,
+        "total_items": 780,
+        "repetition_ratio": 0.0064,
+        "coverage": 0.4176,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 750
+      },
+      "region": {
+        "region_count": 4,
+        "empty_regions": [
+          "hunt_falcon",
+          "city_falcon",
+          "city_falcon_depot",
+          "city_falcon_temple"
+        ],
+        "level_issues": 0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "pathfinding": {
+        "walkable_tiles": 625,
+        "reachable_tiles": 625,
+        "reach_ratio": 1.0,
+        "astar_path_length": 30,
+        "bottleneck_count": 4,
+        "entry_point": [
+          16,
+          11,
+          7
+        ],
+        "max_distance": 29.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T15:14:21.922478",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T15:14:21.923061"
+  }
+}

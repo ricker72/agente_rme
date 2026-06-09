@@ -1,0 +1,20 @@
+{
+  "tiles": 10517,
+  "items": 10517,
+  "spawns": 0,
+  "houses": 0,
+  "waypoints": 0,
+  "otbm_bytes": 65559,
+  "validation": {
+    "passed": false,
+    "errors": [
+      "Validation error at offset 21: unpack_from requires a buffer of at least 65560 bytes for unpacking 2 bytes at offset 65558 (actual buffer size is 65559)"
+    ],
+    "warnings": []
+  },
+  "status": "warning",
+  "files": {
+    "otbm": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\output\\hito26_1_benchmark\\run_1\\generated.otbm",
+    "monster_xml": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\output\\hito26_1_benchmark\\run_1\\generated.monster.xml"
+  }
+}

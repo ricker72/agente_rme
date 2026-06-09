@@ -1,0 +1,3 @@
+<monsters>
+  <monster name="Dragon" respawn="60" />
+</monsters>

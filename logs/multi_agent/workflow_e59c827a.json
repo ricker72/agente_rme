@@ -1,0 +1,93 @@
+{
+  "workflow_id": "e59c827a",
+  "prompt": "Test",
+  "status": "completed",
+  "tasks": {
+    "56e33aac": {
+      "task_id": "56e33aac",
+      "agent_id": "architect",
+      "status": "completed",
+      "created_at": "2026-06-08T16:20:22.347469+00:00",
+      "completed_at": "2026-06-08T16:20:22.353448+00:00",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "architect",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 8.106231689453125e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-08T16:20:22.353411+00:00",
+        "recovery_used": false
+      }
+    },
+    "c63c42d8": {
+      "task_id": "c63c42d8",
+      "agent_id": "mapper",
+      "status": "completed",
+      "created_at": "2026-06-08T16:20:22.361243+00:00",
+      "completed_at": "2026-06-08T16:20:22.434286+00:00",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "mapper",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.07171463966369629
+        },
+        "artifacts": {},
+        "report": {
+          "tile_count": 2500,
+          "structure_count": 1
+        },
+        "timestamp": "2026-06-08T16:20:22.433819+00:00",
+        "recovery_used": false
+      }
+    },
+    "f0249082": {
+      "task_id": "f0249082",
+      "agent_id": "quest",
+      "status": "completed",
+      "created_at": "2026-06-08T16:20:22.436873+00:00",
+      "completed_at": "2026-06-08T16:20:22.520509+00:00",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "quest",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.08242654800415039
+        },
+        "artifacts": {},
+        "report": {
+          "theme": "default",
+          "level_range": [
+            1,
+            200
+          ],
+          "status": "ok",
+          "errors": []
+        },
+        "timestamp": "2026-06-08T16:20:22.520490+00:00",
+        "recovery_used": false
+      }
+    }
+  },
+  "current_agent": "quest",
+  "errors": [],
+  "started_at": "2026-06-08T16:20:22.345619+00:00",
+  "completed_at": "2026-06-08T16:20:22.523835+00:00",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "quest"
+  ]
+}

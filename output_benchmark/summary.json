@@ -1,0 +1,128 @@
+{
+  "prompt": "Crear expansi\u00f3n Issavi + Roshamuul\npara niveles 300-500\n\n3 hunts\n2 bosses\n1 raid\nquest principal",
+  "runs": [
+    {
+      "run": 1,
+      "elapsed": 3.15,
+      "success": true,
+      "workflow_id": "2c3cdaec",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "artifacts": [
+        "playtest_report",
+        "preview.json",
+        "preview.png",
+        "preview_json",
+        "preview_minimap",
+        "preview_png",
+        "qa_report",
+        "report"
+      ],
+      "errors": [],
+      "agent_success_rate": 100.0
+    },
+    {
+      "run": 2,
+      "elapsed": 2.16,
+      "success": true,
+      "workflow_id": "eeaf88d7",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "artifacts": [
+        "playtest_report",
+        "preview.json",
+        "preview.png",
+        "preview_json",
+        "preview_minimap",
+        "preview_png",
+        "qa_report",
+        "report"
+      ],
+      "errors": [],
+      "agent_success_rate": 100.0
+    },
+    {
+      "run": 3,
+      "elapsed": 2.06,
+      "success": true,
+      "workflow_id": "1feab6f9",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "artifacts": [
+        "playtest_report",
+        "preview.json",
+        "preview.png",
+        "preview_json",
+        "preview_minimap",
+        "preview_png",
+        "qa_report",
+        "report"
+      ],
+      "errors": [],
+      "agent_success_rate": 100.0
+    },
+    {
+      "run": 4,
+      "elapsed": 2.08,
+      "success": true,
+      "workflow_id": "8b398c8b",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "artifacts": [
+        "playtest_report",
+        "preview.json",
+        "preview.png",
+        "preview_json",
+        "preview_minimap",
+        "preview_png",
+        "qa_report",
+        "report"
+      ],
+      "errors": [],
+      "agent_success_rate": 100.0
+    },
+    {
+      "run": 5,
+      "elapsed": 2.26,
+      "success": true,
+      "workflow_id": "72a6cbe3",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "artifacts": [
+        "playtest_report",
+        "preview.json",
+        "preview.png",
+        "preview_json",
+        "preview_minimap",
+        "preview_png",
+        "qa_report",
+        "report"
+      ],
+      "errors": [],
+      "agent_success_rate": 100.0
+    }
+  ],
+  "total_runs": 5,
+  "successful_runs": 5,
+  "avg_elapsed": 2.34,
+  "avg_tiles": 10517.0,
+  "differences": {
+    "unique_workflow_ids": 5,
+    "unique_tile_counts": 1
+  }
+}

@@ -1,0 +1,5002 @@
+[
+  {
+    "blueprint_name": "bench_bp_99",
+    "critic_score": 99.0,
+    "playtest_score": 93.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 70.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_199",
+    "critic_score": 99.0,
+    "playtest_score": 93.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 70.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_299",
+    "critic_score": 99.0,
+    "playtest_score": 93.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 70.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_399",
+    "critic_score": 99.0,
+    "playtest_score": 93.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 70.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_499",
+    "critic_score": 99.0,
+    "playtest_score": 93.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 70.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_98",
+    "critic_score": 98.0,
+    "playtest_score": 86.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 68.83,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_198",
+    "critic_score": 98.0,
+    "playtest_score": 86.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 68.83,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_298",
+    "critic_score": 98.0,
+    "playtest_score": 86.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 68.83,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_398",
+    "critic_score": 98.0,
+    "playtest_score": 86.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 68.83,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_498",
+    "critic_score": 98.0,
+    "playtest_score": 86.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 68.83,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_85",
+    "critic_score": 85.0,
+    "playtest_score": 95.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 67.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_185",
+    "critic_score": 85.0,
+    "playtest_score": 95.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 67.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_285",
+    "critic_score": 85.0,
+    "playtest_score": 95.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 67.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_385",
+    "critic_score": 85.0,
+    "playtest_score": 95.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 67.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_485",
+    "critic_score": 85.0,
+    "playtest_score": 95.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 67.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_97",
+    "critic_score": 97.0,
+    "playtest_score": 79.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 66.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_197",
+    "critic_score": 97.0,
+    "playtest_score": 79.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 66.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_297",
+    "critic_score": 97.0,
+    "playtest_score": 79.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 66.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_397",
+    "critic_score": 97.0,
+    "playtest_score": 79.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 66.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_497",
+    "critic_score": 97.0,
+    "playtest_score": 79.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 66.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_84",
+    "critic_score": 84.0,
+    "playtest_score": 88.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 65.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_184",
+    "critic_score": 84.0,
+    "playtest_score": 88.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 65.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_284",
+    "critic_score": 84.0,
+    "playtest_score": 88.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 65.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_384",
+    "critic_score": 84.0,
+    "playtest_score": 88.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 65.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_484",
+    "critic_score": 84.0,
+    "playtest_score": 88.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 65.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_96",
+    "critic_score": 96.0,
+    "playtest_score": 72.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 64.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_196",
+    "critic_score": 96.0,
+    "playtest_score": 72.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 64.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_296",
+    "critic_score": 96.0,
+    "playtest_score": 72.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 64.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_396",
+    "critic_score": 96.0,
+    "playtest_score": 72.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 64.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_496",
+    "critic_score": 96.0,
+    "playtest_score": 72.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 64.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_71",
+    "critic_score": 71.0,
+    "playtest_score": 97.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 63.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_171",
+    "critic_score": 71.0,
+    "playtest_score": 97.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 63.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_271",
+    "critic_score": 71.0,
+    "playtest_score": 97.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 63.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_371",
+    "critic_score": 71.0,
+    "playtest_score": 97.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 63.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_471",
+    "critic_score": 71.0,
+    "playtest_score": 97.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 63.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_83",
+    "critic_score": 83.0,
+    "playtest_score": 81.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 63.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_183",
+    "critic_score": 83.0,
+    "playtest_score": 81.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 63.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_283",
+    "critic_score": 83.0,
+    "playtest_score": 81.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 63.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_383",
+    "critic_score": 83.0,
+    "playtest_score": 81.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 63.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_483",
+    "critic_score": 83.0,
+    "playtest_score": 81.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 63.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_95",
+    "critic_score": 95.0,
+    "playtest_score": 65.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 62.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_195",
+    "critic_score": 95.0,
+    "playtest_score": 65.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 62.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_295",
+    "critic_score": 95.0,
+    "playtest_score": 65.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 62.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_395",
+    "critic_score": 95.0,
+    "playtest_score": 65.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 62.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_495",
+    "critic_score": 95.0,
+    "playtest_score": 65.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 62.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_70",
+    "critic_score": 70.0,
+    "playtest_score": 90.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_170",
+    "critic_score": 70.0,
+    "playtest_score": 90.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_270",
+    "critic_score": 70.0,
+    "playtest_score": 90.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_370",
+    "critic_score": 70.0,
+    "playtest_score": 90.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_470",
+    "critic_score": 70.0,
+    "playtest_score": 90.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_82",
+    "critic_score": 82.0,
+    "playtest_score": 74.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_182",
+    "critic_score": 82.0,
+    "playtest_score": 74.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_282",
+    "critic_score": 82.0,
+    "playtest_score": 74.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_382",
+    "critic_score": 82.0,
+    "playtest_score": 74.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_482",
+    "critic_score": 82.0,
+    "playtest_score": 74.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 61.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_94",
+    "critic_score": 94.0,
+    "playtest_score": 58.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 60.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_194",
+    "critic_score": 94.0,
+    "playtest_score": 58.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 60.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_294",
+    "critic_score": 94.0,
+    "playtest_score": 58.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 60.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_394",
+    "critic_score": 94.0,
+    "playtest_score": 58.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 60.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_494",
+    "critic_score": 94.0,
+    "playtest_score": 58.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 60.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_57",
+    "critic_score": 57.0,
+    "playtest_score": 99.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_157",
+    "critic_score": 57.0,
+    "playtest_score": 99.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_257",
+    "critic_score": 57.0,
+    "playtest_score": 99.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_357",
+    "critic_score": 57.0,
+    "playtest_score": 99.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_457",
+    "critic_score": 57.0,
+    "playtest_score": 99.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_69",
+    "critic_score": 69.0,
+    "playtest_score": 83.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_169",
+    "critic_score": 69.0,
+    "playtest_score": 83.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_269",
+    "critic_score": 69.0,
+    "playtest_score": 83.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_369",
+    "critic_score": 69.0,
+    "playtest_score": 83.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_469",
+    "critic_score": 69.0,
+    "playtest_score": 83.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 59.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_81",
+    "critic_score": 81.0,
+    "playtest_score": 67.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 59.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_181",
+    "critic_score": 81.0,
+    "playtest_score": 67.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 59.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_281",
+    "critic_score": 81.0,
+    "playtest_score": 67.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 59.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_381",
+    "critic_score": 81.0,
+    "playtest_score": 67.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 59.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_481",
+    "critic_score": 81.0,
+    "playtest_score": 67.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 59.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_93",
+    "critic_score": 93.0,
+    "playtest_score": 51.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 58.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_193",
+    "critic_score": 93.0,
+    "playtest_score": 51.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 58.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_293",
+    "critic_score": 93.0,
+    "playtest_score": 51.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 58.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_393",
+    "critic_score": 93.0,
+    "playtest_score": 51.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 58.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_493",
+    "critic_score": 93.0,
+    "playtest_score": 51.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 58.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_56",
+    "critic_score": 56.0,
+    "playtest_score": 92.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 57.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_156",
+    "critic_score": 56.0,
+    "playtest_score": 92.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 57.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_256",
+    "critic_score": 56.0,
+    "playtest_score": 92.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 57.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_356",
+    "critic_score": 56.0,
+    "playtest_score": 92.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 57.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_456",
+    "critic_score": 56.0,
+    "playtest_score": 92.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 57.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_68",
+    "critic_score": 68.0,
+    "playtest_score": 76.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 57.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_168",
+    "critic_score": 68.0,
+    "playtest_score": 76.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 57.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_268",
+    "critic_score": 68.0,
+    "playtest_score": 76.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 57.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_368",
+    "critic_score": 68.0,
+    "playtest_score": 76.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 57.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_468",
+    "critic_score": 68.0,
+    "playtest_score": 76.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 57.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_80",
+    "critic_score": 80.0,
+    "playtest_score": 60.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_180",
+    "critic_score": 80.0,
+    "playtest_score": 60.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_280",
+    "critic_score": 80.0,
+    "playtest_score": 60.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_380",
+    "critic_score": 80.0,
+    "playtest_score": 60.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_480",
+    "critic_score": 80.0,
+    "playtest_score": 60.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_92",
+    "critic_score": 92.0,
+    "playtest_score": 44.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_192",
+    "critic_score": 92.0,
+    "playtest_score": 44.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_292",
+    "critic_score": 92.0,
+    "playtest_score": 44.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_392",
+    "critic_score": 92.0,
+    "playtest_score": 44.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_492",
+    "critic_score": 92.0,
+    "playtest_score": 44.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 56.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_55",
+    "critic_score": 55.0,
+    "playtest_score": 85.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_155",
+    "critic_score": 55.0,
+    "playtest_score": 85.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_255",
+    "critic_score": 55.0,
+    "playtest_score": 85.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_355",
+    "critic_score": 55.0,
+    "playtest_score": 85.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_455",
+    "critic_score": 55.0,
+    "playtest_score": 85.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_67",
+    "critic_score": 67.0,
+    "playtest_score": 69.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_167",
+    "critic_score": 67.0,
+    "playtest_score": 69.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_267",
+    "critic_score": 67.0,
+    "playtest_score": 69.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_367",
+    "critic_score": 67.0,
+    "playtest_score": 69.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_467",
+    "critic_score": 67.0,
+    "playtest_score": 69.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 55.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_79",
+    "critic_score": 79.0,
+    "playtest_score": 53.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_179",
+    "critic_score": 79.0,
+    "playtest_score": 53.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_279",
+    "critic_score": 79.0,
+    "playtest_score": 53.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_379",
+    "critic_score": 79.0,
+    "playtest_score": 53.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_479",
+    "critic_score": 79.0,
+    "playtest_score": 53.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_91",
+    "critic_score": 91.0,
+    "playtest_score": 37.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 54.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_191",
+    "critic_score": 91.0,
+    "playtest_score": 37.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 54.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_291",
+    "critic_score": 91.0,
+    "playtest_score": 37.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 54.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_391",
+    "critic_score": 91.0,
+    "playtest_score": 37.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 54.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_491",
+    "critic_score": 91.0,
+    "playtest_score": 37.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 54.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_42",
+    "critic_score": 42.0,
+    "playtest_score": 94.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_142",
+    "critic_score": 42.0,
+    "playtest_score": 94.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_242",
+    "critic_score": 42.0,
+    "playtest_score": 94.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_342",
+    "critic_score": 42.0,
+    "playtest_score": 94.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_442",
+    "critic_score": 42.0,
+    "playtest_score": 94.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 54.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_54",
+    "critic_score": 54.0,
+    "playtest_score": 78.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 53.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_154",
+    "critic_score": 54.0,
+    "playtest_score": 78.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 53.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_254",
+    "critic_score": 54.0,
+    "playtest_score": 78.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 53.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_354",
+    "critic_score": 54.0,
+    "playtest_score": 78.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 53.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_454",
+    "critic_score": 54.0,
+    "playtest_score": 78.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 53.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_66",
+    "critic_score": 66.0,
+    "playtest_score": 62.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 53.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_166",
+    "critic_score": 66.0,
+    "playtest_score": 62.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 53.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_266",
+    "critic_score": 66.0,
+    "playtest_score": 62.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 53.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_366",
+    "critic_score": 66.0,
+    "playtest_score": 62.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 53.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_466",
+    "critic_score": 66.0,
+    "playtest_score": 62.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 53.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_78",
+    "critic_score": 78.0,
+    "playtest_score": 46.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_178",
+    "critic_score": 78.0,
+    "playtest_score": 46.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_278",
+    "critic_score": 78.0,
+    "playtest_score": 46.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_378",
+    "critic_score": 78.0,
+    "playtest_score": 46.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_478",
+    "critic_score": 78.0,
+    "playtest_score": 46.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_90",
+    "critic_score": 90.0,
+    "playtest_score": 30.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_190",
+    "critic_score": 90.0,
+    "playtest_score": 30.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_290",
+    "critic_score": 90.0,
+    "playtest_score": 30.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_390",
+    "critic_score": 90.0,
+    "playtest_score": 30.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_490",
+    "critic_score": 90.0,
+    "playtest_score": 30.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 52.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_41",
+    "critic_score": 41.0,
+    "playtest_score": 87.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 52.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_141",
+    "critic_score": 41.0,
+    "playtest_score": 87.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 52.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_241",
+    "critic_score": 41.0,
+    "playtest_score": 87.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 52.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_341",
+    "critic_score": 41.0,
+    "playtest_score": 87.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 52.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_441",
+    "critic_score": 41.0,
+    "playtest_score": 87.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 52.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_53",
+    "critic_score": 53.0,
+    "playtest_score": 71.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_153",
+    "critic_score": 53.0,
+    "playtest_score": 71.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_253",
+    "critic_score": 53.0,
+    "playtest_score": 71.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_353",
+    "critic_score": 53.0,
+    "playtest_score": 71.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_453",
+    "critic_score": 53.0,
+    "playtest_score": 71.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_65",
+    "critic_score": 65.0,
+    "playtest_score": 55.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_165",
+    "critic_score": 65.0,
+    "playtest_score": 55.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_265",
+    "critic_score": 65.0,
+    "playtest_score": 55.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_365",
+    "critic_score": 65.0,
+    "playtest_score": 55.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_465",
+    "critic_score": 65.0,
+    "playtest_score": 55.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 51.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_77",
+    "critic_score": 77.0,
+    "playtest_score": 39.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_177",
+    "critic_score": 77.0,
+    "playtest_score": 39.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_277",
+    "critic_score": 77.0,
+    "playtest_score": 39.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_377",
+    "critic_score": 77.0,
+    "playtest_score": 39.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_477",
+    "critic_score": 77.0,
+    "playtest_score": 39.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_89",
+    "critic_score": 89.0,
+    "playtest_score": 23.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_189",
+    "critic_score": 89.0,
+    "playtest_score": 23.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_289",
+    "critic_score": 89.0,
+    "playtest_score": 23.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_389",
+    "critic_score": 89.0,
+    "playtest_score": 23.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_489",
+    "critic_score": 89.0,
+    "playtest_score": 23.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_28",
+    "critic_score": 28.0,
+    "playtest_score": 96.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_128",
+    "critic_score": 28.0,
+    "playtest_score": 96.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_228",
+    "critic_score": 28.0,
+    "playtest_score": 96.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_328",
+    "critic_score": 28.0,
+    "playtest_score": 96.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_428",
+    "critic_score": 28.0,
+    "playtest_score": 96.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 50.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_40",
+    "critic_score": 40.0,
+    "playtest_score": 80.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_140",
+    "critic_score": 40.0,
+    "playtest_score": 80.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_240",
+    "critic_score": 40.0,
+    "playtest_score": 80.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_340",
+    "critic_score": 40.0,
+    "playtest_score": 80.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_440",
+    "critic_score": 40.0,
+    "playtest_score": 80.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_52",
+    "critic_score": 52.0,
+    "playtest_score": 64.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_152",
+    "critic_score": 52.0,
+    "playtest_score": 64.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_252",
+    "critic_score": 52.0,
+    "playtest_score": 64.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_352",
+    "critic_score": 52.0,
+    "playtest_score": 64.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_452",
+    "critic_score": 52.0,
+    "playtest_score": 64.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_64",
+    "critic_score": 64.0,
+    "playtest_score": 48.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_164",
+    "critic_score": 64.0,
+    "playtest_score": 48.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_264",
+    "critic_score": 64.0,
+    "playtest_score": 48.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_364",
+    "critic_score": 64.0,
+    "playtest_score": 48.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_464",
+    "critic_score": 64.0,
+    "playtest_score": 48.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 49.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_76",
+    "critic_score": 76.0,
+    "playtest_score": 32.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 48.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_176",
+    "critic_score": 76.0,
+    "playtest_score": 32.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 48.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_276",
+    "critic_score": 76.0,
+    "playtest_score": 32.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 48.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_376",
+    "critic_score": 76.0,
+    "playtest_score": 32.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 48.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_476",
+    "critic_score": 76.0,
+    "playtest_score": 32.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 48.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_88",
+    "critic_score": 88.0,
+    "playtest_score": 16.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_188",
+    "critic_score": 88.0,
+    "playtest_score": 16.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_288",
+    "critic_score": 88.0,
+    "playtest_score": 16.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_388",
+    "critic_score": 88.0,
+    "playtest_score": 16.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_488",
+    "critic_score": 88.0,
+    "playtest_score": 16.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_27",
+    "critic_score": 27.0,
+    "playtest_score": 89.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_127",
+    "critic_score": 27.0,
+    "playtest_score": 89.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_227",
+    "critic_score": 27.0,
+    "playtest_score": 89.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_327",
+    "critic_score": 27.0,
+    "playtest_score": 89.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_427",
+    "critic_score": 27.0,
+    "playtest_score": 89.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 48.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_39",
+    "critic_score": 39.0,
+    "playtest_score": 73.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_139",
+    "critic_score": 39.0,
+    "playtest_score": 73.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_239",
+    "critic_score": 39.0,
+    "playtest_score": 73.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_339",
+    "critic_score": 39.0,
+    "playtest_score": 73.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_439",
+    "critic_score": 39.0,
+    "playtest_score": 73.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_51",
+    "critic_score": 51.0,
+    "playtest_score": 57.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 47.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_151",
+    "critic_score": 51.0,
+    "playtest_score": 57.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 47.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_251",
+    "critic_score": 51.0,
+    "playtest_score": 57.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 47.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_351",
+    "critic_score": 51.0,
+    "playtest_score": 57.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 47.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_451",
+    "critic_score": 51.0,
+    "playtest_score": 57.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 47.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_63",
+    "critic_score": 63.0,
+    "playtest_score": 41.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_163",
+    "critic_score": 63.0,
+    "playtest_score": 41.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_263",
+    "critic_score": 63.0,
+    "playtest_score": 41.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_363",
+    "critic_score": 63.0,
+    "playtest_score": 41.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_463",
+    "critic_score": 63.0,
+    "playtest_score": 41.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 47.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_75",
+    "critic_score": 75.0,
+    "playtest_score": 25.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_175",
+    "critic_score": 75.0,
+    "playtest_score": 25.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_275",
+    "critic_score": 75.0,
+    "playtest_score": 25.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_375",
+    "critic_score": 75.0,
+    "playtest_score": 25.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_475",
+    "critic_score": 75.0,
+    "playtest_score": 25.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_14",
+    "critic_score": 14.0,
+    "playtest_score": 98.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_114",
+    "critic_score": 14.0,
+    "playtest_score": 98.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_214",
+    "critic_score": 14.0,
+    "playtest_score": 98.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_314",
+    "critic_score": 14.0,
+    "playtest_score": 98.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_414",
+    "critic_score": 14.0,
+    "playtest_score": 98.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_26",
+    "critic_score": 26.0,
+    "playtest_score": 82.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 46.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_126",
+    "critic_score": 26.0,
+    "playtest_score": 82.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 46.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_226",
+    "critic_score": 26.0,
+    "playtest_score": 82.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 46.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_326",
+    "critic_score": 26.0,
+    "playtest_score": 82.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 46.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_426",
+    "critic_score": 26.0,
+    "playtest_score": 82.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 46.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_87",
+    "critic_score": 87.0,
+    "playtest_score": 9.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_187",
+    "critic_score": 87.0,
+    "playtest_score": 9.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_287",
+    "critic_score": 87.0,
+    "playtest_score": 9.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_387",
+    "critic_score": 87.0,
+    "playtest_score": 9.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_487",
+    "critic_score": 87.0,
+    "playtest_score": 9.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 46.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_38",
+    "critic_score": 38.0,
+    "playtest_score": 66.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_138",
+    "critic_score": 38.0,
+    "playtest_score": 66.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_238",
+    "critic_score": 38.0,
+    "playtest_score": 66.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_338",
+    "critic_score": 38.0,
+    "playtest_score": 66.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_438",
+    "critic_score": 38.0,
+    "playtest_score": 66.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_50",
+    "critic_score": 50.0,
+    "playtest_score": 50.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_150",
+    "critic_score": 50.0,
+    "playtest_score": 50.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_250",
+    "critic_score": 50.0,
+    "playtest_score": 50.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_350",
+    "critic_score": 50.0,
+    "playtest_score": 50.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_450",
+    "critic_score": 50.0,
+    "playtest_score": 50.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_62",
+    "critic_score": 62.0,
+    "playtest_score": 34.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_162",
+    "critic_score": 62.0,
+    "playtest_score": 34.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_262",
+    "critic_score": 62.0,
+    "playtest_score": 34.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_362",
+    "critic_score": 62.0,
+    "playtest_score": 34.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_462",
+    "critic_score": 62.0,
+    "playtest_score": 34.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 45.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_74",
+    "critic_score": 74.0,
+    "playtest_score": 18.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_174",
+    "critic_score": 74.0,
+    "playtest_score": 18.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_274",
+    "critic_score": 74.0,
+    "playtest_score": 18.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_374",
+    "critic_score": 74.0,
+    "playtest_score": 18.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_474",
+    "critic_score": 74.0,
+    "playtest_score": 18.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_13",
+    "critic_score": 13.0,
+    "playtest_score": 91.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_113",
+    "critic_score": 13.0,
+    "playtest_score": 91.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_213",
+    "critic_score": 13.0,
+    "playtest_score": 91.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_313",
+    "critic_score": 13.0,
+    "playtest_score": 91.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_413",
+    "critic_score": 13.0,
+    "playtest_score": 91.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_86",
+    "critic_score": 86.0,
+    "playtest_score": 2.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 44.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_186",
+    "critic_score": 86.0,
+    "playtest_score": 2.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 44.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_286",
+    "critic_score": 86.0,
+    "playtest_score": 2.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 44.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_386",
+    "critic_score": 86.0,
+    "playtest_score": 2.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 44.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_486",
+    "critic_score": 86.0,
+    "playtest_score": 2.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 44.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_25",
+    "critic_score": 25.0,
+    "playtest_score": 75.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_125",
+    "critic_score": 25.0,
+    "playtest_score": 75.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_225",
+    "critic_score": 25.0,
+    "playtest_score": 75.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_325",
+    "critic_score": 25.0,
+    "playtest_score": 75.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_425",
+    "critic_score": 25.0,
+    "playtest_score": 75.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 44.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_37",
+    "critic_score": 37.0,
+    "playtest_score": 59.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_137",
+    "critic_score": 37.0,
+    "playtest_score": 59.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_237",
+    "critic_score": 37.0,
+    "playtest_score": 59.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_337",
+    "critic_score": 37.0,
+    "playtest_score": 59.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_437",
+    "critic_score": 37.0,
+    "playtest_score": 59.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.77,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_49",
+    "critic_score": 49.0,
+    "playtest_score": 43.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_149",
+    "critic_score": 49.0,
+    "playtest_score": 43.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_249",
+    "critic_score": 49.0,
+    "playtest_score": 43.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_349",
+    "critic_score": 49.0,
+    "playtest_score": 43.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_449",
+    "critic_score": 49.0,
+    "playtest_score": 43.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 43.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_61",
+    "critic_score": 61.0,
+    "playtest_score": 27.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 43.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_161",
+    "critic_score": 61.0,
+    "playtest_score": 27.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 43.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_261",
+    "critic_score": 61.0,
+    "playtest_score": 27.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 43.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_361",
+    "critic_score": 61.0,
+    "playtest_score": 27.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 43.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_461",
+    "critic_score": 61.0,
+    "playtest_score": 27.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 43.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_73",
+    "critic_score": 73.0,
+    "playtest_score": 11.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_173",
+    "critic_score": 73.0,
+    "playtest_score": 11.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_273",
+    "critic_score": 73.0,
+    "playtest_score": 11.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_373",
+    "critic_score": 73.0,
+    "playtest_score": 11.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_473",
+    "critic_score": 73.0,
+    "playtest_score": 11.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_12",
+    "critic_score": 12.0,
+    "playtest_score": 84.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_112",
+    "critic_score": 12.0,
+    "playtest_score": 84.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_212",
+    "critic_score": 12.0,
+    "playtest_score": 84.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_312",
+    "critic_score": 12.0,
+    "playtest_score": 84.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_412",
+    "critic_score": 12.0,
+    "playtest_score": 84.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_24",
+    "critic_score": 24.0,
+    "playtest_score": 68.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_124",
+    "critic_score": 24.0,
+    "playtest_score": 68.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_224",
+    "critic_score": 24.0,
+    "playtest_score": 68.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_324",
+    "critic_score": 24.0,
+    "playtest_score": 68.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_424",
+    "critic_score": 24.0,
+    "playtest_score": 68.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 42.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_36",
+    "critic_score": 36.0,
+    "playtest_score": 52.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 41.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_136",
+    "critic_score": 36.0,
+    "playtest_score": 52.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 41.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_236",
+    "critic_score": 36.0,
+    "playtest_score": 52.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 41.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_336",
+    "critic_score": 36.0,
+    "playtest_score": 52.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 41.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_436",
+    "critic_score": 36.0,
+    "playtest_score": 52.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 41.97,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_48",
+    "critic_score": 48.0,
+    "playtest_score": 36.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 41.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_148",
+    "critic_score": 48.0,
+    "playtest_score": 36.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 41.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_248",
+    "critic_score": 48.0,
+    "playtest_score": 36.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 41.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_348",
+    "critic_score": 48.0,
+    "playtest_score": 36.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 41.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_448",
+    "critic_score": 48.0,
+    "playtest_score": 36.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 41.32,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_60",
+    "critic_score": 60.0,
+    "playtest_score": 20.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_160",
+    "critic_score": 60.0,
+    "playtest_score": 20.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_260",
+    "critic_score": 60.0,
+    "playtest_score": 20.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_360",
+    "critic_score": 60.0,
+    "playtest_score": 20.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_460",
+    "critic_score": 60.0,
+    "playtest_score": 20.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_11",
+    "critic_score": 11.0,
+    "playtest_score": 77.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 40.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_111",
+    "critic_score": 11.0,
+    "playtest_score": 77.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 40.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_211",
+    "critic_score": 11.0,
+    "playtest_score": 77.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 40.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_311",
+    "critic_score": 11.0,
+    "playtest_score": 77.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 40.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_411",
+    "critic_score": 11.0,
+    "playtest_score": 77.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 40.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_72",
+    "critic_score": 72.0,
+    "playtest_score": 4.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_172",
+    "critic_score": 72.0,
+    "playtest_score": 4.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_272",
+    "critic_score": 72.0,
+    "playtest_score": 4.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_372",
+    "critic_score": 72.0,
+    "playtest_score": 4.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_472",
+    "critic_score": 72.0,
+    "playtest_score": 4.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_23",
+    "critic_score": 23.0,
+    "playtest_score": 61.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_123",
+    "critic_score": 23.0,
+    "playtest_score": 61.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_223",
+    "critic_score": 23.0,
+    "playtest_score": 61.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_323",
+    "critic_score": 23.0,
+    "playtest_score": 61.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_423",
+    "critic_score": 23.0,
+    "playtest_score": 61.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 40.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_35",
+    "critic_score": 35.0,
+    "playtest_score": 45.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_135",
+    "critic_score": 35.0,
+    "playtest_score": 45.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_235",
+    "critic_score": 35.0,
+    "playtest_score": 45.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_335",
+    "critic_score": 35.0,
+    "playtest_score": 45.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_435",
+    "critic_score": 35.0,
+    "playtest_score": 45.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.67,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_47",
+    "critic_score": 47.0,
+    "playtest_score": 29.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_147",
+    "critic_score": 47.0,
+    "playtest_score": 29.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_247",
+    "critic_score": 47.0,
+    "playtest_score": 29.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_347",
+    "critic_score": 47.0,
+    "playtest_score": 29.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_447",
+    "critic_score": 47.0,
+    "playtest_score": 29.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 39.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_59",
+    "critic_score": 59.0,
+    "playtest_score": 13.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_159",
+    "critic_score": 59.0,
+    "playtest_score": 13.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_259",
+    "critic_score": 59.0,
+    "playtest_score": 13.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_359",
+    "critic_score": 59.0,
+    "playtest_score": 13.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_459",
+    "critic_score": 59.0,
+    "playtest_score": 13.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_10",
+    "critic_score": 10.0,
+    "playtest_score": 70.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_110",
+    "critic_score": 10.0,
+    "playtest_score": 70.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_210",
+    "critic_score": 10.0,
+    "playtest_score": 70.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_310",
+    "critic_score": 10.0,
+    "playtest_score": 70.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_410",
+    "critic_score": 10.0,
+    "playtest_score": 70.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.42,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_22",
+    "critic_score": 22.0,
+    "playtest_score": 54.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_122",
+    "critic_score": 22.0,
+    "playtest_score": 54.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_222",
+    "critic_score": 22.0,
+    "playtest_score": 54.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_322",
+    "critic_score": 22.0,
+    "playtest_score": 54.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_422",
+    "critic_score": 22.0,
+    "playtest_score": 54.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 38.02,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_34",
+    "critic_score": 34.0,
+    "playtest_score": 38.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 37.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_134",
+    "critic_score": 34.0,
+    "playtest_score": 38.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 37.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_234",
+    "critic_score": 34.0,
+    "playtest_score": 38.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 37.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_334",
+    "critic_score": 34.0,
+    "playtest_score": 38.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 37.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_434",
+    "critic_score": 34.0,
+    "playtest_score": 38.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 37.62,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_46",
+    "critic_score": 46.0,
+    "playtest_score": 22.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 37.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_146",
+    "critic_score": 46.0,
+    "playtest_score": 22.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 37.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_246",
+    "critic_score": 46.0,
+    "playtest_score": 22.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 37.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_346",
+    "critic_score": 46.0,
+    "playtest_score": 22.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 37.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_446",
+    "critic_score": 46.0,
+    "playtest_score": 22.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 37.47,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_58",
+    "critic_score": 58.0,
+    "playtest_score": 6.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_158",
+    "critic_score": 58.0,
+    "playtest_score": 6.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_258",
+    "critic_score": 58.0,
+    "playtest_score": 6.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_358",
+    "critic_score": 58.0,
+    "playtest_score": 6.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_458",
+    "critic_score": 58.0,
+    "playtest_score": 6.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_9",
+    "critic_score": 9.0,
+    "playtest_score": 63.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_109",
+    "critic_score": 9.0,
+    "playtest_score": 63.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_209",
+    "critic_score": 9.0,
+    "playtest_score": 63.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_309",
+    "critic_score": 9.0,
+    "playtest_score": 63.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_409",
+    "critic_score": 9.0,
+    "playtest_score": 63.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 36.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_21",
+    "critic_score": 21.0,
+    "playtest_score": 47.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 36.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_121",
+    "critic_score": 21.0,
+    "playtest_score": 47.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 36.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_221",
+    "critic_score": 21.0,
+    "playtest_score": 47.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 36.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_321",
+    "critic_score": 21.0,
+    "playtest_score": 47.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 36.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_421",
+    "critic_score": 21.0,
+    "playtest_score": 47.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 36.22,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_33",
+    "critic_score": 33.0,
+    "playtest_score": 31.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_133",
+    "critic_score": 33.0,
+    "playtest_score": 31.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_233",
+    "critic_score": 33.0,
+    "playtest_score": 31.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_333",
+    "critic_score": 33.0,
+    "playtest_score": 31.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_433",
+    "critic_score": 33.0,
+    "playtest_score": 31.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.57,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_45",
+    "critic_score": 45.0,
+    "playtest_score": 15.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_145",
+    "critic_score": 45.0,
+    "playtest_score": 15.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_245",
+    "critic_score": 45.0,
+    "playtest_score": 15.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_345",
+    "critic_score": 45.0,
+    "playtest_score": 15.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_445",
+    "critic_score": 45.0,
+    "playtest_score": 15.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 35.17,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_8",
+    "critic_score": 8.0,
+    "playtest_score": 56.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 34.33,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_108",
+    "critic_score": 8.0,
+    "playtest_score": 56.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 34.33,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_208",
+    "critic_score": 8.0,
+    "playtest_score": 56.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 34.33,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_308",
+    "critic_score": 8.0,
+    "playtest_score": 56.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 34.33,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_408",
+    "critic_score": 8.0,
+    "playtest_score": 56.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 34.33,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_20",
+    "critic_score": 20.0,
+    "playtest_score": 40.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_120",
+    "critic_score": 20.0,
+    "playtest_score": 40.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_220",
+    "critic_score": 20.0,
+    "playtest_score": 40.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_320",
+    "critic_score": 20.0,
+    "playtest_score": 40.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_420",
+    "critic_score": 20.0,
+    "playtest_score": 40.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.92,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_32",
+    "critic_score": 32.0,
+    "playtest_score": 24.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_132",
+    "critic_score": 32.0,
+    "playtest_score": 24.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_232",
+    "critic_score": 32.0,
+    "playtest_score": 24.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_332",
+    "critic_score": 32.0,
+    "playtest_score": 24.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_432",
+    "critic_score": 32.0,
+    "playtest_score": 24.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.52,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_44",
+    "critic_score": 44.0,
+    "playtest_score": 8.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_144",
+    "critic_score": 44.0,
+    "playtest_score": 8.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_244",
+    "critic_score": 44.0,
+    "playtest_score": 8.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_344",
+    "critic_score": 44.0,
+    "playtest_score": 8.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_444",
+    "critic_score": 44.0,
+    "playtest_score": 8.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 33.12,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_7",
+    "critic_score": 7.0,
+    "playtest_score": 49.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 32.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_107",
+    "critic_score": 7.0,
+    "playtest_score": 49.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 32.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_207",
+    "critic_score": 7.0,
+    "playtest_score": 49.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 32.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_307",
+    "critic_score": 7.0,
+    "playtest_score": 49.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 32.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_407",
+    "critic_score": 7.0,
+    "playtest_score": 49.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 32.27,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_19",
+    "critic_score": 19.0,
+    "playtest_score": 33.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_119",
+    "critic_score": 19.0,
+    "playtest_score": 33.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_219",
+    "critic_score": 19.0,
+    "playtest_score": 33.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_319",
+    "critic_score": 19.0,
+    "playtest_score": 33.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_419",
+    "critic_score": 19.0,
+    "playtest_score": 33.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.88,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_31",
+    "critic_score": 31.0,
+    "playtest_score": 17.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 31.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_131",
+    "critic_score": 31.0,
+    "playtest_score": 17.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 31.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_231",
+    "critic_score": 31.0,
+    "playtest_score": 17.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 31.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_331",
+    "critic_score": 31.0,
+    "playtest_score": 17.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 31.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_431",
+    "critic_score": 31.0,
+    "playtest_score": 17.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 31.72,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_43",
+    "critic_score": 43.0,
+    "playtest_score": 1.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_143",
+    "critic_score": 43.0,
+    "playtest_score": 1.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_243",
+    "critic_score": 43.0,
+    "playtest_score": 1.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_343",
+    "critic_score": 43.0,
+    "playtest_score": 1.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_443",
+    "critic_score": 43.0,
+    "playtest_score": 1.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 31.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_6",
+    "critic_score": 6.0,
+    "playtest_score": 42.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 30.48,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_106",
+    "critic_score": 6.0,
+    "playtest_score": 42.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 30.48,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_206",
+    "critic_score": 6.0,
+    "playtest_score": 42.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 30.48,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_306",
+    "critic_score": 6.0,
+    "playtest_score": 42.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 30.48,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_406",
+    "critic_score": 6.0,
+    "playtest_score": 42.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 30.48,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_18",
+    "critic_score": 18.0,
+    "playtest_score": 26.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_118",
+    "critic_score": 18.0,
+    "playtest_score": 26.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_218",
+    "critic_score": 18.0,
+    "playtest_score": 26.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_318",
+    "critic_score": 18.0,
+    "playtest_score": 26.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_418",
+    "critic_score": 18.0,
+    "playtest_score": 26.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.82,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_30",
+    "critic_score": 30.0,
+    "playtest_score": 10.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.43,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_130",
+    "critic_score": 30.0,
+    "playtest_score": 10.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.43,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_230",
+    "critic_score": 30.0,
+    "playtest_score": 10.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.43,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_330",
+    "critic_score": 30.0,
+    "playtest_score": 10.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.43,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_430",
+    "critic_score": 30.0,
+    "playtest_score": 10.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 29.43,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_5",
+    "critic_score": 5.0,
+    "playtest_score": 35.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 28.18,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_105",
+    "critic_score": 5.0,
+    "playtest_score": 35.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 28.18,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_205",
+    "critic_score": 5.0,
+    "playtest_score": 35.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 28.18,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_305",
+    "critic_score": 5.0,
+    "playtest_score": 35.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 28.18,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_405",
+    "critic_score": 5.0,
+    "playtest_score": 35.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 28.18,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_17",
+    "critic_score": 17.0,
+    "playtest_score": 19.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.78,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_117",
+    "critic_score": 17.0,
+    "playtest_score": 19.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.78,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_217",
+    "critic_score": 17.0,
+    "playtest_score": 19.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.78,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_317",
+    "critic_score": 17.0,
+    "playtest_score": 19.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.78,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_417",
+    "critic_score": 17.0,
+    "playtest_score": 19.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.78,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_29",
+    "critic_score": 29.0,
+    "playtest_score": 3.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_129",
+    "critic_score": 29.0,
+    "playtest_score": 3.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_229",
+    "critic_score": 29.0,
+    "playtest_score": 3.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_329",
+    "critic_score": 29.0,
+    "playtest_score": 3.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_429",
+    "critic_score": 29.0,
+    "playtest_score": 3.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 27.38,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_4",
+    "critic_score": 4.0,
+    "playtest_score": 28.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 26.13,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_104",
+    "critic_score": 4.0,
+    "playtest_score": 28.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 26.13,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_204",
+    "critic_score": 4.0,
+    "playtest_score": 28.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 26.13,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_304",
+    "critic_score": 4.0,
+    "playtest_score": 28.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 26.13,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_404",
+    "critic_score": 4.0,
+    "playtest_score": 28.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 26.13,
+    "category": "raid"
+  },
+  {
+    "blueprint_name": "bench_bp_16",
+    "critic_score": 16.0,
+    "playtest_score": 12.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 25.98,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_116",
+    "critic_score": 16.0,
+    "playtest_score": 12.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 25.98,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_216",
+    "critic_score": 16.0,
+    "playtest_score": 12.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 25.98,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_316",
+    "critic_score": 16.0,
+    "playtest_score": 12.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 25.98,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_416",
+    "critic_score": 16.0,
+    "playtest_score": 12.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 25.98,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_3",
+    "critic_score": 3.0,
+    "playtest_score": 21.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 24.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_103",
+    "critic_score": 3.0,
+    "playtest_score": 21.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 24.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_203",
+    "critic_score": 3.0,
+    "playtest_score": 21.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 24.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_303",
+    "critic_score": 3.0,
+    "playtest_score": 21.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 24.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_403",
+    "critic_score": 3.0,
+    "playtest_score": 21.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 24.07,
+    "category": "dungeon"
+  },
+  {
+    "blueprint_name": "bench_bp_15",
+    "critic_score": 15.0,
+    "playtest_score": 5.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 23.68,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_115",
+    "critic_score": 15.0,
+    "playtest_score": 5.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 23.68,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_215",
+    "critic_score": 15.0,
+    "playtest_score": 5.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 23.68,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_315",
+    "critic_score": 15.0,
+    "playtest_score": 5.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 23.68,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_415",
+    "critic_score": 15.0,
+    "playtest_score": 5.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 23.68,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_2",
+    "critic_score": 2.0,
+    "playtest_score": 14.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 22.03,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_102",
+    "critic_score": 2.0,
+    "playtest_score": 14.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 22.03,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_202",
+    "critic_score": 2.0,
+    "playtest_score": 14.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 22.03,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_302",
+    "critic_score": 2.0,
+    "playtest_score": 14.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 22.03,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_402",
+    "critic_score": 2.0,
+    "playtest_score": 14.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 22.03,
+    "category": "boss_room"
+  },
+  {
+    "blueprint_name": "bench_bp_1",
+    "critic_score": 1.0,
+    "playtest_score": 7.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 20.23,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_101",
+    "critic_score": 1.0,
+    "playtest_score": 7.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 20.23,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_201",
+    "critic_score": 1.0,
+    "playtest_score": 7.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 20.23,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_301",
+    "critic_score": 1.0,
+    "playtest_score": 7.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 20.23,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_401",
+    "critic_score": 1.0,
+    "playtest_score": 7.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 36.67,
+    "complexity_score": 24.5,
+    "overall_rank": 20.23,
+    "category": "city"
+  },
+  {
+    "blueprint_name": "bench_bp_0",
+    "critic_score": 0.0,
+    "playtest_score": 0.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 17.93,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_100",
+    "critic_score": 0.0,
+    "playtest_score": 0.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 17.93,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_200",
+    "critic_score": 0.0,
+    "playtest_score": 0.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 17.93,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_300",
+    "critic_score": 0.0,
+    "playtest_score": 0.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 17.93,
+    "category": "hunt"
+  },
+  {
+    "blueprint_name": "bench_bp_400",
+    "critic_score": 0.0,
+    "playtest_score": 0.0,
+    "reuse_score": 60.0,
+    "knowledge_score": 35.0,
+    "complexity_score": 24.5,
+    "overall_rank": 17.93,
+    "category": "hunt"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "workflow_id": "04b33859",
+  "prompt": "Test",
+  "status": "completed",
+  "tasks": {
+    "b4590189": {
+      "task_id": "b4590189",
+      "agent_id": "architect",
+      "status": "completed",
+      "created_at": "2026-06-07T05:53:42.574248",
+      "completed_at": "2026-06-07T05:53:42.576515",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "architect",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.00014352798461914062
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:53:42.576392",
+        "recovery_used": false
+      }
+    }
+  },
+  "current_agent": "architect",
+  "errors": [],
+  "started_at": "2026-06-07T05:53:42.572442",
+  "completed_at": "2026-06-07T05:53:42.583388",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "quest"
+  ]
+}

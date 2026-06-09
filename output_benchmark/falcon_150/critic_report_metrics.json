@@ -1,0 +1,18 @@
+{
+  "map_name": "falcon_150",
+  "overall_score": 68.69772849807627,
+  "visual_score": 68.44323232323232,
+  "navigation_score": 85.0,
+  "density_score": 58.85740619288394,
+  "spawn_score": 67.0,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 95.0,
+  "decor_score": 82.528,
+  "pathfinding_score": 84.2,
+  "issue_count": 13,
+  "recommendation_count": 4,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:21.923061",
+  "version": "1.0"
+}

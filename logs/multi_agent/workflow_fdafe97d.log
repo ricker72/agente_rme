@@ -1,0 +1,26 @@
+{"event": "workflow_start", "workflow_id": "fdafe97d", "prompt": "Generate Issavi expansion", "pipeline": ["architect", "mapper", "expansion", "quest", "playtest", "balance", "qa", "export"], "timestamp": "2026-06-07T06:58:41.131900"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "architect", "timestamp": "2026-06-07T06:58:41.133202"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "architect", "duration": 0.0014622211456298828, "timestamp": "2026-06-07T06:58:41.135632"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "architect", "status": "completed", "timestamp": "2026-06-07T06:58:41.136400"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "mapper", "timestamp": "2026-06-07T06:58:41.137819"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "mapper", "duration": 0.030290603637695312, "timestamp": "2026-06-07T06:58:41.168992"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "mapper", "status": "completed", "timestamp": "2026-06-07T06:58:41.170272"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "expansion", "timestamp": "2026-06-07T06:58:41.171209"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "expansion", "duration": 0.22313928604125977, "timestamp": "2026-06-07T06:58:41.395313"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "expansion", "status": "completed", "timestamp": "2026-06-07T06:58:41.396224"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "quest", "timestamp": "2026-06-07T06:58:41.397085"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "quest", "duration": 0.00043964385986328125, "timestamp": "2026-06-07T06:58:41.398355"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "quest", "status": "completed", "timestamp": "2026-06-07T06:58:41.399189"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "playtest", "timestamp": "2026-06-07T06:58:41.400248"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "playtest", "duration": 0.8026309013366699, "timestamp": "2026-06-07T06:58:42.203836"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "playtest", "status": "completed", "timestamp": "2026-06-07T06:58:42.204853"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "balance", "timestamp": "2026-06-07T06:58:42.205909"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "balance", "duration": 0.11228227615356445, "timestamp": "2026-06-07T06:58:42.319238"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "balance", "status": "completed", "timestamp": "2026-06-07T06:58:42.320169"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "qa", "timestamp": "2026-06-07T06:58:42.321033"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "qa", "duration": 0.0006794929504394531, "timestamp": "2026-06-07T06:58:42.322580"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "qa", "status": "completed", "timestamp": "2026-06-07T06:58:42.323432"}
+{"event": "agent_start", "workflow_id": "fdafe97d", "agent_id": "export", "timestamp": "2026-06-07T06:58:42.324290"}
+{"event": "agent_success", "workflow_id": "fdafe97d", "agent_id": "export", "duration": 0.5338270664215088, "timestamp": "2026-06-07T06:58:42.858991"}
+{"event": "agent_end", "workflow_id": "fdafe97d", "agent_id": "export", "status": "completed", "timestamp": "2026-06-07T06:58:42.859964"}
+{"event": "workflow_end", "workflow_id": "fdafe97d", "success": true, "errors": [], "metrics": {"execution_time": 1.728961706161499, "agent_times": {"architect": 0.0014622211456298828, "mapper": 0.030290603637695312, "expansion": 0.22313928604125977, "quest": 0.00043964385986328125, "playtest": 0.8026309013366699, "balance": 0.11228227615356445, "qa": 0.0006794929504394531, "export": 0.5338270664215088}, "agent_failures": [], "agent_success_rate": 100.0, "total_agents": 8, "successful_agents": 8}, "timestamp": "2026-06-07T06:58:42.905012"}

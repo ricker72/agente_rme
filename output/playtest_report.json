@@ -1,0 +1,59 @@
+{
+  "playable": false,
+  "difficulty": "trivial",
+  "xp_hour": 430309,
+  "loot_hour": 86061,
+  "deaths": 140,
+  "issues": [
+    "Zone 'hunt_default' has very low spawn density (0.2/100 tiles)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Knight has excessive deaths. Consider class-specific balance.",
+    "Dead zones (hunt_default) provide no value. Remove or rebalance.",
+    "Too many deaths (140 > 10/hr). Zone is unplayable.",
+    "No monster spawns found in any zone. World is empty."
+  ],
+  "recommendations": [
+    "Increase spawn density to keep players engaged.",
+    "Monster levels too low for target audience."
+  ],
+  "metrics": {
+    "survival_rate": 0.8,
+    "progression_smoothness": 0.867,
+    "difficulty_score": 1.9,
+    "zone_count": 1,
+    "total_spawns": 0
+  },
+  "vocation_results": {
+    "knight": {
+      "xp_per_hour": 105000.0,
+      "deaths": 140,
+      "monsters_killed": 30,
+      "damage_per_second": 246.82555555555555
+    },
+    "paladin": {
+      "xp_per_hour": 588000.0,
+      "deaths": 0,
+      "monsters_killed": 147,
+      "damage_per_second": 139.35194444444446
+    },
+    "druid": {
+      "xp_per_hour": 461103.41003604105,
+      "deaths": 0,
+      "monsters_killed": 133,
+      "damage_per_second": 176.62212364846133
+    },
+    "sorcerer": {
+      "xp_per_hour": 517842.32365145226,
+      "deaths": 0,
+      "monsters_killed": 149,
+      "damage_per_second": 199.47275242047027
+    },
+    "monk": {
+      "xp_per_hour": 479600.33305578685,
+      "deaths": 0,
+      "monsters_killed": 121,
+      "damage_per_second": 113.30113794060505
+    }
+  },
+  "timestamp": "2026-06-08T14:25:14.091270Z"
+}

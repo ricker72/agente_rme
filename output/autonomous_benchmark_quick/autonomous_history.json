@@ -1,0 +1,257 @@
+[
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "52b584f1-1a14-495b-86cf-90617794839f",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:47:11.581886"
+  },
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "52b584f1-1a14-495b-86cf-90617794839f",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:47:11.581886"
+  },
+  {
+    "prompt": "Compact desert city Issavi style",
+    "result_id": "fc1b4ab9-5783-482c-ba1c-997924d1a361",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:17.434565"
+  },
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "52b584f1-1a14-495b-86cf-90617794839f",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:47:11.581886"
+  },
+  {
+    "prompt": "Compact desert city Issavi style",
+    "result_id": "fc1b4ab9-5783-482c-ba1c-997924d1a361",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:17.434565"
+  },
+  {
+    "prompt": "Large endgame continent 3 cities 8 hunts 5 bosses 2 raids",
+    "result_id": "dd949f33-bb05-43fe-aa87-895692a4e6f6",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6034989845311948,
+      "playtest": 0.3,
+      "navigation": 0.45,
+      "density": 0.5995695677517712,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6034989845311948
+    ],
+    "timestamp": "2026-06-08T13:47:45.595476"
+  },
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "52b584f1-1a14-495b-86cf-90617794839f",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:47:11.581886"
+  },
+  {
+    "prompt": "Compact desert city Issavi style",
+    "result_id": "fc1b4ab9-5783-482c-ba1c-997924d1a361",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:17.434565"
+  },
+  {
+    "prompt": "Large endgame continent 3 cities 8 hunts 5 bosses 2 raids",
+    "result_id": "dd949f33-bb05-43fe-aa87-895692a4e6f6",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6034989845311948,
+      "playtest": 0.3,
+      "navigation": 0.45,
+      "density": 0.5995695677517712,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6034989845311948
+    ],
+    "timestamp": "2026-06-08T13:47:45.595476"
+  },
+  {
+    "prompt": "Forest hunt area level 200-300 2 hunts",
+    "result_id": "55652fd3-7769-4132-a2f4-b105e0472209",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.7,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:51.057392"
+  },
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+    "result_id": "52b584f1-1a14-495b-86cf-90617794839f",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6591388443780534
+    ],
+    "timestamp": "2026-06-08T13:47:11.581886"
+  },
+  {
+    "prompt": "Compact desert city Issavi style",
+    "result_id": "fc1b4ab9-5783-482c-ba1c-997924d1a361",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:17.434565"
+  },
+  {
+    "prompt": "Large endgame continent 3 cities 8 hunts 5 bosses 2 raids",
+    "result_id": "dd949f33-bb05-43fe-aa87-895692a4e6f6",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6034989845311948,
+      "playtest": 0.3,
+      "navigation": 0.45,
+      "density": 0.5995695677517712,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6034989845311948
+    ],
+    "timestamp": "2026-06-08T13:47:45.595476"
+  },
+  {
+    "prompt": "Forest hunt area level 200-300 2 hunts",
+    "result_id": "55652fd3-7769-4132-a2f4-b105e0472209",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.7,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:51.057392"
+  },
+  {
+    "prompt": "Ice dragon boss arena level 400 1 boss",
+    "result_id": "de60e432-605c-46d2-bedb-ff295a9d7b60",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.7,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T13:47:59.242411"
+  }
+]

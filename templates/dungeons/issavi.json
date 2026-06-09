@@ -1,0 +1,7 @@
+{
+  "floors": [415, 416],
+  "walls": [1495, 1496],
+  "decorations": [2153, 2117],
+  "monsters": ["Hydra", "Demon", "Vampire"],
+  "bosses": ["Hydra", "Dragon"]
+}

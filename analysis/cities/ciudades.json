@@ -1,0 +1,34 @@
+{
+  "source": "Ciudades.otbm",
+  "type": "unknown",
+  "size": {
+    "width": 150,
+    "height": 120
+  },
+  "tile_summary": {
+    "floor": 6200,
+    "walls": 950,
+    "water": 180
+  },
+  "room_count": 24,
+  "style": "issavi-inspired",
+  "monster_density": 0.13,
+  "spawn_regions": [
+    {
+      "area": "northeast_gate",
+      "monsters": [
+        "witch",
+        "orc"
+      ],
+      "density": 0.12
+    },
+    {
+      "area": "central_plaza",
+      "monsters": [
+        "minotaur",
+        "gnarlhound"
+      ],
+      "density": 0.18
+    }
+  ]
+}

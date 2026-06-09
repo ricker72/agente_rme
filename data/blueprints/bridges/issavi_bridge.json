@@ -1,0 +1,41 @@
+{
+  "name": "issavi_bridge",
+  "category": "bridge",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [6, 20],
+  "description": "Puente colgante Issavi sobre agua, con columnas decorativas y antorchas",
+  "layout": {
+    "type": "suspension",
+    "direction": "north_south",
+    "span": 20,
+    "width": 4,
+    "clearance": 2
+  },
+  "segments": [
+    {"from": [0, 0], "to": [0, 20], "width": 4, "ground": "wooden_planks", "type": "deck"},
+    {"from": [1, 0], "to": [1, 20], "width": 1, "ground": "wooden_planks", "type": "railing_left"},
+    {"from": [4, 0], "to": [4, 20], "width": 1, "ground": "wooden_planks", "type": "railing_right"}
+  ],
+  "supports": [
+    {"position": [2, 0], "type": "pillar", "item_id": 1545},
+    {"position": [2, 10], "type": "pillar", "item_id": 1545},
+    {"position": [2, 20], "type": "pillar", "item_id": 1545}
+  ],
+  "features": [
+    {"type": "torch", "position": [1, 5], "item_id": 2050},
+    {"type": "torch", "position": [4, 5], "item_id": 2050},
+    {"type": "torch", "position": [1, 15], "item_id": 2050},
+    {"type": "torch", "position": [4, 15], "item_id": 2050}
+  ],
+  "grounds": [420, 415],
+  "decorations": [1545, 2050, 2052],
+  "water_under": 493,
+  "metadata": {
+    "style": "issavi",
+    "span": "20_tiles",
+    "era": "modern",
+    "traffic": "medium",
+    "tags": ["bridge", "suspension", "wooden", "water", "torches"]
+  }
+}

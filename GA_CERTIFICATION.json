@@ -1,0 +1,24 @@
+{
+  "product": "Agente RME",
+  "version": "1.0.0",
+  "status": "GA",
+  "build": "GENERAL AVAILABILITY",
+  "release_date": "2026-06-09T05:50:48.998504+00:00",
+  "checks": {
+    "all_tests_pass": true,
+    "coverage_maintained": true,
+    "no_crashes": true,
+    "no_otbm_corruption": true,
+    "cli_stable": true,
+    "installer_functional": true,
+    "health_checks_pass": true,
+    "recovery_pass": true,
+    "observability_pass": true
+  },
+  "overall_pass": true,
+  "signoff": {
+    "release_manager": "Agente RME Release Engineering",
+    "qa": "Auto-cert pipeline",
+    "support_tier": "STANDARD"
+  }
+}

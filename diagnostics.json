@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-06-09T05:45:01.736403+00:00",
+  "python": "3.14.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cwd": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme",
+  "project_root": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme",
+  "uptime_seconds": 0.23802423477172852,
+  "file_counts": {
+    "logs": 778,
+    "output": 320,
+    "exports": 0,
+    "release": 17
+  },
+  "recent_errors": [],
+  "config_present": {
+    "config/production.yaml": true,
+    "config/development.yaml": true,
+    "config/default.yaml": true,
+    "config.json": true,
+    "pyproject.toml": true,
+    "requirements.txt": true,
+    "requirements-lock.txt": true
+  },
+  "ollama_reachable": false
+}

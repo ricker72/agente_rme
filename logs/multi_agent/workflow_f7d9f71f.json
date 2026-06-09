@@ -1,0 +1,20 @@
+{
+  "workflow_id": "f7d9f71f",
+  "prompt": "Generate test map",
+  "status": "completed",
+  "tasks": {},
+  "current_agent": null,
+  "errors": [],
+  "started_at": "2026-06-07T05:53:41.913516",
+  "completed_at": "2026-06-07T05:53:41.916230",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

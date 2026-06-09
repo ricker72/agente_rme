@@ -1,0 +1,364 @@
+{
+  "map_name": "ancient_temple_300",
+  "overall_score": 67.25,
+  "visual_score": 80.83,
+  "navigation_score": 85.0,
+  "density_score": 73.1,
+  "spawn_score": 31.08,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 95.27,
+  "pathfinding_score": 84.59,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 80.83,
+      "max_value": 100.0,
+      "ratio": 0.8083,
+      "breakdown": {
+        "quantity": 23.74,
+        "content_ratio": 84.33,
+        "density": 100.0,
+        "variety": 100.0,
+        "consistency": 100.0,
+        "total_tiles": 1225.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 73.1,
+      "max_value": 100.0,
+      "ratio": 0.731,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 84.24,
+        "spawn_ratio": 0.41,
+        "concentration": 77.49,
+        "avg_items_per_tile": 2.56,
+        "max_items_per_tile": 5
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 31.08,
+      "max_value": 100.0,
+      "ratio": 0.3108,
+      "breakdown": {
+        "density_score": 8.16,
+        "distance_score": 40.0,
+        "zone_coverage": 100.0,
+        "spawn_density": 0.41
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {},
+      "notes": "No hunt zones identified"
+    },
+    "boss": {
+      "category": "boss",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No boss arenas detected"
+    },
+    "city": {
+      "category": "city",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No city zones identified"
+    },
+    "decor": {
+      "category": "decor",
+      "value": 95.27,
+      "max_value": 100.0,
+      "ratio": 0.9527,
+      "breakdown": {
+        "variety_score": 100.0,
+        "repetition_score": 100.0,
+        "coverage": 84.24,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 58.0,
+      "max_value": 100.0,
+      "ratio": 0.58,
+      "breakdown": {
+        "region_count": 1.0,
+        "empty_regions": 1.0,
+        "level_issues": 0.0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 84.59,
+      "max_value": 100.0,
+      "ratio": 0.8459,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 91.84,
+        "astar_path_length": 56.0
+      },
+      "notes": "Entry point: (21, 34, 7), reachable: 1225/1225"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,34,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(34,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "low_spawn_density",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "",
+      "message": "Spawn density 0.41% is below target 5%",
+      "details": {
+        "density": 0.004081632653061225,
+        "target": 0.05
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "ancient_temple",
+      "message": "Region 'ancient_temple' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(34,34,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,34,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Increase spawn density",
+      "description": "Add more monster spawns in hunt areas to reach the target density.",
+      "category": "spawn",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define hunt zones",
+      "description": "Add zones with names containing 'hunt', 'spawn', 'farm' or 'cave' to enable hunt analysis.",
+      "category": "hunt",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define boss arenas",
+      "description": "Add zones with names containing 'boss', 'arena', 'throne' or 'lair'.",
+      "category": "boss",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define city zones",
+      "description": "Add zones with names containing 'city', 'town', 'village', 'hub' or 'market'.",
+      "category": "city",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: ancient_temple. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Reduce navigation bottlenecks",
+      "description": "Add secondary routes around bottleneck tiles to improve movement.",
+      "category": "pathfinding",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.0688,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 1225,
+        "grounded_tiles": 1225,
+        "useful_tiles": 1033,
+        "content_ratio": 0.8433,
+        "avg_items_per_tile": 2.56,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.0033,
+        "total_grounded": 1225
+      },
+      "density": {
+        "total_tiles": 1225,
+        "grounded_tiles": 1225,
+        "tiles_with_items": 1032,
+        "tiles_with_spawns": 5,
+        "bbox_area": 1225,
+        "zone_density": {
+          "unzoned": 0.8424
+        }
+      },
+      "spawn": {
+        "total_spawns": 5,
+        "grounded_tiles": 1225,
+        "spawn_density": 0.0041,
+        "min_distance": 19,
+        "max_distance": 21,
+        "avg_distance": 20.2,
+        "cluster_count": 0,
+        "zone_coverage": 1.0
+      },
+      "hunt": {
+        "hunts": 0
+      },
+      "boss": {
+        "bosses": 0
+      },
+      "city": {
+        "cities": 0
+      },
+      "decor": {
+        "variety": 863,
+        "total_items": 3140,
+        "repetition_ratio": 0.0038,
+        "coverage": 0.8424,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 586
+      },
+      "region": {
+        "region_count": 1,
+        "empty_regions": [
+          "ancient_temple"
+        ],
+        "level_issues": 0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "pathfinding": {
+        "walkable_tiles": 1225,
+        "reachable_tiles": 1225,
+        "reach_ratio": 1.0,
+        "astar_path_length": 56,
+        "bottleneck_count": 4,
+        "entry_point": [
+          21,
+          34,
+          7
+        ],
+        "max_distance": 55.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T15:14:22.180039",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T15:14:22.180597"
+  }
+}

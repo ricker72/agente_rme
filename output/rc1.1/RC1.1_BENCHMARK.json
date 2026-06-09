@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-RC1.1",
+  "generated_at": "2026-06-09T03:54:23.852251+00:00",
+  "phase_durations": {
+    "Phase 3: Module Discovery": 2.2192633152008057,
+    "Phase 4: Real World Stress Test": 2.6556756496429443,
+    "Phase 5: Real OTBM Certification": 6.439233303070068,
+    "Phase 6: Real Autonomous Certification": 1.0836741924285889,
+    "Phase 7: Real Knowledge Validation": 1.415924072265625,
+    "Phase 8: Real Blueprint Validation": 1.558387041091919,
+    "Phase 9: Real Memory Profile": 1.5830957889556885,
+    "Phase 10: Real Performance Profile": 1.1974754333496094
+  },
+  "total_duration_s": 18.15272879600525
+}

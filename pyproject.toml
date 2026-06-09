@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agente-rme"
+version = "2.0.0"
+description = "OpenTibiaBR RME Map Agent — AI-powered Tibia map generator for RME"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "OpenTibiaBR RME Agent Team"}
+]
+keywords = ["tibia", "otbm", "map-generator", "open-tibia", "rme"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment :: Multi-User Dungeons (MUD)",
+]
+
+dependencies = [
+    "customtkinter>=5.2.1",
+    "ollama>=0.1.9",
+    "requests>=2.31.0",
+    "Pillow>=10.1.0",
+    "lxml>=4.9.3",
+    "numpy>=1.26.0",
+    "sentence-transformers>=2.2.2",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/opentibiabr/agente-rme"
+Documentation = "https://github.com/opentibiabr/agente-rme/tree/main/docs"
+Repository = "https://github.com/opentibiabr/agente-rme"
+
+[project.scripts]
+agente-rme = "cli:main"
+rme-agent = "cli:main"
+
+[tool.setuptools.packages.find]
+include = ["core*", "core.*", "ai*", "assets*", "rag*", "generators*"]
+exclude = ["tests*", "examples*", ".venv*", "installer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers"
+
+[tool.coverage.run]
+source = [
+    "core/exporters",
+    "core/generators",
+    "core/preview",
+    "core/world",
+    "config_manager",
+]
+
+[tool.coverage.report]
+fail_under = 0
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true

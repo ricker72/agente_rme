@@ -1,0 +1,8 @@
+Elapsed: 3.74
+Success: True
+Campaign type: <class 'dict'>
+Campaign is dict: True
+Campaign truthy: True
+Has theme: issavi
+Errors: []
+Artifacts: ['preview_png', 'preview_minimap', 'preview_json', 'preview.png', 'preview.json', 'otbm', 'lua', 'playtest_report', 'qa_report', 'report']

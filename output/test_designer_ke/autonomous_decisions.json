@@ -1,0 +1,197 @@
+[
+  {
+    "decision_id": "5c9a5697-0604-4e62-8d01-a428b25c3035",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_1",
+    "alternatives": [
+      "blueprint_hunt_2",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.6672556424541979,
+      "novelty": 0.7663201482986739,
+      "stability": 0.939148721783626
+    },
+    "total_score": 0.7795405794098883,
+    "reasoning": "Selected 'blueprint_hunt_1' for hunt region (fit=0.90, reuse=0.65, quality=0.67)",
+    "confidence": 0.8795405794098883,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:50.000080"
+  },
+  {
+    "decision_id": "0c5533d0-6313-42fe-90a7-5d15269a8d7d",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_Issavi Dunes 1_b",
+    "alternatives": [
+      "pattern_Issavi Dunes 1_a"
+    ],
+    "score_breakdown": {
+      "fit": 0.6,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.680187364970918,
+    "reasoning": "Pattern 'pattern_Issavi Dunes 1_b' matches hunt archetype",
+    "confidence": 0.680187364970918,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:50.000130"
+  },
+  {
+    "decision_id": "080b8110-bfa2-497e-81f4-8838e8b57eea",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_1",
+    "alternatives": [
+      "blueprint_hunt_2",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.6672556424541979,
+      "novelty": 0.7663201482986739,
+      "stability": 0.939148721783626
+    },
+    "total_score": 0.7795405794098883,
+    "reasoning": "Selected 'blueprint_hunt_1' for hunt region (fit=0.90, reuse=0.65, quality=0.67)",
+    "confidence": 0.8795405794098883,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:50.000247"
+  },
+  {
+    "decision_id": "8d8de449-a480-4c0b-ab10-397bfac67060",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_Issavi Dunes 2_b",
+    "alternatives": [
+      "pattern_Issavi Dunes 2_a"
+    ],
+    "score_breakdown": {
+      "fit": 0.5,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.6401873649709181,
+    "reasoning": "Pattern 'pattern_Issavi Dunes 2_b' matches hunt archetype",
+    "confidence": 0.6401873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:50.000293"
+  },
+  {
+    "decision_id": "d0adb891-7eb1-4294-af89-110359c8d410",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_1",
+    "alternatives": [
+      "blueprint_boss_2",
+      "blueprint_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.8025782970002031,
+    "reasoning": "Selected 'blueprint_boss_1' for boss region (fit=0.90, reuse=0.65, quality=0.86)",
+    "confidence": 0.9025782970002031,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:50.000398"
+  },
+  {
+    "decision_id": "c5c44ecc-0dcf-44ad-a862-61e6856377f6",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:50.000447"
+  },
+  {
+    "decision_id": "7247545b-c166-4903-a878-f76b1a320155",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_city_3",
+    "alternatives": [
+      "blueprint_city_1",
+      "blueprint_city_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8180367204045116,
+      "novelty": 0.796129718608269,
+      "stability": 0.794615708353783
+    },
+    "total_score": 0.7654511013594184,
+    "reasoning": "Selected 'blueprint_city_3' for city region (fit=0.80, reuse=0.65, quality=0.82)",
+    "confidence": 0.8654511013594184,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:50.000549"
+  },
+  {
+    "decision_id": "2d5b1aaa-b444-4ae7-988d-02dddf11372a",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "city_pattern_Issavi City",
+    "alternatives": [],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7364729428665657,
+    "reasoning": "Pattern 'city_pattern_Issavi City' matches city archetype",
+    "confidence": 0.7364729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:50.000588"
+  }
+]

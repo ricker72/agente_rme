@@ -1,0 +1,18 @@
+{
+  "map_name": "darashia_150",
+  "overall_score": 67.40141723481182,
+  "visual_score": 67.47664141414141,
+  "navigation_score": 85.0,
+  "density_score": 59.01720265114849,
+  "spawn_score": 57.5,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 95.0,
+  "decor_score": 83.275,
+  "pathfinding_score": 83.75,
+  "issue_count": 11,
+  "recommendation_count": 4,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:22.010625",
+  "version": "1.0"
+}

@@ -1,0 +1,49 @@
+{
+  "world_model": {
+    "valid": true,
+    "checks": [
+      {
+        "name": "world_exists",
+        "passed": true
+      }
+    ]
+  },
+  "campaign": {
+    "valid": true,
+    "checks": [
+      {
+        "name": "has_theme",
+        "passed": true
+      },
+      {
+        "name": "has_lore",
+        "passed": false
+      },
+      {
+        "name": "has_factions",
+        "passed": false
+      }
+    ]
+  },
+  "playtest": {
+    "valid": true,
+    "checks": [
+      {
+        "name": "has_player_level",
+        "passed": false
+      },
+      {
+        "name": "has_report_data",
+        "passed": true
+      }
+    ]
+  },
+  "artifacts": {
+    "valid": true,
+    "checks": []
+  },
+  "overall": {
+    "valid": true,
+    "score": 1.0
+  }
+}

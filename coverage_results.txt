@@ -1,0 +1,1605 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\samatha\OneDrive\Desktop\agente_rme
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.13.0, cov-7.1.0
+collecting ... collected 1249 items
+
+tests/e2e/test_full_pipeline.py::TestFullPipelineInit::test_create PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineInit::test_create_with_output_dir PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_default PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_with_prompt PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_creates_world PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_expands_world PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_balances_world PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_generates_campaign PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_records_stages PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_records_time PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestFullPipelineRun::test_run_produces_output_files PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestPipelineResult::test_to_dict PASSED [  0%]
+tests/e2e/test_full_pipeline.py::TestPipelinePromptParsing::test_parse_issavi PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestPipelinePromptParsing::test_parse_roshamuul PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestPipelinePromptParsing::test_parse_default PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestE2EIntegration::test_full_pipeline_issavi_300_500 PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestE2EIntegration::test_all_subsystems_integrated PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestE2EIntegration::test_output_files_written PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestE2EIntegration::test_campaign_json_valid PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestE2EIntegration::test_world_has_spawns_after_pipeline PASSED [  1%]
+tests/e2e/test_full_pipeline.py::TestE2EIntegration::test_world_has_regions_after_pipeline PASSED [  1%]
+tests/otbm/test_otbm_importer.py::test_parser_basic PASSED               [  1%]
+tests/otbm/test_otbm_importer.py::test_parser_invalid_magic PASSED       [  1%]
+tests/otbm/test_otbm_importer.py::test_parser_truncated PASSED           [  1%]
+tests/otbm/test_otbm_importer.py::test_node_decoder_root PASSED          [  2%]
+tests/otbm/test_otbm_importer.py::test_node_decoder_tile_area PASSED     [  2%]
+tests/otbm/test_otbm_importer.py::test_node_decoder_spawns PASSED        [  2%]
+tests/otbm/test_otbm_importer.py::test_node_decoder_towns PASSED         [  2%]
+tests/otbm/test_otbm_importer.py::test_node_decoder_waypoints PASSED     [  2%]
+tests/otbm/test_otbm_importer.py::test_tile_decoder PASSED               [  2%]
+tests/otbm/test_otbm_importer.py::test_item_decoder PASSED               [  2%]
+tests/otbm/test_otbm_importer.py::test_world_builder PASSED              [  2%]
+tests/otbm/test_otbm_importer.py::test_world_builder_to_worldmodel PASSED [  2%]
+tests/otbm/test_otbm_importer.py::test_importer_import_file PASSED       [  2%]
+tests/otbm/test_otbm_importer.py::test_importer_import_bytes PASSED      [  2%]
+tests/otbm/test_otbm_importer.py::test_importer_file_not_found PASSED    [  2%]
+tests/otbm/test_otbm_importer.py::test_importer_to_worldmodel PASSED     [  2%]
+tests/otbm/test_otbm_importer.py::test_importer_preview PASSED           [  3%]
+tests/otbm/test_otbm_importer.py::test_world_builder_invalid PASSED      [  3%]
+tests/otbm/test_otbm_importer.py::test_round_trip_basic PASSED           [  3%]
+tests/otbm/test_otbm_importer.py::test_round_trip_with_items PASSED      [  3%]
+tests/otbm/test_otbm_importer.py::test_round_trip_large PASSED           [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_small_map PASSED                 [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_city_map PASSED                  [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_hunt_map PASSED                  [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_boss_room PASSED                 [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_worldmodel_to_otbm PASSED        [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_node_encoder PASSED              [  3%]
+tests/otbm/test_otbm_roundtrip.py::test_otbr_compatibility PASSED        [  3%]
+tests/test_ai_architect.py::test_ai_architect_creation PASSED            [  4%]
+tests/test_ai_architect.py::test_ai_architect_plan_returns_worldplan PASSED [  4%]
+tests/test_ai_architect.py::test_ai_architect_plan_full_example PASSED   [  4%]
+tests/test_ai_architect.py::test_ai_architect_call_alias PASSED          [  4%]
+tests/test_ai_architect.py::test_ai_architect_analyze PASSED             [  4%]
+tests/test_ai_architect.py::test_ai_architect_explain PASSED             [  4%]
+tests/test_ai_architect.py::test_ai_architect_summary PASSED             [  4%]
+tests/test_ai_architect.py::test_ai_architect_to_dict PASSED             [  4%]
+tests/test_ai_architect.py::test_ai_architect_list_themes PASSED         [  4%]
+tests/test_ai_architect.py::test_ai_architect_resolve_theme PASSED       [  4%]
+tests/test_ai_architect.py::test_prompt_english_city_hunt_boss PASSED    [  4%]
+tests/test_ai_architect.py::test_prompt_spanish_ciudad_hunts_jefe PASSED [  4%]
+tests/test_ai_architect.py::test_prompt_hybrid_themes PASSED             [  4%]
+tests/test_ai_architect.py::test_prompt_dungeon_focus PASSED             [  5%]
+tests/test_ai_architect.py::test_prompt_default_hunt PASSED              [  5%]
+tests/test_ai_architect.py::test_worldplan_to_dict_complete PASSED       [  5%]
+tests/test_ai_architect.py::test_worldplan_summary_string PASSED         [  5%]
+tests/test_ai_architect.py::test_attach_asset_registry PASSED            [  5%]
+tests/test_ai_architect.py::test_attach_blueprint_registry PASSED        [  5%]
+tests/test_ai_architect.py::test_attach_world_generator PASSED           [  5%]
+tests/test_ai_architect.py::test_plan_with_world_generator_executes PASSED [  5%]
+tests/test_ai_architect.py::test_themes_in_plan_have_correct_assets PASSED [  5%]
+tests/test_ai_architect.py::test_module_level_plan_helper PASSED         [  5%]
+tests/test_ai_architect.py::test_repr_does_not_crash PASSED              [  5%]
+tests/test_asset_registry.py::test_registry_loaded PASSED                [  5%]
+tests/test_asset_registry.py::test_item_exists PASSED                    [  6%]
+tests/test_asset_registry.py::test_item_not_exists PASSED                [  6%]
+tests/test_asset_registry.py::test_get_item PASSED                       [  6%]
+tests/test_asset_registry.py::test_monster_exists PASSED                 [  6%]
+tests/test_asset_registry.py::test_monster_not_exists PASSED             [  6%]
+tests/test_asset_registry.py::test_get_monster PASSED                    [  6%]
+tests/test_asset_registry.py::test_get_all_monsters PASSED               [  6%]
+tests/test_asset_registry.py::test_grounds PASSED                        [  6%]
+tests/test_asset_registry.py::test_walls PASSED                          [  6%]
+tests/test_asset_registry.py::test_decorations PASSED                    [  6%]
+tests/test_asset_registry.py::test_is_ground PASSED                      [  6%]
+tests/test_asset_registry.py::test_is_wall PASSED                        [  6%]
+tests/test_asset_registry.py::test_is_decoration PASSED                  [  6%]
+tests/test_asset_registry.py::test_summary PASSED                        [  7%]
+tests/test_asset_validator.py::test_valid_ground_id PASSED               [  7%]
+tests/test_asset_validator.py::test_valid_addItem PASSED                 [  7%]
+tests/test_asset_validator.py::test_invalid_item_id PASSED               [  7%]
+tests/test_asset_validator.py::test_invalid_ground_id PASSED             [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_ai_architect_integration PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_blueprint_registry_integration PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_content_balancer_used PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_custom_size_in_prompt PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_decision_engine_used PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_deterministic_output PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_different_prompts_different_worlds PASSED [  7%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_dungeon_theme PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_evolution_engine_integration PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_generate_example_from_task_spec PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_generate_full_exposes_intermediates PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_generate_multiple_worlds PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_generate_returns_world_model PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_generate_small_world PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_ice_theme PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_integrations_handle_exceptions PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_jungle_theme PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_navigation_designer_used PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_no_integrations_still_works PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_connections_reference_real_zones PASSED [  8%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_generator_integration PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_json_roundtrip PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_level_coverage PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_serialisation_roundtrip PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_summary PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_validate_clean PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_world_zones_are_well_formed PASSED [  9%]
+tests/test_autonomous_designer.py::TestAutonomousDesigner::test_zone_expander_used PASSED [  9%]
+tests/test_balance_engine.py::TestBalanceEngineInit::test_create_default PASSED [  9%]
+tests/test_balance_engine.py::TestBalanceEngineInit::test_create_custom_level PASSED [  9%]
+tests/test_balance_engine.py::TestBalanceEngineInit::test_has_all_balancers PASSED [  9%]
+tests/test_balance_engine.py::TestBalanceEngineRun::test_balance_simple_world PASSED [  9%]
+tests/test_balance_engine.py::TestBalanceEngineRun::test_balance_returns_same_world PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineRun::test_balance_multi_region PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineRun::test_balance_empty_world PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineRun::test_balance_report_has_totals PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineRun::test_balance_overcrowded_world PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineReport::test_zone_report_to_dict PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineReport::test_zone_balance_report_to_dict PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineReport::test_zone_report_analyses_populated PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineAnalyze::test_analyze_does_not_modify PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineAnalyze::test_analyze_multi_region PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineIntegration::test_playtest_failed_world_pattern PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineIntegration::test_dangerous_world_gets_corrected PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineIntegration::test_balance_preserves_world_structure PASSED [ 10%]
+tests/test_balance_engine.py::TestBalanceEngineIntegration::test_balance_deterministic PASSED [ 11%]
+tests/test_balance_engine.py::TestBalanceEngineIntegration::test_balance_with_custom_player_level PASSED [ 11%]
+tests/test_biome_generator.py::test_biome_palette_known_theme PASSED     [ 11%]
+tests/test_biome_generator.py::test_biome_palette_unknown_theme_falls_back_to_generic PASSED [ 11%]
+tests/test_biome_generator.py::test_biome_palette_accepts_theme_assets PASSED [ 11%]
+tests/test_biome_generator.py::test_pick_primary_tag_from_theme_metadata PASSED [ 11%]
+tests/test_biome_generator.py::test_pick_ground_for_tag_rotates PASSED   [ 11%]
+tests/test_biome_generator.py::test_biome_generator_basic_count PASSED   [ 11%]
+tests/test_biome_generator.py::test_biome_generator_deterministic_with_seed PASSED [ 11%]
+tests/test_biome_generator.py::test_biome_generator_different_seeds_differ PASSED [ 11%]
+tests/test_biome_generator.py::test_biome_generator_does_not_overwrite_by_default PASSED [ 11%]
+tests/test_biome_generator.py::test_biome_generator_overwrite_when_asked PASSED [ 11%]
+tests/test_biome_generator.py::test_biome_generator_uses_primary_tag PASSED [ 12%]
+tests/test_biome_generator.py::test_biome_generator_water_chance PASSED  [ 12%]
+tests/test_biome_generator.py::test_biome_generator_normalizes_bounds PASSED [ 12%]
+tests/test_biome_generator.py::test_biome_generator_sets_zone_tag PASSED [ 12%]
+tests/test_biome_generator.py::test_module_level_generate_biome PASSED   [ 12%]
+tests/test_biome_generator.py::test_module_level_generate_continental_biome PASSED [ 12%]
+tests/test_biome_generator.py::test_module_level_generate_zone_biome PASSED [ 12%]
+tests/test_biome_generator.py::test_biome_palettes_dict_has_all_themes PASSED [ 12%]
+tests/test_biome_generator.py::test_biome_tag_by_theme_covers_known_biomes PASSED [ 12%]
+tests/test_biome_generator.py::test_biome_tile_dataclass_serializes PASSED [ 12%]
+tests/test_biome_generator.py::test_legacy_biome_generator_lua_returns_string PASSED [ 12%]
+tests/test_biome_generator.py::test_biome_generator_threshold_alignment PASSED [ 12%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_classify_empty_returns_generic PASSED [ 12%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_classify_hunt_spawns PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_classify_secondary_themes PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_classify_urban_tiles PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_classify_with_houses_urban PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_classify_with_metadata PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_ground_signatures_coverage PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_hunt_monster_indicators PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_item_signatures_coverage PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestThemeClassifier::test_quick_classify PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_cluster_positions PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_corridor_detection PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_aggregate_dominant_floor PASSED [ 13%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_aggregate_wall_pattern PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_empty_tiles_returns_empty PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_entrances_with_doors PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_floor_patterns PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_rooms_with_walls PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_detect_spawn_clusters PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_find_repeating_patterns PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestPatternDetector::test_pattern_to_dict PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_building_grouping PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detect_aggregate PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detect_hierarchy PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detect_layout PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detect_rooms PASSED [ 14%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detect_zones_hunting PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detect_zones_urban PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_detected_structure_to_dict PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestStructureDetector::test_poi_detection_temple PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_batch_extraction PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_blueprint_descriptive_mode PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_blueprint_has_metadata PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_blueprint_has_tiles PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_blueprint_to_dict_serializable PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_category_determination_hunting PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_category_determination_temple PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_empty_world_dict_handled PASSED [ 15%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_entry_point_determined PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_extract_from_world_dict PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_extraction_patterns PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_extraction_result_stats PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_extraction_result_to_dict PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_extraction_structures PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_extraction_theme_classification PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_list_blueprints PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_load_blueprint PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestBlueprintExtractor::test_save_blueprint_to_file PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestEndToEndPipeline::test_full_pipeline_world_dict_to_blueprint_file PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestEndToEndPipeline::test_pipeline_preserves_tile_data PASSED [ 16%]
+tests/test_blueprint_extractor_hito13.py::TestEndToEndPipeline::test_pipeline_with_spawns_and_houses PASSED [ 16%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_boss_room_pattern_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_bridge_pattern_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_camp_pattern_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_depot_pattern_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_detect_structure_types PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_get_pattern_guide PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_house_pattern_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_learn_from_blueprints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_list_patterns PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_market_pattern_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_mine_from_analysis PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_pattern_generation_hints PASSED [ 17%]
+tests/test_blueprint_learner.py::TestPatternMiner::test_save_load_patterns PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_custom_weights PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_percentile_assigned PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_rank_multiple_blueprints PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_rank_single_blueprint PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_ranking_summary PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_recommendations_generated PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_save_rankings PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintRanker::test_score_breakdown_present PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_add_blueprint PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_backup_restore PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_by_category PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_by_difficulty PASSED [ 18%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_by_size_range PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_by_tag PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_by_theme PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_export_catalog_index PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_get_blueprint PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_most_used PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_quality_score PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_remove_blueprint PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_search PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_statistics PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_theme_statistics PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintCatalog::test_usage_counter PASSED [ 19%]
+tests/test_blueprint_learner.py::TestBlueprintLearner::test_blueprint_to_vector PASSED [ 20%]
+tests/test_blueprint_learner.py::TestBlueprintLearner::test_catalog_stats PASSED [ 20%]
+tests/test_blueprint_learner.py::TestBlueprintLearner::test_initialization PASSED [ 20%]
+tests/test_blueprint_learner.py::TestBlueprintLearner::test_learn_from_analysis PASSED [ 20%]
+tests/test_blueprint_learner.py::TestBlueprintLearner::test_list_available_structures PASSED [ 20%]
+tests/test_blueprint_learner.py::TestBlueprintLearner::test_pattern_guide PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_load_file_valid PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_load_file_nonexistent PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_load_directory_all PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_load_directory_non_recursive PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_load_directory_nonexistent PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_load_from_dict PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_get_and_list PASSED [ 20%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_get_path PASSED [ 21%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_get_path_not_found PASSED [ 21%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_reload PASSED  [ 21%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_reload_unknown PASSED [ 21%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_reload_all PASSED [ 21%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_clear PASSED   [ 21%]
+tests/test_blueprint_loader.py::TestBlueprintLoader::test_invalid_json_file PASSED [ 21%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_tile_based PASSED [ 21%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_tile_based_with_offset PASSED [ 21%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_tile_based_items PASSED [ 21%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_collision_detection PASSED [ 21%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_descriptive PASSED [ 21%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_descriptive_grounds PASSED [ 22%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_descriptive_features PASSED [ 22%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_batch PASSED [ 22%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_place_creates_new_world PASSED [ 22%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_create_world_model PASSED [ 22%]
+tests/test_blueprint_placer.py::TestBlueprintPlacer::test_get_place_count PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_get_existing PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_get_missing PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_list PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_by_theme_issavi PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_by_theme_roshamuul PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_by_theme_generic PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_by_category_temple PASSED [ 22%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_by_category_bridge PASSED [ 23%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_search_by_keyword PASSED [ 23%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_names PASSED [ 23%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_count PASSED [ 23%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_summary PASSED [ 23%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_register PASSED [ 23%]
+tests/test_blueprint_registry.py::TestBlueprintRegistry::test_clear PASSED [ 23%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_valid_tile_based_blueprint PASSED [ 23%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_empty_name_fails PASSED [ 23%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_negative_size_fails PASSED [ 23%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_zero_size_fails PASSED [ 23%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_tile_outside_bounds_fails PASSED [ 23%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_negative_tile_coordinates_fails PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_duplicate_tile_warning PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_entry_outside_bounds_fails PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_entry_negative_fails PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_valid_entry PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_no_theme_warning PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_feature_outside_bounds_warning PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_validation_result_boolean PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_validation_result_summary PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_validate_batch PASSED [ 24%]
+tests/test_blueprint_validator.py::TestBlueprintValidator::test_descriptive_blueprint_passes PASSED [ 24%]
+tests/test_boss_expander.py::TestBossExpanderInit::test_create PASSED    [ 24%]
+tests/test_boss_expander.py::TestBossExpanderInit::test_room_sizes PASSED [ 24%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_creates_boss_room PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_adds_structure PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_adds_region PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_boss_spawn_exists PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_respects_max_rooms PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_different_difficulties PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_no_regions_no_expansion PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpanderRun::test_get_room_size PASSED [ 25%]
+tests/test_boss_expander.py::TestBossExpansionResult::test_to_dict PASSED [ 25%]
+tests/test_boss_generator.py::TestBossGenerator::test_generate_returns_quest_package PASSED [ 25%]
+tests/test_boss_generator.py::TestBossGenerator::test_generate_level_range PASSED [ 25%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_has_boss_lair_room_type PASSED [ 25%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_has_boss_name PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_has_abilities_in_metadata PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_has_hp_estimate PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_has_damage_estimate PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_hp_scales_with_level PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_damage_scales_with_level PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_no_todo_placeholders PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_has_rewards PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_gold_multiplier PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_has_location PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_has_enemy_count PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_boss_type_in_metadata PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_default_boss_type PASSED [ 26%]
+tests/test_boss_generator.py::TestBossGenerator::test_objectives_include_boss_name PASSED [ 27%]
+tests/test_boss_generator.py::TestBossGenerator::test_objectives_include_lair PASSED [ 27%]
+tests/test_boss_generator.py::TestBossGenerator::test_package_is_valid PASSED [ 27%]
+tests/test_boss_generator.py::TestBossGenerator::test_low_level_valid PASSED [ 27%]
+tests/test_boss_generator.py::TestBossGenerator::test_high_level_valid PASSED [ 27%]
+tests/test_boss_generator.py::TestBossGenerator::test_deterministic_output PASSED [ 27%]
+tests/test_boss_generator.py::TestBossGenerator::test_to_dict_roundtrip PASSED [ 27%]
+tests/test_campaign_generator.py::TestCampaignGeneratorInit::test_create PASSED [ 27%]
+tests/test_campaign_generator.py::TestCampaignGeneratorInit::test_has_all_subgenerators PASSED [ 27%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_default PASSED [ 27%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_issavi PASSED [ 27%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_name PASSED [ 27%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_factions PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_npcs PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_economy PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_dialogs PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_bosses PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_raids PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignGeneratorRun::test_generate_has_side_quests PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignSerialization::test_to_dict PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignSerialization::test_to_json PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignSerialization::test_save_and_load PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignDataIntegrity::test_lore_has_required_fields PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignDataIntegrity::test_factions_have_relationships PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignDataIntegrity::test_npcs_have_dialogue PASSED [ 28%]
+tests/test_campaign_generator.py::TestCampaignDataIntegrity::test_bosses_have_level PASSED [ 29%]
+tests/test_chunk.py::TestChunk::test_chunk_creation PASSED               [ 29%]
+tests/test_chunk.py::TestChunk::test_world_offset PASSED                 [ 29%]
+tests/test_chunk.py::TestChunk::test_bounds_world PASSED                 [ 29%]
+tests/test_chunk.py::TestChunk::test_world_to_chunk PASSED               [ 29%]
+tests/test_chunk.py::TestChunk::test_world_to_local PASSED               [ 29%]
+tests/test_chunk.py::TestChunk::test_to_local PASSED                     [ 29%]
+tests/test_chunk.py::TestChunk::test_set_and_get_tile PASSED             [ 29%]
+tests/test_chunk.py::TestChunk::test_get_tile_nonexistent PASSED         [ 29%]
+tests/test_chunk.py::TestChunk::test_has_tile PASSED                     [ 29%]
+tests/test_chunk.py::TestChunk::test_clear PASSED                        [ 29%]
+tests/test_chunk.py::TestChunk::test_serialization_round_trip PASSED     [ 29%]
+tests/test_chunk.py::TestChunk::test_chunk_repr PASSED                   [ 30%]
+tests/test_chunk.py::TestChunk::test_large_chunk_capacity PASSED         [ 30%]
+tests/test_city_generator.py::test_city_generator_basic PASSED           [ 30%]
+tests/test_city_generator.py::test_city_generator_structure PASSED       [ 30%]
+tests/test_city_generator.py::test_city_generator_buildings PASSED       [ 30%]
+tests/test_city_generator.py::test_city_generator_different_themes PASSED [ 30%]
+tests/test_city_generator.py::test_city_generator_custom_size PASSED     [ 30%]
+tests/test_city_generator.py::test_city_generator_validation PASSED      [ 30%]
+tests/test_combat_simulator.py::TestVocationStats::test_create_knight PASSED [ 30%]
+tests/test_combat_simulator.py::TestVocationStats::test_create_druid PASSED [ 30%]
+tests/test_combat_simulator.py::TestVocationStats::test_create_sorcerer PASSED [ 30%]
+tests/test_combat_simulator.py::TestVocationStats::test_create_paladin PASSED [ 30%]
+tests/test_combat_simulator.py::TestVocationStats::test_create_monk PASSED [ 30%]
+tests/test_combat_simulator.py::TestVocationStats::test_scaling_level_150 PASSED [ 31%]
+tests/test_combat_simulator.py::TestVocationStats::test_scaling_level_600 PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_knight_vs_rat PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_knight_vs_dragon PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_druid_heals PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_sorcerer_spell_attack PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_deterministic_with_seed PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_efficiency_ratio PASSED [ 31%]
+tests/test_combat_simulator.py::TestCombatEncounter::test_dps_positive PASSED [ 31%]
+tests/test_combat_simulator.py::TestHuntRotation::test_single_monster_hunt PASSED [ 31%]
+tests/test_combat_simulator.py::TestHuntRotation::test_multi_vocation PASSED [ 31%]
+tests/test_combat_simulator.py::TestHuntRotation::test_all_vocations_produce_results PASSED [ 31%]
+tests/test_combat_simulator.py::TestMonsterCreation::test_create_monster PASSED [ 32%]
+tests/test_combat_simulator.py::TestMonsterCreation::test_create_boss PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerBasic::test_balance_empty_world PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerBasic::test_balance_records_density PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerBasic::test_balance_simple_world PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerBasic::test_default_curve PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerLevelCurve::test_curve_covers_full_range PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerLevelCurve::test_curve_damage_grows PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerLevelCurve::test_curve_exponential PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerLevelCurve::test_curve_hp_grows PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerLevelCurve::test_curve_stepped PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerLevelCurve::test_curve_xp_grows PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerGapDetection::test_empty_zone_warning PASSED [ 32%]
+tests/test_content_balancer.py::TestContentBalancerGapDetection::test_gap_detected PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerGapDetection::test_no_gaps_when_covered PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerGapDetection::test_wide_zone_warning PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerDifficultyScoring::test_deadly_zone_high_score PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerDifficultyScoring::test_safe_zone_low_score PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerDifficultyScoring::test_score_increases_with_bosses PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerDifficultyScoring::test_stddev_calculated PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerSuggestions::test_suggestion_for_low_bosses PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerSuggestions::test_suggestion_for_missing_connections PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerSuggestions::test_suggestion_for_rebalance_when_gaps PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerSuggestions::test_suggestions_present PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerRebalance::test_rebalance_no_op_when_no_gaps PASSED [ 33%]
+tests/test_content_balancer.py::TestContentBalancerRebalance::test_rebalance_plugs_gap PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalancerRebalance::test_rebalance_returns_new_world PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalancerRebalance::test_rebalance_with_explicit_report PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalancerRebalance::test_rebalance_world_serializable PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalancerIntegration::test_balance_report_serializable PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalancerIntegration::test_balancer_in_full_pipeline PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalancerIntegration::test_full_pipeline_covers_levels PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalanceSerialization::test_default_content_balance PASSED [ 34%]
+tests/test_content_balancer.py::TestContentBalanceSerialization::test_to_from_dict PASSED [ 34%]
+tests/test_content_balancer.py::TestLevelCurvePointSerialization::test_to_from_dict PASSED [ 34%]
+tests/test_continent_generator.py::test_continent_generator_creation PASSED [ 34%]
+tests/test_continent_generator.py::test_continent_generator_creation_with_seed PASSED [ 34%]
+tests/test_continent_generator.py::test_generate_continent_accepts_worldplan PASSED [ 34%]
+tests/test_continent_generator.py::test_generate_continent_world_has_tiles PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_world_has_structures PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_world_has_regions PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_world_has_spawns PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_world_has_roads PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_deterministic_with_seed PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_different_seeds_differ PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_supports_full_example PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_uses_plan_layout PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_integration_with_ai_architect PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_works_without_layout PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_continent_supports_dict_plan PASSED [ 35%]
+tests/test_continent_generator.py::test_generate_from_prompt_end_to_end PASSED [ 36%]
+tests/test_continent_generator.py::test_continent_result_dataclass PASSED [ 36%]
+tests/test_continent_generator.py::test_continent_result_includes_roads_and_rivers PASSED [ 36%]
+tests/test_continent_generator.py::test_world_validator_passes_on_continent PASSED [ 36%]
+tests/test_continent_generator.py::test_continent_generator_seed_persistence PASSED [ 36%]
+tests/test_continent_generator.py::test_continent_generator_dependencies_injection PASSED [ 36%]
+tests/test_continent_generator.py::test_continent_generator_themes_resolved PASSED [ 36%]
+tests/test_continent_generator.py::test_continent_handles_empty_plan PASSED [ 36%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_default_goal PASSED [ 36%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_default_size_heuristic PASSED [ 36%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_difficulty_curve_default_linear PASSED [ 36%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_difficulty_curve_exponential PASSED [ 36%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_difficulty_curve_stepped PASSED [ 36%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_level_range_dash PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_level_range_en_dash PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_level_range_to PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_size_in_prompt PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_size_with_x_mark PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_city PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_desert PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_dungeon PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_fantasy PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_ice PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_jungle PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_mmorpg_default PASSED [ 37%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_style_volcanic PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEnginePromptParsing::test_unknown_style_falls_back_to_mixed PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineZoneCount::test_huge_range PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineZoneCount::test_large_range PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineZoneCount::test_medium_range PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineZoneCount::test_small_range PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineThemeSequence::test_themes_are_known PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineThemeSequence::test_themes_have_progression PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineThemeSequence::test_world_layout_selected PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineThemeSequence::test_zone_targets_cover_full_range PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineThemeSequence::test_zone_targets_no_overlap_gaps PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineCounts::test_boss_count_scales_with_level PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineCounts::test_counts_at_least_zone_count PASSED [ 38%]
+tests/test_decision_engine.py::TestDecisionEngineCounts::test_hunt_count_scales_with_level PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineCounts::test_quest_count_scales_with_level PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineRegistryBias::test_empty_registry_uses_defaults PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineRegistryBias::test_no_registry_uses_defaults PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineRegistryBias::test_registry_bias_keeps_known_themes PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineHelpers::test_difficulty_for_level PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineHelpers::test_layout_for_zone_count PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineHelpers::test_world_name_fallback PASSED [ 39%]
+tests/test_decision_engine.py::TestDecisionEngineHelpers::test_world_name_from_prompt PASSED [ 39%]
+tests/test_decision_engine.py::TestDesignDecisionSerialization::test_to_dict PASSED [ 39%]
+tests/test_dungeon_generator.py::test_dungeon_generator_basic PASSED     [ 39%]
+tests/test_dungeon_generator.py::test_dungeon_generator_structures PASSED [ 39%]
+tests/test_dungeon_generator.py::test_dungeon_generator_boss_spawn PASSED [ 40%]
+tests/test_dungeon_generator.py::test_dungeon_generator_different_themes PASSED [ 40%]
+tests/test_dungeon_generator.py::test_dungeon_generator_rooms PASSED     [ 40%]
+tests/test_dungeon_generator.py::test_dungeon_generator_validation PASSED [ 40%]
+tests/test_examples.py::test_all_examples PASSED                         [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIInit::test_create PASSED      [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIInit::test_has_all_expanders PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_small_world PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_returns_same_world PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_empty_world PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_adds_regions PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_adds_structures PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_adds_spawns PASSED [ 40%]
+tests/test_expansion_ai.py::TestExpansionAIRun::test_expand_custom_params PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionAIReport::test_report_to_dict PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionAIReport::test_report_tiles_added PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionAIReport::test_report_has_steps PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionAIAnalyze::test_analyze_small_world PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionAIAnalyze::test_analyze_empty_world PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionAIAnalyze::test_analyze_returns_recommendations PASSED [ 41%]
+tests/test_expansion_ai.py::TestExpansionResult::test_to_dict PASSED     [ 41%]
+tests/test_hunt_expander.py::TestHuntExpanderInit::test_create PASSED    [ 41%]
+tests/test_hunt_expander.py::TestHuntExpanderInit::test_default_constants PASSED [ 41%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_expands_world PASSED [ 41%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_adds_spawns PASSED [ 41%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_adds_regions PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_adds_structures PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_respects_max_hunts PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_expands_with_different_themes PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderRun::test_empty_world_no_expansion PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderAnalysis::test_classify_area_small PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderAnalysis::test_classify_area_medium PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderAnalysis::test_classify_area_large PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpanderAnalysis::test_classify_area_huge PASSED [ 42%]
+tests/test_hunt_expander.py::TestHuntExpansionResult::test_to_dict PASSED [ 42%]
+tests/test_hunt_generator.py::test_hunt_generator_basic PASSED           [ 42%]
+tests/test_hunt_generator.py::test_hunt_generator_theme_resolution PASSED [ 42%]
+tests/test_hunt_generator.py::test_hunt_generator_spawns PASSED          [ 42%]
+tests/test_hunt_generator.py::test_hunt_generator_dimensions PASSED      [ 43%]
+tests/test_hunt_generator.py::test_hunt_generator_default_world PASSED   [ 43%]
+tests/test_hunt_generator.py::test_hunt_generator_validation PASSED      [ 43%]
+tests/test_hunt_generator.py::test_hunt_generator_roshamuul PASSED       [ 43%]
+tests/test_infrastructure.py::test_version PASSED                        [ 43%]
+tests/test_infrastructure.py::test_cache PASSED                          [ 43%]
+tests/test_infrastructure.py::test_benchmark PASSED                      [ 43%]
+tests/test_infrastructure.py::test_asset_registry PASSED                 [ 43%]
+tests/test_infrastructure.py::test_blueprint_registry PASSED             [ 43%]
+tests/test_infrastructure.py::test_logger PASSED                         [ 43%]
+tests/test_item_indexer.py::test_index_known_items PASSED                [ 43%]
+tests/test_item_indexer.py::test_get_item PASSED                         [ 43%]
+tests/test_item_indexer.py::test_get_item_not_found PASSED               [ 44%]
+tests/test_item_indexer.py::test_get_item_by_name PASSED                 [ 44%]
+tests/test_item_indexer.py::test_get_item_by_name_case_insensitive PASSED [ 44%]
+tests/test_item_indexer.py::test_all_items PASSED                        [ 44%]
+tests/test_item_indexer.py::test_to_dict_from_dict PASSED                [ 44%]
+tests/test_item_indexer.py::test_classify_ground PASSED                  [ 44%]
+tests/test_item_indexer.py::test_classify_wall PASSED                    [ 44%]
+tests/test_item_indexer.py::test_classify_decoration PASSED              [ 44%]
+tests/test_item_indexer.py::test_classify_unknown PASSED                 [ 44%]
+tests/test_loot_balancer.py::TestLootBalancerInit::test_create PASSED    [ 44%]
+tests/test_loot_balancer.py::TestLootBalancerInit::test_has_analyzer PASSED [ 44%]
+tests/test_loot_balancer.py::TestLootBalancerInit::test_default_loot_tables PASSED [ 44%]
+tests/test_loot_balancer.py::TestLootBalancerBalance::test_no_spawns_returns_empty PASSED [ 44%]
+tests/test_loot_balancer.py::TestLootBalancerBalance::test_balances_low_profit_zone PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerBalance::test_balances_high_profit_zone PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerBalance::test_balanced_zone_minimal_change PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerAnalysis::test_analyze_zone PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerAnalysis::test_analyze_empty_zone PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerDifficulty::test_guess_difficulty_easy PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerDifficulty::test_guess_difficulty_medium PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerDifficulty::test_guess_difficulty_hard PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerDifficulty::test_guess_difficulty_very_hard PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerDifficulty::test_guess_difficulty_unknown PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootBalancerHelpers::test_find_more_profitable_monsters PASSED [ 45%]
+tests/test_loot_balancer.py::TestLootAdjustment::test_to_dict PASSED     [ 45%]
+tests/test_loot_balancer.py::TestLootBalanceResult::test_to_dict PASSED  [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorInit::test_create PASSED  [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorRun::test_generate_default PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorRun::test_generate_issavi PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorRun::test_generate_darashia PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorRun::test_generate_with_factions PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorRun::test_generate_count PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorRun::test_generate_more_than_templates PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorSpecial::test_generate_prophecy PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorSpecial::test_generate_prophecy_no_factions PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorSpecial::test_generate_secret PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreGeneratorSpecial::test_generate_secret_no_npc PASSED [ 46%]
+tests/test_lore_generator.py::TestLoreEntryData::test_to_dict PASSED     [ 46%]
+tests/test_lore_generator.py::TestLoreEntryData::test_entries_have_importance PASSED [ 47%]
+tests/test_lore_generator.py::TestLoreEntryData::test_entries_have_categories PASSED [ 47%]
+tests/test_lua_exporter.py::test_lua_exporter_basic PASSED               [ 47%]
+tests/test_lua_exporter.py::test_lua_exporter_has_ground PASSED          [ 47%]
+tests/test_lua_exporter.py::test_lua_exporter_has_spawns PASSED          [ 47%]
+tests/test_lua_exporter.py::test_lua_exporter_validator PASSED           [ 47%]
+tests/test_lua_exporter.py::test_lua_validator_empty PASSED              [ 47%]
+tests/test_lua_exporter.py::test_lua_validator_forbidden_apis PASSED     [ 47%]
+tests/test_lua_exporter.py::test_lua_validator_balanced PASSED           [ 47%]
+tests/test_lua_exporter.py::test_lua_writer_output PASSED                [ 47%]
+tests/test_lua_exporter.py::test_lua_exporter_export_to_file PASSED      [ 47%]
+tests/test_lua_exporter.py::test_full_pipeline PASSED                    [ 47%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_analyze_otbm_direct PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_analyze_otbm_importer_failure_fallsback PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_analyze_otbm_with_importer_mock PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_analyze_to_json PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_analyze_to_json_with_output_path PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_analyze_unsupported_format_raises PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_cities_to_houses PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_binary_floors PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_binary_houses PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_binary_items PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_binary_tiles_enhanced PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_binary_waypoints PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_floors_xml PASSED [ 48%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_houses_xml PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_map_size PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_waypoints_xml PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_extract_zones PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_map_analysis_dataclass_initialization PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_map_analysis_to_dict PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_normalize_waypoints PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_normalize_waypoints_empty PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_read_file_bytes_not_found PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestMapAnalyzer::test_run_derived_analysis PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_analyze_otbm_direct_empty PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_analyze_otbm_direct_no_spawns PASSED [ 49%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_analyze_otbm_spawns_empty PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_analyze_otbm_spawns_with_data PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_analyze_spawn_xml PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_classify_zones_easy PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_classify_zones_empty PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_classify_zones_endgame PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_classify_zones_hard PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_classify_zones_medium PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_parse_monsters_in_area_empty PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_summarize_spawns_empty PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestSpawnAnalyzer::test_summarize_spawns_with_data PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_analyze_empty_waypoints PASSED [ 50%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_analyze_with_waypoints PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_cluster_waypoints_empty PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_cluster_waypoints_groups PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_compute_waypoint_distances PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_euclidean_distance PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_find_closest_pair_empty PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_find_furthest_pair_empty PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_manhattan_distance PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_nearest_waypoint_for_spawns PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_nearest_waypoint_for_spawns_empty PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_same_floor PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestPathAnalyzer::test_summarize_connectivity PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_analyze_empty PASSED [ 51%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_analyze_with_data PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_categorize_density PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_floor_distribution PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_floor_distribution_empty PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_item_density PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_item_density_empty PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_overall_density PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_spawn_density PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_spawn_density_empty PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_spawn_heatmap PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_spawn_heatmap_empty PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_tile_density PASSED [ 52%]
+tests/test_map_analyzer_hito12.py::TestDensityAnalyzer::test_compute_tile_density_empty PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_analyze_doors PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_analyze_empty PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_analyze_walls PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_analyze_with_data PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_classify_building PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_classify_building_wilderness PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_classify_zones PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_complexity_metrics PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_detect_urban_zones PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_detect_urban_zones_city PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_detect_urban_zones_wilderness PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_infrastructure_score PASSED [ 53%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_structural_composition PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestArchitectureAnalyzer::test_structural_composition_empty PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestTileAnalyzer::test_analyze_xml_tiles PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestTileAnalyzer::test_summarize_binary_tiles PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestTileAnalyzer::test_summarize_ground_usage PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestStyleAnalyzer::test_detect_style_empty PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestStyleAnalyzer::test_detect_style_issavi PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestStyleAnalyzer::test_detect_style_roshamuul PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestStyleAnalyzer::test_detect_style_unknown_when_no_match PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestStyleAnalyzer::test_summarize_style PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestPatternExtractor::test_extract_pattern PASSED [ 54%]
+tests/test_map_analyzer_hito12.py::TestPatternExtractor::test_save_pattern PASSED [ 54%]
+tests/test_monster_indexer.py::test_index_fallback PASSED                [ 55%]
+tests/test_monster_indexer.py::test_index_monsters_xml PASSED            [ 55%]
+tests/test_monster_indexer.py::test_get_monster PASSED                   [ 55%]
+tests/test_monster_indexer.py::test_get_monster_case_insensitive PASSED  [ 55%]
+tests/test_monster_indexer.py::test_get_monster_not_found PASSED         [ 55%]
+tests/test_monster_indexer.py::test_all_monster_names PASSED             [ 55%]
+tests/test_monster_indexer.py::test_fallback_includes_shrieker PASSED    [ 55%]
+tests/test_monster_indexer.py::test_to_dict_from_dict PASSED             [ 55%]
+tests/test_monster_indexer.py::test_xml_plus_fallback PASSED             [ 55%]
+tests/test_monster_validator.py::test_valid_monster PASSED               [ 55%]
+tests/test_monster_validator.py::test_valid_monster_from_xml PASSED      [ 55%]
+tests/test_monster_validator.py::test_unknown_monster PASSED             [ 55%]
+tests/test_monster_validator.py::test_multiple_monsters_some_invalid PASSED [ 55%]
+tests/test_monster_validator.py::test_no_creature_call PASSED            [ 56%]
+tests/test_mvp_integration.py::test_sprint1_prompt_interpreter PASSED    [ 56%]
+tests/test_mvp_integration.py::test_sprint1_theme_resolver PASSED        [ 56%]
+tests/test_mvp_integration.py::test_sprint1_hunt_generator FAILED        [ 56%]
+tests/test_mvp_integration.py::test_sprint1_spawn_generator FAILED       [ 56%]
+tests/test_mvp_integration.py::test_sprint1_lua_generator FAILED         [ 56%]
+tests/test_mvp_integration.py::test_sprint1_preview_generator FAILED     [ 56%]
+tests/test_mvp_integration.py::test_sprint2_otbm_export PASSED           [ 56%]
+tests/test_mvp_integration.py::test_sprint3_blueprint_system PASSED      [ 56%]
+tests/test_mvp_integration.py::test_sprint4_architect_ai PASSED          [ 56%]
+tests/test_mvp_integration.py::test_sprint5_quality_analysis PASSED      [ 56%]
+tests/test_mvp_integration.py::test_sprint7_release_builder PASSED       [ 56%]
+tests/test_mvp_integration.py::test_evolution_modules PASSED             [ 57%]
+tests/test_mvp_integration.py::test_asset_intelligence PASSED            [ 57%]
+tests/test_mvp_integration.py::test_world_brain PASSED                   [ 57%]
+tests/test_mvp_integration.py::test_balance_modules FAILED               [ 57%]
+tests/test_mvp_integration.py::test_release_package PASSED               [ 57%]
+tests/test_mvp_integration.py::test_output_files_exist PASSED            [ 57%]
+tests/test_mvp_integration.py::test_pipeline_cli FAILED                  [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorInit::test_create PASSED    [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorRun::test_generate_default PASSED [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorRun::test_generate_count PASSED [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorRun::test_generate_with_factions PASSED [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorRun::test_generate_with_locations PASSED [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorRun::test_roles_distributed PASSED [ 57%]
+tests/test_npc_generator.py::TestNPCGeneratorRun::test_enemies_have_higher_levels PASSED [ 58%]
+tests/test_npc_generator.py::TestNPCGeneratorBoss::test_generate_boss PASSED [ 58%]
+tests/test_npc_generator.py::TestNPCData::test_npc_to_dict PASSED        [ 58%]
+tests/test_npc_generator.py::TestNPCData::test_npc_has_dialogue PASSED   [ 58%]
+tests/test_otbm_exporter.py::test_mandatory_export PASSED                [ 58%]
+tests/test_otbm_exporter.py::test_export_generated_world PASSED          [ 58%]
+tests/test_otbm_exporter.py::test_export_with_spawns_and_items PASSED    [ 58%]
+tests/test_otbm_exporter.py::test_export_bytes PASSED                    [ 58%]
+tests/test_otbm_exporter.py::test_export_empty_world PASSED              [ 58%]
+tests/test_otbm_exporter.py::test_validate PASSED                        [ 58%]
+tests/test_otbm_exporter.py::test_generate_xmls PASSED                   [ 58%]
+tests/test_otbm_exporter.py::test_export_report_structure PASSED         [ 58%]
+tests/test_pathfinder.py::TestPathResult::test_path_result_creation PASSED [ 59%]
+tests/test_pathfinder.py::TestPathResult::test_path_result_unreachable PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderBasic::test_same_position PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderBasic::test_adjacent_tiles PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderBasic::test_straight_line_distance PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderBasic::test_diagonal_path PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderBasic::test_no_diagonal_path PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderObstacles::test_unreachable_tile PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderObstacles::test_blocked_start PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderObstacles::test_maze_wall_avoidance PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderMultiFloor::test_floor_transition PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderMultiFloor::test_no_stairs_mode PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderSpawns::test_spawn_penalty PASSED [ 59%]
+tests/test_pathfinder.py::TestPathfinderBFS::test_reachable_tiles PASSED [ 60%]
+tests/test_pathfinder.py::TestPathfinderBFS::test_reachable_limited_steps PASSED [ 60%]
+tests/test_pathfinder.py::TestPathfinderBFS::test_coverage_ratio PASSED  [ 60%]
+tests/test_pathfinder.py::TestPathfinderBFS::test_distance_map PASSED    [ 60%]
+tests/test_pathfinder.py::TestPathfinderBFS::test_nearest_spawn PASSED   [ 60%]
+tests/test_pathfinder.py::TestPathfinderBFS::test_nearest_spawn_none PASSED [ 60%]
+tests/test_pathfinder.py::TestPathfinderCache::test_clear_cache PASSED   [ 60%]
+tests/test_pattern_miner.py::TestPatternMinerInitialization::test_custom_min_samples PASSED [ 60%]
+tests/test_pattern_miner.py::TestPatternMinerInitialization::test_default_min_samples PASSED [ 60%]
+tests/test_pattern_miner.py::TestPatternMinerInitialization::test_structure_keywords_complete PASSED [ 60%]
+tests/test_pattern_miner.py::TestPatternMinerFromAnalysis::test_detect_market PASSED [ 60%]
+tests/test_pattern_miner.py::TestPatternMinerFromAnalysis::test_detect_temple PASSED [ 60%]
+tests/test_pattern_miner.py::TestPatternMinerFromAnalysis::test_mine_needs_min_samples PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromAnalysis::test_mine_returns_patterns_list PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromAnalysis::test_mine_with_enough_samples PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromBlueprints::test_confidence_grows_with_samples PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromBlueprints::test_learn_temple_pattern PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromBlueprints::test_multiple_categories PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromBlueprints::test_pattern_metadata_complete PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerFromBlueprints::test_required_items_have_item_ids PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_boss_room_hints PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_bridge_hints PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_camp_hints PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_depot_hints PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_house_hints PASSED [ 61%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_market_hints PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerTypeHints::test_temple_hints PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerQueryAPI::test_generate_pattern_guide_all PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerQueryAPI::test_generate_pattern_guide_specific PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerQueryAPI::test_get_pattern PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerQueryAPI::test_get_pattern_missing PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerQueryAPI::test_get_pattern_statistics PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerQueryAPI::test_list_patterns PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerPersistence::test_save_and_load PASSED [ 62%]
+tests/test_pattern_miner.py::TestPatternMinerPersistence::test_saved_file_is_valid_json PASSED [ 62%]
+tests/test_pattern_miner.py::TestMinedPatternDataclass::test_round_trip PASSED [ 62%]
+tests/test_playtest_engine.py::TestPlaytestEngineInit::test_default_init PASSED [ 62%]
+tests/test_playtest_engine.py::TestPlaytestEngineInit::test_custom_init PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineRun::test_run_on_hunt_world PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineRun::test_run_produces_report PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineRun::test_run_vocation_results PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineRun::test_run_quick PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineRun::test_run_deterministic PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineEdgeCases::test_empty_world PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineEdgeCases::test_world_no_regions PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestEngineEdgeCases::test_level_override PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestReportSerialization::test_to_dict PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestReportSerialization::test_to_json PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestReportSerialization::test_save_and_load PASSED [ 63%]
+tests/test_playtest_engine.py::TestPlaytestReportSerialization::test_format_summary PASSED [ 63%]
+tests/test_playtest_engine.py::TestMultiZonePlaytest::test_multi_zone_analysis PASSED [ 64%]
+tests/test_playtest_engine.py::TestMonsterDatabase::test_default_monsters_populated PASSED [ 64%]
+tests/test_playtest_engine.py::TestMonsterDatabase::test_monster_stats_structure PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_generate_playable PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_generate_not_playable_low_xp PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_generate_not_playable_many_deaths PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_generate_not_playable_low_survival PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_generate_not_playable_no_spawns PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_generate_not_playable_no_zones PASSED [ 64%]
+tests/test_playtest_engine.py::TestReportGenerator::test_report_to_json_roundtrip PASSED [ 64%]
+tests/test_playtest_engine.py::TestPlaytestIntegration::test_mandatory_example_pattern PASSED [ 64%]
+tests/test_playtest_engine.py::TestPlaytestIntegration::test_quick_vs_full_consistency PASSED [ 64%]
+tests/test_preview_generator.py::test_preview_generation PASSED          [ 65%]
+tests/test_preview_generator.py::test_palette_colors PASSED              [ 65%]
+tests/test_preview_generator.py::test_get_color_for_ground PASSED        [ 65%]
+tests/test_preview_generator.py::test_get_color_for_item PASSED          [ 65%]
+tests/test_preview_generator.py::test_is_boss PASSED                     [ 65%]
+tests/test_preview_generator.py::test_render_tile_ground PASSED          [ 65%]
+tests/test_preview_generator.py::test_render_tile_wall PASSED            [ 65%]
+tests/test_preview_generator.py::test_render_tile_spawn PASSED           [ 65%]
+tests/test_preview_generator.py::test_render_tile_boss PASSED            [ 65%]
+tests/test_preview_generator.py::test_render_tile_decorated PASSED       [ 65%]
+tests/test_preview_generator.py::test_render_tile_empty PASSED           [ 65%]
+tests/test_preview_generator.py::test_compute_bounds PASSED              [ 65%]
+tests/test_preview_generator.py::test_compute_bounds_empty PASSED        [ 65%]
+tests/test_preview_generator.py::test_render_layer PASSED                [ 66%]
+tests/test_preview_generator.py::test_add_structure_overlay PASSED       [ 66%]
+tests/test_preview_generator.py::test_save_minimap PASSED                [ 66%]
+tests/test_preview_generator.py::test_generate_report PASSED             [ 66%]
+tests/test_preview_generator.py::test_generate_report_empty PASSED       [ 66%]
+tests/test_preview_generator.py::test_report_json_serializable PASSED    [ 66%]
+tests/test_preview_generator.py::test_generate_from_generated_world PASSED [ 66%]
+tests/test_preview_generator.py::test_distinguir_visualmente PASSED      [ 66%]
+tests/test_preview_generator.py::test_empty_world_preview PASSED         [ 66%]
+tests/test_preview_generator.py::test_multi_z_preview PASSED             [ 66%]
+tests/test_production.py::TestWorldModel::test_empty_world PASSED        [ 66%]
+tests/test_production.py::TestWorldModel::test_set_tile PASSED           [ 66%]
+tests/test_production.py::TestWorldModel::test_multiple_tiles PASSED     [ 67%]
+tests/test_production.py::TestWorldModel::test_add_region PASSED         [ 67%]
+tests/test_production.py::TestWorldModel::test_add_structure PASSED      [ 67%]
+tests/test_production.py::TestWorldModel::test_tile_with_items PASSED    [ 67%]
+tests/test_production.py::TestWorldModel::test_tile_with_spawn PASSED    [ 67%]
+tests/test_production.py::TestWorldModel::test_world_validator PASSED    [ 67%]
+tests/test_production.py::TestGenerators::test_world_generator_hunt PASSED [ 67%]
+tests/test_production.py::TestGenerators::test_world_generator_city PASSED [ 67%]
+tests/test_production.py::TestGenerators::test_world_generator_dungeon PASSED [ 67%]
+tests/test_production.py::TestGenerators::test_hunt_generator_direct PASSED [ 67%]
+tests/test_production.py::TestGenerators::test_city_generator_direct PASSED [ 67%]
+tests/test_production.py::TestGenerators::test_dungeon_generator_direct PASSED [ 67%]
+tests/test_production.py::TestGenerators::test_theme_generator PASSED    [ 67%]
+tests/test_production.py::TestGenerators::test_theme_generator_multi PASSED [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_export_basic PASSED  [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_export_has_ground PASSED [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_export_to_file PASSED [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_validate PASSED      [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_validator_empty PASSED [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_validator_forbidden PASSED [ 68%]
+tests/test_production.py::TestLuaExporter::test_lua_writer PASSED        [ 68%]
+tests/test_production.py::TestOTBMExporter::test_mandatory_export PASSED [ 68%]
+tests/test_production.py::TestOTBMExporter::test_export_with_spawns PASSED [ 68%]
+tests/test_production.py::TestOTBMExporter::test_export_bytes PASSED     [ 68%]
+tests/test_production.py::TestOTBMExporter::test_export_empty_world PASSED [ 68%]
+tests/test_production.py::TestOTBMExporter::test_validate PASSED         [ 69%]
+tests/test_production.py::TestOTBMExporter::test_generate_xmls PASSED    [ 69%]
+tests/test_production.py::TestOTBMExporter::test_export_generated_world PASSED [ 69%]
+tests/test_production.py::TestOTBMImporter::test_import_file PASSED      [ 69%]
+tests/test_production.py::TestOTBMImporter::test_import_bytes PASSED     [ 69%]
+tests/test_production.py::TestOTBMImporter::test_import_nonexistent PASSED [ 69%]
+tests/test_production.py::TestOTBMImporter::test_import_preview PASSED   [ 69%]
+tests/test_production.py::TestOTBMImporter::test_roundtrip PASSED        [ 69%]
+tests/test_production.py::TestPreviewGenerator::test_preview_generation PASSED [ 69%]
+tests/test_production.py::TestPreviewGenerator::test_preview_png_only PASSED [ 69%]
+tests/test_production.py::TestPreviewGenerator::test_preview_minimap PASSED [ 69%]
+tests/test_production.py::TestPreviewGenerator::test_preview_report PASSED [ 69%]
+tests/test_production.py::TestConfigManager::test_load_config PASSED     [ 69%]
+tests/test_production.py::TestConfigManager::test_default_config PASSED  [ 70%]
+tests/test_production.py::TestConfigManager::test_is_configured PASSED   [ 70%]
+tests/test_production.py::TestConfigManager::test_validate_items_xml_missing PASSED [ 70%]
+tests/test_production.py::TestConfigManager::test_validate_tibia_path_missing PASSED [ 70%]
+tests/test_production.py::TestConfigManager::test_validate_monsters_folder_missing PASSED [ 70%]
+tests/test_production.py::TestConfigManager::test_validate_npcs_folder_missing PASSED [ 70%]
+tests/test_production.py::TestConfigManager::test_validate_mounts_folder_empty PASSED [ 70%]
+tests/test_production.py::TestConfigManager::test_validate_all PASSED    [ 70%]
+tests/test_production.py::TestCLI::test_cli_info PASSED                  [ 70%]
+tests/test_production.py::TestCLI::test_cli_help PASSED                  [ 70%]
+tests/test_production.py::TestCLI::test_cli_generate PASSED              [ 70%]
+tests/test_production.py::TestCLI::test_cli_export_lua PASSED            [ 70%]
+tests/test_production.py::TestInstaller::test_installer_check PASSED     [ 71%]
+tests/test_production.py::TestInstaller::test_installer_creates_dirs PASSED [ 71%]
+tests/test_production.py::TestEndToEnd::test_full_pipeline PASSED        [ 71%]
+tests/test_progression_analyzer.py::TestXPFormula::test_xp_level_1 PASSED [ 71%]
+tests/test_progression_analyzer.py::TestXPFormula::test_xp_increases_with_level PASSED [ 71%]
+tests/test_progression_analyzer.py::TestXPFormula::test_xp_level_300 PASSED [ 71%]
+tests/test_progression_analyzer.py::TestTimeToLevel::test_time_to_level_positive_xp PASSED [ 71%]
+tests/test_progression_analyzer.py::TestTimeToLevel::test_time_to_level_zero_xp PASSED [ 71%]
+tests/test_progression_analyzer.py::TestTimeToLevel::test_time_to_level_negative_xp PASSED [ 71%]
+tests/test_progression_analyzer.py::TestTimeToLevel::test_time_to_level_higher_xp_faster PASSED [ 71%]
+tests/test_progression_analyzer.py::TestZoneProgression::test_analyze_zone PASSED [ 71%]
+tests/test_progression_analyzer.py::TestZoneProgression::test_higher_level_higher_xp PASSED [ 71%]
+tests/test_progression_analyzer.py::TestProgressionCurve::test_analyze_curve PASSED [ 71%]
+tests/test_progression_analyzer.py::TestProgressionCurve::test_curve_has_points PASSED [ 72%]
+tests/test_progression_analyzer.py::TestProgressionCurve::test_bottleneck_detection PASSED [ 72%]
+tests/test_progression_analyzer.py::TestVocationComparison::test_compare_vocations PASSED [ 72%]
+tests/test_progression_analyzer.py::TestLevelRangeValidation::test_balanced_levels PASSED [ 72%]
+tests/test_progression_analyzer.py::TestLevelRangeValidation::test_monsters_too_strong PASSED [ 72%]
+tests/test_progression_analyzer.py::TestLevelRangeValidation::test_monsters_too_weak PASSED [ 72%]
+tests/test_progression_analyzer.py::TestLevelRangeValidation::test_spread_too_wide PASSED [ 72%]
+tests/test_progression_analyzer.py::TestDifficultyEvaluator::test_easy_zone PASSED [ 72%]
+tests/test_progression_analyzer.py::TestDifficultyEvaluator::test_dense_zone PASSED [ 72%]
+tests/test_progression_analyzer.py::TestDifficultyEvaluator::test_world_evaluation PASSED [ 72%]
+tests/test_progression_analyzer.py::TestDifficultyEvaluator::test_is_balanced PASSED [ 72%]
+tests/test_progression_analyzer.py::TestDifficultyEvaluator::test_is_balanced_too_dense PASSED [ 72%]
+tests/test_progression_analyzer.py::TestDifficultyEvaluator::test_difficulty_color PASSED [ 73%]
+tests/test_progression_analyzer.py::TestLootSimulator::test_simulate_hunt PASSED [ 73%]
+tests/test_progression_analyzer.py::TestLootSimulator::test_simulate_rotation PASSED [ 73%]
+tests/test_progression_analyzer.py::TestLootSimulator::test_unknown_monster PASSED [ 73%]
+tests/test_progression_analyzer.py::TestLootSimulator::test_get_loot_table PASSED [ 73%]
+tests/test_progression_analyzer.py::TestLootSimulator::test_register_custom_table PASSED [ 73%]
+tests/test_progression_analyzer.py::TestSurvivalAnalyzer::test_quick_risk_assessment PASSED [ 73%]
+tests/test_progression_analyzer.py::TestSurvivalAnalyzer::test_analyze_zone PASSED [ 73%]
+tests/test_progression_analyzer.py::TestSurvivalAnalyzer::test_analyze_world PASSED [ 73%]
+tests/test_qa_pipeline.py::test_qa_pipeline_valid_script PASSED          [ 73%]
+tests/test_qa_pipeline.py::test_qa_pipeline_forbidden_api PASSED         [ 73%]
+tests/test_qa_pipeline.py::test_qa_pipeline_unknown_monster PASSED       [ 73%]
+tests/test_qa_pipeline.py::test_qa_pipeline_unknown_item PASSED          [ 73%]
+tests/test_qa_pipeline.py::test_qa_pipeline_invalid_z PASSED             [ 74%]
+tests/test_qa_pipeline.py::test_qa_pipeline_report_structure PASSED      [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_generate_returns_quest_package PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_generate_level_range PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_generate_low_level PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_generate_high_level PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_no_todo_placeholders PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_has_name PASSED  [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_has_description PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_has_objectives PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_has_rewards PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_has_location PASSED [ 74%]
+tests/test_quest_generator.py::TestQuestGenerator::test_enemy_count_scales PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_exploration_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_combat_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_lever_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_puzzle_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_boss_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_rescue_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_collection_quest PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_package_is_valid PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_all_quest_types_valid PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_deterministic_output PASSED [ 75%]
+tests/test_quest_generator.py::TestQuestGenerator::test_to_dict_roundtrip PASSED [ 75%]
+tests/test_raid_generator.py::TestRaidGenerator::test_generate_returns_quest_package PASSED [ 75%]
+tests/test_raid_generator.py::TestRaidGenerator::test_generate_level_range PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_raid_has_arena_room_type PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_raid_has_boss PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_raid_has_boss_metadata PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_raid_has_raid_flag PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_no_todo_placeholders PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_has_rewards PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_has_location PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_party_size_in_objectives PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_party_size_in_metadata PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_normal_difficulty PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_hard_difficulty_more_gold PASSED [ 76%]
+tests/test_raid_generator.py::TestRaidGenerator::test_epic_difficulty_more_items PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_epic_has_enrage_objective PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_hard_has_elite_objective PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_enemy_count_scales_with_level PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_enemy_count_minimum PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_package_is_valid PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_all_difficulties_valid PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_deterministic_output PASSED [ 77%]
+tests/test_raid_generator.py::TestRaidGenerator::test_to_dict_roundtrip PASSED [ 77%]
+tests/test_region_expander.py::TestRegionExpanderInit::test_create PASSED [ 77%]
+tests/test_region_expander.py::TestRegionExpanderInit::test_default_constants PASSED [ 77%]
+tests/test_region_expander.py::TestRegionExpanderFillGaps::test_fills_gaps PASSED [ 77%]
+tests/test_region_expander.py::TestRegionExpanderFillGaps::test_no_gaps_no_change PASSED [ 77%]
+tests/test_region_expander.py::TestRegionExpanderFillGaps::test_skip_small_regions PASSED [ 78%]
+tests/test_region_expander.py::TestRegionExpanderConnect::test_connects_distant_regions PASSED [ 78%]
+tests/test_region_expander.py::TestRegionExpanderConnect::test_skips_close_regions PASSED [ 78%]
+tests/test_region_expander.py::TestRegionExpanderConnect::test_single_region_no_connect PASSED [ 78%]
+tests/test_region_expander.py::TestRegionExpansionResult::test_to_dict PASSED [ 78%]
+tests/test_rme_validator.py::test_valid_getOrCreateTile PASSED           [ 78%]
+tests/test_rme_validator.py::test_valid_addItem PASSED                   [ 78%]
+tests/test_rme_validator.py::test_valid_setCreature PASSED               [ 78%]
+tests/test_rme_validator.py::test_valid_setSpawn PASSED                  [ 78%]
+tests/test_rme_validator.py::test_valid_borderize PASSED                 [ 78%]
+tests/test_rme_validator.py::test_valid_full_script PASSED               [ 78%]
+tests/test_rme_validator.py::test_invalid_Map_addItem PASSED             [ 78%]
+tests/test_rme_validator.py::test_invalid_Map_addCreature PASSED         [ 79%]
+tests/test_rme_validator.py::test_invalid_Map_addNpc PASSED              [ 79%]
+tests/test_rme_validator.py::test_invalid_Map_setTile PASSED             [ 79%]
+tests/test_rme_validator.py::test_invalid_Position PASSED                [ 79%]
+tests/test_rme_validator.py::test_invalid_Game_createTile PASSED         [ 79%]
+tests/test_rme_validator.py::test_invalid_mixed PASSED                   [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineInit::test_default_state PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineInit::test_index_path_is_optional PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineIndex::test_build_empty_index PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineIndex::test_build_index_creates_matrix PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineIndex::test_index_has_expected_fields PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_cosine_identical_vectors PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_cosine_opposite_vectors PASSED [ 79%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_cosine_orthogonal_vectors PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_cosine_zero_vector PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_pattern_similarity_empty PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_pattern_similarity_with_dicts PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_style_similarity_grouped PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_style_similarity_identical PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilarityEngineSimilarity::test_style_similarity_unrelated PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_by_style PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_by_type PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_excludes_self PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_modes PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_returns_results PASSED [ 80%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_sorted_desc PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_to_vector PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_to_vector_min_similarity PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilaritySearch::test_find_similar_unknown_id PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityClusters::test_find_clusters_basic PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityClusters::test_find_clusters_min_size PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityClusters::test_find_clusters_no_index PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityStatistics::test_statistics_empty_engine PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityStatistics::test_style_statistics PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityStatistics::test_type_statistics PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityPersistence::test_load_missing_file PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityPersistence::test_loaded_file_is_valid_json PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityPersistence::test_save_and_load_index PASSED [ 81%]
+tests/test_similarity_engine.py::TestSimilarityPersistence::test_save_load_empty_engine PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityNaturalLanguage::test_query_by_type_temple PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityNaturalLanguage::test_query_dungeon PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityNaturalLanguage::test_query_similar_to_other_style PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityNaturalLanguage::test_query_similar_to_style PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityNaturalLanguage::test_query_unknown PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityRecommendations::test_get_recommendations PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityRecommendations::test_get_recommendations_unknown PASSED [ 82%]
+tests/test_similarity_engine.py::TestSimilarityResultDataclass::test_to_dict PASSED [ 82%]
+tests/test_spawn_balancer.py::TestSpawnBalancerInit::test_default_constants PASSED [ 82%]
+tests/test_spawn_balancer.py::TestSpawnBalancerInit::test_instantiate_with_defaults PASSED [ 82%]
+tests/test_spawn_balancer.py::TestSpawnBalancerAdd::test_adds_when_below_minimum PASSED [ 82%]
+tests/test_spawn_balancer.py::TestSpawnBalancerAdd::test_no_change_when_ideal PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerAdd::test_adds_to_empty_zone_with_tiles PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerAdd::test_adds_to_zone_with_single_spawn PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerRemove::test_removes_when_above_maximum PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerRemove::test_removes_furthest_from_center PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerRespawn::test_fixes_too_fast_respawn PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerRespawn::test_fixes_too_slow_respawn PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerRadius::test_fixes_too_small_radius PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerRadius::test_fixes_too_large_radius PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerAnalysis::test_analyze_density PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalancerAnalysis::test_analyze_empty_zone PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalanceResult::test_to_dict PASSED [ 83%]
+tests/test_spawn_balancer.py::TestSpawnBalanceResult::test_adjustment_to_dict PASSED [ 83%]
+tests/test_story_generator.py::TestStoryGeneratorInit::test_create PASSED [ 84%]
+tests/test_story_generator.py::TestStoryGeneratorRun::test_generate_default PASSED [ 84%]
+tests/test_story_generator.py::TestStoryGeneratorRun::test_generate_issavi PASSED [ 84%]
+tests/test_story_generator.py::TestStoryGeneratorRun::test_generate_with_level_range PASSED [ 84%]
+tests/test_story_generator.py::TestStoryGeneratorRun::test_generate_side_quests PASSED [ 84%]
+tests/test_story_generator.py::TestStoryGeneratorRun::test_generate_no_side_quests PASSED [ 84%]
+tests/test_story_generator.py::TestStoryGeneratorRun::test_main_story_only PASSED [ 84%]
+tests/test_story_generator.py::TestStoryArcData::test_arc_has_objectives PASSED [ 84%]
+tests/test_story_generator.py::TestStoryArcData::test_arc_to_dict PASSED [ 84%]
+tests/test_story_generator.py::TestStoryArcData::test_arc_scaling PASSED [ 84%]
+tests/test_tile.py::TestTile::test_tile_creation PASSED                  [ 84%]
+tests/test_tile.py::TestTile::test_tile_with_ground PASSED               [ 84%]
+tests/test_tile.py::TestTile::test_tile_with_items PASSED                [ 85%]
+tests/test_tile.py::TestTile::test_tile_with_spawn PASSED                [ 85%]
+tests/test_tile.py::TestTile::test_tile_with_zone PASSED                 [ 85%]
+tests/test_tile.py::TestTile::test_tile_key_property PASSED              [ 85%]
+tests/test_tile.py::TestTile::test_tile_make_key_static PASSED           [ 85%]
+tests/test_tile.py::TestTile::test_tile_serialization_round_trip PASSED  [ 85%]
+tests/test_tile.py::TestTile::test_tile_repr PASSED                      [ 85%]
+tests/test_tile.py::TestTile::test_z_is_required PASSED                  [ 85%]
+tests/test_tile.py::TestItem::test_item_creation PASSED                  [ 85%]
+tests/test_tile.py::TestItem::test_item_with_count PASSED                [ 85%]
+tests/test_tile.py::TestItem::test_item_with_actionid PASSED             [ 85%]
+tests/test_tile.py::TestItem::test_item_with_uniqueid PASSED             [ 85%]
+tests/test_tile.py::TestItem::test_item_serialization PASSED             [ 85%]
+tests/test_tile.py::TestItem::test_item_from_dict_with_id_key PASSED     [ 86%]
+tests/test_tile.py::TestItem::test_item_repr PASSED                      [ 86%]
+tests/test_tile.py::TestSpawn::test_spawn_creation PASSED                [ 86%]
+tests/test_tile.py::TestSpawn::test_spawn_custom_values PASSED           [ 86%]
+tests/test_tile.py::TestSpawn::test_spawn_serialization PASSED           [ 86%]
+tests/test_tile.py::TestSpawn::test_spawn_from_dict_with_name_fallback PASSED [ 86%]
+tests/test_tile.py::TestSpawn::test_spawn_repr PASSED                    [ 86%]
+tests/test_tile_validator.py::test_valid_tile PASSED                     [ 86%]
+tests/test_tile_validator.py::test_valid_edge_cases PASSED               [ 86%]
+tests/test_tile_validator.py::test_invalid_z_negative PASSED             [ 86%]
+tests/test_tile_validator.py::test_invalid_z_too_high PASSED             [ 86%]
+tests/test_tile_validator.py::test_no_tile_calls PASSED                  [ 86%]
+tests/test_world_generator.py::test_world_generator_basic_prompt PASSED  [ 87%]
+tests/test_world_generator.py::test_world_generator_hunt_config PASSED   [ 87%]
+tests/test_world_generator.py::test_world_generator_city_config PASSED   [ 87%]
+tests/test_world_generator.py::test_world_generator_dungeon_config PASSED [ 87%]
+tests/test_world_generator.py::test_world_generator_theme_detection PASSED [ 87%]
+tests/test_world_generator.py::test_world_generator_prompt_city PASSED   [ 87%]
+tests/test_world_generator.py::test_world_generator_prompt_dungeon PASSED [ 87%]
+tests/test_world_generator.py::test_world_generator_validation PASSED    [ 87%]
+tests/test_world_generator.py::test_world_generator_multiple_calls PASSED [ 87%]
+tests/test_world_generator.py::test_world_generator_existing_world PASSED [ 87%]
+tests/test_world_model.py::TestWorldModel::test_set_and_get_tile PASSED  [ 87%]
+tests/test_world_model.py::TestWorldModel::test_has_tile PASSED          [ 87%]
+tests/test_world_model.py::TestWorldModel::test_tile_count PASSED        [ 87%]
+tests/test_world_model.py::TestWorldModel::test_set_same_tile_does_not_duplicate PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_remove_tile PASSED       [ 88%]
+tests/test_world_model.py::TestWorldModel::test_remove_nonexistent_tile PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_tiles_in_area PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_tiles_in_area_z_filter PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_add_structure PASSED     [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_structure_by_name PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_structures_by_category PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_add_region PASSED        [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_region_by_name PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_regions_by_theme PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_chunk_creation_on_set_tile PASSED [ 88%]
+tests/test_world_model.py::TestWorldModel::test_get_chunk PASSED         [ 89%]
+tests/test_world_model.py::TestWorldModel::test_get_chunk_for PASSED     [ 89%]
+tests/test_world_model.py::TestWorldModel::test_clear PASSED             [ 89%]
+tests/test_world_model.py::TestWorldModel::test_summary PASSED           [ 89%]
+tests/test_world_model.py::TestWorldModel::test_serialization_round_trip PASSED [ 89%]
+tests/test_world_model.py::TestWorldModel::test_get_ground_ids_in_area PASSED [ 89%]
+tests/test_world_model.py::TestWorldModel::test_set_tile_with_full_data PASSED [ 89%]
+tests/test_world_model.py::TestWorldModel::test_definition_of_success PASSED [ 89%]
+tests/test_world_planner.py::test_prompt_parser_basic PASSED             [ 89%]
+tests/test_world_planner.py::test_prompt_parser_extracts_themes PASSED   [ 89%]
+tests/test_world_planner.py::test_prompt_parser_single_level PASSED      [ 89%]
+tests/test_world_planner.py::test_prompt_parser_level_range PASSED       [ 89%]
+tests/test_world_planner.py::test_prompt_parser_nivel_spanish PASSED     [ 89%]
+tests/test_world_planner.py::test_prompt_parser_dungeon_keyword PASSED   [ 90%]
+tests/test_world_planner.py::test_prompt_parser_quest_keyword PASSED     [ 90%]
+tests/test_world_planner.py::test_prompt_parser_default_hunt PASSED      [ 90%]
+tests/test_world_planner.py::test_prompt_parser_empty PASSED             [ 90%]
+tests/test_world_planner.py::test_prompt_parser_zone_order PASSED        [ 90%]
+tests/test_world_planner.py::test_world_planner_creation PASSED          [ 90%]
+tests/test_world_planner.py::test_world_planner_plan_returns_worldplan PASSED [ 90%]
+tests/test_world_planner.py::test_world_planner_full_example PASSED      [ 90%]
+tests/test_world_planner.py::test_world_planner_call_alias PASSED        [ 90%]
+tests/test_world_planner.py::test_world_plan_structure PASSED            [ 90%]
+tests/test_world_planner.py::test_world_plan_to_dict PASSED              [ 90%]
+tests/test_world_planner.py::test_world_plan_summary PASSED              [ 90%]
+tests/test_world_planner.py::test_difficulty_progression_smooth PASSED   [ 91%]
+tests/test_world_planner.py::test_difficulty_progression_spike_for_boss PASSED [ 91%]
+tests/test_world_planner.py::test_difficulty_progression_per_zone_levels PASSED [ 91%]
+tests/test_world_planner.py::test_layout_strategy_city_centric PASSED    [ 91%]
+tests/test_world_planner.py::test_layout_strategy_linear PASSED          [ 91%]
+tests/test_world_planner.py::test_layout_zones_have_positions PASSED     [ 91%]
+tests/test_world_planner.py::test_layout_roads_connect_zones PASSED      [ 91%]
+tests/test_world_planner.py::test_layout_teleports_for_boss_and_dungeon PASSED [ 91%]
+tests/test_world_planner.py::test_layout_waypoints_per_zone PASSED       [ 91%]
+tests/test_world_planner.py::test_plan_uses_resolved_theme_assets PASSED [ 91%]
+tests/test_world_planner.py::test_plan_hybrid_themes PASSED              [ 91%]
+tests/test_world_planner.py::test_world_planner_with_world_generator PASSED [ 91%]
+tests/test_world_planner.py::test_world_planner_with_blueprint_registry PASSED [ 91%]
+tests/test_world_planner.py::test_world_planner_with_asset_registry PASSED [ 92%]
+tests/test_world_planner.py::test_world_plan_empty_prompt PASSED         [ 92%]
+tests/test_world_planner.py::test_world_plan_unknown_theme PASSED        [ 92%]
+tests/test_world_planner.py::test_world_plan_seed_reproducibility PASSED [ 92%]
+tests/test_world_planner.py::test_world_plan_different_seeds_differ PASSED [ 92%]
+tests/test_world_planner.py::test_world_request_properties PASSED        [ 92%]
+tests/test_world_synthesizer.py::test_synthesizer_creation PASSED        [ 92%]
+tests/test_world_synthesizer.py::test_synthesizer_creation_with_seed PASSED [ 92%]
+tests/test_world_synthesizer.py::test_synthesize_accepts_plan PASSED     [ 92%]
+tests/test_world_synthesizer.py::test_synthesize_accepts_continent_result PASSED [ 92%]
+tests/test_world_synthesizer.py::test_synthesize_creates_report PASSED   [ 92%]
+tests/test_world_synthesizer.py::test_synthesize_report_includes_all_fields PASSED [ 92%]
+tests/test_world_synthesizer.py::test_synthesize_attaches_ai_architect PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_attaches_blueprint_registry PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_validates_by_default PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_validation_pass PASSED  [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_deterministic_with_seed PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_supports_auto_validate_false PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_with_dependencies_injection PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesizer_merge_empty PASSED     [ 93%]
+tests/test_world_synthesizer.py::test_synthesizer_merge_single PASSED    [ 93%]
+tests/test_world_synthesizer.py::test_synthesizer_merge_multiple PASSED  [ 93%]
+tests/test_world_synthesizer.py::test_synthesizer_merge_combines_structures PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesizer_merge_combines_regions PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesizer_merge_normalizes_negative_coords PASSED [ 93%]
+tests/test_world_synthesizer.py::test_synthesize_normalize PASSED        [ 94%]
+tests/test_world_synthesizer.py::test_synthesis_report_to_dict PASSED    [ 94%]
+tests/test_world_synthesizer.py::test_synthesis_report_includes_themes PASSED [ 94%]
+tests/test_world_synthesizer.py::test_module_level_synthesize PASSED     [ 94%]
+tests/test_world_synthesizer.py::test_module_level_merge PASSED          [ 94%]
+tests/test_world_synthesizer.py::test_module_level_validate_synthesis PASSED [ 94%]
+tests/test_world_synthesizer.py::test_module_level_attach_ai_architect PASSED [ 94%]
+tests/test_world_synthesizer.py::test_module_level_attach_blueprint_registry PASSED [ 94%]
+tests/test_world_synthesizer.py::test_synthesize_end_to_end_pipeline PASSED [ 94%]
+tests/test_world_synthesizer.py::test_generate_then_synthesize PASSED    [ 94%]
+tests/test_world_validator.py::TestWorldValidator::test_valid_world_passes PASSED [ 94%]
+tests/test_world_validator.py::TestWorldValidator::test_negative_coordinates_error PASSED [ 94%]
+tests/test_world_validator.py::TestWorldValidator::test_negative_y_coordinates_error PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_z_layer_warning PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_key_mismatch_error PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_validate_single_tile PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_validate_negative_tile PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_structure_validation_warnings PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_structure_negative_position PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_structure_non_positive_dimensions PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_world_validation_result_summary PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_world_validation_result_failed_summary PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_world_validation_result_bool PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_empty_world_passes PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_large_tile_count_warning PASSED [ 95%]
+tests/test_world_validator.py::TestWorldValidator::test_definition_of_success_integration PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerInit::test_create PASSED        [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerInit::test_target_efficiency PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerInit::test_has_analyzer PASSED  [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerBalance::test_no_spawns_returns_empty PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerBalance::test_balances_low_xp_zone PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerBalance::test_balances_high_xp_zone PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerBalance::test_balanced_zone_no_change PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerAnalysis::test_analyze_zone PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerAnalysis::test_analyze_empty_zone PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerReplacement::test_suggest_replacement PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerReplacement::test_suggest_replacement_exact PASSED [ 96%]
+tests/test_xp_balancer.py::TestXPBalancerReplacement::test_suggest_replacement_unknown_monster PASSED [ 97%]
+tests/test_xp_balancer.py::TestXPBalancerMultiplier::test_calc_multiplier_balanced PASSED [ 97%]
+tests/test_xp_balancer.py::TestXPBalancerMultiplier::test_calc_multiplier_low_efficiency PASSED [ 97%]
+tests/test_xp_balancer.py::TestXPBalancerMultiplier::test_calc_multiplier_zero_efficiency PASSED [ 97%]
+tests/test_xp_balancer.py::TestXPAdjustment::test_to_dict PASSED         [ 97%]
+tests/test_xp_balancer.py::TestXPBalanceResult::test_to_dict PASSED      [ 97%]
+tests/test_zone_planner.py::test_difficulty_bands_defined PASSED         [ 97%]
+tests/test_zone_planner.py::test_classify_difficulty_easy PASSED         [ 97%]
+tests/test_zone_planner.py::test_classify_difficulty_medium PASSED       [ 97%]
+tests/test_zone_planner.py::test_classify_difficulty_hard PASSED         [ 97%]
+tests/test_zone_planner.py::test_classify_difficulty_extreme PASSED      [ 97%]
+tests/test_zone_planner.py::test_classify_difficulty_epic PASSED         [ 97%]
+tests/test_zone_planner.py::test_classify_difficulty_legendary PASSED    [ 97%]
+tests/test_zone_planner.py::test_classify_range PASSED                   [ 98%]
+tests/test_zone_planner.py::test_difficulty_rank PASSED                  [ 98%]
+tests/test_zone_planner.py::test_plan_city_basic PASSED                  [ 98%]
+tests/test_zone_planner.py::test_plan_city_includes_temple_for_higher_bands PASSED [ 98%]
+tests/test_zone_planner.py::test_plan_city_has_theme_specific_districts PASSED [ 98%]
+tests/test_zone_planner.py::test_plan_city_metadata PASSED               [ 98%]
+tests/test_zone_planner.py::test_plan_city_to_dict PASSED                [ 98%]
+tests/test_zone_planner.py::test_plan_dungeon_basic PASSED               [ 98%]
+tests/test_zone_planner.py::test_plan_dungeon_floors_scale_with_difficulty PASSED [ 98%]
+tests/test_zone_planner.py::test_plan_dungeon_rooms_have_metadata PASSED [ 98%]
+tests/test_zone_planner.py::test_plan_dungeon_no_boss PASSED             [ 98%]
+tests/test_zone_planner.py::test_plan_dungeon_to_dict PASSED             [ 98%]
+tests/test_zone_planner.py::test_plan_hunt_basic PASSED                  [ 99%]
+tests/test_zone_planner.py::test_plan_hunt_density_scales_spawn_count PASSED [ 99%]
+tests/test_zone_planner.py::test_plan_hunt_to_dict PASSED                [ 99%]
+tests/test_zone_planner.py::test_plan_boss_basic PASSED                  [ 99%]
+tests/test_zone_planner.py::test_plan_boss_mechanics_scale_with_difficulty PASSED [ 99%]
+tests/test_zone_planner.py::test_plan_boss_explicit_monster PASSED       [ 99%]
+tests/test_zone_planner.py::test_plan_boss_to_dict PASSED                [ 99%]
+tests/test_zone_planner.py::test_plan_quest_basic PASSED                 [ 99%]
+tests/test_zone_planner.py::test_plan_quest_objective_count PASSED       [ 99%]
+tests/test_zone_planner.py::test_plan_quest_objective_format PASSED      [ 99%]
+tests/test_zone_planner.py::test_plan_quest_to_dict PASSED               [ 99%]
+tests/test_zone_planner.py::test_all_zones_have_themes PASSED            [ 99%]
+tests/test_zone_planner.py::test_seed_reproducibility PASSED             [100%]
+
+================================== FAILURES ===================================
+_________________________ test_sprint1_hunt_generator _________________________
+tests\test_mvp_integration.py:50: in test_sprint1_hunt_generator
+    hg = HuntGenerator(width=45, height=45)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: HuntGenerator.__init__() got an unexpected keyword argument 'width'
+________________________ test_sprint1_spawn_generator _________________________
+tests\test_mvp_integration.py:67: in test_sprint1_spawn_generator
+    hg = HuntGenerator(width=45, height=45)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: HuntGenerator.__init__() got an unexpected keyword argument 'width'
+_________________________ test_sprint1_lua_generator __________________________
+tests\test_mvp_integration.py:83: in test_sprint1_lua_generator
+    hg = HuntGenerator(width=20, height=20)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: HuntGenerator.__init__() got an unexpected keyword argument 'width'
+_______________________ test_sprint1_preview_generator ________________________
+tests\test_mvp_integration.py:102: in test_sprint1_preview_generator
+    hg = HuntGenerator(width=15, height=15)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: HuntGenerator.__init__() got an unexpected keyword argument 'width'
+____________________________ test_balance_modules _____________________________
+tests\test_mvp_integration.py:208: in test_balance_modules
+    report = be.analyze_zone("test_zone", spawns, xp, player_level=150)
+             ^^^^^^^^^^^^^^^
+E   AttributeError: 'BalanceEngine' object has no attribute 'analyze_zone'
+______________________________ test_pipeline_cli ______________________________
+tests\test_mvp_integration.py:244: in test_pipeline_cli
+    assert result.returncode == 0
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['C:\\Python314\\python.exe', 'pipeline_runner.py', 'test zona 1-10'], returncode=1, stdout="\n============================================================\n  OpenTibiaBR RME Map Generator - MVP V0.1\n============================================================\n\n  Prompt: test zona 1-10\n  Timestamp: 20260606_044120\n\n[1/7] Interpretando prompt...\n       Temas: []\n       Nivel: [300, 500]\n       Tipo:  hunt\n[2/7] Resolviendo temas...\n[3/7] Generando area de hunt...\n\n  [ERROR]: TypeError: HuntGenerator.__init__() got an unexpected keyword argument 'width'\n\nPipeline completado con errores.\n", stderr='Traceback (most recent call last):\n  File "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py", line 206, in run\n    hunt_area = self._stage3_generate_hunt(intent, theme_data)\n  File "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py", line 591, in _stage3_generate_hunt\n    generator = HuntGenerator(width=w, height=h)\nTypeError: HuntGenerator.__init__() got an unexpected keyword argument \'width\'\n').returncode
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.14.5-final-0 _______________
+
+Name                                               Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------
+core\__init__.py                                      12      0   100%
+core\analyzer\__init__.py                             12      0   100%
+core\analyzer\architecture_analyzer.py               110      8    93%   133, 160-161, 187-188, 221, 225, 227
+core\analyzer\city_analyzer.py                        30     24    20%   7-22, 29-34, 37-38
+core\analyzer\dataset_builder.py                      24     13    46%   19-20, 23-25, 28-33, 36, 39
+core\analyzer\density_analyzer.py                    102      2    98%   155, 245
+core\analyzer\map_analyzer.py                        334     82    75%   114, 141, 208, 254-255, 259-260, 267, 275-310, 332-333, 342-343, 354-355, 385, 402-414, 430-431, 435-438, 440-441, 454-475, 491-492, 498-499, 621-629
+core\analyzer\path_analyzer.py                       111      1    99%   196
+core\analyzer\pattern_extractor.py                    13      0   100%
+core\analyzer\room_analyzer.py                        57     47    18%   18-31, 34-54, 57-63, 66-72
+core\analyzer\spawn_analyzer.py                      125     52    58%   58, 80-114, 128-146, 168-173, 234-244
+core\analyzer\style_analyzer.py                       14      0   100%
+core\analyzer\tile_analyzer.py                        24      0   100%
+core\architect\__init__.py                            14      0   100%
+core\architect\ai_architect.py                       116     13    89%   75, 167-171, 181-185, 188-192
+core\architect\architect.py                          108     18    83%   90, 101, 117, 144-145, 162, 203, 218, 261, 263, 265, 267, 269, 273, 280-283
+core\architect\composition_engine.py                  80     62    22%   43-71, 86-88, 93-133, 142-162
+core\architect\design_rules.py                        63      2    97%   168, 176
+core\architect\difficulty_planner.py                 130     16    88%   171, 173, 215-218, 235, 252, 266, 270, 303, 316-318, 324, 341, 343, 354
+core\architect\layout_engine.py                      125     27    78%   56, 103, 107, 120, 126, 131-137, 143-153, 197, 200, 202, 210
+core\architect\layout_planner.py                     241     40    83%   103, 208, 219, 233, 264, 286-291, 312-313, 337-339, 353, 366, 399, 417-439, 449, 475, 511
+core\architect\mapper_ai.py                          121     57    53%   57, 65-66, 105, 119-129, 140, 151, 155, 177-221
+core\architect\style_engine.py                       102     45    56%   28-35, 42, 233, 240-267, 274, 276, 284, 286, 292, 295-297, 303-304, 310, 314-317
+core\architect\theme_resolver.py                     205     89    57%   72-74, 77-79, 82-84, 88, 92, 95, 470, 508, 542-609, 617, 626, 648-649, 654-657, 663, 681, 686, 688, 690-692, 698-705, 730-733, 739-743, 771, 776
+core\architect\world_planner.py                      198     12    94%   121, 143, 151, 237, 243, 304, 361-367, 416-417
+core\architect\zone_planner.py                       205     18    91%   282-284, 321, 323, 468, 661-669, 682-684
+core\architecture\__init__.py                          9      0   100%
+core\architecture\architecture_analyzer.py            61     46    25%   21-25, 28-73, 82-93, 96, 105-114
+core\architecture\architecture_graph.py               26     17    35%   8, 11-13, 16-20, 23, 26-31, 34
+core\architecture\blueprint_generator.py              63     43    32%   12-14, 24-34, 37, 44-45, 48-53, 56, 59, 62, 65, 68, 71-73, 82-84, 93-104, 113-122
+core\architecture\building_classifier.py              47     41    13%   24-64, 67
+core\architecture\composer.py                         36     25    31%   17-19, 22-40, 55-57, 65-84
+core\architecture\pattern_library.py                  38     25    34%   26, 29-33, 36-40, 43-45, 48-57, 60
+core\architecture\structure_extractor.py              18     11    39%   10, 13-30, 33
+core\architecture\style_mixer.py                      20     15    25%   8-10, 18-29
+core\assets\__init__.py                                6      0   100%
+core\assets\asset_cache.py                            45     10    78%   29, 37, 45, 53, 59, 65, 73-75, 80
+core\assets\asset_classifier.py                      156    126    19%   120-134, 144, 152-183, 192-207, 217-228, 237-286, 290-304, 309-333, 336-338, 346-350, 354-359
+core\assets\asset_indexer.py                         289    212    27%   31, 61, 158-222, 226-302, 306-358, 362-364, 372, 376, 380, 384, 388-389, 393-394, 398-411, 415-426, 434-438, 454-484, 488, 492, 496-497, 501
+core\assets\asset_recommender.py                     242    198    18%   20, 38, 46-47, 118-150, 163-207, 217-256, 262-301, 307-343, 349-384, 390-421, 429-446, 452-470, 476-487, 495, 499, 503, 507, 511-522, 537, 551-558
+core\assets\asset_registry.py                        122     37    70%   73-123, 151-152, 200, 204, 212-217
+core\assets\asset_similarity.py                      198    163    18%   18, 29, 32, 116-136, 144-147, 151-154, 163-192, 199-233, 241-313, 317-348, 352-356, 368-372, 380-398
+core\assets\item_indexer.py                           60     21    65%   63-92, 112, 137
+core\assets\monster_indexer.py                        39      1    97%   40
+core\assets\npc_indexer.py                            36     22    39%   21-37, 41-44, 48-53, 61
+core\balance\__init__.py                              11      0   100%
+core\balance\balance_engine.py                       115      4    97%   173, 179, 181, 183
+core\balance\difficulty_analyzer.py                  205     18    91%   23, 52, 236-242, 271, 293, 303, 305, 310, 312, 323, 327, 338, 399, 422
+core\balance\difficulty_balancer.py                  123     15    88%   138, 213-221, 249-254
+core\balance\loot_analyzer.py                        126     15    88%   23, 130, 172-178, 199, 256, 262, 267, 269, 271, 273, 285
+core\balance\loot_balancer.py                        109      2    98%   165, 254
+core\balance\risk_balancer.py                        120      7    94%   166, 244-255
+core\balance\spawn_balancer.py                       149      3    98%   132, 187, 318
+core\balance\xp_analyzer.py                          140     32    77%   24, 154-161, 178-196, 220, 239-242, 247, 251, 263-264, 271, 278, 287, 305
+core\balance\xp_balancer.py                          109     12    89%   221-235
+core\benchmark\__init__.py                             1      0   100%
+core\benchmark\runner.py                              55     12    78%   35, 42, 56-65
+core\blueprints\__init__.py                           13      0   100%
+core\blueprints\blueprint.py                         112      5    96%   22, 132, 136, 142, 144
+core\blueprints\blueprint_extractor.py               318     78    75%   104-124, 202-209, 223-231, 259-260, 361-362, 373-388, 393-406, 466-467, 475, 556-559, 603-604, 661, 664, 668, 671-682, 700-702, 716, 833, 838-839, 844, 870-874
+core\blueprints\blueprint_loader.py                   80      3    96%   57, 166-167
+core\blueprints\blueprint_mixer.py                   187    155    17%   22, 34, 107, 127-153, 169-215, 223-230, 240-268, 277-311, 319-335, 343-365, 370-377, 388-404, 414-424, 433-457
+core\blueprints\blueprint_placer.py                   99     10    90%   166, 170, 214-215, 236, 244-245, 253, 263-264
+core\blueprints\blueprint_registry.py                 58      8    86%   58, 185-188, 192, 200, 204
+core\blueprints\blueprint_search.py                  168     32    81%   19, 120, 130-131, 137-139, 163-166, 174, 210-211, 213-214, 231, 285-287, 289-291, 304-305, 309-312, 316-317, 341
+core\blueprints\blueprint_validator.py               157     36    77%   40-42, 118, 129, 153-156, 161-162, 164, 180-201, 230, 239-241, 254, 257, 267, 271, 278-281
+core\blueprints\pattern_detector.py                  248     13    95%   193-194, 205, 242, 251-252, 257, 391, 511-512, 539, 548, 582
+core\blueprints\structure_detector.py                287     32    89%   106, 161, 176-177, 215-216, 222, 227, 239-240, 278, 348, 354, 432-433, 491, 515, 517, 519, 521, 617, 619, 621, 716, 804, 809-816
+core\blueprints\theme_classifier.py                  125      8    94%   196, 252-253, 266, 315, 339, 380, 382
+core\cache\__init__.py                                 1      0   100%
+core\cache\generation_cache.py                        51     12    76%   41-42, 45-46, 56-57, 68-76
+core\campaign\__init__.py                              9      0   100%
+core\campaign\campaign_generator.py                   83      0   100%
+core\campaign\dialog_generator.py                     44      3    93%   18, 130, 152
+core\campaign\economy_generator.py                    42      3    93%   164, 187, 193
+core\campaign\faction_generator.py                    46      0   100%
+core\campaign\lore_generator.py                       43      2    95%   103-104
+core\campaign\npc_generator.py                        55      0   100%
+core\campaign\story_generator.py                      46      0   100%
+core\compiler\__init__.py                              8      0   100%
+core\compiler\lua_ast.py                              75     22    71%   9, 25, 33, 41, 53-59, 69, 81-85, 95-98, 106
+core\compiler\lua_emitter.py                         120     91    24%   24, 36-45, 48-82, 87-93, 98, 101-106, 111-118, 121-154
+core\compiler\lua_formatter.py                        54     45    17%   23-25, 28-29, 32-56, 59-74
+core\compiler\lua_optimizer.py                       140    124    11%   21-23, 26-60, 63-67, 70-80, 83-93, 96-98, 101-103, 106-114, 117-120, 123-141, 144-155, 158-168
+core\compiler\lua_parser.py                          140    120    14%   29-89, 92-95, 98-115, 119, 123-127, 131-166
+core\compiler\lua_validator.py                       134    107    20%   53-62, 65-71, 82-88, 93-94, 97-108, 111-131, 134-146, 149-160, 163-182, 185-189
+core\content\__init__.py                               8      0   100%
+core\content\boss_generator.py                        36      0   100%
+core\content\map_designer.py                         103     19    82%   252-253, 304-306, 316-317, 324, 382-386, 424-426, 434-438
+core\content\mission_generator.py                     46     36    22%   111-113, 131-215
+core\content\quest_generator.py                       55      0   100%
+core\content\quest_package.py                         54      7    87%   61, 63, 65, 69, 72, 74, 76
+core\content\raid_generator.py                        43      0   100%
+core\content\reward_generator.py                      56     43    23%   45-47, 65-129, 138-179, 187-197
+core\enterprise.py                                    89     65    27%   20-27, 34-57, 76-79, 82-89, 92-98, 101-104, 107-127, 135-140, 143, 163-164, 197-198
+core\evolution\__init__.py                             7      0   100%
+core\evolution\expansion_engine.py                   333    281    16%   29, 50, 122-146, 157-167, 181-220, 229-308, 316-319, 322-330, 338-386, 390-475, 479-537, 541-587, 591-645, 649-690, 697-698, 701-705, 708-709, 712-716
+core\evolution\improvement_engine.py                 335    278    17%   37, 56, 110-131, 145-198, 206-211, 214-225, 233-234, 238-242, 246-247, 251-255, 259-279, 284-296, 300-322, 330-363, 367-406, 410-439, 443-486, 490-505, 509-539, 543-577, 581-605, 609-640
+core\evolution\map_evolver.py                        200    162    19%   33-52, 55-56, 59-75, 122-210, 221-266, 274-286, 300-323, 331-333, 338-345, 350-361, 366-374
+core\evolution\modernization_engine.py               218    174    20%   29, 41-42, 246-272, 276, 285-299, 307-323, 331-347, 356-373, 378-392, 401-425, 434-454, 462-502, 515-530, 537-538, 541-545, 548-549, 552-556
+core\evolution\quality_detector.py                   306    232    24%   58, 78-79, 121-145, 157-158, 169-214, 218-234, 242-269, 277-335, 339-350, 354-365, 369-380, 384-391, 395-400, 404-410, 414-418, 429-441, 445-455, 459-500, 508-555
+core\expansion\__init__.py                             8      0   100%
+core\expansion\boss_expander.py                       98      7    93%   89, 98, 144, 169, 194-197
+core\expansion\expansion_ai.py                        93      4    96%   152-153, 210, 212
+core\expansion\hunt_expander.py                       99      0   100%
+core\expansion\quest_zone_expander.py                 86      7    92%   22, 100, 138-139, 141, 145, 170
+core\expansion\region_expander.py                    102      5    95%   108, 119, 129, 149, 164
+core\expansion\road_expander.py                      107      3    97%   21, 146, 164
+core\export\__init__.py                                1      1     0%   1
+core\export\release_builder.py                        65     65     0%   1-118
+core\exporters\__init__.py                             4      0   100%
+core\exporters\lua_exporter.py                        98      9    91%   157-158, 209-212, 225-228, 242
+core\exporters\lua_formatter.py                       39     39     0%   9-108
+core\exporters\lua_validator.py                       86     20    77%   40, 43-53, 109, 114, 142-145, 166, 175, 182-183
+core\exporters\lua_writer.py                          61     13    79%   101-107, 133-138, 151
+core\factory\__init__.py                               5      0   100%
+core\factory\campaign_generator.py                    76     59    22%   15-27, 43-44, 47-58, 61-74, 77-98, 101-123, 126-152, 155-171, 174, 183-202, 205, 208, 211-215
+core\factory\expansion_factory.py                     21     12    43%   13-15, 24-34
+core\factory\season_generator.py                      25     17    32%   8-29, 32, 50, 56, 59
+core\factory\world_builder.py                         16      6    62%   11, 14, 24-25, 28, 31
+core\game_design\__init__.py                          10      0   100%
+core\game_design\boss_designer.py                      8      4    50%   8-18
+core\game_design\content_designer.py                  41     29    29%   12-14, 17-22, 30, 41-46, 49-54, 57-64
+core\game_design\economy_designer.py                  16      7    56%   8, 17, 25, 33-34, 40, 46
+core\game_design\expansion_designer.py                55     29    47%   27, 43-47, 50-58, 72-79, 82-88
+core\game_design\hunt_designer.py                      5      1    80%   8
+core\game_design\lore_generator.py                     8      4    50%   8-11
+core\game_design\progression_designer.py              15      8    47%   17-27, 33-41, 44-52
+core\game_design\quest_designer.py                    12      6    50%   8-16, 25-33, 36-44
+core\game_design\reward_designer.py                    5      1    80%   8
+core\generators\__init__.py                            8      0   100%
+core\generators\base_generator.py                      7      0   100%
+core\generators\city\__init__.py                       5      5     0%   1-6
+core\generators\city\building_generator.py            24     24     0%   1-84
+core\generators\city\city_generator.py               156    156     0%   1-211
+core\generators\city\city_to_worldmodel.py           111    111     0%   5-231
+core\generators\city\depot_generator.py               13     13     0%   1-22
+core\generators\city\district_generator.py            12     12     0%   1-33
+core\generators\city\harbor_generator.py              16     16     0%   1-21
+core\generators\city\market_generator.py              14     14     0%   1-27
+core\generators\city\road_generator.py                33     33     0%   1-43
+core\generators\city\temple_generator.py              15     15     0%   1-20
+core\generators\city_generator.py                    128      3    98%   82, 84, 154
+core\generators\dungeon\__init__.py                   12     12     0%   1-13
+core\generators\dungeon\boss_generator.py             10     10     0%   1-13
+core\generators\dungeon\cave_generator.py             29     29     0%   1-35
+core\generators\dungeon\corridor_generator.py         24     24     0%   1-28
+core\generators\dungeon\density_controller.py         19     19     0%   1-23
+core\generators\dungeon\dungeon_generator.py         140    140     0%   1-198
+core\generators\dungeon\dungeon_to_worldmodel.py     105    105     0%   5-231
+core\generators\dungeon\floor_generator.py            40     40     0%   1-51
+core\generators\dungeon\loop_analyzer.py               8      8     0%   1-12
+core\generators\dungeon\quest_generator.py            10     10     0%   1-13
+core\generators\dungeon\respawn_generator.py           7      7     0%   1-9
+core\generators\dungeon\room_generator.py             60     60     0%   1-78
+core\generators\dungeon\shortcut_generator.py         11     11     0%   1-24
+core\generators\dungeon_generator.py                 151      4    97%   82, 84, 160, 292
+core\generators\hunt_generator.py                     84      5    94%   95, 161, 223, 238, 242
+core\generators\spawn_generator.py                    61     18    70%   90, 106-107, 152-161, 181-183, 190-197
+core\generators\theme_generator.py                    82     14    83%   36, 161, 240-259, 283-284
+core\generators\world_generator.py                   107     13    88%   128, 132, 141-146, 198-199, 226, 254, 258-259
+core\knowledge\__init__.py                             8      0   100%
+core\knowledge\biomes.py                               8      1    88%   96
+core\knowledge\cities.py                               8      1    88%   52
+core\knowledge\knowledge_base.py                      94     65    31%   19-26, 29-32, 35-41, 44-51, 54, 57, 60, 63, 72-86, 89-90, 93-94, 97-98, 101-112, 115-125, 128, 131-134, 141-148, 151, 157
+core\knowledge\monsters.py                            19      2    89%   20, 97
+core\knowledge\npcs.py                                 8      1    88%   22
+core\knowledge\progression.py                         10      4    60%   40-43
+core\knowledge\themes.py                               8      1    88%   54
+core\learning\__init__.py                             11      0   100%
+core\learning\blueprint_catalog.py                   223     43    81%   93-94, 104-113, 210, 228-271, 279, 322-324, 344-346, 421-429, 469-483, 489
+core\learning\blueprint_learner.py                   198     75    62%   47, 142-143, 146, 175-238, 274-275, 286-291, 308, 334-347, 357-366, 450-479, 483-489, 493-496, 508, 512
+core\learning\blueprint_ranker.py                    263     72    73%   96, 116, 214, 246-252, 327-330, 336-368, 372-407, 437, 459-463, 515, 518-521, 524-527, 534
+core\learning\dataset_builder.py                     224    188    16%   91-95, 107-117, 121-125, 137-152, 157-160, 178-196, 216, 242-296, 309-346, 360-389, 399-429, 441-475, 479-486, 491-501, 511-514, 518-520, 524, 529, 534-535, 540-541
+core\learning\learning_pipeline.py                   299    244    18%   45, 50, 67, 86, 109-123, 127-137, 149-217, 221-249, 262-266, 282-312, 320-347, 368-398, 403-426, 431-448, 453-474, 479-504, 509-539, 544-564, 568-576, 580-599, 611-626, 630-645, 657-686, 700-745
+core\learning\map_embedding.py                       190    162    15%   30, 35, 70-77, 82-83, 95-146, 158-207, 219-258, 267-298, 311-354, 366, 378-379, 393-405, 409, 414-422, 426-428
+core\learning\pattern_encoder.py                     300    268    11%   75-81, 89-107, 115-129, 137-169, 174-241, 251-266, 270-306, 315-352, 361-382, 394-424, 453-462, 471-484, 490-533, 565-579, 583, 595-618, 632-656, 660-671, 675-684, 688-698
+core\learning\pattern_miner.py                       278     42    85%   149-151, 214, 267-275, 281, 303-305, 332-333, 352-353, 364-365, 382, 446-449, 451-454, 456-459, 477, 490, 576, 584-593, 600, 606
+core\learning\similarity_engine.py                   239     15    94%   108-110, 148-150, 211, 290, 325, 357, 401, 480, 503, 562, 568
+core\learning\style_encoder.py                       214    185    14%   136-139, 149-152, 156-163, 167-177, 181-190, 194-213, 221-227, 231-244, 249-277, 286-301, 307-374, 403-428, 444-460, 464, 468, 472-484, 488-499, 503-512, 524-540
+core\logging\__init__.py                               1      0   100%
+core\logging\levels.py                                 8      0   100%
+core\logging\logger.py                                63      5    92%   47-50, 117
+core\lua\__init__.py                                   2      0   100%
+core\lua\lua_generator.py                             71     61    14%   45-128
+core\otbm\__init__.py                                 21      0   100%
+core\otbm\house_encoder.py                            32      1    97%   49
+core\otbm\item_decoder.py                             34      4    88%   129, 153, 155, 157
+core\otbm\item_encoder.py                             46     36    22%   45-48, 70, 75-110
+core\otbm\node_decoder.py                            294    112    62%   186, 198-200, 235, 288-308, 335-354, 395, 432, 481, 531, 584, 586, 589, 610, 643-644, 646-647, 649-650, 663-699, 709-716, 724-745, 749-754, 758-763
+core\otbm\node_encoder.py                            195     15    92%   203-204, 206-207, 209-210, 212-213, 225-230, 355
+core\otbm\otbm_deserializer.py                         8      2    75%   16, 26
+core\otbm\otbm_exporter.py                            90      5    94%   110-111, 230-232
+core\otbm\otbm_importer.py                           166     34    80%   92-93, 121, 128-130, 135-136, 147-155, 213, 232-233, 247, 289-290, 301-302, 312-313, 323-324, 329-330, 367, 379-382, 401, 414, 431
+core\otbm\otbm_nodes.py                                2      2     0%   8-61
+core\otbm\otbm_parser.py                             207     98    53%   126, 186, 195, 250, 279-303, 342-346, 361-363, 385, 392-399, 407, 411, 415, 419, 433-513
+core\otbm\otbm_reader.py                              13      6    54%   11-12, 15-18
+core\otbm\otbm_serializer.py                         374     90    76%   96, 172, 192-208, 280, 282, 289, 293, 393-409, 419, 451, 455, 463-489, 498, 522, 525, 539, 545, 551, 557, 563, 575, 585, 604-610, 624-629, 649-652, 666-667, 676-686, 695-709
+core\otbm\otbm_templates.py                           80     66    18%   9-13, 16-20, 23-27, 30-36, 39-44, 47-53, 56-60, 63-69, 72-76, 79-94
+core\otbm\otbm_validator.py                          248     76    69%   105-107, 121-123, 128-131, 137-139, 159, 161-164, 169-171, 175, 188-190, 198-202, 232-234, 254-261, 270-272, 279, 288, 292-295, 297-300, 302, 304, 306-309, 311, 316, 320, 360-373, 401-402, 405-406, 409-410, 415-416
+core\otbm\otbm_writer.py                              40     12    70%   42, 71, 75-77, 82, 98-100, 119-120, 126
+core\otbm\spawn_encoder.py                            52     15    71%   44-53, 71, 96-99, 124, 131, 137-139
+core\otbm\tile_decoder.py                             45     17    62%   115, 146-159, 167, 179
+core\otbm\tile_encoder.py                            107     46    57%   169-191, 209-211, 259-262, 267-276, 282, 288-289, 294, 297-303, 305-311
+core\otbm\waypoint_encoder.py                         40     11    72%   44-52, 75-80, 100, 112
+core\otbm\world_builder.py                           103      7    93%   150-153, 174-176, 259-260, 278
+core\pipeline\__init__.py                              3      0   100%
+core\pipeline\full_pipeline.py                       148     15    90%   115-116, 136, 138, 179, 189, 193-194, 199, 233, 235-236, 271-273
+core\planner\__init__.py                              13      0   100%
+core\planner\biome_planner.py                          7      2    71%   17-18
+core\planner\city_plan.py                             13      1    92%   18
+core\planner\difficulty_planner.py                    14      9    36%   17-25
+core\planner\dungeon_plan.py                          14      1    93%   18
+core\planner\expansion_plan.py                        14      2    86%   15, 25
+core\planner\planner.py                               72     50    31%   29-39, 42-108, 118, 131-154
+core\planner\prompt_interpreter.py                    33     28    15%   9-48
+core\planner\route_plan.py                            29     16    45%   16, 27-41
+core\planner\world_plan.py                            18      1    94%   23
+core\planner\world_size_estimator.py                  10      6    40%   8-13
+core\planner\world_validator.py                       23     19    17%   8-31
+core\planner\zone_plan.py                             19      3    84%   20-21, 24
+core\playtest\__init__.py                             12      0   100%
+core\playtest\combat_simulator.py                    170      0   100%
+core\playtest\difficulty_evaluator.py                124     10    92%   95-96, 195, 199, 205, 238, 240, 246, 256, 260
+core\playtest\loot_simulator.py                      108      5    95%   346-353
+core\playtest\party_bot.py                           104     67    36%   28, 78-79, 93-107, 115, 119, 123, 127-134, 138-141, 145, 161-207, 215-219, 222
+core\playtest\pathfinder.py                          209      9    96%   50-52, 55, 106, 210, 322, 355, 368
+core\playtest\player_bot.py                          116     69    41%   30, 52-53, 62-82, 125-127, 140-162, 165-167, 170-191, 194-204, 212, 216-222, 226-236, 239
+core\playtest\playtest_engine.py                     150     12    92%   125, 270-271, 302, 312-316, 328, 344, 350
+core\playtest\progression_analyzer.py                138      4    97%   160, 171, 199, 209
+core\playtest\report_generator.py                     87      0   100%
+core\playtest\route_simulator.py                     117     68    42%   33-35, 39-41, 45, 49, 53, 56, 78, 121-122, 125, 152-231, 255-267, 281-291
+core\playtest\survival_analyzer.py                   114      8    93%   113-114, 215-216, 220-221, 252, 254
+core\preview\__init__.py                              10      0   100%
+core\preview\heatmap_renderer.py                      47     37    21%   9, 12, 15-35, 50-54, 57-63, 66-71
+core\preview\minimap_renderer.py                      52     30    42%   36-57, 74-84, 109, 144
+core\preview\palette.py                               30      0   100%
+core\preview\preview_generator.py                    109     20    82%   45-46, 160, 175, 292-293, 319-335
+core\preview\preview_renderer.py                     112     20    82%   18-19, 91, 99, 121, 125, 177-189, 222, 245-246
+core\preview\preview_report.py                        52      0   100%
+core\preview\structure_renderer.py                    16      9    44%   8, 14, 28, 42-47
+core\preview\tile_renderer.py                         22     16    27%   8-12, 25, 38-49
+core\procedural\__init__.py                            8      0   100%
+core\procedural\biome_generator.py                    94      9    90%   214, 229, 240, 245, 452-457
+core\procedural\cave_generator.py                      2      2     0%   1-2
+core\procedural\continent_generator.py               297     29    90%   121, 131, 149, 194, 212-218, 488, 492, 556, 576, 592, 596, 614-620, 627, 676-677, 684-690
+core\procedural\noise_generator.py                     2      2     0%   1-2
+core\procedural\river_generator.py                   127     12    91%   90, 93, 110, 134, 137, 219, 250, 351, 373-374, 392-393
+core\procedural\road_generator.py                    203     55    73%   95, 98, 114, 122, 141, 144, 168, 172, 175, 178, 198, 208, 220-230, 333-344, 364, 465-468, 482-491, 509-510, 525-526, 539-540, 553-554, 560
+core\procedural\room_generator.py                      2      2     0%   1-2
+core\procedural\terrain_generator.py                 243    102    58%   62, 69, 73, 77, 131-132, 135, 197, 269-270, 277-279, 310-311, 318-320, 384, 387-389, 406-456, 473-502, 520-541, 561-562, 582-583, 598-599, 613-614, 628-629, 638
+core\procedural\world_synthesizer.py                 138     13    91%   228-229, 231-232, 240, 271, 276, 300, 319, 321-324
+core\prompt_interpreter.py                            43      6    86%   80, 86, 90, 92, 94, 99
+core\quality\__init__.py                               7      0   100%
+core\quality\balance_analyzer.py                      11      0   100%
+core\quality\map_reviewer.py                         111     91    18%   13-17, 20-47, 50-59, 62-71, 74-83, 86-95, 98, 101-106, 109-114, 117-124, 127-142, 145-149, 152-156
+core\quality\pathing_analyzer.py                      80     64    20%   19-44, 55-57, 61-69, 72-87, 94, 97-111
+core\quality\quality_score.py                         60     51    15%   15-29, 39-44, 47-58, 61-70, 73-80, 83-90
+core\quality\spawn_analyzer.py                        36     11    69%   23-27, 34, 50-54
+core\quality\visual_analyzer.py                       25     19    24%   9-40, 51-60
+core\registry\__init__.py                              4      0   100%
+core\registry\asset_registry.py                       74     25    66%   41-42, 62-71, 75-84, 100, 103, 113
+core\registry\blueprint_registry.py                   40     17    58%   28-43, 55
+core\release\__init__.py                               5      0   100%
+core\release\documentation_builder.py                167      3    98%   15, 205, 243
+core\release\package_builder.py                       71     13    82%   19, 100-103, 121-125, 134, 158, 189
+core\release\release_builder.py                       90     22    76%   21, 170-200, 264-266
+core\spawn\__init__.py                                 2      0   100%
+core\spawn\spawn_generator.py                         60     44    27%   67-109, 112-119, 122-129, 132-140
+core\studio.py                                        54     54     0%   1-73
+core\themes\__init__.py                                2      0   100%
+core\themes\theme_resolver.py                         63      8    87%   65, 83-87, 99, 145-147
+core\versioning\__init__.py                            2      0   100%
+core\versioning\version.py                            42      5    88%   17, 19, 46, 49, 52
+core\world\__init__.py                                 9      0   100%
+core\world\blueprint_placer_adapter.py                67     67     0%   8-187
+core\world\chunk.py                                   60      0   100%
+core\world\item.py                                    19      0   100%
+core\world\region.py                                  15      0   100%
+core\world\spawn.py                                   13      0   100%
+core\world\structure.py                               25      2    92%   37, 41
+core\world\tile.py                                    44      1    98%   80
+core\world\world_model.py                            144     11    92%   87, 127, 146, 176, 194-198, 288-289
+core\world\world_validator.py                        111     20    82%   106, 108, 124, 126, 142-150, 160-161, 168-172, 196
+core\world_brain\__init__.py                           7      0   100%
+core\world_brain\constraint_engine.py                140     58    59%   26, 47, 125, 135, 138, 141-143, 146-149, 182-188, 209-227, 242-251, 269-295, 321-322, 333-334, 338
+core\world_brain\decision_engine.py                  170     41    76%   32, 147-149, 240-241, 246-251, 254, 257, 260, 317-340, 367, 369-370, 372-373, 377-379, 381-383, 389, 407, 434, 446-450, 460
+core\world_brain\goal_engine.py                      138     61    56%   43, 140, 182, 189, 196, 203, 212-213, 216, 220-222, 225, 228, 232-233, 237-238, 242-244, 253-263, 267-272, 305, 318-335, 342-346, 358, 361-362
+core\world_brain\reasoning_engine.py                  84     27    68%   17, 61, 65, 69, 71, 73, 75, 77, 79, 81, 115, 119-122, 126, 136, 179, 198, 219, 240, 259, 277, 295, 345, 352-353
+core\world_brain\world_brain.py                       98     20    80%   26, 50, 144, 180-181, 185, 189, 197-209, 217, 227-231
+core\world_engine\__init__.py                         10      0   100%
+core\world_engine\boss_builder.py                      5      1    80%   8
+core\world_engine\city_builder.py                      7      2    71%   8, 17
+core\world_engine\dungeon_builder.py                   7      2    71%   8, 19
+core\world_engine\export_pipeline.py                  40     30    25%   11-33, 38-40, 43-53, 56-61
+core\world_engine\quest_builder.py                     7      2    71%   8, 22
+core\world_engine\road_builder.py                     17     12    29%   8, 16-26
+core\world_engine\spawn_builder.py                    22     13    41%   12-14, 17-21, 35-39
+core\world_engine\world_builder.py                    78     59    24%   22-33, 36-37, 40-44, 47-78, 81-86, 89-94, 97-100
+core\world_engine\world_engine.py                    114     43    62%   46, 49, 72, 75, 78, 81, 87, 101, 106-110, 115-118, 123-128, 133, 141, 144, 147, 156-162, 165-168, 171-172, 175-177, 180
+--------------------------------------------------------------------------------
+TOTAL                                              23938   9012    62%
+=========================== short test summary info ===========================
+FAILED tests/test_mvp_integration.py::test_sprint1_hunt_generator - TypeError...
+FAILED tests/test_mvp_integration.py::test_sprint1_spawn_generator - TypeErro...
+FAILED tests/test_mvp_integration.py::test_sprint1_lua_generator - TypeError:...
+FAILED tests/test_mvp_integration.py::test_sprint1_preview_generator - TypeEr...
+FAILED tests/test_mvp_integration.py::test_balance_modules - AttributeError: ...
+FAILED tests/test_mvp_integration.py::test_pipeline_cli - assert 1 == 0
+================= 6 failed, 1243 passed in 284.76s (0:04:44) ==================

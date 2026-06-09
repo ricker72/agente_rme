@@ -1,0 +1,226 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:17.421483+00:00",
+  "phase": "Phase 6: Real Autonomous Certification",
+  "runs": 50,
+  "failed": 0,
+  "convergence": {
+    "85": 1.0,
+    "90": 1.0,
+    "95": 1.0
+  },
+  "convergence_count": {
+    "85": 50,
+    "90": 50,
+    "95": 50
+  },
+  "total_iterations": 50,
+  "mean_iterations_per_run": 1.0,
+  "duration_s": {
+    "mean": 0.00034407615661621096,
+    "total": 0.017203807830810547
+  },
+  "iterations": [
+    {
+      "index": 0,
+      "prompt": "Generate Issavi desert hunting realm at level 200",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00046062469482421875
+    },
+    {
+      "index": 1,
+      "prompt": "Generate Roshamuul nightmare at level 350",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00029158592224121094
+    },
+    {
+      "index": 2,
+      "prompt": "Generate Soul War warzone at level 450",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00025463104248046875
+    },
+    {
+      "index": 3,
+      "prompt": "Generate Library dungeon at level 150",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00023055076599121094
+    },
+    {
+      "index": 4,
+      "prompt": "Generate Falcon bastion at level 100",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00021314620971679688
+    },
+    {
+      "index": 5,
+      "prompt": "Generate Ferumbras citadel at level 500",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00018715858459472656
+    },
+    {
+      "index": 6,
+      "prompt": "Generate mixed MMORPG world level 1-1000",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00018525123596191406
+    },
+    {
+      "index": 7,
+      "prompt": "Generate Issavi desert hunting realm at level 200",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00019049644470214844
+    },
+    {
+      "index": 8,
+      "prompt": "Generate Roshamuul nightmare at level 350",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0002281665802001953
+    },
+    {
+      "index": 9,
+      "prompt": "Generate Soul War warzone at level 450",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00020265579223632812
+    },
+    {
+      "index": 10,
+      "prompt": "Generate Library dungeon at level 150",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00022459030151367188
+    },
+    {
+      "index": 11,
+      "prompt": "Generate Falcon bastion at level 100",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0002067089080810547
+    },
+    {
+      "index": 12,
+      "prompt": "Generate Ferumbras citadel at level 500",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0002288818359375
+    },
+    {
+      "index": 13,
+      "prompt": "Generate mixed MMORPG world level 1-1000",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0004303455352783203
+    },
+    {
+      "index": 14,
+      "prompt": "Generate Issavi desert hunting realm at level 200",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.003218412399291992
+    },
+    {
+      "index": 15,
+      "prompt": "Generate Roshamuul nightmare at level 350",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0006031990051269531
+    },
+    {
+      "index": 16,
+      "prompt": "Generate Soul War warzone at level 450",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0005311965942382812
+    },
+    {
+      "index": 17,
+      "prompt": "Generate Library dungeon at level 150",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00037741661071777344
+    },
+    {
+      "index": 18,
+      "prompt": "Generate Falcon bastion at level 100",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.00027441978454589844
+    },
+    {
+      "index": 19,
+      "prompt": "Generate Ferumbras citadel at level 500",
+      "iterations": 1,
+      "final_score": 14.3,
+      "converged_85": true,
+      "converged_90": true,
+      "converged_95": true,
+      "duration_s": 0.0002562999725341797
+    }
+  ],
+  "criterion_pass": true
+}

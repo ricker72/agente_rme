@@ -1,0 +1,18 @@
+{
+  "tiles": 10517,
+  "grounds": 10321,
+  "walls": 196,
+  "items": 0,
+  "decorations": 0,
+  "spawns": 0,
+  "bosses": 0,
+  "structures": 0,
+  "regions": 0,
+  "z_layers": {
+    "7": 10517
+  },
+  "unique_ground_ids": 7,
+  "summary": "10517 tiles | 10517 grounds (196 walls) | 0 items (0 deco) | 0 spawns (0 bosses) | 0 structures",
+  "spawn_details": [],
+  "boss_details": []
+}

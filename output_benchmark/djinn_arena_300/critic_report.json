@@ -1,0 +1,438 @@
+{
+  "map_name": "djinn_arena_300",
+  "overall_score": 53.81,
+  "visual_score": 68.2,
+  "navigation_score": 85.0,
+  "density_score": 80.0,
+  "spawn_score": 10.0,
+  "hunt_score": 50.0,
+  "boss_score": 21.47,
+  "city_score": 60.0,
+  "decor_score": 38.75,
+  "pathfinding_score": 80.0,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 68.2,
+      "max_value": 100.0,
+      "ratio": 0.682,
+      "breakdown": {
+        "quantity": 1.01,
+        "content_ratio": 100.0,
+        "density": 100.0,
+        "variety": 20.0,
+        "consistency": 100.0,
+        "total_tiles": 100.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 80.0,
+      "max_value": 100.0,
+      "ratio": 0.8,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 100.0,
+        "spawn_ratio": 0.0,
+        "concentration": 100.0,
+        "avg_items_per_tile": 1.0,
+        "max_items_per_tile": 1
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 10.0,
+      "max_value": 100.0,
+      "ratio": 0.1,
+      "breakdown": {
+        "density_score": 0.0,
+        "distance_score": 100.0,
+        "zone_coverage": 0.0,
+        "spawn_density": 0.0
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {},
+      "notes": "No hunt zones identified"
+    },
+    "boss": {
+      "category": "boss",
+      "value": 21.47,
+      "max_value": 100.0,
+      "ratio": 0.2147,
+      "breakdown": {
+        "boss_count": 2.0,
+        "min_boss_score": 0.0,
+        "max_boss_score": 82.93
+      },
+      "notes": ""
+    },
+    "city": {
+      "category": "city",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No city zones identified"
+    },
+    "decor": {
+      "category": "decor",
+      "value": 38.75,
+      "max_value": 100.0,
+      "ratio": 0.3875,
+      "breakdown": {
+        "variety_score": 12.5,
+        "repetition_score": 0.0,
+        "coverage": 100.0,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 58.0,
+      "max_value": 100.0,
+      "ratio": 0.58,
+      "breakdown": {
+        "region_count": 1.0,
+        "empty_regions": 1.0,
+        "level_issues": 0.0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 80.0,
+      "max_value": 100.0,
+      "ratio": 0.8,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 0.0,
+        "astar_path_length": 17.0
+      },
+      "notes": "Entry point: (0, 7, 7), reachable: 100/100"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,9,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(9,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "low_spawn_density",
+      "severity": "critical",
+      "category": "spawn",
+      "location": "",
+      "message": "No monster spawns in the world",
+      "details": {},
+      "penalty": 20.0
+    },
+    {
+      "issue_type": "invalid_boss_room",
+      "severity": "error",
+      "category": "boss",
+      "location": "boss_djinn_arena",
+      "message": "Boss arena 'boss_djinn_arena' is too small (0 tiles)",
+      "details": {},
+      "penalty": 10.0
+    },
+    {
+      "issue_type": "boss_no_escape",
+      "severity": "error",
+      "category": "boss",
+      "location": "boss_djinn_arena",
+      "message": "Boss arena 'boss_djinn_arena' has no escape route",
+      "details": {},
+      "penalty": 10.0
+    },
+    {
+      "issue_type": "underdecorated_area",
+      "severity": "warning",
+      "category": "decor",
+      "location": "",
+      "message": "Only 1 unique decoration types — map looks repetitive",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "overdecorated_area",
+      "severity": "warning",
+      "category": "decor",
+      "location": "",
+      "message": "Item 200 represents 100% of decorations",
+      "details": {
+        "item_id": 200,
+        "count": 100
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "boss_djinn_arena",
+      "message": "Region 'boss_djinn_arena' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,9,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(9,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Add monster spawns",
+      "description": "Place monster spawns in hunt areas. Aim for ~5% of grounded tiles.",
+      "category": "spawn",
+      "priority": "critical",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define hunt zones",
+      "description": "Add zones with names containing 'hunt', 'spawn', 'farm' or 'cave' to enable hunt analysis.",
+      "category": "hunt",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Enlarge boss arena boss_djinn_arena",
+      "description": "Boss arena 'boss_djinn_arena' has only 0 tiles. Enlarge to at least 25.",
+      "category": "boss",
+      "priority": "high",
+      "target_location": "boss_djinn_arena",
+      "action": {}
+    },
+    {
+      "title": "Add escape route to boss_djinn_arena",
+      "description": "Boss arena 'boss_djinn_arena' has no escape route. Add a secondary exit or teleport.",
+      "category": "boss",
+      "priority": "high",
+      "target_location": "boss_djinn_arena",
+      "action": {}
+    },
+    {
+      "title": "Define city zones",
+      "description": "Add zones with names containing 'city', 'town', 'village', 'hub' or 'market'.",
+      "category": "city",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Increase decoration variety",
+      "description": "Map uses only 1 unique items. Add more decoration variety.",
+      "category": "decor",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: boss_djinn_arena. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Reduce navigation bottlenecks",
+      "description": "Add secondary routes around bottleneck tiles to improve movement.",
+      "category": "pathfinding",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.006,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 100,
+        "grounded_tiles": 100,
+        "useful_tiles": 100,
+        "content_ratio": 1.0,
+        "avg_items_per_tile": 1.0,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.04,
+        "total_grounded": 100
+      },
+      "density": {
+        "total_tiles": 100,
+        "grounded_tiles": 100,
+        "tiles_with_items": 100,
+        "tiles_with_spawns": 0,
+        "bbox_area": 100,
+        "zone_density": {
+          "unzoned": 1.0
+        }
+      },
+      "spawn": {
+        "total_spawns": 0,
+        "grounded_tiles": 100,
+        "spawn_density": 0.0,
+        "min_distance": 0,
+        "max_distance": 0,
+        "avg_distance": 0,
+        "cluster_count": 0,
+        "zone_coverage": 0.0
+      },
+      "hunt": {
+        "hunts": 0
+      },
+      "boss": {
+        "bosses": 2,
+        "per_boss": [
+          {
+            "name": "boss_djinn",
+            "arena_size": 36,
+            "escape_routes": 1,
+            "size_score": 65.87,
+            "escape_score": 100.0,
+            "access_score": 100.0
+          },
+          {
+            "name": "boss_djinn_arena",
+            "arena_size": 0,
+            "escape_routes": 0,
+            "size_score": 0.0,
+            "escape_score": 0.0,
+            "access_score": 0.0
+          }
+        ]
+      },
+      "city": {
+        "cities": 0
+      },
+      "decor": {
+        "variety": 1,
+        "total_items": 100,
+        "repetition_ratio": 1.0,
+        "coverage": 1.0,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 200
+      },
+      "region": {
+        "region_count": 1,
+        "empty_regions": [
+          "boss_djinn_arena"
+        ],
+        "level_issues": 0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "pathfinding": {
+        "walkable_tiles": 100,
+        "reachable_tiles": 100,
+        "reach_ratio": 1.0,
+        "astar_path_length": 17,
+        "bottleneck_count": 4,
+        "entry_point": [
+          0,
+          7,
+          7
+        ],
+        "max_distance": 16.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T15:14:22.071782",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T15:14:22.072689"
+  }
+}

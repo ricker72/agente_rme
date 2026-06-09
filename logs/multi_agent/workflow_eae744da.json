@@ -1,0 +1,329 @@
+{
+  "workflow_id": "eae744da",
+  "prompt": "Generate test",
+  "status": "completed",
+  "tasks": {
+    "1b16cfdc": {
+      "task_id": "1b16cfdc",
+      "agent_id": "architect",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:54.471574",
+      "completed_at": "2026-06-07T07:10:54.476806",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "architect",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.00421905517578125
+        },
+        "artifacts": {},
+        "report": {
+          "summary": "WorldPlan(primary=issavi, hunts=1)",
+          "prompt": "Generate test"
+        },
+        "timestamp": "2026-06-07T07:10:54.476776",
+        "recovery_used": false
+      }
+    },
+    "c1d30727": {
+      "task_id": "c1d30727",
+      "agent_id": "mapper",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:54.479677",
+      "completed_at": "2026-06-07T07:10:54.512166",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "mapper",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.031616926193237305
+        },
+        "artifacts": {},
+        "report": {
+          "tile_count": 2500,
+          "structure_count": 1
+        },
+        "timestamp": "2026-06-07T07:10:54.511496",
+        "recovery_used": false
+      }
+    },
+    "ff5b138e": {
+      "task_id": "ff5b138e",
+      "agent_id": "expansion",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:54.514225",
+      "completed_at": "2026-06-07T07:10:54.804588",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "expansion",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.2895536422729492
+        },
+        "artifacts": {},
+        "report": {
+          "results": [
+            {
+              "step_name": "region_expansion",
+              "success": true,
+              "tiles_before": 0,
+              "tiles_after": 0
+            },
+            {
+              "step_name": "hunt_expansion",
+              "success": true,
+              "tiles_before": 0,
+              "tiles_after": 6075
+            },
+            {
+              "step_name": "boss_expansion",
+              "success": true,
+              "tiles_before": 0,
+              "tiles_after": 200
+            },
+            {
+              "step_name": "quest_zone_expansion",
+              "success": true,
+              "tiles_before": 0,
+              "tiles_after": 432
+            },
+            {
+              "step_name": "road_expansion",
+              "success": true,
+              "tiles_before": 0,
+              "tiles_after": 1310
+            }
+          ],
+          "tiles_original": 2500,
+          "tiles_final": 10517,
+          "tiles_added": 8017,
+          "regions_original": 0,
+          "regions_final": 8,
+          "structures_original": 0,
+          "structures_final": 8,
+          "expanded": true
+        },
+        "timestamp": "2026-06-07T07:10:54.802167",
+        "recovery_used": false
+      }
+    },
+    "335302d7": {
+      "task_id": "335302d7",
+      "agent_id": "quest",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:54.807643",
+      "completed_at": "2026-06-07T07:10:54.809637",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "quest",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0006186962127685547
+        },
+        "artifacts": {},
+        "report": {
+          "theme": "default",
+          "level_range": [
+            1,
+            200
+          ]
+        },
+        "timestamp": "2026-06-07T07:10:54.809607",
+        "recovery_used": false
+      }
+    },
+    "1fec581c": {
+      "task_id": "1fec581c",
+      "agent_id": "playtest",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:54.811444",
+      "completed_at": "2026-06-07T07:10:55.704917",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "playtest",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.8926513195037842
+        },
+        "artifacts": {},
+        "report": {
+          "player_level": 300,
+          "rotation_minutes": 60.0
+        },
+        "timestamp": "2026-06-07T07:10:55.702741",
+        "recovery_used": false
+      }
+    },
+    "a9921a0c": {
+      "task_id": "a9921a0c",
+      "agent_id": "balance",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:55.707986",
+      "completed_at": "2026-06-07T07:10:55.827299",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "balance",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.11799144744873047
+        },
+        "artifacts": {},
+        "report": {
+          "zones": [
+            {
+              "zone_name": "__global__",
+              "was_modified": false,
+              "spawn_result": {
+                "adjustments": [],
+                "zones_modified": [],
+                "spawns_added": 0,
+                "spawns_removed": 0,
+                "radii_adjusted": 0,
+                "respawns_adjusted": 0
+              },
+              "xp_result": {
+                "adjustments": [],
+                "zones_modified": [],
+                "total_monsters_adjusted": 0
+              },
+              "loot_result": {
+                "adjustments": [],
+                "zones_modified": [],
+                "total_adjustments": 0
+              },
+              "difficulty_result": {
+                "adjustments": [],
+                "zones_modified": [],
+                "bosses_corrected": 0,
+                "trivial_corrected": 0
+              },
+              "risk_result": {
+                "assessments": [
+                  {
+                    "zone_name": "__global__",
+                    "risk_score": 0.0,
+                    "risk_level": "safe",
+                    "death_probability": 0.0,
+                    "supply_drain_rate": 0.0,
+                    "risk_factors": [],
+                    "recommendations": []
+                  }
+                ],
+                "adjustments": [],
+                "zones_modified": []
+              }
+            }
+          ],
+          "total_adjustments": 0,
+          "zones_modified": 0,
+          "world_balanced": true
+        },
+        "timestamp": "2026-06-07T07:10:55.825028",
+        "recovery_used": false
+      }
+    },
+    "752cc013": {
+      "task_id": "752cc013",
+      "agent_id": "qa",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:55.829101",
+      "completed_at": "2026-06-07T07:10:55.830559",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "qa",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0006618499755859375
+        },
+        "artifacts": {},
+        "report": {
+          "overall_score": 0.75,
+          "valid": true
+        },
+        "timestamp": "2026-06-07T07:10:55.830538",
+        "recovery_used": false
+      }
+    },
+    "0866d017": {
+      "task_id": "0866d017",
+      "agent_id": "export",
+      "status": "completed",
+      "created_at": "2026-06-07T07:10:55.832187",
+      "completed_at": "2026-06-07T07:10:56.410216",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "export",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.5772008895874023,
+          "artifacts_count": 8
+        },
+        "artifacts": {
+          "preview_png": "output\\preview.png",
+          "preview_minimap": "output\\preview_minimap.png",
+          "preview_json": "output\\preview.json",
+          "preview.png": "output\\preview.png",
+          "preview.json": "output\\preview.json",
+          "playtest_report": "output\\playtest_report.json",
+          "qa_report": "output\\qa_report.json",
+          "report": "output\\report.json"
+        },
+        "report": {
+          "artifacts": [
+            "preview_png",
+            "preview_minimap",
+            "preview_json",
+            "preview.png",
+            "preview.json",
+            "playtest_report",
+            "qa_report"
+          ],
+          "world_tile_count": 10517,
+          "campaign_generated": false,
+          "playtest_generated": true,
+          "qa_generated": true
+        },
+        "timestamp": "2026-06-07T07:10:56.406168",
+        "recovery_used": false
+      }
+    }
+  },
+  "current_agent": "export",
+  "errors": [],
+  "started_at": "2026-06-07T07:10:54.470013",
+  "completed_at": "2026-06-07T07:10:56.412052",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

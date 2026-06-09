@@ -1,0 +1,33 @@
+{
+  "name": "issavi_depot",
+  "category": "depot",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [12, 12],
+  "description": "Depósito estilo Issavi con lockers, balcón superior y acceso central",
+  "layout": {
+    "type": "two_level",
+    "entrance": "south",
+    "entrance_position": [6, 10],
+    "stairs_position": [6, 6]
+  },
+  "rooms": [
+    {"name": "main_hall", "position": [2, 6], "size": [8, 6], "type": "depot_hall"},
+    {"name": "upper_balcony", "position": [2, 0], "size": [8, 6], "type": "depot_upper"}
+  ],
+  "features": [
+    {"type": "depot_locker", "position": [4, 2], "count": 32},
+    {"type": "depot_locker", "position": [8, 2], "count": 32},
+    {"type": "inbox", "position": [6, 0], "item_id": 2595}
+  ],
+  "grounds": [415, 393],
+  "walls_items": [1495, 1496],
+  "decorations": [2050, 2052, 2153],
+  "metadata": {
+    "style": "issavi",
+    "capacity": "64_lockers",
+    "era": "modern",
+    "difficulty": "safe",
+    "tags": ["depot", "oriental", "lockers", "storage"]
+  }
+}

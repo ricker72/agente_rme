@@ -1,0 +1,26 @@
+{"event": "workflow_start", "workflow_id": "15b97c3b", "prompt": "Generate Issavi expansion", "pipeline": ["architect", "mapper", "expansion", "quest", "playtest", "balance", "qa", "export"], "timestamp": "2026-06-07T06:57:37.470650"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "architect", "timestamp": "2026-06-07T06:57:37.471877"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "architect", "duration": 0.0019366741180419922, "timestamp": "2026-06-07T06:57:37.477631"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "architect", "status": "completed", "timestamp": "2026-06-07T06:57:37.478847"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "mapper", "timestamp": "2026-06-07T06:57:37.481882"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "mapper", "duration": 0.033751487731933594, "timestamp": "2026-06-07T06:57:37.516545"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "mapper", "status": "completed", "timestamp": "2026-06-07T06:57:37.517477"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "expansion", "timestamp": "2026-06-07T06:57:37.518506"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "expansion", "duration": 0.3076300621032715, "timestamp": "2026-06-07T06:57:37.827091"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "expansion", "status": "completed", "timestamp": "2026-06-07T06:57:37.828189"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "quest", "timestamp": "2026-06-07T06:57:37.829116"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "quest", "duration": 0.00044465065002441406, "timestamp": "2026-06-07T06:57:37.830395"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "quest", "status": "completed", "timestamp": "2026-06-07T06:57:37.831220"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "playtest", "timestamp": "2026-06-07T06:57:37.832131"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "playtest", "duration": 0.9863932132720947, "timestamp": "2026-06-07T06:57:38.819406"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "playtest", "status": "completed", "timestamp": "2026-06-07T06:57:38.820434"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "balance", "timestamp": "2026-06-07T06:57:38.821344"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "balance", "duration": 0.14049553871154785, "timestamp": "2026-06-07T06:57:38.962752"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "balance", "status": "completed", "timestamp": "2026-06-07T06:57:38.963684"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "qa", "timestamp": "2026-06-07T06:57:38.964574"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "qa", "duration": 0.0006804466247558594, "timestamp": "2026-06-07T06:57:38.966041"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "qa", "status": "completed", "timestamp": "2026-06-07T06:57:38.966884"}
+{"event": "agent_start", "workflow_id": "15b97c3b", "agent_id": "export", "timestamp": "2026-06-07T06:57:38.967730"}
+{"event": "agent_success", "workflow_id": "15b97c3b", "agent_id": "export", "duration": 0.6080842018127441, "timestamp": "2026-06-07T06:57:39.576712"}
+{"event": "agent_end", "workflow_id": "15b97c3b", "agent_id": "export", "status": "completed", "timestamp": "2026-06-07T06:57:39.577974"}
+{"event": "workflow_end", "workflow_id": "15b97c3b", "success": true, "errors": [], "metrics": {"execution_time": 2.1081719398498535, "agent_times": {"architect": 0.0019366741180419922, "mapper": 0.033751487731933594, "expansion": 0.3076300621032715, "quest": 0.00044465065002441406, "playtest": 0.9863932132720947, "balance": 0.14049553871154785, "qa": 0.0006804466247558594, "export": 0.6080842018127441}, "agent_failures": [], "agent_success_rate": 100.0, "total_agents": 8, "successful_agents": 8}, "timestamp": "2026-06-07T06:57:39.629240"}

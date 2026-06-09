@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npcs>
+    <npc name="..." script="....lua"/>
+    <npc name="A Bearded Woman" script="a_bearded_woman.lua"/>
+    <npc name="A Beautiful Girl" script="a_beautiful_girl.lua"/>
+    <npc name="A Beggar" script="a_beggar.lua"/>
+    <npc name="A Behemoth" script="a_behemoth.lua"/>
+    <npc name="A Confused Frog" script="a_confused_frog.lua"/>
+    <npc name="A Dark Priestess" script="a_dark_priestess.lua"/>
+    <npc name="A Dead Bureaucrat1" script="a_dead_bureaucrat1.lua"/>
+    <npc name="A Dead Bureaucrat2" script="a_dead_bureaucrat2.lua"/>
+    <npc name="A Dead Bureaucrat3" script="a_dead_bureaucrat3.lua"/>
+    <npc name="A Dead Bureaucrat4" script="a_dead_bureaucrat4.lua"/>
+    <npc name="A Dragon Lord" script="a_dragon_lord.lua"/>
+    <npc name="A Dragon Mother" script="a_dragon_mother.lua"/>
+    <npc name="A Drillworm" script="a_drillworm.lua"/>
+    <npc name="A Dwarven Ghost" script="a_dwarven_ghost.lua"/>
+    <npc name="A Fading Memory" script="a_fading_memory.lua"/>
+    <npc name="A Fluffy Squirrel" script="a_fluffy_squirrel.lua"/>
+    <npc name="A Frog" script="a_frog.lua"/>
+    <npc name="A Ghostly Guardian" script="a_ghostly_guardian.lua"/>
+    <npc name="A Ghostly Knight" script="a_ghostly_knight.lua"/>
+    <npc name="A Ghostly Sage" script="a_ghostly_sage.lua"/>
+    <npc name="A Ghostly Woman" script="a_ghostly_woman.lua"/>
+    <npc name="A Ghostly Woman Ghostland" script="a_ghostly_woman_ghostland.lua"/>
+    <npc name="A Goblin Exile" script="a_goblin_exile.lua"/>
+    <npc name="A Grumpy Cyclops" script="a_grumpy_cyclops.lua"/>
+    <npc name="A Lost Basher" script="a_lost_basher.lua"/>
+    <npc name="A Lost Husher" script="a_lost_husher.lua"/>
+    <npc name="A Lost Soul" script="a_lost_soul.lua"/>
+    <npc name="A Lost Thrower" script="a_lost_thrower.lua"/>
+    <npc name="A Majestic Warwolf" script="a_majestic_warwolf.lua"/>
+    <npc name="A Nightmare Scion" script="a_nightmare_scion.lua"/>
+    <npc name="A Prisoner" script="a_prisoner.lua"/>
+    <npc name="A Restless Soul" script="a_restless_soul.lua"/>
+    <npc name="A Seagull" script="a_seagull.lua"/>
+    <npc name="A Sleeping Dragon" script="a_sleeping_dragon.lua"/>
+    <npc name="A Starving Dog" script="a_starving_dog.lua"/>
+    <npc name="A Strange Chalice" script="a_strange_chalice.lua"/>
+    <npc name="A Strange Fellow" script="a_strange_fellow.lua"/>
+    <npc name="A Swan" script="a_swan.lua"/>
+    <npc name="A Sweaty Cyclops" script="a_sweaty_cyclops.lua"/>
+    <npc name="A Tainted Soul" script="a_tainted_soul.lua"/>
+    <npc name="A Tortured Soul" script="a_tortured_soul.lua"/>
+    <npc name="A Vulcongra" script="a_vulcongra.lua"/>
+    <npc name="A Weakened Forest Fury" script="a_weakened_forest_fury.lua"/>
+    <npc name="A Wrinkled Bonelord" script="a_wrinkled_bonelord.lua"/>
+    <npc name="A Wyrm" script="a_wyrm.lua"/>
+    <npc name="Abran Ironeye" script="abran_ironeye.lua"/>
+    <npc name="Admiral Wyrmslicer" script="admiral_wyrmslicer.lua"/>
+    <npc name="Adrenius" script="adrenius.lua"/>
+    <npc name="Ahmet" script="ahmet.lua"/>
+    <npc name="Ajax" script="ajax.lua"/>
+    <npc name="Al Dee" script="al_dee.lua"/>
+    <npc name="Alaistar" script="alaistar.lua"/>
+    <npc name="Albert" script="albert.lua"/>
+    <npc name="Albinius" script="albinius.lua"/>
+    <npc name="Aldo" script="aldo.lua"/>
+    <npc name="Alesar" script="alesar.lua"/>
+    <npc name="Alesar Functions" script="alesar_functions.lua"/>
+    <npc name="Alexander" script="alexander.lua"/>
+    <npc name="Alia" script="alia.lua"/>
+    <npc name="Alissa" script="alissa.lua"/>
+    <npc name="Alkestios" script="alkestios.lua"/>
+    <npc name="Allen" script="allen.lua"/>
+    <npc name="Altar" script="altar.lua"/>
+    <npc name="Alternative Rock" script="alternative_rock.lua"/>
+    <npc name="Alwin" script="alwin.lua"/>
+    <npc name="Alyxo" script="alyxo.lua"/>
+    <npc name="Amanda" script="amanda.lua"/>
+    <npc name="Amarie" script="amarie.lua"/>
+    <npc name="Ambassador Manop" script="ambassador_manop.lua"/>
+    <npc name="Ambassador Of Rathleton" script="ambassador_of_rathleton.lua"/>
+    <npc name="Amber" script="amber.lua"/>
+    <npc name="Amra" script="amra.lua"/>
+    <npc name="An Ancient Priest" script="an_ancient_priest.lua"/>
+    <npc name="An Apparition" script="an_apparition.lua"/>
+    <npc name="An Idol" script="an_idol.lua"/>
+    <npc name="An Imprisoned Goblin" script="an_imprisoned_goblin.lua"/>
+    <npc name="An Old Dragon Lord" script="an_old_dragon_lord.lua"/>
+    <npc name="An Ominous Bat" script="an_ominous_bat.lua"/>
+    <npc name="An Orc Guard" script="an_orc_guard.lua"/>
+    <npc name="An Orchish Ancestor Spirit" script="an_orchish_ancestor_spirit.lua"/>
+    <npc name="Anaztassja Moroia" script="anaztassja_moroia.lua"/>
+    <npc name="Anaztassja Moroia Init" script="anaztassja_moroia_init.lua"/>
+    <npc name="Anaztassja Moroia Vampires Lair" script="anaztassja_moroia_vampires_lair.lua"/>
+    <npc name="Anderson" script="anderson.lua"/>
+    <npc name="Andrew Lyze" script="andrew_lyze.lua"/>
+    <npc name="Anerui" script="anerui.lua"/>
+    <npc name="Aneus" script="aneus.lua"/>
+    <npc name="Angelina" script="angelina.lua"/>
+    <npc name="Angelo" script="angelo.lua"/>
+    <npc name="Angus" script="angus.lua"/>
+    <npc name="Anna" script="anna.lua"/>
+    <npc name="Appaloosa" script="appaloosa.lua"/>
+    <npc name="Archery" script="archery.lua"/>
+    <npc name="Archery Rook" script="archery_rook.lua"/>
+    <npc name="Ariella" script="ariella.lua"/>
+    <npc name="Arito" script="arito.lua"/>
+    <npc name="Arkarra" script="arkarra.lua"/>
+    <npc name="Arkhothep" script="arkhothep.lua"/>
+    <npc name="Arkulius" script="arkulius.lua"/>
+    <npc name="Armenius" script="armenius.lua"/>
+    <npc name="Arnold" script="arnold.lua"/>
+    <npc name="Aruda" script="aruda.lua"/>
+    <npc name="Ashari" script="ashari.lua"/>
+    <npc name="Ashtamor" script="ashtamor.lua"/>
+    <npc name="Asima" script="asima.lua"/>
+    <npc name="Asnarus" script="asnarus.lua"/>
+    <npc name="Asphota" script="asphota.lua"/>
+    <npc name="Asrak" script="asrak.lua"/>
+    <npc name="Asralius" script="asralius.lua"/>
+    <npc name="Atrad" script="atrad.lua"/>
+    <npc name="Atur" script="atur.lua"/>
+    <npc name="Aurita" script="aurita.lua"/>
+    <npc name="Auron" script="auron.lua"/>
+    <npc name="Avar Tar" script="avar_tar.lua"/>
+    <npc name="Avriel" script="avriel.lua"/>
+    <npc name="Awareness Of The Emperor" script="awareness_of_the_emperor.lua"/>
+    <npc name="Azalea" script="azalea.lua"/>
+    <npc name="Azil" script="azil.lua"/>
+    <npc name="Baa Leal" script="baa_leal.lua"/>
+    <npc name="Baltim" script="baltim.lua"/>
+    <npc name="Bambi Bonecrusher" script="bambi_bonecrusher.lua"/>
+    <npc name="Barazbaz" script="barazbaz.lua"/>
+    <npc name="Barbara" script="barbara.lua"/>
+    <npc name="Barnabas Dee" script="barnabas_dee.lua"/>
+    <npc name="Barney" script="barney.lua"/>
+    <npc name="Barry" script="barry.lua"/>
+    <npc name="Bashira" script="bashira.lua"/>
+    <npc name="Basilisk" script="basilisk.lua"/>
+    <npc name="Battlemart" script="battlemart.lua"/>
+    <npc name="Baxter" script="baxter.lua"/>
+    <npc name="Beatrice" script="beatrice.lua"/>
+    <npc name="Benevola" script="benevola.lua"/>
+    <npc name="Benjamin" script="benjamin.lua"/>
+    <npc name="Berenice" script="berenice.lua"/>
+    <npc name="Bertha" script="bertha.lua"/>
+    <npc name="Bertram" script="bertram.lua"/>
+    <npc name="Bezil" script="bezil.lua"/>
+    <npc name="Bigfoot Soldier" script="bigfoot_soldier.lua"/>
+    <npc name="Bill The Worker" script="bill_the_worker.lua"/>
+    <npc name="Billy" script="billy.lua"/>
+    <npc name="Black Bert" script="black_bert.lua"/>
+    <npc name="Blind Orc" script="blind_orc.lua"/>
+    <npc name="Bloodshade Rotten" script="bloodshade_rotten.lua"/>
+    <npc name="Bloodshade Sacrifice" script="bloodshade_sacrifice.lua"/>
+    <npc name="Blossom Bonecrusher" script="blossom_bonecrusher.lua"/>
+    <npc name="Bo Ques" script="bo_ques.lua"/>
+    <npc name="Bob The Worker" script="bob_the_worker.lua"/>
+    <npc name="Bolfona" script="bolfona.lua"/>
+    <npc name="Bonifacius" script="bonifacius.lua"/>
+    <npc name="Boozer" script="boozer.lua"/>
+    <npc name="Borkas" script="borkas.lua"/>
+    <npc name="Boveas" script="boveas.lua"/>
+    <npc name="Bozarn" script="bozarn.lua"/>
+    <npc name="Bozo" script="bozo.lua"/>
+    <npc name="Braden" script="braden.lua"/>
+    <npc name="Bradford" script="bradford.lua"/>
+    <npc name="Brasith" script="brasith.lua"/>
+    <npc name="Brengus" script="brengus.lua"/>
+    <npc name="Brewmaster Bhaan" script="brewmaster_bhaan.lua"/>
+    <npc name="Brewster" script="brewster.lua"/>
+    <npc name="Briasol" script="briasol.lua"/>
+    <npc name="Bright Percht Sleigh" script="bright_percht_sleigh.lua"/>
+    <npc name="Brodrosch" script="brodrosch.lua"/>
+    <npc name="Broken Servant Sentry" script="broken_servant_sentry.lua"/>
+    <npc name="Brom" script="brom.lua"/>
+    <npc name="Bron" script="bron.lua"/>
+    <npc name="Bruce" script="bruce.lua"/>
+    <npc name="Bruno" script="bruno.lua"/>
+    <npc name="Brutus" script="brutus.lua"/>
+    <npc name="Buddel" script="buddel.lua"/>
+    <npc name="Buddel Helheim" script="buddel_helheim.lua"/>
+    <npc name="Buddel Okolnir" script="buddel_okolnir.lua"/>
+    <npc name="Buddel Raider Camp" script="buddel_raider_camp.lua"/>
+    <npc name="Buddel Tyrsung" script="buddel_tyrsung.lua"/>
+    <npc name="Budrik" script="budrik.lua"/>
+    <npc name="Bunny Bonecrusher" script="bunny_bonecrusher.lua"/>
+    <npc name="Busty Bonecrusher" script="busty_bonecrusher.lua"/>
+    <npc name="Cael" script="cael.lua"/>
+    <npc name="Cameron" script="cameron.lua"/>
+    <npc name="Captain Bluebear" script="captain_bluebear.lua"/>
+    <npc name="Captain Breezelda" script="captain_breezelda.lua"/>
+    <npc name="Captain Chelop" script="captain_chelop.lua"/>
+    <npc name="Captain Cookie" script="captain_cookie.lua"/>
+    <npc name="Captain Dreadnought" script="captain_dreadnought.lua"/>
+    <npc name="Captain Fearless" script="captain_fearless.lua"/>
+    <npc name="Captain Greyhound" script="captain_greyhound.lua"/>
+    <npc name="Captain Gulliver" script="captain_gulliver.lua"/>
+    <npc name="Captain Haba" script="captain_haba.lua"/>
+    <npc name="Captain Haba Open Sea" script="captain_haba_open_sea.lua"/>
+    <npc name="Captain Harava" script="captain_harava.lua"/>
+    <npc name="Captain Jack" script="captain_jack.lua"/>
+    <npc name="Captain Jack Rat" script="captain_jack_rat.lua"/>
+    <npc name="Captain Kurt" script="captain_kurt.lua"/>
+    <npc name="Captain Marie-Denise Banner" script="captain_marie-denise_banner.lua"/>
+    <npc name="Captain Max" script="captain_max.lua"/>
+    <npc name="Captain Max Calassa" script="captain_max_calassa.lua"/>
+    <npc name="Captain Pelagia" script="captain_pelagia.lua"/>
+    <npc name="Captain Seagull" script="captain_seagull.lua"/>
+    <npc name="Captain Seahorse" script="captain_seahorse.lua"/>
+    <npc name="Captain Sinbeard" script="captain_sinbeard.lua"/>
+    <npc name="Captain Tiberius" script="captain_tiberius.lua"/>
+    <npc name="Captain Waverider" script="captain_waverider.lua"/>
+    <npc name="Captain Waverider Island" script="captain_waverider_island.lua"/>
+    <npc name="Caramellia" script="caramellia.lua"/>
+    <npc name="Carina" script="carina.lua"/>
+    <npc name="Carlos" script="carlos.lua"/>
+    <npc name="Carlson" script="carlson.lua"/>
+    <npc name="Cassino" script="cassino.lua"/>
+    <npc name="Cedrik" script="cedrik.lua"/>
+    <npc name="Ceiron" script="ceiron.lua"/>
+    <npc name="Cerdras" script="cerdras.lua"/>
+    <npc name="Cerebrir" script="cerebrir.lua"/>
+    <npc name="Chantalle" script="chantalle.lua"/>
+    <npc name="Charles" script="charles.lua"/>
+    <npc name="Charlotta" script="charlotta.lua"/>
+    <npc name="Charos" script="charos.lua"/>
+    <npc name="Chartan" script="chartan.lua"/>
+    <npc name="Chatterbone" script="chatterbone.lua"/>
+    <npc name="Chavis" script="chavis.lua"/>
+    <npc name="Chemar" script="chemar.lua"/>
+    <npc name="Chephan" script="chephan.lua"/>
+    <npc name="Chester Kahs" script="chester_kahs.lua"/>
+    <npc name="Chief Grarkharok" script="chief_grarkharok.lua"/>
+    <npc name="Chondur" script="chondur.lua"/>
+    <npc name="Chrak" script="chrak.lua"/>
+    <npc name="Christine" script="christine.lua"/>
+    <npc name="Christoph" script="christoph.lua"/>
+    <npc name="Chrystal" script="chrystal.lua"/>
+    <npc name="Chuck The Worker" script="chuck_the_worker.lua"/>
+    <npc name="Chuckles" script="chuckles.lua"/>
+    <npc name="Cillia" script="cillia.lua"/>
+    <npc name="Cipfried" script="cipfried.lua"/>
+    <npc name="Clark" script="clark.lua"/>
+    <npc name="Cledwyn" script="cledwyn.lua"/>
+    <npc name="Clyde" script="clyde.lua"/>
+    <npc name="Cobra" script="cobra.lua"/>
+    <npc name="Cold Percht Sleigh" script="cold_percht_sleigh.lua"/>
+    <npc name="Coltrayne" script="coltrayne.lua"/>
+    <npc name="Commander Stone" script="commander_stone.lua"/>
+    <npc name="Cornelia" script="cornelia.lua"/>
+    <npc name="Cornell" script="cornell.lua"/>
+    <npc name="Corym Butler" script="corym_butler.lua"/>
+    <npc name="Corym Footman" script="corym_footman.lua"/>
+    <npc name="Corym Ratter" script="corym_ratter.lua"/>
+    <npc name="Corym Servant" script="corym_servant.lua"/>
+    <npc name="Corym Slave" script="corym_slave.lua"/>
+    <npc name="Corym Worker 01" script="corym_worker_01.lua"/>
+    <npc name="Corym Worker 02" script="corym_worker_02.lua"/>
+    <npc name="Corym Worker 03" script="corym_worker_03.lua"/>
+    <npc name="Corym Worker 04" script="corym_worker_04.lua"/>
+    <npc name="Corym Worker 05" script="corym_worker_05.lua"/>
+    <npc name="Costello" script="costello.lua"/>
+    <npc name="Cranky Lizard Crone" script="cranky_lizard_crone.lua"/>
+    <npc name="Crowned Tree" script="crowned_tree.lua"/>
+    <npc name="Cruleo" script="cruleo.lua"/>
+    <npc name="Curos" script="curos.lua"/>
+    <npc name="Dabui" script="dabui.lua"/>
+    <npc name="Dagomir" script="dagomir.lua"/>
+    <npc name="Dalbrect" script="dalbrect.lua"/>
+    <npc name="Dallheim" script="dallheim.lua"/>
+    <npc name="Dancing Fairy" script="dancing_fairy.lua"/>
+    <npc name="Dane" script="dane.lua"/>
+    <npc name="Daniel Steelsoul" script="daniel_steelsoul.lua"/>
+    <npc name="Dankwart" script="dankwart.lua"/>
+    <npc name="Danlon" script="danlon.lua"/>
+    <npc name="Dario" script="dario.lua"/>
+    <npc name="Dark Percht Sleigh" script="dark_percht_sleigh.lua"/>
+    <npc name="Dedoras" script="dedoras.lua"/>
+    <npc name="Demon Skeleton" script="demon_skeleton.lua"/>
+    <npc name="Demonguard" script="demonguard.lua"/>
+    <npc name="Denominator" script="denominator.lua"/>
+    <npc name="Dermot" script="dermot.lua"/>
+    <npc name="Digger" script="digger.lua"/>
+    <npc name="Dixi" script="dixi.lua"/>
+    <npc name="Djema" script="djema.lua"/>
+    <npc name="Doctor Gnomedix" script="doctor_gnomedix.lua"/>
+    <npc name="Donald Mcronald" script="donald_mcronald.lua"/>
+    <npc name="Dorbin" script="dorbin.lua"/>
+    <npc name="Dorian" script="dorian.lua"/>
+    <npc name="Doubleday" script="doubleday.lua"/>
+    <npc name="Doug" script="doug.lua"/>
+    <npc name="Dove" script="dove.lua"/>
+    <npc name="Dr Merlay" script="dr_merlay.lua"/>
+    <npc name="Dragon Ancestor Spirit" script="dragon_ancestor_spirit.lua"/>
+    <npc name="Dreadeye" script="dreadeye.lua"/>
+    <npc name="Dream Butterfly" script="dream_butterfly.lua"/>
+    <npc name="Dregor" script="dregor.lua"/>
+    <npc name="Drog" script="drog.lua"/>
+    <npc name="Dronk" script="dronk.lua"/>
+    <npc name="Druid Yandur" script="druid_yandur.lua"/>
+    <npc name="Drunken Sailor" script="drunken_sailor.lua"/>
+    <npc name="Drystan Wildweed" script="drystan_wildweed.lua"/>
+    <npc name="Dukosch" script="dukosch.lua"/>
+    <npc name="Duncan" script="duncan.lua"/>
+    <npc name="Duria" script="duria.lua"/>
+    <npc name="Dustrunner" script="dustrunner.lua"/>
+    <npc name="Eathar" script="eathar.lua"/>
+    <npc name="Ebenizer" script="ebenizer.lua"/>
+    <npc name="Eclesius" script="eclesius.lua"/>
+    <npc name="Edala" script="edala.lua"/>
+    <npc name="Eddy" script="eddy.lua"/>
+    <npc name="Edgar-Ellen" script="edgar-ellen.lua"/>
+    <npc name="Edmund" script="edmund.lua"/>
+    <npc name="Edoch" script="edoch.lua"/>
+    <npc name="Edowir" script="edowir.lua"/>
+    <npc name="Edron Guardsman" script="edron_guardsman.lua"/>
+    <npc name="Edvard" script="edvard.lua"/>
+    <npc name="Eighty" script="eighty.lua"/>
+    <npc name="Eirik" script="eirik.lua"/>
+    <npc name="Elane" script="elane.lua"/>
+    <npc name="Elathriel" script="elathriel.lua"/>
+    <npc name="Elbert" script="elbert.lua"/>
+    <npc name="Eldoran The Ambitious" script="eldoran_the_ambitious.lua"/>
+    <npc name="Eleonore" script="eleonore.lua"/>
+    <npc name="Elf Guard" script="elf_guard.lua"/>
+    <npc name="Elgar" script="elgar.lua"/>
+    <npc name="Eliyas" script="eliyas.lua"/>
+    <npc name="Eliza" script="eliza.lua"/>
+    <npc name="Elliott" script="elliott.lua"/>
+    <npc name="Elvith" script="elvith.lua"/>
+    <npc name="Elyen Ravenlock" script="elyen_ravenlock.lua"/>
+    <npc name="Emael" script="emael.lua"/>
+    <npc name="Emberwing" script="emberwing.lua"/>
+    <npc name="Emily" script="emily.lua"/>
+    <npc name="Emma" script="emma.lua"/>
+    <npc name="Emperor Kruzak" script="emperor_kruzak.lua"/>
+    <npc name="Emperor Rehal" script="emperor_rehal.lua"/>
+    <npc name="Enpa Deia Pema" script="enpa_deia_pema.lua"/>
+    <npc name="Enpa Rudra" script="enpa_rudra.lua"/>
+    <npc name="Eranth" script="eranth.lua"/>
+    <npc name="Erayo" script="erayo.lua"/>
+    <npc name="Eremo" script="eremo.lua"/>
+    <npc name="Eroth" script="eroth.lua"/>
+    <npc name="Eruaran" script="eruaran.lua"/>
+    <npc name="Eshaya" script="eshaya.lua"/>
+    <npc name="Esrik" script="esrik.lua"/>
+    <npc name="Ethan" script="ethan.lua"/>
+    <npc name="Etzel" script="etzel.lua"/>
+    <npc name="Eustacio" script="eustacio.lua"/>
+    <npc name="Eva" script="eva.lua"/>
+    <npc name="Evan" script="evan.lua"/>
+    <npc name="Exhausted Lion Knight" script="exhausted_lion_knight.lua"/>
+    <npc name="Ezean" script="ezean.lua"/>
+    <npc name="Ezebeth" script="ezebeth.lua"/>
+    <npc name="Fa Hradin" script="fa_hradin.lua"/>
+    <npc name="Fadil" script="fadil.lua"/>
+    <npc name="Falk" script="falk.lua"/>
+    <npc name="Falonzo" script="falonzo.lua"/>
+    <npc name="Faloriel" script="faloriel.lua"/>
+    <npc name="Faluae" script="faluae.lua"/>
+    <npc name="Farhilorn Of The Winter Court" script="farhilorn_of_the_winter_court.lua"/>
+    <npc name="Fayla" script="fayla.lua"/>
+    <npc name="Feizuhl" script="feizuhl.lua"/>
+    <npc name="Fenbala" script="fenbala.lua"/>
+    <npc name="Fenech" script="fenech.lua"/>
+    <npc name="Fergus" script="fergus.lua"/>
+    <npc name="Ferks" script="ferks.lua"/>
+    <npc name="Ferryman Kamil" script="ferryman_kamil.lua"/>
+    <npc name="Ferryman Kamil Meluna" script="ferryman_kamil_meluna.lua"/>
+    <npc name="Ferus" script="ferus.lua"/>
+    <npc name="Fillias" script="fillias.lua"/>
+    <npc name="Finarfin" script="finarfin.lua"/>
+    <npc name="Fiona" script="fiona.lua"/>
+    <npc name="Fitzduncan" script="fitzduncan.lua"/>
+    <npc name="Flavius" script="flavius.lua"/>
+    <npc name="Flickering Soul" script="flickering_soul.lua"/>
+    <npc name="Flint" script="flint.lua"/>
+    <npc name="Flora" script="flora.lua"/>
+    <npc name="Florentine" script="florentine.lua"/>
+    <npc name="Frafnar" script="frafnar.lua"/>
+    <npc name="Frank The Plank" script="frank_the_plank.lua"/>
+    <npc name="Frans" script="frans.lua"/>
+    <npc name="Frederik" script="frederik.lua"/>
+    <npc name="Freezhild" script="freezhild.lua"/>
+    <npc name="Frodo" script="frodo.lua"/>
+    <npc name="Frok The Guard" script="frok_the_guard.lua"/>
+    <npc name="Frosty" script="frosty.lua"/>
+    <npc name="Fynn" script="fynn.lua"/>
+    <npc name="Fyodor" script="fyodor.lua"/>
+    <npc name="Gabel" script="gabel.lua"/>
+    <npc name="Gail" script="gail.lua"/>
+    <npc name="Galuna" script="galuna.lua"/>
+    <npc name="Gamel" script="gamel.lua"/>
+    <npc name="Gamon" script="gamon.lua"/>
+    <npc name="Garamond" script="garamond.lua"/>
+    <npc name="Gareth" script="gareth.lua"/>
+    <npc name="Gate Guardian" script="gate_guardian.lua"/>
+    <npc name="Gederas" script="gederas.lua"/>
+    <npc name="Gelagos" script="gelagos.lua"/>
+    <npc name="Gelidrazahs Thirst" script="gelidrazahs_thirst.lua"/>
+    <npc name="George The Boyscout" script="george_the_boyscout.lua"/>
+    <npc name="Gerimor" script="gerimor.lua"/>
+    <npc name="Gewen" script="gewen.lua"/>
+    <npc name="Ghorza" script="ghorza.lua"/>
+    <npc name="Ghost Of A Priest" script="ghost_of_a_priest.lua"/>
+    <npc name="Ghostly Wolf" script="ghostly_wolf.lua"/>
+    <npc name="Ghouliver" script="ghouliver.lua"/>
+    <npc name="Giri" script="giri.lua"/>
+    <npc name="Gladys" script="gladys.lua"/>
+    <npc name="Gnomad" script="gnomad.lua"/>
+    <npc name="Gnomadness" script="gnomadness.lua"/>
+    <npc name="Gnomailion" script="gnomailion.lua"/>
+    <npc name="Gnomally" script="gnomally.lua"/>
+    <npc name="Gnomargery" script="gnomargery.lua"/>
+    <npc name="Gnomaticus" script="gnomaticus.lua"/>
+    <npc name="Gnombold" script="gnombold.lua"/>
+    <npc name="Gnome" script="gnome.lua"/>
+    <npc name="Gnome Trooper" script="gnome_trooper.lua"/>
+    <npc name="Gnomegica" script="gnomegica.lua"/>
+    <npc name="Gnomejam" script="gnomejam.lua"/>
+    <npc name="Gnomelvis" script="gnomelvis.lua"/>
+    <npc name="Gnomenursey" script="gnomenursey.lua"/>
+    <npc name="Gnomeral" script="gnomeral.lua"/>
+    <npc name="Gnomercy" script="gnomercy.lua"/>
+    <npc name="Gnomerik" script="gnomerik.lua"/>
+    <npc name="Gnomerrow" script="gnomerrow.lua"/>
+    <npc name="Gnomespector" script="gnomespector.lua"/>
+    <npc name="Gnomette" script="gnomette.lua"/>
+    <npc name="Gnomewart" script="gnomewart.lua"/>
+    <npc name="Gnomfurry" script="gnomfurry.lua"/>
+    <npc name="Gnomillion" script="gnomillion.lua"/>
+    <npc name="Gnomilly" script="gnomilly.lua"/>
+    <npc name="Gnomincia" script="gnomincia.lua"/>
+    <npc name="Gnominer" script="gnominer.lua"/>
+    <npc name="Gnominus" script="gnominus.lua"/>
+    <npc name="Gnomish Operative Cathing" script="gnomish_operative_cathing.lua"/>
+    <npc name="Gnomish Operative Gt-M-01" script="gnomish_operative_gt-m-01.lua"/>
+    <npc name="Gnomish Operative Raiders" script="gnomish_operative_raiders.lua"/>
+    <npc name="Gnomish Operative Resonating" script="gnomish_operative_resonating.lua"/>
+    <npc name="Gnomish Operative Volcano" script="gnomish_operative_volcano.lua"/>
+    <npc name="Gnomission" script="gnomission.lua"/>
+    <npc name="Gnommander" script="gnommander.lua"/>
+    <npc name="Gnomole" script="gnomole.lua"/>
+    <npc name="Gnomus" script="gnomus.lua"/>
+    <npc name="Gnomux" script="gnomux.lua"/>
+    <npc name="Golem Guardian" script="golem_guardian.lua"/>
+    <npc name="Gordon" script="gordon.lua"/>
+    <npc name="Gorn" script="gorn.lua"/>
+    <npc name="Graham" script="graham.lua"/>
+    <npc name="Graubart" script="graubart.lua"/>
+    <npc name="Gree Dee" script="gree_dee.lua"/>
+    <npc name="Gregor" script="gregor.lua"/>
+    <npc name="Grizzly Adams" script="grizzly_adams.lua"/>
+    <npc name="Grodrik" script="grodrik.lua"/>
+    <npc name="Grof The Guard" script="grof_the_guard.lua"/>
+    <npc name="Grombur" script="grombur.lua"/>
+    <npc name="Grubokk" script="grubokk.lua"/>
+    <npc name="Grumpy Stone" script="grumpy_stone.lua"/>
+    <npc name="Guard Bazaya" script="guard_bazaya.lua"/>
+    <npc name="Guard Captain Hartford" script="guard_captain_hartford.lua"/>
+    <npc name="Guard Inurta" script="guard_inurta.lua"/>
+    <npc name="Guard Post" script="guard_post.lua"/>
+    <npc name="Guard Saros" script="guard_saros.lua"/>
+    <npc name="Guard Senet" script="guard_senet.lua"/>
+    <npc name="Guardian Of The Deep Seas" script="guardian_of_the_deep_seas.lua"/>
+    <npc name="Guide Alexena" script="guide_alexena.lua"/>
+    <npc name="Guide Behil" script="guide_behil.lua"/>
+    <npc name="Guide Davina" script="guide_davina.lua"/>
+    <npc name="Guide Edna" script="guide_edna.lua"/>
+    <npc name="Guide Elena" script="guide_elena.lua"/>
+    <npc name="Guide Jonathan" script="guide_jonathan.lua"/>
+    <npc name="Guide Kroak" script="guide_kroak.lua"/>
+    <npc name="Guide Kunibert" script="guide_kunibert.lua"/>
+    <npc name="Guide Luke" script="guide_luke.lua"/>
+    <npc name="Guide Meruka" script="guide_meruka.lua"/>
+    <npc name="Guide Rahlkora" script="guide_rahlkora.lua"/>
+    <npc name="Guide Thelandil" script="guide_thelandil.lua"/>
+    <npc name="Guide Tiko" script="guide_tiko.lua"/>
+    <npc name="Gundralph" script="gundralph.lua"/>
+    <npc name="Gurbasch" script="gurbasch.lua"/>
+    <npc name="Gustavo The Guard" script="gustavo_the_guard.lua"/>
+    <npc name="H.L." script="h.l..lua"/>
+    <npc name="Haani" script="haani.lua"/>
+    <npc name="Habdel" script="habdel.lua"/>
+    <npc name="Hagor" script="hagor.lua"/>
+    <npc name="Hairycles" script="hairycles.lua"/>
+    <npc name="Hal" script="hal.lua"/>
+    <npc name="Halif" script="halif.lua"/>
+    <npc name="Halvar" script="halvar.lua"/>
+    <npc name="Hamilton" script="hamilton.lua"/>
+    <npc name="Hamish" script="hamish.lua"/>
+    <npc name="Hanna" script="hanna.lua"/>
+    <npc name="Hardek" script="hardek.lua"/>
+    <npc name="Hardened Lion Archer" script="hardened_lion_archer.lua"/>
+    <npc name="Harkath Bloodblade" script="harkath_bloodblade.lua"/>
+    <npc name="Harlow" script="harlow.lua"/>
+    <npc name="Harlow Trade" script="harlow_trade.lua"/>
+    <npc name="Harlow Vengoth" script="harlow_vengoth.lua"/>
+    <npc name="Harog" script="harog.lua"/>
+    <npc name="Haroun" script="haroun.lua"/>
+    <npc name="Harsky" script="harsky.lua"/>
+    <npc name="Hawkhurst" script="hawkhurst.lua"/>
+    <npc name="Hawkhurst Ingol" script="hawkhurst_ingol.lua"/>
+    <npc name="Hawkyr" script="hawkyr.lua"/>
+    <npc name="Heavenly Messenger" script="heavenly_messenger.lua"/>
+    <npc name="Hector The Mentor" script="hector_the_mentor.lua"/>
+    <npc name="Helor" script="helor.lua"/>
+    <npc name="Hemor The Guard" script="hemor_the_guard.lua"/>
+    <npc name="Henricus" script="henricus.lua"/>
+    <npc name="Herbert" script="herbert.lua"/>
+    <npc name="Hexel" script="hexel.lua"/>
+    <npc name="Hireling" script="hireling.lua"/>
+    <npc name="Hjaern" script="hjaern.lua"/>
+    <npc name="Hofech" script="hofech.lua"/>
+    <npc name="Hoggle" script="hoggle.lua"/>
+    <npc name="Hugo" script="hugo.lua"/>
+    <npc name="Humgolf" script="humgolf.lua"/>
+    <npc name="Humnog The Guard" script="humnog_the_guard.lua"/>
+    <npc name="Humphrey" script="humphrey.lua"/>
+    <npc name="Huntsman" script="huntsman.lua"/>
+    <npc name="Hyacinth" script="hyacinth.lua"/>
+    <npc name="Ikassis" script="ikassis.lua"/>
+    <npc name="Imalas" script="imalas.lua"/>
+    <npc name="Imbuement Assistant" script="imbuement_assistant.lua"/>
+    <npc name="Imbul" script="imbul.lua"/>
+    <npc name="Inigo" script="inigo.lua"/>
+    <npc name="Inkaef" script="inkaef.lua"/>
+    <npc name="Iptar-Sin" script="iptar-sin.lua"/>
+    <npc name="Irea" script="irea.lua"/>
+    <npc name="Iriana" script="iriana.lua"/>
+    <npc name="Irmana" script="irmana.lua"/>
+    <npc name="Irvin" script="irvin.lua"/>
+    <npc name="Ishebad" script="ishebad.lua"/>
+    <npc name="Ishina" script="ishina.lua"/>
+    <npc name="Isika" script="isika.lua"/>
+    <npc name="Isimov" script="isimov.lua"/>
+    <npc name="Iskan" script="iskan.lua"/>
+    <npc name="Isolde" script="isolde.lua"/>
+    <npc name="Ivalisse" script="ivalisse.lua"/>
+    <npc name="Iwan" script="iwan.lua"/>
+    <npc name="Iwar" script="iwar.lua"/>
+    <npc name="Iyad" script="iyad.lua"/>
+    <npc name="Izsh" script="izsh.lua"/>
+    <npc name="Jack" script="jack.lua"/>
+    <npc name="Jack Drone" script="jack_drone.lua"/>
+    <npc name="Jack Fate" script="jack_fate.lua"/>
+    <npc name="Jack Fate Goroma" script="jack_fate_goroma.lua"/>
+    <npc name="Jack Springer" script="jack_springer.lua"/>
+    <npc name="Jack The Worker" script="jack_the_worker.lua"/>
+    <npc name="Jacob" script="jacob.lua"/>
+    <npc name="Jagran" script="jagran.lua"/>
+    <npc name="Jakahr" script="jakahr.lua"/>
+    <npc name="James" script="james.lua"/>
+    <npc name="Jamesfrancis" script="jamesfrancis.lua"/>
+    <npc name="Janz" script="janz.lua"/>
+    <npc name="Jason" script="jason.lua"/>
+    <npc name="Jean Claude" script="jean_claude.lua"/>
+    <npc name="Jean Pierre" script="jean_pierre.lua"/>
+    <npc name="Jefrey" script="jefrey.lua"/>
+    <npc name="Jerom" script="jerom.lua"/>
+    <npc name="Jeronimo" script="jeronimo.lua"/>
+    <npc name="Jessica" script="jessica.lua"/>
+    <npc name="Jezzara" script="jezzara.lua"/>
+    <npc name="Jimbin" script="jimbin.lua"/>
+    <npc name="Jimmy" script="jimmy.lua"/>
+    <npc name="John" script="john.lua"/>
+    <npc name="John Bounac" script="john_bounac.lua"/>
+    <npc name="Jondrin" script="jondrin.lua"/>
+    <npc name="Jorge" script="jorge.lua"/>
+    <npc name="Jossel" script="jossel.lua"/>
+    <npc name="Julian" script="julian.lua"/>
+    <npc name="Julius" script="julius.lua"/>
+    <npc name="Junkar Mines" script="junkar_mines.lua"/>
+    <npc name="Junkar Robsons" script="junkar_robsons.lua"/>
+    <npc name="Junkar Thais" script="junkar_thais.lua"/>
+    <npc name="Kais" script="kais.lua"/>
+    <npc name="Kallimae" script="kallimae.lua"/>
+    <npc name="Kalvin" script="kalvin.lua"/>
+    <npc name="Karith" script="karith.lua"/>
+    <npc name="Karl" script="karl.lua"/>
+    <npc name="Kasmir" script="kasmir.lua"/>
+    <npc name="Kawill" script="kawill.lua"/>
+    <npc name="Kaya" script="kaya.lua"/>
+    <npc name="Kazzan" script="kazzan.lua"/>
+    <npc name="Kendra" script="kendra.lua"/>
+    <npc name="Kendra Thais" script="kendra_thais.lua"/>
+    <npc name="Kepar" script="kepar.lua"/>
+    <npc name="Kevin" script="kevin.lua"/>
+    <npc name="Khanna" script="khanna.lua"/>
+    <npc name="Kihil The Guard" script="kihil_the_guard.lua"/>
+    <npc name="King Tibianus" script="king_tibianus.lua"/>
+    <npc name="Kizar" script="kizar.lua"/>
+    <npc name="Kjesse" script="kjesse.lua"/>
+    <npc name="Klaus" script="klaus.lua"/>
+    <npc name="Klesar" script="klesar.lua"/>
+    <npc name="Klom Stonecutter" script="klom_stonecutter.lua"/>
+    <npc name="Knight Hykrion" script="knight_hykrion.lua"/>
+    <npc name="Kromrek" script="kromrek.lua"/>
+    <npc name="Kroox" script="kroox.lua"/>
+    <npc name="Kulag The Guard" script="kulag_the_guard.lua"/>
+    <npc name="Lailene" script="lailene.lua"/>
+    <npc name="Lardoc Bashsmite" script="lardoc_bashsmite.lua"/>
+    <npc name="Larek" script="larek.lua"/>
+    <npc name="Larfion The Shaman" script="larfion_the_shaman.lua"/>
+    <npc name="Larry" script="larry.lua"/>
+    <npc name="Lavirias" script="lavirias.lua"/>
+    <npc name="Lazaran" script="lazaran.lua"/>
+    <npc name="Lea" script="lea.lua"/>
+    <npc name="Lector" script="lector.lua"/>
+    <npc name="Lee Delle" script="lee_delle.lua"/>
+    <npc name="Leeland" script="leeland.lua"/>
+    <npc name="Legola" script="legola.lua"/>
+    <npc name="Lesser Messenger Of Heaven" script="lesser_messenger_of_heaven.lua"/>
+    <npc name="Liane" script="liane.lua"/>
+    <npc name="Lieutenant Harlan" script="lieutenant_harlan.lua"/>
+    <npc name="Lightfoot" script="lightfoot.lua"/>
+    <npc name="Lily" script="lily.lua"/>
+    <npc name="Lisander" script="lisander.lua"/>
+    <npc name="Livielle" script="livielle.lua"/>
+    <npc name="Lizard Tunnel Guard" script="lizard_tunnel_guard.lua"/>
+    <npc name="Llathriel" script="llathriel.lua"/>
+    <npc name="Lokur" script="lokur.lua"/>
+    <npc name="Loot Buyer" script="loot_buyer.lua"/>
+    <npc name="Lora" script="lora.lua"/>
+    <npc name="Lorbas" script="lorbas.lua"/>
+    <npc name="Lorek" script="lorek.lua"/>
+    <npc name="Loria" script="loria.lua"/>
+    <npc name="Lorietta" script="lorietta.lua"/>
+    <npc name="Lothar" script="lothar.lua"/>
+    <npc name="Lou Toose" script="lou_toose.lua"/>
+    <npc name="Loui" script="loui.lua"/>
+    <npc name="Lubo" script="lubo.lua"/>
+    <npc name="Lucius" script="lucius.lua"/>
+    <npc name="Lugri" script="lugri.lua"/>
+    <npc name="Lukosch" script="lukosch.lua"/>
+    <npc name="Luna" script="luna.lua"/>
+    <npc name="Lunch" script="lunch.lua"/>
+    <npc name="Lungelen" script="lungelen.lua"/>
+    <npc name="Lurik" script="lurik.lua"/>
+    <npc name="Lynda" script="lynda.lua"/>
+    <npc name="Lyonel" script="lyonel.lua"/>
+    <npc name="Maealil" script="maealil.lua"/>
+    <npc name="Maelyrra" script="maelyrra.lua"/>
+    <npc name="Maeryn" script="maeryn.lua"/>
+    <npc name="Malor" script="malor.lua"/>
+    <npc name="Malunga" script="malunga.lua"/>
+    <npc name="Marcus" script="marcus.lua"/>
+    <npc name="Maria" script="maria.lua"/>
+    <npc name="Marina" script="marina.lua"/>
+    <npc name="Maris" script="maris.lua"/>
+    <npc name="Maris Fenrock" script="maris_fenrock.lua"/>
+    <npc name="Maris Mistrock" script="maris_mistrock.lua"/>
+    <npc name="Maritima" script="maritima.lua"/>
+    <npc name="Markwin" script="markwin.lua"/>
+    <npc name="Marlene" script="marlene.lua"/>
+    <npc name="Maro" script="maro.lua"/>
+    <npc name="Marvik" script="marvik.lua"/>
+    <npc name="Marvin" script="marvin.lua"/>
+    <npc name="Maryza" script="maryza.lua"/>
+    <npc name="Maun" script="maun.lua"/>
+    <npc name="Mazarius" script="mazarius.lua"/>
+    <npc name="Mehkesh" script="mehkesh.lua"/>
+    <npc name="Melchior" script="melchior.lua"/>
+    <npc name="Melfar" script="melfar.lua"/>
+    <npc name="Melian" script="melian.lua"/>
+    <npc name="Memech" script="memech.lua"/>
+    <npc name="Menacing Mummy" script="menacing_mummy.lua"/>
+    <npc name="Menesto" script="menesto.lua"/>
+    <npc name="Meraya" script="meraya.lua"/>
+    <npc name="Messenger Of Heaven" script="messenger_of_heaven.lua"/>
+    <npc name="Messenger Of Santa" script="messenger_of_santa.lua"/>
+    <npc name="Miles The Guard" script="miles_the_guard.lua"/>
+    <npc name="Milos" script="milos.lua"/>
+    <npc name="Mirabell" script="mirabell.lua"/>
+    <npc name="Miraia" script="miraia.lua"/>
+    <npc name="Moe" script="moe.lua"/>
+    <npc name="Morax" script="morax.lua"/>
+    <npc name="Mordecai" script="mordecai.lua"/>
+    <npc name="Morgan" script="morgan.lua"/>
+    <npc name="Morpel" script="morpel.lua"/>
+    <npc name="Mortimer" script="mortimer.lua"/>
+    <npc name="Mortis" script="mortis.lua"/>
+    <npc name="Morun" script="morun.lua"/>
+    <npc name="Mother Of Jack" script="mother_of_jack.lua"/>
+    <npc name="Mr. West" script="mr._west.lua"/>
+    <npc name="Mr Brandon" script="mr_brandon.lua"/>
+    <npc name="Mr Morris" script="mr_morris.lua"/>
+    <npc name="Mugluf" script="mugluf.lua"/>
+    <npc name="Mugruu" script="mugruu.lua"/>
+    <npc name="Muhad" script="muhad.lua"/>
+    <npc name="Muriel" script="muriel.lua"/>
+    <npc name="Murim" script="murim.lua"/>
+    <npc name="Muzir" script="muzir.lua"/>
+    <npc name="Myra" script="myra.lua"/>
+    <npc name="Mysterious Ornate Chest" script="mysterious_ornate_chest.lua"/>
+    <npc name="Myzzi" script="myzzi.lua"/>
+    <npc name="Nah Bob" script="nah_bob.lua"/>
+    <npc name="Naji" script="naji.lua"/>
+    <npc name="Narsai" script="narsai.lua"/>
+    <npc name="Navigator" script="navigator.lua"/>
+    <npc name="Neill" script="neill.lua"/>
+    <npc name="Nelliem" script="nelliem.lua"/>
+    <npc name="Nelly" script="nelly.lua"/>
+    <npc name="Nemal" script="nemal.lua"/>
+    <npc name="Nezil" script="nezil.lua"/>
+    <npc name="Nibble" script="nibble.lua"/>
+    <npc name="Nicholas" script="nicholas.lua"/>
+    <npc name="Nielson" script="nielson.lua"/>
+    <npc name="Nienna" script="nienna.lua"/>
+    <npc name="Nilsor" script="nilsor.lua"/>
+    <npc name="Nina" script="nina.lua"/>
+    <npc name="Ninev" script="ninev.lua"/>
+    <npc name="Ninos" script="ninos.lua"/>
+    <npc name="Nipuna" script="nipuna.lua"/>
+    <npc name="Nokmir" script="nokmir.lua"/>
+    <npc name="Nomad" script="nomad.lua"/>
+    <npc name="Noodles" script="noodles.lua"/>
+    <npc name="Noozer" script="noozer.lua"/>
+    <npc name="Nor" script="nor.lua"/>
+    <npc name="Norbert" script="norbert.lua"/>
+    <npc name="Norf" script="norf.lua"/>
+    <npc name="Norma" script="norma.lua"/>
+    <npc name="Norman The Foreman" script="norman_the_foreman.lua"/>
+    <npc name="Normod" script="normod.lua"/>
+    <npc name="Norris" script="norris.lua"/>
+    <npc name="Nurik" script="nurik.lua"/>
+    <npc name="Nydala" script="nydala.lua"/>
+    <npc name="Nymph Challenging" script="nymph_challenging.lua"/>
+    <npc name="Oberon'S Bile" script="oberon's_bile.lua"/>
+    <npc name="Oberon'S Hate" script="oberon's_hate.lua"/>
+    <npc name="Oberon'S Ire" script="oberon's_ire.lua"/>
+    <npc name="Oberon'S Spite" script="oberon's_spite.lua"/>
+    <npc name="Obi" script="obi.lua"/>
+    <npc name="Oblivion" script="oblivion.lua"/>
+    <npc name="Oblivis" script="oblivis.lua"/>
+    <npc name="Ocelus" script="ocelus.lua"/>
+    <npc name="Odemara" script="odemara.lua"/>
+    <npc name="Oiriz" script="oiriz.lua"/>
+    <npc name="Old Adall" script="old_adall.lua"/>
+    <npc name="Old Rock Boy" script="old_rock_boy.lua"/>
+    <npc name="Oldrak" script="oldrak.lua"/>
+    <npc name="Oliver" script="oliver.lua"/>
+    <npc name="Olrik" script="olrik.lua"/>
+    <npc name="Omniphant" script="omniphant.lua"/>
+    <npc name="Omrabas" script="omrabas.lua"/>
+    <npc name="Omur" script="omur.lua"/>
+    <npc name="One Eyed Joe" script="one_eyed_joe.lua"/>
+    <npc name="Ongulf" script="ongulf.lua"/>
+    <npc name="Orc Berserker" script="orc_berserker.lua"/>
+    <npc name="Oressa" script="oressa.lua"/>
+    <npc name="Ormuhn" script="ormuhn.lua"/>
+    <npc name="Orockle" script="orockle.lua"/>
+    <npc name="Ortelio" script="ortelio.lua"/>
+    <npc name="Ortheus" script="ortheus.lua"/>
+    <npc name="Oswald" script="oswald.lua"/>
+    <npc name="Ottokar" script="ottokar.lua"/>
+    <npc name="Padreia" script="padreia.lua"/>
+    <npc name="Paladin Narai" script="paladin_narai.lua"/>
+    <npc name="Palimuth" script="palimuth.lua"/>
+    <npc name="Palomino" script="palomino.lua"/>
+    <npc name="Paolo" script="paolo.lua"/>
+    <npc name="Parlan" script="parlan.lua"/>
+    <npc name="Partos" script="partos.lua"/>
+    <npc name="Pat The Worker" script="pat_the_worker.lua"/>
+    <npc name="Paulie" script="paulie.lua"/>
+    <npc name="Peaceful Pooka" script="peaceful_pooka.lua"/>
+    <npc name="Peggy" script="peggy.lua"/>
+    <npc name="Pemaret" script="pemaret.lua"/>
+    <npc name="Penny" script="penny.lua"/>
+    <npc name="Perac" script="perac.lua"/>
+    <npc name="Percy Silverhand" script="percy_silverhand.lua"/>
+    <npc name="Percybald" script="percybald.lua"/>
+    <npc name="Peremin" script="peremin.lua"/>
+    <npc name="Perod" script="perod.lua"/>
+    <npc name="Persevering Lion Archer" script="persevering_lion_archer.lua"/>
+    <npc name="Peter" script="peter.lua"/>
+    <npc name="Petros" script="petros.lua"/>
+    <npc name="Phillip" script="phillip.lua"/>
+    <npc name="Pig" script="pig.lua"/>
+    <npc name="Pino" script="pino.lua"/>
+    <npc name="Plunderpurse" script="plunderpurse.lua"/>
+    <npc name="Polly" script="polly.lua"/>
+    <npc name="Pompan" script="pompan.lua"/>
+    <npc name="Prezil" script="prezil.lua"/>
+    <npc name="Prisoner" script="prisoner.lua"/>
+    <npc name="Puffels" script="puffels.lua"/>
+    <npc name="Pugwah" script="pugwah.lua"/>
+    <npc name="Pukosch" script="pukosch.lua"/>
+    <npc name="Pydar" script="pydar.lua"/>
+    <npc name="Pyro Peter" script="pyro_peter.lua"/>
+    <npc name="Pyromental" script="pyromental.lua"/>
+    <npc name="Pythius The Rotten" script="pythius_the_rotten.lua"/>
+    <npc name="Quandons Ghost" script="quandons_ghost.lua"/>
+    <npc name="Queen Eloise" script="queen_eloise.lua"/>
+    <npc name="Quentin" script="quentin.lua"/>
+    <npc name="Quero" script="quero.lua"/>
+    <npc name="Quill" script="quill.lua"/>
+    <npc name="Rabaz" script="rabaz.lua"/>
+    <npc name="Rachel" script="rachel.lua"/>
+    <npc name="Raffael" script="raffael.lua"/>
+    <npc name="Rafzan" script="rafzan.lua"/>
+    <npc name="Rahkem" script="rahkem.lua"/>
+    <npc name="Ramina" script="ramina.lua"/>
+    <npc name="Rapanaio" script="rapanaio.lua"/>
+    <npc name="Rapanaio Boat" script="rapanaio_boat.lua"/>
+    <npc name="Rapanaio Isle Of Evil" script="rapanaio_isle_of_evil.lua"/>
+    <npc name="Rashid" script="rashid.lua"/>
+    <npc name="Rashid Custom" script="rashid_custom.lua"/>
+    <npc name="Rata Mari" script="rata_mari.lua"/>
+    <npc name="Raubritter Battler" script="raubritter_battler.lua"/>
+    <npc name="Raubritter Chastener" script="raubritter_chastener.lua"/>
+    <npc name="Raubritter Chastigator" script="raubritter_chastigator.lua"/>
+    <npc name="Raubritter Guard" script="raubritter_guard.lua"/>
+    <npc name="Raubritter Guardsman" script="raubritter_guardsman.lua"/>
+    <npc name="Raubritter Honour Guard" script="raubritter_honour_guard.lua"/>
+    <npc name="Raubritter Patrol" script="raubritter_patrol.lua"/>
+    <npc name="Raubritter Post" script="raubritter_post.lua"/>
+    <npc name="Raubritter Purifier" script="raubritter_purifier.lua"/>
+    <npc name="Raubritter Sentinel" script="raubritter_sentinel.lua"/>
+    <npc name="Raubritter Sentry" script="raubritter_sentry.lua"/>
+    <npc name="Raubritter Thug" script="raubritter_thug.lua"/>
+    <npc name="Ray" script="ray.lua"/>
+    <npc name="Raymond Striker" script="raymond_striker.lua"/>
+    <npc name="Razan" script="razan.lua"/>
+    <npc name="Rebel" script="rebel.lua"/>
+    <npc name="Red Lilly" script="red_lilly.lua"/>
+    <npc name="Redward" script="redward.lua"/>
+    <npc name="Reed" script="reed.lua"/>
+    <npc name="Rehon" script="rehon.lua"/>
+    <npc name="Repenter" script="repenter.lua"/>
+    <npc name="Richard" script="richard.lua"/>
+    <npc name="Riddler" script="riddler.lua"/>
+    <npc name="Robert" script="robert.lua"/>
+    <npc name="Robin" script="robin.lua"/>
+    <npc name="Robson" script="robson.lua"/>
+    <npc name="Rock In A Hard Place" script="rock_in_a_hard_place.lua"/>
+    <npc name="Rock Steady" script="rock_steady.lua"/>
+    <npc name="Rock With A Soft Spot" script="rock_with_a_soft_spot.lua"/>
+    <npc name="Roderick" script="roderick.lua"/>
+    <npc name="Rodney" script="rodney.lua"/>
+    <npc name="Roger The Worker" script="roger_the_worker.lua"/>
+    <npc name="Rokyn" script="rokyn.lua"/>
+    <npc name="Romella" script="romella.lua"/>
+    <npc name="Romir" script="romir.lua"/>
+    <npc name="Rose" script="rose.lua"/>
+    <npc name="Rosemarie" script="rosemarie.lua"/>
+    <npc name="Rosina" script="rosina.lua"/>
+    <npc name="Ross" script="ross.lua"/>
+    <npc name="Roswitha" script="roswitha.lua"/>
+    <npc name="Rotem Valos" script="rotem_valos.lua"/>
+    <npc name="Rottin Wood" script="rottin_wood.lua"/>
+    <npc name="Roughington" script="roughington.lua"/>
+    <npc name="Rowenna" script="rowenna.lua"/>
+    <npc name="Rudolph" script="rudolph.lua"/>
+    <npc name="Runtel Blackspark" script="runtel_blackspark.lua"/>
+    <npc name="Ruprecht" script="ruprecht.lua"/>
+    <npc name="Saideh" script="saideh.lua"/>
+    <npc name="Salbra" script="salbra.lua"/>
+    <npc name="Sam" script="sam.lua"/>
+    <npc name="Samir" script="samir.lua"/>
+    <npc name="Sandomo" script="sandomo.lua"/>
+    <npc name="Sandra" script="sandra.lua"/>
+    <npc name="Sane Mage" script="sane_mage.lua"/>
+    <npc name="Santa Claus" script="santa_claus.lua"/>
+    <npc name="Santiago" script="santiago.lua"/>
+    <npc name="Sarina" script="sarina.lua"/>
+    <npc name="Satsu" script="satsu.lua"/>
+    <npc name="Scott" script="scott.lua"/>
+    <npc name="Scott The Scout" script="scott_the_scout.lua"/>
+    <npc name="Scrutinon" script="scrutinon.lua"/>
+    <npc name="Scutty" script="scutty.lua"/>
+    <npc name="Sebastian" script="sebastian.lua"/>
+    <npc name="Sebastian Nargor" script="sebastian_nargor.lua"/>
+    <npc name="Second In Command Demeron" script="second_in_command_demeron.lua"/>
+    <npc name="Ser Tybald" script="ser_tybald.lua"/>
+    <npc name="Serafin" script="serafin.lua"/>
+    <npc name="Servant Sentry" script="servant_sentry.lua"/>
+    <npc name="Sessek" script="sessek.lua"/>
+    <npc name="Seymour" script="seymour.lua"/>
+    <npc name="Shadowpunch" script="shadowpunch.lua"/>
+    <npc name="Shalmar" script="shalmar.lua"/>
+    <npc name="Shanar" script="shanar.lua"/>
+    <npc name="Shanoya" script="shanoya.lua"/>
+    <npc name="Sharon" script="sharon.lua"/>
+    <npc name="Shauna" script="shauna.lua"/>
+    <npc name="Sherry Mcronald" script="sherry_mcronald.lua"/>
+    <npc name="Shiantis" script="shiantis.lua"/>
+    <npc name="Shimun" script="shimun.lua"/>
+    <npc name="Shiriel" script="shiriel.lua"/>
+    <npc name="Shirith" script="shirith.lua"/>
+    <npc name="Shirtalis Of The Summer Court" script="shirtalis_of_the_summer_court.lua"/>
+    <npc name="Shoddy Beggar" script="shoddy_beggar.lua"/>
+    <npc name="Sholley" script="sholley.lua"/>
+    <npc name="Shortsighted Dwarf" script="shortsighted_dwarf.lua"/>
+    <npc name="Siestaar" script="siestaar.lua"/>
+    <npc name="Siflind" script="siflind.lua"/>
+    <npc name="Sigurd" script="sigurd.lua"/>
+    <npc name="Silas" script="silas.lua"/>
+    <npc name="Simon The Beggar" script="simon_the_beggar.lua"/>
+    <npc name="Sinatuki" script="sinatuki.lua"/>
+    <npc name="Sinclair" script="sinclair.lua"/>
+    <npc name="Sirik" script="sirik.lua"/>
+    <npc name="Sissek" script="sissek.lua"/>
+    <npc name="Sister Of Jack" script="sister_of_jack.lua"/>
+    <npc name="Skeleton Guard" script="skeleton_guard.lua"/>
+    <npc name="Skip" script="skip.lua"/>
+    <npc name="Skjaar" script="skjaar.lua"/>
+    <npc name="Smiley" script="smiley.lua"/>
+    <npc name="Snake Eye" script="snake_eye.lua"/>
+    <npc name="Soilance" script="soilance.lua"/>
+    <npc name="Sorcerer Estrella" script="sorcerer_estrella.lua"/>
+    <npc name="Spectulus" script="spectulus.lua"/>
+    <npc name="Squeekquek" script="squeekquek.lua"/>
+    <npc name="Stan" script="stan.lua"/>
+    <npc name="Steward Volkmar" script="steward_volkmar.lua"/>
+    <npc name="Storkus" script="storkus.lua"/>
+    <npc name="Stranded Lion Knight" script="stranded_lion_knight.lua"/>
+    <npc name="Strange Pipe" script="strange_pipe.lua"/>
+    <npc name="Strange Pipe1" script="strange_pipe1.lua"/>
+    <npc name="Strange Pipe2" script="strange_pipe2.lua"/>
+    <npc name="Strange Pipe3" script="strange_pipe3.lua"/>
+    <npc name="Stricken Soul" script="stricken_soul.lua"/>
+    <npc name="Stutch" script="stutch.lua"/>
+    <npc name="Sundara" script="sundara.lua"/>
+    <npc name="Suzy" script="suzy.lua"/>
+    <npc name="Sven" script="sven.lua"/>
+    <npc name="Svenson" script="svenson.lua"/>
+    <npc name="Swashbuckling Lion Archer" script="swashbuckling_lion_archer.lua"/>
+    <npc name="Swolt" script="swolt.lua"/>
+    <npc name="Sylvester" script="sylvester.lua"/>
+    <npc name="Szallar Mandar" script="szallar_mandar.lua"/>
+    <npc name="Taegen" script="taegen.lua"/>
+    <npc name="Talesia" script="talesia.lua"/>
+    <npc name="Talila" script="talila.lua"/>
+    <npc name="Talphion" script="talphion.lua"/>
+    <npc name="Tamara" script="tamara.lua"/>
+    <npc name="Tamed Lion" script="tamed_lion.lua"/>
+    <npc name="Tamerin" script="tamerin.lua"/>
+    <npc name="Tamoril" script="tamoril.lua"/>
+    <npc name="Tanaro" script="tanaro.lua"/>
+    <npc name="Tandros" script="tandros.lua"/>
+    <npc name="Tanyt" script="tanyt.lua"/>
+    <npc name="Tarak Inner" script="tarak_inner.lua"/>
+    <npc name="Tarak Sunken" script="tarak_sunken.lua"/>
+    <npc name="Tarun" script="tarun.lua"/>
+    <npc name="Tefrit" script="tefrit.lua"/>
+    <npc name="Tehlim" script="tehlim.lua"/>
+    <npc name="Telas" script="telas.lua"/>
+    <npc name="Telas Golem" script="telas_golem.lua"/>
+    <npc name="Tereban" script="tereban.lua"/>
+    <npc name="Tereban Functions" script="tereban_functions.lua"/>
+    <npc name="Terrence" script="terrence.lua"/>
+    <npc name="Tesha" script="tesha.lua"/>
+    <npc name="Test Server" script="test_server.lua"/>
+    <npc name="Testserver Assistant" script="testserver_assistant.lua"/>
+    <npc name="Tezila" script="tezila.lua"/>
+    <npc name="Thanita" script="thanita.lua"/>
+    <npc name="The Beggar King" script="the_beggar_king.lua"/>
+    <npc name="The Blind Prophet" script="the_blind_prophet.lua"/>
+    <npc name="The Bone Master" script="the_bone_master.lua"/>
+    <npc name="The Crone" script="the_crone.lua"/>
+    <npc name="The Destiny Seer" script="the_destiny_seer.lua"/>
+    <npc name="The Dream Master" script="the_dream_master.lua"/>
+    <npc name="The Empress" script="the_empress.lua"/>
+    <npc name="The First Dragon" script="the_first_dragon.lua"/>
+    <npc name="The Forgemaster" script="the_forgemaster.lua"/>
+    <npc name="The Gate Keeper" script="the_gate_keeper.lua"/>
+    <npc name="The Librarian" script="the_librarian.lua"/>
+    <npc name="The Lootmonger" script="the_lootmonger.lua"/>
+    <npc name="The Oracle" script="the_oracle.lua"/>
+    <npc name="The Orc King" script="the_orc_king.lua"/>
+    <npc name="The Queen Of The Banshees" script="the_queen_of_the_banshees.lua"/>
+    <npc name="The Silent Oarsman" script="the_silent_oarsman.lua"/>
+    <npc name="Theodore Loveless" script="theodore_loveless.lua"/>
+    <npc name="Thomas" script="thomas.lua"/>
+    <npc name="Thorgrin" script="thorgrin.lua"/>
+    <npc name="Thorwulf" script="thorwulf.lua"/>
+    <npc name="Tibra" script="tibra.lua"/>
+    <npc name="Tigo" script="tigo.lua"/>
+    <npc name="Tim The Guard" script="tim_the_guard.lua"/>
+    <npc name="Timothy" script="timothy.lua"/>
+    <npc name="Timur" script="timur.lua"/>
+    <npc name="Tired Tree" script="tired_tree.lua"/>
+    <npc name="Todd" script="todd.lua"/>
+    <npc name="Tokel" script="tokel.lua"/>
+    <npc name="Tom" script="tom.lua"/>
+    <npc name="Tomruk The Ruddy" script="tomruk_the_ruddy.lua"/>
+    <npc name="Tonar" script="tonar.lua"/>
+    <npc name="Tonar Oskayaat" script="tonar_oskayaat.lua"/>
+    <npc name="Tony" script="tony.lua"/>
+    <npc name="Tooth Fairy" script="tooth_fairy.lua"/>
+    <npc name="Toothless Tim" script="toothless_tim.lua"/>
+    <npc name="Topsy" script="topsy.lua"/>
+    <npc name="Torence" script="torence.lua"/>
+    <npc name="Torkada" script="torkada.lua"/>
+    <npc name="Tothdral" script="tothdral.lua"/>
+    <npc name="Towncryer" script="towncryer.lua"/>
+    <npc name="Trimegis" script="trimegis.lua"/>
+    <npc name="Trisha" script="trisha.lua"/>
+    <npc name="Tristan" script="tristan.lua"/>
+    <npc name="Tulf" script="tulf.lua"/>
+    <npc name="Turvy" script="turvy.lua"/>
+    <npc name="Tylius" script="tylius.lua"/>
+    <npc name="Tyrias" script="tyrias.lua"/>
+    <npc name="Ubaid" script="ubaid.lua"/>
+    <npc name="Ukea" script="ukea.lua"/>
+    <npc name="Ula" script="ula.lua"/>
+    <npc name="Ulala" script="ulala.lua"/>
+    <npc name="Ulrik" script="ulrik.lua"/>
+    <npc name="Umar" script="umar.lua"/>
+    <npc name="Uncle" script="uncle.lua"/>
+    <npc name="Undal" script="undal.lua"/>
+    <npc name="Urkalio" script="urkalio.lua"/>
+    <npc name="Urks The Mute" script="urks_the_mute.lua"/>
+    <npc name="Ursula" script="ursula.lua"/>
+    <npc name="Uso" script="uso.lua"/>
+    <npc name="Ustan" script="ustan.lua"/>
+    <npc name="Uzgod" script="uzgod.lua"/>
+    <npc name="Uzon" script="uzon.lua"/>
+    <npc name="Vad Inchi" script="vad_inchi.lua"/>
+    <npc name="Valentina" script="valentina.lua"/>
+    <npc name="Valindara" script="valindara.lua"/>
+    <npc name="Vanys" script="vanys.lua"/>
+    <npc name="Vascalir" script="vascalir.lua"/>
+    <npc name="Velvet" script="velvet.lua"/>
+    <npc name="Vera" script="vera.lua"/>
+    <npc name="Vescu" script="vescu.lua"/>
+    <npc name="Victor" script="victor.lua"/>
+    <npc name="Vigintius" script="vigintius.lua"/>
+    <npc name="Vincent" script="vincent.lua"/>
+    <npc name="Viola" script="viola.lua"/>
+    <npc name="Virgil" script="virgil.lua"/>
+    <npc name="Vladruc" script="vladruc.lua"/>
+    <npc name="Vulturenose" script="vulturenose.lua"/>
+    <npc name="Vuzrog" script="vuzrog.lua"/>
+    <npc name="Wally" script="wally.lua"/>
+    <npc name="Walter Jaeger" script="walter_jaeger.lua"/>
+    <npc name="Walter The Guard" script="walter_the_guard.lua"/>
+    <npc name="Warbert" script="warbert.lua"/>
+    <npc name="Weaponmaster" script="weaponmaster.lua"/>
+    <npc name="Weary Lion Knight" script="weary_lion_knight.lua"/>
+    <npc name="Wentworth" script="wentworth.lua"/>
+    <npc name="Wesley" script="wesley.lua"/>
+    <npc name="Willard" script="willard.lua"/>
+    <npc name="Willem" script="willem.lua"/>
+    <npc name="William" script="william.lua"/>
+    <npc name="Willie" script="willie.lua"/>
+    <npc name="Willow" script="willow.lua"/>
+    <npc name="Woblin" script="woblin.lua"/>
+    <npc name="Wyat" script="wyat.lua"/>
+    <npc name="Wyda" script="wyda.lua"/>
+    <npc name="Wyrdin" script="wyrdin.lua"/>
+    <npc name="Xed" script="xed.lua"/>
+    <npc name="Xelvar" script="xelvar.lua"/>
+    <npc name="Xodet" script="xodet.lua"/>
+    <npc name="Xorlosh" script="xorlosh.lua"/>
+    <npc name="Yalahari" script="yalahari.lua"/>
+    <npc name="Yaman" script="yaman.lua"/>
+    <npc name="Yana" script="yana.lua"/>
+    <npc name="Yanni" script="yanni.lua"/>
+    <npc name="Yasir" script="yasir.lua"/>
+    <npc name="Yawno" script="yawno.lua"/>
+    <npc name="Yberius" script="yberius.lua"/>
+    <npc name="Yoem" script="yoem.lua"/>
+    <npc name="Yonan" script="yonan.lua"/>
+    <npc name="Yulas" script="yulas.lua"/>
+    <npc name="Zaidal" script="zaidal.lua"/>
+    <npc name="Zalamon" script="zalamon.lua"/>
+    <npc name="Zarak" script="zarak.lua"/>
+    <npc name="Zarifan" script="zarifan.lua"/>
+    <npc name="Zebron" script="zebron.lua"/>
+    <npc name="Zedrulon The Fallen" script="zedrulon_the_fallen.lua"/>
+    <npc name="Zerbrus" script="zerbrus.lua"/>
+    <npc name="Zeronex" script="zeronex.lua"/>
+    <npc name="Zethra" script="zethra.lua"/>
+    <npc name="Zirella" script="zirella.lua"/>
+    <npc name="Zirkon" script="zirkon.lua"/>
+    <npc name="Ziyad" script="ziyad.lua"/>
+    <npc name="Zizzle" script="zizzle.lua"/>
+    <npc name="Zlak" script="zlak.lua"/>
+    <npc name="Znozel" script="znozel.lua"/>
+    <npc name="Zoltan" script="zoltan.lua"/>
+    <npc name="Zora" script="zora.lua"/>
+    <npc name="Ztiss" script="ztiss.lua"/>
+    <npc name="Zuma Magehide" script="zuma_magehide.lua"/>
+    <npc name="Zumtah" script="zumtah.lua"/>
+    <npc name="Zurak" script="zurak.lua"/>
+    <npc name="Zurak Arena" script="zurak_arena.lua"/>
+</npcs>

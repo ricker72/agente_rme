@@ -1,0 +1,7 @@
+{
+  "floors": [1053, 1056],
+  "walls": [1500, 1501],
+  "decorations": [2150, 2151],
+  "monsters": ["Nightmare", "Demon", "Warlock"],
+  "bosses": ["Nightmare", "Demon"]
+}

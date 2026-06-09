@@ -1,0 +1,20 @@
+{
+  "workflow_id": "11141212",
+  "prompt": "Test generation",
+  "status": "completed",
+  "tasks": {},
+  "current_agent": null,
+  "errors": [],
+  "started_at": "2026-06-07T05:53:41.997460",
+  "completed_at": "2026-06-07T05:53:42.000832",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

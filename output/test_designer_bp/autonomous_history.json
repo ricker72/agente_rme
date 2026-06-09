@@ -1,0 +1,36 @@
+[
+  {
+    "prompt": "Hunt 200",
+    "result_id": "820a9610-792c-4f34-9a0c-e3dd7d9c3b50",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.5,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T12:41:45.450989"
+  },
+  {
+    "prompt": "Hunt 200",
+    "result_id": "989f1aaa-74ec-405d-a9ff-cb9ad430b189",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.5,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-08T19:51:49.964501"
+  }
+]

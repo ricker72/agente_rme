@@ -1,0 +1,26 @@
+{"event": "workflow_start", "workflow_id": "227fac28", "prompt": "Test all fail", "pipeline": ["architect", "mapper", "expansion", "quest", "playtest", "balance", "qa", "export"], "timestamp": "2026-06-07T05:53:42.675614"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "architect", "timestamp": "2026-06-07T05:53:42.676862"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "architect", "error": "export failed", "timestamp": "2026-06-07T05:53:42.677966"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "architect", "status": "failed", "timestamp": "2026-06-07T05:53:42.679055"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "mapper", "timestamp": "2026-06-07T05:53:42.682165"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "mapper", "error": "export failed", "timestamp": "2026-06-07T05:53:42.683933"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "mapper", "status": "failed", "timestamp": "2026-06-07T05:53:42.685058"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "expansion", "timestamp": "2026-06-07T05:53:42.686367"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "expansion", "error": "export failed", "timestamp": "2026-06-07T05:53:42.688331"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "expansion", "status": "failed", "timestamp": "2026-06-07T05:53:42.689341"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "quest", "timestamp": "2026-06-07T05:53:42.690235"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "quest", "error": "export failed", "timestamp": "2026-06-07T05:53:42.691082"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "quest", "status": "failed", "timestamp": "2026-06-07T05:53:42.692010"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "playtest", "timestamp": "2026-06-07T05:53:42.693081"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "playtest", "error": "export failed", "timestamp": "2026-06-07T05:53:42.694360"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "playtest", "status": "failed", "timestamp": "2026-06-07T05:53:42.695180"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "balance", "timestamp": "2026-06-07T05:53:42.696396"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "balance", "error": "export failed", "timestamp": "2026-06-07T05:53:42.699853"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "balance", "status": "failed", "timestamp": "2026-06-07T05:53:42.701031"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "qa", "timestamp": "2026-06-07T05:53:42.702176"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "qa", "error": "export failed", "timestamp": "2026-06-07T05:53:42.703166"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "qa", "status": "failed", "timestamp": "2026-06-07T05:53:42.704242"}
+{"event": "agent_start", "workflow_id": "227fac28", "agent_id": "export", "timestamp": "2026-06-07T05:53:42.705206"}
+{"event": "agent_error", "workflow_id": "227fac28", "agent_id": "export", "error": "export failed", "timestamp": "2026-06-07T05:53:42.706219"}
+{"event": "agent_end", "workflow_id": "227fac28", "agent_id": "export", "status": "failed", "timestamp": "2026-06-07T05:53:42.707316"}
+{"event": "workflow_end", "workflow_id": "227fac28", "success": false, "errors": ["Agent 'architect' failed: export failed", "Agent 'mapper' failed: export failed", "Agent 'expansion' failed: export failed", "Agent 'quest' failed: export failed", "Agent 'playtest' failed: export failed", "Agent 'balance' failed: export failed", "Agent 'qa' failed: export failed", "Agent 'export' failed: export failed"], "metrics": {"execution_time": 0.033172607421875, "agent_times": {"architect": 6.556510925292969e-05, "mapper": 7.176399230957031e-05, "expansion": 8.20159912109375e-05, "quest": 6.079673767089844e-05, "playtest": 6.508827209472656e-05, "balance": 7.43865966796875e-05, "qa": 6.508827209472656e-05, "export": 6.389617919921875e-05}, "agent_failures": ["architect", "mapper", "expansion", "quest", "playtest", "balance", "qa", "export"], "agent_success_rate": 0.0, "total_agents": 8, "successful_agents": 0}, "timestamp": "2026-06-07T05:53:42.744365"}

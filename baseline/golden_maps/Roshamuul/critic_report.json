@@ -1,0 +1,392 @@
+{
+  "map_name": "roshamuul_400_600",
+  "overall_score": 67.3,
+  "visual_score": 73.84,
+  "navigation_score": 85.0,
+  "density_score": 60.68,
+  "spawn_score": 57.1,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 82.71,
+  "pathfinding_score": 84.69,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 73.84,
+      "max_value": 100.0,
+      "ratio": 0.7384,
+      "breakdown": {
+        "quantity": 31.31,
+        "content_ratio": 50.31,
+        "density": 100.0,
+        "variety": 100.0,
+        "consistency": 100.0,
+        "total_tiles": 1600.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 60.68,
+      "max_value": 100.0,
+      "ratio": 0.6068,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 42.38,
+        "spawn_ratio": 12.5,
+        "concentration": 54.63,
+        "avg_items_per_tile": 1.31,
+        "max_items_per_tile": 5
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 57.1,
+      "max_value": 100.0,
+      "ratio": 0.571,
+      "breakdown": {
+        "density_score": 100.0,
+        "distance_score": 7.0,
+        "zone_coverage": 100.0,
+        "spawn_density": 12.5
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {
+        "hunt_count": 1.0,
+        "min_hunt_score": 50.0,
+        "max_hunt_score": 50.0
+      },
+      "notes": ""
+    },
+    "boss": {
+      "category": "boss",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No boss arenas detected"
+    },
+    "city": {
+      "category": "city",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No city zones identified"
+    },
+    "decor": {
+      "category": "decor",
+      "value": 82.71,
+      "max_value": 100.0,
+      "ratio": 0.8271,
+      "breakdown": {
+        "variety_score": 100.0,
+        "repetition_score": 100.0,
+        "coverage": 42.38,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 58.0,
+      "max_value": 100.0,
+      "ratio": 0.58,
+      "breakdown": {
+        "region_count": 1.0,
+        "empty_regions": 1.0,
+        "level_issues": 0.0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 84.69,
+      "max_value": 100.0,
+      "ratio": 0.8469,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 93.75,
+        "astar_path_length": 57.0
+      },
+      "notes": "Entry point: (16, 33, 7), reachable: 1600/1600"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,39,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(39,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,8)",
+      "message": "Spawn cluster of 5 creatures at (0, 8)",
+      "details": {
+        "cluster_size": 5
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,24)",
+      "message": "Spawn cluster of 3 creatures at (0, 24)",
+      "details": {
+        "cluster_size": 3
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,34)",
+      "message": "Spawn cluster of 2 creatures at (0, 34)",
+      "details": {
+        "cluster_size": 2
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "hunt_roshamuul_main",
+      "message": "Region 'hunt_roshamuul_main' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,39,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(39,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Spread spawn clusters",
+      "description": "Some spawns are clustered very close together. Spread them out for better gameplay.",
+      "category": "spawn",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define boss arenas",
+      "description": "Add zones with names containing 'boss', 'arena', 'throne' or 'lair'.",
+      "category": "boss",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define city zones",
+      "description": "Add zones with names containing 'city', 'town', 'village', 'hub' or 'market'.",
+      "category": "city",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: hunt_roshamuul_main. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Reduce navigation bottlenecks",
+      "description": "Add secondary routes around bottleneck tiles to improve movement.",
+      "category": "pathfinding",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.0865,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 1600,
+        "grounded_tiles": 1600,
+        "useful_tiles": 805,
+        "content_ratio": 0.5031,
+        "avg_items_per_tile": 1.31,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.0025,
+        "total_grounded": 1600
+      },
+      "density": {
+        "total_tiles": 1600,
+        "grounded_tiles": 1600,
+        "tiles_with_items": 678,
+        "tiles_with_spawns": 200,
+        "bbox_area": 1600,
+        "zone_density": {
+          "unzoned": 0.4238
+        }
+      },
+      "spawn": {
+        "total_spawns": 200,
+        "grounded_tiles": 1600,
+        "spawn_density": 0.125,
+        "min_distance": 1,
+        "max_distance": 4,
+        "avg_distance": 1.78,
+        "cluster_count": 65,
+        "zone_coverage": 1.0
+      },
+      "hunt": {
+        "hunts": 1,
+        "per_hunt": [
+          {
+            "name": "hunt_roshamuul_main",
+            "size": 0,
+            "spawns": 0,
+            "centroid": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "boss": {
+        "bosses": 0
+      },
+      "city": {
+        "cities": 0
+      },
+      "decor": {
+        "variety": 817,
+        "total_items": 2097,
+        "repetition_ratio": 0.0043,
+        "coverage": 0.4238,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 465
+      },
+      "region": {
+        "region_count": 1,
+        "empty_regions": [
+          "hunt_roshamuul_main"
+        ],
+        "level_issues": 0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "pathfinding": {
+        "walkable_tiles": 1600,
+        "reachable_tiles": 1600,
+        "reach_ratio": 1.0,
+        "astar_path_length": 57,
+        "bottleneck_count": 4,
+        "entry_point": [
+          16,
+          33,
+          7
+        ],
+        "max_distance": 56.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T15:14:21.536962",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T15:14:21.538040"
+  }
+}

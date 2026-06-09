@@ -1,0 +1,18 @@
+{
+  "map_name": "deep_orc_cave_100",
+  "overall_score": 62.05461878787879,
+  "visual_score": 49.2609898989899,
+  "navigation_score": 85.0,
+  "density_score": 40.584,
+  "spawn_score": 54.05,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 71.584,
+  "pathfinding_score": 100.0,
+  "issue_count": 9,
+  "recommendation_count": 6,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:22.835072",
+  "version": "1.0"
+}

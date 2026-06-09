@@ -1,0 +1,18 @@
+{
+  "artifacts": [
+    "preview_png",
+    "preview_minimap",
+    "preview_json",
+    "preview.png",
+    "preview.json",
+    "otbm",
+    "lua",
+    "campaign",
+    "playtest_report",
+    "qa_report"
+  ],
+  "world_tile_count": 10517,
+  "campaign_generated": true,
+  "playtest_generated": true,
+  "qa_generated": true
+}

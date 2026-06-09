@@ -1,0 +1,17 @@
+{
+  "execution_time": 3.1383087635040283,
+  "agent_times": {
+    "architect": 0.6683940887451172,
+    "mapper": 0.06262373924255371,
+    "expansion": 0.2714962959289551,
+    "quest": 0.053290367126464844,
+    "playtest": 0.9253926277160645,
+    "balance": 0.19442224502563477,
+    "qa": 0.004665851593017578,
+    "export": 0.8412001132965088
+  },
+  "agent_failures": [],
+  "agent_success_rate": 100.0,
+  "workflow_id": "2c3cdaec",
+  "timestamp": "2026-06-07T07:35:01.758879"
+}

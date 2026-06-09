@@ -1,0 +1,11 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\samatha\OneDrive\Desktop\agente_rme
+configfile: pyproject.toml
+plugins: anyio-4.13.0, cov-7.1.0
+collecting ... ERROR: file or directory not found: ;
+
+collected 0 items
+
+============================ no tests ran in 0.18s ============================

@@ -1,0 +1,36 @@
+{
+  "name": "issavi_temple_large",
+  "category": "temple",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [40, 40],
+  "description": "Templo Issavi grande con altar central, columnas y decoración sagrada",
+  "layout": {
+    "type": "central_hall",
+    "altar_position": [20, 20],
+    "entrance": "south",
+    "entrance_position": [20, 38]
+  },
+  "rooms": [
+    {"name": "main_hall", "position": [8, 10], "size": [24, 20], "type": "temple_hall"},
+    {"name": "inner_sanctum", "position": [16, 2], "size": [8, 8], "type": "altar_room"},
+    {"name": "preparation_room", "position": [2, 20], "size": [6, 10], "type": "utility"},
+    {"name": "priest_quarters", "position": [32, 20], "size": [6, 10], "type": "housing"}
+  ],
+  "features": [
+    {"type": "altar", "position": [20, 20], "item_id": 1512},
+    {"type": "holy_fire", "position": [20, 18], "item_id": 2064},
+    {"type": "statue_left", "position": [16, 16], "item_id": 1510},
+    {"type": "statue_right", "position": [24, 16], "item_id": 1510}
+  ],
+  "grounds": [415, 393, 421, 1118],
+  "walls_items": [1495, 1496, 1497],
+  "decorations": [1510, 1545, 2052, 2064, 2153],
+  "metadata": {
+    "style": "issavi",
+    "capacity": "large",
+    "era": "modern",
+    "difficulty": "safe",
+    "tags": ["temple", "oriental", "altar", "rez", "temple_large"]
+  }
+}

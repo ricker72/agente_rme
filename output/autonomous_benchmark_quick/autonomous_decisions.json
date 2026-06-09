@@ -1,0 +1,1752 @@
+[
+  {
+    "decision_id": "1b28508f-a7e6-45e3-81bb-d10bd7638418",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.095987"
+  },
+  {
+    "decision_id": "3702d583-c41e-41b4-9c3e-b17681f65802",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.096125"
+  },
+  {
+    "decision_id": "3f74fd90-9ae7-4f8c-9bd8-709f9d513c13",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.096813"
+  },
+  {
+    "decision_id": "e6808a47-6e25-47ed-b952-09355de1dfa0",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.096925"
+  },
+  {
+    "decision_id": "8b11c363-a5e3-4e00-943f-6a4bfb33f04d",
+    "region_id": "hunt_3",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.097100"
+  },
+  {
+    "decision_id": "3ff7ee8c-c4c6-4021-a6e2-3200ffe55c5e",
+    "region_id": "hunt_3",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.097185"
+  },
+  {
+    "decision_id": "0691c0b1-9747-4739-ab5e-a87a68f64c6c",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.097341"
+  },
+  {
+    "decision_id": "c7325d93-1597-4af4-aeb5-a23d5dd2c7e4",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_2",
+    "alternatives": [
+      "pattern_boss_1",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_boss_2' matches boss archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.097416"
+  },
+  {
+    "decision_id": "3e698b2d-9e66-4737-aadf-3531bf441c0f",
+    "region_id": "boss_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.097576"
+  },
+  {
+    "decision_id": "b26fb691-14aa-4d21-bbf5-dd845315e12c",
+    "region_id": "boss_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_2",
+    "alternatives": [
+      "pattern_boss_1",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_boss_2' matches boss archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.097655"
+  },
+  {
+    "decision_id": "be2a73f9-c788-484e-9d97-f319c7ea3c14",
+    "region_id": "raid_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_raid_3",
+    "alternatives": [
+      "blueprint_raid_1",
+      "blueprint_raid_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.6663354317619217,
+      "novelty": 0.7245484785474133,
+      "stability": 0.9190913799015128
+    },
+    "total_score": 0.7341765032022014,
+    "reasoning": "Selected 'blueprint_raid_3' for raid region (fit=0.80, reuse=0.65, quality=0.67)",
+    "confidence": 0.8341765032022014,
+    "metadata": {
+      "region_type": "raid",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.097796"
+  },
+  {
+    "decision_id": "a5931a0d-fda0-4c09-94d9-0cf5fc8a265b",
+    "region_id": "raid_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_raid_2",
+    "alternatives": [
+      "pattern_raid_1",
+      "pattern_raid_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_raid_2' matches raid archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.097871"
+  },
+  {
+    "decision_id": "02f78f88-f182-4cfe-a2d4-e099971a11ba",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_city_1",
+    "alternatives": [
+      "blueprint_city_2",
+      "blueprint_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8040319301352522,
+      "novelty": 0.6938788036328116,
+      "stability": 0.9354905500595714
+    },
+    "total_score": 0.7594687938933102,
+    "reasoning": "Selected 'blueprint_city_1' for city region (fit=0.80, reuse=0.65, quality=0.80)",
+    "confidence": 0.8594687938933102,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        300,
+        500
+      ]
+    },
+    "created_at": "2026-06-08T13:46:50.098048"
+  },
+  {
+    "decision_id": "161e916f-fd17-49ec-9248-1b8629c6908b",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_city_2",
+    "alternatives": [
+      "pattern_city_1",
+      "pattern_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_city_2' matches city archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:46:50.098178"
+  },
+  {
+    "decision_id": "8fe49350-9739-4f9c-aba3-7736d29b826c",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:11.599829"
+  },
+  {
+    "decision_id": "2f69cfd8-77b5-479e-9b21-d38e567222e9",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:11.599906"
+  },
+  {
+    "decision_id": "173bc832-02c9-4b34-a3f0-00a5528c2274",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:11.600061"
+  },
+  {
+    "decision_id": "b28264cb-282f-4ccf-9e52-04c3950c23ad",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:11.604354"
+  },
+  {
+    "decision_id": "6d456b77-cd7c-44d5-a8ab-d96c74ca8681",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:11.604666"
+  },
+  {
+    "decision_id": "295d522f-6e73-4c43-9a21-4c96f2b070d0",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:11.604761"
+  },
+  {
+    "decision_id": "5fe89af1-74e0-4e62-9995-ae291527d436",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_city_1",
+    "alternatives": [
+      "blueprint_city_2",
+      "blueprint_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.8040319301352522,
+      "novelty": 0.6938788036328116,
+      "stability": 0.9354905500595714
+    },
+    "total_score": 0.7994687938933103,
+    "reasoning": "Selected 'blueprint_city_1' for city region (fit=0.90, reuse=0.65, quality=0.80)",
+    "confidence": 0.8994687938933102,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:11.604925"
+  },
+  {
+    "decision_id": "6da9df29-994a-44c7-91b6-04ac1ddec4c8",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_city_1",
+    "alternatives": [
+      "pattern_city_2",
+      "pattern_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_city_1' matches city archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:11.605011"
+  },
+  {
+    "decision_id": "b6b6660d-580c-4462-a9db-e6046cddd024",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.474372"
+  },
+  {
+    "decision_id": "fef671bd-0dcf-4967-b98d-7550b150b179",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.474465"
+  },
+  {
+    "decision_id": "76367656-afad-4bbd-9a17-c5e11ed589f6",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.474693"
+  },
+  {
+    "decision_id": "9590580d-9e7c-40cb-8ec7-d03e5ab7b684",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.474776"
+  },
+  {
+    "decision_id": "d48983e7-ecae-4960-aaa1-e8395b581dd7",
+    "region_id": "hunt_3",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.474941"
+  },
+  {
+    "decision_id": "65bda0d6-6a75-4043-b3de-27608c2da47b",
+    "region_id": "hunt_3",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.475020"
+  },
+  {
+    "decision_id": "a0a8506d-2f2f-4230-a2d2-99cb572b44b9",
+    "region_id": "hunt_4",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.475168"
+  },
+  {
+    "decision_id": "a3b034c9-e41e-41dc-b4bb-686d81d49727",
+    "region_id": "hunt_4",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.475244"
+  },
+  {
+    "decision_id": "b4350b71-9ba0-43dd-bbdb-35819638a80d",
+    "region_id": "hunt_5",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.475400"
+  },
+  {
+    "decision_id": "cf14bd38-6f50-4baa-a49e-cfe6aff2490e",
+    "region_id": "hunt_5",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.475473"
+  },
+  {
+    "decision_id": "fd2eac67-5fe0-4f73-9c96-97f894190ed3",
+    "region_id": "hunt_6",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.475672"
+  },
+  {
+    "decision_id": "58ab31a1-b9ea-48fb-9e5e-322181ffe416",
+    "region_id": "hunt_6",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.475742"
+  },
+  {
+    "decision_id": "3f3ff94a-24c8-405d-974c-3e57ef0a2f61",
+    "region_id": "hunt_7",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.475885"
+  },
+  {
+    "decision_id": "89f029a7-b8d3-404b-9e27-1fae22a4a822",
+    "region_id": "hunt_7",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.475959"
+  },
+  {
+    "decision_id": "53cb33ac-4fbb-4e86-b2d8-cd7cf68f3612",
+    "region_id": "hunt_8",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.476114"
+  },
+  {
+    "decision_id": "9c05379f-57d3-4206-8013-592d83574ec3",
+    "region_id": "hunt_8",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.476191"
+  },
+  {
+    "decision_id": "1ae43580-3efd-4f3a-877e-e25c2a299cc5",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.476375"
+  },
+  {
+    "decision_id": "5ba394f4-9e37-462b-b350-b07d5d5e6018",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.476549"
+  },
+  {
+    "decision_id": "af03f539-61dd-41d1-b123-be374f4a7173",
+    "region_id": "boss_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.476739"
+  },
+  {
+    "decision_id": "78afbf3e-8453-4181-b00f-0f3a4edad66a",
+    "region_id": "boss_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.476819"
+  },
+  {
+    "decision_id": "4a30291b-36e2-4892-8418-9b58c41136c0",
+    "region_id": "boss_3",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.476978"
+  },
+  {
+    "decision_id": "0121bc58-0028-4f33-9a3a-6cab3e41b20f",
+    "region_id": "boss_3",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.477057"
+  },
+  {
+    "decision_id": "34846414-a061-4e1c-8ba9-de4a25b7af95",
+    "region_id": "boss_4",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.477206"
+  },
+  {
+    "decision_id": "91b27983-ce83-4fe3-b411-c536abc213e0",
+    "region_id": "boss_4",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.477336"
+  },
+  {
+    "decision_id": "e28b746b-eb4a-46c0-bc58-53be6980cda1",
+    "region_id": "boss_5",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.477501"
+  },
+  {
+    "decision_id": "216e2202-11cb-456d-a878-dcc2f8cb6e8b",
+    "region_id": "boss_5",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.477576"
+  },
+  {
+    "decision_id": "062aa1e3-3632-4b58-a21e-efcbd0ee246b",
+    "region_id": "raid_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_raid_1",
+    "alternatives": [
+      "blueprint_raid_2",
+      "blueprint_raid_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.843171865782133,
+      "novelty": 0.33825348892090296,
+      "stability": 0.8636685113740423
+    },
+    "total_score": 0.768143147617219,
+    "reasoning": "Selected 'blueprint_raid_1' for raid region (fit=0.90, reuse=0.65, quality=0.84)",
+    "confidence": 0.868143147617219,
+    "metadata": {
+      "region_type": "raid",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.477848"
+  },
+  {
+    "decision_id": "58c43fec-7af3-4984-b2d1-236fbf52e7d3",
+    "region_id": "raid_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_raid_1",
+    "alternatives": [
+      "pattern_raid_2",
+      "pattern_raid_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_raid_1' matches raid archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.477932"
+  },
+  {
+    "decision_id": "67d1f22b-4877-4399-8d9b-ab1f22a5e813",
+    "region_id": "raid_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_raid_1",
+    "alternatives": [
+      "blueprint_raid_2",
+      "blueprint_raid_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.843171865782133,
+      "novelty": 0.33825348892090296,
+      "stability": 0.8636685113740423
+    },
+    "total_score": 0.768143147617219,
+    "reasoning": "Selected 'blueprint_raid_1' for raid region (fit=0.90, reuse=0.65, quality=0.84)",
+    "confidence": 0.868143147617219,
+    "metadata": {
+      "region_type": "raid",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.478179"
+  },
+  {
+    "decision_id": "ec8cac76-e08f-4fda-a8f7-86f89d6ba26c",
+    "region_id": "raid_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_raid_1",
+    "alternatives": [
+      "pattern_raid_2",
+      "pattern_raid_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_raid_1' matches raid archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.478278"
+  },
+  {
+    "decision_id": "71686375-76ed-48ea-9f65-b030276c0304",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_city_1",
+    "alternatives": [
+      "blueprint_city_2",
+      "blueprint_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.8040319301352522,
+      "novelty": 0.6938788036328116,
+      "stability": 0.9354905500595714
+    },
+    "total_score": 0.7994687938933103,
+    "reasoning": "Selected 'blueprint_city_1' for city region (fit=0.90, reuse=0.65, quality=0.80)",
+    "confidence": 0.8994687938933102,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T13:47:17.478495"
+  },
+  {
+    "decision_id": "e9983ae1-99c2-4916-978b-1adfaafd0aa3",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_city_1",
+    "alternatives": [
+      "pattern_city_2",
+      "pattern_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_city_1' matches city archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:17.478644"
+  },
+  {
+    "decision_id": "b820ff4d-56f6-48d1-b0f0-aecf2927d69c",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        200,
+        300
+      ]
+    },
+    "created_at": "2026-06-08T13:47:45.635667"
+  },
+  {
+    "decision_id": "b46e4f76-710b-45a8-9f6c-515f3ba66ba3",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:45.635747"
+  },
+  {
+    "decision_id": "f55d9af6-d4ce-4ca1-a032-e8811d8a38f3",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        200,
+        300
+      ]
+    },
+    "created_at": "2026-06-08T13:47:45.635902"
+  },
+  {
+    "decision_id": "167720dd-cf77-4159-8b15-d9a6a5b7aa4f",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:45.635981"
+  },
+  {
+    "decision_id": "f1cf181d-9143-42ee-b399-1bb484ca5bc2",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        200,
+        300
+      ]
+    },
+    "created_at": "2026-06-08T13:47:45.636126"
+  },
+  {
+    "decision_id": "15d8fdf1-51d2-411d-94f9-f85ba34f7730",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_2",
+    "alternatives": [
+      "pattern_boss_1",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_boss_2' matches boss archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:45.636198"
+  },
+  {
+    "decision_id": "d6ff5293-5322-4b39-b971-54db94f61465",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_city_1",
+    "alternatives": [
+      "blueprint_city_2",
+      "blueprint_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8040319301352522,
+      "novelty": 0.6938788036328116,
+      "stability": 0.9354905500595714
+    },
+    "total_score": 0.7594687938933102,
+    "reasoning": "Selected 'blueprint_city_1' for city region (fit=0.80, reuse=0.65, quality=0.80)",
+    "confidence": 0.8594687938933102,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        200,
+        300
+      ]
+    },
+    "created_at": "2026-06-08T13:47:45.636396"
+  },
+  {
+    "decision_id": "1b55926a-a6ef-443f-a34b-00527333cda3",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_city_2",
+    "alternatives": [
+      "pattern_city_1",
+      "pattern_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_city_2' matches city archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:45.636490"
+  },
+  {
+    "decision_id": "7a92317e-cc41-4d1d-8564-a2b3ff41d9bf",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        350,
+        450
+      ]
+    },
+    "created_at": "2026-06-08T13:47:51.104294"
+  },
+  {
+    "decision_id": "085fa7b2-dc1d-4015-9834-1abd6050ddc9",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:51.104380"
+  },
+  {
+    "decision_id": "b13fddf9-7d4b-4c44-b9da-b649f7f8630e",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_hunt_2",
+    "alternatives": [
+      "blueprint_hunt_1",
+      "blueprint_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8616497940983946,
+      "novelty": 0.684166158307633,
+      "stability": 0.7866344469952165
+    },
+    "total_score": 0.7625782970002032,
+    "reasoning": "Selected 'blueprint_hunt_2' for hunt region (fit=0.80, reuse=0.65, quality=0.86)",
+    "confidence": 0.8625782970002032,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        350,
+        450
+      ]
+    },
+    "created_at": "2026-06-08T13:47:51.104540"
+  },
+  {
+    "decision_id": "ac99c22e-201a-4ba0-b0f2-097202dafe0d",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_2",
+    "alternatives": [
+      "pattern_hunt_1",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_hunt_2' matches hunt archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:51.104619"
+  },
+  {
+    "decision_id": "77c4bac0-6e0a-4613-8485-efdbd2b2f241",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_boss_3",
+    "alternatives": [
+      "blueprint_boss_1",
+      "blueprint_boss_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8711667528642051,
+      "novelty": 0.7617105625333822,
+      "stability": 0.7752219052338095
+    },
+    "total_score": 0.7716655020878698,
+    "reasoning": "Selected 'blueprint_boss_3' for boss region (fit=0.80, reuse=0.65, quality=0.87)",
+    "confidence": 0.8716655020878697,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        350,
+        450
+      ]
+    },
+    "created_at": "2026-06-08T13:47:51.104800"
+  },
+  {
+    "decision_id": "1f17f077-c9ac-4f5c-8763-30d937568089",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_2",
+    "alternatives": [
+      "pattern_boss_1",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_boss_2' matches boss archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:51.104916"
+  },
+  {
+    "decision_id": "8f410454-f385-4860-ad2d-8d3c7c05bbca",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "blueprint_city_1",
+    "alternatives": [
+      "blueprint_city_2",
+      "blueprint_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.65,
+      "quality": 0.8040319301352522,
+      "novelty": 0.6938788036328116,
+      "stability": 0.9354905500595714
+    },
+    "total_score": 0.7594687938933102,
+    "reasoning": "Selected 'blueprint_city_1' for city region (fit=0.80, reuse=0.65, quality=0.80)",
+    "confidence": 0.8594687938933102,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        350,
+        450
+      ]
+    },
+    "created_at": "2026-06-08T13:47:51.105057"
+  },
+  {
+    "decision_id": "12e4f638-5f3b-47a4-9ac1-e919d2205773",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_city_2",
+    "alternatives": [
+      "pattern_city_1",
+      "pattern_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.8,
+      "reuse": 0.6446421476297645,
+      "quality": 0.8472942428328025,
+      "novelty": 0.6706797949691645,
+      "stability": 0.85
+    },
+    "total_score": 0.7601873649709181,
+    "reasoning": "Pattern 'pattern_city_2' matches city archetype",
+    "confidence": 0.7601873649709181,
+    "metadata": {},
+    "created_at": "2026-06-08T13:47:51.105231"
+  }
+]

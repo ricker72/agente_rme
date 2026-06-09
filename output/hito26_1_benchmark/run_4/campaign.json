@@ -1,0 +1,1208 @@
+{
+  "workflow_id": "658aaca9",
+  "theme": "issavi",
+  "level_range": [
+    1,
+    200
+  ],
+  "status": "ok",
+  "source": "CampaignGenerator",
+  "errors": [],
+  "generated_at": "2026-06-08T14:12:47.071043+00:00",
+  "quests": [
+    {
+      "title": "A New Beginning",
+      "chapter": 1,
+      "description": "Arrive at the starting town and learn the basics.",
+      "objectives": [
+        "Talk to the Elder",
+        "Complete training"
+      ],
+      "boss_name": "",
+      "reward_gold": 1000,
+      "reward_items": [
+        "Starter Sword",
+        "Basic Shield"
+      ],
+      "required_level": 302,
+      "is_main_story": true
+    },
+    {
+      "title": "The Rising Threat",
+      "chapter": 2,
+      "description": "A dark force threatens the peaceful town.",
+      "objectives": [
+        "Investigate the disturbance",
+        "Defeat the bandits",
+        "Find the source of evil"
+      ],
+      "boss_name": "Bandit King",
+      "reward_gold": 5000,
+      "reward_items": [
+        "Iron Shield",
+        "Health Potion x10"
+      ],
+      "required_level": 340,
+      "is_main_story": true
+    },
+    {
+      "title": "The Final Confrontation",
+      "chapter": 3,
+      "description": "Face the ultimate evil threatening the realm.",
+      "objectives": [
+        "Gather the ancient artifacts",
+        "Enter the Dark Fortress",
+        "Defeat the Dark Lord"
+      ],
+      "boss_name": "Dark Lord Malachar",
+      "reward_gold": 50000,
+      "reward_items": [
+        "Sword of Light",
+        "Crown of the Realm"
+      ],
+      "required_level": 500,
+      "is_main_story": true
+    },
+    {
+      "title": "Lost Treasures of the Ancients",
+      "chapter": 4,
+      "description": "Search for forgotten treasures in ancient ruins.",
+      "objectives": [
+        "Find the map",
+        "Navigate the ruins",
+        "Claim the treasure"
+      ],
+      "boss_name": "Guardian Golem",
+      "reward_gold": 20000,
+      "reward_items": [],
+      "required_level": 300,
+      "is_main_story": false
+    },
+    {
+      "title": "The Merchant's Plight",
+      "chapter": 5,
+      "description": "Help a merchant recover stolen goods from bandits.",
+      "objectives": [
+        "Find the merchant",
+        "Track the bandits",
+        "Recover the goods"
+      ],
+      "boss_name": "",
+      "reward_gold": 10000,
+      "reward_items": [],
+      "required_level": 333,
+      "is_main_story": false
+    },
+    {
+      "title": "Cursed Relics",
+      "chapter": 6,
+      "description": "Destroy cursed artifacts spreading corruption.",
+      "objectives": [
+        "Locate the relics",
+        "Purify or destroy each one"
+      ],
+      "boss_name": "Cursed Spirit",
+      "reward_gold": 30000,
+      "reward_items": [],
+      "required_level": 366,
+      "is_main_story": false
+    }
+  ],
+  "bosses": [
+    {
+      "name": "Bandit King",
+      "level": 500,
+      "theme": "issavi",
+      "is_campaign_boss": true
+    },
+    {
+      "name": "Dark Lord Malachar",
+      "level": 500,
+      "theme": "issavi",
+      "is_campaign_boss": true
+    },
+    {
+      "name": "Guardian Golem",
+      "level": 500,
+      "theme": "issavi",
+      "is_campaign_boss": true
+    },
+    {
+      "name": "Cursed Spirit",
+      "level": 500,
+      "theme": "issavi",
+      "is_campaign_boss": true
+    }
+  ],
+  "raids": [
+    {
+      "name": "Raid: Bandit King",
+      "type": "raid",
+      "level_required": 300,
+      "boss": "Bandit King",
+      "max_players": 5,
+      "rewards": {
+        "gold": 50000,
+        "items": [
+          "issavi Raid Token 1"
+        ]
+      }
+    },
+    {
+      "name": "Raid: Dark Lord Malachar",
+      "type": "raid",
+      "level_required": 366,
+      "boss": "Dark Lord Malachar",
+      "max_players": 5,
+      "rewards": {
+        "gold": 100000,
+        "items": [
+          "issavi Raid Token 2"
+        ]
+      }
+    },
+    {
+      "name": "Raid: Guardian Golem",
+      "type": "raid",
+      "level_required": 433,
+      "boss": "Guardian Golem",
+      "max_players": 8,
+      "rewards": {
+        "gold": 150000,
+        "items": [
+          "issavi Raid Token 3"
+        ]
+      }
+    }
+  ],
+  "story": {
+    "title": "Main Campaign - issavi",
+    "chapters": [
+      {
+        "title": "A New Beginning",
+        "chapter": 1,
+        "description": "Arrive at the starting town and learn the basics.",
+        "objectives": [
+          "Talk to the Elder",
+          "Complete training"
+        ],
+        "boss_name": "",
+        "reward_gold": 1000,
+        "reward_items": [
+          "Starter Sword",
+          "Basic Shield"
+        ],
+        "required_level": 302,
+        "is_main_story": true
+      },
+      {
+        "title": "The Rising Threat",
+        "chapter": 2,
+        "description": "A dark force threatens the peaceful town.",
+        "objectives": [
+          "Investigate the disturbance",
+          "Defeat the bandits",
+          "Find the source of evil"
+        ],
+        "boss_name": "Bandit King",
+        "reward_gold": 5000,
+        "reward_items": [
+          "Iron Shield",
+          "Health Potion x10"
+        ],
+        "required_level": 340,
+        "is_main_story": true
+      },
+      {
+        "title": "The Final Confrontation",
+        "chapter": 3,
+        "description": "Face the ultimate evil threatening the realm.",
+        "objectives": [
+          "Gather the ancient artifacts",
+          "Enter the Dark Fortress",
+          "Defeat the Dark Lord"
+        ],
+        "boss_name": "Dark Lord Malachar",
+        "reward_gold": 50000,
+        "reward_items": [
+          "Sword of Light",
+          "Crown of the Realm"
+        ],
+        "required_level": 500,
+        "is_main_story": true
+      }
+    ]
+  },
+  "rewards": {},
+  "campaign": {
+    "workflow_id": "658aaca9",
+    "theme": "issavi",
+    "level_range": [
+      300,
+      500
+    ],
+    "status": "ok",
+    "source": "CampaignGenerator",
+    "errors": [],
+    "generated_at": "2026-06-08T14:12:44.528001+00:00",
+    "quests": [
+      {
+        "title": "A New Beginning",
+        "chapter": 1,
+        "description": "Arrive at the starting town and learn the basics.",
+        "objectives": [
+          "Talk to the Elder",
+          "Complete training"
+        ],
+        "boss_name": "",
+        "reward_gold": 1000,
+        "reward_items": [
+          "Starter Sword",
+          "Basic Shield"
+        ],
+        "required_level": 302,
+        "is_main_story": true
+      },
+      {
+        "title": "The Rising Threat",
+        "chapter": 2,
+        "description": "A dark force threatens the peaceful town.",
+        "objectives": [
+          "Investigate the disturbance",
+          "Defeat the bandits",
+          "Find the source of evil"
+        ],
+        "boss_name": "Bandit King",
+        "reward_gold": 5000,
+        "reward_items": [
+          "Iron Shield",
+          "Health Potion x10"
+        ],
+        "required_level": 340,
+        "is_main_story": true
+      },
+      {
+        "title": "The Final Confrontation",
+        "chapter": 3,
+        "description": "Face the ultimate evil threatening the realm.",
+        "objectives": [
+          "Gather the ancient artifacts",
+          "Enter the Dark Fortress",
+          "Defeat the Dark Lord"
+        ],
+        "boss_name": "Dark Lord Malachar",
+        "reward_gold": 50000,
+        "reward_items": [
+          "Sword of Light",
+          "Crown of the Realm"
+        ],
+        "required_level": 500,
+        "is_main_story": true
+      },
+      {
+        "title": "Lost Treasures of the Ancients",
+        "chapter": 4,
+        "description": "Search for forgotten treasures in ancient ruins.",
+        "objectives": [
+          "Find the map",
+          "Navigate the ruins",
+          "Claim the treasure"
+        ],
+        "boss_name": "Guardian Golem",
+        "reward_gold": 20000,
+        "reward_items": [],
+        "required_level": 300,
+        "is_main_story": false
+      },
+      {
+        "title": "The Merchant's Plight",
+        "chapter": 5,
+        "description": "Help a merchant recover stolen goods from bandits.",
+        "objectives": [
+          "Find the merchant",
+          "Track the bandits",
+          "Recover the goods"
+        ],
+        "boss_name": "",
+        "reward_gold": 10000,
+        "reward_items": [],
+        "required_level": 333,
+        "is_main_story": false
+      },
+      {
+        "title": "Cursed Relics",
+        "chapter": 6,
+        "description": "Destroy cursed artifacts spreading corruption.",
+        "objectives": [
+          "Locate the relics",
+          "Purify or destroy each one"
+        ],
+        "boss_name": "Cursed Spirit",
+        "reward_gold": 30000,
+        "reward_items": [],
+        "required_level": 366,
+        "is_main_story": false
+      }
+    ],
+    "bosses": [
+      {
+        "name": "Bandit King",
+        "level": 500,
+        "theme": "issavi",
+        "is_campaign_boss": true
+      },
+      {
+        "name": "Dark Lord Malachar",
+        "level": 500,
+        "theme": "issavi",
+        "is_campaign_boss": true
+      },
+      {
+        "name": "Guardian Golem",
+        "level": 500,
+        "theme": "issavi",
+        "is_campaign_boss": true
+      },
+      {
+        "name": "Cursed Spirit",
+        "level": 500,
+        "theme": "issavi",
+        "is_campaign_boss": true
+      }
+    ],
+    "raids": [
+      {
+        "name": "Raid: Bandit King",
+        "type": "raid",
+        "level_required": 300,
+        "boss": "Bandit King",
+        "max_players": 5,
+        "rewards": {
+          "gold": 50000,
+          "items": [
+            "issavi Raid Token 1"
+          ]
+        }
+      },
+      {
+        "name": "Raid: Dark Lord Malachar",
+        "type": "raid",
+        "level_required": 366,
+        "boss": "Dark Lord Malachar",
+        "max_players": 5,
+        "rewards": {
+          "gold": 100000,
+          "items": [
+            "issavi Raid Token 2"
+          ]
+        }
+      },
+      {
+        "name": "Raid: Guardian Golem",
+        "type": "raid",
+        "level_required": 433,
+        "boss": "Guardian Golem",
+        "max_players": 8,
+        "rewards": {
+          "gold": 150000,
+          "items": [
+            "issavi Raid Token 3"
+          ]
+        }
+      }
+    ],
+    "story": {
+      "title": "Main Campaign - issavi",
+      "chapters": [
+        {
+          "title": "A New Beginning",
+          "chapter": 1,
+          "description": "Arrive at the starting town and learn the basics.",
+          "objectives": [
+            "Talk to the Elder",
+            "Complete training"
+          ],
+          "boss_name": "",
+          "reward_gold": 1000,
+          "reward_items": [
+            "Starter Sword",
+            "Basic Shield"
+          ],
+          "required_level": 302,
+          "is_main_story": true
+        },
+        {
+          "title": "The Rising Threat",
+          "chapter": 2,
+          "description": "A dark force threatens the peaceful town.",
+          "objectives": [
+            "Investigate the disturbance",
+            "Defeat the bandits",
+            "Find the source of evil"
+          ],
+          "boss_name": "Bandit King",
+          "reward_gold": 5000,
+          "reward_items": [
+            "Iron Shield",
+            "Health Potion x10"
+          ],
+          "required_level": 340,
+          "is_main_story": true
+        },
+        {
+          "title": "The Final Confrontation",
+          "chapter": 3,
+          "description": "Face the ultimate evil threatening the realm.",
+          "objectives": [
+            "Gather the ancient artifacts",
+            "Enter the Dark Fortress",
+            "Defeat the Dark Lord"
+          ],
+          "boss_name": "Dark Lord Malachar",
+          "reward_gold": 50000,
+          "reward_items": [
+            "Sword of Light",
+            "Crown of the Realm"
+          ],
+          "required_level": 500,
+          "is_main_story": true
+        }
+      ]
+    },
+    "rewards": {},
+    "campaign": {
+      "theme": "issavi",
+      "name": "The Chronicles of issavi",
+      "level_range": [
+        300,
+        500
+      ],
+      "lore": [
+        {
+          "title": "The Age of Chaos",
+          "category": "history",
+          "content": "In the beginning, the world was formless and chaotic. The gods shaped the lands and populated them with life.",
+          "importance": 3,
+          "related_factions": [
+            "The Iron Brotherhood",
+            "The Void Collective"
+          ],
+          "related_npcs": []
+        },
+        {
+          "title": "The Great Schism",
+          "category": "legend",
+          "content": "When the gods disagreed, the world split into realms of light and shadow, each claiming their followers.",
+          "importance": 4,
+          "related_factions": [
+            "The Iron Brotherhood",
+            "The Void Collective"
+          ],
+          "related_npcs": []
+        },
+        {
+          "title": "The Story of The Iron Brotherhood - Part 1",
+          "category": "history",
+          "content": "The Iron Brotherhood traces its origins to the first settlers who braved the wilds and carved civilization from the wilderness.",
+          "importance": 2,
+          "related_factions": [
+            "The Iron Brotherhood"
+          ],
+          "related_npcs": []
+        },
+        {
+          "title": "The Story of The Void Collective - Part 2",
+          "category": "history",
+          "content": "The The Void Collective once controlled all trade routes, but their monopoly was broken when rival factions formed alliances.",
+          "importance": 3,
+          "related_factions": [
+            "The Void Collective"
+          ],
+          "related_npcs": []
+        },
+        {
+          "title": "The Story of Wanderers' Pact - Part 3",
+          "category": "history",
+          "content": "Members of the Wanderers' Pact swear an oath upon admission to protect the secrets of their order until death.",
+          "importance": 4,
+          "related_factions": [
+            "Wanderers' Pact"
+          ],
+          "related_npcs": []
+        },
+        {
+          "title": "The Prophecy of issavi",
+          "category": "prophecy",
+          "content": "In the darkest hour, The Iron Brotherhood and The Void Collective shall rise to confront the ancient evil lurking within issavi. Only through unity can the world be saved from eternal darkness.",
+          "importance": 5,
+          "related_factions": [
+            "The Iron Brotherhood",
+            "The Void Collective"
+          ],
+          "related_npcs": []
+        }
+      ],
+      "factions": [
+        {
+          "name": "The Iron Brotherhood",
+          "alignment": "good",
+          "description": "Warriors bound by honor to protect the innocent.",
+          "leader": "Leader of The Iron Brotherhood",
+          "member_count": 100,
+          "primary_color": "silver",
+          "enemy_factions": [
+            "The Void Collective"
+          ],
+          "allied_factions": [],
+          "capital": "Iron Hold",
+          "specialities": [
+            "combat",
+            "strategy"
+          ]
+        },
+        {
+          "name": "The Void Collective",
+          "alignment": "evil",
+          "description": "Servants of the void seeking to unmake reality.",
+          "leader": "Leader of The Void Collective",
+          "member_count": 150,
+          "primary_color": "dark",
+          "enemy_factions": [
+            "The Iron Brotherhood"
+          ],
+          "allied_factions": [],
+          "capital": "Void Nexus",
+          "specialities": [
+            "dark magic",
+            "corruption"
+          ]
+        },
+        {
+          "name": "Wanderers' Pact",
+          "alignment": "neutral",
+          "description": "A loose alliance of travelers and explorers.",
+          "leader": "Leader of Wanderers' Pact",
+          "member_count": 200,
+          "primary_color": "green",
+          "enemy_factions": [],
+          "allied_factions": [],
+          "capital": "Crossroads Inn",
+          "specialities": [
+            "exploration",
+            "trade"
+          ]
+        }
+      ],
+      "npcs": [
+        {
+          "name": "Elder Theron",
+          "role": "quest_giver",
+          "faction": "The Iron Brotherhood",
+          "location": "issavi Town Center",
+          "dialogue_greeting": "Greetings, adventurer. I need your help.",
+          "dialogue_farewell": "Farewell, adventurer.",
+          "quest_ids": [],
+          "combat_level": 1,
+          "is_boss": false
+        },
+        {
+          "name": "Merchant Grix",
+          "role": "merchant",
+          "faction": "The Void Collective",
+          "location": "issavi Market",
+          "dialogue_greeting": "Looking to buy or sell? I've got what you need.",
+          "dialogue_farewell": "May the gods protect you.",
+          "quest_ids": [],
+          "combat_level": 1,
+          "is_boss": false
+        },
+        {
+          "name": "Mage Celestia",
+          "role": "ally",
+          "faction": "Wanderers' Pact",
+          "location": "issavi Temple",
+          "dialogue_greeting": "Ready when you are, partner.",
+          "dialogue_farewell": "Be safe out there.",
+          "quest_ids": [],
+          "combat_level": 140,
+          "is_boss": false
+        },
+        {
+          "name": "Beast Tamer Grul",
+          "role": "enemy",
+          "faction": "The Iron Brotherhood",
+          "location": "issavi Outskirts",
+          "dialogue_greeting": "You dare enter my domain?",
+          "dialogue_farewell": "Until we meet again.",
+          "quest_ids": [],
+          "combat_level": 250,
+          "is_boss": false
+        },
+        {
+          "name": "Wanderer Nyssa",
+          "role": "neutral",
+          "faction": "The Void Collective",
+          "location": "Iron Hold",
+          "dialogue_greeting": "Nice weather we're having... considering everything.",
+          "dialogue_farewell": "Farewell, adventurer.",
+          "quest_ids": [],
+          "combat_level": 1,
+          "is_boss": false
+        },
+        {
+          "name": "Commander Draven",
+          "role": "quest_giver",
+          "faction": "Wanderers' Pact",
+          "location": "Void Nexus",
+          "dialogue_greeting": "Thank the gods you're here! We need assistance.",
+          "dialogue_farewell": "May the gods protect you.",
+          "quest_ids": [],
+          "combat_level": 1,
+          "is_boss": false
+        },
+        {
+          "name": "Trader Zara",
+          "role": "merchant",
+          "faction": "The Iron Brotherhood",
+          "location": "Crossroads Inn",
+          "dialogue_greeting": "Welcome! Browse my wares, all top quality.",
+          "dialogue_farewell": "Be safe out there.",
+          "quest_ids": [],
+          "combat_level": 1,
+          "is_boss": false
+        },
+        {
+          "name": "Ranger Finn",
+          "role": "ally",
+          "faction": "The Void Collective",
+          "location": "issavi Town Center",
+          "dialogue_greeting": "We stand together against the darkness.",
+          "dialogue_farewell": "Until we meet again.",
+          "quest_ids": [],
+          "combat_level": 290,
+          "is_boss": false
+        }
+      ],
+      "main_story": {
+        "title": "Main Campaign - issavi",
+        "chapters": [
+          {
+            "title": "A New Beginning",
+            "chapter": 1,
+            "description": "Arrive at the starting town and learn the basics.",
+            "objectives": [
+              "Talk to the Elder",
+              "Complete training"
+            ],
+            "boss_name": "",
+            "reward_gold": 1000,
+            "reward_items": [
+              "Starter Sword",
+              "Basic Shield"
+            ],
+            "required_level": 302,
+            "is_main_story": true
+          },
+          {
+            "title": "The Rising Threat",
+            "chapter": 2,
+            "description": "A dark force threatens the peaceful town.",
+            "objectives": [
+              "Investigate the disturbance",
+              "Defeat the bandits",
+              "Find the source of evil"
+            ],
+            "boss_name": "Bandit King",
+            "reward_gold": 5000,
+            "reward_items": [
+              "Iron Shield",
+              "Health Potion x10"
+            ],
+            "required_level": 340,
+            "is_main_story": true
+          },
+          {
+            "title": "The Final Confrontation",
+            "chapter": 3,
+            "description": "Face the ultimate evil threatening the realm.",
+            "objectives": [
+              "Gather the ancient artifacts",
+              "Enter the Dark Fortress",
+              "Defeat the Dark Lord"
+            ],
+            "boss_name": "Dark Lord Malachar",
+            "reward_gold": 50000,
+            "reward_items": [
+              "Sword of Light",
+              "Crown of the Realm"
+            ],
+            "required_level": 500,
+            "is_main_story": true
+          }
+        ]
+      },
+      "side_quests": [
+        {
+          "title": "Lost Treasures of the Ancients",
+          "chapter": 4,
+          "description": "Search for forgotten treasures in ancient ruins.",
+          "objectives": [
+            "Find the map",
+            "Navigate the ruins",
+            "Claim the treasure"
+          ],
+          "boss_name": "Guardian Golem",
+          "reward_gold": 20000,
+          "reward_items": [],
+          "required_level": 300,
+          "is_main_story": false
+        },
+        {
+          "title": "The Merchant's Plight",
+          "chapter": 5,
+          "description": "Help a merchant recover stolen goods from bandits.",
+          "objectives": [
+            "Find the merchant",
+            "Track the bandits",
+            "Recover the goods"
+          ],
+          "boss_name": "",
+          "reward_gold": 10000,
+          "reward_items": [],
+          "required_level": 333,
+          "is_main_story": false
+        },
+        {
+          "title": "Cursed Relics",
+          "chapter": 6,
+          "description": "Destroy cursed artifacts spreading corruption.",
+          "objectives": [
+            "Locate the relics",
+            "Purify or destroy each one"
+          ],
+          "boss_name": "Cursed Spirit",
+          "reward_gold": 30000,
+          "reward_items": [],
+          "required_level": 366,
+          "is_main_story": false
+        }
+      ],
+      "economy": {
+        "theme": "issavi",
+        "currency_name": "Gold",
+        "base_item_value": 500,
+        "price_inflation": 1.0,
+        "loot_multiplier": 1.0,
+        "supply_cost_multiplier": 1.0,
+        "merchant_items": [
+          {
+            "name": "Enchanted Blade",
+            "type": "weapon",
+            "price": 75000,
+            "stock": 10
+          },
+          {
+            "name": "Dragon Scale Shield",
+            "type": "armor",
+            "price": 100000,
+            "stock": 10
+          },
+          {
+            "name": "Supreme Health Potion",
+            "type": "consumable",
+            "price": 10000,
+            "stock": 10
+          },
+          {
+            "name": "Ring of Power",
+            "type": "accessory",
+            "price": 125000,
+            "stock": 10
+          }
+        ],
+        "price_ranges": {
+          "consumables": {
+            "min": 250,
+            "max": 25000
+          },
+          "weapons": {
+            "min": 1000,
+            "max": 250000
+          },
+          "armor": {
+            "min": 1500,
+            "max": 300000
+          },
+          "accessories": {
+            "min": 5000,
+            "max": 500000
+          }
+        },
+        "economic_events": [
+          "Trade routes stable",
+          "Harvest season brings prosperity",
+          "Bandit raids disrupt caravans"
+        ]
+      },
+      "dialogs": {
+        "Elder Theron": [
+          {
+            "speaker": "Elder Theron",
+            "text": "We need someone capable for a dangerous mission.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Elder Theron",
+            "text": "I have a task that requires a brave adventurer.",
+            "mood": "urgent",
+            "response_options": [
+              "I'll help right away!",
+              "Tell me what to do."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Elder Theron",
+            "text": "The council has authorized me to hire mercenaries.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Merchant Grix": [
+          {
+            "speaker": "Merchant Grix",
+            "text": "I have wares from across the land.",
+            "mood": "neutral",
+            "response_options": [
+              "Show me your wares.",
+              "I'll come back later."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Merchant Grix",
+            "text": "Looking for something special? I've got it.",
+            "mood": "happy",
+            "response_options": [
+              "Show me your wares.",
+              "I'll come back later."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Merchant Grix",
+            "text": "My prices are fair, considering the danger.",
+            "mood": "neutral",
+            "response_options": [
+              "Show me your wares.",
+              "I'll come back later."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Mage Celestia": [
+          {
+            "speaker": "Mage Celestia",
+            "text": "I've been tracking the enemy's movements.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Mage Celestia",
+            "text": "We should plan our approach carefully.",
+            "mood": "urgent",
+            "response_options": [
+              "I'll help right away!",
+              "Tell me what to do."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Mage Celestia",
+            "text": "I know a shortcut through the mountains.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Beast Tamer Grul": [
+          {
+            "speaker": "Beast Tamer Grul",
+            "text": "You've been a thorn in my side for too long!",
+            "mood": "angry",
+            "response_options": [
+              "Prepare to fight!",
+              "I don't want trouble."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Beast Tamer Grul",
+            "text": "This is where your journey ends!",
+            "mood": "angry",
+            "response_options": [
+              "Prepare to fight!",
+              "I don't want trouble."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Beast Tamer Grul",
+            "text": "No one has ever survived facing me!",
+            "mood": "angry",
+            "response_options": [
+              "Prepare to fight!",
+              "I don't want trouble."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Wanderer Nyssa": [
+          {
+            "speaker": "Wanderer Nyssa",
+            "text": "We need someone capable for a dangerous mission.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Wanderer Nyssa",
+            "text": "I have a task that requires a brave adventurer.",
+            "mood": "urgent",
+            "response_options": [
+              "I'll help right away!",
+              "Tell me what to do."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Wanderer Nyssa",
+            "text": "The council has authorized me to hire mercenaries.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Commander Draven": [
+          {
+            "speaker": "Commander Draven",
+            "text": "We need someone capable for a dangerous mission.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Commander Draven",
+            "text": "I have a task that requires a brave adventurer.",
+            "mood": "urgent",
+            "response_options": [
+              "I'll help right away!",
+              "Tell me what to do."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Commander Draven",
+            "text": "The council has authorized me to hire mercenaries.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Trader Zara": [
+          {
+            "speaker": "Trader Zara",
+            "text": "I have wares from across the land.",
+            "mood": "neutral",
+            "response_options": [
+              "Show me your wares.",
+              "I'll come back later."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Trader Zara",
+            "text": "Looking for something special? I've got it.",
+            "mood": "happy",
+            "response_options": [
+              "Show me your wares.",
+              "I'll come back later."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Trader Zara",
+            "text": "My prices are fair, considering the danger.",
+            "mood": "neutral",
+            "response_options": [
+              "Show me your wares.",
+              "I'll come back later."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ],
+        "Ranger Finn": [
+          {
+            "speaker": "Ranger Finn",
+            "text": "I've been tracking the enemy's movements.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "dialog_1",
+            "conditions": {}
+          },
+          {
+            "speaker": "Ranger Finn",
+            "text": "We should plan our approach carefully.",
+            "mood": "urgent",
+            "response_options": [
+              "I'll help right away!",
+              "Tell me what to do."
+            ],
+            "next_dialog_id": "dialog_2",
+            "conditions": {}
+          },
+          {
+            "speaker": "Ranger Finn",
+            "text": "I know a shortcut through the mountains.",
+            "mood": "neutral",
+            "response_options": [
+              "I accept the quest.",
+              "Tell me more.",
+              "Not now."
+            ],
+            "next_dialog_id": "",
+            "conditions": {}
+          }
+        ]
+      },
+      "raids": [
+        {
+          "name": "Raid: Bandit King",
+          "type": "raid",
+          "level_required": 300,
+          "boss": "Bandit King",
+          "max_players": 5,
+          "rewards": {
+            "gold": 50000,
+            "items": [
+              "issavi Raid Token 1"
+            ]
+          }
+        },
+        {
+          "name": "Raid: Dark Lord Malachar",
+          "type": "raid",
+          "level_required": 366,
+          "boss": "Dark Lord Malachar",
+          "max_players": 5,
+          "rewards": {
+            "gold": 100000,
+            "items": [
+              "issavi Raid Token 2"
+            ]
+          }
+        },
+        {
+          "name": "Raid: Guardian Golem",
+          "type": "raid",
+          "level_required": 433,
+          "boss": "Guardian Golem",
+          "max_players": 8,
+          "rewards": {
+            "gold": 150000,
+            "items": [
+              "issavi Raid Token 3"
+            ]
+          }
+        }
+      ],
+      "bosses": [
+        {
+          "name": "Bandit King",
+          "level": 500,
+          "theme": "issavi",
+          "is_campaign_boss": true
+        },
+        {
+          "name": "Dark Lord Malachar",
+          "level": 500,
+          "theme": "issavi",
+          "is_campaign_boss": true
+        },
+        {
+          "name": "Guardian Golem",
+          "level": 500,
+          "theme": "issavi",
+          "is_campaign_boss": true
+        },
+        {
+          "name": "Cursed Spirit",
+          "level": 500,
+          "theme": "issavi",
+          "is_campaign_boss": true
+        }
+      ]
+    }
+  }
+}

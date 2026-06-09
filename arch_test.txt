@@ -1,0 +1,32 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\samatha\OneDrive\Desktop\agente_rme
+configfile: pyproject.toml
+plugins: anyio-4.13.0, cov-7.1.0
+collecting ... collected 22 items
+
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_executes_with_valid_prompt PASSED [  4%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_returns_plan_dict PASSED [  9%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_issavi_theme PASSED [ 13%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_roshamuul_theme PASSED [ 18%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_both_themes PASSED [ 22%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_with_no_specific_theme PASSED [ 27%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_respects_world_dimensions PASSED [ 31%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentHappyPath::test_architect_metrics_present PASSED [ 36%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_empty_prompt_returns_error PASSED [ 40%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_none_prompt_returns_error PASSED [ 45%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_prompt_from_parameters PASSED [ 50%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_plan_has_themes PASSED [ 54%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_logger_uses_agent_id PASSED [ 59%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_issavi PASSED [ 63%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_roshamuul PASSED [ 68%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_both_themes PASSED [ 72%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_default PASSED [ 77%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_plan_structure PASSED [ 81%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_fallback_path PASSED [ 86%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_handles_exception PASSED [ 90%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_get_architect_returns_cached PASSED [ 95%]
+tests/agents/test_architect_agent_coverage.py::TestArchitectAgentErrorHandling::test_architect_get_architect_fallback_on_import_error PASSED [100%]
+
+============================= 22 passed in 0.95s ==============================

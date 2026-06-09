@@ -1,0 +1,20 @@
+{
+  "workflow_id": "da97fe33",
+  "prompt": "Generate Issavi map",
+  "status": "completed",
+  "tasks": {},
+  "current_agent": null,
+  "errors": [],
+  "started_at": "2026-06-07T05:53:41.892903",
+  "completed_at": "2026-06-07T05:53:41.897470",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

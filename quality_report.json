@@ -1,0 +1,315 @@
+{
+  "timestamp": "2026-06-09T06:11:40.791825+00:00",
+  "version": "Agente RME v1.0.0 GA",
+  "scanners": {
+    "ruff": {
+      "ran": true,
+      "exit_code": 1,
+      "summary": ""
+    },
+    "flake8": {
+      "ran": true,
+      "exit_code": 1,
+      "summary": ""
+    },
+    "mypy": {
+      "ran": true,
+      "exit_code": 1,
+      "summary": ""
+    },
+    "bandit": {
+      "ran": true,
+      "exit_code": 1,
+      "issues": 0,
+      "summary": ""
+    }
+  },
+  "summary": {
+    "critical_errors": 0,
+    "warnings": 54,
+    "deprecated_apis": 2,
+    "unused_imports": 50,
+    "legacy_markers": 2,
+    "dead_code": 0
+  },
+  "heuristic": {
+    "deprecated_apis": [
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\critic_report.py",
+        "line": 177,
+        "issue": "datetime.utcnow() — use datetime.now(timezone.utc)"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\models\\critic_result.py",
+        "line": 80,
+        "issue": "datetime.utcnow() — use datetime.now(timezone.utc)"
+      }
+    ],
+    "unused_imports": [
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\config_manager.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\config_manager.py",
+        "name": "Iterable",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\config_manager.py",
+        "name": "Tuple",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\enterprise.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\enterprise.py",
+        "name": "List",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\recovery.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\studio.py",
+        "name": "json",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\studio.py",
+        "name": "Path",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\studio.py",
+        "name": "CityGenerator",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\studio.py",
+        "name": "DungeonGenerator",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\__init__.py",
+        "name": "(",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\__init__.py",
+        "name": "(",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\__init__.py",
+        "name": "(",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\__init__.py",
+        "name": "(",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\__init__.py",
+        "name": "(",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\__init__.py",
+        "name": "(",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\agent_registry.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\architect_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\balance_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\critic_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\expansion_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\export_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\mapper_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\orchestrator_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\playtest_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\qa_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\agents\\quest_agent.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\architecture_analyzer.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\architecture_analyzer.py",
+        "name": "Counter",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\architecture_analyzer.py",
+        "name": "Any",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\architecture_analyzer.py",
+        "name": "Tuple",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\dataset_builder.py",
+        "name": "os",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\density_analyzer.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\density_analyzer.py",
+        "name": "math",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\density_analyzer.py",
+        "name": "Any",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\map_analyzer.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\path_analyzer.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\path_analyzer.py",
+        "name": "Any",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\path_analyzer.py",
+        "name": "Tuple",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\room_analyzer.py",
+        "name": "Dict",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\spawn_analyzer.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\analyzer\\spawn_analyzer.py",
+        "name": "defaultdict",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\ai_architect.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\ai_architect.py",
+        "name": "ZoneDifficulty",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\ai_architect.py",
+        "name": "WorldLayout",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\ai_architect.py",
+        "name": "PlacedZone",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\architect.py",
+        "name": "annotations",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\architect.py",
+        "name": "Dict",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\architect.py",
+        "name": "Optional",
+        "kind": "possibly unused import"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\architect.py",
+        "name": "Tuple",
+        "kind": "possibly unused import"
+      }
+    ],
+    "legacy_markers": [
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\content\\quest_package.py",
+        "line": 73,
+        "marker": "TODO"
+      },
+      {
+        "file": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\content\\quest_package.py",
+        "line": 74,
+        "marker": "TODO"
+      }
+    ],
+    "dead_code": []
+  },
+  "ga_pass": true
+}

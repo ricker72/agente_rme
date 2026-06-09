@@ -1,0 +1,570 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:05.440279+00:00",
+  "modules_loaded": [
+    "core.knowledge.knowledge_engine",
+    "core.knowledge.knowledge_search",
+    "core.knowledge.knowledge_index",
+    "core.knowledge.knowledge_ranker",
+    "core.blueprints.blueprint_registry",
+    "core.blueprints.blueprint_extractor",
+    "core.blueprint_intelligence.blueprint_intelligence_engine",
+    "core.blueprint_intelligence.blueprint_embedding_engine",
+    "core.blueprint_intelligence.blueprint_evolution_engine",
+    "core.blueprint_intelligence.blueprint_fusion_engine",
+    "core.blueprint_intelligence.blueprint_similarity_engine",
+    "core.critic.visual_critic",
+    "core.critic.critic_engine",
+    "core.critic.score_calculator",
+    "core.autonomous.autonomous_director",
+    "core.autonomous.autonomous_world_designer",
+    "core.autonomous.autonomous_planner",
+    "core.autonomous.autonomous_decision_engine",
+    "core.world_brain.world_brain",
+    "core.otbm.otbm_exporter",
+    "core.otbm.otbm_importer",
+    "core.otbm.otbm_writer",
+    "core.otbm.otbm_reader",
+    "core.playtest.playtest_engine",
+    "core.playtest.combat_simulator",
+    "core.balance.balance_engine",
+    "core.balance.difficulty_balancer",
+    "core.balance.xp_balancer",
+    "core.world.world_model",
+    "core.world.world_validator",
+    "core.procedural.world_synthesizer",
+    "core.architect.ai_architect",
+    "core.architect.world_planner",
+    "core.planner.planner",
+    "core.lua.lua_generator",
+    "core.analyzer.map_analyzer",
+    "core.analyzer.density_analyzer",
+    "core.generators.world_generator",
+    "core.generators.dungeon_generator",
+    "core.generators.city_generator",
+    "core.export.release_builder",
+    "core.learning.blueprint_learner",
+    "core.learning.similarity_engine",
+    "core.learning.pattern_miner",
+    "core.factory.world_builder",
+    "core.factory.expansion_factory",
+    "core.game_design.content_designer",
+    "core.game_design.hunt_designer",
+    "core.game_design.boss_designer",
+    "core.world_engine.world_engine",
+    "core.world_engine.world_builder",
+    "core.world_engine.export_pipeline",
+    "core.agents.architect_agent",
+    "core.agents.mapper_agent",
+    "core.agents.expansion_agent",
+    "core.agents.quest_agent",
+    "core.agents.playtest_agent",
+    "core.agents.balance_agent",
+    "core.agents.critic_agent",
+    "core.agents.orchestrator_agent",
+    "core.agents.export_agent"
+  ],
+  "modules_failed": [],
+  "subsystems": {
+    "Knowledge Engine": {
+      "modules": [
+        {
+          "module": "core.knowledge.knowledge_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.knowledge.knowledge_search",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.knowledge.knowledge_index",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.knowledge.knowledge_ranker",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 4,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Blueprint Intelligence": {
+      "modules": [
+        {
+          "module": "core.blueprints.blueprint_registry",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.blueprints.blueprint_extractor",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.blueprint_intelligence.blueprint_intelligence_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.blueprint_intelligence.blueprint_embedding_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.blueprint_intelligence.blueprint_evolution_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.blueprint_intelligence.blueprint_fusion_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.blueprint_intelligence.blueprint_similarity_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 7,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Visual Critic": {
+      "modules": [
+        {
+          "module": "core.critic.visual_critic",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.critic.critic_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.critic.score_calculator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Autonomous": {
+      "modules": [
+        {
+          "module": "core.autonomous.autonomous_director",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.autonomous.autonomous_world_designer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.autonomous.autonomous_planner",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.autonomous.autonomous_decision_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.world_brain.world_brain",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 5,
+      "failed": 0,
+      "status": "OK"
+    },
+    "OTBM": {
+      "modules": [
+        {
+          "module": "core.otbm.otbm_exporter",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.otbm.otbm_importer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.otbm.otbm_writer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.otbm.otbm_reader",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 4,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Playtest": {
+      "modules": [
+        {
+          "module": "core.playtest.playtest_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.playtest.combat_simulator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 2,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Balance": {
+      "modules": [
+        {
+          "module": "core.balance.balance_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.balance.difficulty_balancer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.balance.xp_balancer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "WorldModel": {
+      "modules": [
+        {
+          "module": "core.world.world_model",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.world.world_validator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.procedural.world_synthesizer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Architect": {
+      "modules": [
+        {
+          "module": "core.architect.ai_architect",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.architect.world_planner",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.planner.planner",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Lua": {
+      "modules": [
+        {
+          "module": "core.lua.lua_generator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 1,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Analyzer": {
+      "modules": [
+        {
+          "module": "core.analyzer.map_analyzer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.analyzer.density_analyzer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 2,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Generators": {
+      "modules": [
+        {
+          "module": "core.generators.world_generator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.generators.dungeon_generator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.generators.city_generator",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Export": {
+      "modules": [
+        {
+          "module": "core.export.release_builder",
+          "loaded": true,
+          "version": "v1.0",
+          "error": null
+        }
+      ],
+      "loaded": 1,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Learning": {
+      "modules": [
+        {
+          "module": "core.learning.blueprint_learner",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.learning.similarity_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.learning.pattern_miner",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Factory": {
+      "modules": [
+        {
+          "module": "core.factory.world_builder",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.factory.expansion_factory",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 2,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Game Design": {
+      "modules": [
+        {
+          "module": "core.game_design.content_designer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.game_design.hunt_designer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.game_design.boss_designer",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "World Engine": {
+      "modules": [
+        {
+          "module": "core.world_engine.world_engine",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.world_engine.world_builder",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.world_engine.export_pipeline",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 3,
+      "failed": 0,
+      "status": "OK"
+    },
+    "Agents": {
+      "modules": [
+        {
+          "module": "core.agents.architect_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.mapper_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.expansion_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.quest_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.playtest_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.balance_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.critic_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.orchestrator_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        },
+        {
+          "module": "core.agents.export_agent",
+          "loaded": true,
+          "version": "1.0",
+          "error": null
+        }
+      ],
+      "loaded": 9,
+      "failed": 0,
+      "status": "OK"
+    }
+  },
+  "summary": {
+    "total_expected": 61,
+    "total_loaded": 61,
+    "total_failed": 0,
+    "success_rate": 1.0,
+    "all_loaded": true
+  },
+  "status": "PASS"
+}

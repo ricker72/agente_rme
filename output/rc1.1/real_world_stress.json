@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:09.803420+00:00",
+  "phase": "Phase 4: Real World Stress Test",
+  "n_worlds": 100,
+  "successful": 100,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "generation_time": {
+    "mean_s": 0.002134294509887695,
+    "min_s": 0.001253366470336914,
+    "max_s": 0.013459205627441406,
+    "total_s": 0.21342945098876953
+  },
+  "memory": {
+    "start_mb": 9.622133255004883,
+    "end_mb": 0.0775461196899414,
+    "growth_mb": -9.544587135314941,
+    "max_sample_mb": 0.0773477554321289
+  },
+  "cpu": {
+    "total_s": 0.171875,
+    "mean_s_per_world": 0.00171875
+  },
+  "critic_scores": {
+    "mean": 14.3,
+    "min": 14.3,
+    "max": 14.3
+  },
+  "results": [
+    {
+      "index": 0,
+      "prompt": "Issavi desert hunting grounds",
+      "success": true,
+      "duration_s": 0.013459205627441406,
+      "memory_mb": 0.023281097412109375,
+      "critic_score": 14.3
+    },
+    {
+      "index": 1,
+      "prompt": "Roshamuul nightmare realm",
+      "success": true,
+      "duration_s": 0.002669095993041992,
+      "memory_mb": 0.029039382934570312,
+      "critic_score": 14.3
+    },
+    {
+      "index": 2,
+      "prompt": "Soul War demonic invasion",
+      "success": true,
+      "duration_s": 0.0030057430267333984,
+      "memory_mb": 0.032891273498535156,
+      "critic_score": 14.3
+    },
+    {
+      "index": 3,
+      "prompt": "Library arcane sanctum",
+      "success": true,
+      "duration_s": 0.007042407989501953,
+      "memory_mb": 0.036749839782714844,
+      "critic_score": 14.3
+    },
+    {
+      "index": 4,
+      "prompt": "Falcon bastion fortification",
+      "success": true,
+      "duration_s": 0.0021123886108398438,
+      "memory_mb": 0.040584564208984375,
+      "critic_score": 14.3
+    },
+    {
+      "index": 5,
+      "prompt": "Ferumbras citadel",
+      "success": true,
+      "duration_s": 0.0014317035675048828,
+      "memory_mb": 0.041416168212890625,
+      "critic_score": 14.3
+    },
+    {
+      "index": 6,
+      "prompt": "Mixed MMORPG map level 1-1000",
+      "success": true,
+      "duration_s": 0.0012922286987304688,
+      "memory_mb": 0.042041778564453125,
+      "critic_score": 14.3
+    },
+    {
+      "index": 7,
+      "prompt": "Issavi lair level 200",
+      "success": true,
+      "duration_s": 0.0018296241760253906,
+      "memory_mb": 0.042751312255859375,
+      "critic_score": 14.3
+    },
+    {
+      "index": 8,
+      "prompt": "Roshamuul undead realm",
+      "success": true,
+      "duration_s": 0.001516580581665039,
+      "memory_mb": 0.04322242736816406,
+      "critic_score": 14.3
+    },
+    {
+      "index": 9,
+      "prompt": "Soul War warzone",
+      "success": true,
+      "duration_s": 0.0014729499816894531,
+      "memory_mb": 0.04366302490234375,
+      "critic_score": 14.3
+    },
+    {
+      "index": 10,
+      "prompt": "Issavi desert hunting grounds",
+      "success": true,
+      "duration_s": 0.0014290809631347656,
+      "memory_mb": 0.04392719268798828,
+      "critic_score": 14.3
+    },
+    {
+      "index": 11,
+      "prompt": "Roshamuul nightmare realm",
+      "success": true,
+      "duration_s": 0.004385471343994141,
+      "memory_mb": 0.04423046112060547,
+      "critic_score": 14.3
+    },
+    {
+      "index": 12,
+      "prompt": "Soul War demonic invasion",
+      "success": true,
+      "duration_s": 0.001638650894165039,
+      "memory_mb": 0.044556617736816406,
+      "critic_score": 14.3
+    },
+    {
+      "index": 13,
+      "prompt": "Library arcane sanctum",
+      "success": true,
+      "duration_s": 0.001428842544555664,
+      "memory_mb": 0.044882774353027344,
+      "critic_score": 14.3
+    },
+    {
+      "index": 14,
+      "prompt": "Falcon bastion fortification",
+      "success": true,
+      "duration_s": 0.0014340877532958984,
+      "memory_mb": 0.04509449005126953,
+      "critic_score": 14.3
+    },
+    {
+      "index": 15,
+      "prompt": "Ferumbras citadel",
+      "success": true,
+      "duration_s": 0.0015101432800292969,
+      "memory_mb": 0.04533863067626953,
+      "critic_score": 14.3
+    },
+    {
+      "index": 16,
+      "prompt": "Mixed MMORPG map level 1-1000",
+      "success": true,
+      "duration_s": 0.0014560222625732422,
+      "memory_mb": 0.04578876495361328,
+      "critic_score": 14.3
+    },
+    {
+      "index": 17,
+      "prompt": "Issavi lair level 200",
+      "success": true,
+      "duration_s": 0.001428842544555664,
+      "memory_mb": 0.04620838165283203,
+      "critic_score": 14.3
+    },
+    {
+      "index": 18,
+      "prompt": "Roshamuul undead realm",
+      "success": true,
+      "duration_s": 0.0013885498046875,
+      "memory_mb": 0.04651927947998047,
+      "critic_score": 14.3
+    },
+    {
+      "index": 19,
+      "prompt": "Soul War warzone",
+      "success": true,
+      "duration_s": 0.0013382434844970703,
+      "memory_mb": 0.046853065490722656,
+      "critic_score": 14.3
+    }
+  ],
+  "criterion_pass": true
+}

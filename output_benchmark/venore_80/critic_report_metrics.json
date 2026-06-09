@@ -1,0 +1,18 @@
+{
+  "map_name": "venore_80",
+  "overall_score": 68.51241551208307,
+  "visual_score": 66.44545454545454,
+  "navigation_score": 85.0,
+  "density_score": 55.07294299961854,
+  "spawn_score": 56.94444444444444,
+  "hunt_score": 50.0,
+  "boss_score": 80.0,
+  "city_score": 95.0,
+  "decor_score": 79.73333333333333,
+  "pathfinding_score": 84.44444444444444,
+  "issue_count": 13,
+  "recommendation_count": 3,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:22.391718",
+  "version": "1.0"
+}

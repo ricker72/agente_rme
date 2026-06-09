@@ -1,0 +1,14 @@
+{
+  "tiles": 8331,
+  "structures": 7,
+  "regions": 8,
+  "chunks": 6,
+  "bounds": {
+    "min_x": -84,
+    "max_x": 155,
+    "min_y": 0,
+    "max_y": 78,
+    "min_z": 7,
+    "max_z": 7
+  }
+}

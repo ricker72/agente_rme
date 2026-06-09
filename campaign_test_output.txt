@@ -1,0 +1,29 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\samatha\OneDrive\Desktop\agente_rme
+configfile: pyproject.toml
+plugins: anyio-4.13.0, cov-7.1.0
+collecting ... collected 19 items
+
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_generate_basic_campaign PASSED [  5%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_lore PASSED [ 10%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_factions PASSED [ 15%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_npcs PASSED [ 21%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_main_story PASSED [ 26%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_side_quests PASSED [ 31%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_economy PASSED [ 36%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_dialogs PASSED [ 42%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_bosses PASSED [ 47%]
+tests/campaign/test_campaign_export.py::TestCampaignGeneration::test_campaign_has_raids PASSED [ 52%]
+tests/campaign/test_campaign_export.py::TestCampaignExport::test_save_to_json PASSED [ 57%]
+tests/campaign/test_campaign_export.py::TestCampaignExport::test_json_is_valid PASSED [ 63%]
+tests/campaign/test_campaign_export.py::TestCampaignExport::test_load_back PASSED [ 68%]
+tests/campaign/test_campaign_export.py::TestCampaignExport::test_save_load_roundtrip_preserves_data PASSED [ 73%]
+tests/campaign/test_campaign_export.py::TestCampaignToDict::test_to_dict_returns_dict PASSED [ 78%]
+tests/campaign/test_campaign_export.py::TestCampaignToDict::test_to_json_returns_string PASSED [ 84%]
+tests/campaign/test_campaign_export.py::TestCampaignToDict::test_level_range_serialized_as_list PASSED [ 89%]
+tests/campaign/test_campaign_export.py::TestCampaignForBenchmark::test_issavi_roshamuul_hybrid_campaign PASSED [ 94%]
+tests/campaign/test_campaign_export.py::TestCampaignForBenchmark::test_save_combined_campaign_to_json PASSED [100%]
+
+============================= 19 passed in 0.77s ==============================

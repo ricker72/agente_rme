@@ -1,0 +1,346 @@
+{
+  "blueprint_id": "19b0692ed70c",
+  "style": "roshamuul",
+  "region_type": "tower",
+  "layout_pattern": "organic",
+  "rooms": [
+    {
+      "id": "room_0",
+      "x": 0,
+      "y": 0,
+      "width": 202,
+      "height": 162,
+      "area": 32905,
+      "shape": "irregular"
+    },
+    {
+      "id": "room_1",
+      "x": -9.269273247412217,
+      "y": 2.588438201237315,
+      "width": 182,
+      "height": 211,
+      "area": 38472,
+      "shape": "rectangular"
+    },
+    {
+      "id": "room_2",
+      "x": -16.58649808278478,
+      "y": 8.567283331189664,
+      "width": 214,
+      "height": 258,
+      "area": 55254,
+      "shape": "irregular"
+    },
+    {
+      "id": "room_3",
+      "x": -7.213506859718139,
+      "y": -5.467114845179651,
+      "width": 216,
+      "height": 259,
+      "area": 56343,
+      "shape": "rectangular"
+    },
+    {
+      "id": "room_4",
+      "x": -3.932300314797285,
+      "y": -13.05793814275846,
+      "width": 184,
+      "height": 162,
+      "area": 29984,
+      "shape": "rectangular"
+    },
+    {
+      "id": "room_5",
+      "x": 7.329418657831207,
+      "y": -10.254554379338304,
+      "width": 251,
+      "height": 254,
+      "area": 64034,
+      "shape": "irregular"
+    },
+    {
+      "id": "room_6",
+      "x": -1.3096065304474251,
+      "y": -1.6183089386731417,
+      "width": 183,
+      "height": 162,
+      "area": 29838,
+      "shape": "rectangular"
+    },
+    {
+      "id": "room_7",
+      "x": 6.957046959347236,
+      "y": -9.10598613630836,
+      "width": 175,
+      "height": 243,
+      "area": 42707,
+      "shape": "L-shaped"
+    }
+  ],
+  "corridors": [
+    {
+      "id": "corridor_0_6",
+      "from": "room_0",
+      "to": "room_6",
+      "length": 2,
+      "width": 4
+    },
+    {
+      "id": "corridor_0_3",
+      "from": "room_0",
+      "to": "room_3",
+      "length": 9,
+      "width": 3
+    },
+    {
+      "id": "corridor_1_3",
+      "from": "room_1",
+      "to": "room_3",
+      "length": 8,
+      "width": 2
+    },
+    {
+      "id": "corridor_1_6",
+      "from": "room_1",
+      "to": "room_6",
+      "length": 9,
+      "width": 4
+    },
+    {
+      "id": "corridor_2_1",
+      "from": "room_2",
+      "to": "room_1",
+      "length": 9,
+      "width": 4
+    },
+    {
+      "id": "corridor_2_3",
+      "from": "room_2",
+      "to": "room_3",
+      "length": 16,
+      "width": 4
+    },
+    {
+      "id": "corridor_3_6",
+      "from": "room_3",
+      "to": "room_6",
+      "length": 7,
+      "width": 4
+    },
+    {
+      "id": "corridor_3_4",
+      "from": "room_3",
+      "to": "room_4",
+      "length": 8,
+      "width": 2
+    },
+    {
+      "id": "corridor_4_3",
+      "from": "room_4",
+      "to": "room_3",
+      "length": 8,
+      "width": 3
+    },
+    {
+      "id": "corridor_4_7",
+      "from": "room_4",
+      "to": "room_7",
+      "length": 11,
+      "width": 4
+    },
+    {
+      "id": "corridor_5_7",
+      "from": "room_5",
+      "to": "room_7",
+      "length": 1,
+      "width": 4
+    },
+    {
+      "id": "corridor_5_4",
+      "from": "room_5",
+      "to": "room_4",
+      "length": 11,
+      "width": 4
+    },
+    {
+      "id": "corridor_6_0",
+      "from": "room_6",
+      "to": "room_0",
+      "length": 2,
+      "width": 2
+    },
+    {
+      "id": "corridor_6_3",
+      "from": "room_6",
+      "to": "room_3",
+      "length": 7,
+      "width": 4
+    },
+    {
+      "id": "corridor_7_5",
+      "from": "room_7",
+      "to": "room_5",
+      "length": 1,
+      "width": 3
+    },
+    {
+      "id": "corridor_7_6",
+      "from": "room_7",
+      "to": "room_6",
+      "length": 11,
+      "width": 3
+    }
+  ],
+  "features": [
+    {
+      "id": "feature_room_0_0",
+      "room_id": "room_0",
+      "type": "container",
+      "x": 178.74665954742275,
+      "y": 125.76384517324009
+    },
+    {
+      "id": "feature_room_1_0",
+      "room_id": "room_1",
+      "type": "container",
+      "x": 54.345234674095146,
+      "y": 185.71648911915676
+    },
+    {
+      "id": "feature_room_2_0",
+      "room_id": "room_2",
+      "type": "furniture",
+      "x": 27.35231099739797,
+      "y": 105.81877531769254
+    },
+    {
+      "id": "feature_room_3_0",
+      "room_id": "room_3",
+      "type": "light",
+      "x": 14.233472503262098,
+      "y": 102.95263833836283
+    },
+    {
+      "id": "feature_room_4_0",
+      "room_id": "room_4",
+      "type": "furniture",
+      "x": 58.99398528667197,
+      "y": 47.35855521699287
+    },
+    {
+      "id": "feature_room_5_0",
+      "room_id": "room_5",
+      "type": "container",
+      "x": 93.84979188710237,
+      "y": 158.21008551319426
+    },
+    {
+      "id": "feature_room_6_0",
+      "room_id": "room_6",
+      "type": "container",
+      "x": 27.32614651694996,
+      "y": 65.69763206893994
+    },
+    {
+      "id": "feature_room_7_0",
+      "room_id": "room_7",
+      "type": "light",
+      "x": 174.80203858315113,
+      "y": 182.58609737702503
+    }
+  ],
+  "ground_distribution": {
+    "roshamuul_stone": 0.3333333333333333,
+    "dark_tile": 0.3333333333333333,
+    "prison_floor": 0.3333333333333333
+  },
+  "wall_distribution": {},
+  "metadata": {
+    "generated_at": "2026-06-04T22:30:01.977264",
+    "style_guide": {
+      "style": "roshamuul",
+      "description": "Dark prison island with grim architecture",
+      "recommended_grounds": [
+        "roshamuul_stone",
+        "dark_tile",
+        "prison_floor"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          80,
+          80,
+          80
+        ],
+        [
+          60,
+          60,
+          60
+        ],
+        [
+          100,
+          100,
+          100
+        ]
+      ],
+      "avg_room_size": 216.33333333333334,
+      "avg_corridor_length": 1.6666666666666667,
+      "connectivity_ratio": 0.16666666666666666,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 1.0
+      }
+    },
+    "pattern_guide": {
+      "layout": {
+        "pattern_type": "layout",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      },
+      "connectivity": {
+        "pattern_type": "connectivity",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      },
+      "density": {
+        "pattern_type": "density",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      },
+      "architecture": {
+        "pattern_type": "architecture",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      }
+    }
+  }
+}

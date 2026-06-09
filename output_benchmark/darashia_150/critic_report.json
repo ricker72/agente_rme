@@ -1,0 +1,410 @@
+{
+  "map_name": "darashia_150",
+  "overall_score": 67.4,
+  "visual_score": 67.48,
+  "navigation_score": 85.0,
+  "density_score": 59.02,
+  "spawn_score": 57.5,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 95.0,
+  "decor_score": 83.28,
+  "pathfinding_score": 83.75,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 67.48,
+      "max_value": 100.0,
+      "ratio": 0.6748,
+      "breakdown": {
+        "quantity": 7.07,
+        "content_ratio": 44.25,
+        "density": 100.0,
+        "variety": 100.0,
+        "consistency": 100.0,
+        "total_tiles": 400.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 59.02,
+      "max_value": 100.0,
+      "ratio": 0.5902,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 44.25,
+        "spawn_ratio": 1.25,
+        "concentration": 54.92,
+        "avg_items_per_tile": 1.23,
+        "max_items_per_tile": 5
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 57.5,
+      "max_value": 100.0,
+      "ratio": 0.575,
+      "breakdown": {
+        "density_score": 25.0,
+        "distance_score": 100.0,
+        "zone_coverage": 100.0,
+        "spawn_density": 1.25
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {
+        "hunt_count": 1.0,
+        "min_hunt_score": 50.0,
+        "max_hunt_score": 50.0
+      },
+      "notes": ""
+    },
+    "boss": {
+      "category": "boss",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No boss arenas detected"
+    },
+    "city": {
+      "category": "city",
+      "value": 95.0,
+      "max_value": 100.0,
+      "ratio": 0.95,
+      "breakdown": {
+        "city_count": 1.0,
+        "min_city_score": 95.0
+      },
+      "notes": ""
+    },
+    "decor": {
+      "category": "decor",
+      "value": 83.28,
+      "max_value": 100.0,
+      "ratio": 0.8328,
+      "breakdown": {
+        "variety_score": 100.0,
+        "repetition_score": 100.0,
+        "coverage": 44.25,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 22.0,
+      "max_value": 100.0,
+      "ratio": 0.22,
+      "breakdown": {
+        "region_count": 4.0,
+        "empty_regions": 4.0,
+        "level_issues": 0.0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 83.75,
+      "max_value": 100.0,
+      "ratio": 0.8375,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 75.0,
+        "astar_path_length": 28.0
+      },
+      "notes": "Entry point: (16, 11, 7), reachable: 400/400"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,19,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(19,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "low_spawn_density",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "",
+      "message": "Spawn density 1.25% is below target 5%",
+      "details": {
+        "density": 0.0125,
+        "target": 0.05
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_darashia",
+      "message": "Region 'city_darashia' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_darashia_depot",
+      "message": "Region 'city_darashia_depot' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_darashia_temple",
+      "message": "Region 'city_darashia_temple' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "hunt_darashia",
+      "message": "Region 'hunt_darashia' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(19,19,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,19,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Increase spawn density",
+      "description": "Add more monster spawns in hunt areas to reach the target density.",
+      "category": "spawn",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define boss arenas",
+      "description": "Add zones with names containing 'boss', 'arena', 'throne' or 'lair'.",
+      "category": "boss",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: city_darashia, city_darashia_depot, city_darashia_temple, hunt_darashia. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Reduce navigation bottlenecks",
+      "description": "Add secondary routes around bottleneck tiles to improve movement.",
+      "category": "pathfinding",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.0214,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 400,
+        "grounded_tiles": 400,
+        "useful_tiles": 177,
+        "content_ratio": 0.4425,
+        "avg_items_per_tile": 1.23,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.01,
+        "total_grounded": 400
+      },
+      "density": {
+        "total_tiles": 400,
+        "grounded_tiles": 400,
+        "tiles_with_items": 177,
+        "tiles_with_spawns": 5,
+        "bbox_area": 400,
+        "zone_density": {
+          "unzoned": 0.4425
+        }
+      },
+      "spawn": {
+        "total_spawns": 5,
+        "grounded_tiles": 400,
+        "spawn_density": 0.0125,
+        "min_distance": 6,
+        "max_distance": 10,
+        "avg_distance": 7.8,
+        "cluster_count": 0,
+        "zone_coverage": 1.0
+      },
+      "hunt": {
+        "hunts": 1,
+        "per_hunt": [
+          {
+            "name": "hunt_darashia",
+            "size": 0,
+            "spawns": 0,
+            "centroid": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "boss": {
+        "bosses": 0
+      },
+      "city": {
+        "cities": 1,
+        "per_city": [
+          {
+            "name": "city_darashia",
+            "services": {
+              "depot": 1,
+              "temple": 1
+            },
+            "tiles": 0,
+            "street_score": 100.0,
+            "depot_score": 100.0,
+            "temple_score": 100.0,
+            "npc_score": 50.0
+          }
+        ]
+      },
+      "decor": {
+        "variety": 388,
+        "total_items": 490,
+        "repetition_ratio": 0.0102,
+        "coverage": 0.4425,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 220
+      },
+      "region": {
+        "region_count": 4,
+        "empty_regions": [
+          "city_darashia",
+          "city_darashia_depot",
+          "city_darashia_temple",
+          "hunt_darashia"
+        ],
+        "level_issues": 0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "pathfinding": {
+        "walkable_tiles": 400,
+        "reachable_tiles": 400,
+        "reach_ratio": 1.0,
+        "astar_path_length": 28,
+        "bottleneck_count": 4,
+        "entry_point": [
+          16,
+          11,
+          7
+        ],
+        "max_distance": 27.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T15:14:22.009150",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T15:14:22.010625"
+  }
+}

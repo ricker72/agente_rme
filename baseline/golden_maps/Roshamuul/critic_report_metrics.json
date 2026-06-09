@@ -1,0 +1,18 @@
+{
+  "map_name": "roshamuul_400_600",
+  "overall_score": 67.29773523786062,
+  "visual_score": 73.84075126262627,
+  "navigation_score": 85.0,
+  "density_score": 60.675950863454716,
+  "spawn_score": 57.099999999999994,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 82.7125,
+  "pathfinding_score": 84.6875,
+  "issue_count": 10,
+  "recommendation_count": 5,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:21.538040",
+  "version": "1.0"
+}

@@ -1,0 +1,7 @@
+{
+  "floors": [393, 415],
+  "walls": [1495, 1500],
+  "decorations": [2153, 2156],
+  "monsters": ["Serpent Spawn", "Cobra Assassin", "Scarab"],
+  "bosses": ["Cobra Assassin", "Scarab"]
+}

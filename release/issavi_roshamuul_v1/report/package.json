@@ -1,0 +1,12 @@
+{
+  "name": "issavi_roshamuul_v1",
+  "version": "1.0.0",
+  "author": "RME AI",
+  "description": "RME generated expansion: issavi_roshamuul_v1 v1.0.0",
+  "generator": "RME AI World Generator",
+  "format": "otbm_v4",
+  "requirements": {
+    "client": "12.x+",
+    "server": "OTServ compatible"
+  }
+}

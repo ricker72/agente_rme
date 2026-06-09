@@ -1,0 +1,198 @@
+[
+  {
+    "decision_id": "d9af9d9e-1356-40ab-bed3-3c382c58caa4",
+    "region_id": "hunt_1",
+    "decision_type": "blueprint",
+    "selected_option": "smart_hunt_bp_1",
+    "alternatives": [
+      "smart_hunt_bp_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.7680018071644814,
+      "novelty": 0.603947161665014,
+      "stability": 0.9381048225146493
+    },
+    "total_score": 0.7834003187251302,
+    "reasoning": "Selected 'smart_hunt_bp_1' for hunt region (fit=0.90, reuse=0.65, quality=0.77)",
+    "confidence": 0.8834003187251301,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:49.381217"
+  },
+  {
+    "decision_id": "fc47edac-4006-457e-96ab-b808e85c88ea",
+    "region_id": "hunt_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:49.381276"
+  },
+  {
+    "decision_id": "d4fef7b8-4561-4f3f-af40-e8cd7fa79771",
+    "region_id": "hunt_2",
+    "decision_type": "blueprint",
+    "selected_option": "smart_hunt_bp_1",
+    "alternatives": [
+      "smart_hunt_bp_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.7680018071644814,
+      "novelty": 0.603947161665014,
+      "stability": 0.9381048225146493
+    },
+    "total_score": 0.7834003187251302,
+    "reasoning": "Selected 'smart_hunt_bp_1' for hunt region (fit=0.90, reuse=0.65, quality=0.77)",
+    "confidence": 0.8834003187251301,
+    "metadata": {
+      "region_type": "hunt",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:49.381366"
+  },
+  {
+    "decision_id": "28f2f65a-84f2-401f-be2e-300ee41119ca",
+    "region_id": "hunt_2",
+    "decision_type": "pattern",
+    "selected_option": "pattern_hunt_1",
+    "alternatives": [
+      "pattern_hunt_2",
+      "pattern_hunt_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_hunt_1' matches hunt archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:49.381420"
+  },
+  {
+    "decision_id": "a246f16c-f56f-4c38-8dd4-46bbd28958ad",
+    "region_id": "boss_1",
+    "decision_type": "blueprint",
+    "selected_option": "smart_boss_bp_1",
+    "alternatives": [
+      "smart_boss_bp_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.7693809699191485,
+      "novelty": 0.7846666331107253,
+      "stability": 0.8353485561570947
+    },
+    "total_score": 0.796610285102757,
+    "reasoning": "Selected 'smart_boss_bp_1' for boss region (fit=0.90, reuse=0.65, quality=0.77)",
+    "confidence": 0.896610285102757,
+    "metadata": {
+      "region_type": "boss",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:49.381503"
+  },
+  {
+    "decision_id": "523a200e-7680-4619-9311-f10df64556ad",
+    "region_id": "boss_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_boss_1",
+    "alternatives": [
+      "pattern_boss_2",
+      "pattern_boss_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_boss_1' matches boss archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:49.381554"
+  },
+  {
+    "decision_id": "fbd634eb-39a3-4131-9faa-bd5bf42cda76",
+    "region_id": "city_1",
+    "decision_type": "blueprint",
+    "selected_option": "smart_city_bp_1",
+    "alternatives": [
+      "smart_city_bp_2"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.65,
+      "quality": 0.7935302849367105,
+      "novelty": 0.6694304470844583,
+      "stability": 0.8567204430658935
+    },
+    "total_score": 0.7909851238490827,
+    "reasoning": "Selected 'smart_city_bp_1' for city region (fit=0.90, reuse=0.65, quality=0.79)",
+    "confidence": 0.8909851238490827,
+    "metadata": {
+      "region_type": "city",
+      "level_range": [
+        1,
+        200
+      ]
+    },
+    "created_at": "2026-06-08T19:51:49.381636"
+  },
+  {
+    "decision_id": "01e9f6c2-4006-4a07-a46b-4ae0adbe1199",
+    "region_id": "city_1",
+    "decision_type": "pattern",
+    "selected_option": "pattern_city_1",
+    "alternatives": [
+      "pattern_city_2",
+      "pattern_city_3"
+    ],
+    "score_breakdown": {
+      "fit": 0.9,
+      "reuse": 0.7278853596915766,
+      "quality": 0.7050021510445335,
+      "novelty": 0.5100117273476477,
+      "stability": 0.85
+    },
+    "total_score": 0.7764729428665657,
+    "reasoning": "Pattern 'pattern_city_1' matches city archetype",
+    "confidence": 0.7764729428665657,
+    "metadata": {},
+    "created_at": "2026-06-08T19:51:49.381685"
+  }
+]

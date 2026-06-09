@@ -1,0 +1,117 @@
+[
+  {
+    "prompt": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid critic score 90",
+    "result_id": "da9bf319-0ffe-4054-9ac3-70b2ca535517",
+    "success": false,
+    "final_scores": {
+      "critic": 0.5325044418795268,
+      "playtest": 0.7,
+      "navigation": 0.8971692307692307,
+      "density": 0.5702819956616052,
+      "reuse": 0.6714285714285715
+    },
+    "total_iterations": 2,
+    "convergence_data": [
+      0.5325044418795268,
+      0.5325044418795268
+    ],
+    "timestamp": "2026-06-08T12:19:51.721431"
+  },
+  {
+    "prompt": "Issavi desert hunting grounds with moderate difficulty",
+    "result_id": "8bd43a05-05dd-4d8e-8fcb-f3f803483f29",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6687539444913025,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6019895104387771,
+      "reuse": 0.7
+    },
+    "total_iterations": 4,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158,
+      0.6687539444913025
+    ],
+    "timestamp": "2026-06-08T21:20:31.788298"
+  },
+  {
+    "prompt": "Roshamuul nightmare realm with high density spawns",
+    "result_id": "267e4edb-32d7-4ddf-bf49-195698279f16",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6687539444913025,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6019895104387771,
+      "reuse": 0.7
+    },
+    "total_iterations": 4,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158,
+      0.6687539444913025
+    ],
+    "timestamp": "2026-06-08T21:25:04.924996"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "907e2cd8-db27-4e94-9d98-347aa55e5e10",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-08T23:38:44.709500"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "907e2cd8-db27-4e94-9d98-347aa55e5e10",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-08T23:38:44.709500"
+  },
+  {
+    "prompt": "Test world 2 | level 150-200 | hunts 2 bosses 1",
+    "result_id": "132ca4ef-ba0d-4aef-841c-617cfbea8e5c",
+    "success": false,
+    "final_scores": {
+      "critic": 0.66492032064305,
+      "playtest": 0.3,
+      "navigation": 0.63,
+      "density": 0.5880145770338088,
+      "reuse": 0.66
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6623162778770371,
+      0.663573097296483,
+      0.66492032064305
+    ],
+    "timestamp": "2026-06-08T23:39:01.370523"
+  }
+]

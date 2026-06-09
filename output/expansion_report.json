@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "step_name": "region_expansion",
+      "success": true,
+      "tiles_before": 0,
+      "tiles_after": 0
+    },
+    {
+      "step_name": "hunt_expansion",
+      "success": true,
+      "tiles_before": 0,
+      "tiles_after": 5954
+    },
+    {
+      "step_name": "boss_expansion",
+      "success": true,
+      "tiles_before": 0,
+      "tiles_after": 200
+    },
+    {
+      "step_name": "quest_zone_expansion",
+      "success": true,
+      "tiles_before": 0,
+      "tiles_after": 288
+    },
+    {
+      "step_name": "road_expansion",
+      "success": true,
+      "tiles_before": 0,
+      "tiles_after": 989
+    }
+  ],
+  "tiles_original": 900,
+  "tiles_final": 8331,
+  "tiles_added": 7431,
+  "regions_original": 1,
+  "regions_final": 8,
+  "structures_original": 0,
+  "structures_final": 7,
+  "expanded": true
+}

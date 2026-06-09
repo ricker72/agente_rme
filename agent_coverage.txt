@@ -1,0 +1,9 @@
+agente_rme\core\agents\architect_agent.py                               96%
+agente_rme\core\agents\balance_agent.py                                 86%
+agente_rme\core\agents\expansion_agent.py                               86%
+agente_rme\core\agents\export_agent.py                                  82%
+agente_rme\core\agents\mapper_agent.py                                  85%
+agente_rme\core\agents\orchestrator_agent.py                            85%
+agente_rme\core\agents\playtest_agent.py                                81%
+agente_rme\core\agents\qa_agent.py                                      83%
+agente_rme\core\agents\quest_agent.py                                   84%

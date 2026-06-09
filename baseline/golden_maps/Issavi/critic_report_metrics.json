@@ -1,0 +1,18 @@
+{
+  "map_name": "issavi_300_500",
+  "overall_score": 65.98504660322293,
+  "visual_score": 79.68613849336741,
+  "navigation_score": 57.0,
+  "density_score": 40.17089013650884,
+  "spawn_score": 55.599999999999994,
+  "hunt_score": 70.86666666666666,
+  "boss_score": 100.0,
+  "city_score": 100.0,
+  "decor_score": 56.375366330185614,
+  "pathfinding_score": 54.326054216867476,
+  "issue_count": 18,
+  "recommendation_count": 6,
+  "critical_issues": 1,
+  "generated_at": "2026-06-08T15:14:20.909206",
+  "version": "1.0"
+}

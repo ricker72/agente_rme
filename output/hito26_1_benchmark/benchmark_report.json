@@ -1,0 +1,154 @@
+{
+  "benchmark": "HITO 26.1 STABILIZATION",
+  "prompt": "Crear expansión Issavi + Roshamuul\npara niveles 300-500\n\n3 hunts\n2 bosses\n1 raid\nquest principal",
+  "runs": [
+    {
+      "run": 1,
+      "elapsed": 4.17,
+      "success": true,
+      "workflow_id": "300434eb",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "agent_success_rate": 100.0,
+      "files_present": [
+        "generated.otbm",
+        "generated.lua",
+        "campaign.json",
+        "playtest_report.json",
+        "qa_report.json",
+        "agent_metrics.json"
+      ],
+      "files_missing": [],
+      "optional_files": [
+        "preview.png"
+      ],
+      "errors": []
+    },
+    {
+      "run": 2,
+      "elapsed": 5.08,
+      "success": true,
+      "workflow_id": "86901065",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "agent_success_rate": 100.0,
+      "files_present": [
+        "generated.otbm",
+        "generated.lua",
+        "campaign.json",
+        "playtest_report.json",
+        "qa_report.json",
+        "agent_metrics.json"
+      ],
+      "files_missing": [],
+      "optional_files": [
+        "preview.png"
+      ],
+      "errors": []
+    },
+    {
+      "run": 3,
+      "elapsed": 4.66,
+      "success": true,
+      "workflow_id": "6a40430d",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "agent_success_rate": 100.0,
+      "files_present": [
+        "generated.otbm",
+        "generated.lua",
+        "campaign.json",
+        "playtest_report.json",
+        "qa_report.json",
+        "agent_metrics.json"
+      ],
+      "files_missing": [],
+      "optional_files": [
+        "preview.png"
+      ],
+      "errors": []
+    },
+    {
+      "run": 4,
+      "elapsed": 3.12,
+      "success": true,
+      "workflow_id": "658aaca9",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "agent_success_rate": 100.0,
+      "files_present": [
+        "generated.otbm",
+        "generated.lua",
+        "campaign.json",
+        "playtest_report.json",
+        "qa_report.json",
+        "agent_metrics.json"
+      ],
+      "files_missing": [],
+      "optional_files": [
+        "preview.png"
+      ],
+      "errors": []
+    },
+    {
+      "run": 5,
+      "elapsed": 2.94,
+      "success": true,
+      "workflow_id": "a066e40e",
+      "world_tiles": 10517,
+      "campaign_ok": true,
+      "playtest_ok": true,
+      "balance_ok": false,
+      "qa_ok": true,
+      "agent_success_rate": 100.0,
+      "files_present": [
+        "generated.otbm",
+        "generated.lua",
+        "campaign.json",
+        "playtest_report.json",
+        "qa_report.json",
+        "agent_metrics.json"
+      ],
+      "files_missing": [],
+      "optional_files": [
+        "preview.png"
+      ],
+      "errors": []
+    }
+  ],
+  "summary": {
+    "total_runs": 5,
+    "successful_runs": 5,
+    "success_rate": "5/5",
+    "average_elapsed_s": 3.99,
+    "all_files_present": [
+      "agent_metrics.json",
+      "campaign.json",
+      "generated.lua",
+      "generated.otbm",
+      "playtest_report.json",
+      "qa_report.json"
+    ],
+    "file_success_rates": {
+      "generated.otbm": "5/5",
+      "generated.lua": "5/5",
+      "campaign.json": "5/5",
+      "playtest_report.json": "5/5",
+      "qa_report.json": "5/5",
+      "agent_metrics.json": "5/5"
+    },
+    "all_runs_successful": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "map_name": "test_issavi",
+  "overall_score": 53.30768161751068,
+  "visual_score": 45.62664141414142,
+  "navigation_score": 85.0,
+  "density_score": 55.50210211723485,
+  "spawn_score": 22.5,
+  "hunt_score": 50.0,
+  "boss_score": 40.0,
+  "city_score": 45.0,
+  "decor_score": 67.82274436090225,
+  "pathfinding_score": 83.75,
+  "issue_count": 14,
+  "recommendation_count": 7,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T14:54:30.014502",
+  "version": "1.0"
+}

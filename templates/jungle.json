@@ -1,0 +1,7 @@
+{
+  "theme": "jungle",
+  "grounds": [514, 513, 516],
+  "walls": [1504, 1505, 1506],
+  "decorations": [2155, 2156, 2157],
+  "monsters": ["Jungle Troll", "Panther", "Lizard Snake"]
+}

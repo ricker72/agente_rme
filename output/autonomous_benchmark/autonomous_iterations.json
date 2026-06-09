@@ -1,0 +1,426 @@
+[
+  {
+    "iteration_id": 0,
+    "plan_snapshot": {
+      "plan_id": "1cbf9c08-3b58-4d6e-8af9-a4073a8ff63d",
+      "goal_id": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+      "description": "Plan for: Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+      "regions": [
+        {
+          "region_id": "hunt_1",
+          "region_name": "Issavi Dunes 1",
+          "region_type": "hunt",
+          "description": "Hunt region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1331,
+          "target_density": 0.6500000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_3"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397735"
+        },
+        {
+          "region_id": "hunt_2",
+          "region_name": "Issavi Dunes 2",
+          "region_type": "hunt",
+          "description": "Hunt region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1331,
+          "target_density": 0.6500000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_3"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397767"
+        },
+        {
+          "region_id": "hunt_3",
+          "region_name": "Issavi Dunes 3",
+          "region_type": "hunt",
+          "description": "Hunt region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1331,
+          "target_density": 0.6500000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_3"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397782"
+        },
+        {
+          "region_id": "boss_1",
+          "region_name": "Issavi Pharaoh 1",
+          "region_type": "boss",
+          "description": "Boss region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 669,
+          "target_density": 0.8,
+          "target_difficulty": 0.89,
+          "blueprint_candidates": [
+            "blueprint_boss_core_1",
+            "blueprint_boss_core_2",
+            "blueprint_boss_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_boss_1"
+          ],
+          "patterns": [
+            "pattern_boss_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397794"
+        },
+        {
+          "region_id": "boss_2",
+          "region_name": "Issavi Pharaoh 2",
+          "region_type": "boss",
+          "description": "Boss region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 669,
+          "target_density": 0.8,
+          "target_difficulty": 0.89,
+          "blueprint_candidates": [
+            "blueprint_boss_core_1",
+            "blueprint_boss_core_2",
+            "blueprint_boss_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_boss_1"
+          ],
+          "patterns": [
+            "pattern_boss_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397805"
+        },
+        {
+          "region_id": "raid_1",
+          "region_name": "Raid Issavi 1",
+          "region_type": "raid",
+          "description": "Raid region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1000,
+          "target_density": 0.7500000000000001,
+          "target_difficulty": 0.95,
+          "blueprint_candidates": [
+            "blueprint_raid_core_1",
+            "blueprint_raid_core_2",
+            "blueprint_raid_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_raid_2"
+          ],
+          "patterns": [
+            "pattern_raid_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397816"
+        },
+        {
+          "region_id": "city_1",
+          "region_name": "Issavi City",
+          "region_type": "city",
+          "description": "City region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 890,
+          "target_density": 0.55,
+          "target_difficulty": 0.1,
+          "blueprint_candidates": [
+            "blueprint_city_core_1",
+            "blueprint_city_core_2",
+            "blueprint_city_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_city_2"
+          ],
+          "patterns": [
+            "pattern_city_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397826"
+        }
+      ],
+      "total_estimated_size": 7221,
+      "estimated_complexity": 0.6785714285714286,
+      "metadata": {},
+      "created_at": "2026-06-09T00:12:13.397837"
+    },
+    "scores": {
+      "critic": 0.6591388443780534,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5931970194016719,
+      "reuse": 0.6714285714285715
+    },
+    "critic_score": 0.6591388443780534,
+    "playtest_score": 0.7,
+    "navigation_score": 0.57,
+    "density_score": 0.5931970194016719,
+    "reuse_score": 0.6714285714285715,
+    "improvements": [],
+    "regressions": [],
+    "duration_seconds": 9.020756959915161,
+    "created_at": "2026-06-09T00:12:22.465702"
+  },
+  {
+    "iteration_id": 1,
+    "plan_snapshot": {
+      "plan_id": "1cbf9c08-3b58-4d6e-8af9-a4073a8ff63d",
+      "goal_id": "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+      "description": "Plan for: Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+      "regions": [
+        {
+          "region_id": "hunt_1",
+          "region_name": "Issavi Dunes 1",
+          "region_type": "hunt",
+          "description": "Hunt region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1331,
+          "target_density": 0.6500000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_3"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397735"
+        },
+        {
+          "region_id": "hunt_2",
+          "region_name": "Issavi Dunes 2",
+          "region_type": "hunt",
+          "description": "Hunt region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1331,
+          "target_density": 0.6500000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_3"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397767"
+        },
+        {
+          "region_id": "hunt_3",
+          "region_name": "Issavi Dunes 3",
+          "region_type": "hunt",
+          "description": "Hunt region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1331,
+          "target_density": 0.6500000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_3"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397782"
+        },
+        {
+          "region_id": "boss_1",
+          "region_name": "Issavi Pharaoh 1",
+          "region_type": "boss",
+          "description": "Boss region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 669,
+          "target_density": 0.8,
+          "target_difficulty": 0.89,
+          "blueprint_candidates": [
+            "blueprint_boss_core_1",
+            "blueprint_boss_core_2",
+            "blueprint_boss_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_boss_1"
+          ],
+          "patterns": [
+            "pattern_boss_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397794"
+        },
+        {
+          "region_id": "boss_2",
+          "region_name": "Issavi Pharaoh 2",
+          "region_type": "boss",
+          "description": "Boss region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 669,
+          "target_density": 0.8,
+          "target_difficulty": 0.89,
+          "blueprint_candidates": [
+            "blueprint_boss_core_1",
+            "blueprint_boss_core_2",
+            "blueprint_boss_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_boss_1"
+          ],
+          "patterns": [
+            "pattern_boss_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397805"
+        },
+        {
+          "region_id": "raid_1",
+          "region_name": "Raid Issavi 1",
+          "region_type": "raid",
+          "description": "Raid region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 1000,
+          "target_density": 0.7500000000000001,
+          "target_difficulty": 0.95,
+          "blueprint_candidates": [
+            "blueprint_raid_core_1",
+            "blueprint_raid_core_2",
+            "blueprint_raid_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_raid_2"
+          ],
+          "patterns": [
+            "pattern_raid_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397816"
+        },
+        {
+          "region_id": "city_1",
+          "region_name": "Issavi City",
+          "region_type": "city",
+          "description": "City region for level 300-500",
+          "level_range": [
+            300,
+            500
+          ],
+          "target_size": 890,
+          "target_density": 0.55,
+          "target_difficulty": 0.1,
+          "blueprint_candidates": [
+            "blueprint_city_core_1",
+            "blueprint_city_core_2",
+            "blueprint_city_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_city_2"
+          ],
+          "patterns": [
+            "pattern_city_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-09T00:12:13.397826"
+        }
+      ],
+      "total_estimated_size": 7221,
+      "estimated_complexity": 0.6785714285714286,
+      "metadata": {},
+      "created_at": "2026-06-09T00:12:13.397837"
+    },
+    "scores": {
+      "critic": 0.6578228855800188,
+      "playtest": 0.7,
+      "navigation": 0.57,
+      "density": 0.5927165275701465,
+      "reuse": 0.6714285714285715
+    },
+    "critic_score": 0.6578228855800188,
+    "playtest_score": 0.7,
+    "navigation_score": 0.57,
+    "density_score": 0.5927165275701465,
+    "reuse_score": 0.6714285714285715,
+    "improvements": [],
+    "regressions": [],
+    "duration_seconds": 8.971025943756104,
+    "created_at": "2026-06-09T00:12:31.436783"
+  }
+]

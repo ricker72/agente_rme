@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+      - id: no-utcnow
+        name: forbid datetime.utcnow()
+        description: "Fail if any .py file uses datetime.utcnow()"
+        entry: python check_utcnow.py
+        language: system
+        types: [python]
+        pass_filenames: false

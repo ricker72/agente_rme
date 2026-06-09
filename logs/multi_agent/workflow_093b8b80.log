@@ -1,0 +1,26 @@
+{"event": "workflow_start", "workflow_id": "093b8b80", "prompt": "Test generation", "pipeline": ["architect", "mapper", "expansion", "quest", "playtest", "balance", "qa", "export"], "timestamp": "2026-06-08T14:05:46.688233+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "architect", "timestamp": "2026-06-08T14:05:46.689762+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "architect", "duration": 0.0022859573364257812, "timestamp": "2026-06-08T14:05:46.695487+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "architect", "status": "completed", "timestamp": "2026-06-08T14:05:46.696508+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "mapper", "timestamp": "2026-06-08T14:05:46.699885+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "mapper", "duration": 0.04606938362121582, "timestamp": "2026-06-08T14:05:46.747041+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "mapper", "status": "completed", "timestamp": "2026-06-08T14:05:46.748620+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "expansion", "timestamp": "2026-06-08T14:05:46.750266+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "expansion", "duration": 0.4950368404388428, "timestamp": "2026-06-08T14:05:47.246808+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "expansion", "status": "completed", "timestamp": "2026-06-08T14:05:47.247884+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "quest", "timestamp": "2026-06-08T14:05:47.248955+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "quest", "duration": 0.0013821125030517578, "timestamp": "2026-06-08T14:05:47.251421+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "quest", "status": "completed", "timestamp": "2026-06-08T14:05:47.252504+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "playtest", "timestamp": "2026-06-08T14:05:47.253528+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "playtest", "duration": 1.248720645904541, "timestamp": "2026-06-08T14:05:48.503242+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "playtest", "status": "completed", "timestamp": "2026-06-08T14:05:48.504317+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "balance", "timestamp": "2026-06-08T14:05:48.505334+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "balance", "duration": 0.19433116912841797, "timestamp": "2026-06-08T14:05:48.700730+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "balance", "status": "completed", "timestamp": "2026-06-08T14:05:48.701786+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "qa", "timestamp": "2026-06-08T14:05:48.702851+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "qa", "duration": 0.0007269382476806641, "timestamp": "2026-06-08T14:05:48.704468+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "qa", "status": "completed", "timestamp": "2026-06-08T14:05:48.705467+00:00"}
+{"event": "agent_start", "workflow_id": "093b8b80", "agent_id": "export", "timestamp": "2026-06-08T14:05:48.706484+00:00"}
+{"event": "agent_success", "workflow_id": "093b8b80", "agent_id": "export", "duration": 1.542912244796753, "timestamp": "2026-06-08T14:05:50.255447+00:00"}
+{"event": "agent_end", "workflow_id": "093b8b80", "agent_id": "export", "status": "completed", "timestamp": "2026-06-08T14:05:50.256858+00:00"}
+{"event": "workflow_end", "workflow_id": "093b8b80", "success": true, "errors": [], "metrics": {"execution_time": 3.5761804580688477, "agent_times": {"architect": 0.0022859573364257812, "mapper": 0.04606938362121582, "expansion": 0.4950368404388428, "quest": 0.0013821125030517578, "playtest": 1.248720645904541, "balance": 0.19433116912841797, "qa": 0.0007269382476806641, "export": 1.542912244796753}, "agent_failures": [], "agent_success_rate": 100.0, "total_agents": 8, "successful_agents": 8}, "timestamp": "2026-06-08T14:05:50.336690+00:00"}

@@ -1,0 +1,167 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:22.051271+00:00",
+  "phase": "Phase 9: Real Memory Profile",
+  "iterations": 100,
+  "memory": {
+    "start_mb": 0.017851829528808594,
+    "end_mb": 0.05508995056152344,
+    "growth_mb": 0.037238121032714844,
+    "peak_mb": 0.28986167907714844
+  },
+  "objects": {
+    "start": 27985,
+    "end": 27722,
+    "growth": -263,
+    "max": 27985
+  },
+  "duration_s": {
+    "mean": 0.0022702932357788084,
+    "total": 0.22702932357788086
+  },
+  "leak_detected": false,
+  "object_leak": false,
+  "samples": [
+    {
+      "iteration": 0,
+      "current_mb": 0.017851829528808594,
+      "peak_mb": 0.13769912719726562,
+      "objects": 27985,
+      "duration_s": 0.032387495040893555
+    },
+    {
+      "iteration": 5,
+      "current_mb": 0.025483131408691406,
+      "peak_mb": 0.2598123550415039,
+      "objects": 27634,
+      "duration_s": 0.0015101432800292969
+    },
+    {
+      "iteration": 10,
+      "current_mb": 0.027521133422851562,
+      "peak_mb": 0.26227664947509766,
+      "objects": 27639,
+      "duration_s": 0.001596212387084961
+    },
+    {
+      "iteration": 15,
+      "current_mb": 0.028772354125976562,
+      "peak_mb": 0.2635822296142578,
+      "objects": 27644,
+      "duration_s": 0.0017087459564208984
+    },
+    {
+      "iteration": 20,
+      "current_mb": 0.030168533325195312,
+      "peak_mb": 0.2649707794189453,
+      "objects": 27649,
+      "duration_s": 0.001542806625366211
+    },
+    {
+      "iteration": 25,
+      "current_mb": 0.03220844268798828,
+      "peak_mb": 0.2664308547973633,
+      "objects": 27648,
+      "duration_s": 0.0014302730560302734
+    },
+    {
+      "iteration": 30,
+      "current_mb": 0.03400897979736328,
+      "peak_mb": 0.2687807083129883,
+      "objects": 27653,
+      "duration_s": 0.0014264583587646484
+    },
+    {
+      "iteration": 35,
+      "current_mb": 0.03556537628173828,
+      "peak_mb": 0.2703371047973633,
+      "objects": 27658,
+      "duration_s": 0.001420736312866211
+    },
+    {
+      "iteration": 40,
+      "current_mb": 0.03703022003173828,
+      "peak_mb": 0.2717103958129883,
+      "objects": 27663,
+      "duration_s": 0.0019431114196777344
+    },
+    {
+      "iteration": 45,
+      "current_mb": 0.03826904296875,
+      "peak_mb": 0.272613525390625,
+      "objects": 27668,
+      "duration_s": 0.0014925003051757812
+    },
+    {
+      "iteration": 50,
+      "current_mb": 0.040069580078125,
+      "peak_mb": 0.27484130859375,
+      "objects": 27673,
+      "duration_s": 0.0013859272003173828
+    },
+    {
+      "iteration": 55,
+      "current_mb": 0.041717529296875,
+      "peak_mb": 0.2764892578125,
+      "objects": 27678,
+      "duration_s": 0.0014262199401855469
+    },
+    {
+      "iteration": 60,
+      "current_mb": 0.0430908203125,
+      "peak_mb": 0.277862548828125,
+      "objects": 27683,
+      "duration_s": 0.003508329391479492
+    },
+    {
+      "iteration": 65,
+      "current_mb": 0.04448223114013672,
+      "peak_mb": 0.2786436080932617,
+      "objects": 27688,
+      "duration_s": 0.004306793212890625
+    },
+    {
+      "iteration": 70,
+      "current_mb": 0.04628276824951172,
+      "peak_mb": 0.2810544967651367,
+      "objects": 27693,
+      "duration_s": 0.0015439987182617188
+    },
+    {
+      "iteration": 75,
+      "current_mb": 0.04765605926513672,
+      "peak_mb": 0.2824277877807617,
+      "objects": 27698,
+      "duration_s": 0.0014195442199707031
+    },
+    {
+      "iteration": 80,
+      "current_mb": 0.04939556121826172,
+      "peak_mb": 0.2841672897338867,
+      "objects": 27703,
+      "duration_s": 0.0015125274658203125
+    },
+    {
+      "iteration": 85,
+      "current_mb": 0.05045127868652344,
+      "peak_mb": 0.28479576110839844,
+      "objects": 27708,
+      "duration_s": 0.0014190673828125
+    },
+    {
+      "iteration": 90,
+      "current_mb": 0.05225181579589844,
+      "peak_mb": 0.28702354431152344,
+      "objects": 27713,
+      "duration_s": 0.0014812946319580078
+    },
+    {
+      "iteration": 95,
+      "current_mb": 0.05399131774902344,
+      "peak_mb": 0.28876304626464844,
+      "objects": 27718,
+      "duration_s": 0.0014579296112060547
+    }
+  ],
+  "criterion_pass": true
+}

@@ -1,0 +1,16 @@
+{
+  "result_id": "de60e432-605c-46d2-bedb-ff295a9d7b60",
+  "final_scores": {
+    "critic": 0.6649745423859815,
+    "playtest": 0.7,
+    "navigation": 0.66,
+    "density": 0.5953702655828055,
+    "reuse": 0.7
+  },
+  "convergence_data": [
+    0.6649745423859815
+  ],
+  "total_duration_seconds": 8.0155348777771,
+  "success": false,
+  "total_iterations": 1
+}

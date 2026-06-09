@@ -1,0 +1,65 @@
+{
+  "playable": false,
+  "difficulty": "easy",
+  "xp_hour": 856779,
+  "loot_hour": 171355,
+  "deaths": 431,
+  "issues": [
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Monsters too weak for target level (ratio: 0.00)",
+    "Knight has excessive deaths. Consider class-specific balance.",
+    "Dead zones (quest_temple_0, auto_hunt_2, boss_room_1) provide no value. Remove or rebalance.",
+    "XP curve is erratic. Smooth monster level transitions.",
+    "Too many deaths (431 > 10/hr). Zone is unplayable.",
+    "Survival rate too low (58.2% < 70%). Players will quit."
+  ],
+  "recommendations": [
+    "Monster levels too low for target audience."
+  ],
+  "metrics": {
+    "survival_rate": 0.582,
+    "progression_smoothness": 0.549,
+    "difficulty_score": 3.07,
+    "zone_count": 8,
+    "total_spawns": 1107
+  },
+  "vocation_results": {
+    "knight": {
+      "xp_per_hour": 9097.472924187725,
+      "deaths": 248,
+      "monsters_killed": 13,
+      "damage_per_second": 235.9030824770897
+    },
+    "paladin": {
+      "xp_per_hour": 1002429.2845257904,
+      "deaths": 46,
+      "monsters_killed": 128,
+      "damage_per_second": 179.56017748197448
+    },
+    "druid": {
+      "xp_per_hour": 1313775.312066574,
+      "deaths": 0,
+      "monsters_killed": 185,
+      "damage_per_second": 287.4613037447989
+    },
+    "sorcerer": {
+      "xp_per_hour": 699240.3659550872,
+      "deaths": 136,
+      "monsters_killed": 104,
+      "damage_per_second": 348.5284169670086
+    },
+    "monk": {
+      "xp_per_hour": 1259354.4827586208,
+      "deaths": 1,
+      "monsters_killed": 158,
+      "damage_per_second": 132.2808275862069
+    }
+  },
+  "timestamp": "2026-06-08T14:28:42.776146Z"
+}

@@ -1,0 +1,113 @@
+{
+  "timestamp": "2026-06-09T05:50:50.071634+00:00",
+  "overall_status": "healthy",
+  "summary": {
+    "healthy": 11,
+    "degraded": 0,
+    "unhealthy": 0
+  },
+  "checks": [
+    {
+      "name": "system",
+      "category": "system",
+      "status": "healthy",
+      "message": "system operational",
+      "details": {
+        "python": "3.14.5",
+        "platform": "win32",
+        "psutil": "unavailable",
+        "disk_total_gb": 474.84,
+        "disk_free_gb": 288.98,
+        "disk_percent": 39.14
+      },
+      "timestamp": "2026-06-09T05:50:49.912579+00:00"
+    },
+    {
+      "name": "generators",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.generators",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:49.927971+00:00"
+    },
+    {
+      "name": "exporters",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.exporters",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:49.937527+00:00"
+    },
+    {
+      "name": "otbm",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.otbm",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:49.937557+00:00"
+    },
+    {
+      "name": "preview",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.preview",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:49.937568+00:00"
+    },
+    {
+      "name": "knowledge",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.knowledge",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:49.937578+00:00"
+    },
+    {
+      "name": "critic",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.critic",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:49.987483+00:00"
+    },
+    {
+      "name": "blueprint_intelligence",
+      "category": "module",
+      "status": "healthy",
+      "message": "import ok: core.blueprint_intelligence",
+      "details": {},
+      "timestamp": "2026-06-09T05:50:50.049248+00:00"
+    },
+    {
+      "name": "pipeline",
+      "category": "pipeline",
+      "status": "healthy",
+      "message": "pipeline ok (64 tiles)",
+      "details": {
+        "tiles": 64
+      },
+      "timestamp": "2026-06-09T05:50:50.058722+00:00"
+    },
+    {
+      "name": "knowledge",
+      "category": "knowledge",
+      "status": "healthy",
+      "message": "dataset ok (0 entries)",
+      "details": {
+        "path": "output\\knowledge_dataset.json",
+        "entries": 0
+      },
+      "timestamp": "2026-06-09T05:50:50.068485+00:00"
+    },
+    {
+      "name": "blueprints",
+      "category": "blueprint",
+      "status": "healthy",
+      "message": "8 blueprint file(s) present",
+      "details": {
+        "count": 8
+      },
+      "timestamp": "2026-06-09T05:50:50.071586+00:00"
+    }
+  ]
+}

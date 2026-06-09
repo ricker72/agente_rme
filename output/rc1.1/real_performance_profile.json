@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:23.268483+00:00",
+  "phase": "Phase 10: Real Performance Profile",
+  "components": [
+    {
+      "component": "Architect",
+      "class": "AIArchitect",
+      "method": "plan",
+      "status": "OK",
+      "stats_preview": "         5313 function calls (5093 primitive calls) in 0.007 seconds\n\n   Ordered by: cumulative time\n   List reduced from 135 to 15 due to restriction <15>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.000    0.000    0.007    0.002 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\ai_architect.py:100(plan)\n        3    0.000    0.000    0.007    0.002 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\world_planner.py:284(plan)\n       42    0.000    0.000    0.005    0.000 C:\\Python314\\Lib\\re\\__init__.py:330(_compile)\n        3    0.000    0.000    0.005    0.002 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\world_planner.py:46(parse)\n       36    0.000    0.000    0.004    0.000 C:\\Python314\\Lib\\re\\__init__.py:174(search)\n       13    0.000    0.000    0.004    0.000 C:\\Python314\\Lib\\re\\_compiler.py:757(compile)\n       15    0.000    0.000    0.003    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\world_planner.py:115(_extract_count)\n       13    0.000    0.000    0.002    0.000 C:\\Python314\\Lib\\re\\_parser.py:963(parse)\n    29/13    0.000    0.000    0.002    0.000 C:\\Python314\\Lib\\re\\_parser.py:452(_parse_sub)\n    36/13    0.001    0.000    0.002    0.000 C:\\Python314\\Lib\\re\\_parser.py:512(_parse)\n       13    0.000    0.000    0.002    0.000 C:\\Python314\\Lib\\re\\_compiler.py:590(_code)\n        3    0.000    0.000    0.001    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\theme_resolver.py:525(resolve_all)\n    65/13    0.001    0.000    0.001    0.000 C:\\Python314\\Lib\\re\\_compiler.py:39(_compile)\n        3    0.000    0.000    0.001    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\theme_resolver.py:479(resolve)\n        1    0.000    0.000    0.001    0.001 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\architect\\theme_resolver.py:635(_load_json_data)\n\n\n"
+    },
+    {
+      "component": "Mapper",
+      "class": "MapperAI",
+      "method": "generate",
+      "status": "SKIPPED",
+      "reason": "Method generate not callable"
+    },
+    {
+      "component": "Expansion",
+      "class": "ExpansionAI",
+      "method": "expand",
+      "status": "OK",
+      "stats_preview": "         1 function calls in 0.000 seconds\n\n   Ordered by: cumulative time\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n\n\n"
+    },
+    {
+      "component": "Quest",
+      "class": "QuestGenerator",
+      "method": "generate",
+      "status": "ERROR",
+      "error": "No module named 'core.campaign.quest_generator'"
+    },
+    {
+      "component": "Playtest",
+      "class": "PlaytestEngine",
+      "method": "run",
+      "status": "OK",
+      "stats_preview": "         7 function calls in 0.000 seconds\n\n   Ordered by: cumulative time\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\playtest\\playtest_engine.py:93(run)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\playtest\\playtest_engine.py:210(_extract_zones)\n\n\n"
+    },
+    {
+      "component": "Balance",
+      "class": "BalanceEngine",
+      "method": "analyze",
+      "status": "OK",
+      "stats_preview": "         1 function calls in 0.000 seconds\n\n   Ordered by: cumulative time\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n\n\n"
+    },
+    {
+      "component": "Critic",
+      "class": "VisualCritic",
+      "method": "analyze",
+      "status": "OK",
+      "stats_preview": "         1444 function calls in 0.003 seconds\n\n   Ordered by: cumulative time\n   List reduced from 64 to 15 due to restriction <15>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.000    0.000    0.003    0.001 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\visual_critic.py:52(analyze)\n        3    0.001    0.000    0.003    0.001 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\critic_engine.py:64(analyze)\n       42    0.000    0.000    0.000    0.000 {built-in method builtins.sum}\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\analyzers\\pathfinding_analyzer.py:270(analyze)\n       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1409(_handle_fromlist)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\analyzers\\region_analyzer.py:37(analyze)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\models\\critic_result.py:78(__post_init__)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\analyzers\\pathfinding_analyzer.py:286(_analyze_with_graph)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\score_calculator.py:65(combine_scores)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\analyzers\\visual_analyzer.py:45(analyze)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\analyzers\\boss_room_analyzer.py:44(analyze)\n        3    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\score_calculator.py:44(combine)\n       60    0.000    0.000    0.000    0.000 c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\core\\critic\\models\\critic_score.py:29(__post_init__)\n        3    0.000    0.000    0.000    0."
+    },
+    {
+      "component": "Knowledge",
+      "class": "KnowledgeEngine",
+      "method": "query",
+      "status": "SKIPPED",
+      "reason": "Method query not callable"
+    },
+    {
+      "component": "Blueprint",
+      "class": "BlueprintExtractor",
+      "method": "extract_from_otbm",
+      "status": "OK",
+      "stats_preview": "         1 function calls in 0.000 seconds\n\n   Ordered by: cumulative time\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n\n\n"
+    },
+    {
+      "component": "Autonomous",
+      "class": "AutonomousDirector",
+      "method": "design_world",
+      "status": "SKIPPED",
+      "reason": "Method design_world not callable"
+    },
+    {
+      "component": "Export",
+      "class": "ReleaseBuilder",
+      "method": "build",
+      "status": "OK",
+      "stats_preview": "         1 function calls in 0.000 seconds\n\n   Ordered by: cumulative time\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n\n\n"
+    }
+  ],
+  "n_components": 11,
+  "n_profiled": 7,
+  "n_errors": 1,
+  "criterion_pass": false
+}

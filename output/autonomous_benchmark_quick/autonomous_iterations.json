@@ -1,0 +1,136 @@
+[
+  {
+    "iteration_id": 0,
+    "plan_snapshot": {
+      "plan_id": "c52c431e-4d8b-4c1c-be07-9c7e3325f466",
+      "goal_id": "Ice dragon boss arena level 400 1 boss",
+      "description": "Plan for: Ice dragon boss arena level 400 1 boss",
+      "regions": [
+        {
+          "region_id": "hunt_1",
+          "region_name": "Frozen Tundra 1",
+          "region_type": "hunt",
+          "description": "Hunt region for level 350-450",
+          "level_range": [
+            350,
+            450
+          ],
+          "target_size": 1264,
+          "target_density": 0.6000000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_2"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-08T13:47:51.103905"
+        },
+        {
+          "region_id": "hunt_2",
+          "region_name": "Frozen Tundra 2",
+          "region_type": "hunt",
+          "description": "Hunt region for level 350-450",
+          "level_range": [
+            350,
+            450
+          ],
+          "target_size": 1264,
+          "target_density": 0.6000000000000001,
+          "target_difficulty": 0.4,
+          "blueprint_candidates": [
+            "blueprint_hunt_core_1",
+            "blueprint_hunt_core_2",
+            "blueprint_hunt_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_hunt_2"
+          ],
+          "patterns": [
+            "pattern_hunt_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-08T13:47:51.103919"
+        },
+        {
+          "region_id": "boss_1",
+          "region_name": "Ice Dragon 1",
+          "region_type": "boss",
+          "description": "Boss region for level 350-450",
+          "level_range": [
+            350,
+            450
+          ],
+          "target_size": 634,
+          "target_density": 0.75,
+          "target_difficulty": 0.87,
+          "blueprint_candidates": [
+            "blueprint_boss_core_1",
+            "blueprint_boss_core_2",
+            "blueprint_boss_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_boss_3"
+          ],
+          "patterns": [
+            "pattern_boss_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-08T13:47:51.103931"
+        },
+        {
+          "region_id": "city_1",
+          "region_name": "Frosthold",
+          "region_type": "city",
+          "description": "City region for level 350-450",
+          "level_range": [
+            350,
+            450
+          ],
+          "target_size": 844,
+          "target_density": 0.5,
+          "target_difficulty": 0.1,
+          "blueprint_candidates": [
+            "blueprint_city_core_1",
+            "blueprint_city_core_2",
+            "blueprint_city_core_3"
+          ],
+          "selected_blueprints": [
+            "blueprint_city_1"
+          ],
+          "patterns": [
+            "pattern_city_2"
+          ],
+          "dependencies": [],
+          "created_at": "2026-06-08T13:47:51.103942"
+        }
+      ],
+      "total_estimated_size": 4006,
+      "estimated_complexity": 0.454375,
+      "metadata": {},
+      "created_at": "2026-06-08T13:47:51.103951"
+    },
+    "scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.7,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "critic_score": 0.6649745423859815,
+    "playtest_score": 0.7,
+    "navigation_score": 0.66,
+    "density_score": 0.5953702655828055,
+    "reuse_score": 0.7,
+    "improvements": [],
+    "regressions": [],
+    "duration_seconds": 8.015500783920288,
+    "created_at": "2026-06-08T13:47:59.120833"
+  }
+]

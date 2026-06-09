@@ -1,0 +1,147 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:20.445792+00:00",
+  "phase": "Phase 8: Real Blueprint Validation",
+  "total_operations": 1000,
+  "successful": 800,
+  "exceptions": 200,
+  "exception_rate": 0.2,
+  "success_rate": 0.8,
+  "op_counts": {
+    "embedding": 200,
+    "similarity": 200,
+    "fusion": 200,
+    "evolution": 200,
+    "generator": 0
+  },
+  "blueprints_created": 400,
+  "duration_s": {
+    "mean": 0.000571202039718628,
+    "min": 4.76837158203125e-07,
+    "max": 0.010162591934204102,
+    "total": 0.45696163177490234
+  },
+  "operations_sample": [
+    {
+      "index": 0,
+      "op": 0,
+      "success": true,
+      "duration_s": 1.5735626220703125e-05
+    },
+    {
+      "index": 1,
+      "op": 1,
+      "success": true,
+      "duration_s": 4.5299530029296875e-06
+    },
+    {
+      "index": 2,
+      "op": 2,
+      "success": true,
+      "duration_s": 6.628036499023438e-05
+    },
+    {
+      "index": 3,
+      "op": 3,
+      "success": true,
+      "duration_s": 0.003261089324951172
+    },
+    {
+      "index": 4,
+      "op": 4,
+      "success": false,
+      "error": "'dict' object has no attribute 'lower'"
+    },
+    {
+      "index": 5,
+      "op": 0,
+      "success": true,
+      "duration_s": 9.059906005859375e-06
+    },
+    {
+      "index": 6,
+      "op": 1,
+      "success": true,
+      "duration_s": 1.430511474609375e-06
+    },
+    {
+      "index": 7,
+      "op": 2,
+      "success": true,
+      "duration_s": 7.414817810058594e-05
+    },
+    {
+      "index": 8,
+      "op": 3,
+      "success": true,
+      "duration_s": 0.002020120620727539
+    },
+    {
+      "index": 9,
+      "op": 4,
+      "success": false,
+      "error": "'dict' object has no attribute 'lower'"
+    },
+    {
+      "index": 10,
+      "op": 0,
+      "success": true,
+      "duration_s": 6.4373016357421875e-06
+    },
+    {
+      "index": 11,
+      "op": 1,
+      "success": true,
+      "duration_s": 1.6689300537109375e-06
+    },
+    {
+      "index": 12,
+      "op": 2,
+      "success": true,
+      "duration_s": 9.751319885253906e-05
+    },
+    {
+      "index": 13,
+      "op": 3,
+      "success": true,
+      "duration_s": 0.002045869827270508
+    },
+    {
+      "index": 14,
+      "op": 4,
+      "success": false,
+      "error": "'dict' object has no attribute 'lower'"
+    },
+    {
+      "index": 15,
+      "op": 0,
+      "success": true,
+      "duration_s": 6.4373016357421875e-06
+    },
+    {
+      "index": 16,
+      "op": 1,
+      "success": true,
+      "duration_s": 9.5367431640625e-07
+    },
+    {
+      "index": 17,
+      "op": 2,
+      "success": true,
+      "duration_s": 5.8650970458984375e-05
+    },
+    {
+      "index": 18,
+      "op": 3,
+      "success": true,
+      "duration_s": 0.0015778541564941406
+    },
+    {
+      "index": 19,
+      "op": 4,
+      "success": false,
+      "error": "'dict' object has no attribute 'lower'"
+    }
+  ],
+  "criterion_pass": true
+}

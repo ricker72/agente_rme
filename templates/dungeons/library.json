@@ -1,0 +1,7 @@
+{
+  "floors": [393, 415],
+  "walls": [1495, 1498],
+  "decorations": [2148, 2150],
+  "monsters": ["Warlock", "Book Golem", "Mage"],
+  "bosses": ["Warlock", "Sphinx"]
+}

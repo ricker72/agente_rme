@@ -1,0 +1,349 @@
+{
+  "version": "1.0",
+  "exported_at": "2026-06-04T22:30:02.701975",
+  "style_guides": {
+    "issavi": {
+      "style": "issavi",
+      "description": "Ancient desert city with sandy tones and ruins",
+      "recommended_grounds": [
+        "sand",
+        "ancient_stone",
+        "desert_tile",
+        "sandstone"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          210,
+          180,
+          140
+        ],
+        [
+          180,
+          150,
+          110
+        ],
+        [
+          200,
+          170,
+          130
+        ]
+      ],
+      "avg_room_size": 323.5,
+      "avg_corridor_length": 2.5,
+      "connectivity_ratio": 0.3333333333333333,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 0.8333333333333334,
+        "irregular": 0.16666666666666669
+      }
+    },
+    "roshamuul": {
+      "style": "roshamuul",
+      "description": "Dark prison island with grim architecture",
+      "recommended_grounds": [
+        "roshamuul_stone",
+        "dark_tile",
+        "prison_floor"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          80,
+          80,
+          80
+        ],
+        [
+          60,
+          60,
+          60
+        ],
+        [
+          100,
+          100,
+          100
+        ]
+      ],
+      "avg_room_size": 216.33333333333334,
+      "avg_corridor_length": 1.6666666666666667,
+      "connectivity_ratio": 0.16666666666666666,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 1.0
+      }
+    },
+    "soulwar": {
+      "style": "soulwar",
+      "description": "Spiritual warfare zone with ethereal elements",
+      "recommended_grounds": [
+        "soul_stone",
+        "war_stone",
+        "spirit_tile",
+        "ethereal_floor",
+        "battle_ground"
+      ],
+      "recommended_walls": [
+        "soul_wall",
+        "war_brick",
+        "spirit_barrier"
+      ],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          150,
+          120,
+          180
+        ],
+        [
+          180,
+          150,
+          200
+        ],
+        [
+          120,
+          100,
+          160
+        ]
+      ],
+      "avg_room_size": 100,
+      "avg_corridor_length": 20,
+      "decoration_density": 0.1
+    },
+    "library": {
+      "style": "library",
+      "description": "Scholarly area with bookshelves and study spaces",
+      "recommended_grounds": [
+        "library_floor",
+        "wooden_floor"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          139,
+          90,
+          43
+        ],
+        [
+          101,
+          67,
+          33
+        ],
+        [
+          160,
+          120,
+          60
+        ]
+      ],
+      "avg_room_size": 250.0,
+      "avg_corridor_length": 2.5,
+      "connectivity_ratio": 0.25,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 1.0
+      }
+    },
+    "falcon": {
+      "style": "falcon",
+      "description": "Noble area with bird motifs and elegant design",
+      "recommended_grounds": [
+        "falcon_tile",
+        "marble_floor"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          200,
+          180,
+          150
+        ],
+        [
+          180,
+          160,
+          130
+        ],
+        [
+          220,
+          200,
+          170
+        ]
+      ],
+      "avg_room_size": 64.0,
+      "avg_corridor_length": 2.0,
+      "connectivity_ratio": 0.6666666666666666,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 1.0
+      }
+    },
+    "cobra": {
+      "style": "cobra",
+      "description": "Serpent-themed area with exotic designs",
+      "recommended_grounds": [
+        "cobra_tile",
+        "serpent_stone"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          80,
+          120,
+          80
+        ],
+        [
+          60,
+          100,
+          60
+        ],
+        [
+          100,
+          140,
+          100
+        ]
+      ],
+      "avg_room_size": 140.0,
+      "avg_corridor_length": 5.0,
+      "connectivity_ratio": 0.5,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "irregular": 0.5,
+        "rectangular": 0.5
+      }
+    },
+    "yalahar": {
+      "style": "yalahar",
+      "description": "Mysterious city with unique architecture",
+      "recommended_grounds": [
+        "yalahar_stone",
+        "mystery_tile"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          100,
+          100,
+          120
+        ],
+        [
+          80,
+          80,
+          100
+        ],
+        [
+          120,
+          120,
+          140
+        ]
+      ],
+      "avg_room_size": 500.0,
+      "avg_corridor_length": 0.0,
+      "connectivity_ratio": 0.0,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 1.0
+      }
+    },
+    "thais": {
+      "style": "thais",
+      "description": "Classic human city with traditional design",
+      "recommended_grounds": [
+        "stone_floor",
+        "wooden_floor",
+        "tile"
+      ],
+      "recommended_walls": [
+        "stone_brick",
+        "wooden_wall"
+      ],
+      "lighting": "bright",
+      "color_palette": [
+        [
+          160,
+          140,
+          120
+        ],
+        [
+          140,
+          120,
+          100
+        ],
+        [
+          180,
+          160,
+          140
+        ]
+      ],
+      "avg_room_size": 100,
+      "avg_corridor_length": 20,
+      "decoration_density": 0.1
+    }
+  },
+  "pattern_guides": {
+    "layout": {
+      "pattern_type": "layout",
+      "room_arrangement": "organic",
+      "symmetry_score": 0.6788194444444443,
+      "axial_alignment": 0.13425925925925927,
+      "avg_degree": 0.47222222222222215,
+      "clustering_coefficient": 0.0,
+      "target_tile_density": 0.003983710481437755,
+      "target_feature_density": 0.0,
+      "complexity_score": 1.0,
+      "modularity_score": 0.5583333333333332
+    },
+    "connectivity": {
+      "pattern_type": "connectivity",
+      "room_arrangement": "organic",
+      "symmetry_score": 0.6788194444444443,
+      "axial_alignment": 0.13425925925925927,
+      "avg_degree": 0.47222222222222215,
+      "clustering_coefficient": 0.0,
+      "target_tile_density": 0.003983710481437755,
+      "target_feature_density": 0.0,
+      "complexity_score": 1.0,
+      "modularity_score": 0.5583333333333332
+    },
+    "density": {
+      "pattern_type": "density",
+      "room_arrangement": "organic",
+      "symmetry_score": 0.6788194444444443,
+      "axial_alignment": 0.13425925925925927,
+      "avg_degree": 0.47222222222222215,
+      "clustering_coefficient": 0.0,
+      "target_tile_density": 0.003983710481437755,
+      "target_feature_density": 0.0,
+      "complexity_score": 1.0,
+      "modularity_score": 0.5583333333333332
+    },
+    "architecture": {
+      "pattern_type": "architecture",
+      "room_arrangement": "organic",
+      "symmetry_score": 0.6788194444444443,
+      "axial_alignment": 0.13425925925925927,
+      "avg_degree": 0.47222222222222215,
+      "clustering_coefficient": 0.0,
+      "target_tile_density": 0.003983710481437755,
+      "target_feature_density": 0.0,
+      "complexity_score": 1.0,
+      "modularity_score": 0.5583333333333332
+    }
+  },
+  "similarity_clusters": {
+    "cluster_2": [
+      "roshamuul_r1",
+      "issavi_r1",
+      "library_r1",
+      "falcon_r1"
+    ],
+    "cluster_3": [
+      "roshamuul_r2",
+      "ice_r1",
+      "jungle_r1"
+    ]
+  }
+}

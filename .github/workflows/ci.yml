@@ -1,0 +1,59 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install flake8 black
+      - run: flake8 core/ --count --select=E9,F63,F7,F82 --show-source --statistics
+      - run: black --check core/
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[test]"
+      - run: pytest tests/ -v --tb=short
+
+  validate-otbm:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e .
+      - run: |
+          python -c "
+          from core.otbm import NodeEncoder, OtbmSerializer, OtbmValidator
+          from core.world_engine.world_engine import WorldModel, Tile
+          wm = WorldModel()
+          for x in range(5):
+            for y in range(5):
+              wm.add_tile(Tile(x=x, y=y, z=7, ground='106'))
+          wm.spawns.append({'monster': 'Test', 'x': 2, 'y': 2, 'z': 7})
+          s = OtbmSerializer()
+          data = s.serialize(wm)
+          v = OtbmValidator()
+          r = v.validate(data)
+          assert r.status == 'success', f'OTBM validation failed: {r.errors}'
+          print(f'CI OTBM validation: PASS ({r.stats[\"tiles\"]} tiles, {r.stats[\"monsters\"]} monsters)')
+          "

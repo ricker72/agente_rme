@@ -1,0 +1,42 @@
+[
+  {
+    "recommendation": "Use bench_bp_71 layout (high playtest score)",
+    "blueprint_name": "bench_bp_71",
+    "category": "city",
+    "theme": "soul_war",
+    "confidence": 0.8,
+    "source": "playtest_recommendation"
+  },
+  {
+    "recommendation": "Use bench_bp_82 layout (high playtest score)",
+    "blueprint_name": "bench_bp_82",
+    "category": "boss_room",
+    "theme": "issavi",
+    "confidence": 0.8,
+    "source": "playtest_recommendation"
+  },
+  {
+    "recommendation": "Use bench_bp_83 layout (high playtest score)",
+    "blueprint_name": "bench_bp_83",
+    "category": "dungeon",
+    "theme": "falcon",
+    "confidence": 0.8,
+    "source": "playtest_recommendation"
+  },
+  {
+    "recommendation": "Use bench_bp_84 layout (high playtest score)",
+    "blueprint_name": "bench_bp_84",
+    "category": "raid",
+    "theme": "ferumbras",
+    "confidence": 0.8,
+    "source": "playtest_recommendation"
+  },
+  {
+    "recommendation": "Use bench_bp_85 layout (high playtest score)",
+    "blueprint_name": "bench_bp_85",
+    "category": "hunt",
+    "theme": "library",
+    "confidence": 0.8,
+    "source": "playtest_recommendation"
+  }
+]

@@ -1,0 +1,225 @@
+{
+  "version": "1.0.0-RC1.1",
+  "timestamp": "2026-06-09T03:54:15.679662+00:00",
+  "phase": "Phase 5: Real OTBM Certification",
+  "iterations": 100,
+  "passed": 100,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "totals": {
+    "tiles": 0,
+    "spawns": 0,
+    "bosses": 0,
+    "waypoints": 0,
+    "regions": 0
+  },
+  "duration_s": {
+    "mean": 0.04818873882293701,
+    "min": 0.03254270553588867,
+    "max": 0.16458988189697266,
+    "total": 4.818873882293701
+  },
+  "results": [
+    {
+      "index": 0,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.0515446662902832
+    },
+    {
+      "index": 1,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04405641555786133
+    },
+    {
+      "index": 2,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.051288604736328125
+    },
+    {
+      "index": 3,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.03925895690917969
+    },
+    {
+      "index": 4,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.0371401309967041
+    },
+    {
+      "index": 5,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04633831977844238
+    },
+    {
+      "index": 6,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.038382768630981445
+    },
+    {
+      "index": 7,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.03867959976196289
+    },
+    {
+      "index": 8,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.044161319732666016
+    },
+    {
+      "index": 9,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04070329666137695
+    },
+    {
+      "index": 10,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04056668281555176
+    },
+    {
+      "index": 11,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.041155338287353516
+    },
+    {
+      "index": 12,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04253220558166504
+    },
+    {
+      "index": 13,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.041429996490478516
+    },
+    {
+      "index": 14,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04148435592651367
+    },
+    {
+      "index": 15,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.05059671401977539
+    },
+    {
+      "index": 16,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.03619694709777832
+    },
+    {
+      "index": 17,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.045417070388793945
+    },
+    {
+      "index": 18,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04289531707763672
+    },
+    {
+      "index": 19,
+      "success": true,
+      "tiles": 0,
+      "spawns": 0,
+      "bosses": 0,
+      "waypoints": 0,
+      "regions": 0,
+      "duration_s": 0.04013395309448242
+    }
+  ],
+  "criterion_pass": true
+}

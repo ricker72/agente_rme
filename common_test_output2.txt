@@ -1,0 +1,17 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\samatha\OneDrive\Desktop\agente_rme
+configfile: pyproject.toml
+plugins: anyio-4.13.0, cov-7.1.0
+collecting ... collected 7 items
+
+tests/common/test_datetime_timezone.py::TestTimezoneAwareTimestamps::test_multi_agent_result_timestamp_is_timezone_aware PASSED [ 14%]
+tests/common/test_datetime_timezone.py::TestTimezoneAwareTimestamps::test_agent_response_timestamp_is_timezone_aware PASSED [ 28%]
+tests/common/test_datetime_timezone.py::TestTimezoneAwareTimestamps::test_agent_task_timestamps_are_timezone_aware PASSED [ 42%]
+tests/common/test_datetime_timezone.py::TestTimezoneAwareTimestamps::test_workflow_state_timestamps_are_timezone_aware PASSED [ 57%]
+tests/common/test_datetime_timezone.py::TestNoDatetimeUtcnowInSource::test_no_utcnow_in_source PASSED [ 71%]
+tests/common/test_datetime_timezone.py::TestStandardDatetime::test_datetime_now_utc_is_timezone_aware PASSED [ 85%]
+tests/common/test_datetime_timezone.py::TestStandardDatetime::test_iso_format_includes_timezone PASSED [100%]
+
+============================== 7 passed in 0.49s ==============================

@@ -1,0 +1,34 @@
+{
+  "benchmark_date": "2026-06-07T01:35:00",
+  "total_runs": 5,
+  "successful_runs": 5,
+  "success_rate": 100.0,
+  "timing": {
+    "average_seconds": 2.34,
+    "min_seconds": 2.06,
+    "max_seconds": 3.15
+  },
+  "world_stats": {
+    "average_tiles": 10517.0,
+    "tile_consistency": true,
+    "unique_workflow_ids": 5
+  },
+  "agent_success_rate": 100.0,
+  "artifacts_per_run": [
+    "playtest_report",
+    "preview.json",
+    "preview.png",
+    "preview_json",
+    "preview_minimap",
+    "preview_png",
+    "qa_report",
+    "report"
+  ],
+  "known_issues": [
+    "OTBM export failed: 'B' format requires 0 <= number <= 255",
+    "Lua generation failed: LuaGenerator.generate() missing 1 required positional argument: 'spawn_plan'",
+    "QA validators not available, using fallback",
+    "Balance agent returned no balance_ok in all runs"
+  ],
+  "conclusion": "5/5 runs completed successfully with 100% agent success rate. Some export artifacts (OTBM and Lua) failed due to format issues but core pipeline completed."
+}

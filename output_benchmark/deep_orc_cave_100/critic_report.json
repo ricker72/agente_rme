@@ -1,0 +1,391 @@
+{
+  "map_name": "deep_orc_cave_100",
+  "overall_score": 62.05,
+  "visual_score": 49.26,
+  "navigation_score": 85.0,
+  "density_score": 40.58,
+  "spawn_score": 54.05,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 71.58,
+  "pathfinding_score": 100.0,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 49.26,
+      "max_value": 100.0,
+      "ratio": 0.4926,
+      "breakdown": {
+        "quantity": 49.49,
+        "content_ratio": 24.36,
+        "density": 16.36,
+        "variety": 100.0,
+        "consistency": 100.0,
+        "total_tiles": 2500.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 40.58,
+      "max_value": 100.0,
+      "ratio": 0.4058,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 5.28,
+        "spawn_ratio": 20.0,
+        "concentration": 0.0,
+        "avg_items_per_tile": 0.16,
+        "max_items_per_tile": 5
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 54.05,
+      "max_value": 100.0,
+      "ratio": 0.5405,
+      "breakdown": {
+        "density_score": 97.5,
+        "distance_score": 1.0,
+        "zone_coverage": 100.0,
+        "spawn_density": 20.0
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {
+        "hunt_count": 1.0,
+        "min_hunt_score": 50.0,
+        "max_hunt_score": 50.0
+      },
+      "notes": ""
+    },
+    "boss": {
+      "category": "boss",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No boss arenas detected"
+    },
+    "city": {
+      "category": "city",
+      "value": 60.0,
+      "max_value": 100.0,
+      "ratio": 0.6,
+      "breakdown": {},
+      "notes": "No city zones identified"
+    },
+    "decor": {
+      "category": "decor",
+      "value": 71.58,
+      "max_value": 100.0,
+      "ratio": 0.7158,
+      "breakdown": {
+        "variety_score": 100.0,
+        "repetition_score": 100.0,
+        "coverage": 5.28,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 58.0,
+      "max_value": 100.0,
+      "ratio": 0.58,
+      "breakdown": {
+        "region_count": 1.0,
+        "empty_regions": 1.0,
+        "level_issues": 0.0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 100.0,
+      "max_value": 100.0,
+      "ratio": 1.0,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 100.0,
+        "astar_path_length": 89.0
+      },
+      "notes": "Entry point: (44, 44, 7), reachable: 2500/2500"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "underdecorated_area",
+      "severity": "warning",
+      "category": "visual",
+      "location": "",
+      "message": "Only 24% of ground tiles have content",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,49,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(49,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "underdecorated_area",
+      "severity": "warning",
+      "category": "density",
+      "location": "",
+      "message": "Only 5% of tiles have content",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,2)",
+      "message": "Spawn cluster of 3 creatures at (0, 2)",
+      "details": {
+        "cluster_size": 3
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,9)",
+      "message": "Spawn cluster of 6 creatures at (0, 9)",
+      "details": {
+        "cluster_size": 6
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(0,14)",
+      "message": "Spawn cluster of 4 creatures at (0, 14)",
+      "details": {
+        "cluster_size": 4
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "hunt_orc_cave",
+      "message": "Region 'hunt_orc_cave' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Add visual content",
+      "description": "Large portions of the map are visually empty. Add items, spawns or decoration.",
+      "category": "visual",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Add decoration to empty areas",
+      "description": "Large portions of the map are empty. Add decoration, structures or spawns to improve density.",
+      "category": "density",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Spread spawn clusters",
+      "description": "Some spawns are clustered very close together. Spread them out for better gameplay.",
+      "category": "spawn",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define boss arenas",
+      "description": "Add zones with names containing 'boss', 'arena', 'throne' or 'lair'.",
+      "category": "boss",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Define city zones",
+      "description": "Add zones with names containing 'city', 'town', 'village', 'hub' or 'market'.",
+      "category": "city",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: hunt_orc_cave. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.2604,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 2500,
+        "grounded_tiles": 2500,
+        "useful_tiles": 609,
+        "content_ratio": 0.2436,
+        "avg_items_per_tile": 0.16,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.0016,
+        "total_grounded": 2500
+      },
+      "density": {
+        "total_tiles": 2500,
+        "grounded_tiles": 2500,
+        "tiles_with_items": 132,
+        "tiles_with_spawns": 500,
+        "bbox_area": 2500,
+        "zone_density": {
+          "unzoned": 0.0528
+        }
+      },
+      "spawn": {
+        "total_spawns": 500,
+        "grounded_tiles": 2500,
+        "spawn_density": 0.2,
+        "min_distance": 1,
+        "max_distance": 4,
+        "avg_distance": 1.61,
+        "cluster_count": 117,
+        "zone_coverage": 1.0
+      },
+      "hunt": {
+        "hunts": 1,
+        "per_hunt": [
+          {
+            "name": "hunt_orc_cave",
+            "size": 0,
+            "spawns": 0,
+            "centroid": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "boss": {
+        "bosses": 0
+      },
+      "city": {
+        "cities": 0
+      },
+      "decor": {
+        "variety": 333,
+        "total_items": 409,
+        "repetition_ratio": 0.0073,
+        "coverage": 0.0528,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 249
+      },
+      "region": {
+        "region_count": 1,
+        "empty_regions": [
+          "hunt_orc_cave"
+        ],
+        "level_issues": 0,
+        "avg_size": 0.0,
+        "coverage": 0.0
+      },
+      "pathfinding": {
+        "walkable_tiles": 2500,
+        "reachable_tiles": 2500,
+        "reach_ratio": 1.0,
+        "astar_path_length": 89,
+        "bottleneck_count": 0,
+        "entry_point": [
+          44,
+          44,
+          7
+        ],
+        "max_distance": 88.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T15:14:22.833865",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T15:14:22.835072"
+  }
+}

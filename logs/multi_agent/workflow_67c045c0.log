@@ -1,0 +1,2 @@
+{"event": "workflow_start", "workflow_id": "67c045c0", "prompt": "Test generation", "pipeline": ["architect", "mapper", "expansion", "quest", "playtest", "balance", "qa", "export"], "timestamp": "2026-06-07T05:53:43.790245"}
+{"event": "workflow_end", "workflow_id": "67c045c0", "success": false, "errors": [], "metrics": {"execution_time": 0.0067479610443115234, "agent_times": {}, "agent_failures": [], "agent_success_rate": 0, "total_agents": 0, "successful_agents": 0}, "timestamp": "2026-06-07T05:53:43.818119"}

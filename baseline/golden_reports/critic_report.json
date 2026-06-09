@@ -1,0 +1,499 @@
+{
+  "map_name": "test_issavi",
+  "overall_score": 53.31,
+  "visual_score": 45.63,
+  "navigation_score": 85.0,
+  "density_score": 55.5,
+  "spawn_score": 22.5,
+  "hunt_score": 50.0,
+  "boss_score": 40.0,
+  "city_score": 45.0,
+  "decor_score": 67.82,
+  "pathfinding_score": 83.75,
+  "scores": {
+    "visual": {
+      "category": "visual",
+      "value": 45.63,
+      "max_value": 100.0,
+      "ratio": 0.4563,
+      "breakdown": {
+        "quantity": 7.07,
+        "content_ratio": 34.25,
+        "density": 33.25,
+        "variety": 60.0,
+        "consistency": 100.0,
+        "total_tiles": 400.0
+      },
+      "notes": ""
+    },
+    "navigation": {
+      "category": "navigation",
+      "value": 85.0,
+      "max_value": 100.0,
+      "ratio": 0.85,
+      "breakdown": {
+        "connectivity": 100.0,
+        "dead_end_health": 100.0,
+        "bottleneck_health": 100.0,
+        "isolation_health": 100.0,
+        "major_regions": 1
+      },
+      "notes": ""
+    },
+    "density": {
+      "category": "density",
+      "value": 55.5,
+      "max_value": 100.0,
+      "ratio": 0.555,
+      "breakdown": {
+        "fill_ratio": 100.0,
+        "content_ratio": 33.25,
+        "spawn_ratio": 1.25,
+        "concentration": 52.77,
+        "avg_items_per_tile": 0.33,
+        "max_items_per_tile": 1
+      },
+      "notes": ""
+    },
+    "spawn": {
+      "category": "spawn",
+      "value": 22.5,
+      "max_value": 100.0,
+      "ratio": 0.225,
+      "breakdown": {
+        "density_score": 25.0,
+        "distance_score": 0.0,
+        "zone_coverage": 100.0,
+        "spawn_density": 1.25
+      },
+      "notes": ""
+    },
+    "hunt": {
+      "category": "hunt",
+      "value": 50.0,
+      "max_value": 100.0,
+      "ratio": 0.5,
+      "breakdown": {
+        "hunt_count": 1.0,
+        "min_hunt_score": 50.0,
+        "max_hunt_score": 50.0
+      },
+      "notes": ""
+    },
+    "boss": {
+      "category": "boss",
+      "value": 40.0,
+      "max_value": 100.0,
+      "ratio": 0.4,
+      "breakdown": {
+        "boss_count": 1.0,
+        "min_boss_score": 50.0,
+        "max_boss_score": 50.0
+      },
+      "notes": ""
+    },
+    "city": {
+      "category": "city",
+      "value": 45.0,
+      "max_value": 100.0,
+      "ratio": 0.45,
+      "breakdown": {
+        "city_count": 3.0,
+        "min_city_score": 50.0
+      },
+      "notes": ""
+    },
+    "decor": {
+      "category": "decor",
+      "value": 67.82,
+      "max_value": 100.0,
+      "ratio": 0.6782,
+      "breakdown": {
+        "variety_score": 62.5,
+        "repetition_score": 96.39,
+        "coverage": 33.25,
+        "overuse_ratio": 0.0
+      },
+      "notes": ""
+    },
+    "region": {
+      "category": "region",
+      "value": 41.5,
+      "max_value": 100.0,
+      "ratio": 0.415,
+      "breakdown": {
+        "region_count": 4.0,
+        "empty_regions": 3.0,
+        "level_issues": 0.0,
+        "avg_size": 1.25,
+        "coverage": 25.0
+      },
+      "notes": ""
+    },
+    "pathfinding": {
+      "category": "pathfinding",
+      "value": 83.75,
+      "max_value": 100.0,
+      "ratio": 0.8375,
+      "breakdown": {
+        "reachability": 100.0,
+        "bottleneck_health": 75.0,
+        "astar_path_length": 28.0
+      },
+      "notes": "Entry point: (16, 11, 7), reachable: 400/400"
+    }
+  },
+  "issues": [
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(0,19,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "navigation",
+      "location": "(19,0,7)",
+      "message": "Bottleneck: only 2 connections",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "low_spawn_density",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "",
+      "message": "Spawn density 1.25% is below target 5%",
+      "details": {
+        "density": 0.0125,
+        "target": 0.05
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "spawn_cluster",
+      "severity": "warning",
+      "category": "spawn",
+      "location": "(5,5)",
+      "message": "Spawn cluster of 5 creatures at (5, 5)",
+      "details": {
+        "cluster_size": 5
+      },
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "boss_no_escape",
+      "severity": "error",
+      "category": "boss",
+      "location": "boss_arena",
+      "message": "Boss arena 'boss_arena' has no escape route",
+      "details": {},
+      "penalty": 10.0
+    },
+    {
+      "issue_type": "city_missing_services",
+      "severity": "error",
+      "category": "city",
+      "location": "city_issavi_depot",
+      "message": "City 'city_issavi_depot' is missing required service: depot",
+      "details": {},
+      "penalty": 10.0
+    },
+    {
+      "issue_type": "city_missing_services",
+      "severity": "error",
+      "category": "city",
+      "location": "city_issavi_temple",
+      "message": "City 'city_issavi_temple' is missing required service: temple",
+      "details": {},
+      "penalty": 10.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_issavi",
+      "message": "Region 'city_issavi' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_issavi_depot",
+      "message": "Region 'city_issavi_depot' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "empty_region",
+      "severity": "warning",
+      "category": "region",
+      "location": "city_issavi_temple",
+      "message": "Region 'city_issavi_temple' is empty or near-empty (0 tiles)",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(19,19,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,0,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    },
+    {
+      "issue_type": "bottleneck",
+      "severity": "warning",
+      "category": "pathfinding",
+      "location": "(0,19,7)",
+      "message": "Navigation bottleneck detected — routes funnel through this tile",
+      "details": {},
+      "penalty": 5.0
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Increase spawn density",
+      "description": "Add more monster spawns in hunt areas to reach the target density.",
+      "category": "spawn",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Spread spawn clusters",
+      "description": "Some spawns are clustered very close together. Spread them out for better gameplay.",
+      "category": "spawn",
+      "priority": "low",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Add escape route to boss_arena",
+      "description": "Boss arena 'boss_arena' has no escape route. Add a secondary exit or teleport.",
+      "category": "boss",
+      "priority": "high",
+      "target_location": "boss_arena",
+      "action": {}
+    },
+    {
+      "title": "Add depot to city_issavi_depot",
+      "description": "City 'city_issavi_depot' has no depot zone. Add a zone named like 'city_city_issavi_depot_depot'.",
+      "category": "city",
+      "priority": "high",
+      "target_location": "city_issavi_depot",
+      "action": {}
+    },
+    {
+      "title": "Add temple to city_issavi_temple",
+      "description": "City 'city_issavi_temple' has no temple zone. Add a zone named like 'city_city_issavi_temple_temple'.",
+      "category": "city",
+      "priority": "high",
+      "target_location": "city_issavi_temple",
+      "action": {}
+    },
+    {
+      "title": "Populate empty regions",
+      "description": "Empty regions: city_issavi, city_issavi_depot, city_issavi_temple. Add tiles, decoration or remove them.",
+      "category": "region",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    },
+    {
+      "title": "Reduce navigation bottlenecks",
+      "description": "Add secondary routes around bottleneck tiles to improve movement.",
+      "category": "pathfinding",
+      "priority": "medium",
+      "target_location": "",
+      "action": {}
+    }
+  ],
+  "metadata": {
+    "execution_time": 0.0183,
+    "analyzers": [
+      "visual",
+      "navigation",
+      "density",
+      "spawn",
+      "hunt",
+      "boss",
+      "city",
+      "decor",
+      "region",
+      "pathfinding"
+    ],
+    "category_metrics": {
+      "visual": {
+        "total_tiles": 400,
+        "grounded_tiles": 400,
+        "useful_tiles": 137,
+        "content_ratio": 0.3425,
+        "avg_items_per_tile": 0.33,
+        "ground_variety": 1,
+        "preview_path": ""
+      },
+      "navigation": {
+        "regions": 1,
+        "small_regions": 0,
+        "dead_ends": 0,
+        "bottlenecks": 4,
+        "dead_end_ratio": 0.0,
+        "bottleneck_ratio": 0.01,
+        "total_grounded": 400
+      },
+      "density": {
+        "total_tiles": 400,
+        "grounded_tiles": 400,
+        "tiles_with_items": 133,
+        "tiles_with_spawns": 5,
+        "bbox_area": 400,
+        "zone_density": {
+          "unzoned": 0.3342,
+          "hunt_north": 0.2
+        }
+      },
+      "spawn": {
+        "total_spawns": 5,
+        "grounded_tiles": 400,
+        "spawn_density": 0.0125,
+        "min_distance": 1,
+        "max_distance": 1,
+        "avg_distance": 1.0,
+        "cluster_count": 1,
+        "zone_coverage": 1.0
+      },
+      "hunt": {
+        "hunts": 1,
+        "per_hunt": [
+          {
+            "name": "hunt_north",
+            "size": 5,
+            "spawns": 5,
+            "centroid": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "boss": {
+        "bosses": 1,
+        "per_boss": [
+          {
+            "name": "boss_arena",
+            "arena_size": 100,
+            "escape_routes": 0,
+            "size_score": 100.0,
+            "escape_score": 0.0,
+            "access_score": 0.0
+          }
+        ]
+      },
+      "city": {
+        "cities": 3,
+        "per_city": [
+          {
+            "name": "city_issavi",
+            "services": {
+              "depot": 1,
+              "temple": 1
+            },
+            "tiles": 0,
+            "street_score": 100.0,
+            "depot_score": 100.0,
+            "temple_score": 100.0,
+            "npc_score": 50.0
+          },
+          {
+            "name": "city_issavi_depot",
+            "services": {
+              "temple": 1
+            },
+            "tiles": 0,
+            "street_score": 50.0,
+            "depot_score": 0.0,
+            "temple_score": 100.0,
+            "npc_score": 50.0
+          },
+          {
+            "name": "city_issavi_temple",
+            "services": {
+              "depot": 1
+            },
+            "tiles": 0,
+            "street_score": 50.0,
+            "depot_score": 100.0,
+            "temple_score": 0.0,
+            "npc_score": 50.0
+          }
+        ]
+      },
+      "decor": {
+        "variety": 5,
+        "total_items": 133,
+        "repetition_ratio": 0.218,
+        "coverage": 0.3325,
+        "overuse_ratio": 0.0,
+        "empty_zones": [],
+        "most_common_item": 203
+      },
+      "region": {
+        "region_count": 4,
+        "empty_regions": [
+          "city_issavi",
+          "city_issavi_depot",
+          "city_issavi_temple"
+        ],
+        "level_issues": 0,
+        "avg_size": 1.25,
+        "coverage": 0.25
+      },
+      "pathfinding": {
+        "walkable_tiles": 400,
+        "reachable_tiles": 400,
+        "reach_ratio": 1.0,
+        "astar_path_length": 28,
+        "bottleneck_count": 4,
+        "entry_point": [
+          16,
+          11,
+          7
+        ],
+        "max_distance": 27.0
+      }
+    },
+    "preview_path": "",
+    "extra_context": {}
+  },
+  "timestamp": "2026-06-08T14:54:30.013598",
+  "report": {
+    "version": "1.0",
+    "generated_at": "2026-06-08T14:54:30.014502"
+  }
+}

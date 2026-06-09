@@ -1,0 +1,12 @@
+{
+  "execution_time": 0.07449173927307129,
+  "agent_times": {
+    "architect": 0.0015375614166259766,
+    "mapper": 0.040780067443847656,
+    "quest": 0.0004875659942626953
+  },
+  "agent_failures": [],
+  "agent_success_rate": 100.0,
+  "workflow_id": "539cbfc6",
+  "timestamp": "2026-06-08T14:25:15.412793+00:00"
+}

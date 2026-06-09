@@ -1,0 +1,4 @@
+<monsters>
+  <monster name="Frazzlemaw" respawn="60" />
+  <monster name="Sphinx" respawn="60" />
+</monsters>

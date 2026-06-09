@@ -1,0 +1,9 @@
+{
+  "n_maps": 100,
+  "total_entries": 845,
+  "build_ms": 97.13479992933571,
+  "query_count": 35,
+  "total_query_ms": 1856.6157999448478,
+  "avg_query_ms": 53.046165712709936,
+  "coverage_pct": 85.71
+}

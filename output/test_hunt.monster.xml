@@ -1,0 +1,5 @@
+<monsters>
+  <monster name="Cloak Of Terror" respawn="60" />
+  <monster name="Frazzlemaw" respawn="60" />
+  <monster name="Sphinx" respawn="60" />
+</monsters>

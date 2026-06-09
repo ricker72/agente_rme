@@ -1,0 +1,217 @@
+{
+  "workflow_id": "8e9d9519",
+  "prompt": "Generate Issavi city",
+  "status": "completed",
+  "tasks": {
+    "cf34016e": {
+      "task_id": "cf34016e",
+      "agent_id": "architect",
+      "status": "completed",
+      "created_at": "2026-06-07T06:46:48.692217",
+      "completed_at": "2026-06-07T06:46:48.694947",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "architect",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0015726089477539062
+        },
+        "artifacts": {},
+        "report": {
+          "summary": "WorldPlan(primary=issavi, cities=1)",
+          "prompt": "Generate Issavi city"
+        },
+        "timestamp": "2026-06-07T06:46:48.694916",
+        "recovery_used": false
+      }
+    },
+    "45494624": {
+      "task_id": "45494624",
+      "agent_id": "mapper",
+      "status": "completed",
+      "created_at": "2026-06-07T06:46:48.709135",
+      "completed_at": "2026-06-07T06:46:48.738778",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "mapper",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.028760433197021484
+        },
+        "artifacts": {},
+        "report": {
+          "tile_count": 2500,
+          "structure_count": 1
+        },
+        "timestamp": "2026-06-07T06:46:48.738331",
+        "recovery_used": false
+      }
+    },
+    "6f5c0be7": {
+      "task_id": "6f5c0be7",
+      "agent_id": "expansion",
+      "status": "failed",
+      "created_at": "2026-06-07T06:46:48.740783",
+      "completed_at": "2026-06-07T06:46:48.741888",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "expansion",
+        "success": false,
+        "error": "'list' object has no attribute 'items'",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0002949237823486328
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T06:46:48.741862",
+        "recovery_used": false
+      }
+    },
+    "c21533a4": {
+      "task_id": "c21533a4",
+      "agent_id": "quest",
+      "status": "completed",
+      "created_at": "2026-06-07T06:46:48.743529",
+      "completed_at": "2026-06-07T06:46:48.793240",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "quest",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.04891371726989746
+        },
+        "artifacts": {},
+        "report": {
+          "theme": "issavi",
+          "level_range": [
+            1,
+            200
+          ]
+        },
+        "timestamp": "2026-06-07T06:46:48.793214",
+        "recovery_used": false
+      }
+    },
+    "5aefef9d": {
+      "task_id": "5aefef9d",
+      "agent_id": "playtest",
+      "status": "failed",
+      "created_at": "2026-06-07T06:46:48.795001",
+      "completed_at": "2026-06-07T06:46:48.796205",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "playtest",
+        "success": false,
+        "error": "'list' object has no attribute 'items'",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0004322528839111328
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T06:46:48.796177",
+        "recovery_used": false
+      }
+    },
+    "d20d315f": {
+      "task_id": "d20d315f",
+      "agent_id": "balance",
+      "status": "failed",
+      "created_at": "2026-06-07T06:46:48.799399",
+      "completed_at": "2026-06-07T06:46:48.800825",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "balance",
+        "success": false,
+        "error": "'list' object has no attribute 'items'",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0004646778106689453
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T06:46:48.800793",
+        "recovery_used": false
+      }
+    },
+    "3e40759f": {
+      "task_id": "3e40759f",
+      "agent_id": "qa",
+      "status": "completed",
+      "created_at": "2026-06-07T06:46:48.803242",
+      "completed_at": "2026-06-07T06:46:48.809040",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "qa",
+        "success": true,
+        "error": null,
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0046045780181884766
+        },
+        "artifacts": {},
+        "report": {
+          "overall_score": 0.5,
+          "valid": false
+        },
+        "timestamp": "2026-06-07T06:46:48.809008",
+        "recovery_used": false
+      }
+    },
+    "0d184d7b": {
+      "task_id": "0d184d7b",
+      "agent_id": "export",
+      "status": "failed",
+      "created_at": "2026-06-07T06:46:48.810870",
+      "completed_at": "2026-06-07T06:46:48.812615",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "export",
+        "success": false,
+        "error": "'list' object has no attribute 'items'",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 0.0008192062377929688
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T06:46:48.812591",
+        "recovery_used": false
+      }
+    }
+  },
+  "current_agent": "export",
+  "errors": [
+    "Agent 'expansion' failed: 'list' object has no attribute 'items'",
+    "Agent 'playtest' failed: 'list' object has no attribute 'items'",
+    "Agent 'balance' failed: 'list' object has no attribute 'items'",
+    "Agent 'export' failed: 'list' object has no attribute 'items'"
+  ],
+  "started_at": "2026-06-07T06:46:48.690199",
+  "completed_at": "2026-06-07T06:46:48.815809",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

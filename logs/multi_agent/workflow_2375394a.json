@@ -1,0 +1,206 @@
+{
+  "workflow_id": "2375394a",
+  "prompt": "Test all fail",
+  "status": "completed",
+  "tasks": {
+    "ab03e4eb": {
+      "task_id": "ab03e4eb",
+      "agent_id": "architect",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.862968",
+      "completed_at": "2026-06-07T05:56:56.864144",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "architect",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 7.414817810058594e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.864117",
+        "recovery_used": false
+      }
+    },
+    "3558c8e6": {
+      "task_id": "3558c8e6",
+      "agent_id": "mapper",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.872130",
+      "completed_at": "2026-06-07T05:56:56.873191",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "mapper",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 6.604194641113281e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.873165",
+        "recovery_used": false
+      }
+    },
+    "e2146aba": {
+      "task_id": "e2146aba",
+      "agent_id": "expansion",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.875145",
+      "completed_at": "2026-06-07T05:56:56.876083",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "expansion",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 6.008148193359375e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.876059",
+        "recovery_used": false
+      }
+    },
+    "e08c3157": {
+      "task_id": "e08c3157",
+      "agent_id": "quest",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.877826",
+      "completed_at": "2026-06-07T05:56:56.878726",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "quest",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 5.602836608886719e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.878703",
+        "recovery_used": false
+      }
+    },
+    "39e7d28b": {
+      "task_id": "39e7d28b",
+      "agent_id": "playtest",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.880417",
+      "completed_at": "2026-06-07T05:56:56.881264",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "playtest",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 5.817413330078125e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.881242",
+        "recovery_used": false
+      }
+    },
+    "02f720c0": {
+      "task_id": "02f720c0",
+      "agent_id": "balance",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.883295",
+      "completed_at": "2026-06-07T05:56:56.884259",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "balance",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 6.103515625e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.884233",
+        "recovery_used": false
+      }
+    },
+    "6f4cd91f": {
+      "task_id": "6f4cd91f",
+      "agent_id": "qa",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.889467",
+      "completed_at": "2026-06-07T05:56:56.890680",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "qa",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 7.128715515136719e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.890653",
+        "recovery_used": false
+      }
+    },
+    "f6d5d30f": {
+      "task_id": "f6d5d30f",
+      "agent_id": "export",
+      "status": "failed",
+      "created_at": "2026-06-07T05:56:56.892881",
+      "completed_at": "2026-06-07T05:56:56.893874",
+      "depends_on": [],
+      "priority": 0,
+      "response": {
+        "agent_id": "export",
+        "success": false,
+        "error": "export failed",
+        "warnings": [],
+        "metrics": {
+          "execution_time": 6.604194641113281e-05
+        },
+        "artifacts": {},
+        "report": {},
+        "timestamp": "2026-06-07T05:56:56.893846",
+        "recovery_used": false
+      }
+    }
+  },
+  "current_agent": "export",
+  "errors": [
+    "Agent 'architect' failed: export failed",
+    "Agent 'mapper' failed: export failed",
+    "Agent 'expansion' failed: export failed",
+    "Agent 'quest' failed: export failed",
+    "Agent 'playtest' failed: export failed",
+    "Agent 'balance' failed: export failed",
+    "Agent 'qa' failed: export failed",
+    "Agent 'export' failed: export failed"
+  ],
+  "started_at": "2026-06-07T05:56:56.861459",
+  "completed_at": "2026-06-07T05:56:56.895956",
+  "pipeline_order": [
+    "architect",
+    "mapper",
+    "expansion",
+    "quest",
+    "playtest",
+    "balance",
+    "qa",
+    "export"
+  ]
+}

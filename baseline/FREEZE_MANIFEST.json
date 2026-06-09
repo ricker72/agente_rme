@@ -1,0 +1,43 @@
+{
+  "release": "v1.0.0-ga",
+  "status": "FROZEN",
+  "branch": "release/v1.0.0-ga",
+  "freeze_date": "2026-06-09",
+  "policy": "no_new_features, no_new_engines, no_arch_changes, hotfixes_only",
+  "artifacts": {
+    "generated.otbm": "baseline/golden_otbm/generated.otbm",
+    "generated.lua": "baseline/golden_lua/generated.lua",
+    "campaign.json": "baseline/golden_reports/campaign.json",
+    "knowledge_dataset.json": "baseline/golden_reports/knowledge_dataset.json",
+    "knowledge_catalog.json": "baseline/golden_reports/knowledge_catalog.json",
+    "knowledge_metrics.json": "baseline/golden_reports/knowledge_metrics.json",
+    "critic_report.json": "baseline/golden_reports/critic_report.json",
+    "autonomous_metrics.json": "baseline/golden_reports/autonomous_metrics.json",
+    "GA_CERTIFICATION.json": "baseline/golden_reports/GA_CERTIFICATION.json",
+    "GA_METRICS.json": "baseline/golden_reports/GA_METRICS.json",
+    "GA_REPORT.md": "baseline/golden_reports/GA_REPORT.md",
+    "GA_RELEASE_NOTES.md": "baseline/golden_reports/GA_RELEASE_NOTES.md"
+  },
+  "golden_maps": [
+    "Issavi",
+    "Roshamuul",
+    "Soul War",
+    "Falcon",
+    "Library",
+    "Ferumbras"
+  ],
+  "semver_policy": {
+    "v1.0.0-ga": "GA",
+    "v1.0.x": "Hotfix",
+    "v1.1.0": "Minor",
+    "v2.0.0": "Major"
+  },
+  "quality_gates_required_100_pass": [
+    "pytest",
+    "coverage",
+    "health",
+    "benchmark",
+    "otbm roundtrip"
+  ],
+  "regression_objective": "future_versions_must_match_or_improve_baseline"
+}

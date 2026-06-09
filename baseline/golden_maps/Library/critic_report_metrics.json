@@ -1,0 +1,18 @@
+{
+  "map_name": "library_200",
+  "overall_score": 69.53995779569429,
+  "visual_score": 80.22664141414141,
+  "navigation_score": 85.0,
+  "density_score": 77.35260825997314,
+  "spawn_score": 44.0,
+  "hunt_score": 50.0,
+  "boss_score": 60.0,
+  "city_score": 60.0,
+  "decor_score": 98.575,
+  "pathfinding_score": 83.75,
+  "issue_count": 9,
+  "recommendation_count": 6,
+  "critical_issues": 0,
+  "generated_at": "2026-06-08T15:14:21.827241",
+  "version": "1.0"
+}

@@ -1,0 +1,1 @@
+"""Campaign tests package."""

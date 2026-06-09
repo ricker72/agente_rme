@@ -1,0 +1,44 @@
+{
+  "name": "issavi_hunting_grounds",
+  "category": "hunt",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [30, 25],
+  "description": "Zona de caza Issavi con terreno mixto, múltiples spawns y distribución balanceada",
+  "layout": {
+    "type": "open_field",
+    "terrain": "mixed",
+    "entrance": "west",
+    "entrance_position": [1, 12]
+  },
+  "zones": [
+    {"name": "central_clearing", "position": [8, 8], "size": [14, 10], "type": "main_hunt"},
+    {"name": "eastern_thicket", "position": [22, 3], "size": [8, 18], "type": "secondary_hunt"},
+    {"name": "northern_cave", "position": [10, 0], "size": [10, 6], "type": "cave_hunt"},
+    {"name": "southern_shore", "position": [8, 20], "size": [14, 4], "type": "shore"}
+  ],
+  "spawns": [
+    {"monster": "Frazzlemaw", "position": [14, 12], "radius": 6, "count": 3},
+    {"monster": "Sphinx", "position": [26, 6], "radius": 4, "count": 2},
+    {"monster": "Cloak Of Terror", "position": [14, 3], "radius": 5, "count": 2},
+    {"monster": "Frazzlemaw", "position": [10, 20], "radius": 5, "count": 2},
+    {"monster": "Sphinx", "position": [26, 18], "radius": 4, "count": 2}
+  ],
+  "features": [
+    {"type": "campfire", "position": [14, 17], "item_id": 2064},
+    {"type": "supply_crate", "position": [3, 12], "item_id": 1738},
+    {"type": "bush_cover", "position": [24, 10], "item_id": 2705}
+  ],
+  "grounds": [415, 393, 421, 103, 102],
+  "walls_items": [1495, 398],
+  "decorations": [1304, 2705, 2104, 1499, 2050],
+  "metadata": {
+    "style": "issavi",
+    "monster_count": 5,
+    "monster_types": ["Frazzlemaw", "Sphinx", "Cloak Of Terror"],
+    "era": "modern",
+    "difficulty": "hard",
+    "recommended_level": "250+",
+    "tags": ["hunt", "issavi", "open_field", "cave", "high_level"]
+  }
+}

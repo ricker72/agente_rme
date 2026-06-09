@@ -1,0 +1,19 @@
+{
+  "tiles": 2500,
+  "items": 2574,
+  "spawns": 108,
+  "houses": 0,
+  "waypoints": 1,
+  "otbm_bytes": 25442,
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "status": "success",
+  "files": {
+    "otbm": "output\\test_hunt.otbm",
+    "monster_xml": "output\\test_hunt.monster.xml",
+    "waypoints_xml": "output\\test_hunt.waypoints.xml"
+  }
+}
