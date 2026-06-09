@@ -1,7 +1,9 @@
 from typing import Dict, List
 
+from .district_generator import District
 
-def generate_depot_layout(district: "District", theme: Dict[str, list]) -> List[Dict[str, object]]:
+
+def generate_depot_layout(district: District, theme: Dict[str, list]) -> List[Dict[str, object]]:
     floor = theme.get("floors", [416])[0]
     decoration = theme.get("decorations", [2150])[0]
 

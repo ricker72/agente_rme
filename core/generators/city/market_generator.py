@@ -1,7 +1,9 @@
 from typing import Dict, List
 
+from .district_generator import District
 
-def generate_market_layout(district: "District", theme: Dict[str, list]) -> List[Dict[str, object]]:
+
+def generate_market_layout(district: District, theme: Dict[str, list]) -> List[Dict[str, object]]:
     road = theme.get("roads", [415])[0]
     stall = theme.get("decorations", [2151])[0]
 

@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 from typing import List
 
 from .room_generator import Room
 
 
 class BossGenerator:
-    def place_boss_room(self, floor: "Floor", theme: dict) -> List[Room]:
+    def place_boss_room(self, floor, theme: dict) -> List[Room]:
         if not floor.rooms:
             return []
         boss_room = floor.rooms[-1]

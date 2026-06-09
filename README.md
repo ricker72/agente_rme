@@ -1,132 +1,179 @@
+<div align="center">
+
+![RME Agent AI Banner](assets/images/rme_agent_ai_banner.png)
+
 # Agente RME v1.0.0 GA
 
-> **Status:** GENERAL AVAILABILITY — PRODUCTION READY — SUPPORTED RELEASE
+**AI que genera mapas reales de Tibia**  
+**100% Contenido Oficial de OpenTibia**
 
-Agente RME is an AI-powered Tibia map generator for **RME** (Remere's Map Editor) and **OpenTibiaBR** servers. It produces `.otbm` binary maps, `.lua` spawn scripts, and accompanying XML metadata, all driven by natural-language prompts and a knowledge base harvested from real hunts, cities, and boss rooms.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Activo-brightgreen?style=for-the-badge)
+![OTBM](https://img.shields.io/badge/OTBM-v4-orange?style=for-the-badge)
 
-This release is the **General Availability** build: hardened, installable in under five minutes, observable, recoverable, and supported.
+**Compatible con:** RME · OTBM · Canary · TFS · OTClient
 
 ---
 
-## Quick Start
+## 📋 Descripción General
 
-```bash
-# 1. Install (Linux / macOS)
-./installer/install_linux.sh
-# or macOS:
-./installer/install_macos.sh
-# or Windows (PowerShell):
-powershell -ExecutionPolicy Bypass -File installer/install_windows.ps1
+**RME Agent AI** es un generador de mapas para **OpenTibia** impulsado por **inteligencia artificial local** (Ollama + RAG).
 
-# 2. Run a health check
-python rme.py health
+El sistema toma una **descripción en lenguaje natural** del mapa deseado y genera automáticamente:
 
-# 3. Generate a world
-python rme.py generate "Issavi hunt level 300"
+- Scripts **Lua** compatibles con **Remere's Map Editor (RME)**
+- Archivos binarios **OTBM** listos para servidores
+- Spawns y NPCs en formato XML
+- Previews (ASCII + PNG)
 
-# 4. Run a production benchmark
-python ga_benchmark.py --count 500
+Todo el contenido es **100% oficial** de OpenTibia (extraído directamente de `items.xml`, `monster.xml` y `npc.xml`).
+
+> *"La IA diseña. RME construye. Tu servidor cobra vida."*
+
+---
+
+## ✨ Características Principales
+
+### Generación de Mapas
+- 🏰 **Ciudades** completas (calles, edificios, templos, NPCs)
+- 🗡️ **Mazmorras** (salas, pasillos, jefes, trampas)
+- 🌲 **Zonas de hunt** con spawns progresivos y balanceados
+- 🏝️ **Islas** y terrenos naturales
+- 🔄 **Mapas híbridos** (ciudad + mazmorra)
+
+### Inteligencia Artificial
+- 🧠 **AIPlanner**: Convierte texto en planes de construcción detallados
+- 📐 **WorldBrain**: Sistema de razonamiento con objetivos y restricciones
+- 🔍 **RAG embebido**: Recuperación semántica de items, monstruos y NPCs
+- 🧬 **PatternLibrary**: Aprendizaje de patrones arquitectónicos reales
+
+### Exportación Profesional
+- 📄 **Scripts Lua** para RME (Tools > Run Script)
+- 💾 **Archivos OTBM v4** (formato binario oficial)
+- 📋 **XML** de spawns y NPCs
+- 🗺️ **Zonas y waypoints**
+- 📸 **Previews** (ASCII, minimapa PNG y JSON)
+
+---
+
+## 🛠️ Stack Tecnológico
+
+| Componente              | Tecnología                          |
+|------------------------|-------------------------------------|
+| Lenguaje               | Python 3.10+                        |
+| GUI                    | CustomTkinter (tema oscuro industrial) |
+| IA Local               | Ollama (qwen3, llama3, mistral, etc.) |
+| RAG                    | sentence-transformers + NumPy       |
+| Parsing                | lxml                                |
+| Imágenes               | Pillow                              |
+| Mapas                  | OTBM v4 (escritor binario propio)  |
+| Configuración          | PyYAML + JSON                       |
+
+---
+
+## 📦 Requisitos Previos
+
+- **Python 3.10** o superior (3.12+ recomendado)
+- **Ollama** instalado y ejecutándose con al menos un modelo
+- **Remere's Map Editor (RME)**
+- Archivos del servidor OpenTibia:
+  - `items.xml`
+  - `data/monster/` o `monster.xml`
+  - `data/npc/` o `npc.xml`
+
+## Uso y Requisitos
+
+1. **Instalación**  
+   - Linux/macOS: `./installer/install_linux.sh` o `./installer/install_macos.sh`.  
+   - Windows: `powershell -ExecutionPolicy Bypass -File installer/install_windows.ps1`.
+
+2. **Ejecución**  
+   - Generar un mundo: `python rme.py generate "Prompt descriptivo"`.  
+   - Verificar salud: `python rme.py health`.
+
+3. **Documentación**  
+   - Flujos de trabajo comunes: [USER_GUIDE.md](USER_GUIDE.md).  
+   - Extensión del agente: [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md).
+
+## Versión Actual
+
+- **v1.0.0 GA**: Lanzamiento general con estabilidad, soporte y optimizaciones.
+
+### Flujo básico
+1. Describe tu mapa en lenguaje natural
+2. La IA genera el plan y construye el mundo
+3. Exporta el `.otbm` y el script `.lua`
+4. Abre el script en RME o carga el OTBM directamente en tu servidor
+
+---
+
+## 📁 Estructura de Salida
+
+```
+output/
+├── map.otbm              # Mapa binario para servidor
+├── map.lua               # Script para RME
+├── map.monster.xml       # Spawns
+├── map.npc.xml           # NPCs
+├── map.zones.xml         # Waypoints y zonas
+├── preview.png           # Vista previa
+├── preview_minimap.png   # Minimapa
+└── preview_ascii.txt     # Representación textual
 ```
 
 ---
 
-## CLI Reference (v1.0.0 GA)
+## 🏗️ Arquitectura
 
-| Command | Description |
-|---|---|
-| `rme generate <prompt>` | Generate a world from a natural-language prompt |
-| `rme analyze` | Analyze a generated world or OTBM file |
-| `rme critic` | Run the critic on a world and report score |
-| `rme knowledge {build,search,similar,stats}` | Manage the knowledge dataset |
-| `rme blueprint {build,similar,cluster,evolve,fuse,recommend,rank,generate}` | Blueprint intelligence |
-| `rme autonomous {generate,optimize,benchmark,report}` | Autonomous world designer |
-| `rme health` | Run system health checks → `health_report.json` |
-| `rme metrics` | Export runtime metrics → `metrics.json` |
-| `rme diagnose` | Run diagnostics → `diagnostics.json` |
-| `rme benchmark --count N` | Production benchmark → `ga_benchmark.json` |
-
-### Global flags
-
-- `--verbose` — enable DEBUG logging
-- `--json` — emit machine-readable JSON
-- `--profile {default,development,production}` — configuration profile
-
-### Examples
-
-```bash
-# Health check, JSON output, production profile
-python rme.py --profile production --json health
-
-# Generate and analyze
-python rme.py generate "Roshamuul raid 400"
-python rme.py analyze
-
-# Benchmark with 200 worlds
-python rme.py benchmark --count 200 --output benchmark_200.json
-
-# Run a full production GA benchmark
-python ga_benchmark.py --count 500 --output ga_benchmark.json
-```
+- **AIMapStudio**: Orquestador principal
+- **AIPlanner**: Planificación inteligente
+- **WorldBrain**: Motor de razonamiento
+- **WorldModel + WorldEngine**: Núcleo del mundo (Tiles, Chunks, Regions)
+- **KnowledgeGraph + RAG**: Base de conocimiento del juego
+- **OTBMWriter**: Escritor binario completo del formato OTBM v4
 
 ---
 
-## Documentation
+## 🗺️ Mapas de Referencia Soportados
 
-- [INSTALL.md](INSTALL.md) — installation, dependencies, troubleshooting
-- [USER_GUIDE.md](USER_GUIDE.md) — common workflows, examples
-- [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md) — extending the agent
-- [ARCHITECTURE.md](ARCHITECTURE.md) — system architecture
-- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — common issues
-- [CHANGELOG.md](CHANGELOG.md) — release history
-- [GA_REPORT.md](GA_REPORT.md) — GA certification report
-- [GA_RELEASE_NOTES.md](GA_RELEASE_NOTES.md) — GA release notes
+El sistema puede generar mapas inspirados en zonas oficiales como:
+- **Issavi**, **Marapur**, **Feyrist**, **Gnomprona**, **Roshamuul**, **Falcon Bastion**, etc.
+
 
 ---
 
-## What's in v1.0.0 GA
+## 🤝 Cómo Contribuir
 
-- ✅ Hardened release (warnings, dead code, legacy imports removed)
-- ✅ Cross-platform installer (Windows / Linux / macOS)
-- ✅ Configuration management with hot-reload (`ConfigManager`)
-- ✅ Observability layer (logger, metrics, health, diagnostics)
-- ✅ Health-check system (`rme health`) → `health_report.json`
-- ✅ Crash recovery (checkpointing, atomic exports, rollback) → `recovery_report.json`
-- ✅ Production benchmark (500 worlds) → `ga_benchmark.json`
-- ✅ CLI production mode (`--verbose`, `--json`, `--profile`)
-- ✅ Documentation suite
-- ✅ 99%+ benchmark success rate achieved (currently 100%)
+Las contribuciones son bienvenidas:
+
+1. Haz fork del repositorio
+2. Crea una rama (`feature/nueva-funcionalidad`)
+3. Realiza tus cambios y tests
+4. Abre un Pull Request
+
+**Estándares:**
+- Type hints
+- Black (line-length=100)
+- flake8 + mypy
+- Tests con pytest (cobertura > 80%)
+
+---
+<div align="center">
+**La IA diseña. RME construye. Tu servidor cobra vida.**
+</div>
 
 ---
 
-## Project layout
-
-```
-agente_rme/
-├── installer/          # Cross-platform installers
-├── config/             # default.yaml, development.yaml, production.yaml
-├── core/
-│   ├── observability/  # logger.py, metrics.py, health.py, diagnostics.py
-│   ├── recovery.py     # checkpointing, safe exports, rollback
-│   ├── config_manager.py
-│   ├── generators/
-│   ├── exporters/
-│   ├── otbm/
-│   ├── knowledge/
-│   ├── critic/
-│   ├── blueprint_intelligence/
-│   ├── autonomous/
-│   └── ...
-├── tests/              # test_*.py
-├── docs/               # INSTALL.md, USER_GUIDE.md, ...
-├── rme.py              # v1.0.0 GA CLI entry point
-├── cli.py              # legacy CLI
-├── ga_benchmark.py     # production benchmark
-├── requirements.txt
-└── requirements-lock.txt
-```
+<div align="center">
+Generado con ❤️ por <strong>Ricker</strong> • Kruger Developers • Comunidad OpenTibia
+</div>
 
 ---
+<div align="center">
+## 📜 Licencia
 
-## License
+Este proyecto está licenciado bajo la **MIT License**.
 
-MIT — see [pyproject.toml](pyproject.toml).
+Copyright (c) 2026 Kruger Developers & Comunidad OpenTibia.</div>
+---

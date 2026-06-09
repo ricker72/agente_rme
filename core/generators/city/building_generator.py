@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Dict
 
+from .district_generator import District
+
 @dataclass
 class Building:
     name: str
@@ -12,7 +14,7 @@ class Building:
     style: str
 
 
-def generate_buildings(districts: List["District"], theme: Dict[str, list]) -> List[Building]:
+def generate_buildings(districts: List[District], theme: Dict[str, list]) -> List[Building]:
     buildings: List[Building] = []
     for district in districts:
         if district.type == "Residential":
@@ -50,7 +52,7 @@ def generate_buildings(districts: List["District"], theme: Dict[str, list]) -> L
     return buildings
 
 
-def _generate_residential_dwellings(district: "District", theme: Dict[str, list]) -> List[Building]:
+def _generate_residential_dwellings(district: District, theme: Dict[str, list]) -> List[Building]:
     houses: List[Building] = []
     left = district.x + 1
     top = district.y + 1

@@ -8,6 +8,7 @@ from core.architecture import ArchitectureGraph
 from core.knowledge.knowledge_base import KnowledgeGraph
 from core.otbm import OtbmWriter
 from .export_pipeline import ExportPipeline
+from core.architect.world_planner import WorldPlan
 
 
 @dataclass

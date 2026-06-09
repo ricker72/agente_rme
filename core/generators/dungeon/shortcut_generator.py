@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 from typing import List, Dict
 
 from .room_generator import Room
 
 
 class ShortcutGenerator:
-    def create_shortcuts(self, floor: "Floor") -> List[Dict[str, object]]:
+    def create_shortcuts(self, floor) -> List[Dict[str, object]]:
         shortcuts: List[Dict[str, object]] = []
         if floor.rooms:
             entrance = floor.rooms[0].center()

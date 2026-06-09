@@ -13,6 +13,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Tuple
 
+try:
+    from PIL import Image  # noqa: F401  (imported to resolve the "Image.Image" forward reference)
+    HAS_PIL = True
+except ImportError:
+    Image = None  # type: ignore[assignment,misc]
+    HAS_PIL = False
+
 from .preview_renderer import render_layer, compute_bounds, add_structure_overlay
 
 
@@ -102,6 +109,9 @@ def render_minimap(
     Returns:
         Imagen PIL, o None si no hay PIL.
     """
+    if not HAS_PIL:
+        return None
+
     tile_size = SCALES.get(scale, 8)
 
     img = render_layer(tiles, z=z, tile_size=tile_size, padding=1)
