@@ -8,15 +8,13 @@ then runs all analyzers to produce a comprehensive playtest report.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from ..world.world_model import WorldModel
-from ..world.spawn import Spawn
 from ..world.region import Region
 from ..world.structure import Structure
 
 from .combat_simulator import CombatSimulator, MonsterStats
-from .player_bot import Vocation
 from .pathfinder import Pathfinder
 from .loot_simulator import LootSimulator
 from .survival_analyzer import SurvivalAnalyzer
@@ -28,32 +26,188 @@ logger = logging.getLogger(__name__)
 
 # ── Default Monster Database (real Tibia stats) ──
 DEFAULT_MONSTERS: Dict[str, Dict[str, int]] = {
-    "Rat": {"health": 20, "attack": 5, "defense": 2, "magic_defense": 2, "experience": 5, "level": 1},
-    "Rotworm": {"health": 65, "attack": 15, "defense": 8, "magic_defense": 5, "experience": 40, "level": 8},
-    "Goblin": {"health": 80, "attack": 18, "defense": 10, "magic_defense": 8, "experience": 60, "level": 10},
-    "Orc": {"health": 115, "attack": 25, "defense": 15, "magic_defense": 10, "experience": 80, "level": 12},
-    "Orc Shaman": {"health": 170, "attack": 35, "defense": 18, "magic_defense": 40, "experience": 150, "level": 18},
-    "Minotaur": {"health": 200, "attack": 40, "defense": 25, "magic_defense": 15, "experience": 180, "level": 20},
-    "Skeleton": {"health": 250, "attack": 45, "defense": 30, "magic_defense": 20, "experience": 200, "level": 25},
-    "Vampire": {"health": 550, "attack": 70, "defense": 40, "magic_defense": 35, "experience": 525, "level": 40},
-    "Dragon": {"health": 1000, "attack": 100, "defense": 60, "magic_defense": 50, "experience": 700, "level": 50},
-    "Hydra": {"health": 2100, "attack": 150, "defense": 80, "magic_defense": 70, "experience": 1500, "level": 80},
-    "Demon": {"health": 5000, "attack": 300, "defense": 200, "magic_defense": 180, "experience": 3500, "level": 120},
-    "Grim Reaper": {"health": 8000, "attack": 450, "defense": 250, "magic_defense": 200, "experience": 6000, "level": 180},
-    "Behemoth": {"health": 12000, "attack": 550, "defense": 300, "magic_defense": 250, "experience": 10000, "level": 250},
-    "Dragon Lord": {"health": 15000, "attack": 650, "defense": 350, "magic_defense": 300, "experience": 12000, "level": 300},
-    "Werewolf": {"health": 3000, "attack": 180, "defense": 100, "magic_defense": 80, "experience": 2000, "level": 100},
-    "Lizard Guard": {"health": 1800, "attack": 130, "defense": 90, "magic_defense": 60, "experience": 1200, "level": 70},
-    "Lizard High Guard": {"health": 3500, "attack": 220, "defense": 150, "magic_defense": 100, "experience": 2800, "level": 110},
-    "Giant Spider": {"health": 4500, "attack": 280, "defense": 180, "magic_defense": 120, "experience": 3000, "level": 100},
-    "Diabolic Imp": {"health": 7000, "attack": 400, "defense": 220, "magic_defense": 190, "experience": 5500, "level": 160},
-    "Ancient Scarab": {"health": 6500, "attack": 380, "defense": 200, "magic_defense": 170, "experience": 5000, "level": 150},
+    "Rat": {
+        "health": 20,
+        "attack": 5,
+        "defense": 2,
+        "magic_defense": 2,
+        "experience": 5,
+        "level": 1,
+    },
+    "Rotworm": {
+        "health": 65,
+        "attack": 15,
+        "defense": 8,
+        "magic_defense": 5,
+        "experience": 40,
+        "level": 8,
+    },
+    "Goblin": {
+        "health": 80,
+        "attack": 18,
+        "defense": 10,
+        "magic_defense": 8,
+        "experience": 60,
+        "level": 10,
+    },
+    "Orc": {
+        "health": 115,
+        "attack": 25,
+        "defense": 15,
+        "magic_defense": 10,
+        "experience": 80,
+        "level": 12,
+    },
+    "Orc Shaman": {
+        "health": 170,
+        "attack": 35,
+        "defense": 18,
+        "magic_defense": 40,
+        "experience": 150,
+        "level": 18,
+    },
+    "Minotaur": {
+        "health": 200,
+        "attack": 40,
+        "defense": 25,
+        "magic_defense": 15,
+        "experience": 180,
+        "level": 20,
+    },
+    "Skeleton": {
+        "health": 250,
+        "attack": 45,
+        "defense": 30,
+        "magic_defense": 20,
+        "experience": 200,
+        "level": 25,
+    },
+    "Vampire": {
+        "health": 550,
+        "attack": 70,
+        "defense": 40,
+        "magic_defense": 35,
+        "experience": 525,
+        "level": 40,
+    },
+    "Dragon": {
+        "health": 1000,
+        "attack": 100,
+        "defense": 60,
+        "magic_defense": 50,
+        "experience": 700,
+        "level": 50,
+    },
+    "Hydra": {
+        "health": 2100,
+        "attack": 150,
+        "defense": 80,
+        "magic_defense": 70,
+        "experience": 1500,
+        "level": 80,
+    },
+    "Demon": {
+        "health": 5000,
+        "attack": 300,
+        "defense": 200,
+        "magic_defense": 180,
+        "experience": 3500,
+        "level": 120,
+    },
+    "Grim Reaper": {
+        "health": 8000,
+        "attack": 450,
+        "defense": 250,
+        "magic_defense": 200,
+        "experience": 6000,
+        "level": 180,
+    },
+    "Behemoth": {
+        "health": 12000,
+        "attack": 550,
+        "defense": 300,
+        "magic_defense": 250,
+        "experience": 10000,
+        "level": 250,
+    },
+    "Dragon Lord": {
+        "health": 15000,
+        "attack": 650,
+        "defense": 350,
+        "magic_defense": 300,
+        "experience": 12000,
+        "level": 300,
+    },
+    "Werewolf": {
+        "health": 3000,
+        "attack": 180,
+        "defense": 100,
+        "magic_defense": 80,
+        "experience": 2000,
+        "level": 100,
+    },
+    "Lizard Guard": {
+        "health": 1800,
+        "attack": 130,
+        "defense": 90,
+        "magic_defense": 60,
+        "experience": 1200,
+        "level": 70,
+    },
+    "Lizard High Guard": {
+        "health": 3500,
+        "attack": 220,
+        "defense": 150,
+        "magic_defense": 100,
+        "experience": 2800,
+        "level": 110,
+    },
+    "Giant Spider": {
+        "health": 4500,
+        "attack": 280,
+        "defense": 180,
+        "magic_defense": 120,
+        "experience": 3000,
+        "level": 100,
+    },
+    "Diabolic Imp": {
+        "health": 7000,
+        "attack": 400,
+        "defense": 220,
+        "magic_defense": 190,
+        "experience": 5500,
+        "level": 160,
+    },
+    "Ancient Scarab": {
+        "health": 6500,
+        "attack": 380,
+        "defense": 200,
+        "magic_defense": 170,
+        "experience": 5000,
+        "level": 150,
+    },
 }
 
 # ── Boss Templates ──
 DEFAULT_BOSSES: Dict[str, Dict[str, int]] = {
-    "Dragon Lord": {"health": 15000, "attack": 650, "defense": 350, "magic_defense": 300, "experience": 12000, "level": 300, "is_boss": True},
-    "Demon": {"health": 8000, "attack": 400, "defense": 250, "magic_defense": 200, "experience": 5000, "level": 200, "is_boss": True},
+    "Dragon Lord": {
+        "health": 15000,
+        "attack": 650,
+        "defense": 350,
+        "magic_defense": 300,
+        "experience": 12000,
+        "level": 300,
+        "is_boss": True,
+    },
+    "Demon": {
+        "health": 8000,
+        "attack": 400,
+        "defense": 250,
+        "magic_defense": 200,
+        "experience": 5000,
+        "level": 200,
+        "is_boss": True,
+    },
 }
 
 
@@ -106,7 +260,7 @@ class PlaytestEngine:
         # ── Step 1: Extract world data ──
         zones = self._extract_zones(world)
         spawns = self._extract_spawns(world)
-        structures = self._extract_structures(world)
+        self._extract_structures(world)
         total_spawns = len(spawns)
 
         # ── Step 2: Build monster pool ──
@@ -131,8 +285,12 @@ class PlaytestEngine:
         )
 
         # ── Step 4: Calculate metrics ──
-        avg_xp = sum(r.experience_per_hour for r in vocation_results.values()) / max(len(vocation_results), 1)
-        avg_loot = sum(r.experience_per_hour * 0.2 for r in vocation_results.values()) / max(len(vocation_results), 1)
+        avg_xp = sum(r.experience_per_hour for r in vocation_results.values()) / max(
+            len(vocation_results), 1
+        )
+        avg_loot = sum(
+            r.experience_per_hour * 0.2 for r in vocation_results.values()
+        ) / max(len(vocation_results), 1)
         total_deaths = sum(r.deaths for r in vocation_results.values())
 
         voc_results_dict = {}
@@ -166,7 +324,8 @@ class PlaytestEngine:
                 "monster_avg_level": int(avg_monster_level),
                 "has_boss": any(m.is_boss for m in monsters),
                 "has_healing": False,
-                "monster_xp": sum(m.experience for m in monsters) // max(len(monsters), 1),
+                "monster_xp": sum(m.experience for m in monsters)
+                // max(len(monsters), 1),
             }
 
         diff_report = self._difficulty.evaluate_world(difficulty_input, player_level)
@@ -290,7 +449,9 @@ class PlaytestEngine:
             speed=80,
         )
 
-    def _default_zone_monsters(self, player_level: int) -> Dict[str, List[MonsterStats]]:
+    def _default_zone_monsters(
+        self, player_level: int
+    ) -> Dict[str, List[MonsterStats]]:
         """Create default monster list based on player level."""
         # Select appropriate monsters for level range
         appropriate = []
@@ -313,9 +474,21 @@ class PlaytestEngine:
         all_monsters = []
         for monsters in zone.values():
             all_monsters.extend(monsters)
-        return all_monsters if all_monsters else [
-            MonsterStats(name="Rat", health=20, attack=5, defense=2, magic_defense=2, experience=5, speed=80)
-        ]
+        return (
+            all_monsters
+            if all_monsters
+            else [
+                MonsterStats(
+                    name="Rat",
+                    health=20,
+                    attack=5,
+                    defense=2,
+                    magic_defense=2,
+                    experience=5,
+                    speed=80,
+                )
+            ]
+        )
 
     def _find_entry_point(self, world: WorldModel) -> Optional[Tuple[int, int, int]]:
         """Find a walkable entry point in the world."""
@@ -327,7 +500,9 @@ class PlaytestEngine:
             return (tile.x, tile.y, tile.z)
         return None
 
-    def run_quick(self, world: WorldModel, level: Optional[int] = None) -> PlaytestReport:
+    def run_quick(
+        self, world: WorldModel, level: Optional[int] = None
+    ) -> PlaytestReport:
         """
         Quick playtest with reduced analysis.
 
@@ -355,7 +530,9 @@ class PlaytestEngine:
             rotation_minutes=max(self._rotation_minutes, 10.0),
         )
 
-        avg_xp = sum(r.experience_per_hour for r in vocation_results.values()) / max(len(vocation_results), 1)
+        avg_xp = sum(r.experience_per_hour for r in vocation_results.values()) / max(
+            len(vocation_results), 1
+        )
         avg_loot = avg_xp * 0.2
         total_deaths = sum(r.deaths for r in vocation_results.values())
 
@@ -377,7 +554,8 @@ class PlaytestEngine:
                 "monster_avg_level": int(avg_lvl),
                 "has_boss": any(m.is_boss for m in monsters),
                 "has_healing": False,
-                "monster_xp": sum(m.experience for m in monsters) // max(len(monsters), 1),
+                "monster_xp": sum(m.experience for m in monsters)
+                // max(len(monsters), 1),
             }
 
         diff_report = self._difficulty.evaluate_world(diff_input, player_level)

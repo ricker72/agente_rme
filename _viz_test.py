@@ -1,5 +1,6 @@
 """Smoke test: verify the three PNG visualisations are produced by
 running a real autonomous generation with matplotlib installed."""
+
 import os
 import sys
 
@@ -32,7 +33,11 @@ for f in files:
     print(f"  {f:45s} {size:>10d} bytes")
 
 # Verify the 3 PNGs exist
-expected_pngs = ["iteration_scores.png", "critic_progress.png", "optimization_curve.png"]
+expected_pngs = [
+    "iteration_scores.png",
+    "critic_progress.png",
+    "optimization_curve.png",
+]
 for png in expected_pngs:
     p = os.path.join(OUT, png)
     if os.path.exists(p) and os.path.getsize(p) > 0:
@@ -42,8 +47,12 @@ for png in expected_pngs:
         sys.exit(1)
 
 # Verify JSONs
-expected_jsons = ["autonomous_history.json", "autonomous_decisions.json",
-                  "autonomous_iterations.json", "autonomous_metrics.json"]
+expected_jsons = [
+    "autonomous_history.json",
+    "autonomous_decisions.json",
+    "autonomous_iterations.json",
+    "autonomous_metrics.json",
+]
 for js in expected_jsons:
     p = os.path.join(OUT, js)
     if os.path.exists(p) and os.path.getsize(p) > 0:

@@ -15,7 +15,6 @@ from .base_analyzer import (
     snapshots_by_zone,
     safe_ratio,
     clamp,
-    average,
 )
 
 logger = logging.getLogger(__name__)
@@ -28,16 +27,18 @@ class DecorAnalyzer:
 
     CATEGORY = "decor"
 
-    def __init__(self,
-                 variety_target: int = 8,
-                 max_repetition_ratio: float = 0.40):
+    def __init__(self, variety_target: int = 8, max_repetition_ratio: float = 0.40):
         self.variety_target = variety_target
         self.max_repetition_ratio = max_repetition_ratio
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snapshots = build_snapshots(world)
@@ -118,43 +119,53 @@ class DecorAnalyzer:
         recs: List = []
 
         if variety < self.variety_target // 2:
-            issues.append(CriticIssue(
-                issue_type=IssueType.UNDERDECORATED_AREA,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Only {variety} unique decoration types — map looks repetitive",
-            ))
-            recs.append(CriticRecommendation(
-                title="Increase decoration variety",
-                description=f"Map uses only {variety} unique items. Add more decoration variety.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.UNDERDECORATED_AREA,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Only {variety} unique decoration types — map looks repetitive",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Increase decoration variety",
+                    description=f"Map uses only {variety} unique items. Add more decoration variety.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         if repetition_ratio > self.max_repetition_ratio:
-            issues.append(CriticIssue(
-                issue_type=IssueType.OVERDECORATED_AREA,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Item {most_common_id} represents {repetition_ratio*100:.0f}% of decorations",
-                details={"item_id": most_common_id, "count": most_common_count},
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.OVERDECORATED_AREA,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Item {most_common_id} represents {repetition_ratio * 100:.0f}% of decorations",
+                    details={"item_id": most_common_id, "count": most_common_count},
+                )
+            )
 
         for zname in empty_zones[:3]:
-            issues.append(CriticIssue(
-                issue_type=IssueType.UNDERDECORATED_AREA,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                location=zname,
-                message=f"Zone '{zname}' is almost empty of decoration",
-            ))
-            recs.append(CriticRecommendation(
-                title=f"Add decoration to {zname}",
-                description=f"Zone '{zname}' has very few decorations. Add furniture, props, or natural elements.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-                target_location=zname,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.UNDERDECORATED_AREA,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    location=zname,
+                    message=f"Zone '{zname}' is almost empty of decoration",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title=f"Add decoration to {zname}",
+                    description=f"Zone '{zname}' has very few decorations. Add furniture, props, or natural elements.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                    target_location=zname,
+                )
+            )
 
         return {
             "category": self.CATEGORY,

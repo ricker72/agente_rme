@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 import xml.etree.ElementTree as ET
 
 
@@ -45,15 +45,42 @@ class AssetRegistry:
             if name:
                 self._items_by_name[name] = item_id
             # Classify
-            if any(kw in name for kw in ["floor", "ground", "grass", "stone", "sand",
-                                           "marble", "crystal", "ice", "snow", "lava",
-                                           "water", "cave", "mountain"]):
+            if any(
+                kw in name
+                for kw in [
+                    "floor",
+                    "ground",
+                    "grass",
+                    "stone",
+                    "sand",
+                    "marble",
+                    "crystal",
+                    "ice",
+                    "snow",
+                    "lava",
+                    "water",
+                    "cave",
+                    "mountain",
+                ]
+            ):
                 self._grounds.append(item_id)
             elif any(kw in name for kw in ["wall", "border", "fence"]):
                 self._walls.append(item_id)
-            elif any(kw in name for kw in ["torch", "lamp", "statue", "flower",
-                                             "blood", "bones", "skull", "rubble",
-                                             "glow", "crystal"]):
+            elif any(
+                kw in name
+                for kw in [
+                    "torch",
+                    "lamp",
+                    "statue",
+                    "flower",
+                    "blood",
+                    "bones",
+                    "skull",
+                    "rubble",
+                    "glow",
+                    "crystal",
+                ]
+            ):
                 self._decorations.append(item_id)
         return len(self._items)
 

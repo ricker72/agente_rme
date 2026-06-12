@@ -1,0 +1,35 @@
+{
+  "abnormal_memory_growth": false,
+  "after_navigation": {
+    "status": "PASS",
+    "traced_current_bytes": 1576296,
+    "traced_peak_bytes": 1872209,
+    "widget_count": 468
+  },
+  "cycles": 50,
+  "object_accumulation_detected": false,
+  "repeated_page_switching": {
+    "growth_bytes": -98,
+    "traced_current_after_bytes": 1755249,
+    "traced_current_before_bytes": 1755347,
+    "traced_peak_bytes": 1872209,
+    "widget_count_after": 993,
+    "widget_count_before": 993,
+    "widget_growth": 0
+  },
+  "repeated_service_calls": {
+    "calls_per_service": 50,
+    "traced_current_bytes": 1781962,
+    "traced_peak_bytes": 1872209
+  },
+  "shutdown": {
+    "traced_current_bytes": 1782026,
+    "traced_peak_bytes": 1872209
+  },
+  "startup": {
+    "traced_current_bytes": 0,
+    "traced_peak_bytes": 0,
+    "widget_count": 468
+  },
+  "status": "PASS"
+}

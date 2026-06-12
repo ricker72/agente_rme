@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 
 from core.campaign.npc_generator import NPCGenerator, NPC
 
@@ -65,8 +64,7 @@ class TestNPCGeneratorBoss:
 
 class TestNPCData:
     def test_npc_to_dict(self):
-        npc = NPC(name="Test", role="merchant", faction="TestFaction",
-                  combat_level=50)
+        npc = NPC(name="Test", role="merchant", faction="TestFaction", combat_level=50)
         d = npc.to_dict()
         assert d["name"] == "Test"
         assert d["role"] == "merchant"

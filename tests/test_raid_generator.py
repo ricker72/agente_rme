@@ -126,45 +126,31 @@ class TestRaidGenerator:
 
     def test_normal_difficulty(self, generator):
         """Normal difficulty should produce valid package."""
-        pkg = generator.generate(
-            level_range=(100, 200), difficulty="normal"
-        )
+        pkg = generator.generate(level_range=(100, 200), difficulty="normal")
         assert pkg.is_valid()
         assert pkg.metadata["difficulty"] == "normal"
 
     def test_hard_difficulty_more_gold(self, generator):
         """Hard difficulty should give more gold than normal."""
-        normal = generator.generate(
-            level_range=(100, 200), difficulty="normal"
-        )
-        hard = generator.generate(
-            level_range=(100, 200), difficulty="hard"
-        )
+        normal = generator.generate(level_range=(100, 200), difficulty="normal")
+        hard = generator.generate(level_range=(100, 200), difficulty="hard")
         assert hard.rewards["gold"] >= normal.rewards["gold"]
 
     def test_epic_difficulty_more_items(self, generator):
         """Epic difficulty should give more items."""
-        normal = generator.generate(
-            level_range=(100, 200), difficulty="normal"
-        )
-        epic = generator.generate(
-            level_range=(100, 200), difficulty="epic"
-        )
+        normal = generator.generate(level_range=(100, 200), difficulty="normal")
+        epic = generator.generate(level_range=(100, 200), difficulty="epic")
         assert len(epic.rewards["items"]) >= len(normal.rewards["items"])
 
     def test_epic_has_enrage_objective(self, generator):
         """Epic difficulty should include enrage phase objective."""
-        pkg = generator.generate(
-            level_range=(100, 200), difficulty="epic"
-        )
+        pkg = generator.generate(level_range=(100, 200), difficulty="epic")
         text = " ".join(pkg.objectives).lower()
         assert "enrage" in text
 
     def test_hard_has_elite_objective(self, generator):
         """Hard difficulty should include elite guard objective."""
-        pkg = generator.generate(
-            level_range=(100, 200), difficulty="hard"
-        )
+        pkg = generator.generate(level_range=(100, 200), difficulty="hard")
         text = " ".join(pkg.objectives).lower()
         assert "elite" in text
 
@@ -196,12 +182,8 @@ class TestRaidGenerator:
     def test_all_difficulties_valid(self, generator):
         """All difficulty levels should produce valid packages."""
         for diff in ("normal", "hard", "epic"):
-            pkg = generator.generate(
-                level_range=(100, 200), difficulty=diff
-            )
-            assert pkg.is_valid(), (
-                f"Difficulty '{diff}' failed: {pkg.validate()}"
-            )
+            pkg = generator.generate(level_range=(100, 200), difficulty=diff)
+            assert pkg.is_valid(), f"Difficulty '{diff}' failed: {pkg.validate()}"
 
     # ------------------------------------------------------------------
     # Determinism

@@ -113,5 +113,335 @@
       0.66492032064305
     ],
     "timestamp": "2026-06-08T23:39:01.370523"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "a60d0a33-bded-4b8e-8a55-cc3a2c59bbdd",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:01:50.142441"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "a60d0a33-bded-4b8e-8a55-cc3a2c59bbdd",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:01:50.142441"
+  },
+  {
+    "prompt": "Test world 2 | level 150-200 | hunts 2 bosses 1",
+    "result_id": "142c6672-a6e5-46f9-be63-d8087019225b",
+    "success": false,
+    "final_scores": {
+      "critic": 0.66492032064305,
+      "playtest": 0.3,
+      "navigation": 0.63,
+      "density": 0.5880145770338088,
+      "reuse": 0.66
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6623162778770371,
+      0.663573097296483,
+      0.66492032064305
+    ],
+    "timestamp": "2026-06-09T03:02:12.536622"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "a60d0a33-bded-4b8e-8a55-cc3a2c59bbdd",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:01:50.142441"
+  },
+  {
+    "prompt": "Test world 2 | level 150-200 | hunts 2 bosses 1",
+    "result_id": "142c6672-a6e5-46f9-be63-d8087019225b",
+    "success": false,
+    "final_scores": {
+      "critic": 0.66492032064305,
+      "playtest": 0.3,
+      "navigation": 0.63,
+      "density": 0.5880145770338088,
+      "reuse": 0.66
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6623162778770371,
+      0.663573097296483,
+      0.66492032064305
+    ],
+    "timestamp": "2026-06-09T03:02:12.536622"
+  },
+  {
+    "prompt": "Test world 3 | level 200-250 | hunts 3 bosses 0",
+    "result_id": "a30f18ed-cbd0-4483-80a6-6dc09d0af293",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6600801424823725,
+      "playtest": 0.3,
+      "navigation": 0.6,
+      "density": 0.5794560839857007,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6593153592085731,
+      0.6621435209316706,
+      0.6600801424823725
+    ],
+    "timestamp": "2026-06-09T03:02:34.468907"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "c6f5dc6b-f7a8-4c1e-b957-9df4b2efc121",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:10:43.884696"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "80ddd8cc-26c6-405f-8f6f-d014df0c9b61",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:15:38.051573"
+  },
+  {
+    "prompt": "Issavi hunt level 200",
+    "result_id": "5aacdb95-3b1a-41cc-aee3-aa5428edf049",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-09T03:16:02.812105"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "dafa0b24-6e43-40df-9571-3d29847b3f4e",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:20:12.250175"
+  },
+  {
+    "prompt": "Issavi hunt level 200",
+    "result_id": "9385154b-32c0-4dc4-ac3e-4efdd03ed71c",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-09T03:20:37.325568"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "fd180204-2bce-4184-9afd-24bb190e3974",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:22:56.465843"
+  },
+  {
+    "prompt": "Issavi hunt level 200",
+    "result_id": "219a9dfc-8a18-4b0e-9043-0a836aab2718",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-09T03:23:39.405262"
+  },
+  {
+    "prompt": "Issavi hunt level 200",
+    "result_id": "a00d4687-12cd-40f6-9a02-d206deda0df7",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-09T03:26:15.760459"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "073e6e4d-f0fa-4a43-a5be-b3227c7f0063",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:27:48.276546"
+  },
+  {
+    "prompt": "Issavi hunt level 200",
+    "result_id": "cdc7d99e-dbcc-4afc-8b43-5e0988426632",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-09T03:28:05.207012"
+  },
+  {
+    "prompt": "Test world 1 | level 100-150 | hunts 1 bosses 0",
+    "result_id": "56ca8b81-cfe0-4ff2-bef7-b2347ef70cdd",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6673494249179158,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.6003233926702883,
+      "reuse": 0.7
+    },
+    "total_iterations": 3,
+    "convergence_data": [
+      0.6649745423859815,
+      0.6661992442202301,
+      0.6673494249179158
+    ],
+    "timestamp": "2026-06-09T03:29:57.325466"
+  },
+  {
+    "prompt": "Issavi hunt level 200",
+    "result_id": "eeccd40a-59f9-4c45-a2a1-0b15b9ddb88c",
+    "success": false,
+    "final_scores": {
+      "critic": 0.6649745423859815,
+      "playtest": 0.3,
+      "navigation": 0.66,
+      "density": 0.5953702655828055,
+      "reuse": 0.7
+    },
+    "total_iterations": 1,
+    "convergence_data": [
+      0.6649745423859815
+    ],
+    "timestamp": "2026-06-09T03:30:18.220121"
   }
 ]

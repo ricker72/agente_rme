@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Dict, Optional
 
 from core.otbm import OtbmSerializer, OtbmValidator
 from core.versioning.version import __version__
@@ -22,8 +22,9 @@ class ReleaseBuilder:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def build(self, world_model, name: str = "map",
-              lua_script: Optional[str] = None) -> Dict[str, str]:
+    def build(
+        self, world_model, name: str = "map", lua_script: Optional[str] = None
+    ) -> Dict[str, str]:
         """
         Build all release artifacts for a WorldModel.
 
@@ -55,7 +56,9 @@ class ReleaseBuilder:
         # 4. Report
         report_path = base.with_name(f"{name}_report.json")
         report = self._build_report(world_model, artifacts)
-        report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+        report_path.write_text(
+            json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
         artifacts["report"] = str(report_path)
 
         return artifacts
@@ -84,9 +87,13 @@ class ReleaseBuilder:
             if n:
                 monsters.add(str(n))
         if monsters:
-            xml = "<monsters>\n" + "\n".join(
-                f'  <monster name="{m}" respawn="60" />' for m in sorted(monsters)
-            ) + "\n</monsters>\n"
+            xml = (
+                "<monsters>\n"
+                + "\n".join(
+                    f'  <monster name="{m}" respawn="60" />' for m in sorted(monsters)
+                )
+                + "\n</monsters>\n"
+            )
             path = base.with_name(f"{base.name}.monster.xml")
             path.write_text(xml, encoding="utf-8")
             result["monster_xml"] = str(path)
@@ -101,7 +108,7 @@ class ReleaseBuilder:
                 f'<zones>\n  <zone id="1" name="{base.name}">\n'
                 f'    <area x1="{min(xs)}" y1="{min(ys)}" '
                 f'x2="{max(xs)}" y2="{max(ys)}" z="{min(zs)}" />\n'
-                f'  </zone>\n</zones>\n'
+                f"  </zone>\n</zones>\n"
             )
             path = base.with_name(f"{base.name}.zones.xml")
             path.write_text(zone_xml, encoding="utf-8")

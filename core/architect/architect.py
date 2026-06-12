@@ -1,16 +1,16 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import List
 
 from .style_engine import StyleEngine, StyleDNA
 from .design_rules import DesignRules, ZoneDesign
-from .layout_engine import LayoutEngine, LayoutPlan
 
 
 @dataclass
 class ArchitecturalDecision:
     """A single reasoned architectural decision."""
+
     question: str
     answer: str
     reason: str
@@ -20,6 +20,7 @@ class ArchitecturalDecision:
 @dataclass
 class DesignRationale:
     """Complete architectural rationale for a map design."""
+
     map_type: str
     style: str
     decisions: List[ArchitecturalDecision] = field(default_factory=list)
@@ -51,11 +52,21 @@ class ArchitectAI:
         """
         # 1. Detect styles
         styles = self._extract_styles_from_prompt(prompt)
-        dna = self.style_engine.merge(styles) if len(styles) > 1 else self.style_engine.detect(styles[0] if styles else "issavi")
+        dna = (
+            self.style_engine.merge(styles)
+            if len(styles) > 1
+            else self.style_engine.detect(styles[0] if styles else "issavi")
+        )
 
         # 2. Load design rules
-        rules = DesignRules.for_city() if map_type == "city" else (
-            DesignRules.for_dungeon() if map_type == "dungeon" else DesignRules.for_hunt()
+        rules = (
+            DesignRules.for_city()
+            if map_type == "city"
+            else (
+                DesignRules.for_dungeon()
+                if map_type == "dungeon"
+                else DesignRules.for_hunt()
+            )
         )
         zones = DesignRules.zones_for(map_type)
         avoids = DesignRules.avoid_list(map_type)
@@ -68,7 +79,9 @@ class ArchitectAI:
         )
 
         # Core decisions
-        rationale.decisions = self._generate_decisions(map_type, dna, rules, zones, avoids)
+        rationale.decisions = self._generate_decisions(
+            map_type, dna, rules, zones, avoids
+        )
 
         # Why statements
         rationale.why_this_layout = self._justify_layout(map_type, dna)
@@ -90,110 +103,136 @@ class ArchitectAI:
             found = ["issavi"]
         return found
 
-    def _generate_decisions(self, map_type: str, dna: StyleDNA,
-                             rules: List, zones: List[ZoneDesign],
-                             avoids: List[str]) -> List[ArchitecturalDecision]:
+    def _generate_decisions(
+        self,
+        map_type: str,
+        dna: StyleDNA,
+        rules: List,
+        zones: List[ZoneDesign],
+        avoids: List[str],
+    ) -> List[ArchitecturalDecision]:
         """Generate all architectural decisions with justifications."""
         decisions = []
 
         # Decision 1: Layout strategy
         if dna.symmetry > 0.5:
-            decisions.append(ArchitecturalDecision(
-                question="¿Qué estrategia de layout usar?",
-                answer="Simétrica radial",
-                reason=f"Style {dna.style} has high symmetry ({dna.symmetry:.1f}). "
-                       f"Zones will be arranged in concentric rings around a central hub.",
-                alternatives=["Grid-based", "Organic scatter"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="What layout strategy to use?",
+                    answer="Radial symmetric",
+                    reason=f"Style {dna.style} has high symmetry ({dna.symmetry:.1f}). "
+                    f"Zones will be arranged in concentric rings around a central hub.",
+                    alternatives=["Grid-based", "Organic scatter"],
+                )
+            )
         elif dna.organic_layout > 0.5:
-            decisions.append(ArchitecturalDecision(
-                question="¿Qué estrategia de layout usar?",
-                answer="Orgánica natural",
-                reason=f"Style {dna.style} favors organic layouts ({dna.organic_layout:.1f}). "
-                       f"Zones will follow natural-looking irregular placement.",
-                alternatives=["Simétrica radial", "Grid-based"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="What layout strategy to use?",
+                    answer="Natural organic",
+                    reason=f"Style {dna.style} favors organic layouts ({dna.organic_layout:.1f}). "
+                    f"Zones will follow natural-looking irregular placement.",
+                    alternatives=["Radial symmetric", "Grid-based"],
+                )
+            )
         else:
-            decisions.append(ArchitecturalDecision(
-                question="¿Qué estrategia de layout usar?",
-                answer="Grid estructurado",
-                reason=f"Style {dna.style} has balanced proportions. "
-                       f"Grid-based layout provides predictable flow.",
-                alternatives=["Simétrica radial", "Orgánica"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="What layout strategy to use?",
+                    answer="Structured grid",
+                    reason=f"Style {dna.style} has balanced proportions. Grid-based layout provides predictable flow.",
+                    alternatives=["Radial symmetric", "Organic"],
+                )
+            )
 
         # Decision 2: Zone count
-        decisions.append(ArchitecturalDecision(
-            question="¿Cuántas zonas crear?",
-            answer=str(len(zones)),
-            reason=f"Design rules for {map_type} mandate {len(zones)} core zones: "
-                   f"{', '.join(z.name for z in zones)}",
-            alternatives=[str(len(zones) - 1), str(len(zones) + 1)],
-        ))
+        decisions.append(
+            ArchitecturalDecision(
+                question="How many zones to create?",
+                answer=str(len(zones)),
+                reason=f"Design rules for {map_type} mandate {len(zones)} core zones: "
+                f"{', '.join(z.name for z in zones)}",
+                alternatives=[str(len(zones) - 1), str(len(zones) + 1)],
+            )
+        )
 
         # Decision 3: Vertical strategy
         if map_type == "dungeon" and dna.verticality > 0.3:
             floors = max(2, int(dna.verticality * 5))
-            decisions.append(ArchitecturalDecision(
-                question="¿Cuántos pisos usar?",
-                answer=str(floors),
-                reason=f"Style {dna.style} verticality={dna.verticality:.1f} suggests "
-                       f"{floors}-floor dungeon with stairs between levels.",
-                alternatives=[str(floors - 1), str(floors + 1)],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="How many floors to use?",
+                    answer=str(floors),
+                    reason=f"Style {dna.style} verticality={dna.verticality:.1f} suggests "
+                    f"{floors}-floor dungeon with stairs between levels.",
+                    alternatives=[str(floors - 1), str(floors + 1)],
+                )
+            )
         elif map_type == "dungeon":
-            decisions.append(ArchitecturalDecision(
-                question="¿Cuántos pisos usar?",
-                answer="3",
-                reason="Three floors provides good progression: entrance → combat → boss.",
-                alternatives=["2", "4"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="How many floors to use?",
+                    answer="3",
+                    reason="Three floors provides good progression: entrance → combat → boss.",
+                    alternatives=["2", "4"],
+                )
+            )
 
         # Decision 4: Spawn strategy
         if dna.spawn_density > 0.6:
-            decisions.append(ArchitecturalDecision(
-                question="¿Cómo distribuir los spawns?",
-                answer="Alta densidad con progresión",
-                reason=f"High spawn density ({dna.spawn_density:.1f}). "
-                       f"Monsters escalate from entry to boss room with 3+ tiers.",
-                alternatives=["Densidad uniforme", "Solo jefes"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="How to distribute spawns?",
+                    answer="High density with progression",
+                    reason=f"High spawn density ({dna.spawn_density:.1f}). "
+                    f"Monsters escalate from entry to boss room with 3+ tiers.",
+                    alternatives=["Uniform density", "Bosses only"],
+                )
+            )
         else:
-            decisions.append(ArchitecturalDecision(
-                question="¿Cómo distribuir los spawns?",
-                answer="Densidad moderada y variada",
-                reason=f"Moderate spawn density ({dna.spawn_density:.1f}). "
-                       f"Varied monster types in distinct zones.",
-                alternatives=["Alta densidad", "Baja densidad"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="How to distribute spawns?",
+                    answer="Moderate and varied density",
+                    reason=f"Moderate spawn density ({dna.spawn_density:.1f}). Varied monster types in distinct zones.",
+                    alternatives=["High density", "Low density"],
+                )
+            )
 
         # Decision 5: What to avoid
-        decisions.append(ArchitecturalDecision(
-            question="¿Qué evitar en el diseño?",
-            answer=f"{len(avoids)} patrones anti-diseño",
-            reason="Evitar: " + "; ".join(avoids[:3]) + (
-                f" (+{len(avoids)-3} more)" if len(avoids) > 3 else ""
-            ),
-            alternatives=[],
-        ))
+        decisions.append(
+            ArchitecturalDecision(
+                question="What to avoid in the design?",
+                answer=f"{len(avoids)} anti-design patterns",
+                reason="Avoid: "
+                + "; ".join(avoids[:3])
+                + (f" (+{len(avoids) - 3} more)" if len(avoids) > 3 else ""),
+                alternatives=[],
+            )
+        )
 
         # Decision 6: Entry placement
-        decisions.append(ArchitecturalDecision(
-            question="¿Dónde colocar la entrada?",
-            answer="Borde sur del mapa" if map_type == "city" else "Centro del primer piso",
-            reason="Cities enter from roads at borders; dungeons descend from a central entry point.",
-            alternatives=["Borde norte", "Esquina aleatoria"],
-        ))
+        decisions.append(
+            ArchitecturalDecision(
+                question="Where to place the entrance?",
+                answer="South edge of map"
+                if map_type == "city"
+                else "Center of first floor",
+                reason="Cities enter from roads at borders; dungeons descend from a central entry point.",
+                alternatives=["North edge", "Random corner"],
+            )
+        )
 
         # Decision 7: Boss room placement
         if map_type in ("dungeon", "hunt"):
-            decisions.append(ArchitecturalDecision(
-                question="¿Dónde colocar el boss room?",
-                answer="Último piso, punto más alejado de la entrada",
-                reason="Boss should be the final challenge, requiring exploration "
-                       "and risk to reach.",
-                alternatives=["Cerca de entrada", "En todos los pisos"],
-            ))
+            decisions.append(
+                ArchitecturalDecision(
+                    question="Where to place the boss room?",
+                    answer="Last floor, furthest point from entrance",
+                    reason="Boss should be the final challenge, requiring exploration and risk to reach.",
+                    alternatives=["Second floor near entrance", "Third floor center"],
+                )
+            )
 
         return decisions
 
@@ -225,8 +264,14 @@ class ArchitectAI:
     def _justify_style(self, dna: StyleDNA) -> str:
         """Explain why this style was selected."""
         traits = []
-        for attr in ["open_spaces", "symmetry", "darkness", "complexity",
-                      "decoration_density", "reward_richness"]:
+        for attr in [
+            "open_spaces",
+            "symmetry",
+            "darkness",
+            "complexity",
+            "decoration_density",
+            "reward_richness",
+        ]:
             val = getattr(dna, attr)
             if val > 0.6:
                 traits.append(f"high {attr.replace('_', ' ')} ({val:.1f})")
@@ -240,20 +285,29 @@ class ArchitectAI:
             f"{' Additional traits: ' + ', '.join(traits[5:]) + '.' if len(traits) > 5 else ''}"
         )
 
-    def _justify_zones(self, zones: List[ZoneDesign], map_type: str, dna: StyleDNA) -> str:
+    def _justify_zones(
+        self, zones: List[ZoneDesign], map_type: str, dna: StyleDNA
+    ) -> str:
         """Explain why these specific zones are needed."""
         names = [z.name for z in zones]
         purposes = [z.purpose for z in zones if z.purpose]
+        if map_type == "city":
+            what = "city functionality"
+        elif map_type == "dungeon":
+            what = "balanced gameplay progression"
+        else:
+            what = "optimal hunting flow"
 
         return (
             f"For a {map_type}, the following zones are architecturally required: "
             f"{', '.join(names)}. "
             f"They serve these purposes: {', '.join(purposes)}. "
-            f"This composition ensures {'city functionality' if map_type == 'city' else 'balanced gameplay progression' if map_type == 'dungeon' else 'optimal hunting flow'}."
+            f"This composition ensures {what}."
         )
 
-    def _assess_risks(self, map_type: str, dna: StyleDNA,
-                       zones: List[ZoneDesign]) -> str:
+    def _assess_risks(
+        self, map_type: str, dna: StyleDNA, zones: List[ZoneDesign]
+    ) -> str:
         """Identify potential design risks."""
         risks = []
 
@@ -279,9 +333,14 @@ class ArchitectAI:
         """
         for decision in rationale.decisions:
             if decision.question.lower() in question.lower():
-                return f"Decisión: {decision.answer}\nRazón: {decision.reason}"
+                return f"Decision: {decision.answer}\nReason: {decision.reason}"
+        if rationale.map_type == "city":
+            priority = "urban functionality"
+        elif rationale.map_type == "dungeon":
+            priority = "difficulty progression"
+        else:
+            priority = "optimal hunting flow"
         return (
-            f"Para el mapa tipo '{rationale.map_type}' con estilo '{rationale.style}', "
-            f"las decisiones se basan en reglas de diseño que priorizan "
-            f"{'funcionalidad urbana' if rationale.map_type == 'city' else 'progresión de dificultad' if rationale.map_type == 'dungeon' else 'flujo de caza óptimo'}."
+            f"For map type '{rationale.map_type}' with style '{rationale.style}', "
+            f"decisions are based on design rules that prioritize {priority}."
         )

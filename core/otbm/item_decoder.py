@@ -13,10 +13,9 @@ Decodes item attributes like:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .node_encoder import (
-    ATTR_ITEM,
     ATTR_COUNT,
     ATTR_ACTION_ID,
     ATTR_UNIQUE_ID,
@@ -175,8 +174,8 @@ class ItemDecoder:
             True if the item ID is in a typical ground range.
         """
         return (
-            (100 <= item_id <= 999) or
-            (4000 <= item_id <= 5999) or
-            (6000 <= item_id <= 7999) or
-            item_id in (0, 106, 110, 112, 113, 114, 116, 319, 405, 406, 407, 408)
+            (100 <= item_id <= 999)
+            or (4000 <= item_id <= 5999)
+            or (6000 <= item_id <= 7999)
+            or item_id in (0, 106, 110, 112, 113, 114, 116, 319, 405, 406, 407, 408)
         )

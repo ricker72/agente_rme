@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 @dataclass
@@ -16,6 +16,7 @@ class Region:
       - max_level: Recommended maximum player level for this region.
       - tags: Categorization tags for search and filtering.
     """
+
     name: str
     theme: str = "generic"
     min_level: int = 1
@@ -46,7 +47,4 @@ class Region:
         )
 
     def __repr__(self) -> str:
-        return (
-            f"Region(name='{self.name}', theme='{self.theme}', "
-            f"levels={self.min_level}-{self.max_level})"
-        )
+        return f"Region(name='{self.name}', theme='{self.theme}', levels={self.min_level}-{self.max_level})"

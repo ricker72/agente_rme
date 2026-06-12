@@ -3,7 +3,7 @@ Design Result model - represents the final result of the autonomous design proce
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, Dict, List, Any
+from typing import Dict, List, Any
 from datetime import datetime
 from .design_plan import DesignPlan
 from .design_iteration import DesignIteration
@@ -13,7 +13,7 @@ from .design_decision import DesignDecision
 @dataclass
 class DesignResult:
     """Represents the final result of the autonomous design process."""
-    
+
     result_id: str
     goal_id: str
     plan: DesignPlan
@@ -26,7 +26,7 @@ class DesignResult:
     success: bool = False
     metadata: Dict = field(default_factory=dict)
     created_at: datetime = field(default_factory=datetime.now)
-    
+
     def __post_init__(self):
         """Validate result after initialization."""
         if not self.result_id:
@@ -35,7 +35,7 @@ class DesignResult:
             raise ValueError("Goal ID cannot be empty")
         if not self.plan:
             raise ValueError("Plan cannot be empty")
-        
+
         # Extract final scores from last iteration if available
         if self.iterations:
             last_iteration = self.iterations[-1]
@@ -47,7 +47,7 @@ class DesignResult:
                 "reuse": last_iteration.reuse_score,
             }
             self.convergence_data = [iter.critic_score for iter in self.iterations]
-    
+
     def add_iteration(self, iteration: DesignIteration) -> None:
         """Add an iteration to the result."""
         self.iterations.append(iteration)
@@ -61,11 +61,11 @@ class DesignResult:
             "density": iteration.density_score,
             "reuse": iteration.reuse_score,
         }
-    
+
     def add_decision(self, decision: DesignDecision) -> None:
         """Add a decision to the result."""
         self.decisions.append(decision)
-    
+
     def get_summary(self) -> Dict[str, Any]:
         """Get a summary of the result."""
         return {
@@ -74,12 +74,12 @@ class DesignResult:
             "total_iterations": len(self.iterations),
             "total_decisions": len(self.decisions),
             "final_scores": self.final_scores,
-            "convergence_achieved": len(self.convergence_data) > 1 and 
-                                   abs(self.convergence_data[-1] - self.convergence_data[-2]) < 0.1,
+            "convergence_achieved": len(self.convergence_data) > 1
+            and abs(self.convergence_data[-1] - self.convergence_data[-2]) < 0.1,
             "total_duration_seconds": self.total_duration_seconds,
             "success": self.success,
         }
-    
+
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
         return {
@@ -95,14 +95,16 @@ class DesignResult:
             "metadata": self.metadata,
             "created_at": self.created_at.isoformat(),
         }
-    
+
     @classmethod
     def from_dict(cls, data: dict) -> "DesignResult":
         """Create from dictionary."""
         if "plan" in data:
             data["plan"] = DesignPlan.from_dict(data["plan"])
         if "iterations" in data:
-            data["iterations"] = [DesignIteration.from_dict(i) for i in data["iterations"]]
+            data["iterations"] = [
+                DesignIteration.from_dict(i) for i in data["iterations"]
+            ]
         if "decisions" in data:
             data["decisions"] = [DesignDecision.from_dict(d) for d in data["decisions"]]
         if "created_at" in data and isinstance(data["created_at"], str):

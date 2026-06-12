@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
 
@@ -49,9 +49,18 @@ class BlueprintEmbedding:
 
     def _clamp_values(self) -> None:
         for field_name in (
-            "tile_density", "room_count", "corridor_count", "branch_factor",
-            "connectivity", "spawn_density", "boss_count", "city_services",
-            "waypoint_count", "hunt_flow", "critic_score", "playtest_score",
+            "tile_density",
+            "room_count",
+            "corridor_count",
+            "branch_factor",
+            "connectivity",
+            "spawn_density",
+            "boss_count",
+            "city_services",
+            "waypoint_count",
+            "hunt_flow",
+            "critic_score",
+            "playtest_score",
         ):
             val = getattr(self, field_name, 0.0)
             setattr(self, field_name, max(0.0, min(1.0, float(val))))
@@ -122,6 +131,7 @@ class BlueprintEmbedding:
     def cosine_similarity(a: List[float], b: List[float]) -> float:
         """Cosine similarity between two vectors."""
         import math
+
         if len(a) != len(b) or not a:
             return 0.0
         dot = sum(ai * bi for ai, bi in zip(a, b))

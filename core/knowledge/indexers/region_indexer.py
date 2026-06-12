@@ -25,6 +25,7 @@ class RegionIndexer(BaseIndexer):
 
     def by_level(self, min_level: int, max_level: int) -> List[KnowledgeEntry]:
         return [
-            e for e in self.entries
+            e
+            for e in self.entries
             if e.max_level >= min_level and e.min_level <= max_level
         ]

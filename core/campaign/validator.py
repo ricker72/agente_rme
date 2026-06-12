@@ -20,13 +20,14 @@ import json
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Union
 
 from .package import CampaignPackage, PackageStatus, REQUIRED_KEYS
 
 
 class Severity(str, Enum):
     """Severity of a single validation issue."""
+
     ERROR = "error"
     WARNING = "warning"
     INFO = "info"
@@ -35,6 +36,7 @@ class Severity(str, Enum):
 @dataclass
 class ValidationIssue:
     """A single finding reported by the validator."""
+
     key: str
     severity: Severity
     message: str
@@ -50,6 +52,7 @@ class ValidationIssue:
 @dataclass
 class ValidationResult:
     """Aggregate result of a validation run."""
+
     is_valid: bool = True
     issues: List[ValidationIssue] = field(default_factory=list)
     summary: Dict[str, Any] = field(default_factory=dict)
@@ -64,14 +67,20 @@ class ValidationResult:
     # ------------------------------------------------------------------
 
     def add_error(self, key: str, message: str) -> None:
-        self.issues.append(ValidationIssue(key=key, severity=Severity.ERROR, message=message))
+        self.issues.append(
+            ValidationIssue(key=key, severity=Severity.ERROR, message=message)
+        )
         self.is_valid = False
 
     def add_warning(self, key: str, message: str) -> None:
-        self.issues.append(ValidationIssue(key=key, severity=Severity.WARNING, message=message))
+        self.issues.append(
+            ValidationIssue(key=key, severity=Severity.WARNING, message=message)
+        )
 
     def add_info(self, key: str, message: str) -> None:
-        self.issues.append(ValidationIssue(key=key, severity=Severity.INFO, message=message))
+        self.issues.append(
+            ValidationIssue(key=key, severity=Severity.INFO, message=message)
+        )
 
     @property
     def errors(self) -> List[ValidationIssue]:
@@ -153,7 +162,9 @@ class CampaignValidator:
     def _validate_key(self, key: str, value: Any, result: ValidationResult) -> None:
         if key in ("quests", "bosses", "raids"):
             if not isinstance(value, list):
-                result.add_error(key, f"'{key}' must be a list, got {type(value).__name__}")
+                result.add_error(
+                    key, f"'{key}' must be a list, got {type(value).__name__}"
+                )
                 return
             if key == "quests" and len(value) == 0:
                 result.add_warning(key, "'quests' is empty")
@@ -170,10 +181,14 @@ class CampaignValidator:
                     )
         elif key == "story":
             if not isinstance(value, dict):
-                result.add_error(key, f"'story' must be a dict, got {type(value).__name__}")
+                result.add_error(
+                    key, f"'story' must be a dict, got {type(value).__name__}"
+                )
         elif key == "rewards":
             if not isinstance(value, dict):
-                result.add_error(key, f"'rewards' must be a dict, got {type(value).__name__}")
+                result.add_error(
+                    key, f"'rewards' must be a dict, got {type(value).__name__}"
+                )
             # Soft check
             if not value:
                 result.add_warning(key, "'rewards' is empty")
@@ -196,18 +211,22 @@ class CampaignValidator:
         result: ValidationResult,
     ) -> Optional[Dict[str, Any]]:
         if campaign is None:
-            result.add_error("root", "Campaign is None — pipeline must never produce None")
+            result.add_error(
+                "root", "Campaign is None — pipeline must never produce None"
+            )
             return None
         if isinstance(campaign, CampaignPackage):
             return campaign.to_dict()
         if isinstance(campaign, dict):
             return campaign
-        result.add_error("root", f"Unsupported campaign type: {type(campaign).__name__}")
+        result.add_error(
+            "root", f"Unsupported campaign type: {type(campaign).__name__}"
+        )
         return None
 
     @staticmethod
     def _extract_status(
-        campaign: Union[CampaignPackage, Dict[str, Any], None]
+        campaign: Union[CampaignPackage, Dict[str, Any], None],
     ) -> PackageStatus:
         if isinstance(campaign, CampaignPackage):
             return campaign.status

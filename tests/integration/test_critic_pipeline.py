@@ -17,8 +17,9 @@ from core.world.structure import Structure
 from core.world.spawn import Spawn
 
 
-def _build_issavi_roshamuul(level_min: int = 300, level_max: int = 500,
-                             hunts: int = 3, bosses: int = 2) -> WorldModel:
+def _build_issavi_roshamuul(
+    level_min: int = 300, level_max: int = 500, hunts: int = 3, bosses: int = 2
+) -> WorldModel:
     """Build a realistic Issavi + Roshamuul style world for level 300-500.
 
     3 hunts, 2 bosses, 1 raid-style city hub, all connected.
@@ -43,7 +44,10 @@ def _build_issavi_roshamuul(level_min: int = 300, level_max: int = 500,
         for dx in range(20):
             for dy in range(20):
                 t = Tile(
-                    x=ox + dx, y=oy + dy, z=7, ground=200 + i,
+                    x=ox + dx,
+                    y=oy + dy,
+                    z=7,
+                    ground=200 + i,
                     items=[{"itemid": 300 + (dx + dy) % 6, "count": 1}],
                     zone=f"hunt_{i}",
                 )
@@ -51,8 +55,14 @@ def _build_issavi_roshamuul(level_min: int = 300, level_max: int = 500,
                 if (dx + dy) % 5 == 0:
                     t.spawn = Spawn(monster="Demon", respawn=60, radius=2)
                 w.set_tile(t)
-        w.add_region(Region(name=f"hunt_{i}", theme="issavi",
-                            min_level=level_min + i * 20, max_level=level_max))
+        w.add_region(
+            Region(
+                name=f"hunt_{i}",
+                theme="issavi",
+                min_level=level_min + i * 20,
+                max_level=level_max,
+            )
+        )
 
     # Connector paths between city and hunts
     for i in range(hunts):
@@ -67,30 +77,51 @@ def _build_issavi_roshamuul(level_min: int = 300, level_max: int = 500,
         oy = 80
         for dx in range(15):
             for dy in range(15):
-                t = Tile(x=ox + dx, y=oy + dy, z=7, ground=500 + i,
-                         items=[{"itemid": 900, "count": 1}],
-                         zone=f"boss_arena_{i}")
+                t = Tile(
+                    x=ox + dx,
+                    y=oy + dy,
+                    z=7,
+                    ground=500 + i,
+                    items=[{"itemid": 900, "count": 1}],
+                    zone=f"boss_arena_{i}",
+                )
                 w.set_tile(t)
-        w.add_structure(Structure(name=f"boss_arena_{i}", category="boss_room",
-                                  x=ox, y=oy, z=7, width=15, height=15, tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name=f"boss_arena_{i}",
+                category="boss_room",
+                x=ox,
+                y=oy,
+                z=7,
+                width=15,
+                height=15,
+                tags=["boss"],
+            )
+        )
 
     # Raid
     w.add_region(Region(name="raid_zargoth", min_level=level_min, max_level=level_max))
     for x in range(180, 220):
         for y in range(180, 220):
-            w.set_tile(Tile(x=x, y=y, z=7, ground=600,
-                            items=[{"itemid": 777, "count": 1}],
-                            zone="raid_zargoth"))
+            w.set_tile(
+                Tile(
+                    x=x,
+                    y=y,
+                    z=7,
+                    ground=600,
+                    items=[{"itemid": 777, "count": 1}],
+                    zone="raid_zargoth",
+                )
+            )
     return w
 
 
 class CriticPipelineIntegrationTests(unittest.TestCase):
-
     def test_issavi_roshamuul_e2e(self):
         w = _build_issavi_roshamuul()
         with tempfile.TemporaryDirectory() as tmp:
             critic = VisualCritic()
-            result = critic.analyze(
+            critic.analyze(
                 w,
                 map_name="issavi_roshamuul_300_500",
                 output_dir=tmp,
@@ -108,24 +139,44 @@ class CriticPipelineIntegrationTests(unittest.TestCase):
             self.assertIn("overall_score", data)
             self.assertIn("scores", data)
             # All required categories present
-            for cat in ("visual", "navigation", "density", "spawn", "hunt",
-                        "boss", "city", "decor", "pathfinding"):
+            for cat in (
+                "visual",
+                "navigation",
+                "density",
+                "spawn",
+                "hunt",
+                "boss",
+                "city",
+                "decor",
+                "pathfinding",
+            ):
                 self.assertIn(cat + "_score", data)
 
     def test_artifacts_match_expected_format(self):
         w = _build_issavi_roshamuul()
         with tempfile.TemporaryDirectory() as tmp:
             critic = VisualCritic()
-            critic.analyze(w, output_dir=tmp, generate_heatmaps=True,
-                           base_name="issavi_roshamuul")
+            critic.analyze(
+                w, output_dir=tmp, generate_heatmaps=True, base_name="issavi_roshamuul"
+            )
             # The expected JSON file has the format described in the spec
-            with open(os.path.join(tmp, "issavi_roshamuul.json"),
-                      encoding="utf-8") as f:
+            with open(
+                os.path.join(tmp, "issavi_roshamuul.json"), encoding="utf-8"
+            ) as f:
                 data = json.load(f)
-            for field in ("overall_score", "visual_score", "navigation_score",
-                          "density_score", "spawn_score", "hunt_score",
-                          "boss_score", "city_score", "decor_score",
-                          "issues", "recommendations"):
+            for field in (
+                "overall_score",
+                "visual_score",
+                "navigation_score",
+                "density_score",
+                "spawn_score",
+                "hunt_score",
+                "boss_score",
+                "city_score",
+                "decor_score",
+                "issues",
+                "recommendations",
+            ):
                 self.assertIn(field, data)
 
     def test_issues_and_recommendations_generated(self):

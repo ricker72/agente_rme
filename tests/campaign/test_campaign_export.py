@@ -15,25 +15,20 @@ import sys
 import json
 import tempfile
 import shutil
-import pytest
 
 # Make sure the package root is on the path.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from core.campaign import (
-    Campaign,
-    CampaignGenerator,
     CampaignPackage,
     CampaignValidator,
     PackageStatus,
-    ValidationResult,
     REQUIRED_KEYS,
 )
 from core.campaign.campaign_generator import CampaignGenerator as _CG, Campaign as _C
-from agente_rme.core.agents.contracts import AgentRequest
-from agente_rme.core.agents.quest_agent import QuestAgent
-from agente_rme.core.agents.export_agent import ExportAgent
-
+from core.agents.contracts import AgentRequest
+from core.agents.quest_agent import QuestAgent
+from core.agents.export_agent import ExportAgent
 
 # ----------------------------------------------------------------------
 # Campaign generation (compatible with existing core.campaign.campaign_generator)
@@ -198,20 +193,22 @@ class TestCampaignValidator:
 
     def test_validate_dict_wrong_type(self):
         v = CampaignValidator()
-        result = v.validate({
-            "theme": "x",
-            "quests": "not a list",
-            "bosses": [],
-            "raids": [],
-            "story": {},
-            "rewards": {},
-        })
+        result = v.validate(
+            {
+                "theme": "x",
+                "quests": "not a list",
+                "bosses": [],
+                "raids": [],
+                "story": {},
+                "rewards": {},
+            }
+        )
         assert result.is_valid is False
         assert any("quests" in i.key for i in result.errors)
 
 
 # ----------------------------------------------------------------------
-# Fallback contract — campaign is NEVER None
+# Fallback contract â€” campaign is NEVER None
 # ----------------------------------------------------------------------
 
 
@@ -358,10 +355,12 @@ class TestBenchmarkScenario:
         """Simulate: 'Issavi + Roshamuul for levels 300-500, 3 hunts,
         2 bosses, 1 raid, quest principal'"""
         gen = _CG()
-        issavi = gen.generate(theme="issavi", level_range=(300, 500),
-                              npc_count=8, faction_count=3)
-        roshamuul = gen.generate(theme="roshamuul", level_range=(300, 500),
-                                 npc_count=8, faction_count=3)
+        issavi = gen.generate(
+            theme="issavi", level_range=(300, 500), npc_count=8, faction_count=3
+        )
+        roshamuul = gen.generate(
+            theme="roshamuul", level_range=(300, 500), npc_count=8, faction_count=3
+        )
         assert issavi.main_story is not None
         assert roshamuul.main_story is not None
         assert issavi.theme != roshamuul.theme

@@ -1,0 +1,3024 @@
+[
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 22,
+      "row": 107
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\_quality_report.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 107
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 107,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "E722",
+    "end_location": {
+      "column": 11,
+      "row": 180
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\audit_dependency_consistency.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 180
+    },
+    "message": "Do not use bare `except`",
+    "noqa_row": 180,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/bare-except"
+  },
+  {
+    "cell": null,
+    "code": "E722",
+    "end_location": {
+      "column": 11,
+      "row": 660
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\audit_dependency_consistency.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 660
+    },
+    "message": "Do not use bare `except`",
+    "noqa_row": 660,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/bare-except"
+  },
+  {
+    "cell": null,
+    "code": "E722",
+    "end_location": {
+      "column": 11,
+      "row": 714
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\audit_dependency_consistency.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 714
+    },
+    "message": "Do not use bare `except`",
+    "noqa_row": 714,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/bare-except"
+  },
+  {
+    "cell": null,
+    "code": "E722",
+    "end_location": {
+      "column": 19,
+      "row": 767
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\audit_dependency_consistency.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 767
+    },
+    "message": "Do not use bare `except`",
+    "noqa_row": 767,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/bare-except"
+  },
+  {
+    "cell": null,
+    "code": "E722",
+    "end_location": {
+      "column": 15,
+      "row": 841
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\audit_dependency_consistency.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 841
+    },
+    "message": "Do not use bare `except`",
+    "noqa_row": 841,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/bare-except"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 7,
+      "row": 1221
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\audit_dependency_consistency.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 10,
+            "row": 1221
+          },
+          "location": {
+            "column": 5,
+            "row": 1221
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `mf`"
+    },
+    "location": {
+      "column": 5,
+      "row": 1221
+    },
+    "message": "Local variable `mf` is assigned to but never used",
+    "noqa_row": 1221,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 82,
+      "row": 22
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\benchmark_blueprint_intelligence.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 22
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 22,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 2,
+      "row": 25
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\benchmark_blueprint_intelligence.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 23
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 23,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 2,
+      "row": 24
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\benchmark_knowledge.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 20
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 20,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 59,
+      "row": 25
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\benchmark_knowledge.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 25
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 25,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 59,
+      "row": 25
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\benchmark_knowledge.py",
+    "fix": null,
+    "location": {
+      "column": 46,
+      "row": 25
+    },
+    "message": "Redefinition of unused `build_metrics` from line 23: `build_metrics` redefined here",
+    "noqa_row": 25,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 10,
+      "row": 164
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\benchmark_knowledge.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 13,
+            "row": 164
+          },
+          "location": {
+            "column": 9,
+            "row": 164
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `r`"
+    },
+    "location": {
+      "column": 9,
+      "row": 164
+    },
+    "message": "Local variable `r` is assigned to but never used",
+    "noqa_row": 164,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 16,
+      "row": 29
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\boss_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 29
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\boss_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 41,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\boss_generator.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 30
+    },
+    "message": "Redefinition of unused `BossGenerator` from line 4: `BossGenerator` redefined here",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 31
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\boss_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 31
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 31,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 37,
+      "row": 32
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\boss_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 32
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 32,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 35,
+      "row": 33
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\boss_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 33
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 33,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 53,
+      "row": 33
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\hito26_1_benchmark.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 33
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 33,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 16,
+      "row": 26
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\mission_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 26
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 26,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 47,
+      "row": 27
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\mission_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 27,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 47,
+      "row": 27
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\mission_generator.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 27
+    },
+    "message": "Redefinition of unused `MissionGenerator` from line 4: `MissionGenerator` redefined here",
+    "noqa_row": 27,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 28
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\mission_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 28
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 28,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 37,
+      "row": 29
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\mission_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 29
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 35,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\mission_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 31,
+      "row": 248
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 249
+          },
+          "location": {
+            "column": 1,
+            "row": 248
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `stage_complete`"
+    },
+    "location": {
+      "column": 17,
+      "row": 248
+    },
+    "message": "Local variable `stage_complete` is assigned to but never used",
+    "noqa_row": 248,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 595
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 595
+          },
+          "location": {
+            "column": 9,
+            "row": 595
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `merged`"
+    },
+    "location": {
+      "column": 9,
+      "row": 595
+    },
+    "message": "Local variable `merged` is assigned to but never used",
+    "noqa_row": 595,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 18,
+      "row": 611
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 612
+          },
+          "location": {
+            "column": 1,
+            "row": 611
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `rooms`"
+    },
+    "location": {
+      "column": 13,
+      "row": 611
+    },
+    "message": "Local variable `rooms` is assigned to but never used",
+    "noqa_row": 611,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 612
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 613
+          },
+          "location": {
+            "column": 1,
+            "row": 612
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `boss`"
+    },
+    "location": {
+      "column": 13,
+      "row": 612
+    },
+    "message": "Local variable `boss` is assigned to but never used",
+    "noqa_row": 612,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 728
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\pipeline_runner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 728
+          },
+          "location": {
+            "column": 9,
+            "row": 728
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `name`"
+    },
+    "location": {
+      "column": 9,
+      "row": 728
+    },
+    "message": "Local variable `name` is assigned to but never used",
+    "noqa_row": 728,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 16,
+      "row": 28
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\quest_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 28
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 28,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 43,
+      "row": 29
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\quest_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 29
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 43,
+      "row": 29
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\quest_generator.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 29
+    },
+    "message": "Redefinition of unused `QuestGenerator` from line 4: `QuestGenerator` redefined here",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\quest_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 37,
+      "row": 31
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\quest_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 31
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 31,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 35,
+      "row": 32
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\quest_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 32
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 32,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 16,
+      "row": 26
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\raid_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 26
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 26,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 27
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\raid_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 27,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 41,
+      "row": 27
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\raid_generator.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 27
+    },
+    "message": "Redefinition of unused `RaidGenerator` from line 4: `RaidGenerator` redefined here",
+    "noqa_row": 27,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 28
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\raid_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 28
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 28,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 37,
+      "row": 29
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\raid_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 29
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 35,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\raid_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 16,
+      "row": 29
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\reward_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 29
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 45,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\reward_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 45,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\reward_generator.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 30
+    },
+    "message": "Redefinition of unused `RewardGenerator` from line 4: `RewardGenerator` redefined here",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 41,
+      "row": 31
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\reward_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 31
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 31,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 37,
+      "row": 32
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\reward_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 32
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 32,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 35,
+      "row": 33
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\reward_generator.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 33
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 33,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 10,
+      "row": 34
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\test_lua_diag.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 34
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 34,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 74,
+      "row": 13
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\test_utcnow.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 13
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 13,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 66,
+      "row": 19
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\test_utcnow.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 19
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 19,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 74,
+      "row": 25
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\test_utcnow.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 25
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 25,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 60
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\agents\\test_export_agent.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 20,
+            "row": 60
+          },
+          "location": {
+            "column": 9,
+            "row": 60
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `response`"
+    },
+    "location": {
+      "column": 9,
+      "row": 60
+    },
+    "message": "Local variable `response` is assigned to but never used",
+    "noqa_row": 60,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 79
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\agents\\test_export_agent.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 20,
+            "row": 79
+          },
+          "location": {
+            "column": 9,
+            "row": 79
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `response`"
+    },
+    "location": {
+      "column": 9,
+      "row": 79
+    },
+    "message": "Local variable `response` is assigned to but never used",
+    "noqa_row": 79,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 93
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\agents\\test_orchestrator_agent.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 93
+          },
+          "location": {
+            "column": 9,
+            "row": 93
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 9,
+      "row": 93
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 93,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 21,
+      "row": 428
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\agents\\test_qa_agent_coverage.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 24,
+            "row": 428
+          },
+          "location": {
+            "column": 13,
+            "row": 428
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `campaign`"
+    },
+    "location": {
+      "column": 13,
+      "row": 428
+    },
+    "message": "Local variable `campaign` is assigned to but never used",
+    "noqa_row": 428,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 184
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\campaign\\test_campaign_fallback.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 184
+          },
+          "location": {
+            "column": 9,
+            "row": 184
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `resp`"
+    },
+    "location": {
+      "column": 9,
+      "row": 184
+    },
+    "message": "Local variable `resp` is assigned to but never used",
+    "noqa_row": 184,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 201
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\campaign\\test_campaign_fallback.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 201
+          },
+          "location": {
+            "column": 9,
+            "row": 201
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `resp`"
+    },
+    "location": {
+      "column": 9,
+      "row": 201
+    },
+    "message": "Local variable `resp` is assigned to but never used",
+    "noqa_row": 201,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 216
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\campaign\\test_campaign_fallback.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 216
+          },
+          "location": {
+            "column": 9,
+            "row": 216
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `resp`"
+    },
+    "location": {
+      "column": 9,
+      "row": 216
+    },
+    "message": "Local variable `resp` is assigned to but never used",
+    "noqa_row": 216,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 232
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\campaign\\test_campaign_fallback.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 232
+          },
+          "location": {
+            "column": 9,
+            "row": 232
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `resp`"
+    },
+    "location": {
+      "column": 9,
+      "row": 232
+    },
+    "message": "Local variable `resp` is assigned to but never used",
+    "noqa_row": 232,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 20,
+      "row": 333
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\campaign\\test_campaign_fallback.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 23,
+            "row": 333
+          },
+          "location": {
+            "column": 9,
+            "row": 333
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `export_resp`"
+    },
+    "location": {
+      "column": 9,
+      "row": 333
+    },
+    "message": "Local variable `export_resp` is assigned to but never used",
+    "noqa_row": 333,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 217
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\campaign\\test_campaign_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 217
+          },
+          "location": {
+            "column": 9,
+            "row": 217
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `resp`"
+    },
+    "location": {
+      "column": 9,
+      "row": 217
+    },
+    "message": "Local variable `resp` is assigned to but never used",
+    "noqa_row": 217,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 42,
+      "row": 117
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\common\\test_datetime_timezone.py",
+    "fix": null,
+    "location": {
+      "column": 41,
+      "row": 117
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 117,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 42,
+      "row": 75
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\common\\test_timezone_compliance.py",
+    "fix": null,
+    "location": {
+      "column": 41,
+      "row": 75
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 75,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 19,
+      "row": 157
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\e2e\\test_full_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 22,
+            "row": 157
+          },
+          "location": {
+            "column": 13,
+            "row": 157
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 13,
+      "row": 157
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 157,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 19,
+      "row": 171
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\e2e\\test_full_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 22,
+            "row": 171
+          },
+          "location": {
+            "column": 13,
+            "row": 171
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 13,
+      "row": 171
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 171,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 47,
+      "row": 19
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_autonomous_50world_benchmark.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 19
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 19,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 10,
+      "row": 56
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_autonomous_export_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 13,
+            "row": 56
+          },
+          "location": {
+            "column": 5,
+            "row": 56
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `found`"
+    },
+    "location": {
+      "column": 5,
+      "row": 56
+    },
+    "message": "Local variable `found` is assigned to but never used",
+    "noqa_row": 56,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 12,
+      "row": 42
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_blueprint_generation_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 15,
+            "row": 42
+          },
+          "location": {
+            "column": 9,
+            "row": 42
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `bps`"
+    },
+    "location": {
+      "column": 9,
+      "row": 42
+    },
+    "message": "Local variable `bps` is assigned to but never used",
+    "noqa_row": 42,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 47
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_blueprint_generation_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 47
+          },
+          "location": {
+            "column": 9,
+            "row": 47
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `issavi`"
+    },
+    "location": {
+      "column": 9,
+      "row": 47
+    },
+    "message": "Local variable `issavi` is assigned to but never used",
+    "noqa_row": 47,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 19,
+      "row": 122
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_critic_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 22,
+            "row": 122
+          },
+          "location": {
+            "column": 13,
+            "row": 122
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 13,
+      "row": 122
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 122,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 24,
+      "row": 30
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_critic_playtest_integration.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 38
+          },
+          "location": {
+            "column": 1,
+            "row": 30
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `playtest_report`"
+    },
+    "location": {
+      "column": 9,
+      "row": 30
+    },
+    "message": "Local variable `playtest_report` is assigned to but never used",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 47
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\integration\\test_multi_agent_pipeline.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 47
+          },
+          "location": {
+            "column": 9,
+            "row": 47
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 9,
+      "row": 47
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 47,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F601",
+    "end_location": {
+      "column": 22,
+      "row": 265
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\knowledge\\test_other_extractors.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 265
+    },
+    "message": "Dictionary key literal `\"regions\"` repeated",
+    "noqa_row": 265,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/multi-value-repeated-key-literal"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 27,
+      "row": 273
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\knowledge\\test_other_extractors.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 273
+    },
+    "message": "Redefinition of unused `test_skips_generic` from line 235: `test_skips_generic` redefined here",
+    "noqa_row": 273,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "F601",
+    "end_location": {
+      "column": 22,
+      "row": 282
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\knowledge\\test_other_extractors.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 282
+    },
+    "message": "Dictionary key literal `\"regions\"` repeated",
+    "noqa_row": 282,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/multi-value-repeated-key-literal"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 14,
+      "row": 176
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\lua\\test_lua_generator.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 17,
+            "row": 176
+          },
+          "location": {
+            "column": 9,
+            "row": 176
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `world`"
+    },
+    "location": {
+      "column": 9,
+      "row": 176
+    },
+    "message": "Local variable `world` is assigned to but never used",
+    "noqa_row": 176,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 177
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\lua\\test_lua_generator.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 177
+          },
+          "location": {
+            "column": 9,
+            "row": 177
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `tile`"
+    },
+    "location": {
+      "column": 9,
+      "row": 177
+    },
+    "message": "Local variable `tile` is assigned to but never used",
+    "noqa_row": 177,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F821",
+    "end_location": {
+      "column": 26,
+      "row": 61
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": null,
+    "location": {
+      "column": 15,
+      "row": 61
+    },
+    "message": "Undefined name `NodeEncoder`",
+    "noqa_row": 61,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/undefined-name"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 62
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 20,
+            "row": 62
+          },
+          "location": {
+            "column": 5,
+            "row": 62
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `tile_encoder`"
+    },
+    "location": {
+      "column": 5,
+      "row": 62
+    },
+    "message": "Local variable `tile_encoder` is assigned to but never used",
+    "noqa_row": 62,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E712",
+    "end_location": {
+      "column": 47,
+      "row": 395
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "item_decoder.is_ground(106)",
+          "end_location": {
+            "column": 47,
+            "row": 395
+          },
+          "location": {
+            "column": 12,
+            "row": 395
+          }
+        }
+      ],
+      "message": "Replace with `item_decoder.is_ground(106)`"
+    },
+    "location": {
+      "column": 12,
+      "row": 395
+    },
+    "message": "Avoid equality comparisons to `True`; use `item_decoder.is_ground(106):` for truth checks",
+    "noqa_row": 395,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/true-false-comparison"
+  },
+  {
+    "cell": null,
+    "code": "E712",
+    "end_location": {
+      "column": 49,
+      "row": 396
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "not item_decoder.is_ground(2050)",
+          "end_location": {
+            "column": 49,
+            "row": 396
+          },
+          "location": {
+            "column": 12,
+            "row": 396
+          }
+        }
+      ],
+      "message": "Replace with `not item_decoder.is_ground(2050)`"
+    },
+    "location": {
+      "column": 12,
+      "row": 396
+    },
+    "message": "Avoid equality comparisons to `False`; use `not item_decoder.is_ground(2050):` for false checks",
+    "noqa_row": 396,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/true-false-comparison"
+  },
+  {
+    "cell": null,
+    "code": "F821",
+    "end_location": {
+      "column": 26,
+      "row": 704
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": null,
+    "location": {
+      "column": 15,
+      "row": 704
+    },
+    "message": "Undefined name `NodeEncoder`",
+    "noqa_row": 704,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/undefined-name"
+  },
+  {
+    "cell": null,
+    "code": "F821",
+    "end_location": {
+      "column": 26,
+      "row": 762
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": null,
+    "location": {
+      "column": 15,
+      "row": 762
+    },
+    "message": "Undefined name `NodeEncoder`",
+    "noqa_row": 762,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/undefined-name"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 763
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\otbm\\test_otbm_importer.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 20,
+            "row": 763
+          },
+          "location": {
+            "column": 5,
+            "row": 763
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `tile_encoder`"
+    },
+    "location": {
+      "column": 5,
+      "row": 763
+    },
+    "message": "Local variable `tile_encoder` is assigned to but never used",
+    "noqa_row": 763,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 139
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_blueprint_validator.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 139
+          },
+          "location": {
+            "column": 9,
+            "row": 139
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 9,
+      "row": 139
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 139,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 20,
+      "row": 112
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_critic_report.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 23,
+            "row": 112
+          },
+          "location": {
+            "column": 13,
+            "row": 112
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `report2`"
+    },
+    "location": {
+      "column": 13,
+      "row": 112
+    },
+    "message": "Local variable `report2` is assigned to but never used",
+    "noqa_row": 112,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 6,
+      "row": 117
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_mvp_integration.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 9,
+            "row": 117
+          },
+          "location": {
+            "column": 5,
+            "row": 117
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `v`"
+    },
+    "location": {
+      "column": 5,
+      "row": 117
+    },
+    "message": "Local variable `v` is assigned to but never used",
+    "noqa_row": 117,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 8,
+      "row": 213
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_mvp_integration.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 11,
+            "row": 213
+          },
+          "location": {
+            "column": 5,
+            "row": 213
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `rec`"
+    },
+    "location": {
+      "column": 5,
+      "row": 213
+    },
+    "message": "Local variable `rec` is assigned to but never used",
+    "noqa_row": 213,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 11,
+      "row": 69
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_preview_generator.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 14,
+            "row": 69
+          },
+          "location": {
+            "column": 5,
+            "row": 69
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 5,
+      "row": 69
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 69,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 88,
+      "row": 28
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 28
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 28,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 2,
+      "row": 35
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 29
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 29,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 64,
+      "row": 36
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 36
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 36,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 49,
+      "row": 37
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 37
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 37,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 42,
+      "row": 38
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 38
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 38,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 602
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 602
+          },
+          "location": {
+            "column": 9,
+            "row": 602
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `result`"
+    },
+    "location": {
+      "column": 9,
+      "row": 602
+    },
+    "message": "Local variable `result` is assigned to but never used",
+    "noqa_row": 602,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 23,
+      "row": 657
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_production.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 26,
+            "row": 657
+          },
+          "location": {
+            "column": 9,
+            "row": 657
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `preview_result`"
+    },
+    "location": {
+      "column": 9,
+      "row": 657
+    },
+    "message": "Local variable `preview_result` is assigned to but never used",
+    "noqa_row": 657,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 76
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_region_expander.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 20,
+            "row": 76
+          },
+          "location": {
+            "column": 9,
+            "row": 76
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `original`"
+    },
+    "location": {
+      "column": 9,
+      "row": 76
+    },
+    "message": "Local variable `original` is assigned to but never used",
+    "noqa_row": 76,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 11,
+      "row": 466
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_world_planner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 14,
+            "row": 466
+          },
+          "location": {
+            "column": 5,
+            "row": 466
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `types1`"
+    },
+    "location": {
+      "column": 5,
+      "row": 466
+    },
+    "message": "Local variable `types1` is assigned to but never used",
+    "noqa_row": 466,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 11,
+      "row": 467
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_world_planner.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 14,
+            "row": 467
+          },
+          "location": {
+            "column": 5,
+            "row": 467
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `types2`"
+    },
+    "location": {
+      "column": 5,
+      "row": 467
+    },
+    "message": "Local variable `types2` is assigned to but never used",
+    "noqa_row": 467,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 10,
+      "row": 129
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_world_synthesizer.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 13,
+            "row": 129
+          },
+          "location": {
+            "column": 5,
+            "row": 129
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `world`"
+    },
+    "location": {
+      "column": 5,
+      "row": 129
+    },
+    "message": "Local variable `world` is assigned to but never used",
+    "noqa_row": 129,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 10,
+      "row": 141
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tests\\test_world_validator.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 13,
+            "row": 141
+          },
+          "location": {
+            "column": 9,
+            "row": 141
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `w`"
+    },
+    "location": {
+      "column": 9,
+      "row": 141
+    },
+    "message": "Local variable `w` is assigned to but never used",
+    "noqa_row": 141,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 33,
+      "row": 259
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_lua_hardening.py",
+    "fix": null,
+    "location": {
+      "column": 32,
+      "row": 259
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 259,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 31,
+      "row": 309
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_lua_hardening.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 309
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 309,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 20,
+      "row": 311
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_lua_hardening.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 311
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 311,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 23,
+      "row": 135
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_performance.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 26,
+            "row": 135
+          },
+          "location": {
+            "column": 5,
+            "row": 135
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `object_count_start`"
+    },
+    "location": {
+      "column": 5,
+      "row": 135
+    },
+    "message": "Local variable `object_count_start` is assigned to but never used",
+    "noqa_row": 135,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 21,
+      "row": 220
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_performance.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 24,
+            "row": 220
+          },
+          "location": {
+            "column": 13,
+            "row": 220
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `creation`"
+    },
+    "location": {
+      "column": 13,
+      "row": 220
+    },
+    "message": "Local variable `creation` is assigned to but never used",
+    "noqa_row": 220,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 18,
+      "row": 221
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_performance.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 21,
+            "row": 221
+          },
+          "location": {
+            "column": 13,
+            "row": 221
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `exit_`"
+    },
+    "location": {
+      "column": 13,
+      "row": 221
+    },
+    "message": "Local variable `exit_` is assigned to but never used",
+    "noqa_row": 221,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 289
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_security.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 20,
+            "row": 289
+          },
+          "location": {
+            "column": 5,
+            "row": 289
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `total_issues`"
+    },
+    "location": {
+      "column": 5,
+      "row": 289
+    },
+    "message": "Local variable `total_issues` is assigned to but never used",
+    "noqa_row": 289,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 15,
+      "row": 296
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\hotfix_security.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 18,
+            "row": 296
+          },
+          "location": {
+            "column": 5,
+            "row": 296
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `high_count`"
+    },
+    "location": {
+      "column": 5,
+      "row": 296
+    },
+    "message": "Local variable `high_count` is assigned to but never used",
+    "noqa_row": 296,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 30,
+      "row": 55
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\real_autonomous_certification.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 56
+          },
+          "location": {
+            "column": 1,
+            "row": 55
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `target_thresholds`"
+    },
+    "location": {
+      "column": 13,
+      "row": 55
+    },
+    "message": "Local variable `target_thresholds` is assigned to but never used",
+    "noqa_row": 55,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 36
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\real_blueprint_validation.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 36
+          },
+          "location": {
+            "column": 5,
+            "row": 36
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `registry`"
+    },
+    "location": {
+      "column": 5,
+      "row": 36
+    },
+    "message": "Local variable `registry` is assigned to but never used",
+    "noqa_row": 36,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 14,
+      "row": 37
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\real_blueprint_validation.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 17,
+            "row": 37
+          },
+          "location": {
+            "column": 5,
+            "row": 37
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `extractor`"
+    },
+    "location": {
+      "column": 5,
+      "row": 37
+    },
+    "message": "Local variable `extractor` is assigned to but never used",
+    "noqa_row": 37,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 7,
+      "row": 43
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\real_blueprint_validation.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 10,
+            "row": 43
+          },
+          "location": {
+            "column": 5,
+            "row": 43
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `ai`"
+    },
+    "location": {
+      "column": 5,
+      "row": 43
+    },
+    "message": "Local variable `ai` is assigned to but never used",
+    "noqa_row": 43,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 22,
+      "row": 75
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\real_blueprint_validation.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "pass",
+          "end_location": {
+            "column": 28,
+            "row": 75
+          },
+          "location": {
+            "column": 21,
+            "row": 75
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `s`"
+    },
+    "location": {
+      "column": 21,
+      "row": 75
+    },
+    "message": "Local variable `s` is assigned to but never used",
+    "noqa_row": 75,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 24,
+      "row": 88
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\real_blueprint_validation.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "pass",
+          "end_location": {
+            "column": 31,
+            "row": 88
+          },
+          "location": {
+            "column": 21,
+            "row": 88
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `res`"
+    },
+    "location": {
+      "column": 21,
+      "row": 88
+    },
+    "message": "Local variable `res` is assigned to but never used",
+    "noqa_row": 88,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 17,
+      "row": 251
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\tools\\run_rc1_1.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 252
+          },
+          "location": {
+            "column": 1,
+            "row": 251
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `all_criteria`"
+    },
+    "location": {
+      "column": 5,
+      "row": 251
+    },
+    "message": "Local variable `all_criteria` is assigned to but never used",
+    "noqa_row": 251,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 38,
+      "row": 13
+    },
+    "filename": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\ui\\pages\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 13
+    },
+    "message": "`PySide6.QtWidgets.QWidget` imported but unused",
+    "noqa_row": 13,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  }
+]

@@ -1,9 +1,8 @@
 """Tests for the Autonomous Decision Engine."""
 
-import pytest
-
 from core.autonomous.autonomous_decision_engine import (
-    AutonomousDecisionEngine, SCORE_WEIGHTS,
+    AutonomousDecisionEngine,
+    SCORE_WEIGHTS,
 )
 from core.autonomous.models.design_goal import DesignGoal
 from core.autonomous.models.region_plan import RegionPlan
@@ -15,7 +14,9 @@ class TestAutonomousDecisionEngine:
     def test_select_blueprint(self):
         engine = AutonomousDecisionEngine()
         region = RegionPlan(
-            region_id="r1", region_name="Hunt 1", region_type="hunt",
+            region_id="r1",
+            region_name="Hunt 1",
+            region_type="hunt",
         )
         decision = engine.select_blueprint(region, candidates=["bp_a", "bp_b", "bp_c"])
         assert decision.region_id == "r1"
@@ -37,7 +38,9 @@ class TestAutonomousDecisionEngine:
     def test_select_pattern(self):
         engine = AutonomousDecisionEngine()
         region = RegionPlan(
-            region_id="r1", region_name="Hunt", region_type="hunt",
+            region_id="r1",
+            region_name="Hunt",
+            region_type="hunt",
         )
         decision = engine.select_pattern(region, candidates=["pat_a", "pat_b"])
         assert decision.decision_type == "pattern"
@@ -46,7 +49,9 @@ class TestAutonomousDecisionEngine:
     def test_select_cluster(self):
         engine = AutonomousDecisionEngine()
         region = RegionPlan(
-            region_id="r1", region_name="Boss", region_type="boss",
+            region_id="r1",
+            region_name="Boss",
+            region_type="boss",
         )
         decision = engine.select_cluster(region)
         assert decision.decision_type == "cluster"
@@ -55,7 +60,9 @@ class TestAutonomousDecisionEngine:
     def test_select_hybrid(self):
         engine = AutonomousDecisionEngine()
         region = RegionPlan(
-            region_id="r1", region_name="Hunt", region_type="hunt",
+            region_id="r1",
+            region_name="Hunt",
+            region_type="hunt",
         )
         decision = engine.select_hybrid(region, "bp_a", "bp_b")
         assert decision.decision_type == "hybrid"

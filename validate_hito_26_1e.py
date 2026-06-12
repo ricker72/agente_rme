@@ -8,7 +8,6 @@ Verifies:
 
 import os
 import sys
-import re
 
 KEY_AREAS = {
     "logs": [
@@ -67,9 +66,9 @@ def check_file(path):
 def main():
     errors = 0
     for area, filelist in KEY_AREAS.items():
-        print(f"\n{'='*50}")
+        print(f"\n{'=' * 50}")
         print(f"Area: {area.upper()}")
-        print(f"{'='*50}")
+        print(f"{'=' * 50}")
         for f in filelist:
             result = check_file(f)
             if result is None:
@@ -80,7 +79,7 @@ def main():
                 print(f"  FAIL: {f}")
                 errors += 1
 
-    print(f"\n{'='*50}")
+    print(f"\n{'=' * 50}")
     if errors:
         print(f"RESULT: {errors} file(s) with datetime.utcnow() — FAIL")
         sys.exit(1)

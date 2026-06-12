@@ -5,10 +5,9 @@ RegionAnalyzer — analyzes named regions: emptiness, level ranges, coverage.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 from core.world.world_model import WorldModel
-from core.world.region import Region
 
 from .base_analyzer import (
     build_snapshots,
@@ -36,8 +35,12 @@ class RegionAnalyzer:
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         regions = list(world.regions)
@@ -52,41 +55,51 @@ class RegionAnalyzer:
             snaps = by_zone.get(region.name, [])
             if len(snaps) < self.empty_threshold:
                 empty_regions.append(region.name)
-                issues.append(CriticIssue(
-                    issue_type=IssueType.EMPTY_REGION,
-                    severity=IssueSeverity.WARNING,
-                    category=self.CATEGORY,
-                    location=region.name,
-                    message=f"Region '{region.name}' is empty or near-empty ({len(snaps)} tiles)",
-                ))
+                issues.append(
+                    CriticIssue(
+                        issue_type=IssueType.EMPTY_REGION,
+                        severity=IssueSeverity.WARNING,
+                        category=self.CATEGORY,
+                        location=region.name,
+                        message=f"Region '{region.name}' is empty or near-empty ({len(snaps)} tiles)",
+                    )
+                )
 
         if empty_regions:
-            recs.append(CriticRecommendation(
-                title="Populate empty regions",
-                description=f"Empty regions: {', '.join(empty_regions)}. Add tiles, decoration or remove them.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+            recs.append(
+                CriticRecommendation(
+                    title="Populate empty regions",
+                    description=f"Empty regions: {', '.join(empty_regions)}. Add tiles, decoration or remove them.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         # Level-range consistency
         level_issues = 0
         for region in regions:
             if region.min_level > region.max_level:
                 level_issues += 1
-                issues.append(CriticIssue(
-                    issue_type=IssueType.POOR_NAVIGATION,
-                    severity=IssueSeverity.WARNING,
-                    category=self.CATEGORY,
-                    location=region.name,
-                    message=f"Region '{region.name}' has invalid level range ({region.min_level}-{region.max_level})",
-                ))
+                issues.append(
+                    CriticIssue(
+                        issue_type=IssueType.POOR_NAVIGATION,
+                        severity=IssueSeverity.WARNING,
+                        category=self.CATEGORY,
+                        location=region.name,
+                        message=f"Region '{region.name}' has invalid level range ({region.min_level}-{region.max_level})",
+                    )
+                )
 
         # Compute the average region "size" as a quality proxy
         region_sizes = [len(by_zone.get(r.name, [])) for r in regions]
         avg_size = average(region_sizes) if region_sizes else 0.0
 
         coverage = safe_ratio(
-            sum(1 for r in regions if len(by_zone.get(r.name, [])) >= self.empty_threshold),
+            sum(
+                1
+                for r in regions
+                if len(by_zone.get(r.name, [])) >= self.empty_threshold
+            ),
             len(regions),
         )
 

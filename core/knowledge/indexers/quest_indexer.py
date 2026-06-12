@@ -14,6 +14,9 @@ class QuestIndexer(BaseIndexer):
 
     def by_difficulty(self, difficulty: str) -> list:
         d = difficulty.lower()
-        return [e for e in self.entries
-                if e.entry_type == EntryType.QUEST
-                and (e.attributes or {}).get("difficulty", "").lower() == d]
+        return [
+            e
+            for e in self.entries
+            if e.entry_type == EntryType.QUEST
+            and (e.attributes or {}).get("difficulty", "").lower() == d
+        ]

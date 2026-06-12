@@ -1,6 +1,7 @@
 import numpy as np
 from typing import List
 
+
 class VectorStore:
     def __init__(self):
         self.documents: List[dict] = []

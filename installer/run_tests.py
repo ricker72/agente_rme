@@ -21,13 +21,15 @@ def run_tests(coverage=False, verbose=False, min_coverage=80):
     cmd = [sys.executable, "-m", "pytest"]
 
     if coverage:
-        cmd.extend([
-            "--cov=core",
-            "--cov=cli",
-            f"--cov-fail-under={min_coverage}",
-            "--cov-report=term-missing",
-            "--cov-report=html:htmlcov",
-        ])
+        cmd.extend(
+            [
+                "--cov=core",
+                "--cov=cli",
+                f"--cov-fail-under={min_coverage}",
+                "--cov-report=term-missing",
+                "--cov-report=html:htmlcov",
+            ]
+        )
 
     if verbose:
         cmd.append("-v")
@@ -41,9 +43,13 @@ def run_tests(coverage=False, verbose=False, min_coverage=80):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="RME Agent Test Runner")
-    parser.add_argument("--coverage", action="store_true", help="Enable coverage reporting")
+    parser.add_argument(
+        "--coverage", action="store_true", help="Enable coverage reporting"
+    )
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
-    parser.add_argument("--min-coverage", type=int, default=80, help="Minimum coverage threshold")
+    parser.add_argument(
+        "--min-coverage", type=int, default=80, help="Minimum coverage threshold"
+    )
     args = parser.parse_args()
 
     code = run_tests(

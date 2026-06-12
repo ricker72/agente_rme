@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional, Tuple
 @dataclass
 class BlueprintTile:
     """A single tile in a blueprint."""
+
     x: int
     y: int
     ground: int = 0
@@ -39,6 +40,7 @@ class BlueprintTile:
 @dataclass
 class BlueprintMetadata:
     """Metadata associated with a blueprint."""
+
     style: str = ""
     era: str = "modern"
     difficulty: str = "safe"
@@ -57,6 +59,7 @@ class Blueprint:
       2. Descriptive: 'rooms', 'features', 'grounds', 'walls_items', 'decorations'
          which get expanded into tiles at placement time.
     """
+
     name: str
     theme: str = "generic"
     category: str = "unknown"
@@ -165,10 +168,18 @@ class Blueprint:
     def from_dict(cls, data: Dict[str, Any]) -> Blueprint:
         """Deserialize a dictionary into a Blueprint instance."""
         size_raw = data.get("size", [10, 10])
-        size = (size_raw[0], size_raw[1]) if isinstance(size_raw, (list, tuple)) else (10, 10)
+        size = (
+            (size_raw[0], size_raw[1])
+            if isinstance(size_raw, (list, tuple))
+            else (10, 10)
+        )
 
         entry_raw = data.get("entry")
-        entry = (entry_raw[0], entry_raw[1]) if isinstance(entry_raw, (list, tuple)) and len(entry_raw) == 2 else None
+        entry = (
+            (entry_raw[0], entry_raw[1])
+            if isinstance(entry_raw, (list, tuple)) and len(entry_raw) == 2
+            else None
+        )
 
         tiles_raw = data.get("tiles", [])
         tiles = [BlueprintTile.from_dict(t) for t in tiles_raw] if tiles_raw else []

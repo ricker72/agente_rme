@@ -16,8 +16,7 @@ from .base_extractor import BaseExtractor, _as_int, _as_list, _as_str
 class HuntExtractor(BaseExtractor):
     NAME = "hunt"
 
-    HUNT_KEYWORDS = ("hunt", "spawn", "farm", "cave", "sewer", "dungeon",
-                     "lair", "-")
+    HUNT_KEYWORDS = ("hunt", "spawn", "farm", "cave", "sewer", "dungeon", "lair", "-")
     CIRCULAR_HINTS = ("circular", "ring", "loop", "roshamuul", "arena")
 
     def extract(self, world: Dict[str, Any], source: str = "") -> List[KnowledgeEntry]:
@@ -43,14 +42,19 @@ class HuntExtractor(BaseExtractor):
             monster_names = sorted({_as_str(m) for m in monsters if m})
             tile_count = _count_tiles_in_region(world, lname)
             route = self._infer_route(lname, name, tile_count, monster_names)
-            circular = any(h in lname for h in self.CIRCULAR_HINTS) or route == "circular"
-            difficulty = self._infer_difficulty(int(r.get("max_level", 0)),
-                                                 int(r.get("min_level", 0)))
+            circular = (
+                any(h in lname for h in self.CIRCULAR_HINTS) or route == "circular"
+            )
+            difficulty = self._infer_difficulty(
+                int(r.get("max_level", 0)), int(r.get("min_level", 0))
+            )
             entry = KnowledgeEntry.build(
                 entry_type=EntryType.HUNT,
                 name=name,
                 source=source,
-                biome=_as_str(r.get("theme", world.get("meta", {}).get("theme", "generic"))),
+                biome=_as_str(
+                    r.get("theme", world.get("meta", {}).get("theme", "generic"))
+                ),
                 min_level=_as_int(r.get("min_level", 1)),
                 max_level=_as_int(r.get("max_level", 9999)),
                 tags=_coerce_tags(r) + (["circular_route"] if circular else []),
@@ -81,8 +85,9 @@ class HuntExtractor(BaseExtractor):
             out.setdefault(zone.lower(), []).append(monster)
         return out
 
-    def _infer_route(self, lname: str, name: str, tile_count: int,
-                     monsters: List[str]) -> str:
+    def _infer_route(
+        self, lname: str, name: str, tile_count: int, monsters: List[str]
+    ) -> str:
         if any(h in lname for h in self.CIRCULAR_HINTS):
             return "circular"
         if tile_count > 0 and len(monsters) >= max(3, tile_count // 4):

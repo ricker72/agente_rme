@@ -53,9 +53,12 @@ class Checkpoint:
 class RecoveryManager:
     """Manages checkpoints, atomic exports, and rollback."""
 
-    def __init__(self, checkpoint_dir: str = ".checkpoint",
-                 backups_dir: str = ".backups",
-                 max_checkpoints: int = 5) -> None:
+    def __init__(
+        self,
+        checkpoint_dir: str = ".checkpoint",
+        backups_dir: str = ".backups",
+        max_checkpoints: int = 5,
+    ) -> None:
         self.checkpoint_dir = Path(checkpoint_dir)
         self.backups_dir = Path(backups_dir)
         self.max_checkpoints = max_checkpoints
@@ -69,8 +72,12 @@ class RecoveryManager:
     # Checkpointing
     # ------------------------------------------------------------------
 
-    def checkpoint(self, world: Any = None, stage: str = "unknown",
-                   metadata: Optional[Dict[str, Any]] = None) -> Checkpoint:
+    def checkpoint(
+        self,
+        world: Any = None,
+        stage: str = "unknown",
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> Checkpoint:
         """Create a checkpoint. If world supports to_dict, payload is saved to disk."""
         meta = dict(metadata or {})
         ts = _utc_iso()
@@ -80,7 +87,9 @@ class RecoveryManager:
             payload_path = str(self.checkpoint_dir / f"{ck_id}.json")
             try:
                 with open(payload_path, "w", encoding="utf-8") as f:
-                    json.dump(world.to_dict(), f, indent=2, default=str, ensure_ascii=False)
+                    json.dump(
+                        world.to_dict(), f, indent=2, default=str, ensure_ascii=False
+                    )
             except OSError as e:
                 payload_path = ""
                 meta["payload_error"] = str(e)
@@ -111,7 +120,12 @@ class RecoveryManager:
 
     def _save_index(self) -> None:
         with open(self._index_path(), "w", encoding="utf-8") as f:
-            json.dump([c.to_dict() for c in self._checkpoints], f, indent=2, ensure_ascii=False)
+            json.dump(
+                [c.to_dict() for c in self._checkpoints],
+                f,
+                indent=2,
+                ensure_ascii=False,
+            )
 
     def _load_index(self) -> None:
         p = self._index_path()
@@ -220,12 +234,14 @@ class RecoveryManager:
                 stat = p.stat()
             except OSError:
                 continue
-            out.append({
-                "path": str(p),
-                "name": p.name,
-                "size_bytes": stat.st_size,
-                "mtime": stat.st_mtime,
-            })
+            out.append(
+                {
+                    "path": str(p),
+                    "name": p.name,
+                    "size_bytes": stat.st_size,
+                    "mtime": stat.st_mtime,
+                }
+            )
         out.sort(key=lambda d: d["mtime"], reverse=True)
         return out
 
@@ -243,7 +259,9 @@ class RecoveryManager:
             "checkpoints_successful": sum(1 for c in self._checkpoints if c.success),
             "checkpoints_failed": sum(1 for c in self._checkpoints if not c.success),
             "backups_total": sum(1 for _ in self.backups_dir.glob("*.bak")),
-            "last_checkpoint": self._checkpoints[-1].to_dict() if self._checkpoints else None,
+            "last_checkpoint": self._checkpoints[-1].to_dict()
+            if self._checkpoints
+            else None,
         }
 
     def export_report(self, path: str = "recovery_report.json") -> str:

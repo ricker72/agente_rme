@@ -55,20 +55,33 @@ class SpawnGenerator:
     # Monster difficulty tiers
     MONSTER_TIERS = {
         "easy": [
-            "Crypt Warden", "Skeleton", "Demon Skeleton",
-            "Priestess", "Death Priest",
+            "Crypt Warden",
+            "Skeleton",
+            "Demon Skeleton",
+            "Priestess",
+            "Death Priest",
         ],
         "medium": [
-            "Frazzlemaw", "Sphinx", "Cloak Of Terror",
-            "Crypt Warden", "Vexclaw",
+            "Frazzlemaw",
+            "Sphinx",
+            "Cloak Of Terror",
+            "Crypt Warden",
+            "Vexclaw",
         ],
         "hard": [
-            "Frazzlemaw", "Guzzlemaw", "Cloak Of Terror",
-            "Sphinx", "Vexclaw", "Shrieker",
+            "Frazzlemaw",
+            "Guzzlemaw",
+            "Cloak Of Terror",
+            "Sphinx",
+            "Vexclaw",
+            "Shrieker",
         ],
         "extreme": [
-            "Guzzlemaw", "Cloak Of Terror", "Vexclaw",
-            "Shrieker", "Frazzlemaw",
+            "Guzzlemaw",
+            "Cloak Of Terror",
+            "Vexclaw",
+            "Shrieker",
+            "Frazzlemaw",
         ],
     }
 
@@ -99,7 +112,9 @@ class SpawnGenerator:
                 by = room.y + room.height // 2
                 boss_name = self._pick_boss(available, avg_level)
                 entry = SpawnEntry(
-                    x=bx, y=by, z=base_z,
+                    x=bx,
+                    y=by,
+                    z=base_z,
                     monster_name=boss_name,
                     interval=120,
                     is_boss=True,
@@ -109,6 +124,7 @@ class SpawnGenerator:
             elif room.room_type == "spawn":
                 # Regular spawns at room corners
                 import random
+
                 rng = random.Random(hash(f"{room.x}_{room.y}_spawn") % (2**31))
                 num_spawns = self._num_spawns(tier, avg_level)
 
@@ -116,13 +132,15 @@ class SpawnGenerator:
                     dx = rng.randint(1, max(room.width - 2, 1))
                     dy = rng.randint(1, max(room.height - 2, 1))
                     monster = rng.choice(available)
-                    plan.spawns.append(SpawnEntry(
-                        x=room.x + dx,
-                        y=room.y + dy,
-                        z=base_z,
-                        monster_name=monster,
-                        interval=60,
-                    ))
+                    plan.spawns.append(
+                        SpawnEntry(
+                            x=room.x + dx,
+                            y=room.y + dy,
+                            z=base_z,
+                            monster_name=monster,
+                            interval=60,
+                        )
+                    )
 
         return plan
 
@@ -240,7 +258,7 @@ class SpawnGenerator:
             base_z = 7
 
         for zone in zones:
-            zone_z = int(getattr(zone, "min_level", 0) and 7 or 7)
+            int(getattr(zone, "min_level", 0) and 7 or 7)
 
             # Hunt areas contribute regular spawns
             for hunt in getattr(zone, "hunts", []) or []:
@@ -252,7 +270,11 @@ class SpawnGenerator:
                 for spawn in getattr(hunt, "spawns", []) or []:
                     monster = (
                         getattr(spawn, "monster_name", None)
-                        or (spawn.get("monster_name") if isinstance(spawn, dict) else None)
+                        or (
+                            spawn.get("monster_name")
+                            if isinstance(spawn, dict)
+                            else None
+                        )
                         or "Unknown"
                     )
                     schedule = (
@@ -318,7 +340,9 @@ class SpawnGenerator:
                     x=int(entry.get("x", 0)),
                     y=int(entry.get("y", 0)),
                     z=int(entry.get("z", 7)),
-                    monster_name=str(entry.get("monster_name", entry.get("monster", "Unknown"))),
+                    monster_name=str(
+                        entry.get("monster_name", entry.get("monster", "Unknown"))
+                    ),
                     interval=interval,
                     is_boss=is_boss,
                 )
@@ -337,7 +361,9 @@ class SpawnGenerator:
                     x=int(boss.get("x", 0)),
                     y=int(boss.get("y", 0)),
                     z=int(boss.get("z", 7)),
-                    monster_name=str(boss.get("monster_name", boss.get("name", "Boss"))),
+                    monster_name=str(
+                        boss.get("monster_name", boss.get("name", "Boss"))
+                    ),
                     interval=int(boss.get("interval", 600) or 600),
                     is_boss=True,
                 )
@@ -373,11 +399,20 @@ class SpawnGenerator:
 
     def _pick_boss(self, available: List[str], avg_level: float) -> str:
         import random
+
         rng = random.Random(hash(f"boss_{avg_level}") % (2**31))
 
-        boss_candidates = [m for m in available if m in {
-            "Frazzlemaw", "Guzzlemaw", "Cloak Of Terror", "Vexclaw",
-        }]
+        boss_candidates = [
+            m
+            for m in available
+            if m
+            in {
+                "Frazzlemaw",
+                "Guzzlemaw",
+                "Cloak Of Terror",
+                "Vexclaw",
+            }
+        ]
         if boss_candidates:
             return rng.choice(boss_candidates)
         return available[0] if available else "Frazzlemaw"

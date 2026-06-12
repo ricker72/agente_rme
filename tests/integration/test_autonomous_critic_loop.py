@@ -1,8 +1,7 @@
-﻿"""Integration test: Autonomous Designer + Visual Critic loop."""
+"""Integration test: Autonomous Designer + Visual Critic loop."""
 
 import json
 import os
-import pytest
 
 from core.autonomous import AutonomousWorldDesigner
 
@@ -16,7 +15,8 @@ def test_critic_feedback_drives_improvement(tmp_path):
     designer.optimizer.use_real_engines = True
 
     result = designer.generate(
-        "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid", max_iterations=2,
+        "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
+        max_iterations=2,
     )
     assert len(result.convergence_data) == len(result.iterations)
     for score in result.convergence_data:

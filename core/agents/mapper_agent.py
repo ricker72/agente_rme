@@ -1,4 +1,5 @@
 """core.agents.mapper_agent — Real mapper agent using AI mapper engines."""
+
 from __future__ import annotations
 import time
 from typing import Any, Dict
@@ -7,6 +8,7 @@ from .agent_registry import BaseAgent
 
 class MapperAgent(BaseAgent):
     """Real mapper agent. Uses core.architect.mapper_ai. NO FALLBACKS."""
+
     AGENT_ID = "mapper"
 
     def execute(self, request: Any) -> Dict[str, Any]:
@@ -16,7 +18,9 @@ class MapperAgent(BaseAgent):
 
         mapper = MapperAI()
         layout = LayoutEngine()
-        layout_map = layout.generate_layout() if hasattr(layout, "generate_layout") else {}
+        layout_map = (
+            layout.generate_layout() if hasattr(layout, "generate_layout") else {}
+        )
 
         return {
             "agent_id": self.agent_id,

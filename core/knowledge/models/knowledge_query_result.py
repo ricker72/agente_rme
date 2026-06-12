@@ -4,7 +4,7 @@ KnowledgeQueryResult — container for the result of a knowledge query.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
 from .knowledge_entry import KnowledgeEntry

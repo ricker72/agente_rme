@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Set, Tuple
+from typing import List, Optional, Set, Tuple
 
 from .lua_ast import (
     Assignment,
@@ -11,7 +11,6 @@ from .lua_ast import (
     IfStatement,
     ForLoop,
     Variable,
-    Literal,
     RawExpression,
     LuaExpression,
 )
@@ -57,7 +56,15 @@ class RMECompatibilityChecker:
             return (None, None)
         if call.receiver is not None and isinstance(call.receiver, Variable):
             receiver_name = call.receiver.name
-            if receiver_name in {"math", "noise", "geo", "Direction", "app", "map", "tile"}:
+            if receiver_name in {
+                "math",
+                "noise",
+                "geo",
+                "Direction",
+                "app",
+                "map",
+                "tile",
+            }:
                 return (None, None)
         return (None, f"API call not on whitelist but appears safe: {full_name}")
 
@@ -84,7 +91,9 @@ class AutoFixer:
         for pattern, replacement in self.REPLACEMENTS.items():
             if re.search(pattern, fixed):
                 fixed = re.sub(pattern, replacement, fixed)
-                warnings.append(f"Auto-fixed blocked API call: {pattern} -> {replacement}")
+                warnings.append(
+                    f"Auto-fixed blocked API call: {pattern} -> {replacement}"
+                )
         return fixed, warnings
 
 
@@ -107,7 +116,13 @@ class LuaValidator:
             result.status = "failure"
         return result
 
-    def _validate_block(self, block: Block, result: ValidationResult, declared: Optional[Set[str]] = None, tile_vars: Optional[Set[str]] = None) -> None:
+    def _validate_block(
+        self,
+        block: Block,
+        result: ValidationResult,
+        declared: Optional[Set[str]] = None,
+        tile_vars: Optional[Set[str]] = None,
+    ) -> None:
         if declared is None:
             declared = set()
         if tile_vars is None:
@@ -123,14 +138,26 @@ class LuaValidator:
                 self._validate_expression(statement.end, result, declared)
                 if statement.step is not None:
                     self._validate_expression(statement.step, result, declared)
-                self._validate_block(statement.body, result, declared.copy(), tile_vars.copy())
+                self._validate_block(
+                    statement.body, result, declared.copy(), tile_vars.copy()
+                )
             elif isinstance(statement, IfStatement):
                 self._validate_expression(statement.condition, result, declared)
-                self._validate_block(statement.then_body, result, declared.copy(), tile_vars.copy())
+                self._validate_block(
+                    statement.then_body, result, declared.copy(), tile_vars.copy()
+                )
                 if statement.else_body is not None:
-                    self._validate_block(statement.else_body, result, declared.copy(), tile_vars.copy())
+                    self._validate_block(
+                        statement.else_body, result, declared.copy(), tile_vars.copy()
+                    )
 
-    def _validate_assignment(self, assignment: Assignment, result: ValidationResult, declared: Set[str], tile_vars: Set[str]) -> None:
+    def _validate_assignment(
+        self,
+        assignment: Assignment,
+        result: ValidationResult,
+        declared: Set[str],
+        tile_vars: Set[str],
+    ) -> None:
         for value in assignment.values:
             self._validate_expression(value, result, declared)
         for target in assignment.targets:
@@ -143,9 +170,17 @@ class LuaValidator:
                 if target.name.endswith(".ground"):
                     root_name = target.name.split(".", 1)[0]
                     if root_name not in tile_vars and root_name not in declared:
-                        result.warnings.append(f"Possible null tile assignment: {target.name}")
+                        result.warnings.append(
+                            f"Possible null tile assignment: {target.name}"
+                        )
 
-    def _validate_function_call(self, call: FunctionCall, result: ValidationResult, declared: Set[str], tile_vars: Set[str]) -> None:
+    def _validate_function_call(
+        self,
+        call: FunctionCall,
+        result: ValidationResult,
+        declared: Set[str],
+        tile_vars: Set[str],
+    ) -> None:
         if call.receiver is not None:
             self._validate_expression(call.receiver, result, declared)
         for arg in call.args:
@@ -156,26 +191,87 @@ class LuaValidator:
         elif warning:
             result.warnings.append(warning)
         if call.receiver is not None and isinstance(call.receiver, Variable):
-            if call.receiver.name not in declared and call.receiver.name not in tile_vars and call.receiver.name not in {"map", "app", "math", "noise", "geo", "Direction"}:
-                result.warnings.append(f"Use of undeclared variable or possible null receiver: {call.receiver.name}")
+            if (
+                call.receiver.name not in declared
+                and call.receiver.name not in tile_vars
+                and call.receiver.name
+                not in {"map", "app", "math", "noise", "geo", "Direction"}
+            ):
+                result.warnings.append(
+                    f"Use of undeclared variable or possible null receiver: {call.receiver.name}"
+                )
 
-    def _validate_expression(self, expression: LuaExpression, result: ValidationResult, declared: Set[str]) -> None:
+    def _validate_expression(
+        self, expression: LuaExpression, result: ValidationResult, declared: Set[str]
+    ) -> None:
         if isinstance(expression, Variable):
-            if expression.name not in declared and expression.name not in {"map", "app", "math", "noise", "geo", "Direction", "x", "y", "z", "dx", "dy", "baseX", "baseY", "bossTile", "spawnCenter", "frazz", "cloak"}:
+            if expression.name not in declared and expression.name not in {
+                "map",
+                "app",
+                "math",
+                "noise",
+                "geo",
+                "Direction",
+                "x",
+                "y",
+                "z",
+                "dx",
+                "dy",
+                "baseX",
+                "baseY",
+                "bossTile",
+                "spawnCenter",
+                "frazz",
+                "cloak",
+            }:
                 if "." not in expression.name and not expression.name.isnumeric():
-                    result.warnings.append(f"Possible undeclared variable: {expression.name}")
+                    result.warnings.append(
+                        f"Possible undeclared variable: {expression.name}"
+                    )
         elif isinstance(expression, FunctionCall):
             self._validate_function_call(expression, result, declared, set())
         elif isinstance(expression, RawExpression):
-            if "Position" in expression.source or "Game.createTile" in expression.source:
-                result.errors.append(f"Blocked or invalid syntax detected in expression: {expression.source}")
+            if (
+                "Position" in expression.source
+                or "Game.createTile" in expression.source
+            ):
+                result.errors.append(
+                    f"Blocked or invalid syntax detected in expression: {expression.source}"
+                )
                 return
-            for token in re.findall(r'\b[A-Za-z_]\w*(?:\.\w+)*\b', expression.source):
-                if token in {"function", "then", "else", "end", "local", "return", "do", "not"}:
+            for token in re.findall(r"\b[A-Za-z_]\w*(?:\.\w+)*\b", expression.source):
+                if token in {
+                    "function",
+                    "then",
+                    "else",
+                    "end",
+                    "local",
+                    "return",
+                    "do",
+                    "not",
+                }:
                     continue
-                if token in {"map", "app", "math", "noise", "geo", "Direction", "x", "y", "z", "dx", "dy", "baseX", "baseY", "bossTile", "spawnCenter", "frazz", "cloak"}:
+                if token in {
+                    "map",
+                    "app",
+                    "math",
+                    "noise",
+                    "geo",
+                    "Direction",
+                    "x",
+                    "y",
+                    "z",
+                    "dx",
+                    "dy",
+                    "baseX",
+                    "baseY",
+                    "bossTile",
+                    "spawnCenter",
+                    "frazz",
+                    "cloak",
+                }:
                     continue
-                root_name = token.split('.', 1)[0]
+                root_name = token.split(".", 1)[0]
                 if root_name in {"app", "map", "math", "noise", "geo", "Direction"}:
                     continue
                 if token not in declared:

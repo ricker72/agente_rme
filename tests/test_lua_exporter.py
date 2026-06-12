@@ -7,6 +7,7 @@ exported to a valid RME-compatible Lua script.
 
 import sys
 import os
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from core.generators import WorldGenerator, HuntGenerator
@@ -46,12 +47,15 @@ def test_lua_exporter_has_ground():
 def test_lua_exporter_has_spawns():
     """Test that exported Lua includes spawns if world has them."""
     hg = HuntGenerator(seed=42)
-    world = hg.generate(WorldModel(), {
-        "theme": "issavi",
-        "level_min": 300,
-        "level_max": 500,
-        "density": "high",
-    })
+    world = hg.generate(
+        WorldModel(),
+        {
+            "theme": "issavi",
+            "level_min": 300,
+            "level_max": 500,
+            "density": "high",
+        },
+    )
 
     exporter = LuaExporter()
     lua_code = exporter.export(world)

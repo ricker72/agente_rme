@@ -1,0 +1,2 @@
+[bandit]
+exclude = .git,.venv,venv,__pycache__,.mypy_cache,.pytest_cache,htmlcov,htmlcov_autonomous,htmlcov_critic,htmlcov_critic_final,node_modules,output,output_benchmark,cache,logs

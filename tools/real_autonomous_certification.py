@@ -3,9 +3,9 @@ tools/real_autonomous_certification.py — Phase 6: Real Autonomous Certificatio
 
 50 autonomous generations with critic score convergence.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import time
 from pathlib import Path
@@ -52,7 +52,6 @@ def run(n: int = 50) -> Dict[str, Any]:
         prompt = PROMPTS[i % len(PROMPTS)]
         t0 = time.time()
         try:
-            target_thresholds = [0.85, 0.90, 0.95]
             current_score = 0.0
             inner_iterations = 0
             max_inner = 10
@@ -61,11 +60,27 @@ def run(n: int = 50) -> Dict[str, Any]:
                 if hasattr(designer, "design"):
                     world = designer.design(prompt)
                 else:
-                    plan = director.design_world(prompt) if hasattr(director, "design_world") else None
+                    plan = (
+                        director.design_world(prompt)
+                        if hasattr(director, "design_world")
+                        else None
+                    )
                     world = plan
-                world_data = world.to_dict() if hasattr(world, "to_dict") else dict(world) if world else {"zones": []}
-                report = critic.analyze(world_data, map_name=f"iter_{i}_{inner_iterations}")
-                score = getattr(report, "overall_score", 0.0) or (report.get("overall_score", 0.0) if isinstance(report, dict) else 0.0)
+                world_data = (
+                    world.to_dict()
+                    if hasattr(world, "to_dict")
+                    else dict(world)
+                    if world
+                    else {"zones": []}
+                )
+                report = critic.analyze(
+                    world_data, map_name=f"iter_{i}_{inner_iterations}"
+                )
+                score = getattr(report, "overall_score", 0.0) or (
+                    report.get("overall_score", 0.0)
+                    if isinstance(report, dict)
+                    else 0.0
+                )
                 if score > current_score:
                     current_score = score
                 inner_iterations += 1
@@ -80,22 +95,26 @@ def run(n: int = 50) -> Dict[str, Any]:
 
             elapsed = time.time() - t0
             durations.append(elapsed)
-            iterations.append({
-                "index": i,
-                "prompt": prompt,
-                "iterations": inner_iterations,
-                "final_score": current_score,
-                "converged_85": current_score >= 0.85,
-                "converged_90": current_score >= 0.90,
-                "converged_95": current_score >= 0.95,
-                "duration_s": elapsed,
-            })
+            iterations.append(
+                {
+                    "index": i,
+                    "prompt": prompt,
+                    "iterations": inner_iterations,
+                    "final_score": current_score,
+                    "converged_85": current_score >= 0.85,
+                    "converged_90": current_score >= 0.90,
+                    "converged_95": current_score >= 0.95,
+                    "duration_s": elapsed,
+                }
+            )
             if i % 5 == 0:
-                print(f"  [{i+1}/{n}] score={current_score:.2f} iters={inner_iterations}")
+                print(
+                    f"  [{i + 1}/{n}] score={current_score:.2f} iters={inner_iterations}"
+                )
         except Exception as e:
             failed += 1
             iterations.append({"index": i, "error": str(e)})
-            print(f"  [{i+1}/{n}] FAILED: {e}")
+            print(f"  [{i + 1}/{n}] FAILED: {e}")
 
     return {
         "version": "1.0.0-RC1.1",
@@ -130,7 +149,7 @@ def main() -> int:
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(res, f, indent=2, ensure_ascii=False)
     print(f"\n[Phase 6] Saved: {out_file}")
-    print(f"[Phase 6] Convergence 85: {res['convergence']['85']*100:.1f}%")
+    print(f"[Phase 6] Convergence 85: {res['convergence']['85'] * 100:.1f}%")
     print(f"[Phase 6] Pass: {res['criterion_pass']}")
     return 0 if res["criterion_pass"] else 1
 

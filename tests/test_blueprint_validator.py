@@ -6,7 +6,8 @@ Covers validation of size, tiles, entry, metadata, features, rooms.
 import pytest
 
 from core.blueprints import (
-    Blueprint, BlueprintValidator, ValidationResult, ValidationError,
+    Blueprint,
+    BlueprintValidator,
 )
 
 
@@ -21,6 +22,7 @@ class TestBlueprintValidator:
     def test_valid_tile_based_blueprint(self, validator):
         """Basic valid blueprint should pass."""
         from core.blueprints import BlueprintTile
+
         bp = Blueprint(
             name="test_valid",
             theme="test",
@@ -60,6 +62,7 @@ class TestBlueprintValidator:
     def test_tile_outside_bounds_fails(self, validator):
         """Tile outside declared size should produce error."""
         from core.blueprints import BlueprintTile
+
         bp = Blueprint(
             name="bounds_test",
             theme="test",
@@ -73,6 +76,7 @@ class TestBlueprintValidator:
     def test_negative_tile_coordinates_fails(self, validator):
         """Tile with negative coordinates should produce error."""
         from core.blueprints import BlueprintTile
+
         bp = Blueprint(
             name="neg_tile",
             theme="test",
@@ -86,6 +90,7 @@ class TestBlueprintValidator:
     def test_duplicate_tile_warning(self, validator):
         """Duplicate tile coordinates should produce a warning."""
         from core.blueprints import BlueprintTile
+
         bp = Blueprint(
             name="dup_test",
             theme="test",
@@ -131,7 +136,7 @@ class TestBlueprintValidator:
             size=(20, 20),
             entry=(10, 19),
         )
-        result = validator.validate(bp)
+        validator.validate(bp)
         # Entry is within bounds, no errors expected from that
         # (may have warnings about no tiles, but no errors)
 
@@ -170,7 +175,7 @@ class TestBlueprintValidator:
 
     def test_validate_batch(self, validator):
         """validate_batch returns dict of results."""
-        from core.blueprints import BlueprintTile
+
         bps = [
             Blueprint(name="bp_a", theme="a", size=(5, 5)),
             Blueprint(name="bp_b", theme="b", size=(3, 3)),
@@ -199,4 +204,5 @@ class TestBlueprintValidator:
 @pytest.fixture
 def BlueprintTile():
     from core.blueprints import BlueprintTile
+
     return BlueprintTile

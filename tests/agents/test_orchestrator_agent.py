@@ -2,12 +2,9 @@
 Tests for OrchestratorAgent.
 """
 
-import pytest
 import os
-from agente_rme.core.agents import (
-    OrchestratorAgent, AgentRegistry, BaseAgent, MultiAgentResult
-)
-from agente_rme.core.agents.contracts import AgentRequest, AgentResponse
+from core.agents import OrchestratorAgent, AgentRegistry, MultiAgentResult
+from core.agents.contracts import AgentRequest
 
 
 class TestOrchestratorAgent:
@@ -93,6 +90,6 @@ class TestOrchestratorAgent:
             output_dir=str(tmpdir),
             log_dir=str(tmpdir),
         )
-        result = orch.execute_prompt("Test")
+        orch.execute_prompt("Test")
         log_files = [f for f in os.listdir(str(tmpdir)) if f.startswith("workflow_")]
         assert len(log_files) > 0

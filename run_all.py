@@ -1,4 +1,5 @@
 """Run all critic unit + integration tests with coverage."""
+
 import subprocess
 import sys
 
@@ -23,6 +24,8 @@ args = [
     "--tb=short",
     "-q",
 ]
-res = subprocess.run([sys.executable, "-m", "pytest", *args],
-                     cwd=r"c:\Users\samatha\OneDrive\Desktop\agente_rme")
+res = subprocess.run(
+    [sys.executable, "-m", "pytest", *args],
+    cwd=r"c:\Users\samatha\OneDrive\Desktop\agente_rme",
+)
 sys.exit(res.returncode)

@@ -3,17 +3,17 @@ config_manager.py
 Handles loading, saving, and validating the RME Agent configuration.
 Uses lxml for fast, robust XML validation with stdlib ET as fallback.
 """
+
 import json
 import os
 from pathlib import Path
-from typing import Optional
 
 # Prefer lxml for speed and richer error messages; fall back to stdlib
 try:
     from lxml import etree as LET
+
     _LXML = True
 except ImportError:
-    import xml.etree.ElementTree as _StdET  # type: ignore
     _LXML = False
 
 CONFIG_FILE = "config.json"
@@ -53,6 +53,7 @@ def is_configured(config: dict) -> bool:
 
 # ── Internal XML helpers ────────────────────────────────────────────────────
 
+
 def _parse_xml(path: str):
     """Parse XML with lxml if available, else stdlib. Returns root element."""
     if _LXML:
@@ -61,6 +62,7 @@ def _parse_xml(path: str):
         return tree.getroot()
     else:
         import xml.etree.ElementTree as ET
+
         tree = ET.parse(path)
         return tree.getroot()
 
@@ -75,6 +77,7 @@ def _xml_parse_error(e) -> str:
 
 # ── Validation helpers ──────────────────────────────────────────────────────
 
+
 class ValidationError(Exception):
     pass
 
@@ -82,28 +85,28 @@ class ValidationError(Exception):
 def validate_tibia_path(path: str) -> tuple[bool, str]:
     """Accepts either a directory (client root) or direct path to appearances.dat / .otb"""
     if not path:
-        return False, "La ruta del cliente Tibia está vacía."
+        return False, "Tibia client path is empty."
     p = Path(path)
     if p.is_dir():
         candidates = list(p.rglob("appearances.dat")) + list(p.rglob("*.otb"))
         if not candidates:
-            return False, f"No se encontró appearances.dat ni archivos .otb en: {path}"
-        return True, f"Directorio válido ({len(candidates)} archivo(s) de datos encontrado(s))."
+            return False, f"No appearances.dat or .otb files found in: {path}"
+        return True, f"Valid directory ({len(candidates)} data file(s) found)."
     elif p.is_file():
         if p.suffix.lower() in (".dat", ".otb", ".spr"):
-            return True, f"Archivo válido: {p.name}"
-        return False, f"El archivo '{p.name}' no parece ser un archivo de cliente Tibia."
-    return False, f"La ruta no existe: {path}"
+            return True, f"Valid file: {p.name}"
+        return False, f"File '{p.name}' does not appear to be a Tibia client file."
+    return False, f"Path does not exist: {path}"
 
 
 def validate_items_xml(path: str) -> tuple[bool, str]:
     if not path:
-        return False, "La ruta de items.xml está vacía."
+        return False, "items.xml path is empty."
     p = Path(path)
     if not p.is_file():
-        return False, f"No se encontró el archivo: {path}"
+        return False, f"File not found: {path}"
     if p.suffix.lower() != ".xml":
-        return False, "El archivo no tiene extensión .xml"
+        return False, "File does not have .xml extension"
     try:
         root = _parse_xml(str(p))
         if _LXML:
@@ -111,17 +114,21 @@ def validate_items_xml(path: str) -> tuple[bool, str]:
             if not items:
                 items = root.findall("item")
         else:
-            import xml.etree.ElementTree as ET
+            pass
+
             items = root.findall(".//item[@id]")
             if not items:
                 items = root.findall("item")
         if len(items) == 0:
-            return False, "El archivo XML no contiene ningún elemento <item id='...'>"
+            return False, "XML file contains no <item id='...'> elements"
         named = [i for i in items if i.get("name")]
         backend = "lxml" if _LXML else "stdlib"
-        return True, f"XML válido [{backend}]: {len(items)} items encontrados ({len(named)} con nombre)."
+        return (
+            True,
+            f"Valid XML [{backend}]: {len(items)} items found ({len(named)} with name).",
+        )
     except Exception as e:
-        return False, f"Error al parsear XML: {_xml_parse_error(e)}"
+        return False, f"Error parsing XML: {_xml_parse_error(e)}"
 
 
 def _xml_has_tag_with_name(root, tag: str) -> list:
@@ -130,7 +137,8 @@ def _xml_has_tag_with_name(root, tag: str) -> list:
         if not nodes:
             nodes = root.findall(f".//{tag}")
     else:
-        import xml.etree.ElementTree as ET
+        pass
+
         nodes = root.findall(f".//{tag}[@name]")
         if not nodes:
             nodes = root.findall(f".//{tag}")
@@ -142,22 +150,25 @@ def _validate_xml_file(path: Path, tag: str) -> tuple[bool, str]:
         root = _parse_xml(str(path))
         nodes = _xml_has_tag_with_name(root, tag)
         if not nodes:
-            return False, f"El archivo {path.name} no contiene ningún elemento <{tag} name='...'> ni <{tag}>"
-        return True, f"Archivo válido: {len(nodes)} <{tag}> encontrados en {path.name}."
+            return (
+                False,
+                f"File {path.name} contains no <{tag} name='...'> or <{tag}> elements",
+            )
+        return True, f"Valid file: {len(nodes)} <{tag}> found in {path.name}."
     except Exception as e:
-        return False, f"Error al parsear {path.name}: {_xml_parse_error(e)}"
+        return False, f"Error parsing {path.name}: {_xml_parse_error(e)}"
 
 
 def validate_monsters_folder(path: str) -> tuple[bool, str]:
     if not path:
-        return False, "La carpeta de monstruos está vacía."
+        return False, "Monsters folder path is empty."
     p = Path(path)
     if p.is_file():
         if p.suffix.lower() != ".xml":
-            return False, "El archivo de monstruos no tiene extensión .xml"
+            return False, "Monster file does not have .xml extension"
         return _validate_xml_file(p, "monster")
     if not p.is_dir():
-        return False, f"No es una carpeta válida: {path}"
+        return False, f"Not a valid folder: {path}"
 
     monster_xml = p / "monster.xml"
     if monster_xml.is_file():
@@ -174,20 +185,26 @@ def validate_monsters_folder(path: str) -> tuple[bool, str]:
         except Exception:
             continue
     if not monster_files:
-        return False, "No se encontraron archivos XML con estructura <monster name='...'> ni un monster.xml válido."
-    return True, f"Carpeta válida: {len(xml_files)} XML encontrados, {len(monster_files)} con estructura de monstruo."
+        return (
+            False,
+            "No XML files with <monster name='...'> structure or valid monster.xml found.",
+        )
+    return (
+        True,
+        f"Valid folder: {len(xml_files)} XML found, {len(monster_files)} with monster structure.",
+    )
 
 
 def validate_npcs_folder(path: str) -> tuple[bool, str]:
     if not path:
-        return False, "La carpeta de NPCs está vacía."
+        return False, "NPCs folder path is empty."
     p = Path(path)
     if p.is_file():
         if p.suffix.lower() != ".xml":
-            return False, "El archivo de NPCs no tiene extensión .xml"
+            return False, "NPC file does not have .xml extension"
         return _validate_xml_file(p, "npc")
     if not p.is_dir():
-        return False, f"No es una carpeta válida: {path}"
+        return False, f"Not a valid folder: {path}"
 
     npc_xml = p / "npc.xml"
     if npc_xml.is_file():
@@ -195,27 +212,38 @@ def validate_npcs_folder(path: str) -> tuple[bool, str]:
 
     xml_files = list(p.rglob("*.xml"))
     if not xml_files:
-        return False, "No se encontraron archivos .xml en la carpeta de NPCs."
-    return True, f"Carpeta válida: {len(xml_files)} archivo(s) XML encontrado(s)."
+        return False, "No .xml files found in NPCs folder."
+    return True, f"Valid folder: {len(xml_files)} XML file(s) found."
 
 
 def validate_mounts_folder(path: str) -> tuple[bool, str]:
     """Mounts folder is optional."""
     if not path:
-        return True, "Opcional — omitido."
+        return True, "Optional — skipped."
     p = Path(path)
     if not p.is_dir():
-        return False, f"No es una carpeta válida: {path}"
+        return False, f"Not a valid folder: {path}"
     xml_files = list(p.rglob("*.xml"))
-    return True, f"Carpeta válida: {len(xml_files)} archivo(s) encontrado(s)."
+    return True, f"Valid folder: {len(xml_files)} file(s) found."
 
 
 def validate_all(config: dict) -> list[tuple[str, bool, str]]:
     """Returns list of (field_label, is_valid, message)"""
     results = []
-    results.append(("Cliente Tibia",    *validate_tibia_path(config.get("tibia_client_path", ""))))
-    results.append(("items.xml",        *validate_items_xml(config.get("items_xml_path", ""))))
-    results.append(("Carpeta Monstruos",*validate_monsters_folder(config.get("monsters_folder", ""))))
-    results.append(("Carpeta NPCs",     *validate_npcs_folder(config.get("npcs_folder", ""))))
-    results.append(("Carpeta Monturas", *validate_mounts_folder(config.get("mounts_folder", ""))))
+    results.append(
+        ("Tibia Client", *validate_tibia_path(config.get("tibia_client_path", "")))
+    )
+    results.append(("items.xml", *validate_items_xml(config.get("items_xml_path", ""))))
+    results.append(
+        (
+            "Monsters Folder",
+            *validate_monsters_folder(config.get("monsters_folder", "")),
+        )
+    )
+    results.append(
+        ("NPCs Folder", *validate_npcs_folder(config.get("npcs_folder", "")))
+    )
+    results.append(
+        ("Mounts Folder", *validate_mounts_folder(config.get("mounts_folder", "")))
+    )
     return results

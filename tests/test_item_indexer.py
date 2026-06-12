@@ -1,5 +1,3 @@
-import pytest
-
 from core.assets.item_indexer import ItemIndexer
 
 

@@ -1,7 +1,7 @@
 """
 Coverage tests for ArchitectAgent.
 
-Hito 26.1D — covers all branches:
+Hito 26.1D â€” covers all branches:
   * Happy path with valid prompt
   * Empty / None prompt error handling
   * No architect available (fallback plan)
@@ -14,12 +14,11 @@ Hito 26.1D — covers all branches:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from agente_rme.core.agents.architect_agent import ArchitectAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.architect_agent import ArchitectAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestArchitectAgentHappyPath:
@@ -167,8 +166,16 @@ class TestArchitectAgentErrorHandling:
         agent = ArchitectAgent()
         plan = agent._fallback_plan("issavi")
         required_keys = [
-            "prompt", "primary_theme", "themes", "level_min", "level_max",
-            "cities", "hunting_zones", "boss_zones", "quest_zones", "metadata",
+            "prompt",
+            "primary_theme",
+            "themes",
+            "level_min",
+            "level_max",
+            "cities",
+            "hunting_zones",
+            "boss_zones",
+            "quest_zones",
+            "metadata",
         ]
         for k in required_keys:
             assert k in plan, f"Missing key: {k}"

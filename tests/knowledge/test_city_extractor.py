@@ -25,10 +25,17 @@ class TestCityExtractor(unittest.TestCase):
         self.ext = CityExtractor()
 
     def test_extracts_from_cities_list(self):
-        w = _world(cities=[{
-            "name": "Issavi", "theme": "issavi", "min_level": 200, "max_level": 500,
-            "tags": ["desert"],
-        }])
+        w = _world(
+            cities=[
+                {
+                    "name": "Issavi",
+                    "theme": "issavi",
+                    "min_level": 200,
+                    "max_level": 500,
+                    "tags": ["desert"],
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0].name, "Issavi")
@@ -38,20 +45,34 @@ class TestCityExtractor(unittest.TestCase):
         self.assertIn("desert", out[0].tags)
 
     def test_extracts_from_regions(self):
-        w = _world(regions=[{
-            "name": "issavi_city_center", "theme": "issavi",
-            "min_level": 200, "max_level": 400,
-        }])
+        w = _world(
+            regions=[
+                {
+                    "name": "issavi_city_center",
+                    "theme": "issavi",
+                    "min_level": 200,
+                    "max_level": 400,
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0].name, "issavi_city_center")
 
     def test_extracts_from_structures(self):
-        w = _world(structures=[{
-            "name": "venore_temple", "category": "temple",
-            "theme": "venore", "min_level": 100, "max_level": 200,
-            "width": 30, "height": 30,
-        }])
+        w = _world(
+            structures=[
+                {
+                    "name": "venore_temple",
+                    "category": "temple",
+                    "theme": "venore",
+                    "min_level": 100,
+                    "max_level": 200,
+                    "width": 30,
+                    "height": 30,
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0].name, "venore_temple")
@@ -67,9 +88,14 @@ class TestCityExtractor(unittest.TestCase):
 
     def test_skips_sub_zones(self):
         # depot/temple sub-zones are not "cities" themselves
-        w = _world(regions=[{
-            "name": "issavi_depot", "theme": "issavi",
-        }])
+        w = _world(
+            regions=[
+                {
+                    "name": "issavi_depot",
+                    "theme": "issavi",
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(len(out), 0)
 
@@ -81,6 +107,7 @@ class TestCityExtractor(unittest.TestCase):
         import os
         import tempfile
         import json
+
         with tempfile.TemporaryDirectory() as d:
             p = os.path.join(d, "world.json")
             with open(p, "w", encoding="utf-8") as f:

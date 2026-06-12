@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from .asset_indexer import AssetIndexer, IndexedItem
 from .asset_classifier import AssetClassifier
@@ -10,6 +10,7 @@ from .asset_classifier import AssetClassifier
 @dataclass
 class SimilarItem:
     """A similar item match with a relevance score."""
+
     item: IndexedItem
     similarity: float  # 0.0 to 1.0
     match_reasons: List[str] = field(default_factory=list)
@@ -21,6 +22,7 @@ class SimilarItem:
 @dataclass
 class SimilarityResult:
     """Full similarity search result for a query item."""
+
     query_item: IndexedItem
     similar_items: List[SimilarItem] = field(default_factory=list)
     query_time_ms: float = 0.0
@@ -93,8 +95,11 @@ class AssetSimilarity:
         "library": ["furniture", "decoration", "library"],
     }
 
-    def __init__(self, indexer: Optional[AssetIndexer] = None,
-                 classifier: Optional[AssetClassifier] = None):
+    def __init__(
+        self,
+        indexer: Optional[AssetIndexer] = None,
+        classifier: Optional[AssetClassifier] = None,
+    ):
         self.indexer = indexer or AssetIndexer()
         self.classifier = classifier or AssetClassifier(self.indexer)
 
@@ -114,6 +119,7 @@ class AssetSimilarity:
             SimilarityResult with ranked similar items.
         """
         import time
+
         start = time.time()
 
         candidates = self._get_candidates(item)
@@ -124,11 +130,13 @@ class AssetSimilarity:
                 continue
             similarity, reasons = self._compute_similarity(item, candidate)
             if similarity > 0.1:  # Minimum threshold
-                results.append(SimilarItem(
-                    item=candidate,
-                    similarity=similarity,
-                    match_reasons=reasons,
-                ))
+                results.append(
+                    SimilarItem(
+                        item=candidate,
+                        similarity=similarity,
+                        match_reasons=reasons,
+                    )
+                )
 
         results.sort(key=lambda r: r.similarity, reverse=True)
         elapsed = (time.time() - start) * 1000
@@ -139,21 +147,27 @@ class AssetSimilarity:
             query_time_ms=elapsed,
         )
 
-    def find_similar_by_name(self, item_name: str, limit: int = 20) -> Optional[SimilarityResult]:
+    def find_similar_by_name(
+        self, item_name: str, limit: int = 20
+    ) -> Optional[SimilarityResult]:
         """Find items similar to one identified by name."""
         item = self.indexer.get_item_by_name(item_name)
         if item is None:
             return None
         return self.find_similar(item, limit)
 
-    def find_similar_by_id(self, item_id: int, limit: int = 20) -> Optional[SimilarityResult]:
+    def find_similar_by_id(
+        self, item_id: int, limit: int = 20
+    ) -> Optional[SimilarityResult]:
         """Find items similar to one identified by ID."""
         item = self.indexer.get_item(item_id)
         if item is None:
             return None
         return self.find_similar(item, limit)
 
-    def find_compatible(self, item: IndexedItem, category: str, limit: int = 15) -> List[IndexedItem]:
+    def find_compatible(
+        self, item: IndexedItem, category: str, limit: int = 15
+    ) -> List[IndexedItem]:
         """
         Find items compatible with this item for a given use.
 
@@ -181,8 +195,10 @@ class AssetSimilarity:
                 score += 0.4
             if query_family and query_family == c_family:
                 score += 0.3
-            if category in (self.classifier.classify(c).primary_category,
-                           *self.classifier.classify(c).secondary_categories):
+            if category in (
+                self.classifier.classify(c).primary_category,
+                *self.classifier.classify(c).secondary_categories,
+            ):
                 score += 0.3
 
             if score > 0:
@@ -201,7 +217,9 @@ class AssetSimilarity:
             return []
 
         classification = self.classifier.classify(item)
-        same_category = self.indexer.get_items_by_category(classification.primary_category)
+        same_category = self.indexer.get_items_by_category(
+            classification.primary_category
+        )
 
         # Exclude the query item itself
         alternatives = [i for i in same_category if i.id != item_id]
@@ -215,7 +233,9 @@ class AssetSimilarity:
             alt_themes = set(self.classifier.get_theme_for_item(alt))
 
             # Same theme is preferred
-            theme_overlap = len(query_themes & alt_themes) / max(len(query_themes | alt_themes), 1)
+            theme_overlap = len(query_themes & alt_themes) / max(
+                len(query_themes | alt_themes), 1
+            )
             score += theme_overlap * 0.6
 
             # Same visual family
@@ -236,14 +256,20 @@ class AssetSimilarity:
     # Similarity computation
     # ------------------------------------------------------------------
 
-    def _compute_similarity(self, a: IndexedItem, b: IndexedItem) -> Tuple[float, List[str]]:
+    def _compute_similarity(
+        self, a: IndexedItem, b: IndexedItem
+    ) -> Tuple[float, List[str]]:
         """Compute similarity score between two items. Returns (score, reasons)."""
         reasons: List[str] = []
 
         # Category similarity
         cat_a = self.classifier.classify(a).primary_category
         cat_b = self.classifier.classify(b).primary_category
-        cat_score = 1.0 if cat_a == cat_b else (0.3 if cat_b in self.COMPATIBLE_DECOR.get(cat_a, []) else 0.0)
+        cat_score = (
+            1.0
+            if cat_a == cat_b
+            else (0.3 if cat_b in self.COMPATIBLE_DECOR.get(cat_a, []) else 0.0)
+        )
 
         # Theme similarity
         themes_a = set(self.classifier.get_theme_for_item(a))
@@ -286,12 +312,12 @@ class AssetSimilarity:
 
         # Weighted total
         total = (
-            cat_score * self.WEIGHTS["category"] +
-            theme_overlap * self.WEIGHTS["theme"] +
-            id_score * self.WEIGHTS["id_proximity"] +
-            name_overlap * self.WEIGHTS["name_similarity"] +
-            attr_score * self.WEIGHTS["attribute_match"] +
-            visual_score * self.WEIGHTS["visual_family"]
+            cat_score * self.WEIGHTS["category"]
+            + theme_overlap * self.WEIGHTS["theme"]
+            + id_score * self.WEIGHTS["id_proximity"]
+            + name_overlap * self.WEIGHTS["name_similarity"]
+            + attr_score * self.WEIGHTS["attribute_match"]
+            + visual_score * self.WEIGHTS["visual_family"]
         )
 
         # Collect reasons
@@ -304,11 +330,11 @@ class AssetSimilarity:
         if id_score > 0.8:
             reasons.append(f"IDs cercanos ({a.id} ~ {b.id})")
         if name_overlap > 0.3:
-            reasons.append(f"Nombres similares")
+            reasons.append("Nombres similares")
         if visual_score > 0:
             reasons.append(f"Misma familia visual: {family_a}")
         if attr_score > 0.5:
-            reasons.append(f"Atributos similares")
+            reasons.append("Atributos similares")
 
         return round(total, 4), reasons
 
@@ -318,7 +344,9 @@ class AssetSimilarity:
 
         # Same category first
         classification = self.classifier.classify(item)
-        candidates.extend(self.indexer.get_items_by_category(classification.primary_category))
+        candidates.extend(
+            self.indexer.get_items_by_category(classification.primary_category)
+        )
 
         # Same themes
         themes = self.classifier.get_theme_for_item(item)
@@ -359,8 +387,9 @@ class AssetSimilarity:
     # Bulk analysis
     # ------------------------------------------------------------------
 
-    def cross_similarity_matrix(self, items: List[IndexedItem],
-                                top_k: int = 5) -> Dict[int, List[SimilarItem]]:
+    def cross_similarity_matrix(
+        self, items: List[IndexedItem], top_k: int = 5
+    ) -> Dict[int, List[SimilarItem]]:
         """
         Compute a similarity matrix for a set of items.
         Returns {item_id: [SimilarItem, ...]}.
@@ -371,8 +400,9 @@ class AssetSimilarity:
             matrix[item.id] = result.similar_items
         return matrix
 
-    def cluster_by_similarity(self, items: List[IndexedItem],
-                              threshold: float = 0.5) -> List[List[IndexedItem]]:
+    def cluster_by_similarity(
+        self, items: List[IndexedItem], threshold: float = 0.5
+    ) -> List[List[IndexedItem]]:
         """
         Group items into clusters based on similarity threshold.
         Uses a simple greedy clustering approach.

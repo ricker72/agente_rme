@@ -17,8 +17,14 @@ class StructureExtractor(BaseExtractor):
     NAME = "structure"
 
     DUNGEON_KEYWORDS = (
-        "dungeon", "tomb", "crypt", "pyramid", "temple",
-        "shrine", "catacomb", "lair",
+        "dungeon",
+        "tomb",
+        "crypt",
+        "pyramid",
+        "temple",
+        "shrine",
+        "catacomb",
+        "lair",
     )
 
     def extract(self, world: Dict[str, Any], source: str = "") -> List[KnowledgeEntry]:
@@ -36,29 +42,43 @@ class StructureExtractor(BaseExtractor):
             if not any(kw in lname for kw in self.DUNGEON_KEYWORDS):
                 continue
             # Skip if it is already a city / boss / raid / quest (handled by other extractors)
-            if any(kw in lname for kw in (
-                "city", "town", "village", "hub", "market",
-                "boss", "arena", "throne",
-                "raid", "inquisition",
-                "quest", "mission", "task",
-            )):
+            if any(
+                kw in lname
+                for kw in (
+                    "city",
+                    "town",
+                    "village",
+                    "hub",
+                    "market",
+                    "boss",
+                    "arena",
+                    "throne",
+                    "raid",
+                    "inquisition",
+                    "quest",
+                    "mission",
+                    "task",
+                )
+            ):
                 continue
             seen.add(lname)
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.DUNGEON,
-                name=rname,
-                source=source,
-                biome=_as_str(r.get("theme", "generic")),
-                min_level=_as_int(r.get("min_level", 1)),
-                max_level=_as_int(r.get("max_level", 9999)),
-                tags=_coerce_tags(r) + ["dungeon"],
-                attributes={
-                    "theme": _as_str(r.get("theme", "generic")),
-                    "difficulty": _as_str(r.get("difficulty", "hard")),
-                    "style": "dungeon",
-                    "size": _as_int(r.get("size", 0)),
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.DUNGEON,
+                    name=rname,
+                    source=source,
+                    biome=_as_str(r.get("theme", "generic")),
+                    min_level=_as_int(r.get("min_level", 1)),
+                    max_level=_as_int(r.get("max_level", 9999)),
+                    tags=_coerce_tags(r) + ["dungeon"],
+                    attributes={
+                        "theme": _as_str(r.get("theme", "generic")),
+                        "difficulty": _as_str(r.get("difficulty", "hard")),
+                        "style": "dungeon",
+                        "size": _as_int(r.get("size", 0)),
+                    },
+                )
+            )
 
         # 2) Catch-all regions that were not picked up by any other extractor
         for r in _as_list(world.get("regions")):
@@ -69,28 +89,47 @@ class StructureExtractor(BaseExtractor):
             if not rname or lname in seen:
                 continue
             # Skip if it would be a city/hunt/boss/etc.
-            if any(kw in lname for kw in (
-                "city", "town", "village", "hub", "market",
-                "hunt", "spawn", "farm", "cave", "sewer",
-                "boss", "arena", "throne", "lair",
-                "raid", "inquisition",
-                "quest", "mission", "task",
-            )):
+            if any(
+                kw in lname
+                for kw in (
+                    "city",
+                    "town",
+                    "village",
+                    "hub",
+                    "market",
+                    "hunt",
+                    "spawn",
+                    "farm",
+                    "cave",
+                    "sewer",
+                    "boss",
+                    "arena",
+                    "throne",
+                    "lair",
+                    "raid",
+                    "inquisition",
+                    "quest",
+                    "mission",
+                    "task",
+                )
+            ):
                 continue
             seen.add(lname)
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.REGION,
-                name=rname,
-                source=source,
-                biome=_as_str(r.get("theme", "generic")),
-                min_level=_as_int(r.get("min_level", 1)),
-                max_level=_as_int(r.get("max_level", 9999)),
-                tags=_coerce_tags(r),
-                attributes={
-                    "theme": _as_str(r.get("theme", "generic")),
-                    "style": "region",
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.REGION,
+                    name=rname,
+                    source=source,
+                    biome=_as_str(r.get("theme", "generic")),
+                    min_level=_as_int(r.get("min_level", 1)),
+                    max_level=_as_int(r.get("max_level", 9999)),
+                    tags=_coerce_tags(r),
+                    attributes={
+                        "theme": _as_str(r.get("theme", "generic")),
+                        "style": "region",
+                    },
+                )
+            )
 
         # 3) Catch-all structures that did not match a more specific category
         for s in _as_list(world.get("structures")):
@@ -101,26 +140,40 @@ class StructureExtractor(BaseExtractor):
             lname = name.lower()
             if not name or lname in seen:
                 continue
-            if cat in ("city", "town", "village", "hub", "market",
-                       "boss", "boss_room", "arena",
-                       "raid", "encounter",
-                       "quest", "mission", "task"):
+            if cat in (
+                "city",
+                "town",
+                "village",
+                "hub",
+                "market",
+                "boss",
+                "boss_room",
+                "arena",
+                "raid",
+                "encounter",
+                "quest",
+                "mission",
+                "task",
+            ):
                 continue
             seen.add(lname)
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.STRUCTURE,
-                name=name,
-                source=source,
-                biome=_as_str(s.get("biome", "generic")),
-                min_level=_as_int(s.get("min_level", 1)),
-                max_level=_as_int(s.get("max_level", 9999)),
-                tags=_coerce_tags(s),
-                attributes={
-                    "theme": _as_str(s.get("theme", "generic")),
-                    "style": cat or "generic",
-                    "size": _as_int(s.get("width", 0)) * _as_int(s.get("height", 0)),
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.STRUCTURE,
+                    name=name,
+                    source=source,
+                    biome=_as_str(s.get("biome", "generic")),
+                    min_level=_as_int(s.get("min_level", 1)),
+                    max_level=_as_int(s.get("max_level", 9999)),
+                    tags=_coerce_tags(s),
+                    attributes={
+                        "theme": _as_str(s.get("theme", "generic")),
+                        "style": cat or "generic",
+                        "size": _as_int(s.get("width", 0))
+                        * _as_int(s.get("height", 0)),
+                    },
+                )
+            )
         return entries
 
 

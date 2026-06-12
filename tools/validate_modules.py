@@ -6,9 +6,9 @@ Produces module_validation.json.
 
 CRITERION: 100% of expected real modules load successfully.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import importlib
 from pathlib import Path
@@ -166,21 +166,39 @@ def validate() -> Dict[str, Any]:
                 results["modules_loaded"].append(mod_name)
             else:
                 sub_result["failed"] += 1
-                results["modules_failed"].append({
-                    "module": mod_name,
-                    "error": err,
-                })
-        sub_result["status"] = "OK" if sub_result["failed"] == 0 else "PARTIAL" if sub_result["loaded"] > 0 else "FAIL"
+                results["modules_failed"].append(
+                    {
+                        "module": mod_name,
+                        "error": err,
+                    }
+                )
+        sub_result["status"] = (
+            "OK"
+            if sub_result["failed"] == 0
+            else "PARTIAL"
+            if sub_result["loaded"] > 0
+            else "FAIL"
+        )
         results["subsystems"][subsystem] = sub_result
 
     results["summary"] = {
         "total_expected": total_modules,
         "total_loaded": len(results["modules_loaded"]),
         "total_failed": len(results["modules_failed"]),
-        "success_rate": (len(results["modules_loaded"]) / total_modules) if total_modules > 0 else 0.0,
+        "success_rate": (
+            (len(results["modules_loaded"]) / total_modules)
+            if total_modules > 0
+            else 0.0
+        ),
         "all_loaded": len(results["modules_failed"]) == 0,
     }
-    results["status"] = "PASS" if results["summary"]["all_loaded"] else "PARTIAL" if results["summary"]["total_loaded"] > 0 else "FAIL"
+    results["status"] = (
+        "PASS"
+        if results["summary"]["all_loaded"]
+        else "PARTIAL"
+        if results["summary"]["total_loaded"] > 0
+        else "FAIL"
+    )
     return results
 
 

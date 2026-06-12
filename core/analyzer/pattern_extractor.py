@@ -36,8 +36,12 @@ class PatternExtractor:
             style=style,
             floors=floors,
             ground_stats={k: v for k, v in tile_stats.items() if "tile_" not in k},
-            wall_stats={k: v for k, v in tile_stats.items() if "wall" in k or "tile_" in k},
-            decoration_stats={k: v for k, v in tile_stats.items() if "decoration" in k or "tile_" in k},
+            wall_stats={
+                k: v for k, v in tile_stats.items() if "wall" in k or "tile_" in k
+            },
+            decoration_stats={
+                k: v for k, v in tile_stats.items() if "decoration" in k or "tile_" in k
+            },
             metadata={"tile_count": sum(tile_stats.values())},
         )
         return asdict(pattern)

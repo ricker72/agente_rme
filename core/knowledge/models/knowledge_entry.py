@@ -81,7 +81,7 @@ class KnowledgeEntry:
     def compute_id(entry_type: EntryType, name: str, source: str) -> str:
         """Stable 16-char id derived from type+name+source."""
         raw = f"{entry_type.value}|{name.lower()}|{source.lower()}".encode("utf-8")
-        return hashlib.sha1(raw).hexdigest()[:16]
+        return hashlib.sha1(raw, usedforsecurity=False).hexdigest()[:16]
 
     @staticmethod
     def build(

@@ -3,13 +3,13 @@ from __future__ import annotations
 import copy
 import json
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 @dataclass
 class MixResult:
     """Result of mixing two blueprints into a new hybrid."""
+
     mixed_blueprint: Dict[str, Any]
     blueprint_a: Dict[str, Any]
     blueprint_b: Dict[str, Any]
@@ -24,7 +24,7 @@ class MixResult:
             "mixed_theme": self.mixed_blueprint.get("theme", "hybrid"),
             "source_a": self.blueprint_a.get("name", "unknown"),
             "source_b": self.blueprint_b.get("name", "unknown"),
-            "mix_ratio": f"{self.mix_ratio[0]*100:.0f}%/{self.mix_ratio[1]*100:.0f}%",
+            "mix_ratio": f"{self.mix_ratio[0] * 100:.0f}%/{self.mix_ratio[1] * 100:.0f}%",
             "merged_features": self.merged_features,
             "conflicts_resolved": self.conflicts_resolved,
             "summary": self.summary,
@@ -110,9 +110,12 @@ class BlueprintMixer:
     # Public API
     # ------------------------------------------------------------------
 
-    def mix(self, blueprint_a: Dict[str, Any],
-            blueprint_b: Dict[str, Any],
-            ratio: Tuple[float, float] = (0.5, 0.5)) -> MixResult:
+    def mix(
+        self,
+        blueprint_a: Dict[str, Any],
+        blueprint_b: Dict[str, Any],
+        ratio: Tuple[float, float] = (0.5, 0.5),
+    ) -> MixResult:
         """
         Mix two blueprints into a new hybrid.
 
@@ -145,15 +148,16 @@ class BlueprintMixer:
         result.mixed_blueprint = hybrid
         result.summary = (
             f"Mix #{self._mix_count}: {blueprint_a.get('name', 'A')} "
-            f"({ra*100:.0f}%) + {blueprint_b.get('name', 'B')} "
-            f"({rb*100:.0f}%) -> {hybrid.get('name', 'hybrid')} "
+            f"({ra * 100:.0f}%) + {blueprint_b.get('name', 'B')} "
+            f"({rb * 100:.0f}%) -> {hybrid.get('name', 'hybrid')} "
             f"[{hybrid.get('theme', 'hybrid')}]"
         )
 
         return result
 
-    def mix_themes(self, base_category: str, theme_a: str, theme_b: str,
-                   name: Optional[str] = None) -> Dict[str, Any]:
+    def mix_themes(
+        self, base_category: str, theme_a: str, theme_b: str, name: Optional[str] = None
+    ) -> Dict[str, Any]:
         """
         Create a new blueprint by blending two themes for a given category.
 
@@ -193,8 +197,7 @@ class BlueprintMixer:
             "version": "1.0.0",
             "size": [20, 20],
             "description": (
-                f"Blueprint híbrido: {base_category} con tema {theme_a} "
-                f"fusionado con {theme_b}"
+                f"Blueprint híbrido: {base_category} con tema {theme_a} fusionado con {theme_b}"
             ),
             "grounds": blended_grounds,
             "walls_items": blended_walls,
@@ -233,9 +236,15 @@ class BlueprintMixer:
     # Hybrid builder
     # ------------------------------------------------------------------
 
-    def _build_hybrid(self, bp_a: Dict[str, Any], bp_b: Dict[str, Any],
-                      ra: float, rb: float, strategy: str,
-                      result: MixResult) -> Dict[str, Any]:
+    def _build_hybrid(
+        self,
+        bp_a: Dict[str, Any],
+        bp_b: Dict[str, Any],
+        ra: float,
+        rb: float,
+        strategy: str,
+        result: MixResult,
+    ) -> Dict[str, Any]:
         """Build the hybrid blueprint based on the selected strategy."""
         name_a = bp_a.get("name", "blueprint_a")
         name_b = bp_b.get("name", "blueprint_b")
@@ -271,14 +280,22 @@ class BlueprintMixer:
     # Strategy implementations
     # ------------------------------------------------------------------
 
-    def _merge_layouts(self, hybrid: Dict[str, Any], bp_b: Dict[str, Any],
-                       ra: float, rb: float, result: MixResult) -> None:
+    def _merge_layouts(
+        self,
+        hybrid: Dict[str, Any],
+        bp_b: Dict[str, Any],
+        ra: float,
+        rb: float,
+        result: MixResult,
+    ) -> None:
         """Merge layouts: blend zones, rooms, roads from both blueprints."""
         zones_a = hybrid.get("zones", [])
         zones_b = bp_b.get("zones", [])
         if zones_b:
             # Offset B's zones to avoid overlap
-            offset_x = max((z.get("position", [0, 0])[0] for z in zones_a), default=0) + 10
+            offset_x = (
+                max((z.get("position", [0, 0])[0] for z in zones_a), default=0) + 10
+            )
             for zone in zones_b:
                 shifted = copy.deepcopy(zone)
                 pos = shifted.get("position", [0, 0])
@@ -286,13 +303,15 @@ class BlueprintMixer:
                 zones_a.append(shifted)
             hybrid["zones"] = zones_a
             result.merged_features.append("merged_zones")
-            result.conflicts_resolved.append(f"Offset B zones by +{offset_x}X to avoid overlap")
+            result.conflicts_resolved.append(
+                f"Offset B zones by +{offset_x}X to avoid overlap"
+            )
 
         # Merge rooms
         rooms_a = hybrid.get("rooms", [])
         rooms_b = bp_b.get("rooms", [])
         if rooms_b:
-            for room in rooms_b[:len(rooms_b)//2]:
+            for room in rooms_b[: len(rooms_b) // 2]:
                 rooms_a.append(copy.deepcopy(room))
             hybrid["rooms"] = rooms_a
             result.merged_features.append("merged_rooms")
@@ -313,8 +332,14 @@ class BlueprintMixer:
             max(size_a[1], size_b[1]),
         ]
 
-    def _overlay_theme(self, hybrid: Dict[str, Any], bp_b: Dict[str, Any],
-                       ra: float, rb: float, result: MixResult) -> None:
+    def _overlay_theme(
+        self,
+        hybrid: Dict[str, Any],
+        bp_b: Dict[str, Any],
+        ra: float,
+        rb: float,
+        result: MixResult,
+    ) -> None:
         """Overlay B's theme properties onto A's structure."""
         theme_b = bp_b.get("theme", "unknown")
         grounding = self.THEME_GROUNDING.get(theme_b, {})
@@ -336,8 +361,9 @@ class BlueprintMixer:
             f"{hybrid.get('description', '')} | Infused with {theme_b} elements"
         )
 
-    def _boss_in_temple(self, hybrid: Dict[str, Any], bp_b: Dict[str, Any],
-                        result: MixResult) -> None:
+    def _boss_in_temple(
+        self, hybrid: Dict[str, Any], bp_b: Dict[str, Any], result: MixResult
+    ) -> None:
         """Embed a boss room inside a temple blueprint."""
         # Place boss spawn in the altar room
         rooms = hybrid.get("rooms", [])
@@ -352,7 +378,9 @@ class BlueprintMixer:
             hybrid.setdefault("embedded_boss", {})
             hybrid["embedded_boss"] = {
                 "room": altar_room["name"],
-                "boss": boss_spawns[0].get("monster", "Unknown") if boss_spawns else "Unknown",
+                "boss": boss_spawns[0].get("monster", "Unknown")
+                if boss_spawns
+                else "Unknown",
                 "position": altar_room.get("position", [0, 0]),
             }
             result.merged_features.append("embedded_boss_room")
@@ -364,11 +392,14 @@ class BlueprintMixer:
         hybrid["features"] = features
         result.merged_features.append("merged_boss_features")
 
-    def _temple_in_hunt(self, hybrid: Dict[str, Any], bp_b: Dict[str, Any],
-                        result: MixResult) -> None:
+    def _temple_in_hunt(
+        self, hybrid: Dict[str, Any], bp_b: Dict[str, Any], result: MixResult
+    ) -> None:
         """Embed a temple/rez point inside a hunt area."""
         temple_features = bp_b.get("features", [])
-        altar_features = [f for f in temple_features if "altar" in str(f.get("type", "")).lower()]
+        altar_features = [
+            f for f in temple_features if "altar" in str(f.get("type", "")).lower()
+        ]
         hybrid.setdefault("embedded_temple", {})
         hybrid["embedded_temple"] = {
             "position": [2, 2],
@@ -380,9 +411,15 @@ class BlueprintMixer:
     # Item blending
     # ------------------------------------------------------------------
 
-    def _blend_items(self, hybrid: Dict[str, Any],
-                     bp_a: Dict[str, Any], bp_b: Dict[str, Any],
-                     ra: float, rb: float, result: MixResult) -> None:
+    def _blend_items(
+        self,
+        hybrid: Dict[str, Any],
+        bp_a: Dict[str, Any],
+        bp_b: Dict[str, Any],
+        ra: float,
+        rb: float,
+        result: MixResult,
+    ) -> None:
         """Blend item palettes (grounds, walls, decorations)."""
         # Grounds
         ga = bp_a.get("grounds", [])
@@ -407,16 +444,24 @@ class BlueprintMixer:
     # Metadata
     # ------------------------------------------------------------------
 
-    def _update_metadata(self, hybrid: Dict[str, Any],
-                         bp_a: Dict[str, Any], bp_b: Dict[str, Any],
-                         ra: float, rb: float) -> None:
+    def _update_metadata(
+        self,
+        hybrid: Dict[str, Any],
+        bp_a: Dict[str, Any],
+        bp_b: Dict[str, Any],
+        ra: float,
+        rb: float,
+    ) -> None:
         """Update metadata to reflect the hybrid nature."""
         meta = hybrid.setdefault("metadata", {})
         meta["hybrid"] = True
         meta["source_a"] = bp_a.get("name", "unknown")
         meta["source_b"] = bp_b.get("name", "unknown")
-        meta["mix_ratio"] = f"{ra*100:.0f}/{rb*100:.0f}"
-        meta["source_themes"] = [bp_a.get("theme", "unknown"), bp_b.get("theme", "unknown")]
+        meta["mix_ratio"] = f"{ra * 100:.0f}/{rb * 100:.0f}"
+        meta["source_themes"] = [
+            bp_a.get("theme", "unknown"),
+            bp_b.get("theme", "unknown"),
+        ]
 
         # Combine tags
         tags_a = meta.get("tags", [])
@@ -427,8 +472,9 @@ class BlueprintMixer:
     # Utility
     # ------------------------------------------------------------------
 
-    def _blend_list(self, list_a: List, list_b: List,
-                    weight_a: float, weight_b: float) -> List:
+    def _blend_list(
+        self, list_a: List, list_b: List, weight_a: float, weight_b: float
+    ) -> List:
         """Blend two lists, taking more from the heavier-weighted side."""
         if not list_a and not list_b:
             return []

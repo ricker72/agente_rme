@@ -4,7 +4,6 @@ Tests for SpawnPlan / SpawnGenerator — verify the spawns the Lua generator con
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -13,6 +12,7 @@ from core.spawn.spawn_generator import SpawnPlan, SpawnEntry, SpawnGenerator
 
 class _Room:
     """Minimal Room stub for SpawnGenerator."""
+
     def __init__(self, x, y, width, height, room_type="spawn"):
         self.x = x
         self.y = y
@@ -39,7 +39,9 @@ class TestSpawnPlanDataClass:
         assert plan.boss_spawn.monster_name == "Dragon"
 
     def test_spawn_entry_is_boss(self):
-        entry = SpawnEntry(x=0, y=0, z=7, monster_name="Boss", interval=600, is_boss=True)
+        entry = SpawnEntry(
+            x=0, y=0, z=7, monster_name="Boss", interval=600, is_boss=True
+        )
         assert entry.is_boss is True
 
 
@@ -117,6 +119,7 @@ class TestSpawnPlanInLuaGenerator:
 
     def test_plan_with_no_boss(self):
         from core.lua.lua_generator import LuaGenerator
+
         plan = SpawnPlan(
             spawns=[
                 SpawnEntry(x=0, y=0, z=7, monster_name="A", interval=60),
@@ -133,9 +136,12 @@ class TestSpawnPlanInLuaGenerator:
 
     def test_plan_with_boss(self):
         from core.lua.lua_generator import LuaGenerator
+
         plan = SpawnPlan(
             spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="Mob", interval=60)],
-            boss_spawn=SpawnEntry(x=10, y=10, z=7, monster_name="MegaBoss", interval=600),
+            boss_spawn=SpawnEntry(
+                x=10, y=10, z=7, monster_name="MegaBoss", interval=600
+            ),
         )
         gen = LuaGenerator()
         script = gen.generate(None, plan)
@@ -146,6 +152,7 @@ class TestSpawnPlanInLuaGenerator:
 
     def test_plan_with_zero_interval_uses_default(self):
         from core.lua.lua_generator import LuaGenerator
+
         plan = SpawnPlan(
             spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="X", interval=0)],
         )
@@ -157,6 +164,7 @@ class TestSpawnPlanInLuaGenerator:
     def test_plan_with_z_zero_kept_as_zero(self):
         """z=0 is a valid floor in OTBM, it should NOT be replaced with base_z."""
         from core.lua.lua_generator import LuaGenerator
+
         plan = SpawnPlan(
             spawns=[SpawnEntry(x=0, y=0, z=0, monster_name="Z", interval=60)],
         )
@@ -167,6 +175,7 @@ class TestSpawnPlanInLuaGenerator:
 
     def test_plan_with_z_7_kept(self):
         from core.lua.lua_generator import LuaGenerator
+
         plan = SpawnPlan(
             spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="Z", interval=60)],
         )

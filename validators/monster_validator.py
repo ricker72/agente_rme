@@ -3,6 +3,7 @@ Monster Validator — Verifica nombres de monstruos contra el AssetRegistry.
 
 Usa AssetRegistry como fuente de verdad única.
 """
+
 import re
 from typing import List, Tuple
 

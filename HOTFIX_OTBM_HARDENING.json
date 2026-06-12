@@ -1,0 +1,103 @@
+{
+  "phase": "FASE 2 - OTBM HARDENING",
+  "generated_at": "2026-06-09T08:55:16.665792+00:00",
+  "passed": 8,
+  "failed": 0,
+  "total": 8,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "name": "round_trip_basic",
+      "passed": true,
+      "elapsed_s": 0.5246,
+      "details": {
+        "otbm_bytes": 669,
+        "valid": true,
+        "imported_tiles": 64
+      }
+    },
+    {
+      "name": "large_map_64x64",
+      "passed": true,
+      "elapsed_s": 0.2999,
+      "details": {
+        "otbm_bytes": 41709,
+        "valid": true,
+        "errors": [],
+        "warnings_count": 0
+      }
+    },
+    {
+      "name": "extreme_tile_counts_256x256",
+      "passed": true,
+      "elapsed_s": 4.8279,
+      "details": {
+        "otbm_bytes": 667485,
+        "valid": true,
+        "errors": [],
+        "warnings_count": 0
+      }
+    },
+    {
+      "name": "invalid_attributes_oversized_item_id",
+      "passed": true,
+      "elapsed_s": 0.0083,
+      "details": {
+        "valid": true,
+        "injected": true,
+        "warnings_count": 1,
+        "errors_count": 0
+      }
+    },
+    {
+      "name": "corrupt_nodes_truncated",
+      "passed": true,
+      "elapsed_s": 0.0062,
+      "details": {
+        "valid": false,
+        "errors": [
+          "Validation error at offset 21: index out of range"
+        ]
+      }
+    },
+    {
+      "name": "corrupt_magic_identifier",
+      "passed": true,
+      "elapsed_s": 0.0082,
+      "details": {
+        "valid": false,
+        "errors": [
+          "Invalid OTBM magic identifier: expected b'OTBM', got b'XXXX'"
+        ]
+      }
+    },
+    {
+      "name": "empty_bytes_rejected",
+      "passed": true,
+      "elapsed_s": 0.0,
+      "details": {
+        "valid": false,
+        "errors": [
+          "Empty or truncated OTBM data (no magic identifier)"
+        ]
+      }
+    },
+    {
+      "name": "import_round_trip_lossless",
+      "passed": true,
+      "elapsed_s": 0.0197,
+      "details": {
+        "stats": {
+          "tiles": 256,
+          "spawns": 0,
+          "cities": 0,
+          "waypoints": 0,
+          "file_size": 2622,
+          "source": "bytes"
+        },
+        "errors": []
+      }
+    }
+  ],
+  "verdict": "PASS"
+}

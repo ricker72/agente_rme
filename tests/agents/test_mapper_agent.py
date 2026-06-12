@@ -1,10 +1,9 @@
-﻿"""
+"""
 Tests for MapperAgent.
 """
 
-import pytest
-from agente_rme.core.agents import MapperAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import MapperAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestMapperAgent:

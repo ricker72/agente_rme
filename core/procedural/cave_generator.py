@@ -1,4 +1,12 @@
-def cave_generator_lua(origin_x: int, origin_y: int, width: int, height: int, z: int, floor_id: int, wall_id: int) -> str:
+def cave_generator_lua(
+    origin_x: int,
+    origin_y: int,
+    width: int,
+    height: int,
+    z: int,
+    floor_id: int,
+    wall_id: int,
+) -> str:
     return """-- Cave generator using noise.simplex
 if not app.hasMap() then
     return

@@ -2,9 +2,8 @@
 Tests for ArchitectAgent.
 """
 
-import pytest
-from agente_rme.core.agents import ArchitectAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import ArchitectAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestArchitectAgent:

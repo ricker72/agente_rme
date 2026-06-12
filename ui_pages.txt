@@ -1,0 +1,10 @@
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\architect_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\autonomous_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\campaign_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\critic_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\dashboard_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\knowledge_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\otbm_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\settings_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\world_page.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\pages\__init__.py

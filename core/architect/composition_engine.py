@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass
+from typing import List, Optional, Tuple
 
 from .style_engine import StyleEngine, StyleDNA
 
@@ -9,6 +9,7 @@ from .style_engine import StyleEngine, StyleDNA
 @dataclass
 class StyleComposition:
     """Result of merging multiple styles."""
+
     name: str
     styles: List[Tuple[str, float]]  # (style_name, ratio)
     merged_dna: StyleDNA
@@ -76,8 +77,9 @@ class CompositionEngine:
             description=desc,
         )
 
-    def compose_from_prompt(self, styles: List[str],
-                            ratios: Optional[List[float]] = None) -> StyleComposition:
+    def compose_from_prompt(
+        self, styles: List[str], ratios: Optional[List[float]] = None
+    ) -> StyleComposition:
         """
         Compose from a list of style names with optional ratios.
 
@@ -87,15 +89,14 @@ class CompositionEngine:
             ratios = [1.0 / len(styles)] * len(styles)
         return self.compose(list(zip(styles, ratios)))
 
-    def _describe_composition(self, names: List[str], ratios: List[float],
-                               dna: StyleDNA) -> str:
+    def _describe_composition(
+        self, names: List[str], ratios: List[float], dna: StyleDNA
+    ) -> str:
         """Generate a natural language description of the style blend."""
         parts = []
 
         # Ratio summary
-        ratio_desc = ", ".join(
-            f"{r*100:.0f}% {n}" for n, r in zip(names, ratios)
-        )
+        ratio_desc = ", ".join(f"{r * 100:.0f}% {n}" for n, r in zip(names, ratios))
         parts.append(f"Composition: {ratio_desc}")
 
         # Key traits

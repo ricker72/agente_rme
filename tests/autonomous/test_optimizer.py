@@ -1,9 +1,6 @@
 """Tests for the Autonomous Optimizer (iterative design loop)."""
 
-import pytest
-
 from core.autonomous.autonomous_optimizer import AutonomousOptimizer
-from core.autonomous.goal_manager import GoalManager
 from core.autonomous.models.design_goal import DesignGoal
 from core.autonomous.models.design_plan import DesignPlan
 from core.autonomous.models.region_plan import RegionPlan
@@ -14,23 +11,41 @@ def _build_simple_plan(goal: DesignGoal) -> DesignPlan:
     plan_id = "test-plan-1"
     regions = []
     for i in range(goal.num_hunts):
-        regions.append(RegionPlan(
-            region_id=f"hunt_{i+1}", region_name=f"Hunt {i+1}",
-            region_type="hunt", level_range=goal.level_range,
-            target_size=300, target_density=0.5, target_difficulty=0.4,
-        ))
+        regions.append(
+            RegionPlan(
+                region_id=f"hunt_{i + 1}",
+                region_name=f"Hunt {i + 1}",
+                region_type="hunt",
+                level_range=goal.level_range,
+                target_size=300,
+                target_density=0.5,
+                target_difficulty=0.4,
+            )
+        )
     for i in range(goal.num_bosses):
-        regions.append(RegionPlan(
-            region_id=f"boss_{i+1}", region_name=f"Boss {i+1}",
-            region_type="boss", level_range=goal.level_range,
-            target_size=200, target_density=0.7, target_difficulty=0.8,
-        ))
+        regions.append(
+            RegionPlan(
+                region_id=f"boss_{i + 1}",
+                region_name=f"Boss {i + 1}",
+                region_type="boss",
+                level_range=goal.level_range,
+                target_size=200,
+                target_density=0.7,
+                target_difficulty=0.8,
+            )
+        )
     if not regions:
-        regions.append(RegionPlan(
-            region_id="city_1", region_name="Main City",
-            region_type="city", level_range=goal.level_range,
-            target_size=400, target_density=0.5, target_difficulty=0.1,
-        ))
+        regions.append(
+            RegionPlan(
+                region_id="city_1",
+                region_name="Main City",
+                region_type="city",
+                level_range=goal.level_range,
+                target_size=400,
+                target_density=0.5,
+                target_difficulty=0.1,
+            )
+        )
     return DesignPlan(plan_id=plan_id, goal_id=goal.prompt, regions=regions)
 
 
@@ -106,7 +121,9 @@ class TestAutonomousOptimizer:
         goal = DesignGoal(prompt="test", num_hunts=1)
         plan = _build_simple_plan(goal)
         original_density = plan.regions[0].target_density
-        evolved = optimizer._evolve_plan(plan, {"density": 0.5, "navigation": 0.5, "critic": 0.5}, goal, 0)
+        evolved = optimizer._evolve_plan(
+            plan, {"density": 0.5, "navigation": 0.5, "critic": 0.5}, goal, 0
+        )
         assert evolved.regions[0].target_density >= original_density
 
     def test_iteration_records_score(self):

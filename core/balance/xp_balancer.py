@@ -8,7 +8,6 @@ from core.world.spawn import Spawn
 from core.world.region import Region
 from core.balance.xp_analyzer import XPAnalyzer, XPAnalysis
 
-
 # Monster XP database (standard Tibia reference values)
 MONSTER_XP_DB: Dict[str, int] = {
     "Rat": 20,
@@ -56,6 +55,7 @@ MONSTER_XP_DB: Dict[str, int] = {
 @dataclass
 class XPAdjustment:
     """Record of a single XP adjustment."""
+
     zone_name: str
     monster: str
     old_xp: int
@@ -77,6 +77,7 @@ class XPAdjustment:
 @dataclass
 class XPBalanceResult:
     """Result of XP balancing operation."""
+
     adjustments: List[XPAdjustment] = field(default_factory=list)
     zones_modified: List[str] = field(default_factory=list)
     total_monsters_adjusted: int = 0
@@ -109,9 +110,13 @@ class XPBalancer:
     def __init__(self):
         self._analyzer = XPAnalyzer()
 
-    def balance(self, world: WorldModel, region: Region,
-                monsters: Optional[Dict[str, int]] = None,
-                player_level: int = 150) -> XPBalanceResult:
+    def balance(
+        self,
+        world: WorldModel,
+        region: Region,
+        monsters: Optional[Dict[str, int]] = None,
+        player_level: int = 150,
+    ) -> XPBalanceResult:
         """
         Balance XP for a region by adjusting spawn composition.
 
@@ -150,8 +155,9 @@ class XPBalancer:
 
         return result
 
-    def _collect_spawns(self, world: WorldModel,
-                        region: Region) -> List[Tuple[int, int, int, Spawn]]:
+    def _collect_spawns(
+        self, world: WorldModel, region: Region
+    ) -> List[Tuple[int, int, int, Spawn]]:
         """Collect spawns in region."""
         spawns: List[Tuple[int, int, int, Spawn]] = []
         for tile in world.tiles.values():
@@ -159,8 +165,7 @@ class XPBalancer:
                 spawns.append((tile.x, tile.y, tile.z, tile.spawn))
         return spawns
 
-    def _calc_xp_multiplier(self, analysis: XPAnalysis,
-                            player_level: int) -> float:
+    def _calc_xp_multiplier(self, analysis: XPAnalysis, player_level: int) -> float:
         """Calculate the XP multiplier needed to reach target efficiency."""
         if analysis.efficiency_score == 0:
             return 1.0
@@ -175,11 +180,15 @@ class XPBalancer:
         multiplier = max(self.MIN_XP_MULTIPLIER, min(self.MAX_XP_MULTIPLIER, ratio))
         return round(multiplier, 2)
 
-    def _apply_xp_adjustment(self, world: WorldModel, region: Region,
-                             zone_spawns: List[Tuple[int, int, int, Spawn]],
-                             monsters: Dict[str, int],
-                             multiplier: float,
-                             result: XPBalanceResult) -> int:
+    def _apply_xp_adjustment(
+        self,
+        world: WorldModel,
+        region: Region,
+        zone_spawns: List[Tuple[int, int, int, Spawn]],
+        monsters: Dict[str, int],
+        multiplier: float,
+        result: XPBalanceResult,
+    ) -> int:
         """
         Apply XP adjustments by removing or duplicating spawns.
 
@@ -193,8 +202,11 @@ class XPBalancer:
             target_adds = int(len(zone_spawns) * (multiplier - 1.0))
             target_adds = max(1, min(target_adds, len(zone_spawns)))
 
-            tiles_in_region = [t for t in world.tiles.values()
-                               if t.zone == region.name and t.spawn is None]
+            tiles_in_region = [
+                t
+                for t in world.tiles.values()
+                if t.zone == region.name and t.spawn is None
+            ]
 
             for i, (x, y, z, spawn) in enumerate(zone_spawns):
                 if i >= target_adds:
@@ -209,14 +221,16 @@ class XPBalancer:
                     tile.spawn = new_spawn
                     adjustments_made += 1
 
-                    result.adjustments.append(XPAdjustment(
-                        zone_name=region.name,
-                        monster=spawn.monster,
-                        old_xp=monsters.get(spawn.monster, 0),
-                        new_xp=monsters.get(spawn.monster, 0),
-                        multiplier=multiplier,
-                        reason=f"Added spawn to increase XP (efficiency too low)",
-                    ))
+                    result.adjustments.append(
+                        XPAdjustment(
+                            zone_name=region.name,
+                            monster=spawn.monster,
+                            old_xp=monsters.get(spawn.monster, 0),
+                            new_xp=monsters.get(spawn.monster, 0),
+                            multiplier=multiplier,
+                            reason="Added spawn to increase XP (efficiency too low)",
+                        )
+                    )
 
         elif multiplier < 1.0:
             # Remove some spawns
@@ -232,21 +246,26 @@ class XPBalancer:
                     tile.spawn = None
                     adjustments_made += 1
 
-                    result.adjustments.append(XPAdjustment(
-                        zone_name=region.name,
-                        monster=spawn.monster,
-                        old_xp=monsters.get(spawn.monster, 0),
-                        new_xp=monsters.get(spawn.monster, 0),
-                        multiplier=multiplier,
-                        reason=f"Removed spawn to decrease XP (efficiency too high)",
-                    ))
+                    result.adjustments.append(
+                        XPAdjustment(
+                            zone_name=region.name,
+                            monster=spawn.monster,
+                            old_xp=monsters.get(spawn.monster, 0),
+                            new_xp=monsters.get(spawn.monster, 0),
+                            multiplier=multiplier,
+                            reason="Removed spawn to decrease XP (efficiency too high)",
+                        )
+                    )
 
         result.total_monsters_adjusted += adjustments_made
         return adjustments_made
 
-    def suggest_monster_replacement(self, current_monster: str,
-                                    target_xp: int,
-                                    monsters: Optional[Dict[str, int]] = None) -> Optional[str]:
+    def suggest_monster_replacement(
+        self,
+        current_monster: str,
+        target_xp: int,
+        monsters: Optional[Dict[str, int]] = None,
+    ) -> Optional[str]:
         """
         Suggest a monster replacement to hit a target XP value.
 
@@ -275,9 +294,13 @@ class XPBalancer:
 
         return best_match
 
-    def analyze_zone_xp(self, world: WorldModel, region: Region,
-                        monsters: Optional[Dict[str, int]] = None,
-                        player_level: int = 150) -> XPAnalysis:
+    def analyze_zone_xp(
+        self,
+        world: WorldModel,
+        region: Region,
+        monsters: Optional[Dict[str, int]] = None,
+        player_level: int = 150,
+    ) -> XPAnalysis:
         """
         Analyze XP for a region without modifying it.
 

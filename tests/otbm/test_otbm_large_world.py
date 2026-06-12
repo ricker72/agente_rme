@@ -8,8 +8,6 @@ structures without raising struct errors.
 
 import os
 import sys
-import struct
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -55,8 +53,9 @@ class TestLargeWorldExport:
             for j in range(10):
                 world.set_tile(_make_tile(i, j, 7))
         world.cities = [
-            {"name": f"City{i}", "temple_x": i*10, "temple_y": j*10, "temple_z": 7}
-            for i in range(5) for j in [0]
+            {"name": f"City{i}", "temple_x": i * 10, "temple_y": j * 10, "temple_z": 7}
+            for i in range(5)
+            for j in [0]
         ]
         ser = OtbmSerializer()
         data = ser.serialize(world)
@@ -69,8 +68,9 @@ class TestLargeWorldExport:
             for j in range(5):
                 world.set_tile(_make_tile(i, j, 7))
         world.waypoints = [
-            {"name": f"WP{i}", "x": i*10, "y": j*10, "z": 7}
-            for i in range(5) for j in [0]
+            {"name": f"WP{i}", "x": i * 10, "y": j * 10, "z": 7}
+            for i in range(5)
+            for j in [0]
         ]
         ser = OtbmSerializer()
         data = ser.serialize(world)
@@ -83,7 +83,8 @@ class TestLargeWorldExport:
                 world.set_tile(_make_tile(i, j, 7))
         world.spawns = [
             {"x": i, "y": j, "z": 7, "monster": "Dragon", "interval": 60, "radius": 3}
-            for i in range(5) for j in range(5)
+            for i in range(5)
+            for j in range(5)
         ]
         ser = OtbmSerializer()
         data = ser.serialize(world)
@@ -129,11 +130,15 @@ class TestLargeWorldExport:
         world = WorldModel()
         for i in range(5):
             for j in range(5):
-                world.set_tile(_make_tile(
-                    i, j, 7,
-                    ground=106,
-                    items=[{"id": 2050}, {"id": 2016}],
-                ))
+                world.set_tile(
+                    _make_tile(
+                        i,
+                        j,
+                        7,
+                        ground=106,
+                        items=[{"id": 2050}, {"id": 2016}],
+                    )
+                )
         ser = OtbmSerializer()
         data = ser.serialize(world)
         assert data[:4] == b"OTBM"
@@ -141,6 +146,7 @@ class TestLargeWorldExport:
 
     def test_export_thousand_tile_map_runs_quickly(self):
         import time
+
         world = WorldModel()
         for i in range(32):
             for j in range(32):
@@ -155,7 +161,7 @@ class TestLargeWorldExport:
 
 
 class TestLargeWorldRoundtrip:
-    """Verify roundtrip import → export for large worlds."""
+    """Verify roundtrip import -> export for large worlds."""
 
     def test_roundtrip_small_world(self):
         world = WorldModel()

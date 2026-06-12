@@ -16,7 +16,7 @@ Si encuentra:
 from __future__ import annotations
 
 import re
-from typing import Any, Dict, List, Optional
+from typing import List
 
 from validators.rme_validator import validate as rme_validate, RMEValidationError
 
@@ -135,16 +135,18 @@ class LuaValidator:
                 result.add_error(f"Forbidden API: {message}")
 
         # Verificar createTile suelto (no getOrCreateTile)
-        for match in re.finditer(r'createTile', lua_code, re.IGNORECASE):
+        for match in re.finditer(r"createTile", lua_code, re.IGNORECASE):
             start = match.start()
-            preceding = lua_code[max(0, start - 5):start].lower()
-            if 'getor' not in preceding and not preceding.endswith('or'):
+            preceding = lua_code[max(0, start - 5) : start].lower()
+            if "getor" not in preceding and not preceding.endswith("or"):
                 result.add_error(
                     "Forbidden API: bare 'createTile' — use map:getOrCreateTile()"
                 )
                 break
 
-    def _check_bracket_balance(self, result: LuaValidationResult, lua_code: str) -> None:
+    def _check_bracket_balance(
+        self, result: LuaValidationResult, lua_code: str
+    ) -> None:
         """Verifica paréntesis balanceados."""
         for name, open_c, close_c in [
             ("parentheses", "(", ")"),
@@ -158,23 +160,21 @@ class LuaValidator:
                     f"Unbalanced {name}: {opens} opening vs {closes} closing"
                 )
 
-    def _check_spawn_intervals(self, result: LuaValidationResult, lua_code: str) -> None:
+    def _check_spawn_intervals(
+        self, result: LuaValidationResult, lua_code: str
+    ) -> None:
         """Verifica intervalos de spawn positivos."""
         for match in re.finditer(r"setSpawn\((\d+)\)", lua_code):
             interval = int(match.group(1))
             if interval <= 0:
-                result.add_warning(
-                    f"Non-positive spawn interval: {interval}"
-                )
+                result.add_warning(f"Non-positive spawn interval: {interval}")
 
     def _check_creature_calls(self, result: LuaValidationResult, lua_code: str) -> None:
         """Verifica nombres de criatura no vacíos."""
         for match in re.finditer(r"setCreature\('([^']*)'", lua_code):
             name = match.group(1)
             if not name.strip():
-                result.add_warning(
-                    f"Empty creature name at position {match.start()}"
-                )
+                result.add_warning(f"Empty creature name at position {match.start()}")
 
 
 # Conveniencia

@@ -2,15 +2,15 @@
 Integration test for multi-agent export artifact generation.
 """
 
-import pytest
 import os
 import json
-from agente_rme.core.agents import OrchestratorAgent, AgentRegistry, BaseAgent
-from agente_rme.core.agents.contracts import AgentRequest, AgentResponse
+from core.agents import OrchestratorAgent, AgentRegistry, BaseAgent
+from core.agents.contracts import AgentRequest, AgentResponse
 
 
 class CreatorAgent(BaseAgent):
     """Agent that creates test world data."""
+
     AGENT_ID = "architect"
 
     def execute(self, request):
@@ -31,6 +31,7 @@ class CreatorAgent(BaseAgent):
 
 class WorldBuilderAgent(BaseAgent):
     """Agent that builds a world model dict."""
+
     AGENT_ID = "mapper"
 
     def execute(self, request):
@@ -49,6 +50,7 @@ class WorldBuilderAgent(BaseAgent):
 
 class DoNothingAgent(BaseAgent):
     """Agent that passes through data unchanged."""
+
     AGENT_ID = ""
 
     def __init__(self, agent_id: str) -> None:
@@ -64,6 +66,7 @@ class DoNothingAgent(BaseAgent):
 
 class CampaignAgent(BaseAgent):
     """Agent that creates campaign data."""
+
     AGENT_ID = "quest"
 
     def execute(self, request):

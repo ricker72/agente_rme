@@ -3,6 +3,7 @@ from typing import List, Tuple
 
 from .district_generator import District
 
+
 @dataclass
 class Road:
     name: str
@@ -25,7 +26,9 @@ class RoadGenerator:
         return points
 
     @staticmethod
-    def connect_districts(districts: List[District], center: Tuple[int, int]) -> List[Road]:
+    def connect_districts(
+        districts: List[District], center: Tuple[int, int]
+    ) -> List[Road]:
         roads: List[Road] = []
         plaza_points = []
         for district in districts:
@@ -40,6 +43,8 @@ class RoadGenerator:
         sorted_districts = sorted(districts, key=lambda d: (d.x, d.y))
         for first, second in zip(sorted_districts, sorted_districts[1:]):
             path = RoadGenerator.path_between(first.center(), second.center())
-            roads.append(Road(name=f"Connector {first.name} -> {second.name}", path=path))
+            roads.append(
+                Road(name=f"Connector {first.name} -> {second.name}", path=path)
+            )
 
         return roads

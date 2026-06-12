@@ -13,6 +13,7 @@ from core.world.structure import Structure
 @dataclass
 class QuestZoneExpansionResult:
     """Result of quest zone expansion."""
+
     zones_created: int = 0
     tiles_added: int = 0
     npcs_placed: int = 0
@@ -73,8 +74,7 @@ class QuestZoneExpander:
     ZONE_SIZE = 12
     MAX_ZONES = 3
 
-    def expand(self, world: WorldModel,
-               max_zones: int = 3) -> QuestZoneExpansionResult:
+    def expand(self, world: WorldModel, max_zones: int = 3) -> QuestZoneExpansionResult:
         """
         Create quest zones adjacent to existing content.
 
@@ -108,26 +108,26 @@ class QuestZoneExpander:
                 result.zones_created += 1
                 result.tiles_added += tiles
                 result.npcs_placed += npcs
-                result.details.append({
-                    "theme": theme["name"],
-                    "position": f"{position[0]},{position[1]}",
-                    "description": theme["description"],
-                    "tiles": tiles,
-                })
+                result.details.append(
+                    {
+                        "theme": theme["name"],
+                        "position": f"{position[0]},{position[1]}",
+                        "description": theme["description"],
+                        "tiles": tiles,
+                    }
+                )
 
         return result
 
-    def _find_quest_position(self, world: WorldModel,
-                             bounds: Dict[str, int],
-                             index: int) -> Optional[Tuple[int, int]]:
+    def _find_quest_position(
+        self, world: WorldModel, bounds: Dict[str, int], index: int
+    ) -> Optional[Tuple[int, int]]:
         """Find a position for a quest zone."""
         offset = 15 + index * (self.ZONE_SIZE + 10)
         candidates = [
             (bounds["max_x"] + offset, bounds["min_y"] + index * 20),
-            (bounds["min_x"] - self.ZONE_SIZE - offset,
-             bounds["min_y"] + index * 20),
-            (bounds["max_x"] + offset,
-             bounds["max_y"] - self.ZONE_SIZE - index * 20),
+            (bounds["min_x"] - self.ZONE_SIZE - offset, bounds["min_y"] + index * 20),
+            (bounds["max_x"] + offset, bounds["max_y"] - self.ZONE_SIZE - index * 20),
         ]
 
         for x, y in candidates:
@@ -144,10 +144,9 @@ class QuestZoneExpander:
 
         return None
 
-    def _generate_quest_zone(self, world: WorldModel,
-                             qx: int, qy: int,
-                             theme: Dict[str, Any],
-                             index: int) -> Tuple[int, int]:
+    def _generate_quest_zone(
+        self, world: WorldModel, qx: int, qy: int, theme: Dict[str, Any], index: int
+    ) -> Tuple[int, int]:
         """
         Generate a quest zone with themed tiles and encounters.
 
@@ -169,10 +168,7 @@ class QuestZoneExpander:
                 if world.has_tile(x, y, 7):
                     continue
 
-                is_edge = (
-                    x == qx or x == qx + size - 1 or
-                    y == qy or y == qy + size - 1
-                )
+                is_edge = x == qx or x == qx + size - 1 or y == qy or y == qy + size - 1
 
                 tile = Tile(x=x, y=y, z=7, ground=ground, zone=zone_name)
 
@@ -181,7 +177,9 @@ class QuestZoneExpander:
                     if (x + y * 3) % 7 == 0 and spawn_idx < theme["spawn_count"]:
                         monster = monsters[spawn_idx % len(monsters)]
                         tile.spawn = Spawn(
-                            monster=monster, respawn=120, radius=3,
+                            monster=monster,
+                            respawn=120,
+                            radius=3,
                         )
                         spawn_idx += 1
 
@@ -200,8 +198,11 @@ class QuestZoneExpander:
         reward = Structure(
             name=f"{zone_name}_reward",
             category="quest_reward",
-            x=center_x - 1, y=center_y - 1, z=7,
-            width=3, height=3,
+            x=center_x - 1,
+            y=center_y - 1,
+            z=7,
+            width=3,
+            height=3,
             tile_count=9,
             tags=["quest", "reward", theme["name"]],
         )

@@ -11,7 +11,10 @@ from core.knowledge.models import KnowledgeEntry
 
 def _entry(name: str, **kw) -> KnowledgeEntry:
     return KnowledgeEntry.build(
-        entry_type=EntryType.HUNT, name=name, source="x", **kw,
+        entry_type=EntryType.HUNT,
+        name=name,
+        source="x",
+        **kw,
     )
 
 

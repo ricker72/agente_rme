@@ -11,7 +11,9 @@ class CampaignGenerator:
         "epic": {"cities": 3, "hunts": 6, "dungeons": 4, "bosses": 10, "quests": 24},
     }
 
-    def generate(self, theme: str, level_range: str, map_size: str) -> Dict[str, object]:
+    def generate(
+        self, theme: str, level_range: str, map_size: str
+    ) -> Dict[str, object]:
         theme_name = self._normalize_theme(theme)
         profile = self.SIZE_PROFILES.get(map_size.lower(), self.SIZE_PROFILES["large"])
 
@@ -40,7 +42,11 @@ class CampaignGenerator:
         }
 
     def _normalize_theme(self, theme: str) -> str:
-        parts = [part.strip().capitalize() for part in theme.replace("+", ",").split(",") if part.strip()]
+        parts = [
+            part.strip().capitalize()
+            for part in theme.replace("+", ",").split(",")
+            if part.strip()
+        ]
         return " ".join(parts) if parts else "Mythic"
 
     def _design_cities(self, theme: str, count: int) -> List[Dict[str, object]]:
@@ -57,7 +63,9 @@ class CampaignGenerator:
             )
         return cities
 
-    def _design_dungeons(self, theme: str, count: int, level_range: str) -> List[Dict[str, object]]:
+    def _design_dungeons(
+        self, theme: str, count: int, level_range: str
+    ) -> List[Dict[str, object]]:
         dungeons = []
         for index in range(1, count + 1):
             difficulty = self._dungeon_difficulty(index, level_range)
@@ -73,7 +81,9 @@ class CampaignGenerator:
             )
         return dungeons
 
-    def _design_bosses(self, theme: str, count: int, dungeons: List[Dict[str, object]]) -> List[Dict[str, object]]:
+    def _design_bosses(
+        self, theme: str, count: int, dungeons: List[Dict[str, object]]
+    ) -> List[Dict[str, object]]:
         bosses = []
         for index in range(1, count + 1):
             dungeon = dungeons[min(index - 1, len(dungeons) - 1)]
@@ -82,7 +92,11 @@ class CampaignGenerator:
                     "name": f"{theme} Warlord {index}",
                     "arena": f"{theme} Arena {index}",
                     "difficulty": dungeon.get("difficulty", "hard"),
-                    "mechanics": ["phase-based attacks", "environmental hazards", "summon adds"],
+                    "mechanics": [
+                        "phase-based attacks",
+                        "environmental hazards",
+                        "summon adds",
+                    ],
                     "loot": [
                         {"item": f"{theme} Relic {index}", "rarity": "epic"},
                         {"item": f"{theme} Essence", "rarity": "rare"},
@@ -97,14 +111,20 @@ class CampaignGenerator:
             )
         return bosses
 
-    def _design_hunts(self, theme: str, count: int, level_range: str) -> List[Dict[str, object]]:
+    def _design_hunts(
+        self, theme: str, count: int, level_range: str
+    ) -> List[Dict[str, object]]:
         hunts = []
         for index in range(1, count + 1):
             hunts.append(
                 {
                     "name": f"{theme} Hunt {index}",
                     "recommended_level": self._recommended_level(level_range, index),
-                    "monster_pool": [f"{theme} Scout", f"{theme} Ravager", f"{theme} Warden"],
+                    "monster_pool": [
+                        f"{theme} Scout",
+                        f"{theme} Ravager",
+                        f"{theme} Warden",
+                    ],
                     "loot_profile": {
                         "common": ["gold coins", "healing potion"],
                         "rare": [f"{theme} Claw", f"{theme} Essence"],
@@ -122,7 +142,13 @@ class CampaignGenerator:
             )
         return hunts
 
-    def _design_quests(self, theme: str, count: int, dungeons: List[Dict[str, object]], hunts: List[Dict[str, object]]) -> Dict[str, object]:
+    def _design_quests(
+        self,
+        theme: str,
+        count: int,
+        dungeons: List[Dict[str, object]],
+        hunts: List[Dict[str, object]],
+    ) -> Dict[str, object]:
         metadata = []
         zones = []
         for index in range(1, count + 1):
@@ -131,7 +157,21 @@ class CampaignGenerator:
             metadata.append(
                 {
                     "title": f"{theme} Quest {index}",
-                    "type": "story" if index % 5 == 1 else "exploration" if index % 5 == 2 else "collection" if index % 5 == 3 else "boss" if index % 5 == 4 else "puzzle",
+                    "type": (
+                        "story"
+                        if index % 5 == 1
+                        else (
+                            "exploration"
+                            if index % 5 == 2
+                            else (
+                                "collection"
+                                if index % 5 == 3
+                                else "boss"
+                                if index % 5 == 4
+                                else "puzzle"
+                            )
+                        )
+                    ),
                     "description": description,
                     "reward": "experience",
                     "index": index,
@@ -151,7 +191,9 @@ class CampaignGenerator:
             )
         return {"metadata": metadata, "zones": zones}
 
-    def _design_roads(self, cities: List[Dict[str, object]], dungeons: List[Dict[str, object]]) -> List[Dict[str, object]]:
+    def _design_roads(
+        self, cities: List[Dict[str, object]], dungeons: List[Dict[str, object]]
+    ) -> List[Dict[str, object]]:
         roads = []
         if cities and dungeons:
             for index, dungeon in enumerate(dungeons, start=1):
@@ -170,16 +212,22 @@ class CampaignGenerator:
                 )
         return roads
 
-    def _design_loot_tables(self, theme: str, bosses: List[Dict[str, object]]) -> Dict[str, object]:
+    def _design_loot_tables(
+        self, theme: str, bosses: List[Dict[str, object]]
+    ) -> Dict[str, object]:
         return {
             "common": ["gold coins", "minor potion", f"{theme} Shard"],
             "uncommon": [f"{theme} Cloak", f"{theme} Ring"],
             "rare": [f"{theme} Relic", f"{theme} Artifact"],
             "legendary": [f"{theme} Crown", f"{theme} Heart"],
-            "boss_drops": [{"boss": boss["name"], "drops": boss.get("loot", [])} for boss in bosses],
+            "boss_drops": [
+                {"boss": boss["name"], "drops": boss.get("loot", [])} for boss in bosses
+            ],
         }
 
-    def _design_spawns(self, hunts: List[Dict[str, object]], bosses: List[Dict[str, object]]) -> List[Dict[str, object]]:
+    def _design_spawns(
+        self, hunts: List[Dict[str, object]], bosses: List[Dict[str, object]]
+    ) -> List[Dict[str, object]]:
         spawns = []
         for hunt in hunts:
             spawns.append(

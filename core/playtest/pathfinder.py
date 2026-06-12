@@ -11,7 +11,7 @@ from __future__ import annotations
 import heapq
 import logging
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Set, Tuple
 
 logger = logging.getLogger(__name__)
@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class PathResult:
     """Result of a pathfinding query."""
+
     waypoints: List[Tuple[int, int, int]]
     distance: float
     steps: int
@@ -35,6 +36,7 @@ class PathResult:
 @dataclass
 class _Node:
     """Internal A* node."""
+
     x: int
     y: int
     z: int
@@ -59,12 +61,21 @@ class Pathfinder:
     """A* pathfinder over a WorldModel tile grid."""
 
     DIRECTIONS_8: List[Tuple[int, int]] = [
-        (0, 1), (0, -1), (1, 0), (-1, 0),
-        (1, 1), (1, -1), (-1, 1), (-1, -1),
+        (0, 1),
+        (0, -1),
+        (1, 0),
+        (-1, 0),
+        (1, 1),
+        (1, -1),
+        (-1, 1),
+        (-1, -1),
     ]
 
     DIRECTIONS_4: List[Tuple[int, int]] = [
-        (0, 1), (0, -1), (1, 0), (-1, 0),
+        (0, 1),
+        (0, -1),
+        (1, 0),
+        (-1, 0),
     ]
 
     Z_STEPS: List[int] = [-1, 1]
@@ -113,8 +124,9 @@ class Pathfinder:
             return False
         return tile.spawn is not None
 
-    def _move_cost(self, from_x: int, from_y: int, from_z: int,
-                   to_x: int, to_y: int, to_z: int) -> float:
+    def _move_cost(
+        self, from_x: int, from_y: int, from_z: int, to_x: int, to_y: int, to_z: int
+    ) -> float:
         """Calculate movement cost between two adjacent tiles."""
         dx = abs(to_x - from_x)
         dy = abs(to_y - from_y)
@@ -136,8 +148,7 @@ class Pathfinder:
 
         return cost
 
-    def _heuristic(self, ax: int, ay: int, az: int,
-                   bx: int, by: int, bz: int) -> float:
+    def _heuristic(self, ax: int, ay: int, az: int, bx: int, by: int, bz: int) -> float:
         """Octile distance heuristic (matches 8-directional movement)."""
         dx = abs(ax - bx)
         dy = abs(ay - by)
@@ -170,20 +181,31 @@ class Pathfinder:
         # Quick check: start and goal must exist
         if not self._is_walkable(sx, sy, sz):
             return PathResult(
-                waypoints=[], distance=0.0, steps=0,
-                floors_traversed=0, reachable=False, blocked_tiles=1,
+                waypoints=[],
+                distance=0.0,
+                steps=0,
+                floors_traversed=0,
+                reachable=False,
+                blocked_tiles=1,
             )
         if not self._is_walkable(gx, gy, gz):
             return PathResult(
-                waypoints=[], distance=0.0, steps=0,
-                floors_traversed=0, reachable=False, blocked_tiles=1,
+                waypoints=[],
+                distance=0.0,
+                steps=0,
+                floors_traversed=0,
+                reachable=False,
+                blocked_tiles=1,
             )
 
         # Already at goal
         if start == goal:
             return PathResult(
-                waypoints=[start], distance=0.0, steps=0,
-                floors_traversed=0, reachable=True,
+                waypoints=[start],
+                distance=0.0,
+                steps=0,
+                floors_traversed=0,
+                reachable=True,
             )
 
         open_set: List[_Node] = []
@@ -191,7 +213,9 @@ class Pathfinder:
         g_scores: Dict[Tuple[int, int, int], float] = {}
 
         start_node = _Node(
-            x=sx, y=sy, z=sz,
+            x=sx,
+            y=sy,
+            z=sz,
             h=self._heuristic(sx, sy, sz, gx, gy, gz),
         )
         start_node.f = start_node.h
@@ -222,23 +246,36 @@ class Pathfinder:
                     continue
 
                 tentative_g = current.g + self._move_cost(
-                    current.x, current.y, current.z, nx, ny, nz,
+                    current.x,
+                    current.y,
+                    current.z,
+                    nx,
+                    ny,
+                    nz,
                 )
 
-                if tentative_g < g_scores.get(neighbor_key, float('inf')):
+                if tentative_g < g_scores.get(neighbor_key, float("inf")):
                     g_scores[neighbor_key] = tentative_g
                     h = self._heuristic(nx, ny, nz, gx, gy, gz)
                     node = _Node(
-                        x=nx, y=ny, z=nz,
-                        g=tentative_g, h=h, f=tentative_g + h,
+                        x=nx,
+                        y=ny,
+                        z=nz,
+                        g=tentative_g,
+                        h=h,
+                        f=tentative_g + h,
                         parent=current,
                     )
                     heapq.heappush(open_set, node)
 
         # No path found
         return PathResult(
-            waypoints=[], distance=0.0, steps=0,
-            floors_traversed=0, reachable=False, blocked_tiles=blocked,
+            waypoints=[],
+            distance=0.0,
+            steps=0,
+            floors_traversed=0,
+            reachable=False,
+            blocked_tiles=blocked,
         )
 
     def _get_neighbors(self, x: int, y: int, z: int) -> List[Tuple[int, int, int]]:
@@ -250,8 +287,9 @@ class Pathfinder:
             if self._is_walkable(nx, ny, nz):
                 # Check diagonal blocking (can't cut through walls)
                 if abs(dx) + abs(dy) == 2:
-                    if not self._is_walkable(x + dx, y, z) or \
-                       not self._is_walkable(x, y + dy, z):
+                    if not self._is_walkable(x + dx, y, z) or not self._is_walkable(
+                        x, y + dy, z
+                    ):
                         continue
                 neighbors.append((nx, ny, nz))
 
@@ -266,7 +304,9 @@ class Pathfinder:
         return neighbors
 
     def _reconstruct_path(
-        self, node: _Node, closed_set: Set[Tuple[int, int, int]],
+        self,
+        node: _Node,
+        closed_set: Set[Tuple[int, int, int]],
     ) -> PathResult:
         """Reconstruct path from goal node back to start."""
         waypoints: List[Tuple[int, int, int]] = []
@@ -297,7 +337,7 @@ class Pathfinder:
     ) -> Optional[Tuple[int, int, int]]:
         """Find nearest tile with a monster spawn within range."""
         fx, fy, fz = from_pos
-        best_dist = float('inf')
+        best_dist = float("inf")
         best_pos = None
 
         for dx in range(-max_range, max_range + 1):

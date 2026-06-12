@@ -1,21 +1,51 @@
 """
 MonsterIndexer — Indexa monstruos de Tibia desde monster.xml o lista conocida.
 """
+
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET
 from typing import Any, Dict, List, Optional, Set
 
-
 # Fallback monsters — usados si no hay monster.xml disponible
 FALLBACK_MONSTERS: Set[str] = {
-    "Crypt Warden", "Skeleton", "Demon Skeleton", "Priestess", "Death Priest",
-    "Frazzlemaw", "Sphinx", "Cloak Of Terror", "Vexclaw", "Guzzlemaw",
-    "Shrieker", "Dragon", "Dragon Lord", "Rat", "Demon", "Behemoth",
-    "Cyclops", "Dwarf", "Elf", "Goblin", "Minotaur", "Orc", "Troll",
-    "Wolf", "Bear", "Deer", "Chicken", "Rabbit", "Bat", "Spider",
-    "Giant Spider", "Nightmare", "Silencer", "Nightmare Scion",
-    "Ghastly Dragon", "Ferumbras", "Gaz'Haragoth",
+    "Crypt Warden",
+    "Skeleton",
+    "Demon Skeleton",
+    "Priestess",
+    "Death Priest",
+    "Frazzlemaw",
+    "Sphinx",
+    "Cloak Of Terror",
+    "Vexclaw",
+    "Guzzlemaw",
+    "Shrieker",
+    "Dragon",
+    "Dragon Lord",
+    "Rat",
+    "Demon",
+    "Behemoth",
+    "Cyclops",
+    "Dwarf",
+    "Elf",
+    "Goblin",
+    "Minotaur",
+    "Orc",
+    "Troll",
+    "Wolf",
+    "Bear",
+    "Deer",
+    "Chicken",
+    "Rabbit",
+    "Bat",
+    "Spider",
+    "Giant Spider",
+    "Nightmare",
+    "Silencer",
+    "Nightmare Scion",
+    "Ghastly Dragon",
+    "Ferumbras",
+    "Gaz'Haragoth",
 }
 
 

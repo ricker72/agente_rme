@@ -1,10 +1,8 @@
 from __future__ import annotations
 
-import pytest
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
-from core.world.spawn import Spawn
 from core.world.region import Region
 from core.expansion.region_expander import RegionExpander, RegionExpansionResult
 
@@ -75,7 +73,7 @@ class TestRegionExpanderFillGaps:
                 world.set_tile(tile)
 
         re = RegionExpander()
-        original = world.tile_count()
+        world.tile_count()
         result = re.expand(world, fill_gaps=True, connect_regions=False)
         assert result.tiles_added == 0
 

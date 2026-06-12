@@ -7,29 +7,39 @@ import tempfile
 import unittest
 
 from core.knowledge import (
-    DatasetBuilder,
     EntryType,
     KnowledgeEngine,
     parse_query,
 )
-from core.knowledge.models import KnowledgeDataset, KnowledgeEntry
 
 
 def _src_roshamuul() -> dict:
     return {
         "meta": {"name": "roshamuul", "theme": "roshamuul"},
         "regions": [
-            {"name": "roshamuul_circular_hunt", "theme": "roshamuul",
-             "min_level": 280, "max_level": 380, "tags": ["circular"]},
+            {
+                "name": "roshamuul_circular_hunt",
+                "theme": "roshamuul",
+                "min_level": 280,
+                "max_level": 380,
+                "tags": ["circular"],
+            },
         ],
-        "cities": [{"name": "Issavi", "theme": "issavi",
-                    "min_level": 250, "max_level": 450}],
-        "structures": [{"name": "roshamuul_boss_arena",
-                        "category": "boss_room",
-                        "tags": ["boss", "circular", "arena"],
-                        "width": 30, "height": 30}],
-        "spawns": [{"monster": "Guzzlemaw",
-                     "zone": "roshamuul_circular_hunt", "level": 280}],
+        "cities": [
+            {"name": "Issavi", "theme": "issavi", "min_level": 250, "max_level": 450}
+        ],
+        "structures": [
+            {
+                "name": "roshamuul_boss_arena",
+                "category": "boss_room",
+                "tags": ["boss", "circular", "arena"],
+                "width": 30,
+                "height": 30,
+            }
+        ],
+        "spawns": [
+            {"monster": "Guzzlemaw", "zone": "roshamuul_circular_hunt", "level": 280}
+        ],
         "quests": [{"name": "Soul War", "difficulty": "hard"}],
     }
 
@@ -38,8 +48,13 @@ def _src_issavi() -> dict:
     return {
         "meta": {"name": "issavi", "theme": "issavi"},
         "regions": [
-            {"name": "issavi_sewers_hunt", "theme": "issavi",
-             "min_level": 250, "max_level": 400, "tags": ["sewer"]},
+            {
+                "name": "issavi_sewers_hunt",
+                "theme": "issavi",
+                "min_level": 250,
+                "max_level": 400,
+                "tags": ["sewer"],
+            },
         ],
         "cities": [{"name": "issavi_city", "theme": "issavi"}],
     }
@@ -49,11 +64,23 @@ def _src_soul_war() -> dict:
     return {
         "meta": {"name": "soul_war", "theme": "roshamuul"},
         "regions": [
-            {"name": "soul_war_surface", "theme": "roshamuul",
-             "min_level": 250, "max_level": 500, "tags": ["soul_war", "circular"]},
+            {
+                "name": "soul_war_surface",
+                "theme": "roshamuul",
+                "min_level": 250,
+                "max_level": 500,
+                "tags": ["soul_war", "circular"],
+            },
         ],
-        "structures": [{"name": "soul_war_boss_arena", "category": "arena",
-                        "tags": ["boss", "circular"], "width": 40, "height": 40}],
+        "structures": [
+            {
+                "name": "soul_war_boss_arena",
+                "category": "arena",
+                "tags": ["boss", "circular"],
+                "width": 40,
+                "height": 40,
+            }
+        ],
         "raids": [{"name": "Ferumbras Raid", "min_level": 300}],
     }
 
@@ -129,7 +156,8 @@ class TestKnowledgeEngine(unittest.TestCase):
             eng2 = KnowledgeEngine.load(path)
             self.assertEqual(eng.dataset.total(), eng2.dataset.total())
             self.assertEqual(
-                len(eng.dataset.hunts), len(eng2.dataset.hunts),
+                len(eng.dataset.hunts),
+                len(eng2.dataset.hunts),
             )
 
     def test_lookup_for_prompt(self):

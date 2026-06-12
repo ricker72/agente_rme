@@ -41,12 +41,12 @@ import json
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
-
+from typing import Any, Dict, List, Optional
 
 # =============================================================================
 # ThemeAssets — value object returned by the resolver
 # =============================================================================
+
 
 @dataclass
 class ThemeAssets:
@@ -56,6 +56,7 @@ class ThemeAssets:
     Used by ZonePlanner / LayoutPlanner to know what tile IDs and creatures
     are valid for a given style.
     """
+
     name: str
     grounds: List[int] = field(default_factory=list)
     walls: List[int] = field(default_factory=list)
@@ -113,8 +114,13 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1495, 1496, 1497, 1498, 112],
         "decorations": [2153, 2117, 1803, 1700, 1703, 1810],
         "monsters": [
-            "Frazzlemaw", "Sphinx", "Cloak Of Terror",
-            "Crypt Warden", "Priestess", "Vexclaw", "Guzzlemaw",
+            "Frazzlemaw",
+            "Sphinx",
+            "Cloak Of Terror",
+            "Crypt Warden",
+            "Priestess",
+            "Vexclaw",
+            "Guzzlemaw",
         ],
         "metadata": {
             "biome": "desert",
@@ -130,8 +136,13 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1500, 1501, 1502, 1349, 1350, 1351, 118],
         "decorations": [2150, 2151, 2152, 2153, 2042, 1948, 1710, 1713],
         "monsters": [
-            "Demon", "Nightmare", "Vampire", "Guzzlemaw",
-            "Cloak Of Terror", "Crypt Warden", "Frazzlemaw",
+            "Demon",
+            "Nightmare",
+            "Vampire",
+            "Guzzlemaw",
+            "Cloak Of Terror",
+            "Crypt Warden",
+            "Frazzlemaw",
         ],
         "metadata": {
             "biome": "nightmare",
@@ -147,8 +158,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1504, 1505, 1506, 1507],
         "decorations": [2155, 2156, 2157, 2158, 2159],
         "monsters": [
-            "Lizard Dragon", "Dragon Lord", "Grim Reaper",
-            "Demon", "Nightmare", "Shrieker",
+            "Lizard Dragon",
+            "Dragon Lord",
+            "Grim Reaper",
+            "Demon",
+            "Nightmare",
+            "Shrieker",
         ],
         "metadata": {
             "biome": "nether",
@@ -164,8 +179,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1504, 1505, 1506, 1507],
         "decorations": [2155, 2156, 2157, 2158, 2159],
         "monsters": [
-            "Lizard Dragon", "Dragon Lord", "Grim Reaper",
-            "Demon", "Nightmare", "Shrieker",
+            "Lizard Dragon",
+            "Dragon Lord",
+            "Grim Reaper",
+            "Demon",
+            "Nightmare",
+            "Shrieker",
         ],
         "metadata": {
             "biome": "nether",
@@ -181,8 +200,13 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1498, 1499, 1503, 1510],
         "decorations": [2148, 2149, 2154, 2160, 2161],
         "monsters": [
-            "Sphinx", "Gargoyle", "Hydra", "Demon",
-            "Skeleton", "Crypt Warden", "Warlock",
+            "Sphinx",
+            "Gargoyle",
+            "Hydra",
+            "Demon",
+            "Skeleton",
+            "Crypt Warden",
+            "Warlock",
         ],
         "metadata": {
             "biome": "arcane",
@@ -198,8 +222,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1511, 1512, 1513, 1514],
         "decorations": [2162, 2163, 2164, 2165],
         "monsters": [
-            "Gargoyle", "Lizard Dragon", "Warlock", "Demon",
-            "Vampire", "Grim Reaper",
+            "Gargoyle",
+            "Lizard Dragon",
+            "Warlock",
+            "Demon",
+            "Vampire",
+            "Grim Reaper",
         ],
         "metadata": {
             "biome": "exotic_urban",
@@ -215,8 +243,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1507, 1508, 1509, 1515],
         "decorations": [2158, 2159, 2160, 2166, 2167],
         "monsters": [
-            "Falcon", "Guzzlemaw", "Vexclaw", "Lizard Dragon",
-            "Demon", "Hero",
+            "Falcon",
+            "Guzzlemaw",
+            "Vexclaw",
+            "Lizard Dragon",
+            "Demon",
+            "Hero",
         ],
         "metadata": {
             "biome": "mountain",
@@ -232,8 +264,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1504, 1505, 1506, 1507],
         "decorations": [2155, 2156, 2157, 2168, 2169],
         "monsters": [
-            "Cobra", "Vexclaw", "Shrieker", "Snake",
-            "Lizard Dragon", "Warlock",
+            "Cobra",
+            "Vexclaw",
+            "Shrieker",
+            "Snake",
+            "Lizard Dragon",
+            "Warlock",
         ],
         "metadata": {
             "biome": "swamp",
@@ -249,8 +285,11 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1520, 1521, 1522],
         "decorations": [2170, 2171, 2172],
         "monsters": [
-            "Frost Dragon", "Ice Witch", "Yeti",
-            "Frost Giant", "Polar Bear",
+            "Frost Dragon",
+            "Ice Witch",
+            "Yeti",
+            "Frost Giant",
+            "Polar Bear",
         ],
         "metadata": {
             "biome": "arctic",
@@ -266,8 +305,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1530, 1531, 1532],
         "decorations": [2180, 2181, 2182, 2183, 2184],
         "monsters": [
-            "Corym", "Feverish Citizen", "Leaf Golem",
-            "Tigrex", "Cave Rat", "Spider",
+            "Corym",
+            "Feverish Citizen",
+            "Leaf Golem",
+            "Tigrex",
+            "Cave Rat",
+            "Spider",
         ],
         "metadata": {
             "biome": "tropical",
@@ -275,7 +318,11 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
             "difficulty": "hard",
             "level_range": [200, 500],
             "description": "Lush jungle with hidden ruins",
-            "blueprint_quirks": ["vegetation overgrowth", "stone ruins", "rope bridges"],
+            "blueprint_quirks": [
+                "vegetation overgrowth",
+                "stone ruins",
+                "rope bridges",
+            ],
         },
     },
     "thais": {
@@ -283,8 +330,13 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1085, 1086, 1087],
         "decorations": [2190, 2191, 2192],
         "monsters": [
-            "Rat", "Cave Rat", "Spider", "Troll",
-            "Cyclops", "Orc", "Minotaur",
+            "Rat",
+            "Cave Rat",
+            "Spider",
+            "Troll",
+            "Cyclops",
+            "Orc",
+            "Minotaur",
         ],
         "metadata": {
             "biome": "temperate",
@@ -300,8 +352,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1090, 1091, 1092],
         "decorations": [2195, 2196, 2197],
         "monsters": [
-            "Troll", "Orc", "Cyclops", "Spider",
-            "Dwarf", "Minotaur",
+            "Troll",
+            "Orc",
+            "Cyclops",
+            "Spider",
+            "Dwarf",
+            "Minotaur",
         ],
         "metadata": {
             "biome": "desert_city",
@@ -317,8 +373,12 @@ BUILTIN_THEMES: Dict[str, Dict[str, Any]] = {
         "walls": [1540, 1541, 1542],
         "decorations": [2200, 2201, 2202],
         "monsters": [
-            "Crocodile", "Mummy", "Scarab",
-            "Tomb Servant", "Ghoul", "Vampire",
+            "Crocodile",
+            "Mummy",
+            "Scarab",
+            "Tomb Servant",
+            "Ghoul",
+            "Vampire",
         ],
         "metadata": {
             "biome": "desert_ruins",
@@ -406,6 +466,7 @@ DEFAULT_BPRINT_SKELETON = {
 # =============================================================================
 # Theme Resolver
 # =============================================================================
+
 
 class ThemeResolver:
     """
@@ -506,10 +567,14 @@ class ThemeResolver:
         else:
             # Last resort: generic theme, named after the input
             theme_assets = self._from_builtin(
-                key, {**BUILTIN_THEMES["generic"], "metadata": {
-                    **BUILTIN_THEMES["generic"]["metadata"],
-                    "description": f"Auto-generated theme for '{theme_name}'",
-                }},
+                key,
+                {
+                    **BUILTIN_THEMES["generic"],
+                    "metadata": {
+                        **BUILTIN_THEMES["generic"]["metadata"],
+                        "description": f"Auto-generated theme for '{theme_name}'",
+                    },
+                },
             )
 
         # Cross-validate / augment with AssetRegistry
@@ -585,12 +650,12 @@ class ThemeResolver:
         )
         merged_meta["difficulty"] = hardest
         merged_meta["merged_from"] = [self._normalize(n) for n in theme_names]
-        merged_meta["description"] = (
-            f"Hybrid theme merging {', '.join(theme_names)}"
-        )
+        merged_meta["description"] = f"Hybrid theme merging {', '.join(theme_names)}"
 
         # Use the primary's level_range as a baseline, widen to the rest
-        level_ranges = [t.metadata.get("level_range", [1, 200]) for t in [primary] + rest]
+        level_ranges = [
+            t.metadata.get("level_range", [1, 200]) for t in [primary] + rest
+        ]
         if level_ranges:
             lo = min(r[0] for r in level_ranges)
             hi = max(r[1] for r in level_ranges)
@@ -695,9 +760,13 @@ class ThemeResolver:
             return theme
 
         # Filter to only valid IDs; keep at least one for usability
-        new_grounds = [g for g in theme.grounds if g in known_items] or theme.grounds[:1]
+        new_grounds = [g for g in theme.grounds if g in known_items] or theme.grounds[
+            :1
+        ]
         new_walls = [w for w in theme.walls if w in known_items] or theme.walls[:1]
-        new_decos = [d for d in theme.decorations if d in known_items] or theme.decorations[:1]
+        new_decos = [
+            d for d in theme.decorations if d in known_items
+        ] or theme.decorations[:1]
 
         theme.grounds = new_grounds
         theme.walls = new_walls
@@ -737,8 +806,12 @@ class ThemeResolver:
     @staticmethod
     def _hardest_difficulty(themes: List[ThemeAssets]) -> str:
         order = {
-            "easy": 0, "medium": 1, "hard": 2,
-            "extreme": 3, "epic": 4, "legendary": 5,
+            "easy": 0,
+            "medium": 1,
+            "hard": 2,
+            "extreme": 3,
+            "epic": 4,
+            "legendary": 5,
         }
         return max(
             themes,

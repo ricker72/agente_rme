@@ -49,7 +49,10 @@ class TestPathResult:
     def test_path_result_creation(self):
         result = PathResult(
             waypoints=[(0, 0, 7), (1, 0, 7), (2, 0, 7)],
-            distance=2.0, steps=2, floors_traversed=0, reachable=True,
+            distance=2.0,
+            steps=2,
+            floors_traversed=0,
+            reachable=True,
         )
         assert result.reachable is True
         assert result.steps == 2
@@ -57,8 +60,11 @@ class TestPathResult:
 
     def test_path_result_unreachable(self):
         result = PathResult(
-            waypoints=[], distance=0.0, steps=0,
-            floors_traversed=0, reachable=False,
+            waypoints=[],
+            distance=0.0,
+            steps=0,
+            floors_traversed=0,
+            reachable=False,
         )
         assert not result.reachable
         assert result.steps == 0

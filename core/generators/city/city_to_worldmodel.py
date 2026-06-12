@@ -2,16 +2,14 @@
 Convierte el modelo City (distritos, roads, buildings, waypoints)
 en un WorldModel para exportación directa a OTBM.
 """
+
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from core.world_engine.world_engine import WorldModel, Tile
 
-from .city_generator import City, District, Waypoint
-from .road_generator import Road
-from .building_generator import Building
+from .city_generator import City
 from .temple_generator import generate_temple_layout
 from .depot_generator import generate_depot_layout
 from .market_generator import generate_market_layout
@@ -82,8 +80,8 @@ class CityToWorldModel:
     }
 
     DECORATION_IDS: Dict[str, int] = {
-        "issavi": 2162,   # crystal glow
-        "thais": 2050,    # torch
+        "issavi": 2162,  # crystal glow
+        "thais": 2050,  # torch
         "venore": 2050,
         "yalahar": 2153,
         "carlin": 2050,
@@ -129,7 +127,9 @@ class CityToWorldModel:
         theme = self.city.theme.lower()
         return self.DECORATION_IDS.get(theme, self.DECORATION_IDS["default"])
 
-    def _add_tile(self, x: int, y: int, ground_id: int, items: Optional[List[int]] = None) -> Tile:
+    def _add_tile(
+        self, x: int, y: int, ground_id: int, items: Optional[List[int]] = None
+    ) -> Tile:
         tile = Tile(x=x, y=y, z=self._z, ground=str(ground_id))
         if items:
             for item_id in items:
@@ -153,7 +153,7 @@ class CityToWorldModel:
         """Place road tiles along road paths."""
         road_id = self._road_id()
         for road in self.city.roads:
-            for (x, y) in road.path:
+            for x, y in road.path:
                 self._add_tile(x, y, road_id)
 
     def _place_special_districts(self) -> None:
@@ -215,13 +215,15 @@ class CityToWorldModel:
     def _transfer_waypoints(self) -> None:
         """Transfer City waypoints to WorldModel waypoints list."""
         for wp in self.city.waypoints:
-            self._wm.waypoints.append({
-                "name": wp.name,
-                "x": wp.x,
-                "y": wp.y,
-                "z": 7,
-                "type": wp.type,
-            })
+            self._wm.waypoints.append(
+                {
+                    "name": wp.name,
+                    "x": wp.x,
+                    "y": wp.y,
+                    "z": 7,
+                    "type": wp.type,
+                }
+            )
 
     def _transfer_spawns(self) -> None:
         """Transfer spawn entries to WorldModel."""

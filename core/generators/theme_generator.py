@@ -26,6 +26,7 @@ from core.world import WorldModel
 @dataclass
 class ThemeDefinition:
     """Resolved definition for a visual/monster theme."""
+
     theme: str
     grounds: List[int] = field(default_factory=list)
     walls: List[int] = field(default_factory=list)
@@ -277,6 +278,7 @@ class ThemeGenerator(BaseGenerator):
 
         try:
             import json
+
             with open(json_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
             return ThemeDefinition.from_dict(data)

@@ -2,21 +2,21 @@
 Convierte el modelo Dungeon (floors, rooms, corridors, boss rooms,
 shortcuts, spawns) en un WorldModel multi-nivel para exportacion OTBM.
 """
+
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Tuple
 
 from core.world_engine.world_engine import WorldModel, Tile
 
-from .dungeon_generator import Dungeon, Floor, Room, Shortcut
+from .dungeon_generator import Dungeon
 from .floor_generator import Floor as FloorModel
 
-
 # OTBM item IDs for dungeon elements
-STAIRS_DOWN_ID = 1386   # ladder/stairs going down
-STAIRS_UP_ID = 1387     # ladder/stairs going up
-HOLE_ID = 3214          # rope hole
-TILE_FLAG_PZ = 0x0001   # Protection Zone flag
+STAIRS_DOWN_ID = 1386  # ladder/stairs going down
+STAIRS_UP_ID = 1387  # ladder/stairs going up
+HOLE_ID = 3214  # rope hole
+TILE_FLAG_PZ = 0x0001  # Protection Zone flag
 
 # Item IDs per theme
 THEME_GROUND_IDS: Dict[str, int] = {
@@ -95,9 +95,15 @@ class DungeonToWorldModel:
         t = self.dungeon.theme.lower()
         return THEME_DECO_IDS.get(t, THEME_DECO_IDS["default"])
 
-    def _add_tile(self, x: int, y: int, z: int, ground_id: int,
-                  items: Optional[List[Dict[str, Any]]] = None,
-                  flags: int = 0) -> Tile:
+    def _add_tile(
+        self,
+        x: int,
+        y: int,
+        z: int,
+        ground_id: int,
+        items: Optional[List[Dict[str, Any]]] = None,
+        flags: int = 0,
+    ) -> Tile:
         tile = Tile(x=x, y=y, z=z, ground=str(ground_id), flags=flags)
         if items:
             for item in items:
@@ -121,7 +127,8 @@ class DungeonToWorldModel:
                     rx = room.x + dx
                     ry = room.y + dy
                     is_border = (
-                        dx == 0 or dy == 0
+                        dx == 0
+                        or dy == 0
                         or dx == room.width - 1
                         or dy == room.height - 1
                     )
@@ -132,20 +139,27 @@ class DungeonToWorldModel:
             if room.type == "BossRoom":
                 cx, cy = room.center()
                 # Boss marker + PZ flag
-                self._add_tile(cx, cy, z, ground,
-                               items=[{"name": "crystal_torch"}, {"name": "blood"}],
-                               flags=TILE_FLAG_PZ)
+                self._add_tile(
+                    cx,
+                    cy,
+                    z,
+                    ground,
+                    items=[{"name": "crystal_torch"}, {"name": "blood"}],
+                    flags=TILE_FLAG_PZ,
+                )
             elif room.type == "TreasureRoom":
-                self._add_tile(room.x + 1, room.y + 1, z, ground,
-                               items=[{"id": self._deco_id()}])
+                self._add_tile(
+                    room.x + 1, room.y + 1, z, ground, items=[{"id": self._deco_id()}]
+                )
             elif room.type == "QuestRoom":
-                self._add_tile(room.x + 2, room.y + 2, z, ground,
-                               items=[{"id": wall_id}])
+                self._add_tile(
+                    room.x + 2, room.y + 2, z, ground, items=[{"id": wall_id}]
+                )
 
         # Place cave tiles if present
         cave_tiles = getattr(floor, "cave_tiles", None)
         if cave_tiles:
-            for (cx, cy) in cave_tiles:
+            for cx, cy in cave_tiles:
                 # Check if not already placed by a room
                 key = f"{cx}:{cy}:{z}"
                 if key not in self._wm.tiles:
@@ -153,13 +167,14 @@ class DungeonToWorldModel:
 
         # Place corridor tiles
         for corridor in floor.corridors:
-            for (cx, cy) in corridor:
+            for cx, cy in corridor:
                 key = f"{cx}:{cy}:{z}"
                 if key not in self._wm.tiles:
                     self._add_tile(cx, cy, z, ground)
 
-    def _connect_floors(self, upper: FloorModel, lower: FloorModel,
-                        upper_z: int, lower_z: int) -> None:
+    def _connect_floors(
+        self, upper: FloorModel, lower: FloorModel, upper_z: int, lower_z: int
+    ) -> None:
         """
         Place stairs/up between two adjacent floors.
         Finds a central tile on each floor and places stairs down
@@ -171,17 +186,24 @@ class DungeonToWorldModel:
 
         if up_pos and down_pos:
             # Stairs down on upper floor
-            self._add_tile(*up_pos, ground_id=self._ground_id(),
-                           items=[{"id": STAIRS_DOWN_ID}])
+            self._add_tile(
+                *up_pos, ground_id=self._ground_id(), items=[{"id": STAIRS_DOWN_ID}]
+            )
             # Stairs up on lower floor
-            self._add_tile(*down_pos, ground_id=self._ground_id(),
-                           items=[{"id": STAIRS_UP_ID}])
+            self._add_tile(
+                *down_pos, ground_id=self._ground_id(), items=[{"id": STAIRS_UP_ID}]
+            )
 
             # Optional: rope hole connecting same coordinates
             hole_x = up_pos[0]
             hole_y = up_pos[1]
-            self._add_tile(hole_x, hole_y, lower_z, ground_id=self._ground_id(),
-                           items=[{"id": HOLE_ID}])
+            self._add_tile(
+                hole_x,
+                hole_y,
+                lower_z,
+                ground_id=self._ground_id(),
+                items=[{"id": HOLE_ID}],
+            )
 
     @staticmethod
     def _find_stair_pos(floor: FloorModel, z: int) -> Optional[Tuple[int, int, int]]:
@@ -212,26 +234,34 @@ class DungeonToWorldModel:
         # Also add boss spawns
         for boss_room in self.dungeon.bosses:
             cx, cy = boss_room.center()
-            self._wm.add_spawn({
-                "monster": self.template.get("bosses", ["Dragon"])[0],
-                "x": cx, "y": cy, "z": self._base_z,
-                "respawn": 600,
-            })
+            self._wm.add_spawn(
+                {
+                    "monster": self.template.get("bosses", ["Dragon"])[0],
+                    "x": cx,
+                    "y": cy,
+                    "z": self._base_z,
+                    "respawn": 600,
+                }
+            )
 
     def _transfer_shortcuts(self) -> None:
         """Add shortcut waypoints (teleport pairs) to WorldModel."""
         for sc in self.dungeon.shortcuts:
-            self._wm.waypoints.append({
-                "name": f"Shortcut_{sc.type}_{sc.from_coord}_{sc.to_coord}",
-                "x": sc.from_coord[0],
-                "y": sc.from_coord[1],
-                "z": self._base_z,
-                "type": "Teleport",
-            })
-            self._wm.waypoints.append({
-                "name": f"Shortcut_{sc.type}_dest",
-                "x": sc.to_coord[0],
-                "y": sc.to_coord[1],
-                "z": self._base_z,
-                "type": "Teleport",
-            })
+            self._wm.waypoints.append(
+                {
+                    "name": f"Shortcut_{sc.type}_{sc.from_coord}_{sc.to_coord}",
+                    "x": sc.from_coord[0],
+                    "y": sc.from_coord[1],
+                    "z": self._base_z,
+                    "type": "Teleport",
+                }
+            )
+            self._wm.waypoints.append(
+                {
+                    "name": f"Shortcut_{sc.type}_dest",
+                    "x": sc.to_coord[0],
+                    "y": sc.to_coord[1],
+                    "z": self._base_z,
+                    "type": "Teleport",
+                }
+            )

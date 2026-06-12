@@ -1,6 +1,7 @@
 """
 NpcIndexer — Indexa NPCs de Tibia desde npc.xml o lista conocida.
 """
+
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET

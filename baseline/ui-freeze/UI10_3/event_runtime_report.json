@@ -1,0 +1,10 @@
+{
+  "navigation_page_changed_events": 27,
+  "published_events": 2,
+  "received_events": 2,
+  "service_error_events_safe": true,
+  "status": "PASS",
+  "subscriber_count_after_clear": 0,
+  "subscriber_count_before_clear": 12,
+  "subscriber_leak_detected": false
+}

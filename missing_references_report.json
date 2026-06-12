@@ -1,0 +1,5807 @@
+{
+  "modules_checked": 506,
+  "missing_references": [
+    {
+      "source": "boss_generator",
+      "target": "asset_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "boss_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "boss_generator",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "architecture",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "playtest",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "preview",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "otbm",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "compiler",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "factory",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "quality",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "world_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "enterprise",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "game_design",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core",
+      "target": "planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "mapper_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "balance_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "orchestrator_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "architect_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "critic_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "export_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "qa_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "quest_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents",
+      "target": "expansion_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.architect_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.balance_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.critic_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.expansion_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.export_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.mapper_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "mapper_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "balance_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "architect_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "critic_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "export_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "qa_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "quest_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.orchestrator_agent",
+      "target": "expansion_agent",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.playtest_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.qa_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.agents.quest_agent",
+      "target": "agent_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "style_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "pattern_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "architecture_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "density_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "map_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "path_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "spawn_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "city_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "tile_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "room_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer",
+      "target": "dataset_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "style_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "pattern_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "architecture_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "density_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "path_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "spawn_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "city_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "room_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.analyzer.map_analyzer",
+      "target": "tile_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "design_rules",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "ai_architect",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "difficulty_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "layout_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "layout_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "theme_resolver",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "architect",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "composition_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "world_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "zone_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "style_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect",
+      "target": "mapper_ai",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.ai_architect",
+      "target": "difficulty_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.ai_architect",
+      "target": "theme_resolver",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.ai_architect",
+      "target": "world_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.ai_architect",
+      "target": "zone_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.ai_architect",
+      "target": "layout_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.architect",
+      "target": "design_rules",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.architect",
+      "target": "style_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.composition_engine",
+      "target": "style_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.layout_engine",
+      "target": "design_rules",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.layout_engine",
+      "target": "style_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.layout_planner",
+      "target": "zone_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.mapper_ai",
+      "target": "design_rules",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.mapper_ai",
+      "target": "layout_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.mapper_ai",
+      "target": "architect",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.mapper_ai",
+      "target": "composition_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.mapper_ai",
+      "target": "style_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.world_planner",
+      "target": "difficulty_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.world_planner",
+      "target": "theme_resolver",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.world_planner",
+      "target": "zone_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.world_planner",
+      "target": "layout_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architect.zone_planner",
+      "target": "theme_resolver",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "architecture_graph",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "architecture_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "blueprint_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "structure_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "building_classifier",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "style_mixer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "pattern_library",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture",
+      "target": "composer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.architecture_analyzer",
+      "target": "architecture_graph",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.architecture_analyzer",
+      "target": "blueprint_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.architecture_analyzer",
+      "target": "structure_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.architecture_analyzer",
+      "target": "pattern_library",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.blueprint_generator",
+      "target": "pattern_library",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.composer",
+      "target": "architecture_graph",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.composer",
+      "target": "style_mixer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.composer",
+      "target": "pattern_library",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.architecture.structure_extractor",
+      "target": "building_classifier",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets",
+      "target": "asset_classifier",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets",
+      "target": "asset_recommender",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets",
+      "target": "asset_similarity",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets",
+      "target": "asset_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_classifier",
+      "target": "asset_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_recommender",
+      "target": "asset_classifier",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_recommender",
+      "target": "asset_similarity",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_recommender",
+      "target": "asset_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_registry",
+      "target": "monster_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_registry",
+      "target": "item_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_registry",
+      "target": "npc_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_registry",
+      "target": "asset_cache",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_similarity",
+      "target": "asset_classifier",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.assets.asset_similarity",
+      "target": "asset_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "autonomous_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "autonomous_director",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "world_objective",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "autonomous_world_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "autonomous_decision_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "world_strategy",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "goal_manager",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous",
+      "target": "autonomous_optimizer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_decision_engine",
+      "target": "models.design_decision",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_decision_engine",
+      "target": "models.design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_decision_engine",
+      "target": "world_strategy",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_decision_engine",
+      "target": "models.region_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_director",
+      "target": "models.design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_director",
+      "target": "models.region_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_optimizer",
+      "target": "models.design_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_optimizer",
+      "target": "models.design_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_optimizer",
+      "target": "models.design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_optimizer",
+      "target": "goal_manager",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_optimizer",
+      "target": "models.design_iteration",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_planner",
+      "target": "models.design_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_planner",
+      "target": "models.design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_planner",
+      "target": "autonomous_director",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_visualizer",
+      "target": "models.design_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "models.design_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "autonomous_visualizer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "models.design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "goal_manager",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "autonomous_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "autonomous_optimizer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "autonomous_decision_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.autonomous_world_designer",
+      "target": "autonomous_director",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.goal_manager",
+      "target": "models.design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.goal_manager",
+      "target": "models.design_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models",
+      "target": "design_decision",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models",
+      "target": "region_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models",
+      "target": "design_iteration",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models",
+      "target": "design_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models",
+      "target": "design_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models",
+      "target": "design_goal",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models.design_iteration",
+      "target": "design_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models.design_plan",
+      "target": "region_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models.design_result",
+      "target": "design_decision",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models.design_result",
+      "target": "design_iteration",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.autonomous.models.design_result",
+      "target": "design_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "spawn_balancer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "balance_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "xp_balancer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "xp_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "loot_balancer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "risk_balancer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "loot_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "difficulty_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.balance",
+      "target": "difficulty_balancer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.benchmark.runner",
+      "target": "tracemalloc",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_intelligence_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_fusion_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_recommender",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence",
+      "target": "blueprint_evolution_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_embedding_engine",
+      "target": "models.blueprint_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_evolution_engine",
+      "target": "models.blueprint_evolution",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_fusion_engine",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_fusion_engine",
+      "target": "models.blueprint_fusion",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_generator",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_generator",
+      "target": "models.blueprint_pattern",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_generator",
+      "target": "blueprint_fusion_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "models.blueprint_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "models.blueprint_cluster",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "models.blueprint_similarity",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "models.blueprint_pattern",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_fusion_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_recommender",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "models.blueprint_evolution",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "models.blueprint_fusion",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_intelligence_engine",
+      "target": "blueprint_evolution_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_ranker",
+      "target": "models.blueprint_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_ranker",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_recommender",
+      "target": "models.blueprint_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_recommender",
+      "target": "models.blueprint_cluster",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_recommender",
+      "target": "blueprint_similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_recommender",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_recommender",
+      "target": "models.blueprint_pattern",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_similarity_engine",
+      "target": "models.blueprint_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_similarity_engine",
+      "target": "blueprint_embedding_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.blueprint_similarity_engine",
+      "target": "models.blueprint_similarity",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.models",
+      "target": "blueprint_cluster",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.models",
+      "target": "blueprint_pattern",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.models",
+      "target": "blueprint_fusion",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.models",
+      "target": "blueprint_evolution",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.models",
+      "target": "blueprint_similarity",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprint_intelligence.models",
+      "target": "blueprint_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_loader",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_mixer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "theme_classifier",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "pattern_detector",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "structure_detector",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_placer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_search",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints",
+      "target": "blueprint_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints.blueprint_loader",
+      "target": "blueprint",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints.blueprint_placer",
+      "target": "blueprint",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints.blueprint_registry",
+      "target": "blueprint",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints.blueprint_registry",
+      "target": "blueprint_loader",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints.blueprint_registry",
+      "target": "blueprint_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.blueprints.blueprint_validator",
+      "target": "blueprint",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "story_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "economy_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "npc_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "faction_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "campaign_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "lore_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign",
+      "target": "dialog_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.campaign.validator",
+      "target": "package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler",
+      "target": "lua_optimizer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler",
+      "target": "lua_ast",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler",
+      "target": "lua_emitter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler",
+      "target": "lua_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler",
+      "target": "lua_formatter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler",
+      "target": "lua_parser",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_emitter",
+      "target": "lua_optimizer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_emitter",
+      "target": "lua_ast",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_emitter",
+      "target": "lua_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_emitter",
+      "target": "lua_formatter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_emitter",
+      "target": "lua_parser",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_formatter",
+      "target": "lua_ast",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_optimizer",
+      "target": "lua_ast",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_parser",
+      "target": "lua_ast",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_validator",
+      "target": "lua_ast",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.compiler.lua_validator",
+      "target": "lua_parser",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content",
+      "target": "quest_package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.boss_generator",
+      "target": "quest_package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.boss_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.mission_generator",
+      "target": "quest_package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.mission_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.quest_generator",
+      "target": "quest_package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.quest_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.raid_generator",
+      "target": "quest_package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.raid_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.reward_generator",
+      "target": "quest_package",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.content.reward_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic",
+      "target": "score_calculator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic",
+      "target": "critic_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic",
+      "target": "heatmap_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic",
+      "target": "visual_critic",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic",
+      "target": "critic_report",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "hunt_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "region_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "density_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "decor_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "navigation_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "visual_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "boss_room_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "pathfinding_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "spawn_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers",
+      "target": "city_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.boss_room_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.boss_room_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.city_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.city_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.decor_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.decor_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.density_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.density_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.hunt_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.hunt_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.navigation_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.navigation_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.pathfinding_analyzer",
+      "target": "heapq",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.pathfinding_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.region_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.region_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.spawn_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.spawn_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.visual_analyzer",
+      "target": "base_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.analyzers.visual_analyzer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.critic_engine",
+      "target": "score_calculator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.critic_engine",
+      "target": "analyzers",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.critic_engine",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.critic_report",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.heatmap_renderer",
+      "target": "zlib",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.heatmap_renderer",
+      "target": "analyzers",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models",
+      "target": "critic_issue",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models",
+      "target": "critic_recommendation",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models",
+      "target": "critic_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models",
+      "target": "critic_score",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models.critic_result",
+      "target": "critic_recommendation",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models.critic_result",
+      "target": "critic_score",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.models.critic_result",
+      "target": "critic_issue",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.score_calculator",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.visual_critic",
+      "target": "critic_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.visual_critic",
+      "target": "heatmap_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.visual_critic",
+      "target": "critic_report",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.critic.visual_critic",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.enterprise",
+      "target": "playtest",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.enterprise",
+      "target": "playtest.route_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.enterprise",
+      "target": "preview",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.enterprise",
+      "target": "factory",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.enterprise",
+      "target": "quality",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.enterprise",
+      "target": "world_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution",
+      "target": "modernization_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution",
+      "target": "improvement_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution",
+      "target": "map_evolver",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution",
+      "target": "expansion_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution",
+      "target": "quality_detector",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution.improvement_engine",
+      "target": "quality_detector",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution.map_evolver",
+      "target": "modernization_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution.map_evolver",
+      "target": "improvement_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution.map_evolver",
+      "target": "expansion_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.evolution.map_evolver",
+      "target": "quality_detector",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.expansion",
+      "target": "boss_expander",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.expansion",
+      "target": "region_expander",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.expansion",
+      "target": "road_expander",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.expansion",
+      "target": "expansion_ai",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.expansion",
+      "target": "hunt_expander",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.expansion",
+      "target": "quest_zone_expander",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.exporters",
+      "target": "lua_writer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.exporters",
+      "target": "lua_exporter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.exporters",
+      "target": "lua_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.exporters.lua_exporter",
+      "target": "lua_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.exporters.lua_exporter",
+      "target": "lua_writer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory",
+      "target": "season_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory",
+      "target": "world_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory",
+      "target": "campaign_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory",
+      "target": "expansion_factory",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory.expansion_factory",
+      "target": "season_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory.expansion_factory",
+      "target": "world_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.factory.expansion_factory",
+      "target": "campaign_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "reward_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "economy_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "boss_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "expansion_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "quest_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "content_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "lore_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design",
+      "target": "progression_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.content_designer",
+      "target": "boss_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.content_designer",
+      "target": "quest_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.content_designer",
+      "target": "hunt_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.expansion_designer",
+      "target": "reward_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.expansion_designer",
+      "target": "economy_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.expansion_designer",
+      "target": "content_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.expansion_designer",
+      "target": "lore_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.game_design.expansion_designer",
+      "target": "progression_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "theme_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "hunt_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "dungeon_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "world_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "spawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators",
+      "target": "city_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city",
+      "target": "road_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city",
+      "target": "building_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city",
+      "target": "city_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.building_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "temple_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "harbor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "building_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "road_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "market_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_generator",
+      "target": "depot_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_to_worldmodel",
+      "target": "temple_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_to_worldmodel",
+      "target": "harbor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_to_worldmodel",
+      "target": "market_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_to_worldmodel",
+      "target": "depot_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.city_to_worldmodel",
+      "target": "city_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.depot_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.harbor_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.market_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.road_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city.temple_generator",
+      "target": "district_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city_generator",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city_generator",
+      "target": "theme_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.city_generator",
+      "target": "spawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "floor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "corridor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "shortcut_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "respawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "density_controller",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "loop_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "room_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "dungeon_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon",
+      "target": "cave_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.boss_generator",
+      "target": "room_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.cave_generator",
+      "target": "floor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.corridor_generator",
+      "target": "room_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.dungeon_generator",
+      "target": "floor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.dungeon_generator",
+      "target": "room_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.dungeon_to_worldmodel",
+      "target": "floor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.dungeon_to_worldmodel",
+      "target": "dungeon_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.floor_generator",
+      "target": "corridor_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.floor_generator",
+      "target": "shortcut_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.floor_generator",
+      "target": "respawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.floor_generator",
+      "target": "room_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.floor_generator",
+      "target": "cave_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon.quest_generator",
+      "target": "room_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon_generator",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon_generator",
+      "target": "theme_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.dungeon_generator",
+      "target": "spawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.hunt_generator",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.hunt_generator",
+      "target": "theme_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.hunt_generator",
+      "target": "spawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.spawn_generator",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.spawn_generator",
+      "target": "theme_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.theme_generator",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.world_generator",
+      "target": "base_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.world_generator",
+      "target": "theme_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.world_generator",
+      "target": "hunt_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.world_generator",
+      "target": "dungeon_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.world_generator",
+      "target": "spawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.generators.world_generator",
+      "target": "city_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_catalog",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_search",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_metrics",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_recommender",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_report",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_index",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "knowledge_query",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge",
+      "target": "dataset_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.dataset_builder",
+      "target": "extractors",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.dataset_builder",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "spawn_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "quest_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "waypoint_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "structure_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "raid_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "hunt_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "boss_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "biome_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors",
+      "target": "city_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.biome_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.biome_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.boss_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.boss_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.city_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.city_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.hunt_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.hunt_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.quest_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.quest_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.raid_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.raid_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.spawn_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.spawn_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.structure_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.structure_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.waypoint_extractor",
+      "target": "base_extractor",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.extractors.waypoint_extractor",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "hunt_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "biome_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "city_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "region_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "boss_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers",
+      "target": "quest_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.base_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.biome_indexer",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.biome_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.boss_indexer",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.boss_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.city_indexer",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.city_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.hunt_indexer",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.hunt_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.quest_indexer",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.quest_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.region_indexer",
+      "target": "base_indexer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.indexers.region_indexer",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_base",
+      "target": "progression",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_base",
+      "target": "npcs",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_base",
+      "target": "biomes",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_base",
+      "target": "themes",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_base",
+      "target": "monsters",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_base",
+      "target": "cities",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_catalog",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "knowledge_catalog",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "knowledge_search",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "knowledge_recommender",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "knowledge_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "knowledge_index",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "knowledge_query",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_engine",
+      "target": "dataset_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_index",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_index",
+      "target": "indexers",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_metrics",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_query",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_ranker",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_recommender",
+      "target": "knowledge_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_recommender",
+      "target": "knowledge_index",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_recommender",
+      "target": "knowledge_query",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_recommender",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_report",
+      "target": "knowledge_catalog",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_report",
+      "target": "knowledge_metrics",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_report",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_search",
+      "target": "knowledge_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_search",
+      "target": "knowledge_index",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_search",
+      "target": "knowledge_query",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.knowledge_search",
+      "target": "models",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.models",
+      "target": "knowledge_dataset",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.models",
+      "target": "knowledge_entry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.models",
+      "target": "knowledge_query_result",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.models",
+      "target": "knowledge_similarity",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.models.knowledge_dataset",
+      "target": "knowledge_entry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.knowledge.models.knowledge_query_result",
+      "target": "knowledge_entry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "map_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "style_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "blueprint_learner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "pattern_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "pattern_miner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "blueprint_catalog",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "blueprint_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "learning_pipeline",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning",
+      "target": "dataset_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.blueprint_learner",
+      "target": "similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.blueprint_learner",
+      "target": "pattern_miner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.blueprint_learner",
+      "target": "blueprint_catalog",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.blueprint_learner",
+      "target": "blueprint_ranker",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.blueprint_ranker",
+      "target": "similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.blueprint_ranker",
+      "target": "pattern_miner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.learning_pipeline",
+      "target": "map_embedding",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.learning_pipeline",
+      "target": "style_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.learning_pipeline",
+      "target": "pattern_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.learning_pipeline",
+      "target": "similarity_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.learning.learning_pipeline",
+      "target": "dataset_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.lua",
+      "target": "lua_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability",
+      "target": "diagnostics",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability",
+      "target": "health",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability",
+      "target": "logger",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability",
+      "target": "metrics",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability.diagnostics",
+      "target": "logger",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability.health",
+      "target": "logger",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.observability.metrics",
+      "target": "logger",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_writer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "world_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "item_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_importer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "house_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "waypoint_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "spawn_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_templates",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "node_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_deserializer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_exporter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "tile_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "byte_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "item_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_reader",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_parser",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "otbm_serializer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm",
+      "target": "tile_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.house_encoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.item_decoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.item_encoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.node_decoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.node_encoder",
+      "target": "binary_writer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_deserializer",
+      "target": "otbm_serializer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "spawn_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "otbm_writer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "house_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "item_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "waypoint_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "otbm_serializer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_exporter",
+      "target": "otbm_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "item_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "world_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "otbm_parser",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "otbm_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "node_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_importer",
+      "target": "tile_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_nodes",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_parser",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_reader",
+      "target": "otbm_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_reader",
+      "target": "otbm_deserializer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_serializer",
+      "target": "tile_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_serializer",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_validator",
+      "target": "byte_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_validator",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_writer",
+      "target": "otbm_templates",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_writer",
+      "target": "otbm_serializer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.otbm_writer",
+      "target": "otbm_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.spawn_encoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.tile_decoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.tile_decoder",
+      "target": "item_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.tile_encoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.tile_encoder",
+      "target": "binary_writer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.waypoint_encoder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.world_builder",
+      "target": "node_encoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.world_builder",
+      "target": "node_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.otbm.world_builder",
+      "target": "tile_decoder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.pipeline",
+      "target": "full_pipeline",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "expansion_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "world_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "zone_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "city_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "prompt_interpreter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "route_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "world_size_estimator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "difficulty_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "world_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "biome_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner",
+      "target": "dungeon_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.city_plan",
+      "target": "zone_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "expansion_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "world_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "zone_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "city_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "prompt_interpreter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "route_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "world_size_estimator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "difficulty_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "world_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "biome_planner",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.planner",
+      "target": "dungeon_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.world_plan",
+      "target": "zone_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.world_plan",
+      "target": "city_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.planner.world_plan",
+      "target": "dungeon_plan",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "combat_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "pathfinder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "party_bot",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "route_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "loot_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "progression_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "report_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "player_bot",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "difficulty_evaluator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest",
+      "target": "survival_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.combat_simulator",
+      "target": "player_bot",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.party_bot",
+      "target": "player_bot",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.pathfinder",
+      "target": "heapq",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "world.region",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "combat_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "world.world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "pathfinder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "loot_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "progression_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "report_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "difficulty_evaluator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "survival_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.playtest_engine",
+      "target": "world.structure",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.progression_analyzer",
+      "target": "combat_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.progression_analyzer",
+      "target": "player_bot",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.survival_analyzer",
+      "target": "combat_simulator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.survival_analyzer",
+      "target": "pathfinder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.playtest.survival_analyzer",
+      "target": "player_bot",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "structure_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "preview_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "heatmap_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "preview_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "minimap_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "tile_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "palette",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview",
+      "target": "preview_report",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview.minimap_renderer",
+      "target": "preview_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview.minimap_renderer",
+      "target": "palette",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview.preview_generator",
+      "target": "preview_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview.preview_generator",
+      "target": "minimap_renderer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview.preview_generator",
+      "target": "palette",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.preview.preview_generator",
+      "target": "preview_report",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural",
+      "target": "world_synthesizer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural",
+      "target": "biome_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural",
+      "target": "continent_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural",
+      "target": "terrain_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural",
+      "target": "road_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural",
+      "target": "river_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural.continent_generator",
+      "target": "biome_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural.continent_generator",
+      "target": "terrain_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural.continent_generator",
+      "target": "road_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural.continent_generator",
+      "target": "river_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.procedural.world_synthesizer",
+      "target": "continent_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality",
+      "target": "map_reviewer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality",
+      "target": "pathing_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality",
+      "target": "balance_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality",
+      "target": "visual_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality",
+      "target": "spawn_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality",
+      "target": "quality_score",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality.map_reviewer",
+      "target": "pathing_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality.map_reviewer",
+      "target": "visual_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality.map_reviewer",
+      "target": "spawn_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality.map_reviewer",
+      "target": "quality_score",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.quality.spawn_analyzer",
+      "target": "balance_analyzer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.registry",
+      "target": "asset_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.registry",
+      "target": "blueprint_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.release",
+      "target": "package_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.release",
+      "target": "documentation_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.release",
+      "target": "release_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.release.release_builder",
+      "target": "package_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.release.release_builder",
+      "target": "documentation_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.spawn",
+      "target": "spawn_generator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.studio",
+      "target": "rag.retrieval",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.themes",
+      "target": "theme_resolver",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "world_validator",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "tile",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "region",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "chunk",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "structure",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "spawn",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world",
+      "target": "item",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.chunk",
+      "target": "tile",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.tile",
+      "target": "spawn",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.tile",
+      "target": "item",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_model",
+      "target": "tile",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_model",
+      "target": "region",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_model",
+      "target": "chunk",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_model",
+      "target": "structure",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_model",
+      "target": "spawn",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_validator",
+      "target": "tile",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world.world_validator",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain",
+      "target": "decision_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain",
+      "target": "constraint_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain",
+      "target": "goal_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain",
+      "target": "reasoning_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain",
+      "target": "world_brain",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain.decision_engine",
+      "target": "goal_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain.decision_engine",
+      "target": "constraint_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain.world_brain",
+      "target": "decision_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain.world_brain",
+      "target": "constraint_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain.world_brain",
+      "target": "goal_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_brain.world_brain",
+      "target": "reasoning_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "city_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "spawn_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "world_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "quest_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "road_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "world_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "boss_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "export_pipeline",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine",
+      "target": "dungeon_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "city_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "spawn_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "quest_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "road_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "world_engine",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "boss_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_builder",
+      "target": "dungeon_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_engine",
+      "target": "world_builder",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "core.world_engine.world_engine",
+      "target": "export_pipeline",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "hito26_1_benchmark",
+      "target": "agente_rme.core.agents",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "main",
+      "target": "assets.monsters_loader",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "main",
+      "target": "assets.npcs_loader",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "main",
+      "target": "tkinter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "main",
+      "target": "customtkinter",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "main",
+      "target": "assets.items_loader",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "mission_generator",
+      "target": "asset_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "mission_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "mission_generator",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "quest_generator",
+      "target": "asset_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "quest_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "quest_generator",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "raid_generator",
+      "target": "asset_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "raid_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "raid_generator",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "reward_generator",
+      "target": "asset_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "reward_generator",
+      "target": "map_designer",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "reward_generator",
+      "target": "world_model",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "tools.hotfix_performance",
+      "target": "resource",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "tools.hotfix_performance",
+      "target": "tracemalloc",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "tools.real_memory_profile",
+      "target": "tracemalloc",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "tools.real_performance_profile",
+      "target": "pstats",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "tools.real_performance_profile",
+      "target": "cProfile",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "tools.real_world_stress",
+      "target": "tracemalloc",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui",
+      "target": "page_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui",
+      "target": "event_bus",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui",
+      "target": "app",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui",
+      "target": "navigation",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.app",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.app",
+      "target": "event_bus",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.app",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.app",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.console",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.console",
+      "target": "event_bus",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.console",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.console",
+      "target": "PySide6.QtGui",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.console",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "event_bus",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.dashboard_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "statusbar",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "titlebar",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.knowledge_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.settings_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "sidebar",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "console",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.critic_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.architect_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.otbm_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "navigation",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.campaign_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.main_window",
+      "target": "pages.world_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.navigation",
+      "target": "page_registry",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.navigation",
+      "target": "event_bus",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.navigation",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.navigation",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.page_registry",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "campaign_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "otbm_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "settings_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "architect_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "world_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "dashboard_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "knowledge_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages",
+      "target": "critic_page",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.architect_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.architect_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.campaign_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.campaign_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.critic_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.critic_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.dashboard_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.dashboard_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.knowledge_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.knowledge_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.otbm_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.otbm_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.settings_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.settings_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.world_page",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.pages.world_page",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.sidebar",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.sidebar",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.sidebar",
+      "target": "PySide6.QtGui",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.sidebar",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.statusbar",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.statusbar",
+      "target": "event_bus",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.statusbar",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.statusbar",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.titlebar",
+      "target": "theme",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.titlebar",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.titlebar",
+      "target": "PySide6.QtGui",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.titlebar",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets",
+      "target": "recent_artifacts_widget",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets",
+      "target": "recent_activity_widget",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets",
+      "target": "system_status_widget",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets",
+      "target": "metric_card",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets",
+      "target": "release_info_widget",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets",
+      "target": "health_widget",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.health_widget",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.health_widget",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.metric_card",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.metric_card",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.recent_activity_widget",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.recent_activity_widget",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.recent_artifacts_widget",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.recent_artifacts_widget",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.release_info_widget",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.system_status_widget",
+      "target": "PySide6.QtCore",
+      "type": "missing_reference",
+      "resolved": false
+    },
+    {
+      "source": "ui.widgets.system_status_widget",
+      "target": "PySide6.QtWidgets",
+      "type": "missing_reference",
+      "resolved": false
+    }
+  ],
+  "orphan_modules": [
+    "benchmark_autonomous",
+    "benchmark_blueprint_intelligence",
+    "benchmark_critic",
+    "benchmark_knowledge",
+    "check_utcnow",
+    "cli",
+    "core.agents",
+    "core.agents.agent_registry",
+    "core.agents.architect_agent",
+    "core.agents.balance_agent",
+    "core.agents.critic_agent",
+    "core.agents.expansion_agent",
+    "core.agents.export_agent",
+    "core.agents.mapper_agent",
+    "core.agents.orchestrator_agent",
+    "core.agents.playtest_agent",
+    "core.agents.qa_agent",
+    "core.agents.quest_agent",
+    "core.analyzer.architecture_analyzer",
+    "core.analyzer.city_analyzer",
+    "core.analyzer.dataset_builder",
+    "core.analyzer.density_analyzer",
+    "core.analyzer.path_analyzer",
+    "core.analyzer.pattern_extractor",
+    "core.analyzer.room_analyzer",
+    "core.analyzer.spawn_analyzer",
+    "core.analyzer.style_analyzer",
+    "core.analyzer.tile_analyzer",
+    "core.architect.architect",
+    "core.architect.composition_engine",
+    "core.architect.design_rules",
+    "core.architect.difficulty_planner",
+    "core.architect.layout_planner",
+    "core.architect.style_engine",
+    "core.architect.theme_resolver",
+    "core.architect.zone_planner",
+    "core.architecture.architecture_analyzer",
+    "core.architecture.architecture_graph",
+    "core.architecture.blueprint_generator",
+    "core.architecture.building_classifier",
+    "core.architecture.composer",
+    "core.architecture.pattern_library",
+    "core.architecture.structure_extractor",
+    "core.architecture.style_mixer",
+    "core.assets",
+    "core.assets.asset_cache",
+    "core.assets.asset_classifier",
+    "core.assets.asset_indexer",
+    "core.assets.asset_recommender",
+    "core.assets.asset_registry",
+    "core.assets.asset_similarity",
+    "core.assets.item_indexer",
+    "core.assets.monster_indexer",
+    "core.assets.npc_indexer",
+    "core.autonomous.autonomous_decision_engine",
+    "core.autonomous.autonomous_optimizer",
+    "core.autonomous.autonomous_planner",
+    "core.autonomous.autonomous_visualizer",
+    "core.autonomous.goal_manager",
+    "core.autonomous.models",
+    "core.autonomous.models.design_decision",
+    "core.autonomous.models.design_goal",
+    "core.autonomous.models.design_iteration",
+    "core.autonomous.models.design_plan",
+    "core.autonomous.models.design_result",
+    "core.autonomous.models.region_plan",
+    "core.autonomous.world_objective",
+    "core.autonomous.world_strategy",
+    "core.benchmark",
+    "core.benchmark.runner",
+    "core.blueprint_intelligence.blueprint_embedding_engine",
+    "core.blueprint_intelligence.blueprint_ranker",
+    "core.blueprint_intelligence.blueprint_recommender",
+    "core.blueprint_intelligence.models",
+    "core.blueprint_intelligence.models.blueprint_cluster",
+    "core.blueprint_intelligence.models.blueprint_embedding",
+    "core.blueprint_intelligence.models.blueprint_evolution",
+    "core.blueprint_intelligence.models.blueprint_fusion",
+    "core.blueprint_intelligence.models.blueprint_pattern",
+    "core.blueprint_intelligence.models.blueprint_similarity",
+    "core.blueprints.blueprint_loader",
+    "core.blueprints.blueprint_mixer",
+    "core.blueprints.blueprint_search",
+    "core.blueprints.pattern_detector",
+    "core.blueprints.structure_detector",
+    "core.blueprints.theme_classifier",
+    "core.cache",
+    "core.cache.generation_cache",
+    "core.campaign.package",
+    "core.campaign.validator",
+    "core.compiler.lua_ast",
+    "core.compiler.lua_emitter",
+    "core.compiler.lua_formatter",
+    "core.compiler.lua_optimizer",
+    "core.compiler.lua_parser",
+    "core.config_manager",
+    "core.content.boss_generator",
+    "core.content.map_designer",
+    "core.content.mission_generator",
+    "core.content.raid_generator",
+    "core.content.reward_generator",
+    "core.critic.analyzers",
+    "core.critic.analyzers.base_analyzer",
+    "core.critic.analyzers.boss_room_analyzer",
+    "core.critic.analyzers.city_analyzer",
+    "core.critic.analyzers.decor_analyzer",
+    "core.critic.analyzers.density_analyzer",
+    "core.critic.analyzers.hunt_analyzer",
+    "core.critic.analyzers.navigation_analyzer",
+    "core.critic.analyzers.pathfinding_analyzer",
+    "core.critic.analyzers.region_analyzer",
+    "core.critic.analyzers.spawn_analyzer",
+    "core.critic.analyzers.visual_analyzer",
+    "core.critic.critic_report",
+    "core.critic.heatmap_renderer",
+    "core.critic.models",
+    "core.critic.models.critic_issue",
+    "core.critic.models.critic_recommendation",
+    "core.critic.models.critic_result",
+    "core.critic.models.critic_score",
+    "core.enterprise",
+    "core.evolution",
+    "core.evolution.expansion_engine",
+    "core.evolution.improvement_engine",
+    "core.evolution.map_evolver",
+    "core.evolution.modernization_engine",
+    "core.evolution.quality_detector",
+    "core.exporters.lua_exporter",
+    "core.exporters.lua_formatter",
+    "core.exporters.lua_validator",
+    "core.exporters.lua_writer",
+    "core.factory",
+    "core.factory.campaign_generator",
+    "core.factory.expansion_factory",
+    "core.factory.season_generator",
+    "core.factory.world_builder",
+    "core.game_design.boss_designer",
+    "core.game_design.content_designer",
+    "core.game_design.economy_designer",
+    "core.game_design.expansion_designer",
+    "core.game_design.hunt_designer",
+    "core.game_design.lore_generator",
+    "core.game_design.progression_designer",
+    "core.game_design.reward_designer",
+    "core.generators.base_generator",
+    "core.generators.city.building_generator",
+    "core.generators.city.depot_generator",
+    "core.generators.city.district_generator",
+    "core.generators.city.harbor_generator",
+    "core.generators.city.market_generator",
+    "core.generators.city.road_generator",
+    "core.generators.city.temple_generator",
+    "core.generators.city_generator",
+    "core.generators.dungeon.boss_generator",
+    "core.generators.dungeon.cave_generator",
+    "core.generators.dungeon.corridor_generator",
+    "core.generators.dungeon.density_controller",
+    "core.generators.dungeon.floor_generator",
+    "core.generators.dungeon.loop_analyzer",
+    "core.generators.dungeon.quest_generator",
+    "core.generators.dungeon.respawn_generator",
+    "core.generators.dungeon.room_generator",
+    "core.generators.dungeon.shortcut_generator",
+    "core.generators.dungeon_generator",
+    "core.generators.spawn_generator",
+    "core.generators.theme_generator",
+    "core.generators.world_generator",
+    "core.knowledge.biomes",
+    "core.knowledge.cities",
+    "core.knowledge.dataset_builder",
+    "core.knowledge.extractors",
+    "core.knowledge.extractors.base_extractor",
+    "core.knowledge.extractors.biome_extractor",
+    "core.knowledge.extractors.boss_extractor",
+    "core.knowledge.extractors.city_extractor",
+    "core.knowledge.extractors.hunt_extractor",
+    "core.knowledge.extractors.quest_extractor",
+    "core.knowledge.extractors.raid_extractor",
+    "core.knowledge.extractors.spawn_extractor",
+    "core.knowledge.extractors.structure_extractor",
+    "core.knowledge.extractors.waypoint_extractor",
+    "core.knowledge.indexers",
+    "core.knowledge.indexers.base_indexer",
+    "core.knowledge.indexers.biome_indexer",
+    "core.knowledge.indexers.boss_indexer",
+    "core.knowledge.indexers.city_indexer",
+    "core.knowledge.indexers.hunt_indexer",
+    "core.knowledge.indexers.quest_indexer",
+    "core.knowledge.indexers.region_indexer",
+    "core.knowledge.knowledge_catalog",
+    "core.knowledge.knowledge_index",
+    "core.knowledge.knowledge_query",
+    "core.knowledge.knowledge_ranker",
+    "core.knowledge.knowledge_recommender",
+    "core.knowledge.knowledge_report",
+    "core.knowledge.knowledge_search",
+    "core.knowledge.models",
+    "core.knowledge.models.knowledge_dataset",
+    "core.knowledge.models.knowledge_entry",
+    "core.knowledge.models.knowledge_query_result",
+    "core.knowledge.models.knowledge_similarity",
+    "core.knowledge.monsters",
+    "core.knowledge.npcs",
+    "core.knowledge.progression",
+    "core.knowledge.themes",
+    "core.learning",
+    "core.learning.blueprint_catalog",
+    "core.learning.blueprint_learner",
+    "core.learning.blueprint_ranker",
+    "core.learning.dataset_builder",
+    "core.learning.learning_pipeline",
+    "core.learning.map_embedding",
+    "core.learning.pattern_encoder",
+    "core.learning.pattern_miner",
+    "core.learning.similarity_engine",
+    "core.learning.style_encoder",
+    "core.logging",
+    "core.logging.levels",
+    "core.logging.logger",
+    "core.otbm.binary_writer",
+    "core.otbm.byte_validator",
+    "core.otbm.house_encoder",
+    "core.otbm.item_decoder",
+    "core.otbm.item_encoder",
+    "core.otbm.node_decoder",
+    "core.otbm.node_encoder",
+    "core.otbm.otbm_deserializer",
+    "core.otbm.otbm_nodes",
+    "core.otbm.otbm_parser",
+    "core.otbm.otbm_reader",
+    "core.otbm.otbm_templates",
+    "core.otbm.otbm_writer",
+    "core.otbm.spawn_encoder",
+    "core.otbm.tile_decoder",
+    "core.otbm.tile_encoder",
+    "core.otbm.waypoint_encoder",
+    "core.otbm.world_builder",
+    "core.pipeline",
+    "core.pipeline.full_pipeline",
+    "core.planner.city_plan",
+    "core.planner.dungeon_plan",
+    "core.planner.expansion_plan",
+    "core.planner.planner",
+    "core.planner.prompt_interpreter",
+    "core.planner.route_plan",
+    "core.planner.world_plan",
+    "core.planner.world_size_estimator",
+    "core.planner.world_validator",
+    "core.planner.zone_plan",
+    "core.playtest.difficulty_evaluator",
+    "core.playtest.loot_simulator",
+    "core.playtest.party_bot",
+    "core.playtest.player_bot",
+    "core.playtest.progression_analyzer",
+    "core.playtest.report_generator",
+    "core.playtest.route_simulator",
+    "core.playtest.survival_analyzer",
+    "core.preview.heatmap_renderer",
+    "core.preview.minimap_renderer",
+    "core.preview.palette",
+    "core.preview.preview_renderer",
+    "core.preview.preview_report",
+    "core.preview.structure_renderer",
+    "core.preview.tile_renderer",
+    "core.procedural",
+    "core.procedural.biome_generator",
+    "core.procedural.cave_generator",
+    "core.procedural.continent_generator",
+    "core.procedural.noise_generator",
+    "core.procedural.river_generator",
+    "core.procedural.road_generator",
+    "core.procedural.room_generator",
+    "core.procedural.terrain_generator",
+    "core.procedural.world_synthesizer",
+    "core.quality.balance_analyzer",
+    "core.quality.pathing_analyzer",
+    "core.quality.spawn_analyzer",
+    "core.quality.visual_analyzer",
+    "core.recovery",
+    "core.registry",
+    "core.registry.asset_registry",
+    "core.registry.blueprint_registry",
+    "core.release",
+    "core.release.documentation_builder",
+    "core.release.package_builder",
+    "core.release.release_builder",
+    "core.world.blueprint_placer_adapter",
+    "core.world.chunk",
+    "core.world_brain",
+    "core.world_brain.constraint_engine",
+    "core.world_brain.decision_engine",
+    "core.world_brain.goal_engine",
+    "core.world_brain.reasoning_engine",
+    "core.world_brain.world_brain",
+    "core.world_engine.boss_builder",
+    "core.world_engine.city_builder",
+    "core.world_engine.dungeon_builder",
+    "core.world_engine.export_pipeline",
+    "core.world_engine.quest_builder",
+    "core.world_engine.road_builder",
+    "core.world_engine.spawn_builder",
+    "core.world_engine.world_builder",
+    "create_tests",
+    "data_extractor",
+    "fix_utcnow",
+    "ga_benchmark",
+    "ga_certify",
+    "gen_coverage",
+    "generate_all_tests",
+    "generate_report",
+    "generate_tests",
+    "hito26_1_benchmark",
+    "installer.run_tests",
+    "installer.setup",
+    "main",
+    "mkall",
+    "pipeline_runner",
+    "rme",
+    "run_all",
+    "run_coverage",
+    "run_e2e",
+    "run_integration",
+    "run_pytest",
+    "show_cov",
+    "smoke_critic",
+    "smoke_knowledge",
+    "test_lua_diag",
+    "test_orch_diag",
+    "test_otbm_diag",
+    "test_utcnow",
+    "tools._append_certify",
+    "tools.hotfix_audit",
+    "tools.hotfix_certify",
+    "tools.hotfix_cli_stability",
+    "tools.hotfix_lua_hardening",
+    "tools.hotfix_otbm_hardening",
+    "tools.hotfix_performance",
+    "tools.hotfix_regression",
+    "tools.hotfix_security",
+    "tools.real_autonomous_certification",
+    "tools.real_blueprint_validation",
+    "tools.real_knowledge_validation",
+    "tools.real_memory_profile",
+    "tools.real_otbm_certification",
+    "tools.real_performance_profile",
+    "tools.real_world_stress",
+    "tools.run_rc1_1",
+    "tools.validate_modules",
+    "ui",
+    "ui.adapters",
+    "ui.app",
+    "ui.console",
+    "ui.dashboard_data_provider",
+    "ui.event_bus",
+    "ui.main_window",
+    "ui.models",
+    "ui.navigation",
+    "ui.page_registry",
+    "ui.pages",
+    "ui.pages.architect_page",
+    "ui.pages.campaign_page",
+    "ui.pages.critic_page",
+    "ui.pages.dashboard_page",
+    "ui.pages.knowledge_page",
+    "ui.pages.otbm_page",
+    "ui.pages.settings_page",
+    "ui.pages.world_page",
+    "ui.plugins",
+    "ui.services",
+    "ui.sidebar",
+    "ui.statusbar",
+    "ui.theme",
+    "ui.titlebar",
+    "ui.widgets",
+    "ui.widgets.health_widget",
+    "ui.widgets.metric_card",
+    "ui.widgets.recent_activity_widget",
+    "ui.widgets.recent_artifacts_widget",
+    "ui.widgets.release_info_widget",
+    "ui.widgets.system_status_widget",
+    "validate_hito_26_1b",
+    "validate_hito_26_1e"
+  ]
+}

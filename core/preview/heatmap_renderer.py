@@ -21,15 +21,21 @@ class HeatmapRenderer:
 
         if mode == "spawn":
             for spawn in getattr(world_model, "spawns", []):
-                zone = spawn.get("zone")
+                spawn.get("zone")
                 coords = self._zone_center(spawn)
                 if coords:
                     intensity[coords] += 3
         else:
-            for boss in getattr(world_model, "bosses", []) + getattr(world_model, "dungeons", []):
+            for boss in getattr(world_model, "bosses", []) + getattr(
+                world_model, "dungeons", []
+            ):
                 coords = self._zone_center(boss)
                 if coords:
-                    intensity[coords] += 4 if boss.get("difficulty") in ("hard", "deadly", "legendary") else 2
+                    intensity[coords] += (
+                        4
+                        if boss.get("difficulty") in ("hard", "deadly", "legendary")
+                        else 2
+                    )
 
         grid = self._build_grid(bounds, intensity)
         return {
@@ -62,7 +68,9 @@ class HeatmapRenderer:
             return None
         return (x + width // 2, y + height // 2)
 
-    def _build_grid(self, bounds: Tuple[int, int, int, int], intensity: Dict[Tuple[int, int], int]) -> List[List[int]]:
+    def _build_grid(
+        self, bounds: Tuple[int, int, int, int], intensity: Dict[Tuple[int, int], int]
+    ) -> List[List[int]]:
         width, height, min_x, min_y = bounds
         grid = [[0 for _ in range(width)] for _ in range(height)]
         for (x, y), value in intensity.items():

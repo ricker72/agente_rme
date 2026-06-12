@@ -1,5 +1,5 @@
 """
-HITO 18 — Tests for :mod:`agente_rme.core.designer.content_balancer`.
+HITO 18 â€” Tests for :mod:`agente_rme.core.designer.content_balancer`.
 
 Covers the level curve generation, difficulty scoring, level-gap
 detection, suggestion generation and the rebalance pass.
@@ -10,7 +10,7 @@ from __future__ import annotations
 import unittest
 from typing import List
 
-from agente_rme.core.designer import (
+from core.designer import (
     AutonomousDesigner,
     BalanceReport,
     BossArea,
@@ -20,14 +20,11 @@ from agente_rme.core.designer import (
     HuntArea,
     LevelCurvePoint,
     QuestArea,
-    Region,
     SpawnEntry,
     ThemeSpec,
     Vector2,
     WorldModel,
     Zone,
-    ZoneExpander,
-    DecisionEngine,
 )
 
 
@@ -64,9 +61,7 @@ def _make_zone(
                 max_level=max_level,
                 difficulty="normal",
                 theme=theme,
-                spawns=[
-                    SpawnEntry(monster_name="wolf", count=2, radius=5)
-                ],
+                spawns=[SpawnEntry(monster_name="wolf", count=2, radius=5)],
             )
         )
     for k in range(bosses):
@@ -99,7 +94,9 @@ def _make_zone(
     return zone
 
 
-def _make_world(zones: List[Zone], min_level: int = 1, max_level: int = 100) -> WorldModel:
+def _make_world(
+    zones: List[Zone], min_level: int = 1, max_level: int = 100
+) -> WorldModel:
     return WorldModel(
         name="test_world",
         goal=DesignGoal(
@@ -190,7 +187,9 @@ class TestContentBalancerLevelCurve(unittest.TestCase):
         report = balancer.balance(world)
         # The exponential curve should have a much steeper growth
         # Compare the last point's xp against the first
-        self.assertGreater(report.level_curve[-1].target_xp, 10 * report.level_curve[0].target_xp)
+        self.assertGreater(
+            report.level_curve[-1].target_xp, 10 * report.level_curve[0].target_xp
+        )
 
     def test_curve_stepped(self) -> None:
         zone = _make_zone(min_level=1, max_level=100)
@@ -229,11 +228,15 @@ class TestContentBalancerGapDetection(unittest.TestCase):
         z = _make_zone("z_wide", min_level=1, max_level=200)
         world = _make_world([z], min_level=1, max_level=200)
         report = self.balancer.balance(world)
-        wide = [w for w in report.level_gap_warnings if "spans" in w and "too wide" in w]
+        wide = [
+            w for w in report.level_gap_warnings if "spans" in w and "too wide" in w
+        ]
         self.assertTrue(wide)
 
     def test_empty_zone_warning(self) -> None:
-        z = _make_zone("z_empty", min_level=1, max_level=10, hunts=0, bosses=0, quests=0)
+        z = _make_zone(
+            "z_empty", min_level=1, max_level=10, hunts=0, bosses=0, quests=0
+        )
         world = _make_world([z], min_level=1, max_level=10)
         report = self.balancer.balance(world)
         empty = [w for w in report.level_gap_warnings if "no content" in w]
@@ -276,7 +279,7 @@ class TestContentBalancerDifficultyScoring(unittest.TestCase):
         )
 
     def test_stddev_calculated(self) -> None:
-        # A very safe zone and a very deadly zone — should produce stddev > 0
+        # A very safe zone and a very deadly zone â€” should produce stddev > 0
         z1 = _make_zone("z1", min_level=1, max_level=10, hunts=0, bosses=0, quests=0)
         z1.difficulty = "safe"
         for h in z1.hunts:
@@ -313,9 +316,7 @@ class TestContentBalancerSuggestions(unittest.TestCase):
         zone = _make_zone(min_level=1, max_level=20)
         world = _make_world([zone], min_level=1, max_level=20)
         report = self.balancer.balance(world)
-        self.assertTrue(
-            any("NavigationDesigner" in s for s in report.suggestions)
-        )
+        self.assertTrue(any("NavigationDesigner" in s for s in report.suggestions))
 
     def test_suggestion_for_low_bosses(self) -> None:
         zone = _make_zone(min_level=1, max_level=200, bosses=0)

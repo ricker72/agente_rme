@@ -1,0 +1,32 @@
+{
+  "audit": "UI-10.4 entrypoint validation",
+  "generated_at": "2026-06-12T05:52:01+00:00",
+  "official_ui_launcher": "python -m ui.main",
+  "packaged_entry_script": "ui/main.py",
+  "packaged_executable": "dist/RMEAgenteStudio/RMEAgenteStudio.exe",
+  "smoke_command": "python -m ui.main --packaging-smoke",
+  "source_smoke_status": "PASS",
+  "status": "PASS",
+  "validated_entrypoints": {
+    "rme.py": {
+      "exists": true,
+      "official_ui_launcher": false,
+      "role": "CLI entrypoint; studio command remains project CLI path"
+    },
+    "ui/app.py": {
+      "exists": true,
+      "official_ui_launcher": false,
+      "role": "RMEStudioApp container"
+    },
+    "ui/main.py": {
+      "exists": true,
+      "official_ui_launcher": true,
+      "role": "minimal production-safe UI launcher"
+    },
+    "ui/main_window.py": {
+      "exists": true,
+      "official_ui_launcher": false,
+      "role": "MainWindow shell"
+    }
+  }
+}

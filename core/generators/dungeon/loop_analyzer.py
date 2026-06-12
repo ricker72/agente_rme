@@ -6,7 +6,9 @@ class LoopAnalyzer:
         self.corridors = corridors
 
     def has_valid_loop(self) -> bool:
-        return len(self.corridors) >= 2 and all(len(path) > 0 for path in self.corridors)
+        return len(self.corridors) >= 2 and all(
+            len(path) > 0 for path in self.corridors
+        )
 
     def analyze(self) -> dict:
         return {

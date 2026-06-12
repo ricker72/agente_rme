@@ -2,16 +2,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional
 
 from .goal_engine import GoalEngine, WorldGoal, GoalType
-from .constraint_engine import ConstraintEngine, ConstraintValidationResult, DesignConstraint
+from .constraint_engine import ConstraintEngine, ConstraintValidationResult
 
 
 class DecisionDomain(Enum):
-    WHAT = "what"        # qué construir
-    WHERE = "where"      # dónde construir
-    WHEN = "when"        # cuándo construir
+    WHAT = "what"  # qué construir
+    WHERE = "where"  # dónde construir
+    WHEN = "when"  # cuándo construir
 
 
 @dataclass
@@ -19,6 +19,7 @@ class DesignDecision:
     """
     A concrete design decision made by the Decision Engine.
     """
+
     domain: DecisionDomain
     what: str
     why: str
@@ -123,8 +124,11 @@ class DecisionEngine:
         },
     }
 
-    def __init__(self, goal_engine: Optional[GoalEngine] = None,
-                 constraint_engine: Optional[ConstraintEngine] = None):
+    def __init__(
+        self,
+        goal_engine: Optional[GoalEngine] = None,
+        constraint_engine: Optional[ConstraintEngine] = None,
+    ):
         self.goal_engine = goal_engine or GoalEngine()
         self.constraint_engine = constraint_engine or ConstraintEngine()
         self._decisions: List[DesignDecision] = []
@@ -133,7 +137,9 @@ class DecisionEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def decide_what(self, goals: Optional[List[WorldGoal]] = None) -> List[DesignDecision]:
+    def decide_what(
+        self, goals: Optional[List[WorldGoal]] = None
+    ) -> List[DesignDecision]:
         """
         Decide WHAT content to create based on active goals.
 
@@ -160,8 +166,9 @@ class DecisionEngine:
 
         return decisions
 
-    def decide_where(self, decision: DesignDecision,
-                     world_context: Dict[str, Any]) -> DesignDecision:
+    def decide_where(
+        self, decision: DesignDecision, world_context: Dict[str, Any]
+    ) -> DesignDecision:
         """
         Decide WHERE to place a piece of content.
 
@@ -200,10 +207,11 @@ class DecisionEngine:
         sorted_decisions = sorted(
             decisions,
             key=lambda d: (
-                d.priority * -1,                                          # Priority descending
-                0 if d.details.get("position") else 1,                   # Positioned first
-                len(self._find_dependencies(d, decisions)) * -1,         # Most dependents first
-            )
+                d.priority * -1,  # Priority descending
+                0 if d.details.get("position") else 1,  # Positioned first
+                len(self._find_dependencies(d, decisions))
+                * -1,  # Most dependents first
+            ),
         )
 
         for i, d in enumerate(sorted_decisions):
@@ -213,8 +221,9 @@ class DecisionEngine:
         self._decisions = sorted_decisions
         return sorted_decisions
 
-    def evaluate_decision(self, decision: DesignDecision,
-                          design_context: Dict[str, Any]) -> ConstraintValidationResult:
+    def evaluate_decision(
+        self, decision: DesignDecision, design_context: Dict[str, Any]
+    ) -> ConstraintValidationResult:
         """
         Evaluate a decision against design constraints.
 
@@ -225,7 +234,7 @@ class DecisionEngine:
         Returns:
             ConstraintValidationResult with pass/fail.
         """
-        content_type = self._extract_content_type(decision)
+        self._extract_content_type(decision)
         profile = self.constraint_engine.detect_profile_for_map(design_context)
         self.constraint_engine.load_profile(profile)
 
@@ -240,8 +249,9 @@ class DecisionEngine:
         decision.status = "rejected"
         decision.why = f"REJECTED: {reason}"
 
-    def get_decisions(self, status: Optional[str] = None,
-                      domain: Optional[DecisionDomain] = None) -> List[DesignDecision]:
+    def get_decisions(
+        self, status: Optional[str] = None, domain: Optional[DecisionDomain] = None
+    ) -> List[DesignDecision]:
         """Get all decisions, optionally filtered."""
         results = list(self._decisions)
         if status:
@@ -270,81 +280,101 @@ class DecisionEngine:
         if goal.goal_type == GoalType.EXPAND_WORLD:
             count = goal.targets.get("new_areas", 1)
             for i in range(count):
-                decisions.append(DesignDecision(
-                    domain=DecisionDomain.WHAT,
-                    what=f"New area {i + 1}",
-                    why=f"Required by goal: {goal.name}",
-                    source_goal=goal.name,
-                    priority=goal.priority,
-                    details={"target": "expansion", "index": i},
-                    alternatives=["No expansion", "Smaller area"],
-                ))
+                decisions.append(
+                    DesignDecision(
+                        domain=DecisionDomain.WHAT,
+                        what=f"New area {i + 1}",
+                        why=f"Required by goal: {goal.name}",
+                        source_goal=goal.name,
+                        priority=goal.priority,
+                        details={"target": "expansion", "index": i},
+                        alternatives=["No expansion", "Smaller area"],
+                    )
+                )
 
         elif goal.goal_type == GoalType.ADD_CONTENT:
             for content_type, count in goal.targets.items():
                 for i in range(count):
-                    decisions.append(DesignDecision(
-                        domain=DecisionDomain.WHAT,
-                        what=f"{content_type} {i + 1}",
-                        why=f"Content addition from goal: {goal.name}",
-                        source_goal=goal.name,
-                        priority=self.CONTENT_PRIORITIES.get(content_type, 5),
-                        details={"content_type": content_type, "index": i},
-                    ))
+                    decisions.append(
+                        DesignDecision(
+                            domain=DecisionDomain.WHAT,
+                            what=f"{content_type} {i + 1}",
+                            why=f"Content addition from goal: {goal.name}",
+                            source_goal=goal.name,
+                            priority=self.CONTENT_PRIORITIES.get(content_type, 5),
+                            details={"content_type": content_type, "index": i},
+                        )
+                    )
 
         elif goal.goal_type == GoalType.ADD_ENDGAME:
             bosses = goal.targets.get("bosses", 3)
             hunts = goal.targets.get("hunts_high", 3)
             for i in range(bosses):
-                decisions.append(DesignDecision(
-                    domain=DecisionDomain.WHAT,
-                    what=f"Boss room {i + 1}",
-                    why=f"Endgame boss from: {goal.name}",
-                    source_goal=goal.name,
-                    priority=9,
-                    details={"content_type": "boss_room", "difficulty": "high"},
-                ))
+                decisions.append(
+                    DesignDecision(
+                        domain=DecisionDomain.WHAT,
+                        what=f"Boss room {i + 1}",
+                        why=f"Endgame boss from: {goal.name}",
+                        source_goal=goal.name,
+                        priority=9,
+                        details={"content_type": "boss_room", "difficulty": "high"},
+                    )
+                )
             for i in range(hunts):
-                decisions.append(DesignDecision(
-                    domain=DecisionDomain.WHAT,
-                    what=f"High level hunt {i + 1}",
-                    why=f"Endgame hunt from: {goal.name}",
-                    source_goal=goal.name,
-                    priority=8,
-                    details={"content_type": "hunt_zone", "difficulty": "high"},
-                ))
+                decisions.append(
+                    DesignDecision(
+                        domain=DecisionDomain.WHAT,
+                        what=f"High level hunt {i + 1}",
+                        why=f"Endgame hunt from: {goal.name}",
+                        source_goal=goal.name,
+                        priority=8,
+                        details={"content_type": "hunt_zone", "difficulty": "high"},
+                    )
+                )
 
         elif goal.goal_type == GoalType.FIX_QUALITY:
-            decisions.append(DesignDecision(
-                domain=DecisionDomain.WHAT,
-                what="Quality improvement pass",
-                why=f"Quality fix from: {goal.name}",
-                source_goal=goal.name,
-                priority=6,
-                details={"action": "improve_quality", "target_score": goal.targets.get("min_score", 85)},
-            ))
+            decisions.append(
+                DesignDecision(
+                    domain=DecisionDomain.WHAT,
+                    what="Quality improvement pass",
+                    why=f"Quality fix from: {goal.name}",
+                    source_goal=goal.name,
+                    priority=6,
+                    details={
+                        "action": "improve_quality",
+                        "target_score": goal.targets.get("min_score", 85),
+                    },
+                )
+            )
 
         elif goal.goal_type == GoalType.ADD_QUESTS:
             zones = goal.targets.get("quest_zones", 3)
             for i in range(zones):
-                decisions.append(DesignDecision(
-                    domain=DecisionDomain.WHAT,
-                    what=f"Quest zone {i + 1}",
-                    why=f"Quest content from: {goal.name}",
-                    source_goal=goal.name,
-                    priority=7,
-                    details={"content_type": "quest_zone", "chests": goal.targets.get("chests", 5)},
-                ))
+                decisions.append(
+                    DesignDecision(
+                        domain=DecisionDomain.WHAT,
+                        what=f"Quest zone {i + 1}",
+                        why=f"Quest content from: {goal.name}",
+                        source_goal=goal.name,
+                        priority=7,
+                        details={
+                            "content_type": "quest_zone",
+                            "chests": goal.targets.get("chests", 5),
+                        },
+                    )
+                )
 
         else:
-            decisions.append(DesignDecision(
-                domain=DecisionDomain.WHAT,
-                what=f"Content for: {goal.name}",
-                why=f"Generated from goal: {goal.name}",
-                source_goal=goal.name,
-                priority=goal.priority,
-                details={"goal_type": goal.goal_type.value},
-            ))
+            decisions.append(
+                DesignDecision(
+                    domain=DecisionDomain.WHAT,
+                    what=f"Content for: {goal.name}",
+                    why=f"Generated from goal: {goal.name}",
+                    source_goal=goal.name,
+                    priority=goal.priority,
+                    details={"goal_type": goal.goal_type.value},
+                )
+            )
 
         return decisions
 
@@ -352,8 +382,9 @@ class DecisionEngine:
     # Position finding
     # ------------------------------------------------------------------
 
-    def _find_optimal_position(self, content_type: str, rules: Dict[str, Any],
-                                world_context: Dict[str, Any]) -> Dict[str, Any]:
+    def _find_optimal_position(
+        self, content_type: str, rules: Dict[str, Any], world_context: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Find the optimal position for a content type given rules and context."""
         existing_cities = world_context.get("existing_cities", [])
         existing_zones = world_context.get("existing_zones", [])
@@ -412,8 +443,9 @@ class DecisionEngine:
     # Ordering
     # ------------------------------------------------------------------
 
-    def _find_dependencies(self, decision: DesignDecision,
-                           all_decisions: List[DesignDecision]) -> List[DesignDecision]:
+    def _find_dependencies(
+        self, decision: DesignDecision, all_decisions: List[DesignDecision]
+    ) -> List[DesignDecision]:
         """Find decisions that depend on this one."""
         content_type = self._extract_content_type(decision)
         dependents = []

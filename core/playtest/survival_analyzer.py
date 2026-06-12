@@ -8,7 +8,7 @@ for each vocation in all areas of a generated world.
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
 from .combat_simulator import CombatSimulator, MonsterStats
@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ZoneSurvival:
     """Survival metrics for a specific zone."""
+
     zone_name: str
     avg_deaths_per_hour: float
     survival_rate: float  # 0.0 - 1.0
@@ -35,6 +36,7 @@ class ZoneSurvival:
 @dataclass
 class SurvivalReport:
     """Overall survival analysis for a world."""
+
     overall_survival_rate: float
     total_deaths: int
     death_zones: List[str]  # zones with high death rate
@@ -101,7 +103,7 @@ class SurvivalAnalyzer:
         # Escape analysis
         escape_time = 0.0
         escape_reachable = True
-        safe_distance = float('inf')
+        safe_distance = float("inf")
 
         if pathfinder and spawn_pos:
             # Check if there's a path from any tile to a safe zone
@@ -111,7 +113,7 @@ class SurvivalAnalyzer:
                 escape_time = safe_distance  # 1 step ≈ 1 second
             else:
                 escape_reachable = False
-                escape_time = float('inf')
+                escape_time = float("inf")
         else:
             safe_distance = 10.0  # Default assumption
             escape_time = 10.0
@@ -127,7 +129,8 @@ class SurvivalAnalyzer:
         risk_level = "safe"
         for level_name, threshold in sorted(
             self.DEATH_RATE_THRESHOLDS.items(),
-            key=lambda x: x[1], reverse=True,
+            key=lambda x: x[1],
+            reverse=True,
         ):
             if death_rate >= threshold:
                 risk_level = level_name
@@ -182,14 +185,18 @@ class SurvivalAnalyzer:
         best_voc = min(all_deaths_by_voc, key=all_deaths_by_voc.get)
         worst_voc = max(all_deaths_by_voc, key=all_deaths_by_voc.get)
 
-        death_zones = [z.zone_name for z in zone_reports if z.risk_level in ("dangerous", "deadly")]
+        death_zones = [
+            z.zone_name for z in zone_reports if z.risk_level in ("dangerous", "deadly")
+        ]
         safe_zones = [z.zone_name for z in zone_reports if z.risk_level == "safe"]
 
-        overall_survival = (
-            sum(z.survival_rate for z in zone_reports) / max(len(zone_reports), 1)
+        overall_survival = sum(z.survival_rate for z in zone_reports) / max(
+            len(zone_reports), 1
         )
 
-        recommendations = self._generate_recommendations(zone_reports, all_deaths_by_voc)
+        recommendations = self._generate_recommendations(
+            zone_reports, all_deaths_by_voc
+        )
 
         return SurvivalReport(
             overall_survival_rate=overall_survival,
@@ -213,21 +220,29 @@ class SurvivalAnalyzer:
         deadly_zones = [z for z in zones if z.risk_level == "deadly"]
         if deadly_zones:
             names = ", ".join(z.zone_name for z in deadly_zones)
-            recs.append(f"Zones marked deadly ({names}) need reduced monster density or weaker spawns.")
+            recs.append(
+                f"Zones marked deadly ({names}) need reduced monster density or weaker spawns."
+            )
 
         no_escape = [z for z in zones if not z.escape_reachable]
         if no_escape:
             names = ", ".join(z.zone_name for z in no_escape)
-            recs.append(f"Zones with no escape route ({names}) need teleport exits or safe paths.")
+            recs.append(
+                f"Zones with no escape route ({names}) need teleport exits or safe paths."
+            )
 
         poor_healing = [z for z in zones if not z.healing_sufficient]
         if poor_healing:
             names = ", ".join(z.zone_name for z in poor_healing)
-            recs.append(f"Insufficient healing in ({names}). Add healing NPCs or reduce pressure.")
+            recs.append(
+                f"Insufficient healing in ({names}). Add healing NPCs or reduce pressure."
+            )
 
         worst_voc = max(voc_deaths, key=voc_deaths.get) if voc_deaths else "unknown"
         if voc_deaths.get(worst_voc, 0) > len(zones) * 2:
-            recs.append(f"{worst_voc.capitalize()} has excessive deaths. Consider class-specific balance.")
+            recs.append(
+                f"{worst_voc.capitalize()} has excessive deaths. Consider class-specific balance."
+            )
 
         if not recs:
             recs.append("All zones pass survival checks. World is playable.")

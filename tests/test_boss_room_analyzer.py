@@ -29,7 +29,6 @@ def _open_arena(size: int = 10) -> WorldModel:
 
 
 class BossRoomAnalyzerTests(unittest.TestCase):
-
     def test_no_bosses(self):
         w = WorldModel()
         for x in range(5):
@@ -45,16 +44,36 @@ class BossRoomAnalyzerTests(unittest.TestCase):
         for x in range(3):
             for y in range(3):
                 w.set_tile(Tile(x=x, y=y, z=7, ground=100))
-        w.add_structure(Structure(name="boss_small", category="boss_room",
-                                  x=0, y=0, z=7, width=3, height=3, tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name="boss_small",
+                category="boss_room",
+                x=0,
+                y=0,
+                z=7,
+                width=3,
+                height=3,
+                tags=["boss"],
+            )
+        )
         result = BossRoomAnalyzer().analyze(w)
         issue_types = {i.issue_type.value for i in result["issues"]}
         self.assertIn("invalid_boss_room", issue_types)
 
     def test_open_arena_has_no_escape_issue(self):
         w = _open_arena(15)
-        w.add_structure(Structure(name="boss_open", category="boss_room",
-                                  x=0, y=0, z=7, width=15, height=15, tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name="boss_open",
+                category="boss_room",
+                x=0,
+                y=0,
+                z=7,
+                width=15,
+                height=15,
+                tags=["boss"],
+            )
+        )
         result = BossRoomAnalyzer().analyze(w)
         self.assertEqual(result["metrics"]["bosses"], 1)
         issue_types = {i.issue_type.value for i in result["issues"]}
@@ -71,8 +90,18 @@ class BossRoomAnalyzerTests(unittest.TestCase):
                 if 1 <= x <= 3 and 1 <= y <= 3:
                     t.ground = 100
                 w.set_tile(t)
-        w.add_structure(Structure(name="boss_cage", category="boss_room",
-                                  x=1, y=1, z=7, width=3, height=3, tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name="boss_cage",
+                category="boss_room",
+                x=1,
+                y=1,
+                z=7,
+                width=3,
+                height=3,
+                tags=["boss"],
+            )
+        )
         result = BossRoomAnalyzer().analyze(w)
         # There must be at least 1 issue (either no escape or invalid)
         self.assertGreaterEqual(len(result["issues"]), 1)
@@ -90,8 +119,18 @@ class BossRoomAnalyzerTests(unittest.TestCase):
 
     def test_score_in_valid_range(self):
         w = _open_arena(15)
-        w.add_structure(Structure(name="boss_a", category="boss_room",
-                                  x=0, y=0, z=7, width=15, height=15, tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name="boss_a",
+                category="boss_room",
+                x=0,
+                y=0,
+                z=7,
+                width=15,
+                height=15,
+                tags=["boss"],
+            )
+        )
         result = BossRoomAnalyzer().analyze(w)
         self.assertGreaterEqual(result["score"].value, 0.0)
         self.assertLessEqual(result["score"].value, 100.0)

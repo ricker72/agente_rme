@@ -15,8 +15,6 @@ Validates the full pipeline:
 
 import os
 import sys
-import tempfile
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -32,7 +30,7 @@ def _make_tile(x, y, z, ground=106, items=None, flags=0):
 
 
 class TestOTBMRoundtripPipeline:
-    """Verify the full export → import → re-export pipeline."""
+    """Verify the full export -> import -> re-export pipeline."""
 
     def test_roundtrip_basic(self, tmp_path):
         # Build world
@@ -46,7 +44,9 @@ class TestOTBMRoundtripPipeline:
             {"x": 3, "y": 3, "z": 7, "monster": "Demon", "interval": 60, "radius": 3},
         ]
         # Add city
-        world.cities = [{"name": "TestCity", "temple_x": 0, "temple_y": 0, "temple_z": 7}]
+        world.cities = [
+            {"name": "TestCity", "temple_x": 0, "temple_y": 0, "temple_z": 7}
+        ]
         # Add waypoint
         world.waypoints = [{"name": "Spawn", "x": 0, "y": 0, "z": 7}]
 
@@ -93,7 +93,9 @@ class TestOTBMRoundtripPipeline:
         assert result["success"]
 
         # Re-export
-        report2 = exporter.export(result["world_model"], str(tmp_path / "via_exporter2.otbm"))
+        report2 = exporter.export(
+            result["world_model"], str(tmp_path / "via_exporter2.otbm")
+        )
         assert report2["status"] in ("success", "warning")
 
     def test_roundtrip_with_extreme_ids(self, tmp_path):
@@ -122,12 +124,14 @@ class TestOTBMValidation:
         data = ser.serialize(world)
 
         from core.otbm.otbm_validator import OtbmValidator
+
         v = OtbmValidator()
         result = v.validate(data)
         assert result.is_valid
 
     def test_empty_data_fails(self):
         from core.otbm.otbm_validator import OtbmValidator
+
         v = OtbmValidator()
         result = v.validate(b"")
         # Empty data must fail validation
@@ -135,12 +139,14 @@ class TestOTBMValidation:
 
     def test_bad_magic_fails(self):
         from core.otbm.otbm_validator import OtbmValidator
+
         v = OtbmValidator()
         result = v.validate(b"XXXX" + b"\x00" * 100)
         assert not result.is_valid
 
     def test_truncated_otbm_fails(self):
         from core.otbm.otbm_validator import OtbmValidator
+
         v = OtbmValidator()
         result = v.validate(b"OTBM")
         # Truncated
@@ -157,7 +163,9 @@ class TestOTBMPreview:
                 world.set_tile(_make_tile(i, j, 7, ground=110))
         world.cities = [{"name": "C1", "temple_x": 0, "temple_y": 0, "temple_z": 7}]
         world.waypoints = [{"name": "W1", "x": 0, "y": 0, "z": 7}]
-        world.spawns = [{"x": 0, "y": 0, "z": 7, "monster": "Rat", "interval": 60, "radius": 1}]
+        world.spawns = [
+            {"x": 0, "y": 0, "z": 7, "monster": "Rat", "interval": 60, "radius": 1}
+        ]
 
         ser = OtbmSerializer()
         data = ser.serialize(world)

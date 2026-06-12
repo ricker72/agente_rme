@@ -1,0 +1,72 @@
+[
+  {
+    "agent": "ArchitectAgent",
+    "module": "core.agents.architect_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "MapperAgent",
+    "module": "core.agents.mapper_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "ExpansionAgent",
+    "module": "core.agents.expansion_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "QuestAgent",
+    "module": "core.agents.quest_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "PlaytestAgent",
+    "module": "core.agents.playtest_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "BalanceAgent",
+    "module": "core.agents.balance_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "CriticAgent",
+    "module": "core.agents.critic_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "QAAgent",
+    "module": "core.agents.qa_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "ExportAgent",
+    "module": "core.agents.export_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  },
+  {
+    "agent": "OrchestratorAgent",
+    "module": "core.agents.orchestrator_agent",
+    "imports": "PASS",
+    "constructor": "PASS",
+    "error": null
+  }
+]

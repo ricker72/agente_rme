@@ -1,4 +1,4 @@
-﻿"""Hito 30 â€” Autonomous World Designer benchmark.
+"""Hito 30 â€” Autonomous World Designer benchmark.
 
 Generates a configurable number of worlds (default 50) and produces a
 convergence report with critic/playtest score distributions, average
@@ -23,6 +23,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from typing import List
 
 # Ensure project root is on sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -30,7 +31,6 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from core.autonomous import AutonomousWorldDesigner  # noqa: E402
-
 
 PROMPTS = [
     "Issavi Roshamuul level 300-500 3 hunts 2 bosses 1 raid",
@@ -86,8 +86,12 @@ PROMPTS = [
 ]
 
 
-def run_benchmark(num_worlds: int = 50, max_iterations: int = 2, output_dir: str = "output/autonomous_benchmark") -> dict:
-    print(f"=== Autonomous World Designer benchmark ===")
+def run_benchmark(
+    num_worlds: int = 50,
+    max_iterations: int = 2,
+    output_dir: str = "output/autonomous_benchmark",
+) -> dict:
+    print("=== Autonomous World Designer benchmark ===")
     print(f"  worlds     : {num_worlds}")
     print(f"  iterations : {max_iterations}")
     print(f"  output dir : {output_dir}")
@@ -118,30 +122,32 @@ def run_benchmark(num_worlds: int = 50, max_iterations: int = 2, output_dir: str
                 if len(result.convergence_data) > 1
                 else 0.0
             )
-            results.append({
-                "index": i,
-                "prompt": prompt,
-                "result_id": result.result_id,
-                "iterations": len(result.iterations),
-                "critic": critic,
-                "playtest": playtest,
-                "improvement": improvement,
-                "success": result.success,
-                "duration_s": result.total_duration_seconds,
-            })
+            results.append(
+                {
+                    "index": i,
+                    "prompt": prompt,
+                    "result_id": result.result_id,
+                    "iterations": len(result.iterations),
+                    "critic": critic,
+                    "playtest": playtest,
+                    "improvement": improvement,
+                    "success": result.success,
+                    "duration_s": result.total_duration_seconds,
+                }
+            )
             critic_scores.append(critic)
             playtest_scores.append(playtest)
             improvements.append(improvement)
             iteration_counts.append(len(result.iterations))
             print(
-                f"  [{i+1:3d}/{num_worlds}] "
+                f"  [{i + 1:3d}/{num_worlds}] "
                 f"critic={critic:.3f} playtest={playtest:.3f} "
                 f"iter={len(result.iterations):2d} "
                 f"Î”={improvement:+.3f} ({result.total_duration_seconds:.2f}s)"
             )
         except Exception as exc:  # pragma: no cover
             errors.append(f"world {i}: {exc}")
-            print(f"  [{i+1:3d}/{num_worlds}] FAILED: {exc}")
+            print(f"  [{i + 1:3d}/{num_worlds}] FAILED: {exc}")
 
     total = time.time() - start
 
@@ -149,24 +155,32 @@ def run_benchmark(num_worlds: int = 50, max_iterations: int = 2, output_dir: str
         "total_worlds": len(results),
         "successful_worlds": sum(1 for r in results if r["success"]),
         "errors": errors,
-        "average_critic_score": statistics.mean(critic_scores) if critic_scores else 0.0,
-        "median_critic_score": statistics.median(critic_scores) if critic_scores else 0.0,
+        "average_critic_score": statistics.mean(critic_scores)
+        if critic_scores
+        else 0.0,
+        "median_critic_score": statistics.median(critic_scores)
+        if critic_scores
+        else 0.0,
         "max_critic_score": max(critic_scores) if critic_scores else 0.0,
         "min_critic_score": min(critic_scores) if critic_scores else 0.0,
-        "stdev_critic_score": statistics.pstdev(critic_scores) if len(critic_scores) > 1 else 0.0,
-        "average_playtest_score": statistics.mean(playtest_scores) if playtest_scores else 0.0,
+        "stdev_critic_score": statistics.pstdev(critic_scores)
+        if len(critic_scores) > 1
+        else 0.0,
+        "average_playtest_score": statistics.mean(playtest_scores)
+        if playtest_scores
+        else 0.0,
         "average_improvement": statistics.mean(improvements) if improvements else 0.0,
-        "average_iterations": statistics.mean(iteration_counts) if iteration_counts else 0.0,
+        "average_iterations": statistics.mean(iteration_counts)
+        if iteration_counts
+        else 0.0,
         "total_duration_seconds": total,
         "avg_duration_per_world": (total / len(results)) if results else 0.0,
         "convergence_rate": (
             sum(1 for imp in improvements if imp > 0) / len(improvements)
-            if improvements else 0.0
+            if improvements
+            else 0.0
         ),
-        "converged_worlds": sum(
-            1 for r in results
-            if r.get("improvement", 0) >= 0
-        ),
+        "converged_worlds": sum(1 for r in results if r.get("improvement", 0) >= 0),
         "timestamp": datetime.now().isoformat(),
         "results": results,
     }
@@ -203,12 +217,22 @@ def run_benchmark(num_worlds: int = 50, max_iterations: int = 2, output_dir: str
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Hito 30 â€” Autonomous World Designer benchmark")
-    parser.add_argument("--count", type=int, default=50, help="Number of worlds to generate")
-    parser.add_argument("--iterations", type=int, default=2, help="Max iterations per world")
-    parser.add_argument("--output", default="output/autonomous_benchmark", help="Output directory")
+    parser = argparse.ArgumentParser(
+        description="Hito 30 â€” Autonomous World Designer benchmark"
+    )
+    parser.add_argument(
+        "--count", type=int, default=50, help="Number of worlds to generate"
+    )
+    parser.add_argument(
+        "--iterations", type=int, default=2, help="Max iterations per world"
+    )
+    parser.add_argument(
+        "--output", default="output/autonomous_benchmark", help="Output directory"
+    )
     args = parser.parse_args()
-    run_benchmark(num_worlds=args.count, max_iterations=args.iterations, output_dir=args.output)
+    run_benchmark(
+        num_worlds=args.count, max_iterations=args.iterations, output_dir=args.output
+    )
 
 
 if __name__ == "__main__":

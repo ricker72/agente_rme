@@ -1,0 +1,51 @@
+{
+  "rme_importable": true,
+  "commands_found": [],
+  "commands": [
+    {
+      "command": "generate",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "critic",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "knowledge",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "blueprint",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "autonomous",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "health",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "metrics",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "diagnose",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "command": "benchmark",
+      "status": "PASS",
+      "error": null
+    }
+  ]
+}

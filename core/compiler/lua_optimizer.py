@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Set
+from typing import Set
 
 from .lua_ast import (
     Assignment,
@@ -30,9 +30,15 @@ class LuaOptimizer:
         for statement in block.statements:
             if isinstance(statement, Assignment):
                 target_key = self._assignment_key(statement)
-                if target_key and target_key in last_assignment and self._assignment_key(statement) == last_assignment[target_key]:
+                if (
+                    target_key
+                    and target_key in last_assignment
+                    and self._assignment_key(statement) == last_assignment[target_key]
+                ):
                     continue
-                if isinstance(statement, Assignment) and self._is_tile_ground_duplicate(statement, optimized):
+                if isinstance(statement, Assignment) and self._is_tile_ground_duplicate(
+                    statement, optimized
+                ):
                     continue
                 last_assignment[target_key] = self._assignment_key(statement)
                 optimized.statements.append(statement)
@@ -75,11 +81,15 @@ class LuaOptimizer:
             return expression.source
         if isinstance(expression, FunctionCall):
             args = ",".join(self._expression_key(arg) for arg in expression.args)
-            receiver = self._expression_key(expression.receiver) if expression.receiver else ""
+            receiver = (
+                self._expression_key(expression.receiver) if expression.receiver else ""
+            )
             return f"{receiver}{':' if expression.is_method else '.'}{expression.name}({args})"
         return repr(expression)
 
-    def _is_tile_ground_duplicate(self, assignment: Assignment, optimized: Block) -> bool:
+    def _is_tile_ground_duplicate(
+        self, assignment: Assignment, optimized: Block
+    ) -> bool:
         if len(assignment.targets) != 1 or len(assignment.values) != 1:
             return False
         target = assignment.targets[0]
@@ -88,8 +98,14 @@ class LuaOptimizer:
         if not optimized.statements:
             return False
         last = optimized.statements[-1]
-        if isinstance(last, Assignment) and len(last.targets) == 1 and isinstance(last.targets[0], Variable):
-            return target.name == last.targets[0].name and self._expression_key(last.values[0]) == self._expression_key(assignment.values[0])
+        if (
+            isinstance(last, Assignment)
+            and len(last.targets) == 1
+            and isinstance(last.targets[0], Variable)
+        ):
+            return target.name == last.targets[0].name and self._expression_key(
+                last.values[0]
+            ) == self._expression_key(assignment.values[0])
         return False
 
     def _call_key(self, call: FunctionCall) -> str:
@@ -104,7 +120,11 @@ class LuaOptimizer:
 
     def _eliminate_dead_locals(self, block: Block) -> None:
         used_names = self._collect_used_names(block)
-        block.statements = [stmt for stmt in block.statements if not self._is_dead_local_assignment(stmt, used_names)]
+        block.statements = [
+            stmt
+            for stmt in block.statements
+            if not self._is_dead_local_assignment(stmt, used_names)
+        ]
         for statement in block.statements:
             if isinstance(statement, ForLoop):
                 self._eliminate_dead_locals(statement.body)
@@ -119,7 +139,9 @@ class LuaOptimizer:
             self._collect_names_from_statement(statement, used)
         return used
 
-    def _collect_names_from_statement(self, statement: LuaStatement, used: Set[str]) -> None:
+    def _collect_names_from_statement(
+        self, statement: LuaStatement, used: Set[str]
+    ) -> None:
         if isinstance(statement, Assignment):
             for value in statement.values:
                 self._collect_names_from_expression(value, used)
@@ -140,7 +162,9 @@ class LuaOptimizer:
             if statement.else_body is not None:
                 self._collect_used_names(statement.else_body)
 
-    def _collect_names_from_expression(self, expression: LuaExpression, used: Set[str]) -> None:
+    def _collect_names_from_expression(
+        self, expression: LuaExpression, used: Set[str]
+    ) -> None:
         if isinstance(expression, Variable):
             used.add(expression.name)
         elif isinstance(expression, FunctionCall):
@@ -149,20 +173,33 @@ class LuaOptimizer:
             for arg in expression.args:
                 self._collect_names_from_expression(arg, used)
         elif isinstance(expression, RawExpression):
-            tokens = [token.strip() for token in expression.source.replace("(", " ").replace(")", " ").split() if token.strip()]
+            tokens = [
+                token.strip()
+                for token in expression.source.replace("(", " ")
+                .replace(")", " ")
+                .split()
+                if token.strip()
+            ]
             for token in tokens:
                 if token.isidentifier():
                     used.add(token)
 
-    def _is_dead_local_assignment(self, statement: LuaStatement, used_names: Set[str]) -> bool:
+    def _is_dead_local_assignment(
+        self, statement: LuaStatement, used_names: Set[str]
+    ) -> bool:
         if not isinstance(statement, Assignment) or not statement.is_local:
             return False
-        if len(statement.targets) != 1 or not isinstance(statement.targets[0], Variable):
+        if len(statement.targets) != 1 or not isinstance(
+            statement.targets[0], Variable
+        ):
             return False
         if statement.targets[0].name not in used_names:
             if any(isinstance(value, FunctionCall) for value in statement.values):
                 return False
-            if any(isinstance(value, RawExpression) and "(" in value.source for value in statement.values):
+            if any(
+                isinstance(value, RawExpression) and "(" in value.source
+                for value in statement.values
+            ):
                 return False
             return True
         return False

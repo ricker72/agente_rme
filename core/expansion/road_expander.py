@@ -12,6 +12,7 @@ from core.world.structure import Structure
 @dataclass
 class RoadExpansionResult:
     """Result of road expansion operation."""
+
     roads_created: int = 0
     tiles_added: int = 0
     shortcuts_created: int = 0
@@ -45,8 +46,9 @@ class RoadExpander:
     ROAD_WIDTH = 3
     MIN_DISTANCE_FOR_ROAD = 30
 
-    def expand(self, world: WorldModel,
-               create_shortcuts: bool = True) -> RoadExpansionResult:
+    def expand(
+        self, world: WorldModel, create_shortcuts: bool = True
+    ) -> RoadExpansionResult:
         """
         Create roads and shortcuts between regions.
 
@@ -75,8 +77,9 @@ class RoadExpander:
                 if center1 is None or center2 is None:
                     continue
 
-                dist = ((center1[0] - center2[0]) ** 2 +
-                        (center1[1] - center2[1]) ** 2) ** 0.5
+                dist = (
+                    (center1[0] - center2[0]) ** 2 + (center1[1] - center2[1]) ** 2
+                ) ** 0.5
 
                 if dist < self.MIN_DISTANCE_FOR_ROAD:
                     continue
@@ -85,12 +88,14 @@ class RoadExpander:
                 if tiles > 0:
                     result.roads_created += 1
                     result.tiles_added += tiles
-                    result.details.append({
-                        "from": r1.name,
-                        "to": r2.name,
-                        "tiles": tiles,
-                        "distance": round(dist, 1),
-                    })
+                    result.details.append(
+                        {
+                            "from": r1.name,
+                            "to": r2.name,
+                            "tiles": tiles,
+                            "distance": round(dist, 1),
+                        }
+                    )
 
         # Create shortcuts through empty areas
         if create_shortcuts and len(regions) >= 2:
@@ -98,8 +103,9 @@ class RoadExpander:
 
         return result
 
-    def _region_center(self, world: WorldModel,
-                       region: Region) -> Optional[Tuple[int, int]]:
+    def _region_center(
+        self, world: WorldModel, region: Region
+    ) -> Optional[Tuple[int, int]]:
         """Calculate the center of a region."""
         tiles = [t for t in world.tiles.values() if t.zone == region.name]
         if not tiles:
@@ -108,9 +114,9 @@ class RoadExpander:
         cy = sum(t.y for t in tiles) // len(tiles)
         return (cx, cy)
 
-    def _create_road(self, world: WorldModel,
-                     start: Tuple[int, int],
-                     end: Tuple[int, int]) -> int:
+    def _create_road(
+        self, world: WorldModel, start: Tuple[int, int], end: Tuple[int, int]
+    ) -> int:
         """Create a road (multi-tile wide path) between two points."""
         tiles_added = 0
         x, y = start
@@ -138,8 +144,7 @@ class RoadExpander:
 
         return tiles_added
 
-    def _create_shortcuts(self, world: WorldModel,
-                          result: RoadExpansionResult) -> None:
+    def _create_shortcuts(self, world: WorldModel, result: RoadExpansionResult) -> None:
         """Create shortcut paths through empty areas."""
         regions = world.regions
         if len(regions) < 2:
@@ -180,20 +185,25 @@ class RoadExpander:
         if shortcut_tiles > 0:
             result.shortcuts_created += 1
             result.tiles_added += shortcut_tiles
-            result.details.append({
-                "action": "shortcut",
-                "from": name1,
-                "to": name2,
-                "midpoint": f"{mid_x},{mid_y}",
-                "tiles": shortcut_tiles,
-            })
+            result.details.append(
+                {
+                    "action": "shortcut",
+                    "from": name1,
+                    "to": name2,
+                    "midpoint": f"{mid_x},{mid_y}",
+                    "tiles": shortcut_tiles,
+                }
+            )
 
             # Register as structure
             structure = Structure(
                 name=f"shortcut_{result.shortcuts_created}",
                 category="shortcut",
-                x=mid_x - 2, y=mid_y - 2, z=7,
-                width=5, height=5,
+                x=mid_x - 2,
+                y=mid_y - 2,
+                z=7,
+                width=5,
+                height=5,
                 tile_count=shortcut_tiles,
                 tags=["road", "shortcut"],
             )

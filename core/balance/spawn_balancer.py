@@ -13,6 +13,7 @@ from core.world.region import Region
 @dataclass
 class SpawnAdjustment:
     """Record of a single spawn adjustment made."""
+
     zone_name: str
     action: str  # "add", "remove", "modify_radius", "modify_respawn"
     monster: str
@@ -38,6 +39,7 @@ class SpawnAdjustment:
 @dataclass
 class SpawnBalanceResult:
     """Result of spawn balancing operation."""
+
     adjustments: List[SpawnAdjustment] = field(default_factory=list)
     zones_modified: List[str] = field(default_factory=list)
     spawns_added: int = 0
@@ -82,8 +84,12 @@ class SpawnBalancer:
     MAX_RADIUS = 8
     IDEAL_RADIUS = 5
 
-    def balance(self, world: WorldModel, region: Region,
-                spawns_per_zone: Optional[Dict[str, int]] = None) -> SpawnBalanceResult:
+    def balance(
+        self,
+        world: WorldModel,
+        region: Region,
+        spawns_per_zone: Optional[Dict[str, int]] = None,
+    ) -> SpawnBalanceResult:
         """
         Balance spawns within a region of the world.
 
@@ -112,8 +118,9 @@ class SpawnBalancer:
 
         return result
 
-    def _collect_spawns_in_region(self, world: WorldModel,
-                                  region: Region) -> List[Tuple[int, int, int, Spawn]]:
+    def _collect_spawns_in_region(
+        self, world: WorldModel, region: Region
+    ) -> List[Tuple[int, int, int, Spawn]]:
         """Collect all spawn positions and data within a region."""
         zone_spawns: List[Tuple[int, int, int, Spawn]] = []
         for tile in world.tiles.values():
@@ -121,9 +128,13 @@ class SpawnBalancer:
                 zone_spawns.append((tile.x, tile.y, tile.z, tile.spawn))
         return zone_spawns
 
-    def _add_spawns(self, world: WorldModel, region: Region,
-                    existing: List[Tuple[int, int, int, Spawn]],
-                    result: SpawnBalanceResult) -> None:
+    def _add_spawns(
+        self,
+        world: WorldModel,
+        region: Region,
+        existing: List[Tuple[int, int, int, Spawn]],
+        result: SpawnBalanceResult,
+    ) -> None:
         """Add spawns to fill underpopulated zones."""
         target = self.IDEAL_SPAWNS_PER_ZONE
         needed = target - len(existing)
@@ -160,25 +171,31 @@ class SpawnBalancer:
             tile.spawn = new_spawn
             added += 1
 
-            result.adjustments.append(SpawnAdjustment(
-                zone_name=region.name,
-                action="add",
-                monster=monster,
-                x=tile.x,
-                y=tile.y,
-                z=tile.z,
-                old_value=None,
-                new_value=new_spawn.to_dict(),
-                reason=f"Zone had only {len(existing)} spawns (min={self.MIN_SPAWNS_PER_ZONE})",
-            ))
+            result.adjustments.append(
+                SpawnAdjustment(
+                    zone_name=region.name,
+                    action="add",
+                    monster=monster,
+                    x=tile.x,
+                    y=tile.y,
+                    z=tile.z,
+                    old_value=None,
+                    new_value=new_spawn.to_dict(),
+                    reason=f"Zone had only {len(existing)} spawns (min={self.MIN_SPAWNS_PER_ZONE})",
+                )
+            )
 
         result.spawns_added += added
         if added > 0 and region.name not in result.zones_modified:
             result.zones_modified.append(region.name)
 
-    def _remove_spawns(self, world: WorldModel, region: Region,
-                       existing: List[Tuple[int, int, int, Spawn]],
-                       result: SpawnBalanceResult) -> None:
+    def _remove_spawns(
+        self,
+        world: WorldModel,
+        region: Region,
+        existing: List[Tuple[int, int, int, Spawn]],
+        result: SpawnBalanceResult,
+    ) -> None:
         """Remove excess spawns from overcrowded zones."""
         target = self.IDEAL_SPAWNS_PER_ZONE
         excess = len(existing) - target
@@ -207,90 +224,115 @@ class SpawnBalancer:
                 tile.spawn = None
                 removed += 1
 
-                result.adjustments.append(SpawnAdjustment(
-                    zone_name=region.name,
-                    action="remove",
-                    monster=monster_name,
-                    x=x,
-                    y=y,
-                    z=z,
-                    old_value=spawn.to_dict(),
-                    new_value=None,
-                    reason=f"Zone had {len(existing)} spawns (max={self.MAX_SPAWNS_PER_ZONE})",
-                ))
+                result.adjustments.append(
+                    SpawnAdjustment(
+                        zone_name=region.name,
+                        action="remove",
+                        monster=monster_name,
+                        x=x,
+                        y=y,
+                        z=z,
+                        old_value=spawn.to_dict(),
+                        new_value=None,
+                        reason=f"Zone had {len(existing)} spawns (max={self.MAX_SPAWNS_PER_ZONE})",
+                    )
+                )
 
         result.spawns_removed += removed
         if removed > 0 and region.name not in result.zones_modified:
             result.zones_modified.append(region.name)
 
-    def _adjust_respawn_times(self, world: WorldModel,
-                              zone_spawns: List[Tuple[int, int, int, Spawn]],
-                              result: SpawnBalanceResult) -> None:
+    def _adjust_respawn_times(
+        self,
+        world: WorldModel,
+        zone_spawns: List[Tuple[int, int, int, Spawn]],
+        result: SpawnBalanceResult,
+    ) -> None:
         """Adjust respawn times to be within sane range."""
         for x, y, z, spawn in zone_spawns:
             if spawn.respawn < self.MIN_RESPAWN:
                 old = spawn.respawn
                 spawn.respawn = self.MIN_RESPAWN
-                result.adjustments.append(SpawnAdjustment(
-                    zone_name="",
-                    action="modify_respawn",
-                    monster=spawn.monster,
-                    x=x, y=y, z=z,
-                    old_value=old,
-                    new_value=spawn.respawn,
-                    reason=f"Respawn too fast ({old}s < {self.MIN_RESPAWN}s)",
-                ))
+                result.adjustments.append(
+                    SpawnAdjustment(
+                        zone_name="",
+                        action="modify_respawn",
+                        monster=spawn.monster,
+                        x=x,
+                        y=y,
+                        z=z,
+                        old_value=old,
+                        new_value=spawn.respawn,
+                        reason=f"Respawn too fast ({old}s < {self.MIN_RESPAWN}s)",
+                    )
+                )
                 result.respawns_adjusted += 1
 
             elif spawn.respawn > self.MAX_RESPAWN:
                 old = spawn.respawn
                 spawn.respawn = self.MAX_RESPAWN
-                result.adjustments.append(SpawnAdjustment(
-                    zone_name="",
-                    action="modify_respawn",
-                    monster=spawn.monster,
-                    x=x, y=y, z=z,
-                    old_value=old,
-                    new_value=spawn.respawn,
-                    reason=f"Respawn too slow ({old}s > {self.MAX_RESPAWN}s)",
-                ))
+                result.adjustments.append(
+                    SpawnAdjustment(
+                        zone_name="",
+                        action="modify_respawn",
+                        monster=spawn.monster,
+                        x=x,
+                        y=y,
+                        z=z,
+                        old_value=old,
+                        new_value=spawn.respawn,
+                        reason=f"Respawn too slow ({old}s > {self.MAX_RESPAWN}s)",
+                    )
+                )
                 result.respawns_adjusted += 1
 
-    def _adjust_radii(self, world: WorldModel,
-                      zone_spawns: List[Tuple[int, int, int, Spawn]],
-                      result: SpawnBalanceResult) -> None:
+    def _adjust_radii(
+        self,
+        world: WorldModel,
+        zone_spawns: List[Tuple[int, int, int, Spawn]],
+        result: SpawnBalanceResult,
+    ) -> None:
         """Adjust spawn radii to be within sane range."""
         for x, y, z, spawn in zone_spawns:
             if spawn.radius < self.MIN_RADIUS:
                 old = spawn.radius
                 spawn.radius = self.MIN_RADIUS
-                result.adjustments.append(SpawnAdjustment(
-                    zone_name="",
-                    action="modify_radius",
-                    monster=spawn.monster,
-                    x=x, y=y, z=z,
-                    old_value=old,
-                    new_value=spawn.radius,
-                    reason=f"Radius too small ({old} < {self.MIN_RADIUS})",
-                ))
+                result.adjustments.append(
+                    SpawnAdjustment(
+                        zone_name="",
+                        action="modify_radius",
+                        monster=spawn.monster,
+                        x=x,
+                        y=y,
+                        z=z,
+                        old_value=old,
+                        new_value=spawn.radius,
+                        reason=f"Radius too small ({old} < {self.MIN_RADIUS})",
+                    )
+                )
                 result.radii_adjusted += 1
 
             elif spawn.radius > self.MAX_RADIUS:
                 old = spawn.radius
                 spawn.radius = self.MAX_RADIUS
-                result.adjustments.append(SpawnAdjustment(
-                    zone_name="",
-                    action="modify_radius",
-                    monster=spawn.monster,
-                    x=x, y=y, z=z,
-                    old_value=old,
-                    new_value=spawn.radius,
-                    reason=f"Radius too large ({old} > {self.MAX_RADIUS})",
-                ))
+                result.adjustments.append(
+                    SpawnAdjustment(
+                        zone_name="",
+                        action="modify_radius",
+                        monster=spawn.monster,
+                        x=x,
+                        y=y,
+                        z=z,
+                        old_value=old,
+                        new_value=spawn.radius,
+                        reason=f"Radius too large ({old} > {self.MAX_RADIUS})",
+                    )
+                )
                 result.radii_adjusted += 1
 
-    def analyze_spawn_density(self, world: WorldModel,
-                              region: Region) -> Dict[str, Any]:
+    def analyze_spawn_density(
+        self, world: WorldModel, region: Region
+    ) -> Dict[str, Any]:
         """
         Analyze spawn density for a region without modifying it.
 

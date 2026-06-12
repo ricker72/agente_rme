@@ -3,9 +3,9 @@ tools/run_rc1_1.py — RC1.1 Master Certification Runner.
 
 Executes all 11 phases + audit, produces the final certification package.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import time
 import subprocess
@@ -21,20 +21,52 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 PHASES = [
-    ("Phase 3: Module Discovery", "tools/validate_modules.py", "module_validation.json"),
-    ("Phase 4: Real World Stress Test", "tools/real_world_stress.py", "real_world_stress.json"),
-    ("Phase 5: Real OTBM Certification", "tools/real_otbm_certification.py", "real_otbm_certification.json"),
-    ("Phase 6: Real Autonomous Certification", "tools/real_autonomous_certification.py", "real_autonomous_certification.json"),
-    ("Phase 7: Real Knowledge Validation", "tools/real_knowledge_validation.py", "real_knowledge_validation.json"),
-    ("Phase 8: Real Blueprint Validation", "tools/real_blueprint_validation.py", "real_blueprint_validation.json"),
-    ("Phase 9: Real Memory Profile", "tools/real_memory_profile.py", "real_memory_profile.json"),
-    ("Phase 10: Real Performance Profile", "tools/real_performance_profile.py", "real_performance_profile.json"),
+    (
+        "Phase 3: Module Discovery",
+        "tools/validate_modules.py",
+        "module_validation.json",
+    ),
+    (
+        "Phase 4: Real World Stress Test",
+        "tools/real_world_stress.py",
+        "real_world_stress.json",
+    ),
+    (
+        "Phase 5: Real OTBM Certification",
+        "tools/real_otbm_certification.py",
+        "real_otbm_certification.json",
+    ),
+    (
+        "Phase 6: Real Autonomous Certification",
+        "tools/real_autonomous_certification.py",
+        "real_autonomous_certification.json",
+    ),
+    (
+        "Phase 7: Real Knowledge Validation",
+        "tools/real_knowledge_validation.py",
+        "real_knowledge_validation.json",
+    ),
+    (
+        "Phase 8: Real Blueprint Validation",
+        "tools/real_blueprint_validation.py",
+        "real_blueprint_validation.json",
+    ),
+    (
+        "Phase 9: Real Memory Profile",
+        "tools/real_memory_profile.py",
+        "real_memory_profile.json",
+    ),
+    (
+        "Phase 10: Real Performance Profile",
+        "tools/real_performance_profile.py",
+        "real_performance_profile.json",
+    ),
 ]
 
 
 def run_tool(name: str, script: str, output_file: str) -> Dict[str, Any]:
     """Run a tool script and return result info."""
-    print(f"\n{'='*70}\n{name}\n{'='*70}")
+    print(f"\n{'=' * 70}\n{name}\n{'=' * 70}")
     out_path = OUTPUT_DIR / output_file
     t0 = time.time()
     try:
@@ -75,7 +107,13 @@ def run_tool(name: str, script: str, output_file: str) -> Dict[str, Any]:
     except subprocess.TimeoutExpired:
         return {"phase": name, "script": script, "status": "TIMEOUT", "passed": False}
     except Exception as e:
-        return {"phase": name, "script": script, "status": "ERROR", "passed": False, "error": str(e)}
+        return {
+            "phase": name,
+            "script": script,
+            "status": "ERROR",
+            "passed": False,
+            "error": str(e),
+        }
 
 
 def load_json_safe(path: Path) -> Optional[Dict[str, Any]]:
@@ -127,9 +165,15 @@ def generate_audit(results: Dict[str, Any]) -> Dict[str, Any]:
         PROJECT_ROOT / "core" / "agents",
     ]
     import re
+
     active_fallback_patterns = [
-        re.compile(r"except\s+ImportError\s*:\s*[\r\n]+\s*\S+\s*=\s*(?:None|FakeEngine|simulated|fake)", re.MULTILINE),
-        re.compile(r"except\s+ImportError\s*:\s*[\r\n]+\s*return\s+(?:None|{})", re.MULTILINE),
+        re.compile(
+            r"except\s+ImportError\s*:\s*[\r\n]+\s*\S+\s*=\s*(?:None|FakeEngine|simulated|fake)",
+            re.MULTILINE,
+        ),
+        re.compile(
+            r"except\s+ImportError\s*:\s*[\r\n]+\s*return\s+(?:None|{})", re.MULTILINE
+        ),
         re.compile(r"simulation_mode\s*=\s*True", re.IGNORECASE),
         re.compile(r"mock_mode\s*=\s*True", re.IGNORECASE),
         re.compile(r"fake_metrics\s*=\s*True", re.IGNORECASE),
@@ -160,7 +204,9 @@ def generate_audit(results: Dict[str, Any]) -> Dict[str, Any]:
         for f in mod_val.get("modules_failed", []):
             modules_failed.append(f.get("module", ""))
 
-    real_executions = sum(1 for r in results["phase_results"] if r.get("status") == "PASS")
+    real_executions = sum(
+        1 for r in results["phase_results"] if r.get("status") == "PASS"
+    )
 
     # Determine certification status
     all_pass = all(r.get("status") == "PASS" for r in results["phase_results"])
@@ -174,12 +220,24 @@ def generate_audit(results: Dict[str, Any]) -> Dict[str, Any]:
         # We compute the criteria here for reference
         all_criteria_met = (
             len(modules_loaded) >= 50
-            and (load_json_safe(OUTPUT_DIR / "real_world_stress.json") or {}).get("criterion_pass", False)
-            and (load_json_safe(OUTPUT_DIR / "real_otbm_certification.json") or {}).get("criterion_pass", False)
-            and (load_json_safe(OUTPUT_DIR / "real_autonomous_certification.json") or {}).get("criterion_pass", False)
-            and (load_json_safe(OUTPUT_DIR / "real_knowledge_validation.json") or {}).get("criterion_pass", False)
-            and (load_json_safe(OUTPUT_DIR / "real_blueprint_validation.json") or {}).get("criterion_pass", False)
-            and (load_json_safe(OUTPUT_DIR / "real_memory_profile.json") or {}).get("criterion_pass", True)
+            and (load_json_safe(OUTPUT_DIR / "real_world_stress.json") or {}).get(
+                "criterion_pass", False
+            )
+            and (load_json_safe(OUTPUT_DIR / "real_otbm_certification.json") or {}).get(
+                "criterion_pass", False
+            )
+            and (
+                load_json_safe(OUTPUT_DIR / "real_autonomous_certification.json") or {}
+            ).get("criterion_pass", False)
+            and (
+                load_json_safe(OUTPUT_DIR / "real_knowledge_validation.json") or {}
+            ).get("criterion_pass", False)
+            and (
+                load_json_safe(OUTPUT_DIR / "real_blueprint_validation.json") or {}
+            ).get("criterion_pass", False)
+            and (load_json_safe(OUTPUT_DIR / "real_memory_profile.json") or {}).get(
+                "criterion_pass", True
+            )
             and len(modules_failed) == 0
         )
         if all_criteria_met:
@@ -197,17 +255,20 @@ def generate_audit(results: Dict[str, Any]) -> Dict[str, Any]:
         "phases_total": results["n_phases"],
         "phases_passed": results["n_passed"],
         "certification_status": cert_status,
-        "phase_status": {r["phase"]: r.get("status", "UNKNOWN") for r in results["phase_results"]},
+        "phase_status": {
+            r["phase"]: r.get("status", "UNKNOWN") for r in results["phase_results"]
+        },
     }
 
 
-def generate_certification_package(results: Dict[str, Any], audit: Dict[str, Any]) -> None:
+def generate_certification_package(
+    results: Dict[str, Any], audit: Dict[str, Any]
+) -> None:
     """Generate the final production package."""
     print("\n[Package] Generating RC1.1 production package...")
 
     # Determine final certification status based on criteria
-    all_criteria = cert_criteria if 'cert_criteria' in dir() else {}
-    
+
     # RC1.1_CERTIFICATION.json
     cert = {
         "version": "1.0.0-RC1.1",
@@ -223,12 +284,24 @@ def generate_certification_package(results: Dict[str, Any], audit: Dict[str, Any
         },
         "criteria": {
             "100_modules_loaded": len(audit["modules_loaded"]) >= 50,
-            "100_worlds_pass": (load_json_safe(OUTPUT_DIR / "real_world_stress.json") or {}).get("criterion_pass", False),
-            "100_otbm_roundtrips_pass": (load_json_safe(OUTPUT_DIR / "real_otbm_certification.json") or {}).get("criterion_pass", False),
-            "50_autonomous_runs_pass": (load_json_safe(OUTPUT_DIR / "real_autonomous_certification.json") or {}).get("criterion_pass", False),
-            "1000_knowledge_queries_pass": (load_json_safe(OUTPUT_DIR / "real_knowledge_validation.json") or {}).get("criterion_pass", False),
-            "1000_blueprint_operations_pass": (load_json_safe(OUTPUT_DIR / "real_blueprint_validation.json") or {}).get("criterion_pass", False),
-            "zero_memory_leaks": (load_json_safe(OUTPUT_DIR / "real_memory_profile.json") or {}).get("criterion_pass", True),
+            "100_worlds_pass": (
+                load_json_safe(OUTPUT_DIR / "real_world_stress.json") or {}
+            ).get("criterion_pass", False),
+            "100_otbm_roundtrips_pass": (
+                load_json_safe(OUTPUT_DIR / "real_otbm_certification.json") or {}
+            ).get("criterion_pass", False),
+            "50_autonomous_runs_pass": (
+                load_json_safe(OUTPUT_DIR / "real_autonomous_certification.json") or {}
+            ).get("criterion_pass", False),
+            "1000_knowledge_queries_pass": (
+                load_json_safe(OUTPUT_DIR / "real_knowledge_validation.json") or {}
+            ).get("criterion_pass", False),
+            "1000_blueprint_operations_pass": (
+                load_json_safe(OUTPUT_DIR / "real_blueprint_validation.json") or {}
+            ).get("criterion_pass", False),
+            "zero_memory_leaks": (
+                load_json_safe(OUTPUT_DIR / "real_memory_profile.json") or {}
+            ).get("criterion_pass", True),
             "zero_fallbacks": len(audit["fallbacks_detected"]) == 0,
             "all_modules_loaded": len(audit["modules_failed"]) == 0,
             "zero_crashes": audit["real_executions"] >= 6,
@@ -257,7 +330,9 @@ def generate_certification_package(results: Dict[str, Any], audit: Dict[str, Any
         "phase_durations": {
             r["phase"]: r.get("duration_s", 0) for r in results["phase_results"]
         },
-        "total_duration_s": sum(r.get("duration_s", 0) for r in results["phase_results"]),
+        "total_duration_s": sum(
+            r.get("duration_s", 0) for r in results["phase_results"]
+        ),
     }
     with open(OUTPUT_DIR / "RC1.1_BENCHMARK.json", "w", encoding="utf-8") as f:
         json.dump(benchmark, f, indent=2, ensure_ascii=False)
@@ -276,15 +351,17 @@ def generate_certification_package(results: Dict[str, Any], audit: Dict[str, Any
     with open(OUTPUT_DIR / "REAL_EXECUTION_AUDIT.json", "w", encoding="utf-8") as f:
         json.dump(audit, f, indent=2, ensure_ascii=False)
 
-    print(f"  -> Generated: RC1.1_CERTIFICATION.json")
-    print(f"  -> Generated: RC1.1_METRICS.json")
-    print(f"  -> Generated: RC1.1_BENCHMARK.json")
-    print(f"  -> Generated: RC1.1_REPORT.md")
-    print(f"  -> Generated: RC1.1_RELEASE_NOTES.md")
-    print(f"  -> Generated: REAL_EXECUTION_AUDIT.json")
+    print("  -> Generated: RC1.1_CERTIFICATION.json")
+    print("  -> Generated: RC1.1_METRICS.json")
+    print("  -> Generated: RC1.1_BENCHMARK.json")
+    print("  -> Generated: RC1.1_REPORT.md")
+    print("  -> Generated: RC1.1_RELEASE_NOTES.md")
+    print("  -> Generated: REAL_EXECUTION_AUDIT.json")
 
 
-def generate_md_report(results: Dict[str, Any], audit: Dict[str, Any], cert: Dict[str, Any]) -> str:
+def generate_md_report(
+    results: Dict[str, Any], audit: Dict[str, Any], cert: Dict[str, Any]
+) -> str:
     status = cert["status"]
     md = f"""# Agente RME v1.0.0-RC1.1 - Real Execution Certification Report
 
@@ -299,10 +376,10 @@ def generate_md_report(results: Dict[str, Any], audit: Dict[str, Any], cert: Dic
 Agente RME has been certified through 11 rigorous phases of real execution testing.
 All subsystems use real engines, deterministic data, and verified metrics.
 
-- **Modules Loaded:** {len(audit['modules_loaded'])}/{len(audit['modules_loaded']) + len(audit['modules_failed'])}
-- **Phases Passed:** {results['n_passed']}/{results['n_phases']}
-- **Fallbacks Detected:** {len(audit['fallbacks_detected'])}
-- **Real Executions:** {audit['real_executions']}
+- **Modules Loaded:** {len(audit["modules_loaded"])}/{len(audit["modules_loaded"]) + len(audit["modules_failed"])}
+- **Phases Passed:** {results["n_passed"]}/{results["n_phases"]}
+- **Fallbacks Detected:** {len(audit["fallbacks_detected"])}
+- **Real Executions:** {audit["real_executions"]}
 
 ---
 
@@ -321,26 +398,26 @@ All subsystems use real engines, deterministic data, and verified metrics.
 
 | Criterion | Status |
 |-----------|--------|
-| 100+ Modules Loaded | {'PASS' if cert['criteria']['100_modules_loaded'] else 'FAIL'} |
-| 100 Worlds Generated | {'PASS' if cert['criteria']['100_worlds_pass'] else 'FAIL'} |
-| 100 OTBM Roundtrips | {'PASS' if cert['criteria']['100_otbm_roundtrips_pass'] else 'FAIL'} |
-| 50 Autonomous Runs | {'PASS' if cert['criteria']['50_autonomous_runs_pass'] else 'FAIL'} |
-| 1000 Knowledge Queries | {'PASS' if cert['criteria']['1000_knowledge_queries_pass'] else 'FAIL'} |
-| 1000 Blueprint Operations | {'PASS' if cert['criteria']['1000_blueprint_operations_pass'] else 'FAIL'} |
-| Zero Memory Leaks | {'PASS' if cert['criteria']['zero_memory_leaks'] else 'FAIL'} |
-| Zero Fallbacks | {'PASS' if cert['criteria']['zero_fallbacks'] else 'FAIL'} |
-| All Modules Loaded | {'PASS' if cert['criteria']['all_modules_loaded'] else 'FAIL'} |
-| Zero Crashes | {'PASS' if cert['criteria']['zero_crashes'] else 'FAIL'} |
+| 100+ Modules Loaded | {"PASS" if cert["criteria"]["100_modules_loaded"] else "FAIL"} |
+| 100 Worlds Generated | {"PASS" if cert["criteria"]["100_worlds_pass"] else "FAIL"} |
+| 100 OTBM Roundtrips | {"PASS" if cert["criteria"]["100_otbm_roundtrips_pass"] else "FAIL"} |
+| 50 Autonomous Runs | {"PASS" if cert["criteria"]["50_autonomous_runs_pass"] else "FAIL"} |
+| 1000 Knowledge Queries | {"PASS" if cert["criteria"]["1000_knowledge_queries_pass"] else "FAIL"} |
+| 1000 Blueprint Operations | {"PASS" if cert["criteria"]["1000_blueprint_operations_pass"] else "FAIL"} |
+| Zero Memory Leaks | {"PASS" if cert["criteria"]["zero_memory_leaks"] else "FAIL"} |
+| Zero Fallbacks | {"PASS" if cert["criteria"]["zero_fallbacks"] else "FAIL"} |
+| All Modules Loaded | {"PASS" if cert["criteria"]["all_modules_loaded"] else "FAIL"} |
+| Zero Crashes | {"PASS" if cert["criteria"]["zero_crashes"] else "FAIL"} |
 
 ---
 
 ## Audit Summary
 
-- **modules_loaded:** {len(audit['modules_loaded'])}
-- **modules_failed:** {len(audit['modules_failed'])}
-- **fallbacks_detected:** {len(audit['fallbacks_detected'])}
-- **real_executions:** {audit['real_executions']}
-- **certification_status:** {audit['certification_status']}
+- **modules_loaded:** {len(audit["modules_loaded"])}
+- **modules_failed:** {len(audit["modules_failed"])}
+- **fallbacks_detected:** {len(audit["fallbacks_detected"])}
+- **real_executions:** {audit["real_executions"]}
+- **certification_status:** {audit["certification_status"]}
 
 ---
 
@@ -360,9 +437,9 @@ def generate_release_notes(cert: Dict[str, Any], audit: Dict[str, Any]) -> str:
 
 ## Real Execution Certification
 
-**Release Date:** {cert['certification_date']}
+**Release Date:** {cert["certification_date"]}
 **Version:** 1.0.0-RC1.1
-**Status:** {cert['status']}
+**Status:** {cert["status"]}
 
 ---
 
@@ -373,8 +450,8 @@ RC1.1 certifies the production-readiness of Agente RME with **REAL execution tes
 This release validates:
 - 100% of subsystems use real engines (no mocks, no simulations, no fallbacks)
 - 11 certification phases completed
-- {len(audit['modules_loaded'])} real modules loaded
-- {audit['real_executions']} phases with real executions
+- {len(audit["modules_loaded"])} real modules loaded
+- {audit["real_executions"]} phases with real executions
 
 ---
 
@@ -397,7 +474,7 @@ This release validates:
 - 0 simulations used
 - 0 mocks
 - 0 synthetic data
-- {len(audit['modules_failed'])} modules failed to load
+- {len(audit["modules_failed"])} modules failed to load
 
 ---
 
@@ -415,7 +492,7 @@ This release validates:
 
 ## Final Status
 
-**STATUS: {cert['status']}**
+**STATUS: {cert["status"]}**
 
 **VERSION: Agente RME v1.0.0-RC1.1**
 
@@ -432,10 +509,10 @@ def main() -> int:
     print("RC1.1 CERTIFICATION COMPLETE")
     print("=" * 70)
     print(f"Status: {audit['certification_status']}")
-    print(f"Version: Agente RME v1.0.0-RC1.1")
+    print("Version: Agente RME v1.0.0-RC1.1")
     print(f"Output: {OUTPUT_DIR}")
     print("=" * 70)
-    return 0 if audit['certification_status'] in ("RC1.1 CERTIFIED", "PARTIAL") else 1
+    return 0 if audit["certification_status"] in ("RC1.1 CERTIFIED", "PARTIAL") else 1
 
 
 if __name__ == "__main__":

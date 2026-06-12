@@ -1,0 +1,474 @@
+[
+  {
+    "module": "core",
+    "status": "PASS",
+    "exports_checked": 54,
+    "passed": 54,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.agents",
+    "status": "PASS",
+    "exports_checked": 12,
+    "passed": 12,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.analyzer",
+    "status": "PASS",
+    "exports_checked": 12,
+    "passed": 12,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.architect",
+    "status": "PASS",
+    "exports_checked": 34,
+    "passed": 34,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.architecture",
+    "status": "PASS",
+    "exports_checked": 9,
+    "passed": 9,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.assets",
+    "status": "PASS",
+    "exports_checked": 11,
+    "passed": 11,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.autonomous",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models",
+    "status": "PASS",
+    "exports_checked": 6,
+    "passed": 6,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.balance",
+    "status": "PASS",
+    "exports_checked": 29,
+    "passed": 29,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.benchmark",
+    "status": "PASS",
+    "exports_checked": 1,
+    "passed": 1,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models",
+    "status": "PASS",
+    "exports_checked": 6,
+    "passed": 6,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.blueprints",
+    "status": "PASS",
+    "exports_checked": 23,
+    "passed": 23,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.cache",
+    "status": "PASS",
+    "exports_checked": 1,
+    "passed": 1,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.campaign",
+    "status": "PASS",
+    "exports_checked": 21,
+    "passed": 21,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.compiler",
+    "status": "PASS",
+    "exports_checked": 24,
+    "passed": 24,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.content",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.critic",
+    "status": "PASS",
+    "exports_checked": 14,
+    "passed": 14,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers",
+    "status": "PASS",
+    "exports_checked": 31,
+    "passed": 31,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.critic.models",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.evolution",
+    "status": "PASS",
+    "exports_checked": 18,
+    "passed": 18,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.expansion",
+    "status": "PASS",
+    "exports_checked": 13,
+    "passed": 13,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.export",
+    "status": "PASS",
+    "exports_checked": 1,
+    "passed": 1,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.exporters",
+    "status": "PASS",
+    "exports_checked": 4,
+    "passed": 4,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.factory",
+    "status": "PASS",
+    "exports_checked": 4,
+    "passed": 4,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.game_design",
+    "status": "PASS",
+    "exports_checked": 9,
+    "passed": 9,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.generators",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.generators.city",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon",
+    "status": "PASS",
+    "exports_checked": 17,
+    "passed": 17,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.knowledge",
+    "status": "PASS",
+    "exports_checked": 24,
+    "passed": 24,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors",
+    "status": "PASS",
+    "exports_checked": 14,
+    "passed": 14,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers",
+    "status": "PASS",
+    "exports_checked": 7,
+    "passed": 7,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.knowledge.models",
+    "status": "PASS",
+    "exports_checked": 10,
+    "passed": 10,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.learning",
+    "status": "PASS",
+    "exports_checked": 15,
+    "passed": 15,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.logging",
+    "status": "PASS",
+    "exports_checked": 1,
+    "passed": 1,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.lua",
+    "status": "PASS",
+    "exports_checked": 1,
+    "passed": 1,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.observability",
+    "status": "PASS",
+    "exports_checked": 13,
+    "passed": 13,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.otbm",
+    "status": "PASS",
+    "exports_checked": 75,
+    "passed": 75,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.pipeline",
+    "status": "PASS",
+    "exports_checked": 2,
+    "passed": 2,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.planner",
+    "status": "PASS",
+    "exports_checked": 14,
+    "passed": 14,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.playtest",
+    "status": "PASS",
+    "exports_checked": 26,
+    "passed": 26,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.preview",
+    "status": "PASS",
+    "exports_checked": 30,
+    "passed": 30,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.procedural",
+    "status": "PASS",
+    "exports_checked": 56,
+    "passed": 56,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.quality",
+    "status": "PASS",
+    "exports_checked": 6,
+    "passed": 6,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.registry",
+    "status": "PASS",
+    "exports_checked": 2,
+    "passed": 2,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.release",
+    "status": "PASS",
+    "exports_checked": 4,
+    "passed": 4,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.spawn",
+    "status": "PASS",
+    "exports_checked": 2,
+    "passed": 2,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.themes",
+    "status": "PASS",
+    "exports_checked": 2,
+    "passed": 2,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.versioning",
+    "status": "PASS",
+    "exports_checked": 1,
+    "passed": 1,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.world",
+    "status": "PASS",
+    "exports_checked": 9,
+    "passed": 9,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.world_brain",
+    "status": "PASS",
+    "exports_checked": 15,
+    "passed": 15,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "core.world_engine",
+    "status": "PASS",
+    "exports_checked": 13,
+    "passed": 13,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui",
+    "status": "PASS",
+    "exports_checked": 5,
+    "passed": 5,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui.adapters",
+    "status": "PASS",
+    "exports_checked": 5,
+    "passed": 5,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui.models",
+    "status": "PASS",
+    "exports_checked": 4,
+    "passed": 4,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui.pages",
+    "status": "PASS",
+    "exports_checked": 8,
+    "passed": 8,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui.plugins",
+    "status": "PASS",
+    "exports_checked": 2,
+    "passed": 2,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui.services",
+    "status": "PASS",
+    "exports_checked": 6,
+    "passed": 6,
+    "failed": [],
+    "error": null
+  },
+  {
+    "module": "ui.widgets",
+    "status": "PASS",
+    "exports_checked": 6,
+    "passed": 6,
+    "failed": [],
+    "error": null
+  }
+]

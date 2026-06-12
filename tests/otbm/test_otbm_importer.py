@@ -15,11 +15,8 @@ Plus round trip: OTBM -> WorldModel -> OTBM
 
 from __future__ import annotations
 
-import struct
 import sys
-import os
 from pathlib import Path
-from typing import Any, Dict, List
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
@@ -28,7 +25,6 @@ from core.otbm import (
     OtbmParser,
     OtbmParseError,
     NodeDecoder,
-    NodeDecodeError,
     TileDecoder,
     ItemDecoder,
     WorldBuilder,
@@ -40,42 +36,19 @@ from core.otbm import (
     OTBM_NODE_ROOT,
     OTBM_NODE_MAP_DATA,
     OTBM_NODE_TILE_AREA,
-    OTBM_NODE_TILE,
-    OTBM_NODE_ITEM,
     OTBM_NODE_SPAWNS,
-    OTBM_NODE_SPAWN_AREA,
-    OTBM_NODE_MONSTER,
     OTBM_NODE_TOWNS,
-    OTBM_NODE_TOWN,
     OTBM_NODE_WAYPOINTS,
-    OTBM_NODE_WAYPOINT,
-    OTBM_NODE_HOUSETILE,
-    # Attributes
-    ATTR_TILE_FLAGS,
-    ATTR_COUNT,
-    ATTR_ACTION_ID,
-    ATTR_UNIQUE_ID,
-    ATTR_TEXT,
-    ATTR_CHARGES,
-    ATTR_SUBTYPE,
-    ATTR_DURATION,
-    # Tile states
-    TILESTATE_NONE,
     TILESTATE_PROTECTIONZONE,
-    TILESTATE_NOPVPZONE,
-    TILESTATE_NOLOGOUT,
-    # Encoder for test data generation
-    NodeEncoder,
     TileEncoder,
-    # WorldModel
-    NodeEncoder as NE,
+    NodeEncoder,
 )
-from core.world_engine.world_engine import WorldModel, Tile
-
+from core.world_engine.world_engine import WorldModel
 
 # ============================================================
 # Helper: build small OTBM bytes for testing
 # ============================================================
+
 
 def _build_test_otbm() -> bytes:
     """
@@ -87,37 +60,43 @@ def _build_test_otbm() -> bytes:
         - 1 waypoint: wp1 at (1000, 1000, 7)
     """
     encoder = NodeEncoder()
-    tile_encoder = TileEncoder()
+    TileEncoder()
 
     # Build tile area for z=7
     base_x, base_y, base_z = 1000, 1000, 7
 
     # Tiles
-    tile1 = encoder.encode_tile(offset_x=0, offset_y=0, tile_flags=0,
-                                 children=encoder.encode_item(item_id=106))
-    tile2 = encoder.encode_tile(offset_x=1, offset_y=0, tile_flags=0,
-                                 children=encoder.encode_item(item_id=106))
-    tile3 = encoder.encode_tile(offset_x=0, offset_y=1, tile_flags=0,
-                                 children=encoder.encode_item(item_id=106))
-    tile4 = encoder.encode_tile(offset_x=1, offset_y=1, tile_flags=0,
-                                 children=encoder.encode_item(item_id=106))
+    tile1 = encoder.encode_tile(
+        offset_x=0, offset_y=0, tile_flags=0, children=encoder.encode_item(item_id=106)
+    )
+    tile2 = encoder.encode_tile(
+        offset_x=1, offset_y=0, tile_flags=0, children=encoder.encode_item(item_id=106)
+    )
+    tile3 = encoder.encode_tile(
+        offset_x=0, offset_y=1, tile_flags=0, children=encoder.encode_item(item_id=106)
+    )
+    tile4 = encoder.encode_tile(
+        offset_x=1, offset_y=1, tile_flags=0, children=encoder.encode_item(item_id=106)
+    )
 
     tile_area = encoder.encode_tile_area(
-        base_x=base_x, base_y=base_y, base_z=base_z,
-        children=tile1 + tile2 + tile3 + tile4
+        base_x=base_x,
+        base_y=base_y,
+        base_z=base_z,
+        children=tile1 + tile2 + tile3 + tile4,
     )
 
     # Spawn
     monster = encoder.encode_monster(name="Dragon Lord", direction=2, spawntime=60)
     spawn_area = encoder.encode_spawn_area(
-        center_x=1000, center_y=1000, center_z=7, radius=3,
-        children=monster
+        center_x=1000, center_y=1000, center_z=7, radius=3, children=monster
     )
     spawns = encoder.encode_spawns(spawn_area)
 
     # Town
-    town = encoder.encode_town(town_id=1, name="TestTown",
-                                temple_x=1000, temple_y=1000, temple_z=7)
+    town = encoder.encode_town(
+        town_id=1, name="TestTown", temple_x=1000, temple_y=1000, temple_z=7
+    )
     towns = encoder.encode_towns(town)
 
     # Waypoint
@@ -130,7 +109,7 @@ def _build_test_otbm() -> bytes:
         description="Test map",
         spawn_file="test_spawns.xml",
         house_file="test_houses.xml",
-        children=map_children
+        children=map_children,
     )
 
     # Root
@@ -140,7 +119,7 @@ def _build_test_otbm() -> bytes:
         height=2,
         item_major=3,
         item_minor=57,
-        children=map_data
+        children=map_data,
     )
 
     return b"OTBM" + root
@@ -149,6 +128,7 @@ def _build_test_otbm() -> bytes:
 # ============================================================
 # Test 1: OtbmParser — basic parsing
 # ============================================================
+
 
 def test_parser_basic():
     """Parse a minimal valid OTBM."""
@@ -184,12 +164,15 @@ def test_parser_basic():
     waypoints = parser.find_children_of_type(map_data, OTBM_NODE_WAYPOINTS)
     assert len(waypoints) == 1
 
-    print(f"[PASS] test_parser_basic — parsed OTBM with {len(root['children'])} child nodes")
+    print(
+        f"[PASS] test_parser_basic — parsed OTBM with {len(root['children'])} child nodes"
+    )
 
 
 # ============================================================
 # Test 2: OtbmParser — invalid magic
 # ============================================================
+
 
 def test_parser_invalid_magic():
     """Reject invalid magic bytes."""
@@ -206,6 +189,7 @@ def test_parser_invalid_magic():
 # Test 3: OtbmParser — truncated data
 # ============================================================
 
+
 def test_parser_truncated():
     """Handle truncated data gracefully."""
     parser = OtbmParser()
@@ -213,12 +197,13 @@ def test_parser_truncated():
         parser.parse(b"OTBM\x00")
         assert False, "Should have raised OtbmParseError"
     except OtbmParseError:
-        print(f"[PASS] test_parser_truncated — correctly rejected truncated data")
+        print("[PASS] test_parser_truncated — correctly rejected truncated data")
 
 
 # ============================================================
 # Test 4: NodeDecoder — decode root
 # ============================================================
+
 
 def test_node_decoder_root():
     """Decode ROOT node."""
@@ -239,12 +224,15 @@ def test_node_decoder_root():
     assert decoded["towns"] is not None
     assert decoded["waypoints"] is not None
 
-    print(f"[PASS] test_node_decoder_root — decoded root: {decoded['version']=}, {len(decoded['tile_areas'])} areas")
+    print(
+        f"[PASS] test_node_decoder_root — decoded root: {decoded['version']=}, {len(decoded['tile_areas'])} areas"
+    )
 
 
 # ============================================================
 # Test 5: NodeDecoder — decode tile area
 # ============================================================
+
 
 def test_node_decoder_tile_area():
     """Decode TILE_AREA node."""
@@ -269,12 +257,15 @@ def test_node_decoder_tile_area():
     assert tile0["ground"] is not None
     assert tile0["ground"]["item_id"] == 106
 
-    print(f"[PASS] test_node_decoder_tile_area — {len(decoded['tiles'])} tiles at z={decoded['base_z']}")
+    print(
+        f"[PASS] test_node_decoder_tile_area — {len(decoded['tiles'])} tiles at z={decoded['base_z']}"
+    )
 
 
 # ============================================================
 # Test 6: NodeDecoder — decode spawns
 # ============================================================
+
 
 def test_node_decoder_spawns():
     """Decode SPAWNS node."""
@@ -297,12 +288,15 @@ def test_node_decoder_spawns():
     assert area["monsters"][0]["name"] == "Dragon Lord"
     assert area["monsters"][0]["spawntime"] == 60
 
-    print(f"[PASS] test_node_decoder_spawns — {len(decoded['spawn_areas'])} areas, {len(area['monsters'])} monsters")
+    print(
+        f"[PASS] test_node_decoder_spawns — {len(decoded['spawn_areas'])} areas, {len(area['monsters'])} monsters"
+    )
 
 
 # ============================================================
 # Test 7: NodeDecoder — decode towns
 # ============================================================
+
 
 def test_node_decoder_towns():
     """Decode TOWNS node."""
@@ -330,6 +324,7 @@ def test_node_decoder_towns():
 # Test 8: NodeDecoder — decode waypoints
 # ============================================================
 
+
 def test_node_decoder_waypoints():
     """Decode WAYPOINTS node."""
     data = _build_test_otbm()
@@ -354,6 +349,7 @@ def test_node_decoder_waypoints():
 # ============================================================
 # Test 9: TileDecoder — convert tile
 # ============================================================
+
 
 def test_tile_decoder():
     """Convert decoded tile to WorldModel-compatible format."""
@@ -385,6 +381,7 @@ def test_tile_decoder():
 # Test 10: ItemDecoder — decode item
 # ============================================================
 
+
 def test_item_decoder():
     """Decode ITEM node attributes."""
     data = _build_test_otbm()
@@ -408,8 +405,8 @@ def test_item_decoder():
     assert tile_format["id"] == 106
 
     # Test is_ground
-    assert item_decoder.is_ground(106) == True
-    assert item_decoder.is_ground(2050) == False
+    assert item_decoder.is_ground(106)
+    assert not item_decoder.is_ground(2050)
 
     print(f"[PASS] test_item_decoder — item_id={decoded['item_id']}")
 
@@ -417,6 +414,7 @@ def test_item_decoder():
 # ============================================================
 # Test 11: WorldBuilder — build full WorldModel dict
 # ============================================================
+
 
 def test_world_builder():
     """Build WorldModel-compatible dict from parsed OTBM."""
@@ -455,13 +453,16 @@ def test_world_builder():
     wp = result["waypoints"][0]
     assert wp["name"] == "wp1"
 
-    print(f"[PASS] test_world_builder — {result['tile_count']} tiles, {result['spawn_count']} spawns, "
-          f"{result['city_count']} cities, {result['waypoint_count']} waypoints")
+    print(
+        f"[PASS] test_world_builder — {result['tile_count']} tiles, {result['spawn_count']} spawns, "
+        f"{result['city_count']} cities, {result['waypoint_count']} waypoints"
+    )
 
 
 # ============================================================
 # Test 12: WorldBuilder — to_worldmodel
 # ============================================================
+
 
 def test_world_builder_to_worldmodel():
     """Build full WorldModel instance from parsed OTBM."""
@@ -495,13 +496,16 @@ def test_world_builder_to_worldmodel():
     spawn = wm.spawns[0]
     assert spawn["monster"] == "Dragon Lord"
 
-    print(f"[PASS] test_world_builder_to_worldmodel — WorldModel with {len(wm.tiles)} tiles, "
-          f"{len(wm.spawns)} spawns")
+    print(
+        f"[PASS] test_world_builder_to_worldmodel — WorldModel with {len(wm.tiles)} tiles, "
+        f"{len(wm.spawns)} spawns"
+    )
 
 
 # ============================================================
 # Test 13: OTBMImporter — import file
 # ============================================================
+
 
 def test_importer_import_file():
     """Import an .otbm file via OTBMImporter."""
@@ -526,8 +530,10 @@ def test_importer_import_file():
         world_model = result["world_model"]
         assert isinstance(world_model, WorldModel)
 
-        print(f"[PASS] test_importer_import_file — imported {result['stats']['tiles']} tiles, "
-              f"{result['stats']['spawns']} spawns")
+        print(
+            f"[PASS] test_importer_import_file — imported {result['stats']['tiles']} tiles, "
+            f"{result['stats']['spawns']} spawns"
+        )
     finally:
         if test_file.exists():
             test_file.unlink()
@@ -536,6 +542,7 @@ def test_importer_import_file():
 # ============================================================
 # Test 14: OTBMImporter — import from bytes
 # ============================================================
+
 
 def test_importer_import_bytes():
     """Import OTBM from bytes."""
@@ -549,12 +556,13 @@ def test_importer_import_bytes():
     assert result["world_model"] is not None
     assert result["world_dict"] is not None
 
-    print(f"[PASS] test_importer_import_bytes — imported from bytes")
+    print("[PASS] test_importer_import_bytes — imported from bytes")
 
 
 # ============================================================
 # Test 15: OTBMImporter — file not found
 # ============================================================
+
 
 def test_importer_file_not_found():
     """Handle missing file gracefully."""
@@ -570,6 +578,7 @@ def test_importer_file_not_found():
 # ============================================================
 # Test 16: OTBMImporter — to_worldmodel convenience
 # ============================================================
+
 
 def test_importer_to_worldmodel():
     """Use to_worldmodel convenience method."""
@@ -587,7 +596,9 @@ def test_importer_to_worldmodel():
         assert len(wm.cities) == 1
         assert len(wm.waypoints) == 1
 
-        print(f"[PASS] test_importer_to_worldmodel — WorldModel with {len(wm.tiles)} tiles")
+        print(
+            f"[PASS] test_importer_to_worldmodel — WorldModel with {len(wm.tiles)} tiles"
+        )
     finally:
         if test_file.exists():
             test_file.unlink()
@@ -596,6 +607,7 @@ def test_importer_to_worldmodel():
 # ============================================================
 # Test 17: OTBMImporter — get_preview
 # ============================================================
+
 
 def test_importer_preview():
     """Get preview of OTBM map."""
@@ -617,8 +629,10 @@ def test_importer_preview():
         assert preview["waypoints"] == 1
         assert preview["file_size"] == len(data)
 
-        print(f"[PASS] test_importer_preview — {preview['tiles']} tiles, {preview['spawns']} spawns, "
-              f"{preview['towns']} towns, {preview['waypoints']} waypoints")
+        print(
+            f"[PASS] test_importer_preview — {preview['tiles']} tiles, {preview['spawns']} spawns, "
+            f"{preview['towns']} towns, {preview['waypoints']} waypoints"
+        )
     finally:
         if test_file.exists():
             test_file.unlink()
@@ -627,6 +641,7 @@ def test_importer_preview():
 # ============================================================
 # Test 18: WorldBuilder — invalid data
 # ============================================================
+
 
 def test_world_builder_invalid():
     """Handle invalid parsed data."""
@@ -644,9 +659,9 @@ def test_world_builder_invalid():
 # Test 19: Round trip — OTBM -> WorldModel -> OTBM
 # ============================================================
 
+
 def test_round_trip_basic():
     """Full round trip: build OTBM -> parse -> WorldModel -> serialize -> OTBM."""
-    import io
     from core.otbm.otbm_serializer import OtbmSerializer
 
     # 1. Build original OTBM
@@ -667,10 +682,18 @@ def test_round_trip_basic():
     re_wm = re_builder.to_worldmodel(re_parsed)
 
     # 5. Compare
-    assert len(re_wm.tiles) == len(wm.tiles), f"Tile count mismatch: {len(re_wm.tiles)} vs {len(wm.tiles)}"
-    assert len(re_wm.spawns) == len(wm.spawns), f"Spawn count mismatch: {len(re_wm.spawns)} vs {len(wm.spawns)}"
-    assert len(re_wm.cities) == len(wm.cities), f"City count mismatch: {len(re_wm.cities)} vs {len(wm.cities)}"
-    assert len(re_wm.waypoints) == len(wm.waypoints), f"Waypoint count mismatch: {len(re_wm.waypoints)} vs {len(wm.waypoints)}"
+    assert len(re_wm.tiles) == len(wm.tiles), (
+        f"Tile count mismatch: {len(re_wm.tiles)} vs {len(wm.tiles)}"
+    )
+    assert len(re_wm.spawns) == len(wm.spawns), (
+        f"Spawn count mismatch: {len(re_wm.spawns)} vs {len(wm.spawns)}"
+    )
+    assert len(re_wm.cities) == len(wm.cities), (
+        f"City count mismatch: {len(re_wm.cities)} vs {len(wm.cities)}"
+    )
+    assert len(re_wm.waypoints) == len(wm.waypoints), (
+        f"Waypoint count mismatch: {len(re_wm.waypoints)} vs {len(wm.waypoints)}"
+    )
 
     # Verify tile positions
     for key, tile in wm.tiles.items():
@@ -680,13 +703,16 @@ def test_round_trip_basic():
         assert tile.y == re_tile.y, f"Y mismatch at {key}: {tile.y} vs {re_tile.y}"
         assert tile.z == re_tile.z, f"Z mismatch at {key}: {tile.z} vs {re_tile.z}"
 
-    print(f"[PASS] test_round_trip_basic — {len(wm.tiles)} tiles, {len(wm.spawns)} spawns, "
-          f"{len(wm.cities)} cities preserved through round trip")
+    print(
+        f"[PASS] test_round_trip_basic — {len(wm.tiles)} tiles, {len(wm.spawns)} spawns, "
+        f"{len(wm.cities)} cities preserved through round trip"
+    )
 
 
 # ============================================================
 # Test 20: Round trip — with items and attributes
 # ============================================================
+
 
 def test_round_trip_with_items():
     """Round trip with items containing attributes."""
@@ -699,22 +725,29 @@ def test_round_trip_with_items():
     item4 = encoder.encode_item(item_id=1945, action_id=100, unique_id=1, text="Hello")
 
     tile = encoder.encode_tile(
-        offset_x=0, offset_y=0,
+        offset_x=0,
+        offset_y=0,
         tile_flags=TILESTATE_PROTECTIONZONE,
-        children=encoder.encode_item(item_id=112) + item1 + item2 + item3 + item4  # ground + items
+        children=encoder.encode_item(item_id=112)
+        + item1
+        + item2
+        + item3
+        + item4,  # ground + items
     )
 
-    tile_area = encoder.encode_tile_area(base_x=500, base_y=500, base_z=7, children=tile)
+    tile_area = encoder.encode_tile_area(
+        base_x=500, base_y=500, base_z=7, children=tile
+    )
     map_data = encoder.encode_map_data(
-        description="Items test",
-        spawn_file="",
-        house_file="",
-        children=tile_area
+        description="Items test", spawn_file="", house_file="", children=tile_area
     )
     root = encoder.encode_root(
-        otbm_version=0, width=1, height=1,
-        item_major=3, item_minor=57,
-        children=map_data
+        otbm_version=0,
+        width=1,
+        height=1,
+        item_major=3,
+        item_minor=57,
+        children=map_data,
     )
     data = b"OTBM" + root
 
@@ -749,10 +782,11 @@ def test_round_trip_with_items():
 # Test 21: Round trip — large map
 # ============================================================
 
+
 def test_round_trip_large():
     """Round trip with larger map (100 tiles)."""
     encoder = NodeEncoder()
-    tile_encoder = TileEncoder()
+    TileEncoder()
 
     # Build 10x10 grid
     tile_nodes = b""
@@ -760,16 +794,24 @@ def test_round_trip_large():
         for y in range(10):
             ground_id = 106 if (x + y) % 2 == 0 else 110
             tile = encoder.encode_tile(
-                offset_x=x, offset_y=y,
-                children=encoder.encode_item(item_id=ground_id)
+                offset_x=x, offset_y=y, children=encoder.encode_item(item_id=ground_id)
             )
             tile_nodes += tile
 
-    tile_area = encoder.encode_tile_area(base_x=0, base_y=0, base_z=7, children=tile_nodes)
-    map_data = encoder.encode_map_data(description="Large test", spawn_file="", house_file="",
-                                        children=tile_area)
-    root = encoder.encode_root(otbm_version=0, width=10, height=10,
-                                item_major=3, item_minor=57, children=map_data)
+    tile_area = encoder.encode_tile_area(
+        base_x=0, base_y=0, base_z=7, children=tile_nodes
+    )
+    map_data = encoder.encode_map_data(
+        description="Large test", spawn_file="", house_file="", children=tile_area
+    )
+    root = encoder.encode_root(
+        otbm_version=0,
+        width=10,
+        height=10,
+        item_major=3,
+        item_minor=57,
+        children=map_data,
+    )
     data = b"OTBM" + root
 
     # Parse
@@ -789,7 +831,7 @@ def test_round_trip_large():
 
     assert len(re_wm.tiles) == 100
 
-    print(f"[PASS] test_round_trip_large — 100 tiles preserved")
+    print("[PASS] test_round_trip_large — 100 tiles preserved")
 
 
 # ============================================================
@@ -837,6 +879,7 @@ if __name__ == "__main__":
         except Exception as e:
             failed += 1
             import traceback
+
             print(f"  [FAIL] {name}: {e}")
             traceback.print_exc()
         print()

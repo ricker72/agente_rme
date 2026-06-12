@@ -1,4 +1,11 @@
-from .dungeon_generator import DungeonGenerator, Dungeon, Floor, Room, Shortcut, RespawnPoint
+from .dungeon_generator import (
+    DungeonGenerator,
+    Dungeon,
+    Floor,
+    Room,
+    Shortcut,
+    RespawnPoint,
+)
 from .floor_generator import FloorGenerator
 from .room_generator import RoomGenerator, RoomType
 from .corridor_generator import CorridorGenerator

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
@@ -66,8 +65,9 @@ class TestExpansionAIRun:
     def test_expand_empty_world(self):
         world = _build_empty_world()
         ai = ExpansionAI()
-        expanded, report = ai.expand(world, max_hunts=0, max_boss_rooms=0,
-                                     max_quest_zones=0)
+        expanded, report = ai.expand(
+            world, max_hunts=0, max_boss_rooms=0, max_quest_zones=0
+        )
         assert report.tiles_original == 0
         assert report.tiles_final == 0
 
@@ -94,8 +94,9 @@ class TestExpansionAIRun:
     def test_expand_custom_params(self):
         world = _build_small_world()
         ai = ExpansionAI()
-        _, report = ai.expand(world, max_hunts=1, max_boss_rooms=0,
-                              max_quest_zones=1, theme="hell")
+        _, report = ai.expand(
+            world, max_hunts=1, max_boss_rooms=0, max_quest_zones=1, theme="hell"
+        )
         assert report.expanded is True
 
 

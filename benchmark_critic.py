@@ -15,7 +15,7 @@ import os
 import sys
 import time
 import random
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 # Ensure we can import from project root
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +40,9 @@ def _fill_with_items(w: WorldModel, density: float, rng: random.Random) -> None:
     for tile in list(w.tiles.values()):
         if rng.random() < density:
             n = rng.randint(1, 5)
-            tile.items = [{"itemid": rng.randint(100, 999), "count": 1} for _ in range(n)]
+            tile.items = [
+                {"itemid": rng.randint(100, 999), "count": 1} for _ in range(n)
+            ]
 
 
 def _add_spawns(w: WorldModel, count: int, monster: str, rng: random.Random) -> None:
@@ -54,12 +56,15 @@ def _add_spawns(w: WorldModel, count: int, monster: str, rng: random.Random) -> 
 
 # 10 distinct map configurations
 
+
 def map_issavi_300() -> WorldModel:
     """1. Issavi 300-500: 3 hunts, 2 bosses, 1 raid, full city hub."""
     w = WorldModel()
     for x in range(0, 30):
         for y in range(0, 30):
-            w.set_tile(Tile(x=x, y=y, z=7, ground=100, items=[{"itemid": 200, "count": 1}]))
+            w.set_tile(
+                Tile(x=x, y=y, z=7, ground=100, items=[{"itemid": 200, "count": 1}])
+            )
     w.add_region(Region(name="city_issavi", min_level=1, max_level=500))
     w.add_region(Region(name="city_issavi_depot", min_level=1, max_level=500))
     w.add_region(Region(name="city_issavi_temple", min_level=1, max_level=500))
@@ -68,24 +73,47 @@ def map_issavi_300() -> WorldModel:
         ox = 50 + i * 60
         for dx in range(20):
             for dy in range(20):
-                t = Tile(x=ox + dx, y=dy, z=7, ground=200 + i,
-                         items=[{"itemid": 300, "count": 1}], zone=f"hunt_{i}")
+                t = Tile(
+                    x=ox + dx,
+                    y=dy,
+                    z=7,
+                    ground=200 + i,
+                    items=[{"itemid": 300, "count": 1}],
+                    zone=f"hunt_{i}",
+                )
                 if (dx + dy) % 5 == 0:
                     t.spawn = Spawn(monster="Demon", respawn=60, radius=2)
                 w.set_tile(t)
         w.add_region(Region(name=f"hunt_{i}", min_level=300 + i * 50, max_level=500))
     for i in range(2):
-        w.add_structure(Structure(name=f"boss_{i}", category="boss_room",
-                                  x=30 + i * 100, y=60, z=7, width=15, height=15,
-                                  tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name=f"boss_{i}",
+                category="boss_room",
+                x=30 + i * 100,
+                y=60,
+                z=7,
+                width=15,
+                height=15,
+                tags=["boss"],
+            )
+        )
         for dx in range(15):
             for dy in range(15):
                 w.set_tile(Tile(x=30 + i * 100 + dx, y=60 + dy, z=7, ground=500))
     w.add_region(Region(name="raid_zargoth", min_level=300, max_level=500))
     for x in range(180, 220):
         for y in range(180, 220):
-            w.set_tile(Tile(x=x, y=y, z=7, ground=600, items=[{"itemid": 777, "count": 1}],
-                            zone="raid_zargoth"))
+            w.set_tile(
+                Tile(
+                    x=x,
+                    y=y,
+                    z=7,
+                    ground=600,
+                    items=[{"itemid": 777, "count": 1}],
+                    zone="raid_zargoth",
+                )
+            )
     return w
 
 
@@ -145,9 +173,21 @@ def map_djinn() -> WorldModel:
     w = WorldModel()
     for x in range(10):
         for y in range(10):
-            w.set_tile(Tile(x=x, y=y, z=7, ground=100, items=[{"itemid": 200, "count": 1}]))
-    w.add_structure(Structure(name="boss_djinn", category="boss_room",
-                              x=2, y=2, z=7, width=6, height=6, tags=["boss"]))
+            w.set_tile(
+                Tile(x=x, y=y, z=7, ground=100, items=[{"itemid": 200, "count": 1}])
+            )
+    w.add_structure(
+        Structure(
+            name="boss_djinn",
+            category="boss_room",
+            x=2,
+            y=2,
+            z=7,
+            width=6,
+            height=6,
+            tags=["boss"],
+        )
+    )
     w.add_region(Region(name="boss_djinn_arena", min_level=200, max_level=350))
     return w
 
@@ -171,9 +211,18 @@ def map_venore() -> WorldModel:
     w.add_region(Region(name="city_venore_temple", min_level=1, max_level=100))
     w.add_region(Region(name="hunt_venore", min_level=30, max_level=80))
     for i in range(2):
-        w.add_structure(Structure(name=f"boss_v_{i}", category="boss_room",
-                                  x=20 + i * 5, y=20, z=7, width=5, height=5,
-                                  tags=["boss"]))
+        w.add_structure(
+            Structure(
+                name=f"boss_v_{i}",
+                category="boss_room",
+                x=20 + i * 5,
+                y=20,
+                z=7,
+                width=5,
+                height=5,
+                tags=["boss"],
+            )
+        )
     return w
 
 
@@ -215,7 +264,10 @@ def run_benchmark(output_dir: str = "output_benchmark") -> Dict[str, Any]:
             sub_dir = os.path.join(output_dir, name)
             os.makedirs(sub_dir, exist_ok=True)
             result = critic.analyze(
-                world, map_name=name, output_dir=sub_dir, generate_heatmaps=True,
+                world,
+                map_name=name,
+                output_dir=sub_dir,
+                generate_heatmaps=True,
             )
             elapsed = time.time() - t0
             entry = {
@@ -235,14 +287,18 @@ def run_benchmark(output_dir: str = "output_benchmark") -> Dict[str, Any]:
                 "elapsed_seconds": round(elapsed, 3),
                 "status": "ok",
             }
-            print(f"  {name:30s}  overall={entry['overall_score']:6.2f}  "
-                  f"issues={entry['issue_count']:3d}  recs={entry['recommendation_count']:3d}  "
-                  f"({entry['elapsed_seconds']:.2f}s)")
+            print(
+                f"  {name:30s}  overall={entry['overall_score']:6.2f}  "
+                f"issues={entry['issue_count']:3d}  recs={entry['recommendation_count']:3d}  "
+                f"({entry['elapsed_seconds']:.2f}s)"
+            )
         except Exception as e:  # pragma: no cover — defensive
             elapsed = time.time() - t0
             entry = {
-                "name": name, "status": "error",
-                "error": str(e), "elapsed_seconds": round(elapsed, 3),
+                "name": name,
+                "status": "error",
+                "error": str(e),
+                "elapsed_seconds": round(elapsed, 3),
             }
             print(f"  {name:30s}  ERROR: {e}")
         results.append(entry)

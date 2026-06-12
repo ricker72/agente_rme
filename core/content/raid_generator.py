@@ -8,7 +8,7 @@ Each raid includes a boss, zone, objectives, and scaled rewards.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .quest_package import QuestPackage, RoomType
 from .map_designer import MapDesigner
@@ -68,9 +68,7 @@ class RaidGenerator:
         boss = self.map_designer.select_boss(min_level)
 
         # Coordinates from zone
-        zone_hash = self.map_designer._deterministic_offset(
-            f"raid:{zone}", 500
-        )
+        zone_hash = self.map_designer._deterministic_offset(f"raid:{zone}", 500)
         wx = 2000 + zone_hash
         wy = 2000 + zone_hash * 2
         wz = 7
@@ -78,9 +76,7 @@ class RaidGenerator:
         # Scale rewards
         base_gold = self.map_designer.calculate_gold(min_level)
         gold = int(base_gold * diff["gold_mult"])
-        items = self.map_designer.select_rewards(
-            min_level, count=diff["item_count"]
-        )
+        items = self.map_designer.select_rewards(min_level, count=diff["item_count"])
 
         # Enemy count
         enemy_count = max(10, int(min_level / 10 * diff["enemy_mult"]))
@@ -118,7 +114,10 @@ class RaidGenerator:
 
         logger.info(
             "Generated raid '%s' for levels %d-%d (%s)",
-            name, min_level, max_level, difficulty,
+            name,
+            min_level,
+            max_level,
+            difficulty,
         )
         return package
 
@@ -139,14 +138,14 @@ class RaidGenerator:
         # Add ability-specific objectives
         abilities = boss.get("abilities", [])
         if abilities:
-            objectives.append(
-                f"Counter the boss abilities: {', '.join(abilities)}"
-            )
+            objectives.append(f"Counter the boss abilities: {', '.join(abilities)}")
 
-        objectives.extend([
-            f"Defeat {boss['name']}",
-            "Claim the raid rewards",
-        ])
+        objectives.extend(
+            [
+                f"Defeat {boss['name']}",
+                "Claim the raid rewards",
+            ]
+        )
 
         if difficulty in ("hard", "epic"):
             objectives.insert(2, "Survive the elite guard waves")

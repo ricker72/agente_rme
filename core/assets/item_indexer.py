@@ -1,11 +1,11 @@
 """
 ItemIndexer — Indexa items de Tibia desde items.xml o lista conocida.
 """
+
 from __future__ import annotations
 
 import xml.etree.ElementTree as ET
 from typing import Any, Dict, List, Optional
-
 
 KNOWN_ITEMS = {
     # grounds
@@ -135,12 +135,43 @@ class ItemIndexer:
             return "wall"
         if type_name in ("ground", "floor"):
             return "ground"
-        if any(kw in name for kw in ["floor", "ground", "grass", "dirt", "sand",
-                                       "stone", "marble", "ice", "snow", "lava",
-                                       "water", "pavement", "gravel", "cobblestone"]):
+        if any(
+            kw in name
+            for kw in [
+                "floor",
+                "ground",
+                "grass",
+                "dirt",
+                "sand",
+                "stone",
+                "marble",
+                "ice",
+                "snow",
+                "lava",
+                "water",
+                "pavement",
+                "gravel",
+                "cobblestone",
+            ]
+        ):
             return "ground"
-        if any(kw in name for kw in ["torch", "lamp", "statue", "vase", "flower",
-                                       "bone", "skull", "rock", "altar", "candle",
-                                       "crystal", "shrub", "fireplace"]):
+        if any(
+            kw in name
+            for kw in [
+                "torch",
+                "lamp",
+                "statue",
+                "vase",
+                "flower",
+                "bone",
+                "skull",
+                "rock",
+                "altar",
+                "candle",
+                "crystal",
+                "shrub",
+                "fireplace",
+            ]
+        ):
             return "decoration"
         return "item"

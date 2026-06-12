@@ -1,13 +1,13 @@
 """
-Tests for the prompt → campaign.json pipeline.
+Tests for the prompt â†’ campaign.json pipeline.
 
 Validates the end-to-end flow:
     Prompt
-        ↓
+        â†“
     QuestAgent (builds CampaignPackage)
-        ↓
+        â†“
     ExportAgent (writes campaign.json unconditionally)
-        ↓
+        â†“
     Validator (validates the resulting JSON)
 
 These tests confirm that, at every step of the pipeline, the campaign
@@ -26,17 +26,14 @@ import pytest
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from core.campaign import (
-    Campaign,
     CampaignGenerator,
     CampaignPackage,
     CampaignValidator,
-    PackageStatus,
     REQUIRED_KEYS,
 )
-from agente_rme.core.agents.contracts import AgentRequest, AgentResponse
-from agente_rme.core.agents.quest_agent import QuestAgent
-from agente_rme.core.agents.export_agent import ExportAgent
-
+from core.agents.contracts import AgentRequest
+from core.agents.quest_agent import QuestAgent
+from core.agents.export_agent import ExportAgent
 
 # ----------------------------------------------------------------------
 # Pipeline fixtures
@@ -59,7 +56,7 @@ def _build_request(prompt: str, **params) -> AgentRequest:
 
 
 # ----------------------------------------------------------------------
-# Prompt → QuestAgent
+# Prompt â†’ QuestAgent
 # ----------------------------------------------------------------------
 
 
@@ -70,7 +67,9 @@ class TestPromptToQuestAgent:
         agent = QuestAgent()
         req = _build_request(
             "Issavi dungeon for levels 300-500",
-            theme="issavi", level_min=300, level_max=500,
+            theme="issavi",
+            level_min=300,
+            level_max=500,
         )
         resp = agent.execute(req)
         assert resp.success is True
@@ -115,18 +114,20 @@ class TestPromptToQuestAgent:
 
 
 # ----------------------------------------------------------------------
-# QuestAgent → ExportAgent
+# QuestAgent â†’ ExportAgent
 # ----------------------------------------------------------------------
 
 
 class TestQuestAgentToExportAgent:
-    """The output of QuestAgent feeds into ExportAgent — verify the chain."""
+    """The output of QuestAgent feeds into ExportAgent â€” verify the chain."""
 
     def test_quest_output_is_export_ready(self):
         agent = QuestAgent()
         req = _build_request(
             "Issavi and Roshamuul for 300-500",
-            theme="issavi", level_min=300, level_max=500,
+            theme="issavi",
+            level_min=300,
+            level_max=500,
         )
         quest_resp = agent.execute(req)
         assert quest_resp.success is True
@@ -158,7 +159,7 @@ def output_dir_factory():
 
 
 # ----------------------------------------------------------------------
-# ExportAgent → campaign.json
+# ExportAgent â†’ campaign.json
 # ----------------------------------------------------------------------
 
 
@@ -213,7 +214,7 @@ class TestExportAgentToFile:
             prompt="Export nothing",
             context={},
         )
-        resp = exporter.execute(req)
+        exporter.execute(req)
         # Even on partial failure, the file MUST exist
         path = os.path.join(output_dir, "campaign.json")
         assert os.path.exists(path), "campaign.json MUST be written even without data"
@@ -224,7 +225,7 @@ class TestExportAgentToFile:
 
 
 # ----------------------------------------------------------------------
-# File → Validator
+# File â†’ Validator
 # ----------------------------------------------------------------------
 
 
@@ -252,7 +253,9 @@ class TestFileToValidator:
         """Even an empty fallback should pass validation (with maybe a warning)."""
         pkg = CampaignPackage.minimal(theme="default", level_range=[1, 200])
         pkg.save(os.path.join(output_dir, "campaign.json"))
-        with open(os.path.join(output_dir, "campaign.json"), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(output_dir, "campaign.json"), "r", encoding="utf-8"
+        ) as f:
             data = json.load(f)
         v = CampaignValidator()
         result = v.validate(data)
@@ -266,7 +269,7 @@ class TestFileToValidator:
 
 
 class TestEndToEndPipeline:
-    """Prompt → CampaignPackage → campaign.json → Validator."""
+    """Prompt â†’ CampaignPackage â†’ campaign.json â†’ Validator."""
 
     PROMPTS = [
         "Issavi dungeon for levels 300-500, 3 hunts, 2 bosses, 1 raid, quest principal",

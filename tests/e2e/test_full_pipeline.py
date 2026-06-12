@@ -1,17 +1,11 @@
 from __future__ import annotations
 
-import pytest
 import json
 import os
 import tempfile
 import shutil
 
 from core.pipeline.full_pipeline import FullPipeline, PipelineResult
-from core.balance.balance_engine import BalanceEngine, BalanceReport
-from core.expansion.expansion_ai import ExpansionAI, ExpansionReport
-from core.campaign.campaign_generator import CampaignGenerator, Campaign
-from core.playtest.playtest_engine import PlaytestEngine
-from core.world.world_model import WorldModel
 
 
 class TestFullPipelineInit:
@@ -127,7 +121,7 @@ class TestE2EIntegration:
         p = FullPipeline()
         result = p.run(
             prompt="Create Issavi + Roshamuul expansion for levels 300-500 "
-                   "with 3 hunts, 2 bosses, a raid and a quest main",
+            "with 3 hunts, 2 bosses, a raid and a quest main",
             theme="Issavi",
             level_range=(300, 500),
         )
@@ -160,7 +154,7 @@ class TestE2EIntegration:
         tmpdir = tempfile.mkdtemp()
         try:
             p = FullPipeline()
-            result = p.run(output_dir=tmpdir)
+            p.run(output_dir=tmpdir)
 
             assert os.path.exists(os.path.join(tmpdir, "campaign.json"))
             assert os.path.exists(os.path.join(tmpdir, "report.json"))
@@ -174,7 +168,7 @@ class TestE2EIntegration:
         tmpdir = tempfile.mkdtemp()
         try:
             p = FullPipeline()
-            result = p.run(output_dir=tmpdir, theme="Issavi")
+            p.run(output_dir=tmpdir, theme="Issavi")
 
             campaign_path = os.path.join(tmpdir, "campaign.json")
             with open(campaign_path, "r") as f:
@@ -193,8 +187,7 @@ class TestE2EIntegration:
         """Verify world has spawns after full pipeline."""
         p = FullPipeline()
         result = p.run()
-        spawns = sum(1 for t in result.world.tiles.values()
-                     if t.spawn is not None)
+        spawns = sum(1 for t in result.world.tiles.values() if t.spawn is not None)
         assert spawns > 0
 
     def test_world_has_regions_after_pipeline(self):

@@ -3,14 +3,14 @@ Design Goal model - represents the high-level objectives for autonomous world de
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional
 from datetime import datetime
 
 
 @dataclass
 class DesignGoal:
     """Represents the high-level design objectives for world generation."""
-    
+
     prompt: str
     level_range: tuple = (1, 200)
     num_hunts: int = 2
@@ -22,7 +22,7 @@ class DesignGoal:
     target_complexity: Optional[float] = None
     strategy: str = "balanced"
     created_at: datetime = field(default_factory=datetime.now)
-    
+
     def __post_init__(self):
         """Validate the design goal after initialization."""
         if not self.prompt:
@@ -35,7 +35,7 @@ class DesignGoal:
             raise ValueError("Target critic score must be between 0 and 100")
         if self.target_playtest_score < 0 or self.target_playtest_score > 100:
             raise ValueError("Target playtest score must be between 0 and 100")
-    
+
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
         return {
@@ -51,7 +51,7 @@ class DesignGoal:
             "strategy": self.strategy,
             "created_at": self.created_at.isoformat(),
         }
-    
+
     @classmethod
     def from_dict(cls, data: dict) -> "DesignGoal":
         """Create from dictionary."""

@@ -3,9 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
-from .goal_engine import GoalEngine, WorldGoal, GoalType
-from .constraint_engine import ConstraintEngine, ConstraintValidationResult, DesignConstraint
-from .decision_engine import DecisionEngine, DesignDecision, DecisionDomain
+from .goal_engine import GoalEngine, WorldGoal
+from .constraint_engine import ConstraintEngine, ConstraintValidationResult
+from .decision_engine import DecisionEngine, DesignDecision
 from .reasoning_engine import ReasoningEngine, DesignExplanation
 
 
@@ -14,6 +14,7 @@ class WorldBrainState:
     """
     Current state of the World Brain's cognitive process.
     """
+
     is_thinking: bool = False
     current_goal: Optional[str] = None
     decisions_made: int = 0
@@ -39,6 +40,7 @@ class BrainSession:
     """
     Complete record of a World Brain thinking session.
     """
+
     prompt: str
     goals: List[WorldGoal] = field(default_factory=list)
     decisions: List[DesignDecision] = field(default_factory=list)
@@ -52,7 +54,9 @@ class BrainSession:
             "goals": [g.to_dict() for g in self.goals],
             "decisions": [d.to_dict() for d in self.decisions],
             "explanations": [e.to_dict() for e in self.explanations],
-            "constraints_passed": self.constraints_result.passed if self.constraints_result else None,
+            "constraints_passed": (
+                self.constraints_result.passed if self.constraints_result else None
+            ),
             "success": self.success,
         }
 
@@ -89,7 +93,9 @@ class WorldBrain:
     # Public API
     # ------------------------------------------------------------------
 
-    def think(self, prompt: str, world_context: Optional[Dict[str, Any]] = None) -> BrainSession:
+    def think(
+        self, prompt: str, world_context: Optional[Dict[str, Any]] = None
+    ) -> BrainSession:
         """
         The main cognitive entry point.
 
@@ -142,8 +148,7 @@ class WorldBrain:
                 self.decision_engine.approve_decision(decision)
             else:
                 self.decision_engine.reject_decision(
-                    decision,
-                    f"Constraints failed: {', '.join(validation.errors)}"
+                    decision, f"Constraints failed: {', '.join(validation.errors)}"
                 )
             session.constraints_result = validation
             self.state.constraints_validated += 1
@@ -161,11 +166,16 @@ class WorldBrain:
             self.reasoning_engine.log_decision(
                 what=decision.what,
                 why=decision.why,
-                context={"source_goal": decision.source_goal, "priority": decision.priority},
+                context={
+                    "source_goal": decision.source_goal,
+                    "priority": decision.priority,
+                },
             )
 
         self.state.decisions_made = len(ordered)
-        self.state.decisions_executed = len([d for d in ordered if d.status == "executed"])
+        self.state.decisions_executed = len(
+            [d for d in ordered if d.status == "executed"]
+        )
         session.success = all(d.status == "approved" for d in ordered if d.priority > 7)
         self.state.is_thinking = False
 
@@ -188,17 +198,19 @@ class WorldBrain:
         """Get the full decision audit log."""
         return self.reasoning_engine.get_decision_log()
 
-    def reframe(self, prompt: str, world_context: Optional[Dict[str, Any]] = None) -> BrainSession:
+    def reframe(
+        self, prompt: str, world_context: Optional[Dict[str, Any]] = None
+    ) -> BrainSession:
         """
         Re-think with a new perspective while preserving previous decisions.
 
         Like think() but builds upon existing goals and decisions.
         """
         self.state.iteration += 1
-        previous_count = len(self.goal_engine.all_goals)
+        len(self.goal_engine.all_goals)
 
         # Create additional goals from the new prompt
-        new_goals = self.goal_engine.create_goals_from_prompt(prompt)
+        self.goal_engine.create_goals_from_prompt(prompt)
 
         # Re-run the thinking process with combined goals
         combined_prompt = f"{self.state.current_goal or ''} + {prompt}"

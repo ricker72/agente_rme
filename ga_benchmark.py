@@ -29,11 +29,13 @@ def _utc_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def run_benchmark(count: int = 500, seed_start: int = 1,
-                  output_path: str = "ga_benchmark.json") -> dict:
+def run_benchmark(
+    count: int = 500, seed_start: int = 1, output_path: str = "ga_benchmark.json"
+) -> dict:
     """Run the GA benchmark."""
     try:
         import psutil  # type: ignore
+
         proc = psutil.Process(os.getpid())
     except Exception:
         psutil = None
@@ -57,14 +59,16 @@ def run_benchmark(count: int = 500, seed_start: int = 1,
         t0 = time.time()
         try:
             gen = WorldGenerator(seed=seed)
-            world = gen.generate({
-                "type": "hunt",
-                "theme": "issavi",
-                "level_min": 250,
-                "level_max": 320,
-                "width": 12,
-                "height": 12,
-            })
+            world = gen.generate(
+                {
+                    "type": "hunt",
+                    "theme": "issavi",
+                    "level_min": 250,
+                    "level_max": 320,
+                    "width": 12,
+                    "height": 12,
+                }
+            )
             tiles = world.tile_count() if hasattr(world, "tile_count") else 0
             regions = world.region_count() if hasattr(world, "region_count") else 0
             if tiles > 0:
@@ -90,8 +94,9 @@ def run_benchmark(count: int = 500, seed_start: int = 1,
         if (i + 1) % 50 == 0 or i == count - 1:
             elapsed_total = time.time() - t_start
             rate = (i + 1) / elapsed_total if elapsed_total > 0 else 0.0
-            print(f"  [{i + 1:4d}/{count}] {successes} ok | {rate:.1f} worlds/s "
-                  f"| {elapsed_total:.1f}s elapsed")
+            print(
+                f"  [{i + 1:4d}/{count}] {successes} ok | {rate:.1f} worlds/s | {elapsed_total:.1f}s elapsed"
+            )
 
     elapsed_total = time.time() - t_start
     success_rate = successes / count if count else 0.0
@@ -114,7 +119,9 @@ def run_benchmark(count: int = 500, seed_start: int = 1,
             "failed": count - successes,
             "success_rate": round(success_rate, 4),
             "elapsed_seconds": round(elapsed_total, 3),
-            "worlds_per_second": round(count / elapsed_total, 3) if elapsed_total > 0 else 0.0,
+            "worlds_per_second": round(count / elapsed_total, 3)
+            if elapsed_total > 0
+            else 0.0,
             "score": {
                 "avg": round(avg_score, 2),
                 "min": round(min_score, 2),
@@ -136,13 +143,19 @@ def run_benchmark(count: int = 500, seed_start: int = 1,
                 "max": max(tiles_list) if tiles_list else 0,
             },
             "regions": {
-                "avg": round(sum(regions_list) / len(regions_list), 2) if regions_list else 0,
+                "avg": round(sum(regions_list) / len(regions_list), 2)
+                if regions_list
+                else 0,
                 "min": min(regions_list) if regions_list else 0,
                 "max": max(regions_list) if regions_list else 0,
             },
             "failures_sample": failures[:10],
         },
-        "ga_status": "PASS" if success_rate >= 0.99 else ("DEGRADED" if success_rate >= 0.95 else "FAIL"),
+        "ga_status": (
+            "PASS"
+            if success_rate >= 0.99
+            else ("DEGRADED" if success_rate >= 0.95 else "FAIL")
+        ),
     }
 
     out = Path(output_path)
@@ -150,9 +163,11 @@ def run_benchmark(count: int = 500, seed_start: int = 1,
     with open(out, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2, ensure_ascii=False, default=str)
 
-    print(f"\n[GA BENCHMARK COMPLETE]")
+    print("\n[GA BENCHMARK COMPLETE]")
     print(f"  Success rate:   {success_rate:.2%}  ({successes}/{count})")
-    print(f"  Avg score:      {avg_score:.2f}  (min {min_score:.2f}, max {max_score:.2f})")
+    print(
+        f"  Avg score:      {avg_score:.2f}  (min {min_score:.2f}, max {max_score:.2f})"
+    )
     print(f"  Avg duration:   {avg_dur:.2f}ms")
     print(f"  Worlds/second:  {report['benchmark']['worlds_per_second']:.2f}")
     print(f"  Peak memory:    {peak_mem:.1f} MB")
@@ -162,14 +177,21 @@ def run_benchmark(count: int = 500, seed_start: int = 1,
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Agente RME v1.0.0 GA production benchmark")
-    parser.add_argument("--count", type=int, default=500, help="Number of worlds to generate")
-    parser.add_argument("--output", default="ga_benchmark.json", help="Output JSON path")
+    parser = argparse.ArgumentParser(
+        description="Agente RME v1.0.0 GA production benchmark"
+    )
+    parser.add_argument(
+        "--count", type=int, default=500, help="Number of worlds to generate"
+    )
+    parser.add_argument(
+        "--output", default="ga_benchmark.json", help="Output JSON path"
+    )
     parser.add_argument("--seed", type=int, default=1, help="Starting seed")
     args = parser.parse_args()
     try:
-        report = run_benchmark(count=args.count, seed_start=args.seed,
-                               output_path=args.output)
+        report = run_benchmark(
+            count=args.count, seed_start=args.seed, output_path=args.output
+        )
         if report["ga_status"] == "FAIL":
             sys.exit(2)
     except KeyboardInterrupt:

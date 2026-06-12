@@ -8,8 +8,7 @@ and overall difficulty curve across a world.
 from __future__ import annotations
 
 import logging
-import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
 logger = logging.getLogger(__name__)
@@ -18,6 +17,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class DifficultyReport:
     """Difficulty evaluation for a world or zone."""
+
     overall_difficulty: str  # "trivial", "easy", "medium", "hard", "extreme"
     difficulty_score: float  # 0.0 - 10.0
     spawn_density: float  # monsters per 100 tiles
@@ -76,24 +76,35 @@ class DifficultyEvaluator:
         density = (spawn_count / max(total_tiles, 1)) * 100
         if density < self.MIN_DENSITY:
             density_score = 1.0
-            issues.append(f"Zone '{zone_name}' has very low spawn density ({density:.1f}/100 tiles)")
+            issues.append(
+                f"Zone '{zone_name}' has very low spawn density ({density:.1f}/100 tiles)"
+            )
         elif density > self.MAX_DENSITY:
             density_score = 10.0
-            issues.append(f"Zone '{zone_name}' has excessive spawn density ({density:.1f}/100 tiles)")
+            issues.append(
+                f"Zone '{zone_name}' has excessive spawn density ({density:.1f}/100 tiles)"
+            )
         else:
             # Linear scale 1-10 based on density
-            density_score = 1.0 + (density - self.MIN_DENSITY) / (
-                self.MAX_DENSITY - self.MIN_DENSITY
-            ) * 9.0
+            density_score = (
+                1.0
+                + (density - self.MIN_DENSITY)
+                / (self.MAX_DENSITY - self.MIN_DENSITY)
+                * 9.0
+            )
 
         # ── Level Ratio Score ──
         level_ratio = monster_avg_level / max(player_level, 1)
         if level_ratio < self.MIN_LEVEL_RATIO:
             level_score = 1.0
-            issues.append(f"Monsters too weak for target level (ratio: {level_ratio:.2f})")
+            issues.append(
+                f"Monsters too weak for target level (ratio: {level_ratio:.2f})"
+            )
         elif level_ratio > self.MAX_LEVEL_RATIO:
             level_score = 10.0
-            issues.append(f"Monsters too strong for target level (ratio: {level_ratio:.2f})")
+            issues.append(
+                f"Monsters too strong for target level (ratio: {level_ratio:.2f})"
+            )
         else:
             # Parabolic score centered on IDEAL_LEVEL_RATIO
             deviation = abs(level_ratio - self.IDEAL_LEVEL_RATIO)
@@ -184,7 +195,10 @@ class DifficultyEvaluator:
         avg_level_ratio /= max(len(zones), 1)
 
         # Risk-reward
-        total_xp = sum(info.get("monster_xp", 100) * info.get("spawn_count", 0) for info in zones.values())
+        total_xp = sum(
+            info.get("monster_xp", 100) * info.get("spawn_count", 0)
+            for info in zones.values()
+        )
         risk_reward = total_xp / max(avg_score * 1000, 1)
 
         # Time to clear estimation
@@ -192,15 +206,24 @@ class DifficultyEvaluator:
 
         # Recommendations
         if avg_density > self.MAX_DENSITY:
-            all_recommendations.append("Reduce overall spawn density for better pacing.")
+            all_recommendations.append(
+                "Reduce overall spawn density for better pacing."
+            )
         if avg_density < self.MIN_DENSITY:
-            all_recommendations.append("Increase spawn density to keep players engaged.")
+            all_recommendations.append(
+                "Increase spawn density to keep players engaged."
+            )
         if avg_level_ratio > 1.5:
             all_recommendations.append("Monster levels are too high. Reduce by 20-30%.")
         if avg_level_ratio < 0.5:
             all_recommendations.append("Monster levels too low for target audience.")
-        if len(zones) > 1 and max(zone_difficulties.values()) - min(zone_difficulties.values()) > 5.0:
-            all_recommendations.append("Large difficulty gaps between zones. Add transitional areas.")
+        if (
+            len(zones) > 1
+            and max(zone_difficulties.values()) - min(zone_difficulties.values()) > 5.0
+        ):
+            all_recommendations.append(
+                "Large difficulty gaps between zones. Add transitional areas."
+            )
         if not all_recommendations:
             all_recommendations.append("Difficulty balance is within acceptable range.")
 
@@ -235,15 +258,23 @@ class DifficultyEvaluator:
         ratio = avg_monster_level / max(player_level, 1)
 
         if ratio > 1.5:
-            issues.append(f"Monster avg level ({avg_monster_level:.0f}) too high for level {player_level}")
+            issues.append(
+                f"Monster avg level ({avg_monster_level:.0f}) too high for level {player_level}"
+            )
         elif ratio < 0.5:
-            issues.append(f"Monster avg level ({avg_monster_level:.0f}) too low for level {player_level}")
+            issues.append(
+                f"Monster avg level ({avg_monster_level:.0f}) too low for level {player_level}"
+            )
 
         density = (spawn_count / max(area_tiles, 1)) * 100
         if density > 12:
-            issues.append(f"Spawn density ({density:.1f}) too high, may cause overwhelming spawns")
+            issues.append(
+                f"Spawn density ({density:.1f}) too high, may cause overwhelming spawns"
+            )
         elif density < 2:
-            issues.append(f"Spawn density ({density:.1f}) too low, hunt will feel empty")
+            issues.append(
+                f"Spawn density ({density:.1f}) too low, hunt will feel empty"
+            )
 
         return len(issues) == 0, issues
 

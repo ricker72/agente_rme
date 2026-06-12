@@ -82,7 +82,10 @@ class AutonomousDecisionEngine:
                 f"quality={best_scores['quality']:.2f})"
             ),
             confidence=min(1.0, total + 0.1),
-            metadata={"region_type": region.region_type, "level_range": list(region.level_range)},
+            metadata={
+                "region_type": region.region_type,
+                "level_range": list(region.level_range),
+            },
         )
         self.decision_history.append(decision)
         return decision
@@ -162,7 +165,9 @@ class AutonomousDecisionEngine:
             "novelty": 0.9 + rng.uniform(-0.05, 0.05),
             "stability": 0.8,
         }
-        hybrid_name = f"hybrid_{region.region_type}_{a.split('_')[-1]}_{b.split('_')[-1]}"
+        hybrid_name = (
+            f"hybrid_{region.region_type}_{a.split('_')[-1]}_{b.split('_')[-1]}"
+        )
         decision = DesignDecision(
             decision_id=str(uuid.uuid4()),
             region_id=region.region_id,
@@ -192,8 +197,12 @@ class AutonomousDecisionEngine:
         elif goal.num_hunts >= 3:
             strategy_type = StrategyType.HUNT_FOCUSED
         elif goal.strategy in (
-            "aggressive_expansion", "balanced", "city_focused",
-            "hunt_focused", "boss_focused", "campaign_focused",
+            "aggressive_expansion",
+            "balanced",
+            "city_focused",
+            "hunt_focused",
+            "boss_focused",
+            "campaign_focused",
         ):
             strategy_type = StrategyType(goal.strategy)
         else:
@@ -228,7 +237,9 @@ class AutonomousDecisionEngine:
         candidates: List[str] = []
         if self.blueprint_intelligence is not None:
             try:
-                recs = self.blueprint_intelligence.recommend(region.region_type, top_k=5)
+                recs = self.blueprint_intelligence.recommend(
+                    region.region_type, top_k=5
+                )
                 for r in recs:
                     if isinstance(r, dict):
                         name = r.get("name") or r.get("recommendation")
@@ -239,9 +250,7 @@ class AutonomousDecisionEngine:
             except Exception as exc:
                 logger.debug("BlueprintIntelligence failed: %s", exc)
         if not candidates:
-            candidates = [
-                f"blueprint_{region.region_type}_{i + 1}" for i in range(3)
-            ]
+            candidates = [f"blueprint_{region.region_type}_{i + 1}" for i in range(3)]
         return candidates
 
     def _candidate_patterns(self, region: RegionPlan) -> List[str]:
@@ -255,7 +264,9 @@ class AutonomousDecisionEngine:
                     "raid": self.knowledge_engine.find_similar_raids,
                     "mixed": self.knowledge_engine.find_similar_regions,
                 }
-                finder = finders.get(region.region_type, self.knowledge_engine.find_similar_regions)
+                finder = finders.get(
+                    region.region_type, self.knowledge_engine.find_similar_regions
+                )
                 results = finder(region.region_name, k=3)
                 for entry in results:
                     if isinstance(entry, dict):
@@ -293,7 +304,10 @@ class AutonomousDecisionEngine:
         score = 0.5
         if region.region_type in candidate:
             score += 0.3
-        if any(level in candidate for level in (str(region.level_range[0]), str(region.level_range[1]))):
+        if any(
+            level in candidate
+            for level in (str(region.level_range[0]), str(region.level_range[1]))
+        ):
             score += 0.1
         return min(1.0, score)
 
@@ -313,5 +327,7 @@ class AutonomousDecisionEngine:
     def from_dict(cls, data: Dict[str, Any]) -> "AutonomousDecisionEngine":
         engine = cls()
         if "decision_history" in data:
-            engine.decision_history = [DesignDecision.from_dict(d) for d in data["decision_history"]]
+            engine.decision_history = [
+                DesignDecision.from_dict(d) for d in data["decision_history"]
+            ]
         return engine

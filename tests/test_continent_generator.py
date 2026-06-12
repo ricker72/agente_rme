@@ -23,14 +23,15 @@ from pathlib import Path
 # Make sure the project root is on sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from core.world import WorldModel, Tile, Item, Spawn, Structure, Region
-from core.world import WorldValidator, WorldValidationResult
-from core.architect import AIArchitect, WorldPlan
+from core.world import WorldModel, Structure
+from core.world import WorldValidator
+from core.architect import AIArchitect
 from core.procedural import (
-    ContinentGenerator, ContinentResult,
-    generate_continent, generate_from_prompt,
+    ContinentGenerator,
+    ContinentResult,
+    generate_continent,
+    generate_from_prompt,
 )
-
 
 # Test world size - keeps tests fast
 TEST_W = 60
@@ -40,6 +41,7 @@ TEST_H = 60
 # =============================================================================
 # Tests
 # =============================================================================
+
 
 def test_continent_generator_creation():
     """ContinentGenerator should be instantiable with no args."""
@@ -60,7 +62,8 @@ def test_generate_continent_accepts_worldplan():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     assert isinstance(world, WorldModel)
@@ -73,7 +76,8 @@ def test_generate_continent_world_has_tiles():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     assert world.tile_count() > 100
@@ -85,7 +89,8 @@ def test_generate_continent_world_has_structures():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     assert world.structure_count() >= 1
@@ -97,7 +102,8 @@ def test_generate_continent_world_has_regions():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     assert world.region_count() >= 1
@@ -111,12 +117,11 @@ def test_generate_continent_world_has_spawns():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
-    spawn_count = sum(
-        1 for t in world.tiles.values() if t.spawn is not None
-    )
+    spawn_count = sum(1 for t in world.tiles.values() if t.spawn is not None)
     assert spawn_count >= 1
     print("  [OK] test_generate_continent_world_has_spawns")
 
@@ -126,12 +131,12 @@ def test_generate_continent_world_has_roads():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     road_tiles = sum(
-        1 for t in world.tiles.values()
-        if t.zone and t.zone.startswith("road:")
+        1 for t in world.tiles.values() if t.zone and t.zone.startswith("road:")
     )
     assert road_tiles > 0
     print("  [OK] test_generate_continent_world_has_roads")
@@ -142,7 +147,8 @@ def test_generate_continent_deterministic_with_seed():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     w1 = generate_continent(plan, seed=99)
     w2 = generate_continent(plan, seed=99)
@@ -160,13 +166,12 @@ def test_generate_continent_different_seeds_differ():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     w1 = generate_continent(plan, seed=1)
     w2 = generate_continent(plan, seed=2)
-    diffs = sum(
-        1 for k in w1.tiles if w1.tiles[k].ground != w2.tiles.get(k).ground
-    )
+    diffs = sum(1 for k in w1.tiles if w1.tiles[k].ground != w2.tiles.get(k).ground)
     assert diffs > 0
     print("  [OK] test_generate_continent_different_seeds_differ")
 
@@ -176,7 +181,8 @@ def test_generate_continent_supports_full_example():
     architect = AIArchitect()
     plan = architect.plan(
         "Genera una ciudad estilo Issavi con 3 hunts nivel 200-400 y un boss final",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     assert plan.primary_theme == "issavi"
     world = generate_continent(plan, seed=42)
@@ -193,7 +199,8 @@ def test_generate_continent_uses_plan_layout():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     layout = plan.layout
@@ -207,10 +214,12 @@ def test_generate_continent_integration_with_ai_architect():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     cg = ContinentGenerator(
-        seed=42, theme_resolver=architect.theme_resolver,
+        seed=42,
+        theme_resolver=architect.theme_resolver,
     )
     world = cg.generate(plan)
     assert world.tile_count() > 0
@@ -269,8 +278,11 @@ def test_continent_result_dataclass():
     """ContinentResult should expose the expected properties."""
     res = ContinentResult(world=WorldModel())
     res.zones_placed = [{"x": 1, "y": 2}]
-    res.structures.append(Structure(name="s", category="c", x=0, y=0, z=7,
-                                     width=5, height=5, tile_count=25))
+    res.structures.append(
+        Structure(
+            name="s", category="c", x=0, y=0, z=7, width=5, height=5, tile_count=25
+        )
+    )
     assert res.total_tiles == 0
     assert res.total_zones == 1
     assert res.total_structures == 1
@@ -286,7 +298,8 @@ def test_continent_result_includes_roads_and_rivers():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     cg = ContinentGenerator(seed=42)
     world = cg.generate(plan)
@@ -314,7 +327,8 @@ def test_world_validator_passes_on_continent():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 1 hunt and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = generate_continent(plan, seed=42)
     validator = WorldValidator()
@@ -333,8 +347,12 @@ def test_continent_generator_seed_persistence():
 def test_continent_generator_dependencies_injection():
     """The generator should accept custom sub-generators."""
     from core.procedural import (
-        BiomeGenerator, TerrainGenerator, RoadGenerator, RiverGenerator,
+        BiomeGenerator,
+        TerrainGenerator,
+        RoadGenerator,
+        RiverGenerator,
     )
+
     bg = BiomeGenerator(seed=1)
     tg = TerrainGenerator(seed=2)
     rg = RoadGenerator(seed=3)
@@ -358,7 +376,8 @@ def test_continent_generator_themes_resolved():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi + Roshamuul with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     cg = ContinentGenerator(seed=42, theme_resolver=architect.theme_resolver)
     world = cg.generate(plan)
@@ -385,6 +404,7 @@ def test_continent_handles_empty_plan():
 # =============================================================================
 # Runner
 # =============================================================================
+
 
 def run_all():
     tests = [
@@ -421,6 +441,7 @@ def run_all():
             t()
         except Exception as e:
             import traceback
+
             tb = traceback.format_exc()
             failures.append((t.__name__, f"{type(e).__name__}: {e}\n{tb}"))
             print(f"  [FAIL] {t.__name__}: {type(e).__name__}: {e}")

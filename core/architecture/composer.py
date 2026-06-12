@@ -18,7 +18,9 @@ class CityComposer:
         self.architecture_graph = architecture_graph or ArchitectureGraph()
         self.style_mixer = style_mixer or StyleMixer()
 
-    def compose_city(self, name: str, style: str, components: Optional[List[str]] = None) -> Dict[str, object]:
+    def compose_city(
+        self, name: str, style: str, components: Optional[List[str]] = None
+    ) -> Dict[str, object]:
         components = components or ["Temple", "Market", "House", "Depot", "Bridge"]
         layout = []
         for index, category in enumerate(components):
@@ -31,11 +33,13 @@ class CityComposer:
                     "tiles": [{"x": 0, "y": 0, "type": "floor"}],
                     "metadata": {"width": 8, "height": 8},
                 }
-            layout.append({
-                "category": category,
-                "blueprint": blueprint,
-                "position": {"x": index * 24, "y": index * 18},
-            })
+            layout.append(
+                {
+                    "category": category,
+                    "blueprint": blueprint,
+                    "position": {"x": index * 24, "y": index * 18},
+                }
+            )
             self.architecture_graph.add_connection("City", "contains", category)
         return {
             "name": name,
@@ -62,10 +66,18 @@ class DungeonComposer:
         style: str,
         rooms: Optional[List[str]] = None,
     ) -> Dict[str, object]:
-        rooms = rooms or ["Entrance", "QuestRoom", "BossRoom", "Shortcut", "TreasureRoom"]
+        rooms = rooms or [
+            "Entrance",
+            "QuestRoom",
+            "BossRoom",
+            "Shortcut",
+            "TreasureRoom",
+        ]
         layout = []
         for index, category in enumerate(rooms):
-            pattern_category = category if category in ["QuestRoom", "BossRoom"] else "Road"
+            pattern_category = (
+                category if category in ["QuestRoom", "BossRoom"] else "Road"
+            )
             blueprint = self.pattern_library.choose_pattern(pattern_category, style)
             if blueprint is None:
                 blueprint = {
@@ -75,11 +87,13 @@ class DungeonComposer:
                     "tiles": [{"x": 0, "y": 0, "type": "floor"}],
                     "metadata": {"width": 12, "height": 10},
                 }
-            layout.append({
-                "category": category,
-                "blueprint": blueprint,
-                "position": {"x": index * 20, "y": index * 14},
-            })
+            layout.append(
+                {
+                    "category": category,
+                    "blueprint": blueprint,
+                    "position": {"x": index * 20, "y": index * 14},
+                }
+            )
             self.architecture_graph.add_connection("Dungeon", "contains", category)
         return {
             "name": name,

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 from .style_engine import StyleDNA
 from .design_rules import DesignRules, ZoneDesign
@@ -10,17 +10,19 @@ from .design_rules import DesignRules, ZoneDesign
 @dataclass
 class LayoutDecision:
     """A single architectural placement decision."""
+
     zone: ZoneDesign
-    position: Tuple[int, int]       # (x, y) center
-    size: Tuple[int, int]           # (width, height)
+    position: Tuple[int, int]  # (x, y) center
+    size: Tuple[int, int]  # (width, height)
     z_level: int = 7
     reason: str = ""
-    priority: int = 5               # 1 (highest) to 10 (lowest)
+    priority: int = 5  # 1 (highest) to 10 (lowest)
 
 
 @dataclass
 class LayoutPlan:
     """The complete layout plan: what to build, where, and why."""
+
     map_type: str
     style: str
     zones: List[LayoutDecision] = field(default_factory=list)
@@ -44,8 +46,13 @@ class LayoutEngine:
     MAX_ZONE_SIZE = 16
     ROAD_WIDTH = 2
 
-    def plan(self, map_type: str, style_dna: StyleDNA,
-             map_width: int = 50, map_height: int = 50) -> LayoutPlan:
+    def plan(
+        self,
+        map_type: str,
+        style_dna: StyleDNA,
+        map_width: int = 50,
+        map_height: int = 50,
+    ) -> LayoutPlan:
         """
         Generate a complete layout plan for a given map type and style.
 
@@ -66,33 +73,42 @@ class LayoutEngine:
 
         # Determine zone sizes based on StyleDNA
         zone_sizes = self._compute_zone_sizes(zones, style_dna, map_width, map_height)
-        positions = self._compute_positions(zones, zone_sizes, center_x, center_y, style_dna)
+        positions = self._compute_positions(
+            zones, zone_sizes, center_x, center_y, style_dna
+        )
 
         for i, zone in enumerate(zones):
             pos = positions[i]
             sz = zone_sizes[i]
             reason = self._justify_placement(zone, pos, style_dna, map_type)
-            plan.zones.append(LayoutDecision(
-                zone=zone,
-                position=pos,
-                size=sz,
-                reason=reason,
-                priority=zone.purpose if zone.purpose else 5,
-            ))
-            plan.decisions_log.append(f"PLACE {zone.name} at ({pos[0]},{pos[1]}) size {sz[0]}x{sz[1]}: {reason}")
+            plan.zones.append(
+                LayoutDecision(
+                    zone=zone,
+                    position=pos,
+                    size=sz,
+                    reason=reason,
+                    priority=zone.purpose if zone.purpose else 5,
+                )
+            )
+            plan.decisions_log.append(
+                f"PLACE {zone.name} at ({pos[0]},{pos[1]}) size {sz[0]}x{sz[1]}: {reason}"
+            )
 
         # Compute total bounds
         if plan.zones:
-            xs = [z.position[0] - z.size[0] // 2 for z in plan.zones] + \
-                 [z.position[0] + z.size[0] // 2 for z in plan.zones]
-            ys = [z.position[1] - z.size[1] // 2 for z in plan.zones] + \
-                 [z.position[1] + z.size[1] // 2 for z in plan.zones]
+            xs = [z.position[0] - z.size[0] // 2 for z in plan.zones] + [
+                z.position[0] + z.size[0] // 2 for z in plan.zones
+            ]
+            ys = [z.position[1] - z.size[1] // 2 for z in plan.zones] + [
+                z.position[1] + z.size[1] // 2 for z in plan.zones
+            ]
             plan.total_bounds = (min(xs), min(ys), max(xs), max(ys))
 
         return plan
 
-    def _compute_zone_sizes(self, zones: List[ZoneDesign], dna: StyleDNA,
-                            map_w: int, map_h: int) -> List[Tuple[int, int]]:
+    def _compute_zone_sizes(
+        self, zones: List[ZoneDesign], dna: StyleDNA, map_w: int, map_h: int
+    ) -> List[Tuple[int, int]]:
         """Determine each zone's size based on StyleDNA factors."""
         sizes = []
         for zone in zones:
@@ -112,8 +128,14 @@ class LayoutEngine:
             sizes.append((base, base))
         return sizes
 
-    def _compute_positions(self, zones: List[ZoneDesign], sizes: List[Tuple[int, int]],
-                           cx: int, cy: int, dna: StyleDNA) -> List[Tuple[int, int]]:
+    def _compute_positions(
+        self,
+        zones: List[ZoneDesign],
+        sizes: List[Tuple[int, int]],
+        cx: int,
+        cy: int,
+        dna: StyleDNA,
+    ) -> List[Tuple[int, int]]:
         """Compute zone positions using style-driven layout algorithms."""
         n = len(zones)
         if n == 0:
@@ -128,19 +150,24 @@ class LayoutEngine:
             positions = self._organic_positions(n, cx, cy, dna)
         else:
             # Grid-based layout
-            cols = max(1, int(n ** 0.5))
+            cols = max(1, int(n**0.5))
             for i in range(n):
                 col = i % cols
                 row = i // cols
                 px = cx + (col - cols // 2) * (self.MAX_ZONE_SIZE + self.ZONE_SPACING)
-                py = cy + (row - n // cols // 2) * (self.MAX_ZONE_SIZE + self.ZONE_SPACING)
+                py = cy + (row - n // cols // 2) * (
+                    self.MAX_ZONE_SIZE + self.ZONE_SPACING
+                )
                 positions.append((px, py))
 
         return positions
 
-    def _radial_positions(self, n: int, cx: int, cy: int, dna: StyleDNA) -> List[Tuple[int, int]]:
+    def _radial_positions(
+        self, n: int, cx: int, cy: int, dna: StyleDNA
+    ) -> List[Tuple[int, int]]:
         """Place zones in concentric rings around center (symmetric style)."""
         import math
+
         positions = [(cx, cy)]  # first zone at center
         radius = self.MAX_ZONE_SIZE + self.ZONE_SPACING
         for i in range(1, n):
@@ -152,9 +179,12 @@ class LayoutEngine:
                 radius += self.ZONE_SPACING
         return positions[:n]
 
-    def _organic_positions(self, n: int, cx: int, cy: int, dna: StyleDNA) -> List[Tuple[int, int]]:
+    def _organic_positions(
+        self, n: int, cx: int, cy: int, dna: StyleDNA
+    ) -> List[Tuple[int, int]]:
         """Place zones with natural-looking irregular distribution."""
         import random
+
         rng = random.Random(42)  # deterministic seed for reproducibility
         positions = [(cx, cy)]
         for i in range(1, n):
@@ -171,8 +201,9 @@ class LayoutEngine:
             positions.append((prev[0] + dx, prev[1] + dy))
         return positions
 
-    def _justify_placement(self, zone: ZoneDesign, pos: Tuple[int, int],
-                           dna: StyleDNA, map_type: str) -> str:
+    def _justify_placement(
+        self, zone: ZoneDesign, pos: Tuple[int, int], dna: StyleDNA, map_type: str
+    ) -> str:
         """Explain WHY this zone is placed here."""
         reasons = []
 

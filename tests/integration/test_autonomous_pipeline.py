@@ -6,10 +6,6 @@ playtest and OTBM exporter subsystems, but with smaller regions
 so the suite stays under a few seconds per test.
 """
 
-import json
-import os
-import pytest
-
 from core.autonomous import AutonomousWorldDesigner
 
 

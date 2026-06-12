@@ -3,9 +3,9 @@ tools/real_otbm_certification.py — Phase 5: Real OTBM Certification.
 
 100 real roundtrips: Export -> Import -> Export -> Import.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import time
 import shutil
@@ -54,12 +54,21 @@ def run_certification(n: int = 100) -> Dict[str, Any]:
                 for y in range(20):
                     tile = Tile(x=x, y=y, z=7, ground=100, spawn=None)
                     world.set_tile(tile)
-            tile_with_spawn = Tile(x=5, y=5, z=7, ground=100,
-                                    spawn=Spawn(monster="rat", respawn=60, radius=3))
+            tile_with_spawn = Tile(
+                x=5,
+                y=5,
+                z=7,
+                ground=100,
+                spawn=Spawn(monster="rat", respawn=60, radius=3),
+            )
             world.set_tile(tile_with_spawn)
-            region = Region(name=f"region_{i}", theme="generic", min_level=1, max_level=100)
+            region = Region(
+                name=f"region_{i}", theme="generic", min_level=1, max_level=100
+            )
             world.add_region(region)
-            structure = Structure(name=f"house_{i}", category="house", x=10, y=10, z=7, width=5, height=5)
+            structure = Structure(
+                name=f"house_{i}", category="house", x=10, y=10, z=7, width=5, height=5
+            )
             world.add_structure(structure)
 
             otbm_path = str(TMP_DIR / f"world_{i}_v1.otbm")
@@ -74,8 +83,12 @@ def run_certification(n: int = 100) -> Dict[str, Any]:
                 n_regions_v1 = data_v1.get("region_count", 0)
             else:
                 n_tiles_v1 = len(data_v1.tiles)
-                n_spawns_v1 = sum(1 for t in data_v1.tiles if getattr(t, "spawn_monster", None))
-                n_bosses_v1 = sum(1 for r in data_v1.regions if r.region_type == "boss_room")
+                n_spawns_v1 = sum(
+                    1 for t in data_v1.tiles if getattr(t, "spawn_monster", None)
+                )
+                n_bosses_v1 = sum(
+                    1 for r in data_v1.regions if r.region_type == "boss_room"
+                )
                 n_waypoints_v1 = len(data_v1.waypoints)
                 n_regions_v1 = len(data_v1.regions)
 
@@ -91,8 +104,12 @@ def run_certification(n: int = 100) -> Dict[str, Any]:
                 n_regions_v2 = data_v2.get("region_count", 0)
             else:
                 n_tiles_v2 = len(data_v2.tiles)
-                n_spawns_v2 = sum(1 for t in data_v2.tiles if getattr(t, "spawn_monster", None))
-                n_bosses_v2 = sum(1 for r in data_v2.regions if r.region_type == "boss_room")
+                n_spawns_v2 = sum(
+                    1 for t in data_v2.tiles if getattr(t, "spawn_monster", None)
+                )
+                n_bosses_v2 = sum(
+                    1 for r in data_v2.regions if r.region_type == "boss_room"
+                )
                 n_waypoints_v2 = len(data_v2.waypoints)
                 n_regions_v2 = len(data_v2.regions)
 
@@ -113,23 +130,28 @@ def run_certification(n: int = 100) -> Dict[str, Any]:
 
             elapsed = time.time() - t0
             durations.append(elapsed)
-            results.append({
-                "index": i,
-                "success": integrity_ok,
-                "tiles": n_tiles_v1,
-                "spawns": n_spawns_v1,
-                "bosses": n_bosses_v1,
-                "waypoints": n_waypoints_v1,
-                "regions": n_regions_v1,
-                "duration_s": elapsed,
-            })
+            results.append(
+                {
+                    "index": i,
+                    "success": integrity_ok,
+                    "tiles": n_tiles_v1,
+                    "spawns": n_spawns_v1,
+                    "bosses": n_bosses_v1,
+                    "waypoints": n_waypoints_v1,
+                    "regions": n_regions_v1,
+                    "duration_s": elapsed,
+                }
+            )
             if i % 20 == 0:
-                print(f"  [{i+1}/{n}] tiles={n_tiles_v1} spawns={n_spawns_v1} ok={integrity_ok}", flush=True)
+                print(
+                    f"  [{i + 1}/{n}] tiles={n_tiles_v1} spawns={n_spawns_v1} ok={integrity_ok}",
+                    flush=True,
+                )
         except Exception as e:
             failed += 1
             results.append({"index": i, "success": False, "error": str(e)})
             if failed < 3:
-                print(f"  [{i+1}/{n}] FAILED: {e}", flush=True)
+                print(f"  [{i + 1}/{n}] FAILED: {e}", flush=True)
 
     return {
         "version": "1.0.0-RC1.1",

@@ -15,6 +15,7 @@ class Item:
       - actionid: Optional action ID for scripting.
       - uniqueid: Optional unique ID for scripting.
     """
+
     itemid: int
     count: int = 1
     actionid: Optional[int] = None

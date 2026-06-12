@@ -1,17 +1,17 @@
 from __future__ import annotations
 
 import json
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set
 
 
 @dataclass
 class SearchResult:
     """A single search result from the blueprint search."""
+
     blueprint: Dict[str, Any]
-    relevance: float       # 0.0 to 1.0
+    relevance: float  # 0.0 to 1.0
     match_reasons: List[str] = field(default_factory=list)
     matched_keywords: Set[str] = field(default_factory=set)
 
@@ -29,6 +29,7 @@ class SearchResult:
 @dataclass
 class SearchQuery:
     """Parsed search query with extracted intent, categories, themes, and constraints."""
+
     raw: str
     categories: Set[str] = field(default_factory=set)
     themes: Set[str] = field(default_factory=set)
@@ -55,28 +56,65 @@ class BlueprintSearch:
     # Keyword → category mapping for Spanish and English
     CATEGORY_KEYWORDS = {
         # Spanish
-        "ciudad": "city", "ciudades": "city", "city": "city",
-        "templo": "temple", "templos": "temple", "temple": "temple",
-        "depot": "depot", "depósito": "depot", "deposito": "depot", "locker": "depot",
-        "mercado": "market", "market": "market", "plaza": "market", "comercio": "market",
-        "camino": "road", "carretera": "road", "road": "road", "calle": "road",
-        "puente": "bridge", "bridge": "bridge",
-        "boss": "boss_room", "boss_room": "boss_room", "arena": "boss_room",
-        "hunt": "hunt", "caza": "hunt", "hunting": "hunt", "cacería": "hunt",
-
+        "ciudad": "city",
+        "ciudades": "city",
+        "city": "city",
+        "templo": "temple",
+        "templos": "temple",
+        "temple": "temple",
+        "depot": "depot",
+        "depósito": "depot",
+        "deposito": "depot",
+        "locker": "depot",
+        "mercado": "market",
+        "market": "market",
+        "plaza": "market",
+        "comercio": "market",
+        "camino": "road",
+        "carretera": "road",
+        "road": "road",
+        "calle": "road",
+        "puente": "bridge",
+        "bridge": "bridge",
+        "boss": "boss_room",
+        "boss_room": "boss_room",
+        "arena": "boss_room",
+        "hunt": "hunt",
+        "caza": "hunt",
+        "hunting": "hunt",
+        "cacería": "hunt",
         # Structure types
-        "casa": "housing", "edificio": "housing", "building": "housing",
-        "muralla": "wall", "wall": "wall", "muro": "wall",
-        "torre": "tower", "tower": "tower",
-        "puerta": "gate", "gate": "gate", "entrada": "gate",
+        "casa": "housing",
+        "edificio": "housing",
+        "building": "housing",
+        "muralla": "wall",
+        "wall": "wall",
+        "muro": "wall",
+        "torre": "tower",
+        "tower": "tower",
+        "puerta": "gate",
+        "gate": "gate",
+        "entrada": "gate",
     }
 
     # Size descriptors
     SIZE_KEYWORDS = {
-        "grande", "large", "big", "enorme", "huge", "gigante",
-        "pequeño", "pequeno", "small", "tiny", "chico",
-        "mediano", "medium", "mid",
-        "compacto", "compact",
+        "grande",
+        "large",
+        "big",
+        "enorme",
+        "huge",
+        "gigante",
+        "pequeño",
+        "pequeno",
+        "small",
+        "tiny",
+        "chico",
+        "mediano",
+        "medium",
+        "mid",
+        "compacto",
+        "compact",
     }
 
     # Theme/style keywords
@@ -106,7 +144,9 @@ class BlueprintSearch:
     }
 
     def __init__(self):
-        self._blueprints: Dict[str, List[Dict[str, Any]]] = {}  # category → [blueprints]
+        self._blueprints: Dict[
+            str, List[Dict[str, Any]]
+        ] = {}  # category → [blueprints]
         self._all_blueprints: List[Dict[str, Any]] = []
 
     # ------------------------------------------------------------------
@@ -158,7 +198,9 @@ class BlueprintSearch:
 
         return results[:top_k]
 
-    def search_by_category(self, category: str, theme: Optional[str] = None) -> List[Dict[str, Any]]:
+    def search_by_category(
+        self, category: str, theme: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
         """Direct lookup by category, optionally filtered by theme."""
         bps = self._blueprints.get(category.lower(), [])
         if theme:
@@ -198,9 +240,24 @@ class BlueprintSearch:
         result.size_keywords = {w for w in words if w in self.SIZE_KEYWORDS}
 
         # Extract features mentioned
-        feature_words = {"npc", "npcs", "altar", "spawns", "chest", "cofre",
-                         "torch", "antorcha", "fountain", "fuente", "stairs",
-                         "escaleras", "balcón", "balcony", "reward", "recompensa"}
+        feature_words = {
+            "npc",
+            "npcs",
+            "altar",
+            "spawns",
+            "chest",
+            "cofre",
+            "torch",
+            "antorcha",
+            "fountain",
+            "fuente",
+            "stairs",
+            "escaleras",
+            "balcón",
+            "balcony",
+            "reward",
+            "recompensa",
+        }
         result.features = {w for w in words if w in feature_words}
 
         # Extract negative constraints (words after "sin", "no")
@@ -245,7 +302,9 @@ class BlueprintSearch:
     # Ranking
     # ------------------------------------------------------------------
 
-    def _rank(self, candidates: List[Dict[str, Any]], parsed: SearchQuery) -> List[SearchResult]:
+    def _rank(
+        self, candidates: List[Dict[str, Any]], parsed: SearchQuery
+    ) -> List[SearchResult]:
         """Rank candidates by relevance to the parsed query."""
         results: List[SearchResult] = []
 
@@ -259,7 +318,7 @@ class BlueprintSearch:
             theme = bp.get("theme", "").lower()
             description = bp.get("description", "").lower()
             tags = [t.lower() for t in bp.get("metadata", {}).get("tags", [])]
-            metadata = bp.get("metadata", {})
+            bp.get("metadata", {})
             size = bp.get("size", [0, 0])
 
             # Category match (highest weight)
@@ -277,11 +336,17 @@ class BlueprintSearch:
             # Size analysis
             area = size[0] * size[1] if len(size) >= 2 else 0
             for sk in parsed.size_keywords:
-                if sk in ("grande", "large", "big", "enorme", "huge", "gigante") and area > 400:
+                if (
+                    sk in ("grande", "large", "big", "enorme", "huge", "gigante")
+                    and area > 400
+                ):
                     score += 0.12
                     reasons.append(f"Tamaño grande ({area} tiles²)")
                     matched_keywords.add(sk)
-                elif sk in ("pequeño", "pequeno", "small", "tiny", "chico") and area <= 200:
+                elif (
+                    sk in ("pequeño", "pequeno", "small", "tiny", "chico")
+                    and area <= 200
+                ):
                     score += 0.12
                     reasons.append(f"Tamaño pequeño ({area} tiles²)")
                     matched_keywords.add(sk)
@@ -324,12 +389,14 @@ class BlueprintSearch:
             # Clamp score
             score = max(0.0, min(1.0, score))
 
-            results.append(SearchResult(
-                blueprint=bp,
-                relevance=round(score, 4),
-                match_reasons=reasons,
-                matched_keywords=matched_keywords,
-            ))
+            results.append(
+                SearchResult(
+                    blueprint=bp,
+                    relevance=round(score, 4),
+                    match_reasons=reasons,
+                    matched_keywords=matched_keywords,
+                )
+            )
 
         # Sort by relevance descending
         results.sort(key=lambda r: r.relevance, reverse=True)

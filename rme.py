@@ -39,22 +39,30 @@ def _utc_iso() -> str:
 
 # ── GA commands (v1.0.0) ────────────────────────────────────────────────────
 
+
 def cmd_health(args):
     """rme health — system health checks."""
     from core.observability.health import HealthChecker
+
     print("\n[1/3] Running health checks...")
     hc = HealthChecker()
     report = hc.run_all()
     if getattr(args, "json", False):
         print(json.dumps(report.to_dict(), indent=2, ensure_ascii=False))
     else:
-        print(f"\n[2/3] Health report:")
+        print("\n[2/3] Health report:")
         print(f"  Overall: {report.overall_status.upper()}")
         print(f"  Healthy:  {report.summary['healthy']}")
         print(f"  Degraded: {report.summary['degraded']}")
         print(f"  Unhealthy:{report.summary['unhealthy']}")
         for c in report.checks:
-            mark = "+" if c.status.value == "healthy" else "!" if c.status.value == "degraded" else "x"
+            mark = (
+                "+"
+                if c.status.value == "healthy"
+                else "!"
+                if c.status.value == "degraded"
+                else "x"
+            )
             print(f"    [{mark}] {c.name:14s} {c.status.value:9s} - {c.message}")
     out = args.output or "health_report.json"
     path = hc.export(report, out)
@@ -67,6 +75,7 @@ def cmd_health(args):
 def cmd_metrics(args):
     """rme metrics — runtime metrics."""
     from core.observability.metrics import MetricsCollector
+
     print("\n[1/2] Collecting metrics...")
     mc = MetricsCollector()
     snap = mc.snapshot()
@@ -87,7 +96,9 @@ def cmd_metrics(args):
     else:
         print(f"  Generations: {snap.generations_total}")
         print(f"  Errors:      {snap.errors_total}")
-        print(f"  Memory:      {snap.memory_mb:.1f} MB (peak {snap.memory_peak_mb:.1f})")
+        print(
+            f"  Memory:      {snap.memory_mb:.1f} MB (peak {snap.memory_peak_mb:.1f})"
+        )
         print(f"  Uptime:      {snap.uptime_seconds:.2f}s")
         print(f"  OTBM tiles:  {snap.otbm.tiles}")
     out = args.output or "metrics.json"
@@ -99,14 +110,16 @@ def cmd_metrics(args):
 def cmd_analyze(args):
     """rme analyze — analyze a world or OTBM file."""
     from core.generators import WorldGenerator
+
     target = getattr(args, "input", None)
     if not target:
         print("\n[1/3] Generating small world for analysis...")
         gen = WorldGenerator(seed=args.seed or 42)
-        world = gen.generate({"type": "hunt", "theme": "issavi",
-                              "level_min": 250, "level_max": 320})
+        world = gen.generate(
+            {"type": "hunt", "theme": "issavi", "level_min": 250, "level_max": 320}
+        )
         target = world
-    print(f"\n[2/3] Analyzing target...")
+    print("\n[2/3] Analyzing target...")
     result = {"timestamp": _utc_iso(), "target": "world"}
     if hasattr(target, "tile_count"):
         result["tiles"] = target.tile_count()
@@ -116,6 +129,7 @@ def cmd_analyze(args):
         result["structures"] = len(target.structures)
     if isinstance(target, str) and os.path.exists(target) and target.endswith(".otbm"):
         from core.otbm import OtbmValidator
+
         data = Path(target).read_bytes()
         v = OtbmValidator()
         vresult = v.validate(data)
@@ -136,10 +150,12 @@ def cmd_analyze(args):
 def cmd_critic(args):
     """rme critic — run the critic on a world."""
     from core.generators import WorldGenerator
+
     print("\n[1/3] Generating world for critic evaluation...")
     gen = WorldGenerator(seed=args.seed or 42)
-    world = gen.generate({"type": "hunt", "theme": "issavi",
-                          "level_min": 250, "level_max": 320})
+    world = gen.generate(
+        {"type": "hunt", "theme": "issavi", "level_min": 250, "level_max": 320}
+    )
     print(f"\n[2/3] Evaluating (target={args.target or 80.0})...")
     score = 0.0
     if hasattr(world, "evaluate"):
@@ -153,14 +169,19 @@ def cmd_critic(args):
         score = min(100.0, 60.0 + tiles * 0.01 + regions * 1.5)
     target = float(args.target or 80.0)
     passed = score >= target
-    out = {"timestamp": _utc_iso(), "score": round(score, 2),
-           "target": target, "passed": passed,
-           "tiles": world.tile_count() if hasattr(world, "tile_count") else 0}
+    out = {
+        "timestamp": _utc_iso(),
+        "score": round(score, 2),
+        "target": target,
+        "passed": passed,
+        "tiles": world.tile_count() if hasattr(world, "tile_count") else 0,
+    }
     if getattr(args, "json", False):
         print(json.dumps(out, indent=2))
     else:
-        print(f"\n[3/3] Score: {out['score']:.2f} (target {out['target']}) - "
-              f"{'PASS' if passed else 'FAIL'}")
+        print(
+            f"\n[3/3] Score: {out['score']:.2f} (target {out['target']}) - {'PASS' if passed else 'FAIL'}"
+        )
         out_path = args.output or "output/critic.json"
         os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
         with open(out_path, "w", encoding="utf-8") as f:
@@ -173,6 +194,7 @@ def cmd_critic(args):
 def cmd_benchmark(args):
     """rme benchmark — run a production benchmark."""
     from core.autonomous import AutonomousWorldDesigner
+
     count = int(args.count or 50)
     print(f"\n[1/3] Initializing benchmark ({count} worlds)...")
     designer = AutonomousWorldDesigner()
@@ -196,6 +218,7 @@ def cmd_benchmark(args):
 def cmd_diagnose(args):
     """rme diagnose — run diagnostics and export report."""
     from core.observability.diagnostics import Diagnostics
+
     d = Diagnostics()
     report = d.collect()
     if getattr(args, "json", False):
@@ -215,9 +238,11 @@ def cmd_diagnose(args):
 
 # ── Wrapper: delegate to cli.py for legacy commands ──────────────────────────
 
+
 def cmd_legacy(args, original_args_list):
     """Forward a sub-command to the legacy cli.main()."""
     import importlib.util
+
     spec = importlib.util.spec_from_file_location("cli", str(PROJECT_ROOT / "cli.py"))
     cli = importlib.util.module_from_spec(spec)
     try:
@@ -237,20 +262,25 @@ def cmd_legacy(args, original_args_list):
 
 # ── main ─────────────────────────────────────────────────────────────────────
 
+
 def main():
     parser = argparse.ArgumentParser(
         prog="rme",
         description="Agente RME v1.0.0 GA - AI-powered Tibia map generator",
     )
-    parser.add_argument("--verbose", action="store_true",
-                        help="Enable verbose (DEBUG) output")
-    parser.add_argument("--json", action="store_true",
-                        help="Emit machine-readable JSON")
-    parser.add_argument("--profile",
-                        choices=["default", "development", "production"],
-                        default=None, help="Configuration profile")
-    parser.add_argument("--version", action="version",
-                        version="Agente RME v1.0.0 GA")
+    parser.add_argument(
+        "--verbose", action="store_true", help="Enable verbose (DEBUG) output"
+    )
+    parser.add_argument(
+        "--json", action="store_true", help="Emit machine-readable JSON"
+    )
+    parser.add_argument(
+        "--profile",
+        choices=["default", "development", "production"],
+        default=None,
+        help="Configuration profile",
+    )
+    parser.add_argument("--version", action="version", version="Agente RME v1.0.0 GA")
 
     sub = parser.add_subparsers(dest="command", help="Command to execute")
 
@@ -289,10 +319,96 @@ def main():
     dg.add_argument("--output", default="diagnostics.json")
     dg.set_defaults(func=cmd_diagnose)
 
-    args = parser.parse_args()
+    # v1.0.1 HOTFIX:
+    # The legacy cli.py exposes additional subcommands (generate, export,
+    # import, preview, validate, info, knowledge, blueprint, autonomous)
+    # which are part of the GA surface but were never registered with
+    # the rme.py top-level parser. As a result argparse rejected them
+    # with "invalid choice" before the forward-to-cli.py fallback could
+    # even run. We register them here with ``func=cmd_legacy_dispatch``
+    # which forwards the remaining argv to cli.py via the existing
+    # ``cmd_legacy`` helper.
+
+    def _legacy_dispatch(_args):
+        raw = sys.argv[1:]
+        forwarded = []
+        skip = {"--verbose", "--json", "--profile", "--version"}
+        skip_with_val = {"--profile"}
+        j = 0
+        while j < len(raw):
+            tok = raw[j]
+            if tok in skip:
+                j += 1
+                continue
+            if tok in skip_with_val:
+                j += 2
+                continue
+            if tok.startswith("--profile=") or tok.startswith("--json"):
+                j += 1
+                continue
+            forwarded.append(tok)
+            j += 1
+        cmd_legacy(None, forwarded)
+
+    # v1.0.1 HOTFIX: legacy subcommands accept arbitrary additional
+    # positional/optional arguments which are forwarded to cli.py.
+    for name, help_text in [
+        ("generate", "Generate a world from a prompt"),
+        ("export", "Export world to Lua or OTBM"),
+        ("import", "Import an OTBM file"),
+        ("preview", "Generate preview PNG"),
+        ("validate", "Validate an OTBM file"),
+        ("info", "Show system information"),
+        ("knowledge", "Knowledge dataset commands"),
+        ("blueprint", "Blueprint Intelligence commands"),
+        ("autonomous", "Autonomous World Designer commands"),
+    ]:
+        p = sub.add_parser(name, help=help_text, prefix_chars="+")
+        p.set_defaults(func=_legacy_dispatch)
+    # Use parse_known_args so unknown sub-options (e.g. --output) are
+    # forwarded to cli.py instead of being rejected by argparse.
+    args, _unknown = parser.parse_known_args()
 
     if getattr(args, "verbose", False):
         import logging
+
+        logging.basicConfig(level=logging.DEBUG, format="[DEBUG] %(message)s")
+    if getattr(args, "profile", None):
+        os.environ["RME_PROFILE"] = args.profile
+
+    if not args.command:
+        parser.print_help()
+        sys.exit(0)
+
+    if hasattr(args, "func"):
+        args.func(args)
+        return
+
+    # Otherwise, forward to the legacy cli.py for generate/export/etc.
+    raw = sys.argv[1:]
+    # Strip our global flags if present (already applied)
+    forwarded = []
+    skip = {"--verbose", "--json", "--profile", "--version"}
+    skip_with_val = {"--profile"}
+    i = 0
+    while i < len(raw):
+        tok = raw[i]
+        if tok in skip:
+            i += 1
+            continue
+        if tok in skip_with_val:
+            i += 2
+            continue
+        if tok.startswith("--profile=") or tok.startswith("--json"):
+            i += 1
+            continue
+        forwarded.append(tok)
+        i += 1
+    cmd_legacy(None, forwarded)
+
+    if getattr(args, "verbose", False):
+        import logging
+
         logging.basicConfig(level=logging.DEBUG, format="[DEBUG] %(message)s")
     if getattr(args, "profile", None):
         os.environ["RME_PROFILE"] = args.profile

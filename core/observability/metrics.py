@@ -30,10 +30,11 @@ import time
 from collections import defaultdict
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict
 
 try:
     import psutil  # type: ignore
+
     _HAVE_PSUTIL = True
 except ImportError:
     _HAVE_PSUTIL = False
@@ -141,8 +142,14 @@ class MetricsCollector:
     # OTBM
     # ------------------------------------------------------------------
 
-    def record_otbm(self, tiles: int = 0, items: int = 0, spawns: int = 0,
-                    regions: int = 0, duration_ms: float = 0.0) -> None:
+    def record_otbm(
+        self,
+        tiles: int = 0,
+        items: int = 0,
+        spawns: int = 0,
+        regions: int = 0,
+        duration_ms: float = 0.0,
+    ) -> None:
         with self._lock:
             self._otbm.tiles += tiles
             self._otbm.items += items
@@ -203,7 +210,9 @@ class MetricsCollector:
         out_path = Path(path)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with open(out_path, "w", encoding="utf-8") as f:
-            json.dump(_snapshot_to_dict(snap), f, indent=2, ensure_ascii=False, default=str)
+            json.dump(
+                _snapshot_to_dict(snap), f, indent=2, ensure_ascii=False, default=str
+            )
         return str(out_path)
 
     def reset(self) -> None:

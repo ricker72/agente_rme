@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from typing import Dict, List, Optional
 
 from core.architecture import PatternLibrary, ArchitectureGraph
@@ -53,12 +52,21 @@ class AIPlanner:
             {"type": "market", "name": "Market District"},
             {"type": "residential", "name": "Residential Quarter"},
         ]
-        city_meta = expansion.cities[0] if expansion.cities else {"name": f"New {city_name.capitalize()}", "districts": ["Market", "Temple"]}
+        city_meta = (
+            expansion.cities[0]
+            if expansion.cities
+            else {
+                "name": f"New {city_name.capitalize()}",
+                "districts": ["Market", "Temple"],
+            }
+        )
         city = CityPlan(
             name=city_meta.get("name", f"New {city_name.capitalize()}"),
             theme=city_name,
             population=city_meta.get("population", 1200),
-            districts=city_meta.get("districts", [d["name"] for d in district_blueprints]),
+            districts=city_meta.get(
+                "districts", [d["name"] for d in district_blueprints]
+            ),
             zones=[
                 ZonePlan(
                     zone_type="ResidentialZone",
@@ -79,28 +87,84 @@ class AIPlanner:
             theme=dungeon_theme,
             floors=4,
             difficulty=difficulty,
-            bosses=[{"name": boss.get("name", f"{dungeon_theme} Warlord"), "theme": dungeon_theme} for boss in expansion.bosses[:2]],
-            quests=[{"name": quest.get("title", "Advance the story"), "reward": quest.get("reward", "experience")} for quest in expansion.quests[:2]],
-            connections=[{"from": city.name, "to": f"{dungeon_theme.capitalize()} Depths", "type": "underpass"}],
+            bosses=[
+                {
+                    "name": boss.get("name", f"{dungeon_theme} Warlord"),
+                    "theme": dungeon_theme,
+                }
+                for boss in expansion.bosses[:2]
+            ],
+            quests=[
+                {
+                    "name": quest.get("title", "Advance the story"),
+                    "reward": quest.get("reward", "experience"),
+                }
+                for quest in expansion.quests[:2]
+            ],
+            connections=[
+                {
+                    "from": city.name,
+                    "to": f"{dungeon_theme.capitalize()} Depths",
+                    "type": "underpass",
+                }
+            ],
         )
 
         world_plan.cities.append(city)
         world_plan.dungeons.append(dungeon)
-        world_plan.roads.append({"from": city.name, "to": dungeon.name, "type": "main_road"})
-        world_plan.ports.append({"name": f"{city_name.capitalize()} Harbor", "theme": city_name})
+        world_plan.roads.append(
+            {"from": city.name, "to": dungeon.name, "type": "main_road"}
+        )
+        world_plan.ports.append(
+            {"name": f"{city_name.capitalize()} Harbor", "theme": city_name}
+        )
         world_plan.teleports.append({"name": "Central Gate", "target": dungeon.name})
 
         for index, hunt in enumerate(expansion.hunts, start=1):
-            world_plan.hunting_zones.append(self._build_zone("HuntingZone", hunt.get("name", f"Hunt {index}"), 20 + index * 4, 30 + index * 2, 16, 12, difficulty))
+            world_plan.hunting_zones.append(
+                self._build_zone(
+                    "HuntingZone",
+                    hunt.get("name", f"Hunt {index}"),
+                    20 + index * 4,
+                    30 + index * 2,
+                    16,
+                    12,
+                    difficulty,
+                )
+            )
 
         for index, boss in enumerate(expansion.bosses[:3], start=1):
-            world_plan.boss_zones.append(self._build_zone("BossZone", boss.get("arena", f"Boss Arena {index}"), 40, 10 + index * 8, 18, 16, difficulty))
+            world_plan.boss_zones.append(
+                self._build_zone(
+                    "BossZone",
+                    boss.get("arena", f"Boss Arena {index}"),
+                    40,
+                    10 + index * 8,
+                    18,
+                    16,
+                    difficulty,
+                )
+            )
 
         for index, quest in enumerate(expansion.quests[:2], start=1):
-            world_plan.quest_zones.append(self._build_zone("QuestZone", quest.get("title", f"Quest {index}"), 35, 5 + index * 4, 14, 10, difficulty))
+            world_plan.quest_zones.append(
+                self._build_zone(
+                    "QuestZone",
+                    quest.get("title", f"Quest {index}"),
+                    35,
+                    5 + index * 4,
+                    14,
+                    10,
+                    difficulty,
+                )
+            )
 
-        self.architecture_graph.add_structure(city.theme, ["temple", "market", "residential"])
-        self.architecture_graph.add_structure(dungeon.theme, ["entrance", "boss_room", "treasure_hall"])
+        self.architecture_graph.add_structure(
+            city.theme, ["temple", "market", "residential"]
+        )
+        self.architecture_graph.add_structure(
+            dungeon.theme, ["entrance", "boss_room", "treasure_hall"]
+        )
 
         world_plan_data = world_plan.to_dict()
         world_plan_data["expansion"] = expansion.to_dict()
@@ -114,7 +178,16 @@ class AIPlanner:
             "validation": self.validator.validate(world_plan.to_dict())[1],
         }
 
-    def _build_zone(self, zone_type: str, name: str, x: int, y: int, width: int, height: int, difficulty: str) -> ZonePlan:
+    def _build_zone(
+        self,
+        zone_type: str,
+        name: str,
+        x: int,
+        y: int,
+        width: int,
+        height: int,
+        difficulty: str,
+    ) -> ZonePlan:
         return ZonePlan(
             zone_type=zone_type,
             name=name,
@@ -145,10 +218,14 @@ class AIPlanner:
             lines.append(f"  -- Population: {city.get('population')}")
 
         for dungeon in world_plan.get("dungeons", []):
-            lines.append(f"  -- Dungeon: {dungeon.get('name')} difficulty: {dungeon.get('difficulty')}")
+            lines.append(
+                f"  -- Dungeon: {dungeon.get('name')} difficulty: {dungeon.get('difficulty')}"
+            )
 
         for road in world_plan.get("roads", []):
-            lines.append(f"  -- Route {road.get('type')} connects {road.get('from')} to {road.get('to')}")
+            lines.append(
+                f"  -- Route {road.get('type')} connects {road.get('from')} to {road.get('to')}"
+            )
 
         lines.append("end")
         return "\n".join(lines)

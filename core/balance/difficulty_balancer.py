@@ -8,21 +8,38 @@ from core.world.spawn import Spawn
 from core.world.region import Region
 from core.balance.difficulty_analyzer import DifficultyAnalyzer, DifficultyAnalysis
 
-
 # Monster difficulty classification
 MONSTER_DIFFICULTY_MAP: Dict[str, str] = {
-    "Rat": "easy", "Spider": "easy", "Cave Rat": "easy",
-    "Troll": "easy", "Orc": "easy", "Goblin": "easy",
-    "Skeleton": "easy", "Dwarf": "medium", "Lizard": "medium",
-    "Cyclops": "medium", "Ghoul": "medium",
-    "Dragon": "hard", "Hydra": "hard", "Giant Spider": "hard",
-    "Warlock": "hard", "Nightmare": "hard", "Vampire": "medium",
-    "Banshee": "medium", "Mummy": "medium", "Sea Serpent": "hard",
-    "Dragon Lord": "very_hard", "Demon": "very_hard",
-    "Black Knight": "very_hard", "Serpent Spawn": "very_hard",
-    "Medusa": "very_hard", "Behemoth": "hard",
-    "Eternal Guardian": "very_hard", "Hero": "very_hard",
-    "Iron Golem": "very_hard", "Hellfire Fighter": "hard",
+    "Rat": "easy",
+    "Spider": "easy",
+    "Cave Rat": "easy",
+    "Troll": "easy",
+    "Orc": "easy",
+    "Goblin": "easy",
+    "Skeleton": "easy",
+    "Dwarf": "medium",
+    "Lizard": "medium",
+    "Cyclops": "medium",
+    "Ghoul": "medium",
+    "Dragon": "hard",
+    "Hydra": "hard",
+    "Giant Spider": "hard",
+    "Warlock": "hard",
+    "Nightmare": "hard",
+    "Vampire": "medium",
+    "Banshee": "medium",
+    "Mummy": "medium",
+    "Sea Serpent": "hard",
+    "Dragon Lord": "very_hard",
+    "Demon": "very_hard",
+    "Black Knight": "very_hard",
+    "Serpent Spawn": "very_hard",
+    "Medusa": "very_hard",
+    "Behemoth": "hard",
+    "Eternal Guardian": "very_hard",
+    "Hero": "very_hard",
+    "Iron Golem": "very_hard",
+    "Hellfire Fighter": "hard",
     "Diabolic Imp": "hard",
 }
 
@@ -33,6 +50,7 @@ DIFFICULTY_TIERS = ["easy", "medium", "hard", "very_hard", "boss"]
 @dataclass
 class DifficultyAdjustment:
     """Record of a single difficulty adjustment."""
+
     zone_name: str
     monster: str
     action: str  # "downgrade", "upgrade", "remove", "add"
@@ -54,6 +72,7 @@ class DifficultyAdjustment:
 @dataclass
 class DifficultyBalanceResult:
     """Result of difficulty balancing operation."""
+
     adjustments: List[DifficultyAdjustment] = field(default_factory=list)
     zones_modified: List[str] = field(default_factory=list)
     bosses_corrected: int = 0
@@ -99,8 +118,9 @@ class DifficultyBalancer:
     def __init__(self):
         self._analyzer = DifficultyAnalyzer()
 
-    def balance(self, world: WorldModel, region: Region,
-                player_level: int = 150) -> DifficultyBalanceResult:
+    def balance(
+        self, world: WorldModel, region: Region, player_level: int = 150
+    ) -> DifficultyBalanceResult:
         """
         Balance difficulty for a region.
 
@@ -127,11 +147,15 @@ class DifficultyBalancer:
 
         # Handle impossible zones
         if analysis.has_deadly_zones or analysis.overall_score > 75:
-            self._downgrade_deadly_monsters(world, region, analysis, difficulties, result)
+            self._downgrade_deadly_monsters(
+                world, region, analysis, difficulties, result
+            )
 
         # Handle trivial zones
         elif analysis.has_too_easy_zones and analysis.overall_score < 15:
-            self._upgrade_trivial_monsters(world, region, analysis, difficulties, result)
+            self._upgrade_trivial_monsters(
+                world, region, analysis, difficulties, result
+            )
 
         # Handle mixed difficulty
         elif analysis.difficulty_spread > 40:
@@ -142,8 +166,9 @@ class DifficultyBalancer:
 
         return result
 
-    def _collect_spawns(self, world: WorldModel,
-                        region: Region) -> List[Tuple[int, int, int, Spawn]]:
+    def _collect_spawns(
+        self, world: WorldModel, region: Region
+    ) -> List[Tuple[int, int, int, Spawn]]:
         """Collect spawns in region."""
         spawns: List[Tuple[int, int, int, Spawn]] = []
         for tile in world.tiles.values():
@@ -151,84 +176,119 @@ class DifficultyBalancer:
                 spawns.append((tile.x, tile.y, tile.z, tile.spawn))
         return spawns
 
-    def _get_difficulty_map(self, zone_spawns: List[Tuple[int, int, int, Spawn]]) -> Dict[str, str]:
+    def _get_difficulty_map(
+        self, zone_spawns: List[Tuple[int, int, int, Spawn]]
+    ) -> Dict[str, str]:
         """Get difficulty map for monsters in zone."""
         diff_map: Dict[str, str] = {}
         for _, _, _, spawn in zone_spawns:
             if spawn.monster not in diff_map:
-                diff_map[spawn.monster] = MONSTER_DIFFICULTY_MAP.get(spawn.monster, "medium")
+                diff_map[spawn.monster] = MONSTER_DIFFICULTY_MAP.get(
+                    spawn.monster, "medium"
+                )
         return diff_map
 
-    def _downgrade_deadly_monsters(self, world: WorldModel, region: Region,
-                                   analysis: DifficultyAnalysis,
-                                   difficulties: Dict[str, str],
-                                   result: DifficultyBalanceResult) -> None:
+    def _downgrade_deadly_monsters(
+        self,
+        world: WorldModel,
+        region: Region,
+        analysis: DifficultyAnalysis,
+        difficulties: Dict[str, str],
+        result: DifficultyBalanceResult,
+    ) -> None:
         """Replace deadly monsters with easier alternatives."""
         for monster_name, profile in analysis.monster_profiles.items():
             if profile.rating in ("impossible", "deadly"):
                 current_diff = difficulties.get(monster_name, "medium")
                 new_diff = self._lower_tier(current_diff)
 
-                replacement = self._find_replacement(monster_name, current_diff, new_diff)
+                replacement = self._find_replacement(
+                    monster_name, current_diff, new_diff
+                )
                 if replacement:
-                    self._replace_monster_in_world(world, region.name, monster_name, replacement)
-                    result.adjustments.append(DifficultyAdjustment(
-                        zone_name=region.name,
-                        monster=monster_name,
-                        action="downgrade",
-                        old_difficulty=current_diff,
-                        new_difficulty=new_diff,
-                        reason=f"Monster rated '{profile.rating}' (score={profile.difficulty_score:.0f})",
-                    ))
+                    self._replace_monster_in_world(
+                        world, region.name, monster_name, replacement
+                    )
+                    result.adjustments.append(
+                        DifficultyAdjustment(
+                            zone_name=region.name,
+                            monster=monster_name,
+                            action="downgrade",
+                            old_difficulty=current_diff,
+                            new_difficulty=new_diff,
+                            reason=f"Monster rated '{profile.rating}' (score={profile.difficulty_score:.0f})",
+                        )
+                    )
                     result.bosses_corrected += 1
 
-    def _upgrade_trivial_monsters(self, world: WorldModel, region: Region,
-                                  analysis: DifficultyAnalysis,
-                                  difficulties: Dict[str, str],
-                                  result: DifficultyBalanceResult) -> None:
+    def _upgrade_trivial_monsters(
+        self,
+        world: WorldModel,
+        region: Region,
+        analysis: DifficultyAnalysis,
+        difficulties: Dict[str, str],
+        result: DifficultyBalanceResult,
+    ) -> None:
         """Replace trivial monsters with harder alternatives."""
         for monster_name, profile in analysis.monster_profiles.items():
             if profile.rating == "trivial":
                 current_diff = difficulties.get(monster_name, "easy")
                 new_diff = self._raise_tier(current_diff)
 
-                replacement = self._find_replacement(monster_name, current_diff, new_diff)
+                replacement = self._find_replacement(
+                    monster_name, current_diff, new_diff
+                )
                 if replacement:
-                    self._replace_monster_in_world(world, region.name, monster_name, replacement)
-                    result.adjustments.append(DifficultyAdjustment(
-                        zone_name=region.name,
-                        monster=monster_name,
-                        action="upgrade",
-                        old_difficulty=current_diff,
-                        new_difficulty=new_diff,
-                        reason=f"Monster rated 'trivial' (score={profile.difficulty_score:.0f})",
-                    ))
+                    self._replace_monster_in_world(
+                        world, region.name, monster_name, replacement
+                    )
+                    result.adjustments.append(
+                        DifficultyAdjustment(
+                            zone_name=region.name,
+                            monster=monster_name,
+                            action="upgrade",
+                            old_difficulty=current_diff,
+                            new_difficulty=new_diff,
+                            reason=f"Monster rated 'trivial' (score={profile.difficulty_score:.0f})",
+                        )
+                    )
                     result.trivial_corrected += 1
 
-    def _normalize_spread(self, world: WorldModel, region: Region,
-                          analysis: DifficultyAnalysis,
-                          difficulties: Dict[str, str],
-                          result: DifficultyBalanceResult) -> None:
+    def _normalize_spread(
+        self,
+        world: WorldModel,
+        region: Region,
+        analysis: DifficultyAnalysis,
+        difficulties: Dict[str, str],
+        result: DifficultyBalanceResult,
+    ) -> None:
         """Normalize difficulty spread by upgrading the weakest monsters."""
         for monster_name, profile in analysis.monster_profiles.items():
             if profile.rating in ("trivial", "easy") and analysis.avg_difficulty > 35:
                 current_diff = difficulties.get(monster_name, "easy")
                 new_diff = self._raise_tier(current_diff)
 
-                replacement = self._find_replacement(monster_name, current_diff, new_diff)
+                replacement = self._find_replacement(
+                    monster_name, current_diff, new_diff
+                )
                 if replacement:
-                    self._replace_monster_in_world(world, region.name, monster_name, replacement)
-                    result.adjustments.append(DifficultyAdjustment(
-                        zone_name=region.name,
-                        monster=monster_name,
-                        action="upgrade",
-                        old_difficulty=current_diff,
-                        new_difficulty=new_diff,
-                        reason=f"Normalizing spread (avg={analysis.avg_difficulty:.0f})",
-                    ))
+                    self._replace_monster_in_world(
+                        world, region.name, monster_name, replacement
+                    )
+                    result.adjustments.append(
+                        DifficultyAdjustment(
+                            zone_name=region.name,
+                            monster=monster_name,
+                            action="upgrade",
+                            old_difficulty=current_diff,
+                            new_difficulty=new_diff,
+                            reason=f"Normalizing spread (avg={analysis.avg_difficulty:.0f})",
+                        )
+                    )
 
-    def _replace_monster_in_world(self, world: WorldModel, zone_name: str,
-                                  old_monster: str, new_monster: str) -> int:
+    def _replace_monster_in_world(
+        self, world: WorldModel, zone_name: str, old_monster: str, new_monster: str
+    ) -> int:
         """Replace all instances of a monster in a zone."""
         count = 0
         for tile in world.tiles.values():
@@ -238,8 +298,9 @@ class DifficultyBalancer:
                     count += 1
         return count
 
-    def _find_replacement(self, current_monster: str,
-                          current_diff: str, target_diff: str) -> Optional[str]:
+    def _find_replacement(
+        self, current_monster: str, current_diff: str, target_diff: str
+    ) -> Optional[str]:
         """Find a replacement monster at the target difficulty."""
         key = f"{current_diff}_to_{target_diff}"
         candidates = TIER_REPLACEMENTS.get(key, [])
@@ -267,8 +328,9 @@ class DifficultyBalancer:
         idx = DIFFICULTY_TIERS.index(current) if current in DIFFICULTY_TIERS else 1
         return DIFFICULTY_TIERS[min(len(DIFFICULTY_TIERS) - 1, idx + 1)]
 
-    def analyze_zone_difficulty(self, world: WorldModel, region: Region,
-                                player_level: int = 150) -> DifficultyAnalysis:
+    def analyze_zone_difficulty(
+        self, world: WorldModel, region: Region, player_level: int = 150
+    ) -> DifficultyAnalysis:
         """
         Analyze difficulty for a region without modifying it.
 

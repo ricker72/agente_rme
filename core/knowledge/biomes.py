@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class Biome:
     name: str
@@ -8,6 +9,7 @@ class Biome:
     walls: List[int]
     decorations: List[int]
     monsters: List[str]
+
 
 BIOMES = [
     Biome(

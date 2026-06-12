@@ -25,9 +25,11 @@ def load_npc_names(npc_source: str) -> Tuple[List[str], List[dict]]:
         name = npc.get("name") or npc.findtext("name") or ""
         if name:
             npc_names.append(name)
-            documents.append({
-                "title": f"NPC {name}",
-                "text": f"NPC {name} available in RME data.",
-                "metadata": {"type": "npc", "name": name},
-            })
+            documents.append(
+                {
+                    "title": f"NPC {name}",
+                    "text": f"NPC {name} available in RME data.",
+                    "metadata": {"type": "npc", "name": name},
+                }
+            )
     return npc_names, documents

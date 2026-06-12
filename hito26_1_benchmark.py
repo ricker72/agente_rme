@@ -22,7 +22,6 @@ import os
 import sys
 import json
 import time
-from pathlib import Path
 
 # Force UTF-8
 sys.stdout.reconfigure(encoding="utf-8")
@@ -31,7 +30,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 
-from agente_rme.core.agents import OrchestratorAgent
+from agente_rme.core.agents import OrchestratorAgent  # noqa: E402
 
 PROMPT = """Crear expansión Issavi + Roshamuul
 para niveles 300-500
@@ -104,9 +103,7 @@ def run_one(idx: int, output_dir: str) -> dict:
         "success": bool(result.success),
         "workflow_id": result.workflow_id,
         "world_tiles": (
-            len(result.world.get("tiles", {}))
-            if isinstance(result.world, dict)
-            else 0
+            len(result.world.get("tiles", {})) if isinstance(result.world, dict) else 0
         ),
         "campaign_ok": bool(result.campaign),
         "playtest_ok": bool(result.playtest),

@@ -1,0 +1,292 @@
+.\.audit_import_runner.py:43:121: E501 line too long (146 > 120 characters)
+.\_quality_report.py:107:21: E741 ambiguous variable name 'l'
+.\_viz_test.py:9:1: E402 module level import not at top of file
+.\ai\prompt_builder.py:32:121: E501 line too long (190 > 120 characters)
+.\audit_dependency_consistency.py:180:5: E722 do not use bare 'except'
+.\audit_dependency_consistency.py:660:5: E722 do not use bare 'except'
+.\audit_dependency_consistency.py:714:5: E722 do not use bare 'except'
+.\audit_dependency_consistency.py:767:13: E722 do not use bare 'except'
+.\audit_dependency_consistency.py:841:9: E722 do not use bare 'except'
+.\audit_dependency_consistency.py:1114:121: E501 line too long (130 > 120 characters)
+.\audit_dependency_consistency.py:1221:5: F841 local variable 'mf' is assigned to but never used
+.\benchmark_blueprint_intelligence.py:22:1: E402 module level import not at top of file
+.\benchmark_blueprint_intelligence.py:23:1: E402 module level import not at top of file
+.\benchmark_critic.py:23:1: E402 module level import not at top of file
+.\benchmark_critic.py:24:1: E402 module level import not at top of file
+.\benchmark_critic.py:25:1: E402 module level import not at top of file
+.\benchmark_critic.py:26:1: E402 module level import not at top of file
+.\benchmark_critic.py:27:1: E402 module level import not at top of file
+.\benchmark_critic.py:28:1: E402 module level import not at top of file
+.\benchmark_knowledge.py:20:1: E402 module level import not at top of file
+.\benchmark_knowledge.py:25:1: F811 redefinition of unused 'build_metrics' from line 20
+.\benchmark_knowledge.py:25:1: E402 module level import not at top of file
+.\benchmark_knowledge.py:164:9: F841 local variable 'r' is assigned to but never used
+.\boss_generator.py:29:1: E402 module level import not at top of file
+.\boss_generator.py:30:1: F811 redefinition of unused 'BossGenerator' from line 4
+.\boss_generator.py:30:1: E402 module level import not at top of file
+.\boss_generator.py:31:1: E402 module level import not at top of file
+.\boss_generator.py:32:1: E402 module level import not at top of file
+.\boss_generator.py:33:1: E402 module level import not at top of file
+.\core\assets\asset_recommender.py:134:121: E501 line too long (121 > 120 characters)
+.\core\learning\learning_pipeline.py:318:121: E501 line too long (128 > 120 characters)
+.\data_extractor.py:212:121: E501 line too long (146 > 120 characters)
+.\examples\hito13_blueprint_extractor_demo.py:24:1: E402 module level import not at top of file
+.\examples\hito13_blueprint_extractor_demo.py:25:1: E402 module level import not at top of file
+.\examples\hito13_blueprint_extractor_demo.py:26:1: E402 module level import not at top of file
+.\examples\hito13_blueprint_extractor_demo.py:27:1: E402 module level import not at top of file
+.\examples\hito15_ai_architect_demo.py:28:1: E402 module level import not at top of file
+.\examples\hito15_ai_architect_demo.py:29:1: E402 module level import not at top of file
+.\examples\map_learning_demo.py:16:1: E402 module level import not at top of file
+.\examples\map_learning_demo.py:19:1: E402 module level import not at top of file
+.\examples\playtest_demo.py:8:1: E402 module level import not at top of file
+.\examples\playtest_demo.py:9:1: E402 module level import not at top of file
+.\examples\playtest_demo.py:10:1: E402 module level import not at top of file
+.\examples\playtest_demo.py:11:1: E402 module level import not at top of file
+.\examples\playtest_demo.py:12:1: E402 module level import not at top of file
+.\examples\playtest_demo.py:13:1: E402 module level import not at top of file
+.\hito26_1_benchmark.py:33:1: E402 module level import not at top of file
+.\main.py:710:121: E501 line too long (128 > 120 characters)
+.\mission_generator.py:26:1: E402 module level import not at top of file
+.\mission_generator.py:27:1: F811 redefinition of unused 'MissionGenerator' from line 4
+.\mission_generator.py:27:1: E402 module level import not at top of file
+.\mission_generator.py:28:1: E402 module level import not at top of file
+.\mission_generator.py:29:1: E402 module level import not at top of file
+.\mission_generator.py:30:1: E402 module level import not at top of file
+.\ollama_client.py:186:49: W292 no newline at end of file
+.\pipeline_runner.py:248:17: F841 local variable 'stage_complete' is assigned to but never used
+.\pipeline_runner.py:595:9: F841 local variable 'merged' is assigned to but never used
+.\pipeline_runner.py:611:13: F841 local variable 'rooms' is assigned to but never used
+.\pipeline_runner.py:612:13: F841 local variable 'boss' is assigned to but never used
+.\pipeline_runner.py:728:9: F841 local variable 'name' is assigned to but never used
+.\quest_generator.py:28:1: E402 module level import not at top of file
+.\quest_generator.py:29:1: F811 redefinition of unused 'QuestGenerator' from line 4
+.\quest_generator.py:29:1: E402 module level import not at top of file
+.\quest_generator.py:30:1: E402 module level import not at top of file
+.\quest_generator.py:31:1: E402 module level import not at top of file
+.\quest_generator.py:32:1: E402 module level import not at top of file
+.\raid_generator.py:26:1: E402 module level import not at top of file
+.\raid_generator.py:27:1: F811 redefinition of unused 'RaidGenerator' from line 4
+.\raid_generator.py:27:1: E402 module level import not at top of file
+.\raid_generator.py:28:1: E402 module level import not at top of file
+.\raid_generator.py:29:1: E402 module level import not at top of file
+.\raid_generator.py:30:1: E402 module level import not at top of file
+.\reward_generator.py:29:1: E402 module level import not at top of file
+.\reward_generator.py:30:1: F811 redefinition of unused 'RewardGenerator' from line 4
+.\reward_generator.py:30:1: E402 module level import not at top of file
+.\reward_generator.py:31:1: E402 module level import not at top of file
+.\reward_generator.py:32:1: E402 module level import not at top of file
+.\reward_generator.py:33:1: E402 module level import not at top of file
+.\smoke_knowledge.py:10:1: E402 module level import not at top of file
+.\test_lua_diag.py:7:1: E402 module level import not at top of file
+.\test_lua_diag.py:8:1: E402 module level import not at top of file
+.\test_lua_diag.py:9:1: E402 module level import not at top of file
+.\test_lua_diag.py:10:1: E402 module level import not at top of file
+.\test_lua_diag.py:34:9: E741 ambiguous variable name 'l'
+.\test_orch_diag.py:7:1: E402 module level import not at top of file
+.\test_orch_diag.py:8:1: E402 module level import not at top of file
+.\test_orch_diag.py:9:1: E402 module level import not at top of file
+.\test_orch_diag.py:10:1: E402 module level import not at top of file
+.\test_otbm_diag.py:7:1: E402 module level import not at top of file
+.\test_utcnow.py:7:1: E402 module level import not at top of file
+.\test_utcnow.py:13:1: E402 module level import not at top of file
+.\test_utcnow.py:19:1: E402 module level import not at top of file
+.\test_utcnow.py:25:1: E402 module level import not at top of file
+.\tests\agents\test_architect_agent_coverage.py:20:1: E402 module level import not at top of file
+.\tests\agents\test_architect_agent_coverage.py:21:1: E402 module level import not at top of file
+.\tests\agents\test_balance_agent_coverage.py:20:1: E402 module level import not at top of file
+.\tests\agents\test_balance_agent_coverage.py:21:1: E402 module level import not at top of file
+.\tests\agents\test_expansion_agent_coverage.py:19:1: E402 module level import not at top of file
+.\tests\agents\test_expansion_agent_coverage.py:20:1: E402 module level import not at top of file
+.\tests\agents\test_export_agent.py:60:9: F841 local variable 'response' is assigned to but never used
+.\tests\agents\test_export_agent.py:79:9: F841 local variable 'response' is assigned to but never used
+.\tests\agents\test_mapper_agent_coverage.py:20:1: E402 module level import not at top of file
+.\tests\agents\test_mapper_agent_coverage.py:21:1: E402 module level import not at top of file
+.\tests\agents\test_orchestrator_agent.py:93:9: F841 local variable 'result' is assigned to but never used
+.\tests\agents\test_qa_agent_coverage.py:20:1: E402 module level import not at top of file
+.\tests\agents\test_qa_agent_coverage.py:21:1: E402 module level import not at top of file
+.\tests\agents\test_qa_agent_coverage.py:428:13: F841 local variable 'campaign' is assigned to but never used
+.\tests\agents\test_quest_agent_coverage.py:21:1: E402 module level import not at top of file
+.\tests\agents\test_quest_agent_coverage.py:22:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_export.py:22:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_export.py:28:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_export.py:29:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_export.py:30:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_export.py:31:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_fallback.py:20:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_fallback.py:28:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_fallback.py:29:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_fallback.py:30:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_fallback.py:184:9: F841 local variable 'resp' is assigned to but never used
+.\tests\campaign\test_campaign_fallback.py:201:9: F841 local variable 'resp' is assigned to but never used
+.\tests\campaign\test_campaign_fallback.py:216:9: F841 local variable 'resp' is assigned to but never used
+.\tests\campaign\test_campaign_fallback.py:232:9: F841 local variable 'resp' is assigned to but never used
+.\tests\campaign\test_campaign_fallback.py:333:9: F841 local variable 'export_resp' is assigned to but never used
+.\tests\campaign\test_campaign_pipeline.py:28:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_pipeline.py:34:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_pipeline.py:35:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_pipeline.py:36:1: E402 module level import not at top of file
+.\tests\campaign\test_campaign_pipeline.py:217:9: F841 local variable 'resp' is assigned to but never used
+.\tests\common\test_datetime_timezone.py:17:1: E402 module level import not at top of file
+.\tests\common\test_datetime_timezone.py:133:1: W391 blank line at end of file
+.\tests\common\test_timezone_compliance.py:143:1: W391 blank line at end of file
+.\tests\e2e\test_full_pipeline.py:157:13: F841 local variable 'result' is assigned to but never used
+.\tests\e2e\test_full_pipeline.py:171:13: F841 local variable 'result' is assigned to but never used
+.\tests\integration\test_autonomous_50world_benchmark.py:19:1: E402 module level import not at top of file
+.\tests\integration\test_autonomous_export_pipeline.py:56:5: F841 local variable 'found' is assigned to but never used
+.\tests\integration\test_blueprint_generation_pipeline.py:42:9: F841 local variable 'bps' is assigned to but never used
+.\tests\integration\test_blueprint_generation_pipeline.py:47:9: F841 local variable 'issavi' is assigned to but never used
+.\tests\integration\test_critic_pipeline.py:122:13: F841 local variable 'result' is assigned to but never used
+.\tests\integration\test_critic_playtest_integration.py:30:9: F841 local variable 'playtest_report' is assigned to but never used
+.\tests\integration\test_multi_agent_pipeline.py:47:9: F841 local variable 'result' is assigned to but never used
+.\tests\knowledge\test_other_extractors.py:260:13: F601 dictionary key 'regions' repeated with different values
+.\tests\knowledge\test_other_extractors.py:265:13: F601 dictionary key 'regions' repeated with different values
+.\tests\knowledge\test_other_extractors.py:273:5: F811 redefinition of unused 'test_skips_generic' from line 235
+.\tests\knowledge\test_other_extractors.py:277:13: F601 dictionary key 'regions' repeated with different values
+.\tests\knowledge\test_other_extractors.py:282:13: F601 dictionary key 'regions' repeated with different values
+.\tests\lua\test_lua_backward_compatibility.py:16:1: E402 module level import not at top of file
+.\tests\lua\test_lua_backward_compatibility.py:17:1: E402 module level import not at top of file
+.\tests\lua\test_lua_backward_compatibility.py:22:1: E402 module level import not at top of file
+.\tests\lua\test_lua_backward_compatibility.py:23:1: E402 module level import not at top of file
+.\tests\lua\test_lua_export_pipeline.py:17:1: E402 module level import not at top of file
+.\tests\lua\test_lua_export_pipeline.py:18:1: E402 module level import not at top of file
+.\tests\lua\test_lua_export_pipeline.py:19:1: E402 module level import not at top of file
+.\tests\lua\test_lua_export_pipeline.py:20:1: E402 module level import not at top of file
+.\tests\lua\test_lua_generator.py:18:1: E402 module level import not at top of file
+.\tests\lua\test_lua_generator.py:19:1: E402 module level import not at top of file
+.\tests\lua\test_lua_generator.py:20:1: E402 module level import not at top of file
+.\tests\lua\test_lua_generator.py:21:1: E402 module level import not at top of file
+.\tests\lua\test_lua_generator.py:176:9: F841 local variable 'world' is assigned to but never used
+.\tests\lua\test_lua_generator.py:177:9: F841 local variable 'tile' is assigned to but never used
+.\tests\lua\test_lua_pipeline.py:23:1: E402 module level import not at top of file
+.\tests\lua\test_lua_pipeline.py:24:1: E402 module level import not at top of file
+.\tests\lua\test_lua_pipeline.py:29:1: E402 module level import not at top of file
+.\tests\lua\test_lua_pipeline.py:30:1: E402 module level import not at top of file
+.\tests\lua\test_lua_pipeline.py:31:1: E402 module level import not at top of file
+.\tests\lua\test_spawn_generation.py:16:1: E402 module level import not at top of file
+.\tests\lua\test_spawn_generation.py:21:1: E402 module level import not at top of file
+.\tests\lua\test_spawn_generation.py:22:1: E402 module level import not at top of file
+.\tests\lua\test_spawn_generation.py:23:1: E402 module level import not at top of file
+.\tests\lua\test_spawn_generation.py:24:1: E402 module level import not at top of file
+.\tests\lua\test_spawn_plan_generation.py:10:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_byte_ranges.py:19:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_byte_ranges.py:20:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_byte_ranges.py:21:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_export_validation.py:21:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_export_validation.py:22:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_export_validation.py:23:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_export_validation.py:24:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_export_validation.py:25:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_importer.py:23:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_importer.py:45:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_importer.py:61:15: F821 undefined name 'NodeEncoder'
+.\tests\otbm\test_otbm_importer.py:62:5: F841 local variable 'tile_encoder' is assigned to but never used
+.\tests\otbm\test_otbm_importer.py:395:40: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+.\tests\otbm\test_otbm_importer.py:396:41: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+.\tests\otbm\test_otbm_importer.py:704:15: F821 undefined name 'NodeEncoder'
+.\tests\otbm\test_otbm_importer.py:762:15: F821 undefined name 'NodeEncoder'
+.\tests\otbm\test_otbm_importer.py:763:5: F841 local variable 'tile_encoder' is assigned to but never used
+.\tests\otbm\test_otbm_large_map.py:16:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_map.py:17:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_map.py:18:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_map.py:19:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_map.py:25:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_map.py:26:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_world.py:14:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_world.py:15:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_world.py:16:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_large_world.py:17:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_roundtrip.py:21:1: E402 module level import not at top of file
+.\tests\otbm\test_otbm_roundtrip.py:22:1: E402 module level import not at top of file
+.\tests\test_ai_architect.py:18:1: E402 module level import not at top of file
+.\tests\test_biome_generator.py:23:1: E402 module level import not at top of file
+.\tests\test_biome_generator.py:24:1: E402 module level import not at top of file
+.\tests\test_blueprint_validator.py:139:9: F841 local variable 'result' is assigned to but never used
+.\tests\test_city_generator.py:10:1: E402 module level import not at top of file
+.\tests\test_city_generator.py:11:1: E402 module level import not at top of file
+.\tests\test_combat_simulator.py:9:1: E402 module level import not at top of file
+.\tests\test_combat_simulator.py:15:1: E402 module level import not at top of file
+.\tests\test_continent_generator.py:26:1: E402 module level import not at top of file
+.\tests\test_continent_generator.py:27:1: E402 module level import not at top of file
+.\tests\test_continent_generator.py:28:1: E402 module level import not at top of file
+.\tests\test_continent_generator.py:29:1: E402 module level import not at top of file
+.\tests\test_critic_report.py:112:13: F841 local variable 'report2' is assigned to but never used
+.\tests\test_dungeon_generator.py:10:1: E402 module level import not at top of file
+.\tests\test_dungeon_generator.py:11:1: E402 module level import not at top of file
+.\tests\test_hunt_generator.py:10:1: E402 module level import not at top of file
+.\tests\test_hunt_generator.py:11:1: E402 module level import not at top of file
+.\tests\test_lua_exporter.py:13:1: E402 module level import not at top of file
+.\tests\test_lua_exporter.py:14:1: E402 module level import not at top of file
+.\tests\test_lua_exporter.py:15:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:13:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:14:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:15:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:16:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:17:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:18:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:19:1: E402 module level import not at top of file
+.\tests\test_map_analyzer_hito12.py:20:1: E402 module level import not at top of file
+.\tests\test_mvp_integration.py:117:5: F841 local variable 'v' is assigned to but never used
+.\tests\test_mvp_integration.py:213:5: F841 local variable 'rec' is assigned to but never used
+.\tests\test_otbm_exporter.py:25:1: E402 module level import not at top of file
+.\tests\test_otbm_exporter.py:26:1: E402 module level import not at top of file
+.\tests\test_otbm_exporter.py:27:1: E402 module level import not at top of file
+.\tests\test_pathfinder.py:9:1: E402 module level import not at top of file
+.\tests\test_pathfinder.py:10:1: E402 module level import not at top of file
+.\tests\test_pathfinder.py:11:1: E402 module level import not at top of file
+.\tests\test_pathfinder.py:12:1: E402 module level import not at top of file
+.\tests\test_playtest_engine.py:10:1: E402 module level import not at top of file
+.\tests\test_playtest_engine.py:11:1: E402 module level import not at top of file
+.\tests\test_playtest_engine.py:12:1: E402 module level import not at top of file
+.\tests\test_playtest_engine.py:13:1: E402 module level import not at top of file
+.\tests\test_playtest_engine.py:14:1: E402 module level import not at top of file
+.\tests\test_playtest_engine.py:15:1: E402 module level import not at top of file
+.\tests\test_preview_generator.py:23:1: E402 module level import not at top of file
+.\tests\test_preview_generator.py:44:1: E402 module level import not at top of file
+.\tests\test_preview_generator.py:45:1: E402 module level import not at top of file
+.\tests\test_preview_generator.py:69:5: F841 local variable 'result' is assigned to but never used
+.\tests\test_production.py:28:1: E402 module level import not at top of file
+.\tests\test_production.py:29:1: E402 module level import not at top of file
+.\tests\test_production.py:36:1: E402 module level import not at top of file
+.\tests\test_production.py:37:1: E402 module level import not at top of file
+.\tests\test_production.py:38:1: E402 module level import not at top of file
+.\tests\test_production.py:602:9: F841 local variable 'result' is assigned to but never used
+.\tests\test_production.py:657:9: F841 local variable 'preview_result' is assigned to but never used
+.\tests\test_progression_analyzer.py:9:1: E402 module level import not at top of file
+.\tests\test_progression_analyzer.py:10:1: E402 module level import not at top of file
+.\tests\test_progression_analyzer.py:15:1: E402 module level import not at top of file
+.\tests\test_progression_analyzer.py:16:1: E402 module level import not at top of file
+.\tests\test_progression_analyzer.py:17:1: E402 module level import not at top of file
+.\tests\test_region_expander.py:76:9: F841 local variable 'original' is assigned to but never used
+.\tests\test_world_generator.py:13:1: E402 module level import not at top of file
+.\tests\test_world_generator.py:14:1: E402 module level import not at top of file
+.\tests\test_world_planner.py:16:1: E402 module level import not at top of file
+.\tests\test_world_planner.py:466:5: F841 local variable 'types1' is assigned to but never used
+.\tests\test_world_planner.py:467:5: F841 local variable 'types2' is assigned to but never used
+.\tests\test_world_synthesizer.py:27:1: E402 module level import not at top of file
+.\tests\test_world_synthesizer.py:28:1: E402 module level import not at top of file
+.\tests\test_world_synthesizer.py:29:1: E402 module level import not at top of file
+.\tests\test_world_synthesizer.py:30:1: E402 module level import not at top of file
+.\tests\test_world_synthesizer.py:129:5: F841 local variable 'world' is assigned to but never used
+.\tests\test_world_validator.py:141:9: F841 local variable 'w' is assigned to but never used
+.\tests\test_zone_planner.py:15:1: E402 module level import not at top of file
+.\tools\hotfix_lua_hardening.py:259:32: E741 ambiguous variable name 'l'
+.\tools\hotfix_lua_hardening.py:309:30: E741 ambiguous variable name 'l'
+.\tools\hotfix_lua_hardening.py:311:19: E741 ambiguous variable name 'l'
+.\tools\hotfix_performance.py:135:5: F841 local variable 'object_count_start' is assigned to but never used
+.\tools\hotfix_performance.py:220:13: F841 local variable 'creation' is assigned to but never used
+.\tools\hotfix_performance.py:221:13: F841 local variable 'exit_' is assigned to but never used
+.\tools\hotfix_security.py:289:5: F841 local variable 'total_issues' is assigned to but never used
+.\tools\hotfix_security.py:296:5: F841 local variable 'high_count' is assigned to but never used
+.\tools\real_autonomous_certification.py:55:13: F841 local variable 'target_thresholds' is assigned to but never used
+.\tools\real_blueprint_validation.py:36:5: F841 local variable 'registry' is assigned to but never used
+.\tools\real_blueprint_validation.py:37:5: F841 local variable 'extractor' is assigned to but never used
+.\tools\real_blueprint_validation.py:43:5: F841 local variable 'ai' is assigned to but never used
+.\tools\real_blueprint_validation.py:75:21: F841 local variable 's' is assigned to but never used
+.\tools\real_blueprint_validation.py:88:21: F841 local variable 'res' is assigned to but never used
+.\tools\run_rc1_1.py:251:5: F841 local variable 'all_criteria' is assigned to but never used
+.\tools\run_rc1_1.py:367:121: E501 line too long (139 > 120 characters)
+.\ui\pages\__init__.py:13:1: F401 'PySide6.QtWidgets.QWidget' imported but unused
+.\validate_hito_26_1b.py:27:1: E402 module level import not at top of file
+.\validate_hito_26_1b.py:28:1: E402 module level import not at top of file
+.\validate_hito_26_1b.py:29:1: E402 module level import not at top of file
+.\validate_hito_26_1b.py:30:1: E402 module level import not at top of file

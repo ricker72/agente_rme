@@ -11,8 +11,6 @@ Verifies end-to-end:
 
 import os
 import sys
-import tempfile
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -76,17 +74,24 @@ class TestLuaExportPipeline:
         # 5x5 grid
         for x in range(5):
             for y in range(5):
-                world.set_tile(Tile(
-                    x=x, y=y, z=7, ground=106,
-                    items=[{"id": 2050}] if (x + y) % 2 == 0 else [],
-                ))
+                world.set_tile(
+                    Tile(
+                        x=x,
+                        y=y,
+                        z=7,
+                        ground=106,
+                        items=[{"id": 2050}] if (x + y) % 2 == 0 else [],
+                    )
+                )
         plan = SpawnPlan(
             spawns=[
                 SpawnEntry(x=1, y=1, z=7, monster_name="Skeleton", interval=60),
                 SpawnEntry(x=2, y=2, z=7, monster_name="Demon", interval=120),
                 SpawnEntry(x=3, y=3, z=7, monster_name="Dragon", interval=300),
             ],
-            boss_spawn=SpawnEntry(x=4, y=4, z=7, monster_name="Orshabaal", interval=600),
+            boss_spawn=SpawnEntry(
+                x=4, y=4, z=7, monster_name="Orshabaal", interval=600
+            ),
         )
         gen = LuaGenerator()
         script = gen.generate(world, plan)
@@ -121,10 +126,14 @@ class TestLuaExportPipeline:
                 SpawnEntry(x=103, y=103, z=7, monster_name="Guzzlemaw", interval=60),
                 SpawnEntry(x=104, y=104, z=7, monster_name="Vexclaw", interval=60),
                 # Roshamuul hunts
-                SpawnEntry(x=202, y=202, z=7, monster_name="Spawn of Destruction", interval=120),
+                SpawnEntry(
+                    x=202, y=202, z=7, monster_name="Spawn of Destruction", interval=120
+                ),
                 SpawnEntry(x=203, y=203, z=7, monster_name="Demon", interval=60),
             ],
-            boss_spawn=SpawnEntry(x=204, y=204, z=7, monster_name="Orshabaal", interval=600),
+            boss_spawn=SpawnEntry(
+                x=204, y=204, z=7, monster_name="Orshabaal", interval=600
+            ),
         )
         gen = LuaGenerator()
         script = gen.generate(world, plan, map_name="IssaviRoshamuul")

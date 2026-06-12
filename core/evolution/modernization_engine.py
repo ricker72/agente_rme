@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional
 
 
 class MapVersion(Enum):
@@ -39,6 +39,7 @@ class ModernizationReport:
 
     def to_json(self) -> str:
         import json
+
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
 
@@ -70,55 +71,47 @@ class ModernizationEngine:
     # These are commonly-changed item IDs between versions
     ITEM_MIGRATION = {
         # Ground tiles
-        101: 102,    # old dirt → new dirt
-        103: 103,    # grass (unchanged but verified)
-        231: 231,    # cobblestone
+        101: 102,  # old dirt → new dirt
+        103: 103,  # grass (unchanged but verified)
+        231: 231,  # cobblestone
         1284: 1284,  # stone
         1294: 1294,  # gravel
-
         # Walls
         1000: 1126,  # old stone wall → new stone wall
         1002: 1127,  # old wooden wall → new wooden wall
-        398: 398,    # cave wall
-
+        398: 398,  # cave wall
         # Decorations
         1447: 1447,  # torch (preserved)
         2050: 2050,  # wall torch
         2052: 2052,  # wall torch variant
-
         # Containers
         1740: 1740,  # chest
         1753: 1753,  # large chest
         1764: 1764,  # box
-
         # Furniture
         1770: 1770,  # table
         1779: 1779,  # chair
         1786: 1786,  # bed
         1775: 1775,  # barrel
         1738: 1738,  # crate
-
         # Nature
         1304: 1304,  # small stone
         2705: 2705,  # bush
         2104: 2104,  # flower
         1499: 1499,  # fern
         1507: 1507,  # mushroom
-
         # Statues & Pillars
         1510: 1510,  # statue
         1545: 1545,  # pillar
-
         # Special
         1386: 1386,  # ladder
-
         # Old deprecated items that should be replaced
-        104: 102,    # old soil → dirt
-        105: 103,    # old grass tile → grass
-        106: 231,    # old pavement → cobblestone
-        400: 398,    # old cave wall → cave wall
-        401: 398,    # old underground wall → cave wall
-        430: 1284,   # old stone floor → stone
+        104: 102,  # old soil → dirt
+        105: 103,  # old grass tile → grass
+        106: 231,  # old pavement → cobblestone
+        400: 398,  # old cave wall → cave wall
+        401: 398,  # old underground wall → cave wall
+        430: 1284,  # old stone floor → stone
     }
 
     # Monster name migrations across versions
@@ -151,7 +144,6 @@ class ModernizationEngine:
         "Demon Skeleton": "Demon Skeleton",
         "Fire Elemental": "Fire Elemental",
         "Fire Devil": "Fire Devil",
-
         # 8.6 → modern renames
         "Orc Spearman": "Orc Spearman",
         "Orc Shaman": "Orc Shaman",
@@ -177,7 +169,6 @@ class ModernizationEngine:
         "Mummy": "Mummy",
         "Vampire": "Vampire",
         "Ghost": "Ghost",
-        "Demon Skeleton": "Demon Skeleton",
         "Lich": "Lich",
         "Warlock": "Warlock",
         "Black Knight": "Black Knight",
@@ -197,7 +188,6 @@ class ModernizationEngine:
         "Pirate Corsair": "Pirate Corsair",
         "Pirate Cutthroat": "Pirate Cutthroat",
         "Pirate Buccaneer": "Pirate Buccaneer",
-
         # Bosses
         "Ferumbras": "Ferumbras",
         "Orshabaal": "Orshabaal",
@@ -229,9 +219,12 @@ class ModernizationEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def modernize(self, otbm_data: Dict[str, Any],
-                  from_version: Optional[MapVersion] = None,
-                  to_version: str = "14.x") -> tuple:
+    def modernize(
+        self,
+        otbm_data: Dict[str, Any],
+        from_version: Optional[MapVersion] = None,
+        to_version: str = "14.x",
+    ) -> tuple:
         """
         Modernize an OTBM map from an older version to a modern standard.
 
@@ -302,7 +295,9 @@ class ModernizationEngine:
     # Item migration
     # ------------------------------------------------------------------
 
-    def _migrate_items(self, data: Dict[str, Any], report: ModernizationReport) -> Dict[str, Any]:
+    def _migrate_items(
+        self, data: Dict[str, Any], report: ModernizationReport
+    ) -> Dict[str, Any]:
         """Migrate item IDs from old to modern standards."""
         tiles = self._get_tiles(data)
         updated = 0
@@ -317,7 +312,9 @@ class ModernizationEngine:
                         updated += 1
 
         if updated > 0:
-            report.changes_applied.append(f"Migrados {updated} item IDs a versiones modernas")
+            report.changes_applied.append(
+                f"Migrados {updated} item IDs a versiones modernas"
+            )
         report.items_updated += updated
 
         return self._set_tiles(data, tiles)
@@ -326,7 +323,9 @@ class ModernizationEngine:
     # Monster migration
     # ------------------------------------------------------------------
 
-    def _migrate_monsters(self, data: Dict[str, Any], report: ModernizationReport) -> Dict[str, Any]:
+    def _migrate_monsters(
+        self, data: Dict[str, Any], report: ModernizationReport
+    ) -> Dict[str, Any]:
         """Migrate monster names to modern naming conventions."""
         spawns = self._get_spawns(data)
         updated = 0
@@ -341,7 +340,9 @@ class ModernizationEngine:
                         updated += 1
 
         if updated > 0:
-            report.changes_applied.append(f"Actualizados {updated} nombres de monstruos")
+            report.changes_applied.append(
+                f"Actualizados {updated} nombres de monstruos"
+            )
         report.spawns_updated += updated
 
         return self._set_spawns(data, spawns)
@@ -350,8 +351,12 @@ class ModernizationEngine:
     # Tile flag migration
     # ------------------------------------------------------------------
 
-    def _migrate_tile_flags(self, data: Dict[str, Any], report: ModernizationReport,
-                            from_version: MapVersion) -> Dict[str, Any]:
+    def _migrate_tile_flags(
+        self,
+        data: Dict[str, Any],
+        report: ModernizationReport,
+        from_version: MapVersion,
+    ) -> Dict[str, Any]:
         """Migrate tile flags to modern standard values."""
         tiles = self._get_tiles(data)
         reformatted = 0
@@ -367,7 +372,9 @@ class ModernizationEngine:
                     reformatted += 1
 
         if reformatted > 0:
-            report.changes_applied.append(f"Reformateados {reformatted} tiles con flags modernos")
+            report.changes_applied.append(
+                f"Reformateados {reformatted} tiles con flags modernos"
+            )
         report.tiles_reformatted += reformatted
 
         return self._set_tiles(data, tiles)
@@ -376,17 +383,17 @@ class ModernizationEngine:
         """Convert 8.6 flag bitmask to modern equivalent."""
         # Protection zone mapping
         result = 0
-        if flags & 1:    # PZ in 8.6
-            result |= 1   # TILESTATE_PROTECTIONZONE
-        if flags & 2:    # NoLogout in 8.6
-            result |= 4   # TILESTATE_NOLOGOUT
-        if flags & 4:    # PvP zone in 8.6
-            result |= 8   # TILESTATE_PVPZONE
-        if flags & 8:    # NoPvP zone in 8.6
-            result |= 2   # TILESTATE_NOPVPZONE
-        if flags & 16:   # Refresh in 8.6
+        if flags & 1:  # PZ in 8.6
+            result |= 1  # TILESTATE_PROTECTIONZONE
+        if flags & 2:  # NoLogout in 8.6
+            result |= 4  # TILESTATE_NOLOGOUT
+        if flags & 4:  # PvP zone in 8.6
+            result |= 8  # TILESTATE_PVPZONE
+        if flags & 8:  # NoPvP zone in 8.6
+            result |= 2  # TILESTATE_NOPVPZONE
+        if flags & 16:  # Refresh in 8.6
             result |= 32  # TILESTATE_REFRESH
-        if flags & 64:   # Trashed / blocked
+        if flags & 64:  # Trashed / blocked
             result |= 64
 
         return result
@@ -395,8 +402,9 @@ class ModernizationEngine:
     # Header update
     # ------------------------------------------------------------------
 
-    def _update_otbm_header(self, data: Dict[str, Any], report: ModernizationReport,
-                            to_version: str) -> Dict[str, Any]:
+    def _update_otbm_header(
+        self, data: Dict[str, Any], report: ModernizationReport, to_version: str
+    ) -> Dict[str, Any]:
         """Update the OTBM header version information."""
         target_otbm = 4  # Default modern
 
@@ -412,7 +420,9 @@ class ModernizationEngine:
         data["version"] = target_otbm
 
         if old_otbm != target_otbm:
-            report.changes_applied.append(f"OTBM header actualizado: v{old_otbm} → v{target_otbm}")
+            report.changes_applied.append(
+                f"OTBM header actualizado: v{old_otbm} → v{target_otbm}"
+            )
 
         # Update client version if present
         if "14.x" in to_version:
@@ -428,10 +438,19 @@ class ModernizationEngine:
     # Deprecated item removal
     # ------------------------------------------------------------------
 
-    def _remove_deprecated_items(self, data: Dict[str, Any], report: ModernizationReport) -> Dict[str, Any]:
+    def _remove_deprecated_items(
+        self, data: Dict[str, Any], report: ModernizationReport
+    ) -> Dict[str, Any]:
         """Remove or replace items that no longer exist in modern versions."""
         # Known deprecated item IDs
-        deprecated_ids = {104, 105, 106, 400, 401, 430}  # Already mapped in ITEM_MIGRATION
+        deprecated_ids = {
+            104,
+            105,
+            106,
+            400,
+            401,
+            430,
+        }  # Already mapped in ITEM_MIGRATION
 
         tiles = self._get_tiles(data)
         removed = 0
@@ -457,7 +476,9 @@ class ModernizationEngine:
     # Spawn structure normalization
     # ------------------------------------------------------------------
 
-    def _normalize_spawn_structure(self, data: Dict[str, Any], report: ModernizationReport) -> Dict[str, Any]:
+    def _normalize_spawn_structure(
+        self, data: Dict[str, Any], report: ModernizationReport
+    ) -> Dict[str, Any]:
         """Normalize spawn data to modern format."""
         spawns = self._get_spawns(data)
         normalized = 0
@@ -496,7 +517,9 @@ class ModernizationEngine:
                     spawn["center_position"] = tuple(pos)
 
         if normalized > 0:
-            report.changes_applied.append(f"Normalizados {normalized} elementos de spawn")
+            report.changes_applied.append(
+                f"Normalizados {normalized} elementos de spawn"
+            )
         report.spawns_updated += normalized
 
         return self._set_spawns(data, spawns)
@@ -512,7 +535,7 @@ class ModernizationEngine:
         - Depot tile markers
         - Modern waypoint format
         """
-        tiles = self._get_tiles(data)
+        self._get_tiles(data)
         map_data = data.get("map_data", data)
 
         # Ensure towns have proper structure
@@ -520,7 +543,11 @@ class ModernizationEngine:
         for town in towns:
             if "temple_position" not in town and "position" in town:
                 pos = town["position"]
-                town["temple_position"] = (pos[0], pos[1], pos[2] if len(pos) > 2 else 7)
+                town["temple_position"] = (
+                    pos[0],
+                    pos[1],
+                    pos[2] if len(pos) > 2 else 7,
+                )
             town.setdefault("name", f"Town_{id(town)}")
 
         # Add waypoints if missing

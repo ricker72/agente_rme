@@ -4,7 +4,9 @@ from typing import Any, Dict, List, Optional
 
 
 class TileRenderer:
-    def render_tile(self, world_model: Any, x: int, y: int, z: int = 7) -> Dict[str, object]:
+    def render_tile(
+        self, world_model: Any, x: int, y: int, z: int = 7
+    ) -> Dict[str, object]:
         tile = getattr(world_model, "tiles", {}).get(f"{x}:{y}:{z}")
         if tile is None:
             return {"x": x, "y": y, "z": z, "exists": False}
@@ -34,7 +36,9 @@ class TileRenderer:
             if tile.z == z
         ]
 
-    def render_area(self, world_model: Any, x: int, y: int, width: int, height: int, z: int = 7) -> List[List[Optional[str]]]:
+    def render_area(
+        self, world_model: Any, x: int, y: int, width: int, height: int, z: int = 7
+    ) -> List[List[Optional[str]]]:
         tiles = getattr(world_model, "tiles", {})
         grid = []
         for row in range(y, y + height):

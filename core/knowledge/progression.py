@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class HuntingRange:
     label: str
     min_level: int
     max_level: int
     recommended_monsters: List[str]
+
 
 HUNTING_RANGES = [
     HuntingRange(

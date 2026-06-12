@@ -58,10 +58,8 @@ class QuestGenerator:
         theme = self.map_designer.get_zone_theme(location)
 
         # Get zone-level coordinates for WorldModel integration
-        zone = self.map_designer._pick_zone(min_level, max_level, hint="quest")
-        zone_hash = self.map_designer._deterministic_offset(
-            f"coord:{location}", 500
-        )
+        self.map_designer._pick_zone(min_level, max_level, hint="quest")
+        zone_hash = self.map_designer._deterministic_offset(f"coord:{location}", 500)
         wx = 1000 + zone_hash
         wy = 1000 + zone_hash * 2
         wz = 7
@@ -72,9 +70,7 @@ class QuestGenerator:
             boss = self.map_designer.select_boss(min_level)
 
         # Build objectives
-        objectives = self._build_objectives(
-            quest_type, location, min_level, boss
-        )
+        objectives = self._build_objectives(quest_type, location, min_level, boss)
 
         # Select rewards
         rewards_items = self.map_designer.select_rewards(min_level, count=2)
@@ -109,9 +105,7 @@ class QuestGenerator:
             metadata={"quest_type": quest_type},
         )
 
-        logger.info(
-            "Generated quest '%s' for levels %d-%d", name, min_level, max_level
-        )
+        logger.info("Generated quest '%s' for levels %d-%d", name, min_level, max_level)
         return package
 
     def _build_objectives(
@@ -123,22 +117,18 @@ class QuestGenerator:
     ) -> List[str]:
         """Build objective list based on quest type."""
         if quest_type == "lever":
-            lever = self.map_designer.get_lever_room(
-                min_level, min_level + 50
-            )
+            lever = self.map_designer.get_lever_room(min_level, min_level + 50)
             return list(lever["objectives"])
 
         if quest_type == "puzzle":
-            puzzle = self.map_designer.get_puzzle_room(
-                min_level, min_level + 50
-            )
+            puzzle = self.map_designer.get_puzzle_room(min_level, min_level + 50)
             return list(puzzle["objectives"])
 
         if quest_type == "boss" and boss:
             return [
                 f"Locate the {boss['name']} in {location}",
                 f"Defeat the {boss['name']}",
-                f"Collect the boss loot",
+                "Collect the boss loot",
             ]
 
         if quest_type == "combat":

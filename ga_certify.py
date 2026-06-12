@@ -1,4 +1,5 @@
 """ga_certify.py — Generate GA certification files for Agente RME v1.0.0 GA."""
+
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -31,21 +32,27 @@ def main():
         "all_tests_pass": True,
         "coverage_maintained": True,
         "no_crashes": (health.get("overall_status") == "healthy"),
-        "no_otbm_corruption": (benchmark.get("benchmark", {}).get("success_rate", 0) >= 0.99),
+        "no_otbm_corruption": (
+            benchmark.get("benchmark", {}).get("success_rate", 0) >= 0.99
+        ),
         "cli_stable": True,
-        "installer_functional": all([
-            (PROJECT_ROOT / "installer/install_linux.sh").exists(),
-            (PROJECT_ROOT / "installer/install_macos.sh").exists(),
-            (PROJECT_ROOT / "installer/install_windows.ps1").exists(),
-        ]),
+        "installer_functional": all(
+            [
+                (PROJECT_ROOT / "installer/install_linux.sh").exists(),
+                (PROJECT_ROOT / "installer/install_macos.sh").exists(),
+                (PROJECT_ROOT / "installer/install_windows.ps1").exists(),
+            ]
+        ),
         "health_checks_pass": (health.get("overall_status") == "healthy"),
         "recovery_pass": True,
-        "observability_pass": all([
-            (PROJECT_ROOT / "core/observability/logger.py").exists(),
-            (PROJECT_ROOT / "core/observability/metrics.py").exists(),
-            (PROJECT_ROOT / "core/observability/health.py").exists(),
-            (PROJECT_ROOT / "core/observability/diagnostics.py").exists(),
-        ]),
+        "observability_pass": all(
+            [
+                (PROJECT_ROOT / "core/observability/logger.py").exists(),
+                (PROJECT_ROOT / "core/observability/metrics.py").exists(),
+                (PROJECT_ROOT / "core/observability/health.py").exists(),
+                (PROJECT_ROOT / "core/observability/diagnostics.py").exists(),
+            ]
+        ),
     }
     all_pass = all(checks.values())
 
@@ -112,8 +119,8 @@ def main():
         "",
         f"**Generated:** {_utc_iso()}  ",
         f"**Status:** {'✅ PASS — GENERAL AVAILABILITY' if overall else '❌ FAIL'}  ",
-        f"**Version:** 1.0.0  ",
-        f"**Build:** GA",
+        "**Version:** 1.0.0  ",
+        "**Build:** GA",
         "",
         "---",
         "",

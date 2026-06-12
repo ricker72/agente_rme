@@ -1,4 +1,5 @@
 """core.agents.playtest_agent — Real playtest agent using core.playtest.PlaytestEngine."""
+
 from __future__ import annotations
 import time
 from typing import Any, Dict
@@ -7,6 +8,7 @@ from .agent_registry import BaseAgent
 
 class PlaytestAgent(BaseAgent):
     """Real playtest agent. NO FALLBACKS."""
+
     AGENT_ID = "playtest"
 
     def execute(self, request: Any) -> Dict[str, Any]:
@@ -22,6 +24,10 @@ class PlaytestAgent(BaseAgent):
         return {
             "agent_id": self.agent_id,
             "success": True,
-            "components": [engine.__class__.__name__, combat.__class__.__name__, path.__class__.__name__],
+            "components": [
+                engine.__class__.__name__,
+                combat.__class__.__name__,
+                path.__class__.__name__,
+            ],
             "duration_ms": int((time.time() - t0) * 1000),
         }

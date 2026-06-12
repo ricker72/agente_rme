@@ -23,12 +23,10 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from .node_encoder import (
     NodeEncoder,
-    OTBM_NODE_ROOT,
     OTBM_NODE_MAP_DATA,
     OTBM_NODE_TILE_AREA,
     OTBM_NODE_TILE,
     OTBM_NODE_ITEM,
-    OTBM_NODE_TILE_SQUARE,
     OTBM_NODE_SPAWNS,
     OTBM_NODE_SPAWN_AREA,
     OTBM_NODE_MONSTER,
@@ -37,35 +35,13 @@ from .node_encoder import (
     OTBM_NODE_HOUSETILE,
     OTBM_NODE_WAYPOINTS,
     OTBM_NODE_WAYPOINT,
-    ATTR_DESCRIPTION,
-    ATTR_TILE_FLAGS,
-    ATTR_ITEM,
-    ATTR_COUNT,
-    ATTR_ACTION_ID,
-    ATTR_UNIQUE_ID,
-    ATTR_TEXT,
-    ATTR_DESC,
-    ATTR_EXT_HOUSE_FILE,
-    ATTR_EXT_SPAWN_FILE,
-    ATTR_DURATION,
-    ATTR_DECAYING_STATE,
-    ATTR_WRITTEN_DATE,
-    ATTR_WRITTEN_BY,
-    ATTR_SLEEPERGUID,
-    ATTR_SLEEPSTART,
-    ATTR_CHARGES,
-    ATTR_SUBTYPE,
     TILESTATE_NONE,
     TILESTATE_PROTECTIONZONE,
-    TILESTATE_NOPVPZONE,
-    TILESTATE_NOLOGOUT,
-    TILESTATE_PVPZONE,
 )
 
 
 class NodeDecodeError(Exception):
     """Raised when a node cannot be decoded."""
-    pass
 
 
 class NodeDecoder:
@@ -130,6 +106,21 @@ class NodeDecoder:
                     result["towns"] = child
                 elif child_type == OTBM_NODE_WAYPOINTS:
                     result["waypoints"] = child
+
+        # v1.0.1 HOTFIX: also accept TILE_AREA / SPAWNS / TOWNS / WAYPOINTS
+        # as direct children of ROOT (the format produced by our exporter
+        # which avoids the uint16 MAP_DATA size limit). This is fully
+        # compatible with the RME format.
+        for child in node.get("children", []):
+            child_type = child.get("type")
+            if child_type == OTBM_NODE_TILE_AREA and child not in result["tile_areas"]:
+                result["tile_areas"].append(child)
+            elif child_type == OTBM_NODE_SPAWNS and result["spawns"] is None:
+                result["spawns"] = child
+            elif child_type == OTBM_NODE_TOWNS and result["towns"] is None:
+                result["towns"] = child
+            elif child_type == OTBM_NODE_WAYPOINTS and result["waypoints"] is None:
+                result["waypoints"] = child
 
         return result
 
@@ -207,7 +198,8 @@ class NodeDecoder:
         }
 
     def decode_tile(
-        self, node: Dict[str, Any],
+        self,
+        node: Dict[str, Any],
         area_base_x: int = 0,
         area_base_y: int = 0,
         area_base_z: int = 0,
@@ -262,7 +254,8 @@ class NodeDecoder:
         }
 
     def decode_house_tile(
-        self, node: Dict[str, Any],
+        self,
+        node: Dict[str, Any],
         area_base_x: int = 0,
         area_base_y: int = 0,
         area_base_z: int = 0,
@@ -547,7 +540,9 @@ class NodeDecoder:
     # ------------------------------------------------------------------
 
     @staticmethod
-    def _decode_items_from_payload(payload: bytes, offset: int) -> Tuple[List[Dict[str, Any]], int]:
+    def _decode_items_from_payload(
+        payload: bytes, offset: int
+    ) -> Tuple[List[Dict[str, Any]], int]:
         """
         Extract ITEM nodes from TILE payload bytes, handling ATTR_TILE_FLAGS ambiguity.
 
@@ -587,16 +582,20 @@ class NodeDecoder:
             item_size = _struct.unpack_from("<H", payload, offset + 1)[0]
             if item_size < 2 or offset + 3 + item_size > len(payload):
                 break
-            item_payload = payload[offset + 3:offset + 3 + item_size]
+            item_payload = payload[offset + 3 : offset + 3 + item_size]
             item_id = _struct.unpack_from("<H", item_payload, 0)[0]
             attrs: Dict[int, Any] = {}
             if len(item_payload) > 2:
-                attrs, _ = NodeDecoder._read_attributes(item_payload, 2, len(item_payload))
-            items.append({
-                "item_id": item_id,
-                "attributes": attrs,
-                "children": [],
-            })
+                attrs, _ = NodeDecoder._read_attributes(
+                    item_payload, 2, len(item_payload)
+                )
+            items.append(
+                {
+                    "item_id": item_id,
+                    "attributes": attrs,
+                    "children": [],
+                }
+            )
             offset = offset + 3 + item_size
 
         return items, flags
@@ -732,15 +731,17 @@ class NodeDecoder:
 
         for area in spawns_decoded.get("spawn_areas", []):
             for monster in area.get("monsters", []):
-                result.append({
-                    "x": area["center_x"],
-                    "y": area["center_y"],
-                    "z": area["center_z"],
-                    "radius": area["radius"],
-                    "name": monster["name"],
-                    "direction": monster["direction"],
-                    "spawntime": monster["spawntime"],
-                })
+                result.append(
+                    {
+                        "x": area["center_x"],
+                        "y": area["center_y"],
+                        "z": area["center_z"],
+                        "radius": area["radius"],
+                        "name": monster["name"],
+                        "direction": monster["direction"],
+                        "spawntime": monster["spawntime"],
+                    }
+                )
 
         return result
 

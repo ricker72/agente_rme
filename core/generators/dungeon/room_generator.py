@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Tuple
 
+
 @dataclass
 class Room:
     name: str
@@ -42,17 +43,21 @@ class RoomGenerator:
             room_x = x + 2
             room_y = y + 2
             room_type = self._select_room_type(index, len(leafs))
-            rooms.append(Room(
-                name=f"Room {index + 1}",
-                type=room_type,
-                x=room_x,
-                y=room_y,
-                width=room_w,
-                height=room_h,
-            ))
+            rooms.append(
+                Room(
+                    name=f"Room {index + 1}",
+                    type=room_type,
+                    x=room_x,
+                    y=room_y,
+                    width=room_w,
+                    height=room_h,
+                )
+            )
         return rooms
 
-    def _bsp_split(self, x: int, y: int, w: int, h: int) -> List[tuple[int, int, int, int]]:
+    def _bsp_split(
+        self, x: int, y: int, w: int, h: int
+    ) -> List[tuple[int, int, int, int]]:
         if w <= self.MIN_SPLIT or h <= self.MIN_SPLIT:
             return [(x, y, w, h)]
 

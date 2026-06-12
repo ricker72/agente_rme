@@ -13,16 +13,14 @@ Produces:
 
 from __future__ import annotations
 
-import json
 import logging
 import random
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional
 
 from .base_generator import BaseGenerator
 from .theme_generator import ThemeGenerator, ThemeDefinition
 from .spawn_generator import SpawnGenerator
-from core.world import WorldModel, Tile, Spawn, Structure, Region
+from core.world import WorldModel, Tile, Structure, Region
 
 logger = logging.getLogger(__name__)
 
@@ -148,14 +146,14 @@ class CityGenerator(BaseGenerator):
 
         # 7. Validate
         from core.world import WorldValidator
+
         validator = WorldValidator()
         result = validator.validate(world)
         if not result.passed:
             logger.warning(f"CityGenerator validation:\n{result.summary()}")
 
         logger.info(
-            f"CityGenerator: generated '{theme_def.theme}' city "
-            f"({width}x{height}) with {world.tile_count()} tiles"
+            f"CityGenerator: generated '{theme_def.theme}' city ({width}x{height}) with {world.tile_count()} tiles"
         )
         return world
 
@@ -167,8 +165,10 @@ class CityGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
     ) -> None:
         """Fill the city area with ground tiles."""
@@ -182,8 +182,10 @@ class CityGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
     ) -> None:
         """Generate a grid of roads through the city."""
@@ -227,7 +229,8 @@ class CityGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        cx: int, cy: int,
+        cx: int,
+        cy: int,
         z: int,
     ) -> None:
         """Place a temple structure at the city center."""
@@ -262,8 +265,10 @@ class CityGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
     ) -> None:
         """Generate building blocks in the city quadrants."""
@@ -273,22 +278,22 @@ class CityGenerator(BaseGenerator):
 
         building_areas = [
             # (x1, y1, x2, y2) — offsets from origin
-            (ox + 5, oy + 5, cx - 10, cy - 5),           # NW
-            (cx + 10, oy + 5, ox + width - 5, cy - 5),   # NE
-            (ox + 5, cy + 10, cx - 10, oy + height - 5), # SW
-            (cx + 10, cy + 10, ox + width - 5, oy + height - 5), # SE
+            (ox + 5, oy + 5, cx - 10, cy - 5),  # NW
+            (cx + 10, oy + 5, ox + width - 5, cy - 5),  # NE
+            (ox + 5, cy + 10, cx - 10, oy + height - 5),  # SW
+            (cx + 10, cy + 10, ox + width - 5, oy + height - 5),  # SE
         ]
 
         for bx1, by1, bx2, by2 in building_areas:
-            self._generate_building_block(
-                world, bx1, by1, bx2, by2, z, building_ground
-            )
+            self._generate_building_block(world, bx1, by1, bx2, by2, z, building_ground)
 
     def _generate_building_block(
         self,
         world: WorldModel,
-        x1: int, y1: int,
-        x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         ground_id: int,
     ) -> None:
@@ -296,12 +301,8 @@ class CityGenerator(BaseGenerator):
         step = self.BUILDING_MIN_SIZE + 2  # building + path
         for bx in range(x1, x2, step):
             for by in range(y1, y2, step):
-                bw = self._rng.randint(
-                    self.BUILDING_MIN_SIZE, self.BUILDING_MAX_SIZE
-                )
-                bh = self._rng.randint(
-                    self.BUILDING_MIN_SIZE, self.BUILDING_MAX_SIZE
-                )
+                bw = self._rng.randint(self.BUILDING_MIN_SIZE, self.BUILDING_MAX_SIZE)
+                bh = self._rng.randint(self.BUILDING_MIN_SIZE, self.BUILDING_MAX_SIZE)
                 # Clamp to area
                 bw = min(bw, x2 - bx)
                 bh = min(bh, y2 - by)

@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
-from .asset_indexer import AssetIndexer, IndexedItem, IndexedMonster
-from .asset_classifier import AssetClassifier, ClassificationResult
-from .asset_similarity import AssetSimilarity, SimilarityResult, SimilarItem
+from .asset_indexer import AssetIndexer, IndexedItem
+from .asset_classifier import AssetClassifier
+from .asset_similarity import AssetSimilarity
 
 
 @dataclass
 class Recommendation:
     """A single recommendation with explanation."""
+
     item: IndexedItem
     score: float
     reason: str
@@ -29,6 +30,7 @@ class Recommendation:
 @dataclass
 class RecommendationResult:
     """Complete result from a recommendation query."""
+
     query: str
     recommendations: List[Recommendation] = field(default_factory=list)
     total_results: int = 0
@@ -44,6 +46,7 @@ class RecommendationResult:
 
     def to_json(self) -> str:
         import json
+
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
 
@@ -62,9 +65,12 @@ class AssetRecommender:
       Indexer → Classifier → Similarity → Recommender
     """
 
-    def __init__(self, indexer: Optional[AssetIndexer] = None,
-                 classifier: Optional[AssetClassifier] = None,
-                 similarity: Optional[AssetSimilarity] = None):
+    def __init__(
+        self,
+        indexer: Optional[AssetIndexer] = None,
+        classifier: Optional[AssetClassifier] = None,
+        similarity: Optional[AssetSimilarity] = None,
+    ):
         self.indexer = indexer or AssetIndexer()
         self.classifier = classifier or AssetClassifier(self.indexer)
         self.similarity = similarity or AssetSimilarity(self.indexer, self.classifier)
@@ -115,7 +121,7 @@ class AssetRecommender:
             recommender.recommend("¿Qué paredes se parecen a Roshamuul?")
             recommender.recommend("Recomiéndame grounds para una ciudad jungla")
         """
-        lower = query.lower()
+        query.lower()
         result = RecommendationResult(query=query)
 
         # Parse the query intent
@@ -125,9 +131,10 @@ class AssetRecommender:
             result.interpretation = "Could not determine intent from query"
             return result
 
+        theme_str = target_theme or "any"
+        cat_str = target_category or "any"
         result.interpretation = (
-            f"Intent: {intent}, Theme: {target_theme or 'any'}, "
-            f"Category: {target_category or 'any'}"
+            f"Intent: {intent}, Theme: {theme_str}, Category: {cat_str}"
         )
 
         # Execute the appropriate recommendation strategy
@@ -153,7 +160,9 @@ class AssetRecommender:
     # Query parsing
     # ------------------------------------------------------------------
 
-    def _parse_query(self, query: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    def _parse_query(
+        self, query: str
+    ) -> Tuple[Optional[str], Optional[str], Optional[str]]:
         """
         Parse a query into (intent, theme, category).
 
@@ -164,7 +173,9 @@ class AssetRecommender:
 
         # Detect intent
         intent = None
-        for keyword, intent_name in sorted(self._intent_map.items(), key=lambda x: -len(x[0])):
+        for keyword, intent_name in sorted(
+            self._intent_map.items(), key=lambda x: -len(x[0])
+        ):
             if keyword in lower:
                 intent = intent_name
                 break
@@ -180,14 +191,29 @@ class AssetRecommender:
         # Detect category
         target_category = None
         cat_keywords = {
-            "decoración": "decoration", "decoracion": "decoration",
-            "paredes": "wall", "pared": "wall", "walls": "wall",
-            "suelo": "ground", "suelos": "ground", "grounds": "ground", "piso": "ground",
-            "luz": "light_source", "antorchas": "light_source", "antorcha": "light_source",
-            "monstruos": None, "monsters": None, "hunt": None, "caza": None,
-            "muebles": "furniture", "furniture": "furniture",
-            "naturaleza": "nature", "nature": "nature", "plantas": "nature",
-            "estatuas": "decoration", "statues": "decoration",
+            "decoración": "decoration",
+            "decoracion": "decoration",
+            "paredes": "wall",
+            "pared": "wall",
+            "walls": "wall",
+            "suelo": "ground",
+            "suelos": "ground",
+            "grounds": "ground",
+            "piso": "ground",
+            "luz": "light_source",
+            "antorchas": "light_source",
+            "antorcha": "light_source",
+            "monstruos": None,
+            "monsters": None,
+            "hunt": None,
+            "caza": None,
+            "muebles": "furniture",
+            "furniture": "furniture",
+            "naturaleza": "nature",
+            "nature": "nature",
+            "plantas": "nature",
+            "estatuas": "decoration",
+            "statues": "decoration",
         }
         for keyword, cat in cat_keywords.items():
             if keyword in lower:
@@ -210,9 +236,9 @@ class AssetRecommender:
     # Recommendation strategies
     # ------------------------------------------------------------------
 
-    def _recommend_decorations_for_theme(self, theme: Optional[str],
-                                         category: Optional[str],
-                                         limit: int) -> List[Recommendation]:
+    def _recommend_decorations_for_theme(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend decorations that match a given theme."""
         items = self.indexer.get_items_by_category("decoration")
         if not items:
@@ -245,19 +271,23 @@ class AssetRecommender:
                 score += 0.05
 
             if score > 0:
-                recs.append(Recommendation(
-                    item=item,
-                    score=score,
-                    reason="; ".join(reasons) if reasons else "General recommendation",
-                    category="decoration",
-                ))
+                recs.append(
+                    Recommendation(
+                        item=item,
+                        score=score,
+                        reason="; ".join(reasons)
+                        if reasons
+                        else "General recommendation",
+                        category="decoration",
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _recommend_walls_for_theme(self, theme: Optional[str],
-                                   category: Optional[str],
-                                   limit: int) -> List[Recommendation]:
+    def _recommend_walls_for_theme(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend wall items for a given theme."""
         items = self.indexer.get_items_by_category("wall")
         if not items:
@@ -290,19 +320,23 @@ class AssetRecommender:
                         break
 
             if score > 0:
-                recs.append(Recommendation(
-                    item=item,
-                    score=score,
-                    reason="; ".join(reasons) if reasons else "General wall recommendation",
-                    category="wall",
-                ))
+                recs.append(
+                    Recommendation(
+                        item=item,
+                        score=score,
+                        reason="; ".join(reasons)
+                        if reasons
+                        else "General wall recommendation",
+                        category="wall",
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _recommend_grounds_for_theme(self, theme: Optional[str],
-                                     category: Optional[str],
-                                     limit: int) -> List[Recommendation]:
+    def _recommend_grounds_for_theme(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend ground tiles for a given theme."""
         items = self.indexer.get_items_by_category("ground")
         if not items:
@@ -332,27 +366,34 @@ class AssetRecommender:
                         score += 0.15
 
             if score > 0:
-                recs.append(Recommendation(
-                    item=item,
-                    score=score,
-                    reason="; ".join(reasons) if reasons else "General ground recommendation",
-                    category="ground",
-                ))
+                recs.append(
+                    Recommendation(
+                        item=item,
+                        score=score,
+                        reason="; ".join(reasons)
+                        if reasons
+                        else "General ground recommendation",
+                        category="ground",
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _recommend_lights_for_theme(self, theme: Optional[str],
-                                    category: Optional[str],
-                                    limit: int) -> List[Recommendation]:
+    def _recommend_lights_for_theme(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend light sources for a given theme."""
         items = self.indexer.get_items_by_category("light_source")
         if not items:
             # Fallback: search in decoration for torch-like items
             items = [
-                i for i in self.indexer.all_items
-                if "torch" in i.name.lower() or "lamp" in i.name.lower()
-                   or "candle" in i.name.lower() or "brazier" in i.name.lower()
+                i
+                for i in self.indexer.all_items
+                if "torch" in i.name.lower()
+                or "lamp" in i.name.lower()
+                or "candle" in i.name.lower()
+                or "brazier" in i.name.lower()
             ]
 
         recs = []
@@ -373,19 +414,23 @@ class AssetRecommender:
                 reasons.append("Known light source item")
 
             if score > 0:
-                recs.append(Recommendation(
-                    item=item,
-                    score=score,
-                    reason="; ".join(reasons) if reasons else "General light recommendation",
-                    category="light_source",
-                ))
+                recs.append(
+                    Recommendation(
+                        item=item,
+                        score=score,
+                        reason="; ".join(reasons)
+                        if reasons
+                        else "General light recommendation",
+                        category="light_source",
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _recommend_monsters_for_theme(self, theme: Optional[str],
-                                      category: Optional[str],
-                                      limit: int) -> List[Recommendation]:
+    def _recommend_monsters_for_theme(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend monsters for a given theme."""
         monsters = self.indexer.all_monsters
 
@@ -410,19 +455,21 @@ class AssetRecommender:
                     category="monster",
                 )
                 item.theme_tags = monster.theme_tags
-                recs.append(Recommendation(
-                    item=item,
-                    score=score,
-                    reason="; ".join(reasons),
-                    category="monster",
-                ))
+                recs.append(
+                    Recommendation(
+                        item=item,
+                        score=score,
+                        reason="; ".join(reasons),
+                        category="monster",
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _recommend_alternatives(self, theme: Optional[str],
-                                category: Optional[str],
-                                limit: int) -> List[Recommendation]:
+    def _recommend_alternatives(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend alternative items based on ID or name mentioned in query."""
         # Try to find a specific item mentioned in the query
         # This is a simpler version; the query parsing already happened
@@ -435,19 +482,21 @@ class AssetRecommender:
         for item in items:
             alternatives = self.similarity.find_alternatives(item.id, limit=3)
             for alt in alternatives:
-                recs.append(Recommendation(
-                    item=alt,
-                    score=0.7,
-                    reason=f"Alternative to {item.name} (ID:{item.id})",
-                    category=item.category,
-                ))
+                recs.append(
+                    Recommendation(
+                        item=alt,
+                        score=0.7,
+                        reason=f"Alternative to {item.name} (ID:{item.id})",
+                        category=item.category,
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _recommend_similar(self, theme: Optional[str],
-                           category: Optional[str],
-                           limit: int) -> List[Recommendation]:
+    def _recommend_similar(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Recommend items similar to items in a given theme."""
         if theme is None:
             # Try to find a specific item by the query words
@@ -459,29 +508,33 @@ class AssetRecommender:
         for item in items:
             similar = self.similarity.find_similar(item, limit=3)
             for sim in similar.similar_items:
-                recs.append(Recommendation(
-                    item=sim.item,
-                    score=sim.similarity,
-                    reason=f"Similar to {item.name}: {'; '.join(sim.match_reasons)}",
-                    category=item.category,
-                ))
+                recs.append(
+                    Recommendation(
+                        item=sim.item,
+                        score=sim.similarity,
+                        reason=f"Similar to {item.name}: {'; '.join(sim.match_reasons)}",
+                        category=item.category,
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
 
-    def _generic_recommend(self, theme: Optional[str],
-                           category: Optional[str],
-                           limit: int) -> List[Recommendation]:
+    def _generic_recommend(
+        self, theme: Optional[str], category: Optional[str], limit: int
+    ) -> List[Recommendation]:
         """Generic recommendation combining all strategies."""
         recs = []
         if theme:
             for item in self.indexer.get_items_by_theme(theme):
-                recs.append(Recommendation(
-                    item=item,
-                    score=0.5,
-                    reason=f"Theme item: {theme}",
-                    category=item.category,
-                ))
+                recs.append(
+                    Recommendation(
+                        item=item,
+                        score=0.5,
+                        reason=f"Theme item: {theme}",
+                        category=item.category,
+                    )
+                )
 
         recs.sort(key=lambda r: r.score, reverse=True)
         return recs[:limit]
@@ -549,6 +602,7 @@ class AssetRecommender:
     def load_templates(self, template_dir: str) -> int:
         """Load all JSON theme templates into the indexer."""
         from pathlib import Path
+
         count = 0
         for f in Path(template_dir).glob("*.json"):
             if f.name == "empty_map":

@@ -1,0 +1,44 @@
+{
+  "audit": "DTO Boundary",
+  "audit_id": "AUDIT 4",
+  "dto_files_analyzed": 7,
+  "details": {
+    "autonomous_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    },
+    "campaign_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    },
+    "critic_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    },
+    "dashboard_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    },
+    "knowledge_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    },
+    "otbm_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    },
+    "world_dto.py": {
+      "has_dataclass": true,
+      "has_slots": true,
+      "issues": []
+    }
+  },
+  "total_issues": 0,
+  "status": "PASS"
+}

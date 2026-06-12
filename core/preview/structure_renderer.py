@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 
 class StructureRenderer:
     def render_road_view(self, world_model: Any) -> Dict[str, object]:
         return {
             "roads": [road for road in getattr(world_model, "roads", [])],
-            "paths": [road.get("path", []) for road in getattr(world_model, "roads", [])],
+            "paths": [
+                road.get("path", []) for road in getattr(world_model, "roads", [])
+            ],
         }
 
     def render_dungeon_view(self, world_model: Any) -> Dict[str, object]:

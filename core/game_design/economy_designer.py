@@ -13,7 +13,9 @@ class EconomyDesigner:
             "consumables": self._consumable_prices(theme),
         }
 
-    def _gold_profile(self, theme: str, content: Dict[str, object]) -> Dict[str, object]:
+    def _gold_profile(
+        self, theme: str, content: Dict[str, object]
+    ) -> Dict[str, object]:
         return {
             "entry_reward": 500,
             "midgame_reward": 1800,
@@ -32,8 +34,7 @@ class EconomyDesigner:
     def _rare_distribution(self, content: Dict[str, object]) -> List[Dict[str, object]]:
         bosses = content.get("bosses", [])
         return [
-            {"boss": boss.get("name"), "drop": "legendary relic"}
-            for boss in bosses[:3]
+            {"boss": boss.get("name"), "drop": "legendary relic"} for boss in bosses[:3]
         ]
 
     def _crafting_flow(self, theme: str) -> Dict[str, object]:

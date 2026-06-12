@@ -7,24 +7,36 @@ import tempfile
 import unittest
 
 from core.knowledge import DatasetBuilder
-from core.knowledge.models import EntryType, KnowledgeDataset
+from core.knowledge.models import KnowledgeDataset
 
 
 def _src_roshamuul() -> dict:
     return {
         "meta": {"name": "roshamuul", "theme": "roshamuul"},
         "regions": [
-            {"name": "roshamuul_circular_hunt", "theme": "roshamuul",
-             "min_level": 280, "max_level": 380, "tags": ["circular"]},
+            {
+                "name": "roshamuul_circular_hunt",
+                "theme": "roshamuul",
+                "min_level": 280,
+                "max_level": 380,
+                "tags": ["circular"],
+            },
         ],
-        "cities": [{"name": "Issavi", "theme": "issavi",
-                    "min_level": 250, "max_level": 450}],
-        "structures": [{"name": "roshamuul_boss_arena",
-                        "category": "boss_room",
-                        "tags": ["boss", "circular", "arena"],
-                        "width": 30, "height": 30}],
-        "spawns": [{"monster": "Guzzlemaw",
-                     "zone": "roshamuul_circular_hunt", "level": 280}],
+        "cities": [
+            {"name": "Issavi", "theme": "issavi", "min_level": 250, "max_level": 450}
+        ],
+        "structures": [
+            {
+                "name": "roshamuul_boss_arena",
+                "category": "boss_room",
+                "tags": ["boss", "circular", "arena"],
+                "width": 30,
+                "height": 30,
+            }
+        ],
+        "spawns": [
+            {"monster": "Guzzlemaw", "zone": "roshamuul_circular_hunt", "level": 280}
+        ],
         "waypoints": [{"name": "roshamuul_tp"}],
         "quests": [{"name": "Soul War", "difficulty": "hard"}],
     }
@@ -34,12 +46,16 @@ def _src_issavi() -> dict:
     return {
         "meta": {"name": "issavi", "theme": "issavi"},
         "regions": [
-            {"name": "issavi_sewers_hunt", "theme": "issavi",
-             "min_level": 250, "max_level": 400, "tags": ["sewer"]},
+            {
+                "name": "issavi_sewers_hunt",
+                "theme": "issavi",
+                "min_level": 250,
+                "max_level": 400,
+                "tags": ["sewer"],
+            },
         ],
         "cities": [{"name": "issavi_city", "theme": "issavi"}],
-        "spawns": [{"monster": "Scarab", "zone": "issavi_sewers_hunt",
-                     "level": 280}],
+        "spawns": [{"monster": "Scarab", "zone": "issavi_sewers_hunt", "level": 280}],
     }
 
 
@@ -91,9 +107,11 @@ class TestDatasetBuilder(unittest.TestCase):
 
     def test_handles_unknown_object(self):
         b = DatasetBuilder()
+
         # An object that is not a dict and has no to_dict
         class _Dummy:
             name = "dummy"
+
         ds = b.build_from_sources([_Dummy()])
         # No entries but no exception
         self.assertIsInstance(ds, KnowledgeDataset)
@@ -113,6 +131,7 @@ class TestDatasetBuilder(unittest.TestCase):
 
     def test_handles_string_source(self):
         import json
+
         with tempfile.TemporaryDirectory() as d:
             p = os.path.join(d, "src.json")
             with open(p, "w", encoding="utf-8") as f:

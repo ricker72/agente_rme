@@ -8,7 +8,7 @@ completing a challenge. Each includes items, gold, and optional bonuses.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .quest_package import QuestPackage, RoomType
 from .map_designer import MapDesigner
@@ -63,9 +63,7 @@ class RewardGenerator:
             A fully populated QuestPackage.
         """
         min_level, max_level = level_range
-        config = _REWARD_TYPES.get(
-            reward_type, _REWARD_TYPES["standard"]
-        )
+        config = _REWARD_TYPES.get(reward_type, _REWARD_TYPES["standard"])
 
         # Resolve location
         location = self.map_designer.find_valid_location(min_level, max_level)
@@ -85,18 +83,14 @@ class RewardGenerator:
         location_bonus = self.map_designer.get_reward_bonus(min_level)
         total_gold = gold + location_bonus
 
-        items = self.map_designer.select_rewards(
-            min_level, count=config["item_count"]
-        )
+        items = self.map_designer.select_rewards(min_level, count=config["item_count"])
 
         # Apply rarity boost: upgrade rarity tier for each item
         if config["rarity_boost"]:
             items = [self._boost_rarity(item) for item in items]
 
         # Objectives
-        objectives = self._build_reward_objectives(
-            reward_type, location, min_level
-        )
+        objectives = self._build_reward_objectives(reward_type, location, min_level)
 
         name = f"{reward_type.title()} Reward: {location}"
         description = (
@@ -124,7 +118,9 @@ class RewardGenerator:
 
         logger.info(
             "Generated reward '%s' for levels %d-%d",
-            name, min_level, max_level,
+            name,
+            min_level,
+            max_level,
         )
         return package
 

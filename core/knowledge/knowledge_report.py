@@ -5,7 +5,7 @@ KnowledgeReport — human-readable markdown report of the dataset.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import List
 
 from .knowledge_catalog import KnowledgeCatalog
 from .knowledge_metrics import KnowledgeMetrics
@@ -114,8 +114,7 @@ class KnowledgeReport:
             lines.append("")
             for e in top:
                 lines.append(
-                    f"- **{e['name']}** (`{e['id']}`) — "
-                    f"biome=`{e['biome']}`, levels={e['min_level']}-{e['max_level']}"
+                    f"- **{e['name']}** (`{e['id']}`) — biome=`{e['biome']}`, levels={e['min_level']}-{e['max_level']}"
                 )
             lines.append("")
 

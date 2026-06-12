@@ -43,9 +43,20 @@ class CityGenerator:
         "decorations": [2153, 2150, 2149],
     }
 
-    CITY_STYLES = ["issavi", "thais", "venore", "yalahar", "carlin", "ankrahmun", "darashia", "edron"]
+    CITY_STYLES = [
+        "issavi",
+        "thais",
+        "venore",
+        "yalahar",
+        "carlin",
+        "ankrahmun",
+        "darashia",
+        "edron",
+    ]
 
-    def __init__(self, style: str = "issavi", min_level: int = 50, max_level: int = 300):
+    def __init__(
+        self, style: str = "issavi", min_level: int = 50, max_level: int = 300
+    ):
         self.style = style.lower()
         self.min_level = min_level
         self.max_level = max_level
@@ -78,7 +89,12 @@ class CityGenerator:
         return 50, 300
 
     def _load_theme_template(self, style: str) -> Dict[str, List[int]]:
-        template_path = Path(__file__).resolve().parents[4] / "templates" / "cities" / f"{style}.json"
+        template_path = (
+            Path(__file__).resolve().parents[4]
+            / "templates"
+            / "cities"
+            / f"{style}.json"
+        )
         if template_path.exists():
             try:
                 return json.loads(template_path.read_text(encoding="utf-8"))
@@ -98,34 +114,55 @@ class CityGenerator:
         )
 
         city.districts = generate_city_districts(self.style, center_x, center_y)
-        city.roads = RoadGenerator.connect_districts(city.districts, (center_x, center_y))
+        city.roads = RoadGenerator.connect_districts(
+            city.districts, (center_x, center_y)
+        )
         city.buildings = generate_buildings(city.districts, self.template)
         city.spawns = self._generate_spawn_zones(city.districts, center_x, center_y)
         city.waypoints = self._generate_waypoints(city.districts, center_x, center_y)
         return city
 
-    def _generate_spawn_zones(self, districts: List[District], center_x: int, center_y: int) -> List[Dict[str, object]]:
+    def _generate_spawn_zones(
+        self, districts: List[District], center_x: int, center_y: int
+    ) -> List[Dict[str, object]]:
         zones = [
-            {"name": "Temple Respawn", "x": center_x - 8, "y": center_y - 10, "z": 7, "radius": 3},
-            {"name": "Market Square", "x": center_x, "y": center_y, "z": 7, "radius": 4},
+            {
+                "name": "Temple Respawn",
+                "x": center_x - 8,
+                "y": center_y - 10,
+                "z": 7,
+                "radius": 3,
+            },
+            {
+                "name": "Market Square",
+                "x": center_x,
+                "y": center_y,
+                "z": 7,
+                "radius": 4,
+            },
         ]
         return zones
 
-    def _generate_waypoints(self, districts: List[District], center_x: int, center_y: int) -> List[Waypoint]:
+    def _generate_waypoints(
+        self, districts: List[District], center_x: int, center_y: int
+    ) -> List[Waypoint]:
         waypoints: List[Waypoint] = []
-        waypoints.append(Waypoint(name="Central Plaza", x=center_x, y=center_y, z=7, type="Gate"))
+        waypoints.append(
+            Waypoint(name="Central Plaza", x=center_x, y=center_y, z=7, type="Gate")
+        )
         for district in districts:
-            waypoints.append(Waypoint(
-                name=district.name,
-                x=district.center()[0],
-                y=district.center()[1],
-                z=7,
-                type=district.type,
-            ))
+            waypoints.append(
+                Waypoint(
+                    name=district.name,
+                    x=district.center()[0],
+                    y=district.center()[1],
+                    z=7,
+                    type=district.type,
+                )
+            )
         return waypoints
 
     def generate_lua(self, description: str) -> str:
-        z = 7
         lines = [
             "if not app.hasMap() then",
             "  return",
@@ -158,50 +195,76 @@ class CityGenerator:
             if district.type == "Temple":
                 for shape in generate_temple_layout(district, self.template):
                     if "ground" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}"
+                        )
                     if "item" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})"
+                        )
             elif district.type == "Depot":
                 for shape in generate_depot_layout(district, self.template):
                     if "ground" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}"
+                        )
                     if "item" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})"
+                        )
             elif district.type == "Market":
                 for shape in generate_market_layout(district, self.template):
                     if "ground" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}"
+                        )
                     if "item" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})"
+                        )
             elif district.type == "Harbor":
                 for shape in generate_harbor_layout(district, self.template):
                     if "ground" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}).ground = {shape['ground']}"
+                        )
                     if "item" in shape:
-                        lines.append(f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})")
+                        lines.append(
+                            f"  tileAt({shape['x']}, {shape['y']}):addItem({shape['item']})"
+                        )
 
         # Building outlines and decorations
         for building in self.city.buildings:
-            wall = self.template.get("walls", [1495])[0]
+            self.template.get("walls", [1495])[0]
             for dx in range(building.width):
                 for dy in range(building.height):
                     x = building.x + dx
                     y = building.y + dy
-                    lines.append(f"  tileAt({x}, {y}).ground = {self.template.get('floors', [393])[0]}")
+                    lines.append(
+                        f"  tileAt({x}, {y}).ground = {self.template.get('floors', [393])[0]}"
+                    )
             # borderize each building
             for dx in range(building.width):
                 lines.append(f"  tileAt({building.x + dx}, {building.y}).borderize()")
-                lines.append(f"  tileAt({building.x + dx}, {building.y + building.height - 1}).borderize()")
+                lines.append(
+                    f"  tileAt({building.x + dx}, {building.y + building.height - 1}).borderize()"
+                )
             for dy in range(building.height):
                 lines.append(f"  tileAt({building.x}, {building.y + dy}).borderize()")
-                lines.append(f"  tileAt({building.x + building.width - 1}, {building.y + dy}).borderize()")
+                lines.append(
+                    f"  tileAt({building.x + building.width - 1}, {building.y + dy}).borderize()"
+                )
 
         # Waypoints and spawn markers
         waypoint_ground = self.template.get("decorations", [2153])[0]
         for waypoint in self.city.waypoints:
-            lines.append(f"  tileAt({waypoint.x}, {waypoint.y}).ground = {waypoint_ground}")
+            lines.append(
+                f"  tileAt({waypoint.x}, {waypoint.y}).ground = {waypoint_ground}"
+            )
         for spawn in self.city.spawns:
-            lines.append(f"  tileAt({spawn['x']}, {spawn['y']}).ground = {self.template.get('decorations', [2150])[0]}")
+            lines.append(
+                f"  tileAt({spawn['x']}, {spawn['y']}).ground = {self.template.get('decorations', [2150])[0]}"
+            )
 
         lines.append("end")
         return "\n".join(lines)

@@ -29,9 +29,18 @@ class BuildingClassifier:
         connectivity = structure.get("connectivity", {}) or {}
         doors = int(connectivity.get("doors", 0) or 0)
         has_altar = any("altar" in str(item).lower() for item in decorations)
-        has_market = any("stall" in str(item).lower() or "market" in str(item).lower() for item in decorations)
-        has_storage = any("locker" in str(item).lower() or "crate" in str(item).lower() for item in decorations)
-        has_boss = any("throne" in str(item).lower() or "boss" in str(item).lower() for item in decorations)
+        has_market = any(
+            "stall" in str(item).lower() or "market" in str(item).lower()
+            for item in decorations
+        )
+        has_storage = any(
+            "locker" in str(item).lower() or "crate" in str(item).lower()
+            for item in decorations
+        )
+        has_boss = any(
+            "throne" in str(item).lower() or "boss" in str(item).lower()
+            for item in decorations
+        )
 
         if has_altar and area >= 200:
             return "Temple"

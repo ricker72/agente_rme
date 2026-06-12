@@ -4,12 +4,11 @@ tools/real_world_stress.py — Phase 4: Real World Stress Test (FAST).
 Generates 100 real worlds using REAL engines. NO simulation, NO mocks.
 Optimized for fast execution.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import time
-import gc
 import tracemalloc
 from pathlib import Path
 from datetime import datetime, timezone
@@ -85,20 +84,25 @@ def run_stress(n_worlds: int = 100) -> Dict[str, Any]:
             generation_times.append(elapsed)
             mem_now = get_memory_mb()
             memory_samples.append(mem_now - mem_start)
-            results.append({
-                "index": i,
-                "prompt": prompt,
-                "success": True,
-                "duration_s": elapsed,
-                "memory_mb": mem_now - mem_start,
-                "critic_score": score,
-            })
+            results.append(
+                {
+                    "index": i,
+                    "prompt": prompt,
+                    "success": True,
+                    "duration_s": elapsed,
+                    "memory_mb": mem_now - mem_start,
+                    "critic_score": score,
+                }
+            )
             if i % 20 == 0:
-                print(f"  [{i+1}/{n_worlds}] world {i}: {elapsed:.3f}s, score={score:.2f}", flush=True)
+                print(
+                    f"  [{i + 1}/{n_worlds}] world {i}: {elapsed:.3f}s, score={score:.2f}",
+                    flush=True,
+                )
         except Exception as e:
             failed += 1
             results.append({"index": i, "success": False, "error": str(e)})
-            print(f"  [{i+1}/{n_worlds}] FAILED: {e}", flush=True)
+            print(f"  [{i + 1}/{n_worlds}] FAILED: {e}", flush=True)
 
     mem_end = get_memory_mb() - mem_start
     cpu_end = time.process_time() - cpu_start
@@ -114,7 +118,9 @@ def run_stress(n_worlds: int = 100) -> Dict[str, Any]:
         "failed": failed,
         "pass_rate": (n_worlds - failed) / n_worlds,
         "generation_time": {
-            "mean_s": sum(generation_times) / len(generation_times) if generation_times else 0,
+            "mean_s": sum(generation_times) / len(generation_times)
+            if generation_times
+            else 0,
             "min_s": min(generation_times) if generation_times else 0,
             "max_s": max(generation_times) if generation_times else 0,
             "total_s": sum(generation_times),
@@ -135,7 +141,8 @@ def run_stress(n_worlds: int = 100) -> Dict[str, Any]:
             "max": max(critic_scores) if critic_scores else 0,
         },
         "results": results[:20],
-        "criterion_pass": failed == 0 and mean_score >= 0.1,  # any non-zero score is valid
+        "criterion_pass": failed == 0
+        and mean_score >= 0.1,  # any non-zero score is valid
     }
     return out
 
@@ -147,7 +154,9 @@ def main() -> int:
         json.dump(res, f, indent=2, ensure_ascii=False)
     print(f"\n[Phase 4] Saved: {out_file}", flush=True)
     print(f"[Phase 4] Successful: {res['successful']}/100", flush=True)
-    print(f"[Phase 4] Mean critic score: {res['critic_scores']['mean']:.2f}", flush=True)
+    print(
+        f"[Phase 4] Mean critic score: {res['critic_scores']['mean']:.2f}", flush=True
+    )
     print(f"[Phase 4] Pass: {res['criterion_pass']}", flush=True)
     return 0 if res["criterion_pass"] else 1
 

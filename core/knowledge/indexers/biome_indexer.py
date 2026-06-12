@@ -16,10 +16,16 @@ class BiomeIndexer(BaseIndexer):
 
     def by_climate(self, climate: str) -> List[KnowledgeEntry]:
         c = climate.lower()
-        return [e for e in self.entries
-                if e.entry_type == EntryType.BIOME
-                and (e.attributes or {}).get("climate", "").lower() == c]
+        return [
+            e
+            for e in self.entries
+            if e.entry_type == EntryType.BIOME
+            and (e.attributes or {}).get("climate", "").lower() == c
+        ]
 
     def desert(self) -> List[KnowledgeEntry]:
-        return [e for e in self.entries
-                if e.entry_type == EntryType.BIOME and "desert" in (e.biome or "").lower()]
+        return [
+            e
+            for e in self.entries
+            if e.entry_type == EntryType.BIOME and "desert" in (e.biome or "").lower()
+        ]

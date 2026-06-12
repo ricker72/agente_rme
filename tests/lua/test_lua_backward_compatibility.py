@@ -8,9 +8,8 @@ also works. No regression allowed.
 
 import os
 import sys
-import pytest
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -22,8 +21,6 @@ from core.spawn.spawn_generator import (
 )
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
-from core.world.spawn import Spawn
-
 
 # ----------------------------------------------------------------------
 # All accepted call signatures
@@ -56,13 +53,17 @@ class TestAcceptedCallSignatures:
     def test_call_with_world_and_plan(self):
         world = WorldModel()
         world.set_tile(Tile(x=0, y=0, z=7, ground=106))
-        plan = SpawnPlan(spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="Rat", interval=60)])
+        plan = SpawnPlan(
+            spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="Rat", interval=60)]
+        )
         gen = LuaGenerator()
         s = gen.generate(world, plan)
         assert s.spawn_count == 1
 
     def test_call_with_plan_as_first_positional(self):
-        plan = SpawnPlan(spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="Bat", interval=30)])
+        plan = SpawnPlan(
+            spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="Bat", interval=30)]
+        )
         gen = LuaGenerator()
         s = gen.generate(plan)
         assert s.spawn_count == 1
@@ -75,10 +76,13 @@ class TestAcceptedCallSignatures:
             base_x: int = 100
             base_y: int = 200
             base_z: int = 7
+
         area = HuntAreaStub(
             tiles=[{"x": 0, "y": 0, "z": 7, "ground": 106}],
         )
-        plan = SpawnPlan(spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="X", interval=60)])
+        plan = SpawnPlan(
+            spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="X", interval=60)]
+        )
         gen = LuaGenerator()
         s = gen.generate(hunt_area=area, spawn_plan=plan)
         assert s.tile_count == 1
@@ -88,9 +92,7 @@ class TestAcceptedCallSignatures:
         world = WorldModel()
         world.set_tile(Tile(x=0, y=0, z=7, ground=106))
         plan = {
-            "spawns": [
-                {"x": 0, "y": 0, "z": 7, "monster_name": "Rat", "interval": 30}
-            ]
+            "spawns": [{"x": 0, "y": 0, "z": 7, "monster_name": "Rat", "interval": 30}]
         }
         gen = LuaGenerator()
         s = gen.generate(world, plan)
@@ -169,7 +171,9 @@ class TestBehaviouralCompatibility:
         assert "Map.addNpc" not in s.code
 
     def test_direction_constant_used(self):
-        plan = SpawnPlan(spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="M", interval=60)])
+        plan = SpawnPlan(
+            spawns=[SpawnEntry(x=0, y=0, z=7, monster_name="M", interval=60)]
+        )
         gen = LuaGenerator()
         s = gen.generate(None, plan)
         assert "Direction.SOUTH" in s.code
@@ -274,8 +278,16 @@ class TestPublicApiSmokeTests:
 
     def test_lua_script_dataclass_unchanged(self):
         from core.lua.lua_generator import LuaScript
-        s = LuaScript(code="x", map_name="y", tile_count=1, spawn_count=2,
-                      creature_count=3, border_count=4, items_count=5)
+
+        s = LuaScript(
+            code="x",
+            map_name="y",
+            tile_count=1,
+            spawn_count=2,
+            creature_count=3,
+            border_count=4,
+            items_count=5,
+        )
         assert s.code == "x"
         assert s.map_name == "y"
         assert s.tile_count == 1

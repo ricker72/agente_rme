@@ -11,9 +11,9 @@ from __future__ import annotations
 import logging
 import random
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
-from .player_bot import Vocation, VocationStats
+from .player_bot import Vocation
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class MonsterStats:
     """Stats for a monster used in combat simulation."""
+
     name: str
     health: int
     attack: int
@@ -37,6 +38,7 @@ class MonsterStats:
 @dataclass
 class CombatResult:
     """Result of a simulated combat encounter."""
+
     monster_name: str
     vocation: str
     player_level: int
@@ -56,6 +58,7 @@ class CombatResult:
 @dataclass
 class EncounterResult:
     """Result of fighting multiple monsters in a hunt rotation."""
+
     vocation: str
     player_level: int
     monsters_killed: int
@@ -81,50 +84,95 @@ class CombatMode:
 # These are combat-specific stats separate from the player_bot stats
 VOCATION_COMBAT_PROFILES: Dict[Vocation, Dict[str, int]] = {
     Vocation.KNIGHT: {
-        "health": 4800, "mana": 1400,
-        "attack": 140, "defense": 120, "magic_defense": 50,
-        "speed": 85, "sword_skill": 110, "shielding": 100,
-        "melee_damage": 350, "spell_damage": 0,
-        "healing": 0, "aoe_damage": 0,
-        "mana_per_spell": 0, "health_per_attack": 0,
-        "heal_amount": 0, "mana_per_heal": 0,
+        "health": 4800,
+        "mana": 1400,
+        "attack": 140,
+        "defense": 120,
+        "magic_defense": 50,
+        "speed": 85,
+        "sword_skill": 110,
+        "shielding": 100,
+        "melee_damage": 350,
+        "spell_damage": 0,
+        "healing": 0,
+        "aoe_damage": 0,
+        "mana_per_spell": 0,
+        "health_per_attack": 0,
+        "heal_amount": 0,
+        "mana_per_heal": 0,
     },
     Vocation.PALADIN: {
-        "health": 3200, "mana": 2800,
-        "attack": 100, "defense": 80, "magic_defense": 70,
-        "speed": 90, "sword_skill": 60, "shielding": 70,
+        "health": 3200,
+        "mana": 2800,
+        "attack": 100,
+        "defense": 80,
+        "magic_defense": 70,
+        "speed": 90,
+        "sword_skill": 60,
+        "shielding": 70,
         "distance_skill": 110,
-        "melee_damage": 150, "spell_damage": 250,
-        "healing": 200, "aoe_damage": 180,
-        "mana_per_spell": 45, "health_per_attack": 0,
-        "heal_amount": 400, "mana_per_heal": 70,
+        "melee_damage": 150,
+        "spell_damage": 250,
+        "healing": 200,
+        "aoe_damage": 180,
+        "mana_per_spell": 45,
+        "health_per_attack": 0,
+        "heal_amount": 400,
+        "mana_per_heal": 70,
     },
     Vocation.DRUID: {
-        "health": 2600, "mana": 4200,
-        "attack": 40, "defense": 50, "magic_defense": 100,
-        "speed": 80, "sword_skill": 30, "shielding": 50,
-        "melee_damage": 80, "spell_damage": 350,
-        "healing": 500, "aoe_damage": 400,
-        "mana_per_spell": 60, "health_per_attack": 0,
-        "heal_amount": 650, "mana_per_heal": 80,
+        "health": 2600,
+        "mana": 4200,
+        "attack": 40,
+        "defense": 50,
+        "magic_defense": 100,
+        "speed": 80,
+        "sword_skill": 30,
+        "shielding": 50,
+        "melee_damage": 80,
+        "spell_damage": 350,
+        "healing": 500,
+        "aoe_damage": 400,
+        "mana_per_spell": 60,
+        "health_per_attack": 0,
+        "heal_amount": 650,
+        "mana_per_heal": 80,
     },
     Vocation.SORCERER: {
-        "health": 2400, "mana": 4500,
-        "attack": 30, "defense": 40, "magic_defense": 110,
-        "speed": 82, "sword_skill": 20, "shielding": 40,
-        "melee_damage": 60, "spell_damage": 420,
-        "healing": 300, "aoe_damage": 500,
-        "mana_per_spell": 70, "health_per_attack": 0,
-        "heal_amount": 400, "mana_per_heal": 90,
+        "health": 2400,
+        "mana": 4500,
+        "attack": 30,
+        "defense": 40,
+        "magic_defense": 110,
+        "speed": 82,
+        "sword_skill": 20,
+        "shielding": 40,
+        "melee_damage": 60,
+        "spell_damage": 420,
+        "healing": 300,
+        "aoe_damage": 500,
+        "mana_per_spell": 70,
+        "health_per_attack": 0,
+        "heal_amount": 400,
+        "mana_per_heal": 90,
     },
     Vocation.MONK: {
-        "health": 3800, "mana": 2200,
-        "attack": 120, "defense": 100, "magic_defense": 65,
-        "speed": 95, "sword_skill": 90, "shielding": 85,
-        "melee_damage": 300, "spell_damage": 200,
-        "healing": 350, "aoe_damage": 250,
-        "mana_per_spell": 35, "health_per_attack": 0,
-        "heal_amount": 500, "mana_per_heal": 60,
+        "health": 3800,
+        "mana": 2200,
+        "attack": 120,
+        "defense": 100,
+        "magic_defense": 65,
+        "speed": 95,
+        "sword_skill": 90,
+        "shielding": 85,
+        "melee_damage": 300,
+        "spell_damage": 200,
+        "healing": 350,
+        "aoe_damage": 250,
+        "mana_per_spell": 35,
+        "health_per_attack": 0,
+        "heal_amount": 500,
+        "mana_per_heal": 60,
     },
 }
 
@@ -159,7 +207,9 @@ class CombatSimulator:
             "shielding": int(base["shielding"] * scale),
         }
 
-    def simulate_encounter(self, player_stats: dict, monster: MonsterStats, max_time: float = 30.0) -> CombatResult:
+    def simulate_encounter(
+        self, player_stats: dict, monster: MonsterStats, max_time: float = 30.0
+    ) -> CombatResult:
         """Simulate a single combat encounter."""
         hp = player_stats["health"]
         mp = player_stats["mana"]
@@ -175,7 +225,10 @@ class CombatSimulator:
             time_elapsed += 1.0
 
             # Player turn
-            if player_stats["spell_damage"] > 0 and mp >= player_stats["mana_per_spell"]:
+            if (
+                player_stats["spell_damage"] > 0
+                and mp >= player_stats["mana_per_spell"]
+            ):
                 base_dmg = player_stats["spell_damage"]
                 variance = self._rng.uniform(0.8, 1.2)
                 raw = int(base_dmg * variance)
@@ -204,7 +257,9 @@ class CombatSimulator:
             heal_threshold_hp = int(player_stats["health"] * self.HEAL_THRESHOLD)
             if hp <= heal_threshold_hp and player_stats["heal_amount"] > 0:
                 if mp >= player_stats["mana_per_heal"]:
-                    heal = int(player_stats["heal_amount"] * self._rng.uniform(0.9, 1.1))
+                    heal = int(
+                        player_stats["heal_amount"] * self._rng.uniform(0.9, 1.1)
+                    )
                     hp = min(player_stats["health"], hp + heal)
                     mp -= player_stats["mana_per_heal"]
                     used_healing = True
@@ -217,7 +272,9 @@ class CombatSimulator:
                 base_dmg = monster.attack
                 variance = self._rng.uniform(0.8, 1.2)
                 raw = int(base_dmg * variance)
-                mitigation = (player_stats["defense"] + player_stats["shielding"] * 0.5) * 0.3
+                mitigation = (
+                    player_stats["defense"] + player_stats["shielding"] * 0.5
+                ) * 0.3
                 dmg = max(1, int(raw - mitigation))
                 total_damage_taken += dmg
                 hp -= dmg
@@ -247,8 +304,12 @@ class CombatSimulator:
         )
 
     def simulate_hunt_rotation(
-        self, vocation: Vocation, level: int, monsters: List[MonsterStats],
-        rotation_time_minutes: float = 60.0, respawn_seconds: int = 60,
+        self,
+        vocation: Vocation,
+        level: int,
+        monsters: List[MonsterStats],
+        rotation_time_minutes: float = 60.0,
+        respawn_seconds: int = 60,
     ) -> EncounterResult:
         """Simulate a full hunt rotation with respawning monsters."""
         rotation_seconds = rotation_time_minutes * 60.0
@@ -282,11 +343,14 @@ class CombatSimulator:
                 continue
 
             target = MonsterStats(
-                name=monsters[target_idx].name, health=monster_hp[target_idx],
-                attack=monsters[target_idx].attack, defense=monsters[target_idx].defense,
+                name=monsters[target_idx].name,
+                health=monster_hp[target_idx],
+                attack=monsters[target_idx].attack,
+                defense=monsters[target_idx].defense,
                 magic_defense=monsters[target_idx].magic_defense,
                 experience=monsters[target_idx].experience,
-                speed=monsters[target_idx].speed, is_boss=monsters[target_idx].is_boss,
+                speed=monsters[target_idx].speed,
+                is_boss=monsters[target_idx].is_boss,
             )
 
             player_stats = self.create_vocation_stats(vocation, level)
@@ -302,7 +366,9 @@ class CombatSimulator:
                 deaths += 1
             else:
                 kill_count += 1
-                monster_hp[target_idx] = max(0, monster_hp[target_idx] - result.damage_dealt)
+                monster_hp[target_idx] = max(
+                    0, monster_hp[target_idx] - result.damage_dealt
+                )
 
             if result.used_healing:
                 hp_potions += 1
@@ -311,26 +377,57 @@ class CombatSimulator:
         xp_per_hour = (total_xp / max(elapsed, 1.0)) * 3600.0
 
         return EncounterResult(
-            vocation=vocation.name.lower(), player_level=level,
-            monsters_killed=kill_count, total_time=elapsed,
-            total_damage_dealt=total_dealt, total_damage_taken=total_taken,
-            total_experience=total_xp, deaths=deaths, average_dps=avg_dps,
+            vocation=vocation.name.lower(),
+            player_level=level,
+            monsters_killed=kill_count,
+            total_time=elapsed,
+            total_damage_dealt=total_dealt,
+            total_damage_taken=total_taken,
+            total_experience=total_xp,
+            deaths=deaths,
+            average_dps=avg_dps,
             experience_per_hour=xp_per_hour,
-            health_potions_used=hp_potions, mana_potions_used=0, results=results,
+            health_potions_used=hp_potions,
+            mana_potions_used=0,
+            results=results,
         )
 
-    def simulate_multi_vocation(self, level: int, monsters: List[MonsterStats], rotation_minutes: float = 60.0) -> Dict[str, EncounterResult]:
+    def simulate_multi_vocation(
+        self, level: int, monsters: List[MonsterStats], rotation_minutes: float = 60.0
+    ) -> Dict[str, EncounterResult]:
         """Simulate hunt rotation for all 5 vocations."""
         results = {}
         for vocation in Vocation:
             results[vocation.name.lower()] = self.simulate_hunt_rotation(
-                vocation=vocation, level=level, monsters=monsters,
+                vocation=vocation,
+                level=level,
+                monsters=monsters,
                 rotation_time_minutes=rotation_minutes,
             )
         return results
 
     @staticmethod
-    def create_monster(name, health, attack, defense, magic_defense, experience, speed=80, is_boss=False, gold_min=0, gold_max=0):
-        return MonsterStats(name=name, health=health, attack=attack, defense=defense,
-                           magic_defense=magic_defense, experience=experience,
-                           speed=speed, is_boss=is_boss, gold_min=gold_min, gold_max=gold_max)
+    def create_monster(
+        name,
+        health,
+        attack,
+        defense,
+        magic_defense,
+        experience,
+        speed=80,
+        is_boss=False,
+        gold_min=0,
+        gold_max=0,
+    ):
+        return MonsterStats(
+            name=name,
+            health=health,
+            attack=attack,
+            defense=defense,
+            magic_defense=magic_defense,
+            experience=experience,
+            speed=speed,
+            is_boss=is_boss,
+            gold_min=gold_min,
+            gold_max=gold_max,
+        )

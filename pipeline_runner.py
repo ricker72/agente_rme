@@ -11,7 +11,6 @@ Usage:
 
 import json
 import sys
-import os
 from datetime import datetime
 from pathlib import Path
 from dataclasses import dataclass, field
@@ -49,9 +48,9 @@ class PipelineRunner:
     def run(self, prompt: str) -> PipelineReport:
         report = PipelineReport(prompt=prompt)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        print(f"\n{'='*60}")
-        print(f"  OpenTibiaBR RME Map Generator - MVP V0.1")
-        print(f"{'='*60}")
+        print(f"\n{'=' * 60}")
+        print("  OpenTibiaBR RME Map Generator - MVP V0.1")
+        print(f"{'=' * 60}")
         print(f"\n  Prompt: {prompt}")
         print(f"  Timestamp: {timestamp}\n")
 
@@ -73,8 +72,10 @@ class PipelineRunner:
             theme_data = self._stage2_resolve_themes(intent)
             report.stats["themes"] = [t.name for t in theme_data]
             for t in theme_data:
-                print(f"       {t.name}: {len(t.grounds)} grounds, {len(t.walls)} walls, "
-                      f"{len(t.monsters)} monsters")
+                print(
+                    f"       {t.name}: {len(t.grounds)} grounds, {len(t.walls)} walls, "
+                    f"{len(t.monsters)} monsters"
+                )
 
             # -- Branch: City vs Dungeon vs Hunt --
             if intent.type == "city":
@@ -93,8 +94,10 @@ class PipelineRunner:
                     "roads": len(city_model.roads),
                     "waypoints": len(city_model.waypoints),
                 }
-                print(f"       {city_model.name}: {len(city_model.districts)} districts, "
-                      f"{len(city_model.buildings)} buildings, {len(city_model.roads)} roads")
+                print(
+                    f"       {city_model.name}: {len(city_model.districts)} districts, "
+                    f"{len(city_model.buildings)} buildings, {len(city_model.roads)} roads"
+                )
 
                 # Stage 4: Convertir City → WorldModel
                 print("[4/7] Convirtiendo City -> WorldModel...")
@@ -105,10 +108,12 @@ class PipelineRunner:
                 print(f"       {len(world_model.tiles)} tiles generados")
 
                 # Skips Lua stages for city
-                stage_complete = "city"
 
                 # Validación (skipped for city)
-                report.stats["validation"] = {"is_valid": True, "status": "skipped (city)"}
+                report.stats["validation"] = {
+                    "is_valid": True,
+                    "status": "skipped (city)",
+                }
 
                 # OTBM Export directa (saltando Lua)
                 print("[7.5] Exportando OTBM (city)...")
@@ -156,28 +161,39 @@ class PipelineRunner:
                     "shortcuts": len(dungeon_model.shortcuts),
                     "spawns": len(dungeon_model.spawns),
                 }
-                print(f"       {dungeon_model.name}: {len(dungeon_model.floors)} floors, "
-                      f"{len(dungeon_model.rooms)} rooms, "
-                      f"{len(dungeon_model.bosses)} bosses")
+                print(
+                    f"       {dungeon_model.name}: {len(dungeon_model.floors)} floors, "
+                    f"{len(dungeon_model.rooms)} rooms, "
+                    f"{len(dungeon_model.bosses)} bosses"
+                )
 
                 # Stage 4: Convertir Dungeon -> WorldModel
                 print("[4/7] Convirtiendo Dungeon -> WorldModel...")
                 world_model = self._stage4dungeon_convert(dungeon_model)
                 report.stats["dungeon_wm"] = {
                     "tiles": len(world_model.tiles),
-                    "floors": len(set(getattr(t, "z", 7) for t in world_model.tiles.values())),
+                    "floors": len(
+                        set(getattr(t, "z", 7) for t in world_model.tiles.values())
+                    ),
                 }
-                print(f"       {len(world_model.tiles)} tiles, "
-                      f"{report.stats['dungeon_wm']['floors']} floors")
+                print(
+                    f"       {len(world_model.tiles)} tiles, "
+                    f"{report.stats['dungeon_wm']['floors']} floors"
+                )
 
                 # Stage 5: Dungeon OTBM Export
                 print("[5/7] Exportando dungeon OTBM...")
-                otbm_path = self._stage5dungeon_otbm(world_model, intent, dungeon_model, timestamp)
+                otbm_path = self._stage5dungeon_otbm(
+                    world_model, intent, dungeon_model, timestamp
+                )
                 if otbm_path:
                     report.outputs["otbm"] = str(otbm_path)
                     print(f"       OTBM: {otbm_path}")
 
-                report.stats["validation"] = {"is_valid": True, "status": "skipped (dungeon)"}
+                report.stats["validation"] = {
+                    "is_valid": True,
+                    "status": "skipped (dungeon)",
+                }
 
                 report_json_path = self.output_dir / "report.json"
                 report_data = {
@@ -210,8 +226,10 @@ class PipelineRunner:
                     "rooms": len(hunt_area.rooms),
                     "tiles": len(hunt_area.tiles),
                 }
-                print(f"       {hunt_area.width}x{hunt_area.height} tiles, "
-                      f"{len(hunt_area.rooms)} rooms")
+                print(
+                    f"       {hunt_area.width}x{hunt_area.height} tiles, "
+                    f"{len(hunt_area.rooms)} rooms"
+                )
 
                 # -- Stage 4: Spawn Generator --
                 print("[4/7] Generando spawns...")
@@ -220,8 +238,10 @@ class PipelineRunner:
                     "total": len(spawn_plan.spawns),
                     "boss": bool(spawn_plan.boss_spawn),
                 }
-                print(f"       {len(spawn_plan.spawns)} spawns "
-                      f"(boss: {'Si' if spawn_plan.boss_spawn else 'No'})")
+                print(
+                    f"       {len(spawn_plan.spawns)} spawns "
+                    f"(boss: {'Si' if spawn_plan.boss_spawn else 'No'})"
+                )
 
                 # -- Stage 5: Lua Generator --
                 print("[5/7] Generando script Lua...")
@@ -232,10 +252,10 @@ class PipelineRunner:
                     "creature_count": lua_script.creature_count,
                     "border_count": lua_script.border_count,
                 }
-                print(f"       {lua_script.tile_count} tiles, "
-                      f"{lua_script.spawn_count} spawns")
-
-                stage_complete = "hunt"
+                print(
+                    f"       {lua_script.tile_count} tiles, "
+                    f"{lua_script.spawn_count} spawns"
+                )
 
                 # -- Stage 6: Validation --
                 print("[6/7] Validando script Lua...")
@@ -247,8 +267,10 @@ class PipelineRunner:
                     "stats": validation_report.stats,
                 }
                 status = "APROBADO" if validation_report.is_valid else "CON ERRORES"
-                print(f"       [{status}] ({len(validation_report.errors)} errores, "
-                      f"{len(validation_report.warnings)} warnings)")
+                print(
+                    f"       [{status}] ({len(validation_report.errors)} errores, "
+                    f"{len(validation_report.warnings)} warnings)"
+                )
 
                 for err in validation_report.errors:
                     report.errors.append(f"[L{err.line}] {err.message}")
@@ -264,7 +286,9 @@ class PipelineRunner:
 
                 # -- Stage 7.5: OTBM Export --
                 print("[7.5] Exportando OTBM...")
-                otbm_path = self._stage8_export_otbm(hunt_area, spawn_plan, intent, timestamp)
+                otbm_path = self._stage8_export_otbm(
+                    hunt_area, spawn_plan, intent, timestamp
+                )
                 if otbm_path:
                     print(f"       OTBM: {otbm_path}")
 
@@ -308,6 +332,7 @@ class PipelineRunner:
 
                 # ASCII preview text
                 from core.preview.preview_generator import PreviewGenerator
+
                 pg = PreviewGenerator(tile_size=8)
                 ascii_preview = pg.generate_ascii(hunt_area)
                 ascii_path = self.output_dir / "preview_ascii.txt"
@@ -322,15 +347,15 @@ class PipelineRunner:
                 report.success = len(report.errors) == 0
 
             # -- Final summary --
-            print(f"\n{'='*60}")
-            print(f"  PIPELINE COMPLETADO")
+            print(f"\n{'=' * 60}")
+            print("  PIPELINE COMPLETADO")
             print(f"  Exito: {'SI' if report.success else 'NO'}")
             print(f"  Errores: {len(report.errors)}")
             print(f"  Warnings: {len(report.warnings)}")
             print(f"  Archivos generados: {len(report.outputs)}")
             for key, path in report.outputs.items():
                 print(f"    - {key}: {path}")
-            print(f"{'='*60}\n")
+            print(f"{'=' * 60}\n")
 
             # Show ASCII preview
             if ascii_preview:
@@ -338,6 +363,7 @@ class PipelineRunner:
 
         except Exception as e:
             import traceback
+
             error_msg = f"{type(e).__name__}: {e}"
             report.errors.append(error_msg)
             report.success = False
@@ -395,11 +421,13 @@ class PipelineRunner:
 
             self._generate_city_templates(world_model, name)
 
-            print(f"       OTBM valid: {'SI' if val_report.is_valid else 'NO'} "
-                  f"({val_report.stats.get('tiles', 0)} tiles, "
-                  f"{val_report.stats.get('towns', 0)} towns, "
-                  f"{val_report.stats.get('waypoints', 0)} waypoints, "
-                  f"{len(otbm_bytes)} bytes)")
+            print(
+                f"       OTBM valid: {'SI' if val_report.is_valid else 'NO'} "
+                f"({val_report.stats.get('tiles', 0)} tiles, "
+                f"{val_report.stats.get('towns', 0)} towns, "
+                f"{val_report.stats.get('waypoints', 0)} waypoints, "
+                f"{len(otbm_bytes)} bytes)"
+            )
             return otbm_path
         except Exception as e:
             print(f"       [ERROR] City OTBM export failed: {e}")
@@ -419,7 +447,7 @@ class PipelineRunner:
                 house_lines.append(
                     f'  <house name="House{i}">\n'
                     f'    <location x="{h.get("x", 0)}" y="{h.get("y", 0)}" z="{h.get("z", 7)}" />\n'
-                    f'  </house>'
+                    f"  </house>"
                 )
             house_lines.append("</houses>")
             (output_dir / f"{base_name}.house.xml").write_text(
@@ -456,7 +484,10 @@ class PipelineRunner:
   </zone>
 </zones>
 """
-            (output_dir / f"{base_name}.zones.xml").write_text(zone_xml, encoding="utf-8")
+            (output_dir / f"{base_name}.zones.xml").write_text(
+                zone_xml, encoding="utf-8"
+            )
+
     # -- Dungeon Branch Stages --
 
     def _stage3dungeon_generate(self, intent, theme_data):
@@ -480,7 +511,9 @@ class PipelineRunner:
         converter = DungeonToWorldModel(dungeon_model)
         return converter.convert()
 
-    def _stage5dungeon_otbm(self, world_model, intent, dungeon_model, timestamp: str) -> Optional[str]:
+    def _stage5dungeon_otbm(
+        self, world_model, intent, dungeon_model, timestamp: str
+    ) -> Optional[str]:
         """Export a multi-floor dungeon WorldModel to OTBM."""
         try:
             from core.otbm.otbm_serializer import OtbmSerializer
@@ -504,11 +537,13 @@ class PipelineRunner:
             self._generate_dungeon_templates(dungeon_model, world_model, name)
 
             floors = len(set(getattr(t, "z", 7) for t in world_model.tiles.values()))
-            print(f"       OTBM valid: {'SI' if val_report.is_valid else 'NO'} "
-                  f"({val_report.stats.get('tiles', 0)} tiles, "
-                  f"{floors} floors, "
-                  f"{val_report.stats.get('monsters', 0)} monsters, "
-                  f"{len(otbm_bytes)} bytes)")
+            print(
+                f"       OTBM valid: {'SI' if val_report.is_valid else 'NO'} "
+                f"({val_report.stats.get('tiles', 0)} tiles, "
+                f"{floors} floors, "
+                f"{val_report.stats.get('monsters', 0)} monsters, "
+                f"{len(otbm_bytes)} bytes)"
+            )
             return otbm_path
         except Exception as e:
             print(f"       [ERROR] Dungeon OTBM export failed: {e}")
@@ -549,17 +584,21 @@ class PipelineRunner:
   </zone>
 </zones>
 """
-            (output_dir / f"{base_name}.zones.xml").write_text(zone_xml, encoding="utf-8")
+            (output_dir / f"{base_name}.zones.xml").write_text(
+                zone_xml, encoding="utf-8"
+            )
 
     # -- Stage Implementations --
 
     def _stage1_interpret(self, prompt: str):
         from core.prompt_interpreter import PromptInterpreter
+
         interpreter = PromptInterpreter()
         return interpreter.interpret(prompt)
 
     def _stage2_resolve_themes(self, intent):
         from core.themes.theme_resolver import ThemeResolver
+
         resolver = ThemeResolver()
         themes = resolver.resolve_all(intent.theme)
         return themes
@@ -569,7 +608,7 @@ class PipelineRunner:
         from core.themes.theme_resolver import ThemeResolver
 
         resolver = ThemeResolver()
-        merged = resolver.merge_themes(theme_data)
+        resolver.merge_themes(theme_data)
 
         level_range = tuple(intent.level_range)
         avg_level = (level_range[0] + level_range[1]) / 2
@@ -577,19 +616,14 @@ class PipelineRunner:
         # Scale map size based on level range
         if avg_level < 200:
             w, h = 25, 25
-            rooms = 3
-            boss = False
         elif avg_level < 400:
             w, h = 35, 35
-            rooms = 4
-            boss = True
         else:
             w, h = 45, 45
-            rooms = 5
-            boss = True
 
         generator = HuntGenerator(seed=42)
         from core.world import WorldModel
+
         world = WorldModel()
         theme_name = intent.theme[0] if intent.theme else "issavi"
         context = {
@@ -658,7 +692,9 @@ class PipelineRunner:
                 stats={"qa_pipeline": qa_report},
             )
             for err in qa_report["errors"]:
-                wrapped.errors.append(WrappedError(line=0, message=err, severity="error"))
+                wrapped.errors.append(
+                    WrappedError(line=0, message=err, severity="error")
+                )
             return wrapped
 
         # Wrap ValidationResult to provide .is_valid and .stats
@@ -680,35 +716,39 @@ class PipelineRunner:
         wrapped = WrappedReport(
             is_valid=(result.status == "success"),
             stats={
-                "total_lines": len(lua_script.code.split('\n')),
+                "total_lines": len(lua_script.code.split("\n")),
                 "tiles_created": lua_script.tile_count,
                 "spawns_set": lua_script.spawn_count,
                 "creatures_set": lua_script.creature_count,
                 "items_added": lua_script.tile_count + lua_script.spawn_count,
                 "borders_placed": lua_script.border_count,
                 "qa_pipeline": qa_report,
-            }
+            },
         )
 
         for err in result.errors:
             wrapped.errors.append(WrappedError(line=0, message=err, severity="error"))
 
         for warn in result.warnings:
-            wrapped.warnings.append(WrappedError(line=0, message=warn, severity="warning"))
+            wrapped.warnings.append(
+                WrappedError(line=0, message=warn, severity="warning")
+            )
 
         return wrapped
 
     def _stage7_preview(self, hunt_area, intent, timestamp: str) -> Optional[str]:
         from core.preview.preview_generator import PreviewGenerator
 
-        name = "_".join(intent.theme) if intent.theme else "map"
+        "_".join(intent.theme) if intent.theme else "map"
         png_path = self.output_dir / "preview.png"
 
         pg = PreviewGenerator(tile_size=10)
         result = pg.generate_png(hunt_area, str(png_path))
         return result
 
-    def _stage8_export_otbm(self, hunt_area, spawn_plan, intent, timestamp: str) -> Optional[str]:
+    def _stage8_export_otbm(
+        self, hunt_area, spawn_plan, intent, timestamp: str
+    ) -> Optional[str]:
         """
         Export hunt area + spawn plan as a real .otbm file.
 
@@ -739,10 +779,12 @@ class PipelineRunner:
             # Generate companion templates (monsters XML)
             self._generate_otbm_templates(hunt_area, spawn_plan, intent, name)
 
-            print(f"       OTBM valid: {'SI' if val_report.is_valid else 'NO'} "
-                  f"({val_report.stats.get('tiles', 0)} tiles, "
-                  f"{val_report.stats.get('monsters', 0)} monsters, "
-                  f"{len(otbm_bytes)} bytes)")
+            print(
+                f"       OTBM valid: {'SI' if val_report.is_valid else 'NO'} "
+                f"({val_report.stats.get('tiles', 0)} tiles, "
+                f"{val_report.stats.get('monsters', 0)} monsters, "
+                f"{len(otbm_bytes)} bytes)"
+            )
             return otbm_path
         except ImportError as e:
             print(f"       [WARN] OTBM module not available: {e}")
@@ -792,6 +834,7 @@ class PipelineRunner:
 
 
 # -- CLI Entry Point --
+
 
 def main():
     runner = PipelineRunner()

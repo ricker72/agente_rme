@@ -9,7 +9,6 @@ AssetRegistry.
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -17,19 +16,17 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from core.architect import (
-    AIArchitect, WorldPlan, WorldRequest,
-    ThemeResolver, ThemeAssets,
-    ZonePlanner, CityPlan, DungeonPlan, HuntPlan, BossPlan, QuestPlan,
-    DifficultyPlanner,
-    LayoutPlanner, WorldLayout, PlacedZone,
-    WorldPlanner,
-    resolve_theme, merge_themes, ai_plan,
+    AIArchitect,
+    WorldPlan,
+    WorldRequest,
+    ThemeAssets,
+    ai_plan,
 )
-
 
 # =============================================================================
 # AIArchitect - basic API
 # =============================================================================
+
 
 def test_ai_architect_creation():
     """Test that AIArchitect can be instantiated with no args."""
@@ -46,7 +43,9 @@ def test_ai_architect_creation():
 def test_ai_architect_plan_returns_worldplan():
     """Test that plan() returns a WorldPlan."""
     architect = AIArchitect()
-    plan = architect.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    plan = architect.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     assert isinstance(plan, WorldPlan)
     assert plan.summary() is not None
     print("  [OK] test_ai_architect_plan_returns_worldplan")
@@ -55,7 +54,9 @@ def test_ai_architect_plan_returns_worldplan():
 def test_ai_architect_plan_full_example():
     """Test the canonical example from the task spec."""
     architect = AIArchitect()
-    plan = architect.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    plan = architect.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     assert len(plan.cities) == 1
     assert len(plan.hunting_zones) == 3
     assert len(plan.boss_zones) == 1
@@ -148,6 +149,7 @@ def test_ai_architect_resolve_theme():
 # Prompt variation tests
 # =============================================================================
 
+
 def test_prompt_english_city_hunt_boss():
     """Test English prompt variant."""
     a = AIArchitect()
@@ -200,10 +202,13 @@ def test_prompt_default_hunt():
 # WorldPlan - serialization
 # =============================================================================
 
+
 def test_worldplan_to_dict_complete():
     """Test that WorldPlan.to_dict() includes all zones."""
     a = AIArchitect()
-    p = a.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    p = a.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     d = p.to_dict()
     assert "cities" in d and len(d["cities"]) == 1
     assert "hunting_zones" in d and len(d["hunting_zones"]) == 3
@@ -231,9 +236,11 @@ def test_worldplan_summary_string():
 # Integration with registries
 # =============================================================================
 
+
 def test_attach_asset_registry():
     """Test that attaching an AssetRegistry works."""
     from core.registry import AssetRegistry
+
     a = AIArchitect()
     reg = AssetRegistry()
     a.attach_asset_registry(reg)
@@ -245,6 +252,7 @@ def test_attach_asset_registry():
 def test_attach_blueprint_registry():
     """Test that attaching a BlueprintRegistry works."""
     from core.registry import BlueprintRegistry
+
     a = AIArchitect()
     reg = BlueprintRegistry()
     a.attach_blueprint_registry(reg)
@@ -266,6 +274,7 @@ def test_attach_world_generator():
 def test_plan_with_world_generator_executes():
     """Test that the plan actually invokes the world_generator if attached."""
     from core.generators import WorldGenerator
+
     a = AIArchitect()
     wg = WorldGenerator(seed=42)
     a.attach_world_generator(wg)
@@ -281,6 +290,7 @@ def test_plan_with_world_generator_executes():
 # =============================================================================
 # Theme resolver integration
 # =============================================================================
+
 
 def test_themes_in_plan_have_correct_assets():
     """Test that resolved themes have correct grounds/walls/monsters."""
@@ -308,6 +318,7 @@ def test_module_level_plan_helper():
 # Repr / str
 # =============================================================================
 
+
 def test_repr_does_not_crash():
     """Test that printing the plan works without errors."""
     a = AIArchitect()
@@ -321,6 +332,7 @@ def test_repr_does_not_crash():
 # =============================================================================
 # Runner
 # =============================================================================
+
 
 def run_all():
     """Run all tests in this file."""

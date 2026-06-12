@@ -1,7 +1,7 @@
 """
 Coverage tests for QuestAgent.
 
-Hito 26.1D — covers all branches:
+Hito 26.1D â€” covers all branches:
   * Happy path with world data
   * Theme extraction from prompt
   * Fallback campaign
@@ -15,12 +15,11 @@ Hito 26.1D — covers all branches:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from agente_rme.core.agents.quest_agent import QuestAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.quest_agent import QuestAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestQuestAgentHappyPath:
@@ -100,7 +99,8 @@ class TestQuestAgentHappyPath:
     def test_quest_level_range_in_report(self):
         agent = QuestAgent()
         request = AgentRequest(
-            agent_id="quest", prompt="quest",
+            agent_id="quest",
+            prompt="quest",
             input_data={"tiles": {}},
             parameters={"level_min": 200, "level_max": 400},
         )
@@ -112,7 +112,8 @@ class TestQuestAgentHappyPath:
         agent = QuestAgent()
         world = {"tiles": {}}
         request = AgentRequest(
-            agent_id="quest", prompt="quest",
+            agent_id="quest",
+            prompt="quest",
             context={"world_model": world},
         )
         response = agent.execute(request)
@@ -230,7 +231,8 @@ class TestQuestAgentErrorHandling:
     def test_quest_with_npc_count(self):
         agent = QuestAgent()
         request = AgentRequest(
-            agent_id="quest", prompt="issavi",
+            agent_id="quest",
+            prompt="issavi",
             input_data={"tiles": {}},
             parameters={"npc_count": 5, "faction_count": 2},
         )
@@ -254,7 +256,8 @@ class TestQuestAgentErrorHandling:
         """Test that level_max < level_min gets swapped."""
         agent = QuestAgent()
         request = AgentRequest(
-            agent_id="quest", prompt="quest",
+            agent_id="quest",
+            prompt="quest",
             input_data={"tiles": {}},
             parameters={"level_min": 300, "level_max": 100},
         )
@@ -290,7 +293,8 @@ class TestQuestAgentErrorHandling:
         """Test execute with parent_task_id set."""
         agent = QuestAgent()
         request = AgentRequest(
-            agent_id="quest", prompt="test",
+            agent_id="quest",
+            prompt="test",
             input_data={"tiles": {}},
             parent_task_id="workflow_123",
         )

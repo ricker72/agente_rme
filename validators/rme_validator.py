@@ -6,11 +6,13 @@ FORBIDDEN_PATTERNS = [
     r"Map\.addNpc",
     r"Map\.setTile",
     r"(?<!setCamera)Position\s*\(",
-    r"Game\.createTile"
+    r"Game\.createTile",
 ]
+
 
 class RMEValidationError(Exception):
     pass
+
 
 def validate(lua_text: str) -> bool:
     errors = []
@@ -20,8 +22,6 @@ def validate(lua_text: str) -> bool:
             errors.append(pattern)
 
     if errors:
-        raise RMEValidationError(
-            "Forbidden APIs detected:\n" + "\n".join(errors)
-        )
+        raise RMEValidationError("Forbidden APIs detected:\n" + "\n".join(errors))
 
     return True

@@ -118,7 +118,6 @@ from .world_synthesizer import (
     attach_blueprint_registry,
 )
 
-
 __all__ = [
     # Biome
     "BiomeGenerator",

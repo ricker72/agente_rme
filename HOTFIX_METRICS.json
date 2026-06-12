@@ -1,0 +1,51 @@
+{
+  "version": "1.0.1",
+  "generated_at": "2026-06-10T04:33:01.669939+00:00",
+  "audit": {
+    "logs_scanned": 391,
+    "workflow_files": 387,
+    "anomalies": 0,
+    "otbm_anomalies": 0,
+    "top_error_signatures": [
+      {
+        "signature": "export failed",
+        "count": 105
+      },
+      {
+        "signature": "'list' object has no attribute 'items'",
+        "count": 88
+      }
+    ]
+  },
+  "otbm": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8
+  },
+  "lua": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7
+  },
+  "cli": {
+    "passed": 19,
+    "failed": 0,
+    "total": 19
+  },
+  "performance": {
+    "count": 200,
+    "elapsed_s": 133.462,
+    "per_gen_avg_ms": 313.63,
+    "rss_growth_mb": 0.0,
+    "no_memory_leak": true
+  },
+  "regression": {
+    "golden_present": 10,
+    "maps_present": 6,
+    "no_regressions": true
+  },
+  "security": {
+    "no_high_critical": true,
+    "static_findings": 8
+  }
+}

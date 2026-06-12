@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
-from .models import EntryType, KnowledgeDataset, KnowledgeEntry
+from .models import KnowledgeDataset, KnowledgeEntry
 
 
 def _entry_summary(entry: KnowledgeEntry) -> Dict[str, Any]:

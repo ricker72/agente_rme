@@ -1,5 +1,5 @@
 """
-HITO 18 — Tests for :mod:`agente_rme.core.designer.autonomous_designer`.
+HITO 18 â€” Tests for :mod:`agente_rme.core.designer.autonomous_designer`.
 
 These tests exercise the end-to-end pipeline:
 
@@ -19,35 +19,17 @@ They verify that:
 
 from __future__ import annotations
 
-import json
 import os
 import tempfile
 import unittest
 from typing import List
 
-from agente_rme.core.designer import (
+from core.designer import (
     AutonomousDesigner,
     BalanceReport,
-    BossArea,
-    Connection,
-    ContentBalancer,
-    ContentBalance,
-    DecisionEngine,
     DesignDecision,
-    DesignGoal,
-    ExpansionResult,
-    HuntArea,
-    LevelCurvePoint,
-    NavigationDesigner,
     NavigationGraph,
-    QuestArea,
-    Region,
-    SpawnEntry,
-    ThemeSpec,
-    Vector2,
     WorldModel,
-    Zone,
-    ZoneExpander,
 )
 
 
@@ -291,7 +273,9 @@ class TestAutonomousDesigner(unittest.TestCase):
         # Must not crash
         world = designer.generate("map level 1-50")
         self.assertGreater(len(world.zones), 0)
-        self.assertTrue(any("AIArchitect failed" in w for w in world.metadata.get("warnings", [])))
+        self.assertTrue(
+            any("AIArchitect failed" in w for w in world.metadata.get("warnings", []))
+        )
 
     # ------------------------------------------------------------------
     # Theming
@@ -308,7 +292,10 @@ class TestAutonomousDesigner(unittest.TestCase):
         result = designer.generate_full("dungeon crawler level 1-150")
         themes = [z.theme.name for z in result.world.zones]
         self.assertTrue(
-            any(t in ("dungeon", "cave", "crypt", "undead_city", "roshamuul") for t in themes)
+            any(
+                t in ("dungeon", "cave", "crypt", "undead_city", "roshamuul")
+                for t in themes
+            )
         )
 
     def test_jungle_theme(self) -> None:

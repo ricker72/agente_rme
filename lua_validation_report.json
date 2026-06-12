@@ -1,0 +1,78 @@
+{
+  "phase": "FASE 3 - LUA EXPORT HARDENING",
+  "generated_at": "2026-06-09T08:59:59.430933+00:00",
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "name": "generated_lua_exists",
+      "passed": true,
+      "elapsed_s": 0.0075,
+      "details": {
+        "size": 5872,
+        "syntax_errors": [],
+        "luac_passed": null
+      }
+    },
+    {
+      "name": "generated_lua_via_pipeline",
+      "passed": true,
+      "elapsed_s": 0.9703,
+      "details": {
+        "syntax_errors": [],
+        "validator_passed": true,
+        "validator_errors": [],
+        "validator_warnings": [],
+        "size": 5064
+      }
+    },
+    {
+      "name": "monster_exports",
+      "passed": true,
+      "elapsed_s": 0.0102,
+      "details": {
+        "monster_lines": 11,
+        "named": 11
+      }
+    },
+    {
+      "name": "spawn_exports",
+      "passed": true,
+      "elapsed_s": 0.0052,
+      "details": {
+        "spawn_lines": 11,
+        "positive_intervals": 11
+      }
+    },
+    {
+      "name": "waypoints_exports",
+      "passed": true,
+      "elapsed_s": 0.0067,
+      "details": {
+        "syntax_errors": [],
+        "size": 3113
+      }
+    },
+    {
+      "name": "tile:setGround",
+      "passed": true,
+      "elapsed_s": 0.0047,
+      "details": {
+        "violations": []
+      }
+    },
+    {
+      "name": "lua_extreme_world_64x64",
+      "passed": true,
+      "elapsed_s": 0.1981,
+      "details": {
+        "size": 305354,
+        "syntax_errors": [],
+        "luac_passed": null
+      }
+    }
+  ],
+  "verdict": "PASS"
+}

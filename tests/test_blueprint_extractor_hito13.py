@@ -17,7 +17,6 @@ import json
 import os
 import tempfile
 import unittest
-from pathlib import Path
 from typing import Any, Dict, List
 
 # Test imports
@@ -27,10 +26,10 @@ from core.blueprints.pattern_detector import PatternDetector, Pattern
 from core.blueprints.structure_detector import StructureDetector, DetectedStructure
 from core.blueprints.blueprint_extractor import BlueprintExtractor, ExtractionResult
 
-
 # ---------------------------------------------------------------------------
 # Datos de prueba compartidos
 # ---------------------------------------------------------------------------
+
 
 def _make_sample_tiles(count: int = 50) -> List[Dict[str, Any]]:
     """Genera tiles de prueba."""
@@ -47,14 +46,16 @@ def _make_sample_tiles(count: int = 50) -> List[Dict[str, Any]]:
         if i % 11 == 0:
             items.append({"item_id": 999})  # decoration
 
-        tiles.append({
-            "x": x,
-            "y": y,
-            "z": 7,
-            "ground": ground,
-            "items": items,
-            "all_items": [],
-        })
+        tiles.append(
+            {
+                "x": x,
+                "y": y,
+                "z": 7,
+                "ground": ground,
+                "items": items,
+                "all_items": [],
+            }
+        )
     return tiles
 
 
@@ -63,12 +64,14 @@ def _make_sample_spawns(count: int = 5) -> List[Dict[str, Any]]:
     spawns = []
     monsters = ["dragon", "demon", "rotworm", "troll", "skeleton", "orc"]
     for i in range(count):
-        spawns.append({
-            "monster": monsters[i % len(monsters)],
-            "x": i * 10,
-            "y": i * 5,
-            "radius": 5,
-        })
+        spawns.append(
+            {
+                "monster": monsters[i % len(monsters)],
+                "x": i * 10,
+                "y": i * 5,
+                "radius": 5,
+            }
+        )
     return spawns
 
 
@@ -77,22 +80,21 @@ def _make_sample_houses(count: int = 3) -> List[Dict[str, Any]]:
     houses = []
     names = ["Thais Temple", "Venore Depot", "Carlin Market"]
     for i in range(min(count, len(names))):
-        houses.append({
-            "id": i + 1,
-            "name": names[i],
-            "temple_x": i * 20 + 5,
-            "temple_y": i * 15 + 5,
-            "temple_z": 7,
-        })
+        houses.append(
+            {
+                "id": i + 1,
+                "name": names[i],
+                "temple_x": i * 20 + 5,
+                "temple_y": i * 15 + 5,
+                "temple_z": 7,
+            }
+        )
     return houses
 
 
 def _make_sample_waypoints(count: int = 3) -> List[Dict[str, Any]]:
     """Genera waypoints de prueba."""
-    return [
-        {"name": f"wp_{i}", "x": i * 10, "y": i * 10, "z": 7}
-        for i in range(count)
-    ]
+    return [{"name": f"wp_{i}", "x": i * 10, "y": i * 10, "z": 7} for i in range(count)]
 
 
 def _make_sample_world_dict() -> Dict[str, Any]:
@@ -121,6 +123,7 @@ def _make_sample_world_dict() -> Dict[str, Any]:
 # ──────────────────────────────────────────────────────────────────────
 # TEST 1: ThemeClassifier
 # ──────────────────────────────────────────────────────────────────────
+
 
 class TestThemeClassifier(unittest.TestCase):
     """Pruebas para ThemeClassifier."""
@@ -181,9 +184,7 @@ class TestThemeClassifier(unittest.TestCase):
         spawns = _make_sample_spawns(3)
         houses = _make_sample_houses(2)
 
-        meta = self.classifier.classify_with_metadata(
-            tiles, items, spawns, houses
-        )
+        meta = self.classifier.classify_with_metadata(tiles, items, spawns, houses)
         self.assertIn("style", meta)
         self.assertIn("era", meta)
         self.assertIn("difficulty", meta)
@@ -196,7 +197,9 @@ class TestThemeClassifier(unittest.TestCase):
     def test_quick_classify(self):
         """quick_classify mapea correctamente estilos."""
         self.assertEqual(self.classifier.quick_classify("issavi"), "issavi")
-        self.assertEqual(self.classifier.quick_classify("roshamuul_dungeon"), "roshamuul")
+        self.assertEqual(
+            self.classifier.quick_classify("roshamuul_dungeon"), "roshamuul"
+        )
         self.assertEqual(self.classifier.quick_classify("jungle_temple"), "temple")
         self.assertEqual(self.classifier.quick_classify(None), "generic")
         self.assertEqual(self.classifier.quick_classify(""), "generic")
@@ -238,6 +241,7 @@ class TestThemeClassifier(unittest.TestCase):
 # TEST 2: PatternDetector
 # ──────────────────────────────────────────────────────────────────────
 
+
 class TestPatternDetector(unittest.TestCase):
     """Pruebas para PatternDetector."""
 
@@ -253,7 +257,9 @@ class TestPatternDetector(unittest.TestCase):
                 items = []
                 if x == 0 or x == 4 or y == 0 or y == 4:
                     items.append({"item_id": 101})  # wall
-                tiles.append({"x": x + 10, "y": y + 10, "z": 7, "ground": 415, "items": items})
+                tiles.append(
+                    {"x": x + 10, "y": y + 10, "z": 7, "ground": 415, "items": items}
+                )
 
         patterns = self.detector.detect(tiles, {}, [])
         room_patterns = [p for p in patterns if p.pattern_type == "room"]
@@ -273,13 +279,15 @@ class TestPatternDetector(unittest.TestCase):
         """Detecta patrones de suelo dominante."""
         tiles = []
         for i in range(50):
-            tiles.append({
-                "x": i % 10,
-                "y": i // 10,
-                "z": 7,
-                "ground": 415,
-                "items": [],
-            })
+            tiles.append(
+                {
+                    "x": i % 10,
+                    "y": i // 10,
+                    "z": 7,
+                    "ground": 415,
+                    "items": [],
+                }
+            )
         patterns = self.detector.detect(tiles, {}, [])
         floor_patterns = [p for p in patterns if p.pattern_type == "floor"]
         self.assertGreater(len(floor_patterns), 0)
@@ -342,8 +350,13 @@ class TestPatternDetector(unittest.TestCase):
     def test_cluster_positions(self):
         """_cluster_positions agrupa correctamente."""
         positions = [
-            (1, 1), (1, 2), (2, 1), (2, 2),  # cluster 1
-            (10, 10), (10, 11), (11, 10),  # cluster 2
+            (1, 1),
+            (1, 2),
+            (2, 1),
+            (2, 2),  # cluster 1
+            (10, 10),
+            (10, 11),
+            (11, 10),  # cluster 2
         ]
         clusters = self.detector._cluster_positions(positions, min_points=3, radius=3)
         self.assertEqual(len(clusters), 2)
@@ -381,6 +394,7 @@ class TestPatternDetector(unittest.TestCase):
 # TEST 3: StructureDetector
 # ──────────────────────────────────────────────────────────────────────
 
+
 class TestStructureDetector(unittest.TestCase):
     """Pruebas para StructureDetector."""
 
@@ -413,8 +427,11 @@ class TestStructureDetector(unittest.TestCase):
             houses=[],
             waypoints=[],
         )
-        zones = [s for s in structures if s.structure_type == "zone"
-                 and s.properties.get("zone_type") == "hunting"]
+        zones = [
+            s
+            for s in structures
+            if s.structure_type == "zone" and s.properties.get("zone_type") == "hunting"
+        ]
         self.assertGreater(len(zones), 0)
 
     def test_detect_zones_urban(self):
@@ -427,8 +444,11 @@ class TestStructureDetector(unittest.TestCase):
             houses=houses,
             waypoints=[],
         )
-        zones = [s for s in structures if s.structure_type == "zone"
-                 and s.properties.get("zone_type") == "urban"]
+        zones = [
+            s
+            for s in structures
+            if s.structure_type == "zone" and s.properties.get("zone_type") == "urban"
+        ]
         self.assertGreater(len(zones), 0)
 
     def test_detect_layout(self):
@@ -492,7 +512,13 @@ class TestStructureDetector(unittest.TestCase):
     def test_poi_detection_temple(self):
         """Detecta temple como POI."""
         houses = [
-            {"id": 1, "name": "Thais Temple", "temple_x": 50, "temple_y": 60, "temple_z": 7}
+            {
+                "id": 1,
+                "name": "Thais Temple",
+                "temple_x": 50,
+                "temple_y": 60,
+                "temple_z": 7,
+            }
         ]
         structures = self.detector.detect(
             tiles=_make_sample_tiles(20),
@@ -501,8 +527,11 @@ class TestStructureDetector(unittest.TestCase):
             houses=houses,
             waypoints=[],
         )
-        pois = [s for s in structures if s.structure_type == "poi"
-                and "temple" in s.name.lower()]
+        pois = [
+            s
+            for s in structures
+            if s.structure_type == "poi" and "temple" in s.name.lower()
+        ]
         self.assertGreater(len(pois), 0)
 
     def test_building_grouping(self):
@@ -532,6 +561,7 @@ class TestStructureDetector(unittest.TestCase):
 # TEST 4: BlueprintExtractor
 # ──────────────────────────────────────────────────────────────────────
 
+
 class TestBlueprintExtractor(unittest.TestCase):
     """Pruebas para BlueprintExtractor - pipeline completo."""
 
@@ -541,6 +571,7 @@ class TestBlueprintExtractor(unittest.TestCase):
 
     def tearDown(self):
         import shutil
+
         if os.path.exists(self.tmp_dir):
             shutil.rmtree(self.tmp_dir, ignore_errors=True)
 
@@ -734,13 +765,19 @@ class TestBlueprintExtractor(unittest.TestCase):
     def test_category_determination_temple(self):
         """Categoria temple para theme temple."""
         world_dict = {
-            "width": 50, "height": 50,
+            "width": 50,
+            "height": 50,
             "tiles": [
                 {"x": i % 10, "y": i // 10, "z": 7, "ground": 415, "items": []}
                 for i in range(100)
             ],
-            "spawns": [], "cities": [], "waypoints": [],
-            "tile_count": 100, "spawn_count": 0, "city_count": 0, "waypoint_count": 0,
+            "spawns": [],
+            "cities": [],
+            "waypoints": [],
+            "tile_count": 100,
+            "spawn_count": 0,
+            "city_count": 0,
+            "waypoint_count": 0,
         }
         result = self.extractor.extract_from_world_dict(
             world_dict, source_name="cat_test", save=False
@@ -750,7 +787,8 @@ class TestBlueprintExtractor(unittest.TestCase):
     def test_category_determination_hunting(self):
         """Categoria hunting con muchos spawns y suelo neutro."""
         world_dict = {
-            "width": 50, "height": 50,
+            "width": 50,
+            "height": 50,
             "tiles": [
                 {"x": i % 10, "y": i // 10, "z": 7, "ground": 393, "items": []}
                 for i in range(100)
@@ -758,7 +796,10 @@ class TestBlueprintExtractor(unittest.TestCase):
             "spawns": _make_sample_spawns(20),
             "cities": [],
             "waypoints": [],
-            "tile_count": 100, "spawn_count": 20, "city_count": 0, "waypoint_count": 0,
+            "tile_count": 100,
+            "spawn_count": 20,
+            "city_count": 0,
+            "waypoint_count": 0,
         }
         result = self.extractor.extract_from_world_dict(
             world_dict, source_name="hunt_cat_test", save=False
@@ -798,7 +839,9 @@ class TestBlueprintExtractor(unittest.TestCase):
 
     def test_empty_world_dict_handled(self):
         """World dict vacio no causa crash."""
-        result = self.extractor.extract_from_world_dict({}, source_name="empty", save=False)
+        result = self.extractor.extract_from_world_dict(
+            {}, source_name="empty", save=False
+        )
         self.assertFalse(result.success)
         self.assertGreater(len(result.errors), 0)
 
@@ -806,6 +849,7 @@ class TestBlueprintExtractor(unittest.TestCase):
 # ──────────────────────────────────────────────────────────────────────
 # TEST 5: End-to-End Pipeline Tests
 # ──────────────────────────────────────────────────────────────────────
+
 
 class TestEndToEndPipeline(unittest.TestCase):
     """Pruebas de integracion end-to-end."""
@@ -816,6 +860,7 @@ class TestEndToEndPipeline(unittest.TestCase):
 
     def tearDown(self):
         import shutil
+
         if os.path.exists(self.tmp_dir):
             shutil.rmtree(self.tmp_dir, ignore_errors=True)
 
@@ -868,16 +913,19 @@ class TestEndToEndPipeline(unittest.TestCase):
         """Pipeline preserva datos de tiles a traves de todo el proceso."""
         tiles = []
         for i in range(25):
-            tiles.append({
-                "x": i % 5,
-                "y": i // 5,
-                "z": 7,
-                "ground": 415 + (i % 3),
-                "items": [{"item_id": 1000 + (i % 5)}] if i % 2 == 0 else [],
-            })
+            tiles.append(
+                {
+                    "x": i % 5,
+                    "y": i // 5,
+                    "z": 7,
+                    "ground": 415 + (i % 3),
+                    "items": [{"item_id": 1000 + (i % 5)}] if i % 2 == 0 else [],
+                }
+            )
 
         world_dict = {
-            "width": 5, "height": 5,
+            "width": 5,
+            "height": 5,
             "tiles": tiles,
             "spawns": [],
             "cities": [],
@@ -902,7 +950,8 @@ class TestEndToEndPipeline(unittest.TestCase):
     def test_pipeline_with_spawns_and_houses(self):
         """Pipeline maneja correctamente spawns y houses."""
         world_dict = {
-            "width": 100, "height": 100,
+            "width": 100,
+            "height": 100,
             "tiles": _make_sample_tiles(100),
             "spawns": _make_sample_spawns(20),
             "cities": _make_sample_houses(4),

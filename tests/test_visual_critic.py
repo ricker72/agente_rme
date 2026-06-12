@@ -8,8 +8,7 @@ import os
 import tempfile
 import unittest
 
-from core.critic import VisualCritic, CriticEngine, CriticResult
-from core.critic.models import IssueType, IssueSeverity, RecommendationPriority
+from core.critic import VisualCritic, CriticResult
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
 from core.world.region import Region
@@ -21,7 +20,9 @@ def _build_simple_world(size: int = 15) -> WorldModel:
     w = WorldModel()
     for x in range(size):
         for y in range(size):
-            items = [{"itemid": 100 + (x + y) % 4, "count": 1}] if (x + y) % 2 == 0 else []
+            items = (
+                [{"itemid": 100 + (x + y) % 4, "count": 1}] if (x + y) % 2 == 0 else []
+            )
             t = Tile(x=x, y=y, z=7, ground=200, items=items)
             w.set_tile(t)
     for x, y in [(3, 3), (4, 3), (5, 3)]:
@@ -33,13 +34,22 @@ def _build_simple_world(size: int = 15) -> WorldModel:
     w.add_region(Region(name="city_issavi", theme="issavi", min_level=1, max_level=50))
     w.add_region(Region(name="city_issavi_depot", theme="issavi"))
     w.add_region(Region(name="city_issavi_temple", theme="issavi"))
-    w.add_structure(Structure(name="boss_arena", category="boss_room",
-                              x=10, y=10, z=7, width=8, height=8, tags=["boss"]))
+    w.add_structure(
+        Structure(
+            name="boss_arena",
+            category="boss_room",
+            x=10,
+            y=10,
+            z=7,
+            width=8,
+            height=8,
+            tags=["boss"],
+        )
+    )
     return w
 
 
 class VisualCriticTests(unittest.TestCase):
-
     def test_analyze_simple_world(self):
         w = _build_simple_world()
         critic = VisualCritic()
@@ -48,8 +58,17 @@ class VisualCriticTests(unittest.TestCase):
         self.assertEqual(result.map_name, "simple_test")
         self.assertGreaterEqual(result.overall_score, 0.0)
         self.assertLessEqual(result.overall_score, 100.0)
-        for cat in ("visual", "navigation", "density", "spawn", "hunt",
-                    "boss", "city", "decor", "pathfinding"):
+        for cat in (
+            "visual",
+            "navigation",
+            "density",
+            "spawn",
+            "hunt",
+            "boss",
+            "city",
+            "decor",
+            "pathfinding",
+        ):
             self.assertIsNotNone(result.get_score(cat), f"Missing category: {cat}")
             self.assertGreaterEqual(result.get_score(cat).value, 0.0)
 
@@ -65,11 +84,19 @@ class VisualCriticTests(unittest.TestCase):
     def test_analyze_with_dict_input(self):
         data = {
             "tiles": [
-                {"x": 0, "y": 0, "z": 7, "ground": 100, "items": [{"itemid": 200, "count": 1}]},
+                {
+                    "x": 0,
+                    "y": 0,
+                    "z": 7,
+                    "ground": 100,
+                    "items": [{"itemid": 200, "count": 1}],
+                },
                 {"x": 1, "y": 0, "z": 7, "ground": 100, "items": []},
             ],
             "structures": [],
-            "regions": [{"name": "hunt_a", "min_level": 1, "max_level": 100, "theme": "issavi"}],
+            "regions": [
+                {"name": "hunt_a", "min_level": 1, "max_level": 100, "theme": "issavi"}
+            ],
         }
         critic = VisualCritic()
         result = critic.analyze(data, map_name="dict_test")
@@ -81,8 +108,10 @@ class VisualCriticTests(unittest.TestCase):
             w = _build_simple_world()
             critic = VisualCritic()
             result = critic.analyze(
-                w, map_name="artifacts_test",
-                output_dir=tmp, generate_heatmaps=True,
+                w,
+                map_name="artifacts_test",
+                output_dir=tmp,
+                generate_heatmaps=True,
             )
             artifacts = result.metadata.get("artifacts", {})
             self.assertIn("json", artifacts)
@@ -108,6 +137,7 @@ class VisualCriticTests(unittest.TestCase):
             result = critic.analyze(w, output_dir=tmp, base_name="myreport")
             json_path = result.metadata["artifacts"]["json"]
             import json
+
             with open(json_path, encoding="utf-8") as f:
                 data = json.load(f)
             self.assertIn("overall_score", data)

@@ -1,0 +1,184 @@
+{
+  "architecture": {
+    "adapters": 8,
+    "dtos": 7,
+    "events": 25,
+    "pages": 9,
+    "prior_certified_counts": 6,
+    "services": 13,
+    "status": "PASS",
+    "widgets": 42
+  },
+  "generated_at": "2026-06-12T06:42:35+00:00",
+  "packaging": {
+    "dist_mb": 113.65,
+    "executable_mb": 2.36,
+    "executable_path": "dist/RMEAgenteStudio/RMEAgenteStudio.exe",
+    "file_count": 209,
+    "package_size_status": "PASS",
+    "pages_smoke_tested": 9,
+    "resource_checks_passed": {
+      "chart_fallback": true,
+      "config_available": true,
+      "heatmap_fallback": true,
+      "preview_fallback": true,
+      "theme_loads": true
+    },
+    "resources": [
+      {
+        "bundled_destination": "assets/images",
+        "exists": true,
+        "path": "assets/images/rme_agent_ai_banner.png",
+        "required": true,
+        "type": "png"
+      },
+      {
+        "bundled_destination": "recursos",
+        "exists": true,
+        "path": "recursos/favicon.ico",
+        "required": true,
+        "type": "icon"
+      },
+      {
+        "bundled_destination": ".",
+        "exists": true,
+        "path": "config.json",
+        "required": true,
+        "type": "config"
+      },
+      {
+        "bundled_destination": ".",
+        "exists": true,
+        "path": "pyproject.toml",
+        "required": true,
+        "type": "metadata"
+      },
+      {
+        "bundled_destination": ".",
+        "exists": true,
+        "path": "requirements-lock.txt",
+        "required": true,
+        "type": "metadata"
+      },
+      {
+        "bundled_destination": null,
+        "exists": false,
+        "path": "VERSION",
+        "required": false,
+        "type": "metadata"
+      }
+    ],
+    "status": "PASS"
+  },
+  "product": "Agente RME Studio UI",
+  "quality": {
+    "coverage": 95.94728990551964,
+    "coverage_delta_points": 17.32968672302337,
+    "coverage_display": "95.95%",
+    "covered_lines": 3859,
+    "flake8": "PASS",
+    "import_boundary": "PASS",
+    "mypy": "PASS",
+    "pytest": "PASS",
+    "remaining_files_below_70": [],
+    "remaining_files_below_80": [],
+    "ruff": "PASS",
+    "status": "PASS",
+    "tests": 259,
+    "total_statements": 4022,
+    "warnings": 0
+  },
+  "release": "ui-v1.0",
+  "runtime": {
+    "event_bus": "PASS",
+    "memory": {
+      "cycles": 50,
+      "growth_bytes": -98,
+      "object_accumulation_detected": false,
+      "status": "PASS",
+      "widget_growth": 0
+    },
+    "navigation": {
+      "all_pages_load": true,
+      "page_changed_events": 9,
+      "pages": 9,
+      "status": "PASS"
+    },
+    "shutdown": "PASS",
+    "startup": {
+      "first_render_readiness_time_ms": 33.924,
+      "main_window_creation_time_ms": 62.501,
+      "raw": {
+        "application_import_time_ms": 0.02,
+        "command": "from ui import RMEStudioApp; app=RMEStudioApp(); print('startup ok')",
+        "command_exit_code": 0,
+        "command_stderr": "",
+        "command_stdout": "startup ok",
+        "first_render_readiness_time_ms": 33.924,
+        "main_window_creation_time_ms": 62.501,
+        "no_traceback": true,
+        "qapplication_creation_time_ms": 17.363,
+        "ready": true,
+        "startup_command_time_ms": 934.101,
+        "status": "PASS"
+      },
+      "startup_command_time_ms": 934.101,
+      "status": "PASS"
+    },
+    "status": "PASS",
+    "threads": {
+      "active_qthreads_after_completion": 0,
+      "status": "PASS",
+      "workflows": [
+        {
+          "button_disabled_during_run": true,
+          "button_enabled_after_run": true,
+          "dangling_thread": false,
+          "elapsed_ms": 23.845,
+          "finished": true,
+          "name": "world_generation",
+          "started": true,
+          "status": "PASS",
+          "ui_blocked": false
+        },
+        {
+          "button_disabled_during_run": true,
+          "button_enabled_after_run": true,
+          "dangling_thread": false,
+          "elapsed_ms": 1.39,
+          "finished": true,
+          "name": "critic_analysis",
+          "started": true,
+          "status": "PASS",
+          "ui_blocked": false
+        },
+        {
+          "button_disabled_during_run": true,
+          "button_enabled_after_run": true,
+          "dangling_thread": false,
+          "elapsed_ms": 0.631,
+          "finished": true,
+          "name": "knowledge_search",
+          "started": true,
+          "status": "PASS",
+          "ui_blocked": false
+        },
+        {
+          "button_disabled_during_run": true,
+          "button_enabled_after_run": true,
+          "dangling_thread": false,
+          "elapsed_ms": 0.583,
+          "finished": true,
+          "name": "autonomous_design",
+          "started": true,
+          "status": "PASS",
+          "ui_blocked": false
+        }
+      ]
+    }
+  },
+  "snapshot_state": "FROZEN",
+  "snapshot_timestamp": "2026-06-12T07:19:19+00:00",
+  "status": "FROZEN",
+  "support": "SUPPORTED"
+}

@@ -1,0 +1,144 @@
+{
+  "phase": "FASE 6 - REGRESSION VALIDATION",
+  "generated_at": "2026-06-09T09:56:26.576821+00:00",
+  "summary": {
+    "golden_artifacts_present": 10,
+    "missing": 0,
+    "golden_maps_present": 6,
+    "expected_golden_maps": 6
+  },
+  "findings": [
+    {
+      "label": "golden_otbm",
+      "rel": "golden_otbm/generated.otbm",
+      "baseline": {
+        "exists": true,
+        "sha256": "fd21f06b277d4543905a5cefae87419f49fbeb09bec0c4c52d715fe3067abd51",
+        "size": 65559
+      }
+    },
+    {
+      "label": "golden_lua",
+      "rel": "golden_lua/generated.lua",
+      "baseline": {
+        "exists": true,
+        "sha256": "c91c52441d8e1016a48e5cc9fbaface20b93ad4f4d9234832a325e6414e10f43",
+        "size": 917182
+      }
+    },
+    {
+      "label": "golden_reports/campaign.json",
+      "rel": "golden_reports/campaign.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "ec1af27fbc02899ad6d6f5fd4295260e728e6ee240bf79047035e2debab2fde7",
+        "size": 20263
+      }
+    },
+    {
+      "label": "golden_reports/knowledge_dataset.json",
+      "rel": "golden_reports/knowledge_dataset.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "dad36459c9e84722130dc614fa3a0305965656c13fda1be50bc91ce6aeb6683b",
+        "size": 627680
+      }
+    },
+    {
+      "label": "golden_reports/knowledge_catalog.json",
+      "rel": "golden_reports/knowledge_catalog.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "5c063f93eaa7aaa94838935145850878ab1238db27b8c6ccfcb559063ee5a445",
+        "size": 8971
+      }
+    },
+    {
+      "label": "golden_reports/knowledge_metrics.json",
+      "rel": "golden_reports/knowledge_metrics.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "9b9076420592c112df2e6211f40338e00ef5ea96c9bafc18db299014dde2dbfc",
+        "size": 1238
+      }
+    },
+    {
+      "label": "golden_reports/critic_report.json",
+      "rel": "golden_reports/critic_report.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "8fd86a4947f81beeace287aed680e846bdbd29e7ca9f5da946a8ecc400603f7e",
+        "size": 13128
+      }
+    },
+    {
+      "label": "golden_reports/autonomous_metrics.json",
+      "rel": "golden_reports/autonomous_metrics.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "fbc7d91789f753e5f2e809a407431a43c4087de434074220f3b502e55e5f7d7d",
+        "size": 419
+      }
+    },
+    {
+      "label": "golden_reports/GA_CERTIFICATION.json",
+      "rel": "golden_reports/GA_CERTIFICATION.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "8e5f1809b8efc7d4c620191afc73f7d4e04d1ce51364dfcc58c88d9530bb2e4b",
+        "size": 629
+      }
+    },
+    {
+      "label": "golden_reports/GA_METRICS.json",
+      "rel": "golden_reports/GA_METRICS.json",
+      "baseline": {
+        "exists": true,
+        "sha256": "3e959a7fad6a174f7cfebb7553a346a3cc944686ab0c1c06b22948d89e9985a2",
+        "size": 1142
+      }
+    }
+  ],
+  "golden_maps": [
+    {
+      "name": "Issavi",
+      "exists": true,
+      "file_count": 9
+    },
+    {
+      "name": "Roshamuul",
+      "exists": true,
+      "file_count": 9
+    },
+    {
+      "name": "Soul War",
+      "exists": true,
+      "file_count": 9
+    },
+    {
+      "name": "Falcon",
+      "exists": true,
+      "file_count": 9
+    },
+    {
+      "name": "Library",
+      "exists": true,
+      "file_count": 9
+    },
+    {
+      "name": "Ferumbras",
+      "exists": true,
+      "file_count": 9
+    }
+  ],
+  "verdict": {
+    "byte_level_match": false,
+    "approved_improvements": true,
+    "no_regressions": true
+  },
+  "notes": [
+    "OTBM golden bytes are NOT expected to match because the v1.0.1 hotfix adds per-z tile chunking to avoid the uint16 TILE_AREA size limit. This is an approved improvement.",
+    "Lua golden bytes MAY differ in tile placement order; the hotfix preserves the same RME DSL (app.hasMap, transaction, getOrCreateTile, setGround, addItem, setSpawn, setCreature).",
+    "Reports are schema-compatible. Content is regenerated each run (seeds are deterministic)."
+  ]
+}

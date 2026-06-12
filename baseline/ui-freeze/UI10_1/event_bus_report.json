@@ -1,0 +1,16 @@
+{
+  "audit": "Event Bus",
+  "audit_id": "AUDIT 5",
+  "typed_dataclass_events": 29,
+  "string_only_events": 8,
+  "core_exposure_in_events": 0,
+  "issues": [
+    "string event at quick_action_card.py:71: lambda: self.action_requested.emit(\"generate_world\")",
+    "string event at quick_action_card.py:78: lambda: self.action_requested.emit(\"run_critic\")",
+    "string event at quick_action_card.py:85: lambda: self.action_requested.emit(\"knowledge_explorer\")",
+    "string event at quick_action_card.py:92: lambda: self.action_requested.emit(\"otbm_studio\")",
+    "string event at quick_action_card.py:71: lambda: self.action_requested.emit(\"generate_world\")"
+  ],
+  "total_issues": 5,
+  "status": "PASS"
+}

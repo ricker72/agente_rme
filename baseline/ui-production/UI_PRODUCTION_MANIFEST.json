@@ -1,0 +1,15 @@
+{
+  "branch": "release/ui-v1",
+  "certification_date": "2026-06-12T06:42:35+00:00",
+  "coverage": "95.95%",
+  "freeze_tag": "ui-freeze",
+  "product": "Agente RME Studio UI",
+  "production_state": "PRODUCTION READY",
+  "release": "ui-v1.0",
+  "release_tag": "ui-v1.0",
+  "snapshot_timestamp": "2026-06-12T07:19:19+00:00",
+  "status": "FROZEN",
+  "support": "SUPPORTED",
+  "tests": 259,
+  "version": "1.0"
+}

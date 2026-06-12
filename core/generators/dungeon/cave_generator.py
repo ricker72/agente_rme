@@ -5,10 +5,18 @@ if TYPE_CHECKING:
 
 
 class CaveGenerator:
-    def carve_cave(self, floor: "Floor", fill_threshold: int = 46, iterations: int = 4) -> None:
+    def carve_cave(
+        self, floor: "Floor", fill_threshold: int = 46, iterations: int = 4
+    ) -> None:
         width = floor.width
         height = floor.height
-        grid = [[1 if x == 0 or y == 0 or x == width - 1 or y == height - 1 else 0 for x in range(width)] for y in range(height)]
+        grid = [
+            [
+                1 if x == 0 or y == 0 or x == width - 1 or y == height - 1 else 0
+                for x in range(width)
+            ]
+            for y in range(height)
+        ]
         for y in range(1, height - 1):
             for x in range(1, width - 1):
                 grid[y][x] = 1 if (x + y) % 2 == 0 else 0

@@ -4,7 +4,6 @@ import sys
 import os
 import json
 import tempfile
-import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -243,8 +242,12 @@ class TestReportGenerator:
     def test_generate_playable(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=1000000, loot_per_hour=200000,
-            deaths=2, survival_rate=0.95, zone_count=3, total_spawns=150,
+            xp_per_hour=1000000,
+            loot_per_hour=200000,
+            deaths=2,
+            survival_rate=0.95,
+            zone_count=3,
+            total_spawns=150,
         )
         assert report.playable is True
         assert report.difficulty == "medium"
@@ -252,8 +255,11 @@ class TestReportGenerator:
     def test_generate_not_playable_low_xp(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=10000, deaths=2, survival_rate=0.95,
-            zone_count=3, total_spawns=150,
+            xp_per_hour=10000,
+            deaths=2,
+            survival_rate=0.95,
+            zone_count=3,
+            total_spawns=150,
         )
         assert report.playable is False
         assert any("XP" in i or "xp" in i.lower() for i in report.issues)
@@ -261,8 +267,11 @@ class TestReportGenerator:
     def test_generate_not_playable_many_deaths(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=1000000, deaths=20, survival_rate=0.95,
-            zone_count=3, total_spawns=150,
+            xp_per_hour=1000000,
+            deaths=20,
+            survival_rate=0.95,
+            zone_count=3,
+            total_spawns=150,
         )
         assert report.playable is False
         assert any("death" in i.lower() for i in report.issues)
@@ -270,32 +279,44 @@ class TestReportGenerator:
     def test_generate_not_playable_low_survival(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=1000000, deaths=5, survival_rate=0.3,
-            zone_count=3, total_spawns=150,
+            xp_per_hour=1000000,
+            deaths=5,
+            survival_rate=0.3,
+            zone_count=3,
+            total_spawns=150,
         )
         assert report.playable is False
 
     def test_generate_not_playable_no_spawns(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=1000000, deaths=0, survival_rate=1.0,
-            zone_count=3, total_spawns=0,
+            xp_per_hour=1000000,
+            deaths=0,
+            survival_rate=1.0,
+            zone_count=3,
+            total_spawns=0,
         )
         assert report.playable is False
 
     def test_generate_not_playable_no_zones(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=1000000, deaths=0, survival_rate=1.0,
-            zone_count=0, total_spawns=0,
+            xp_per_hour=1000000,
+            deaths=0,
+            survival_rate=1.0,
+            zone_count=0,
+            total_spawns=0,
         )
         assert report.playable is False
 
     def test_report_to_json_roundtrip(self):
         gen = ReportGenerator()
         report = gen.generate(
-            xp_per_hour=500000, deaths=1, survival_rate=0.98,
-            zone_count=2, total_spawns=80,
+            xp_per_hour=500000,
+            deaths=1,
+            survival_rate=0.98,
+            zone_count=2,
+            total_spawns=80,
         )
         json_str = report.to_json()
         parsed = json.loads(json_str)

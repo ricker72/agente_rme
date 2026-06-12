@@ -4,12 +4,13 @@ import json
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set
 
 
 @dataclass
 class IndexedItem:
     """An indexed Tibia item with all known attributes."""
+
     id: int
     name: str = ""
     article: str = ""
@@ -44,6 +45,7 @@ class IndexedItem:
 @dataclass
 class IndexedMonster:
     """An indexed Tibia monster with all known attributes."""
+
     name: str
     race: str = ""
     experience: int = 0
@@ -86,58 +88,178 @@ class AssetIndexer:
 
     # Known ground item substrings for initial classification
     GROUND_KEYWORDS = {
-        "floor", "ground", "grass", "dirt", "sand", "stone", "pavement",
-        "road", "marble", "wooden floor", "tile", "earth", "gravel",
-        "snow", "ice floor", "lava", "water", "swamp", "mud",
-        "carpet", "plank", "cobblestone", "parchment",
+        "floor",
+        "ground",
+        "grass",
+        "dirt",
+        "sand",
+        "stone",
+        "pavement",
+        "road",
+        "marble",
+        "wooden floor",
+        "tile",
+        "earth",
+        "gravel",
+        "snow",
+        "ice floor",
+        "lava",
+        "water",
+        "swamp",
+        "mud",
+        "carpet",
+        "plank",
+        "cobblestone",
+        "parchment",
     }
 
     # Known wall/blocking item substrings
     WALL_KEYWORDS = {
-        "wall", "fence", "window", "door", "gate", "bars",
-        "pillar", "column", "archway", "tunnel",
+        "wall",
+        "fence",
+        "window",
+        "door",
+        "gate",
+        "bars",
+        "pillar",
+        "column",
+        "archway",
+        "tunnel",
     }
 
     # Known decoration substrings
     DECORATION_KEYWORDS = {
-        "torch", "lamp", "candle", "statue", "vase", "urn",
-        "painting", "tapestry", "banner", "flag", "plant",
-        "flower", "bush", "tree", "fern", "mushroom", "reed",
-        "rock", "stone", "crystal", "gem", "pearl",
-        "skull", "bone", "skeleton decoration",
-        "barrel", "crate", "chest", "box", "barrel",
-        "chair", "table", "bed", "bench", "throne",
-        "sign", "notice", "board", "blackboard",
-        "fountain", "well", "trough",
-        "book", "scroll", "parchment", "letter",
-        "instrument", "harp", "lute", "drum",
-        "trophy", "trophy", "statuette",
-        "dustbin", "rubbish",
+        "torch",
+        "lamp",
+        "candle",
+        "statue",
+        "vase",
+        "urn",
+        "painting",
+        "tapestry",
+        "banner",
+        "flag",
+        "plant",
+        "flower",
+        "bush",
+        "tree",
+        "fern",
+        "mushroom",
+        "reed",
+        "rock",
+        "stone",
+        "crystal",
+        "gem",
+        "pearl",
+        "skull",
+        "bone",
+        "skeleton decoration",
+        "barrel",
+        "crate",
+        "chest",
+        "box",
+        "barrel",
+        "chair",
+        "table",
+        "bed",
+        "bench",
+        "throne",
+        "sign",
+        "notice",
+        "board",
+        "blackboard",
+        "fountain",
+        "well",
+        "trough",
+        "book",
+        "scroll",
+        "parchment",
+        "letter",
+        "instrument",
+        "harp",
+        "lute",
+        "drum",
+        "trophy",
+        "trophy",
+        "statuette",
+        "dustbin",
+        "rubbish",
     }
 
     # Nature-specific substrings
     NATURE_KEYWORDS = {
-        "tree", "bush", "flower", "grass tuft", "reed", "fern",
-        "mushroom", "cactus", "vine", "root", "leaf", "branch",
-        "log", "stump", "moss", "lichen", "algae",
-        "rock", "stone", "pebble", "boulder", "stalagmite", "stalactite",
-        "water", "river", "pond", "lake", "waterfall",
+        "tree",
+        "bush",
+        "flower",
+        "grass tuft",
+        "reed",
+        "fern",
+        "mushroom",
+        "cactus",
+        "vine",
+        "root",
+        "leaf",
+        "branch",
+        "log",
+        "stump",
+        "moss",
+        "lichen",
+        "algae",
+        "rock",
+        "stone",
+        "pebble",
+        "boulder",
+        "stalagmite",
+        "stalactite",
+        "water",
+        "river",
+        "pond",
+        "lake",
+        "waterfall",
     }
 
     # Magic/effect items
     MAGIC_KEYWORDS = {
-        "rune", "spell", "scroll", "wand", "rod", "staff",
-        "potion", "elixir", "fluid", "antidote",
-        "ring", "amulet", "necklace", "orb", "crystal ball",
-        "magic", "enchanted", "holy", "cursed", "blessed",
-        "fire field", "energy field", "poison field",
+        "rune",
+        "spell",
+        "scroll",
+        "wand",
+        "rod",
+        "staff",
+        "potion",
+        "elixir",
+        "fluid",
+        "antidote",
+        "ring",
+        "amulet",
+        "necklace",
+        "orb",
+        "crystal ball",
+        "magic",
+        "enchanted",
+        "holy",
+        "cursed",
+        "blessed",
+        "fire field",
+        "energy field",
+        "poison field",
     }
 
     # Library/quest items
     LIBRARY_KEYWORDS = {
-        "book", "parchment", "scroll", "document", "letter",
-        "note", "diary", "journal", "tome", "manuscript",
-        "library", "bookshelf", "bookcase",
+        "book",
+        "parchment",
+        "scroll",
+        "document",
+        "letter",
+        "note",
+        "diary",
+        "journal",
+        "tome",
+        "manuscript",
+        "library",
+        "bookshelf",
+        "bookcase",
     }
 
     def __init__(self):
@@ -320,7 +442,9 @@ class AssetIndexer:
                 self._items[iid].theme_tags.add(theme_name)
                 self._items[iid].category = "ground"
             else:
-                stub = IndexedItem(id=iid, name=f"Ground_{iid}", type_name="ground", category="ground")
+                stub = IndexedItem(
+                    id=iid, name=f"Ground_{iid}", type_name="ground", category="ground"
+                )
                 stub.theme_tags.add(theme_name)
                 self._items[iid] = stub
                 self._items_by_name[stub.name.lower()] = stub
@@ -330,7 +454,9 @@ class AssetIndexer:
                 self._items[iid].theme_tags.add(theme_name)
                 self._items[iid].category = "wall"
             else:
-                stub = IndexedItem(id=iid, name=f"Wall_{iid}", type_name="wall", category="wall")
+                stub = IndexedItem(
+                    id=iid, name=f"Wall_{iid}", type_name="wall", category="wall"
+                )
                 stub.theme_tags.add(theme_name)
                 self._items[iid] = stub
                 self._items_by_name[stub.name.lower()] = stub
@@ -340,7 +466,12 @@ class AssetIndexer:
                 self._items[iid].theme_tags.add(theme_name)
                 self._items[iid].category = "decoration"
             else:
-                stub = IndexedItem(id=iid, name=f"Decor_{iid}", type_name="decoration", category="decoration")
+                stub = IndexedItem(
+                    id=iid,
+                    name=f"Decor_{iid}",
+                    type_name="decoration",
+                    category="decoration",
+                )
                 stub.theme_tags.add(theme_name)
                 self._items[iid] = stub
                 self._items_by_name[stub.name.lower()] = stub
@@ -442,7 +573,9 @@ class AssetIndexer:
             "themes_indexed": list(self._theme_items.keys()),
             "items_by_category": cats,
             "items_by_theme": {t: len(ids) for t, ids in self._theme_items.items()},
-            "monsters_by_theme": {t: len(names) for t, names in self._theme_monsters.items()},
+            "monsters_by_theme": {
+                t: len(names) for t, names in self._theme_monsters.items()
+            },
         }
 
     # ------------------------------------------------------------------

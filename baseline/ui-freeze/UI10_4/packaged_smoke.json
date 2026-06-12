@@ -1,0 +1,60 @@
+{
+  "all_pages_loaded": true,
+  "main_window": true,
+  "pages": [
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "dashboard"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "world"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "architect"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "critic"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "knowledge"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "campaign"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "otbm"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "autonomous"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "settings"
+    }
+  ],
+  "resource_checks": {
+    "chart_fallback": true,
+    "config_available": true,
+    "heatmap_fallback": true,
+    "preview_fallback": true,
+    "theme_loads": true
+  },
+  "resources_loaded": true,
+  "startup": true
+}

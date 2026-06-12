@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
 from .asset_indexer import AssetIndexer, IndexedItem
 
@@ -9,6 +9,7 @@ from .asset_indexer import AssetIndexer, IndexedItem
 @dataclass
 class ClassificationResult:
     """Result of classifying an item into categories."""
+
     item: IndexedItem
     primary_category: str
     secondary_categories: List[str] = field(default_factory=list)
@@ -58,50 +59,132 @@ class AssetClassifier:
     # Theme-specific name patterns
     THEME_NAME_PATTERNS = {
         "issavi": [
-            "crystal", "sphinx", "golden", "oriental", "temple",
-            "marble", "holy", "sacred", "lion", "pharaoh",
+            "crystal",
+            "sphinx",
+            "golden",
+            "oriental",
+            "temple",
+            "marble",
+            "holy",
+            "sacred",
+            "lion",
+            "pharaoh",
         ],
         "roshamuul": [
-            "prison", "dark", "grim", "corrupted", "dread",
-            "shadow", "nightmare", "bone", "skull", "demon",
+            "prison",
+            "dark",
+            "grim",
+            "corrupted",
+            "dread",
+            "shadow",
+            "nightmare",
+            "bone",
+            "skull",
+            "demon",
         ],
         "jungle": [
-            "jungle", "tropical", "fern", "vine", "bamboo",
-            "swamp", "bog", "marsh", "carnivorous", "liana",
+            "jungle",
+            "tropical",
+            "fern",
+            "vine",
+            "bamboo",
+            "swamp",
+            "bog",
+            "marsh",
+            "carnivorous",
+            "liana",
         ],
         "ice": [
-            "ice", "frozen", "frost", "snow", "glacier",
-            "crystal ice", "winter", "arctic", "blizzard",
+            "ice",
+            "frozen",
+            "frost",
+            "snow",
+            "glacier",
+            "crystal ice",
+            "winter",
+            "arctic",
+            "blizzard",
         ],
         "desert": [
-            "desert", "sand", "dune", "oasis", "palm",
-            "cactus", "arid", "pyramid", "mummy",
+            "desert",
+            "sand",
+            "dune",
+            "oasis",
+            "palm",
+            "cactus",
+            "arid",
+            "pyramid",
+            "mummy",
         ],
         "corruption": [
-            "corrupt", "void", "chaos", "twisted", "warped",
-            "abyssal", "nether", "cursed", "blighted", "tainted",
+            "corrupt",
+            "void",
+            "chaos",
+            "twisted",
+            "warped",
+            "abyssal",
+            "nether",
+            "cursed",
+            "blighted",
+            "tainted",
         ],
         "venore": [
-            "swamp", "marsh", "bog", "reed", "peat",
-            "damp", "mold", "fungus",
+            "swamp",
+            "marsh",
+            "bog",
+            "reed",
+            "peat",
+            "damp",
+            "mold",
+            "fungus",
         ],
         "thais": [
-            "stone", "cobble", "medieval", "castle", "fort",
-            "knight", "armor", "sword", "shield",
+            "stone",
+            "cobble",
+            "medieval",
+            "castle",
+            "fort",
+            "knight",
+            "armor",
+            "sword",
+            "shield",
         ],
     }
 
     # Furniture sub-classification
     FURNITURE_NAMES = {
-        "table", "chair", "stool", "bench", "bed", "throne",
-        "cabinet", "wardrobe", "dresser", "nightstand",
-        "counter", "desk", "shelf", "rack", "drawer",
-        "sofa", "couch", "armchair", "carpet", "rug",
+        "table",
+        "chair",
+        "stool",
+        "bench",
+        "bed",
+        "throne",
+        "cabinet",
+        "wardrobe",
+        "dresser",
+        "nightstand",
+        "counter",
+        "desk",
+        "shelf",
+        "rack",
+        "drawer",
+        "sofa",
+        "couch",
+        "armchair",
+        "carpet",
+        "rug",
     }
 
     LIGHT_SOURCE_NAMES = {
-        "torch", "lamp", "lantern", "candle", "candelabra",
-        "chandelier", "sconce", "brazier", "fire",
+        "torch",
+        "lamp",
+        "lantern",
+        "candle",
+        "candelabra",
+        "chandelier",
+        "sconce",
+        "brazier",
+        "fire",
     }
 
     def __init__(self, indexer: Optional[AssetIndexer] = None):
@@ -182,7 +265,9 @@ class AssetClassifier:
         sorted_themes = sorted(theme_scores.items(), key=lambda x: x[1], reverse=True)
         return [t for t, _ in sorted_themes]
 
-    def get_items_by_theme(self, theme: str, category: Optional[str] = None) -> List[int]:
+    def get_items_by_theme(
+        self, theme: str, category: Optional[str] = None
+    ) -> List[int]:
         """
         Get item IDs that belong to a theme, optionally filtered by category.
 
@@ -192,7 +277,12 @@ class AssetClassifier:
         if self.indexer and theme in self.indexer._theme_items:
             ids = list(self.indexer._theme_items[theme])
             if category and self.indexer:
-                ids = [i for i in ids if self.indexer.get_item(i) and self.indexer.get_item(i).category == category]
+                ids = [
+                    i
+                    for i in ids
+                    if self.indexer.get_item(i)
+                    and self.indexer.get_item(i).category == category
+                ]
             return ids
 
         # Fallback: ID ranges
@@ -202,7 +292,12 @@ class AssetClassifier:
             ids.update(range(lo, hi + 1))
 
         if category and self.indexer:
-            ids = {i for i in ids if self.indexer.get_item(i) and self.indexer.get_item(i).category == category}
+            ids = {
+                i
+                for i in ids
+                if self.indexer.get_item(i)
+                and self.indexer.get_item(i).category == category
+            }
 
         return sorted(ids)
 
@@ -231,7 +326,9 @@ class AssetClassifier:
     # Internal classification
     # ------------------------------------------------------------------
 
-    def _determine_primary(self, item: IndexedItem, name_lower: str, type_lower: str) -> str:
+    def _determine_primary(
+        self, item: IndexedItem, name_lower: str, type_lower: str
+    ) -> str:
         """Determine the primary category for an item."""
         # 1. Explicit type from XML
         if type_lower == "ground":
@@ -256,7 +353,9 @@ class AssetClassifier:
             return "wall"
         if any(kw in name_lower for kw in self.indexer.MAGIC_KEYWORDS if self.indexer):
             return "magic"
-        if any(kw in name_lower for kw in self.indexer.LIBRARY_KEYWORDS if self.indexer):
+        if any(
+            kw in name_lower for kw in self.indexer.LIBRARY_KEYWORDS if self.indexer
+        ):
             return "library"
         if any(kw in name_lower for kw in self.indexer.NATURE_KEYWORDS if self.indexer):
             return "nature"
@@ -285,20 +384,35 @@ class AssetClassifier:
 
         return "decoration"
 
-    def _determine_secondary(self, item: IndexedItem, name_lower: str, primary: str) -> List[str]:
+    def _determine_secondary(
+        self, item: IndexedItem, name_lower: str, primary: str
+    ) -> List[str]:
         """Determine secondary categories for an item."""
         seconds = []
 
         # Decoration often overlaps with nature/furniture/light_source
-        if primary != "nature" and any(kw in name_lower for kw in (self.indexer.NATURE_KEYWORDS if self.indexer else set())):
+        if primary != "nature" and any(
+            kw in name_lower
+            for kw in (self.indexer.NATURE_KEYWORDS if self.indexer else set())
+        ):
             seconds.append("nature")
-        if primary != "furniture" and any(f in name_lower for f in self.FURNITURE_NAMES):
+        if primary != "furniture" and any(
+            f in name_lower for f in self.FURNITURE_NAMES
+        ):
             seconds.append("furniture")
-        if primary != "light_source" and any(ls in name_lower for ls in self.LIGHT_SOURCE_NAMES):
+        if primary != "light_source" and any(
+            ls in name_lower for ls in self.LIGHT_SOURCE_NAMES
+        ):
             seconds.append("light_source")
-        if primary != "magic" and any(kw in name_lower for kw in (self.indexer.MAGIC_KEYWORDS if self.indexer else set())):
+        if primary != "magic" and any(
+            kw in name_lower
+            for kw in (self.indexer.MAGIC_KEYWORDS if self.indexer else set())
+        ):
             seconds.append("magic")
-        if primary != "decoration" and any(kw in name_lower for kw in (self.indexer.DECORATION_KEYWORDS if self.indexer else set())):
+        if primary != "decoration" and any(
+            kw in name_lower
+            for kw in (self.indexer.DECORATION_KEYWORDS if self.indexer else set())
+        ):
             seconds.append("decoration")
 
         return seconds[:2]  # Cap at 2 secondary categories
@@ -311,7 +425,9 @@ class AssetClassifier:
             return 0.95
 
         # Weapon/armor detection is high confidence
-        if primary in ("weapon", "armor") and (item.attack_value > 0 or item.armor_value > 0):
+        if primary in ("weapon", "armor") and (
+            item.attack_value > 0 or item.armor_value > 0
+        ):
             return 0.90
 
         # Ground detection by ID range is fairly reliable

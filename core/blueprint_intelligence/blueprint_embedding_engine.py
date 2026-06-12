@@ -9,8 +9,7 @@ Extracts features:
 
 from __future__ import annotations
 
-import math
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Dict, List
 
 from core.blueprints.blueprint import Blueprint
 from .models.blueprint_embedding import BlueprintEmbedding

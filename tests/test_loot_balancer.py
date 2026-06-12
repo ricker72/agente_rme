@@ -1,12 +1,16 @@
 from __future__ import annotations
 
-import pytest
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
 from core.world.spawn import Spawn
 from core.world.region import Region
-from core.balance.loot_balancer import LootBalancer, LootBalanceResult, LootAdjustment, DEFAULT_LOOT_TABLES
+from core.balance.loot_balancer import (
+    LootBalancer,
+    LootBalanceResult,
+    LootAdjustment,
+    DEFAULT_LOOT_TABLES,
+)
 from core.balance.loot_analyzer import LootAnalysis
 
 
@@ -29,8 +33,7 @@ def _build_world(zone_name: str, monsters: list, zone_tiles: int = 30) -> WorldM
 
 def _count_spawns(world: WorldModel, zone_name: str) -> int:
     return sum(
-        1 for t in world.tiles.values()
-        if t.zone == zone_name and t.spawn is not None
+        1 for t in world.tiles.values() if t.zone == zone_name and t.spawn is not None
     )
 
 
@@ -156,8 +159,7 @@ class TestLootBalancerHelpers:
 class TestLootAdjustment:
     def test_to_dict(self):
         adj = LootAdjustment(
-            zone_name="test", monster="Dragon",
-            action="add_spawn", reason="low profit"
+            zone_name="test", monster="Dragon", action="add_spawn", reason="low profit"
         )
         d = adj.to_dict()
         assert d["zone_name"] == "test"

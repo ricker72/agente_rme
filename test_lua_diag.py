@@ -1,6 +1,8 @@
 """Smoke test for lua_generator with both call signatures."""
+
 import sys
-sys.path.insert(0, '.')
+
+sys.path.insert(0, ".")
 
 from core.lua.lua_generator import LuaGenerator
 from core.spawn.spawn_generator import SpawnPlan, SpawnEntry
@@ -29,7 +31,7 @@ try:
     s1 = gen.generate(world)
     print("OK tile_count=", s1.tile_count, "spawn_count=", s1.spawn_count)
     print("First 20 lines:")
-    for l in s1.code.split("\n")[:20]:
+    for l in s1.code.split("\n")[:20]:  # noqa: E741
         print(" ", l)
 except Exception as e:
     print("FAIL:", type(e).__name__, e)
@@ -37,7 +39,14 @@ except Exception as e:
 print("\n=== Test 2: generate(world, spawn_plan) ===")
 try:
     s2 = gen.generate(world, plan)
-    print("OK tile_count=", s2.tile_count, "spawn_count=", s2.spawn_count, "creature_count=", s2.creature_count)
+    print(
+        "OK tile_count=",
+        s2.tile_count,
+        "spawn_count=",
+        s2.spawn_count,
+        "creature_count=",
+        s2.creature_count,
+    )
 except Exception as e:
     print("FAIL:", type(e).__name__, e)
 

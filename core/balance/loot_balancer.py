@@ -8,7 +8,6 @@ from core.world.spawn import Spawn
 from core.world.region import Region
 from core.balance.loot_analyzer import LootAnalyzer, LootAnalysis
 
-
 # Loot table reference: monster → list of drops
 DEFAULT_LOOT_TABLES: Dict[str, List[Dict[str, Any]]] = {
     "Rat": [
@@ -25,22 +24,46 @@ DEFAULT_LOOT_TABLES: Dict[str, List[Dict[str, Any]]] = {
     "Dragon": [
         {"id": 3031, "name": "Gold Coin", "chance": 1.0, "value": 100, "count": 8},
         {"id": 3035, "name": "Gold Ingot", "chance": 0.1, "value": 1000, "count": 1},
-        {"id": 3066, "name": "Green Dragon Scale", "chance": 0.12, "value": 500, "count": 1},
+        {
+            "id": 3066,
+            "name": "Green Dragon Scale",
+            "chance": 0.12,
+            "value": 500,
+            "count": 1,
+        },
     ],
     "Dragon Lord": [
         {"id": 3031, "name": "Gold Coin", "chance": 1.0, "value": 100, "count": 20},
         {"id": 3035, "name": "Gold Ingot", "chance": 0.15, "value": 1000, "count": 2},
-        {"id": 3066, "name": "Green Dragon Scale", "chance": 0.1, "value": 500, "count": 1},
+        {
+            "id": 3066,
+            "name": "Green Dragon Scale",
+            "chance": 0.1,
+            "value": 500,
+            "count": 1,
+        },
     ],
     "Demon": [
         {"id": 3031, "name": "Gold Coin", "chance": 1.0, "value": 100, "count": 30},
         {"id": 3035, "name": "Gold Ingot", "chance": 0.2, "value": 1000, "count": 3},
-        {"id": 3482, "name": "Demonic Essence", "chance": 0.05, "value": 5000, "count": 1},
+        {
+            "id": 3482,
+            "name": "Demonic Essence",
+            "chance": 0.05,
+            "value": 5000,
+            "count": 1,
+        },
     ],
     "Vampire": [
         {"id": 3031, "name": "Gold Coin", "chance": 0.9, "value": 100, "count": 5},
         {"id": 3035, "name": "Gold Ingot", "chance": 0.08, "value": 1000, "count": 1},
-        {"id": 3098, "name": "Vampire Leather", "chance": 0.15, "value": 300, "count": 1},
+        {
+            "id": 3098,
+            "name": "Vampire Leather",
+            "chance": 0.15,
+            "value": 300,
+            "count": 1,
+        },
     ],
     "Hydra": [
         {"id": 3031, "name": "Gold Coin", "chance": 1.0, "value": 100, "count": 15},
@@ -55,7 +78,13 @@ DEFAULT_LOOT_TABLES: Dict[str, List[Dict[str, Any]]] = {
     "Warlock": [
         {"id": 3031, "name": "Gold Coin", "chance": 1.0, "value": 100, "count": 25},
         {"id": 3035, "name": "Gold Ingot", "chance": 0.18, "value": 1000, "count": 2},
-        {"id": 3492, "name": "Wand of Dark Arts", "chance": 0.03, "value": 12000, "count": 1},
+        {
+            "id": 3492,
+            "name": "Wand of Dark Arts",
+            "chance": 0.03,
+            "value": 12000,
+            "count": 1,
+        },
     ],
     "Cyclops": [
         {"id": 3031, "name": "Gold Coin", "chance": 0.8, "value": 100, "count": 3},
@@ -77,6 +106,7 @@ DEFAULT_LOOT_TABLES: Dict[str, List[Dict[str, Any]]] = {
 @dataclass
 class LootAdjustment:
     """Record of a single loot adjustment."""
+
     zone_name: str
     monster: str
     action: str  # "add_spawn", "remove_spawn", "replace_monster"
@@ -98,6 +128,7 @@ class LootAdjustment:
 @dataclass
 class LootBalanceResult:
     """Result of loot balancing operation."""
+
     adjustments: List[LootAdjustment] = field(default_factory=list)
     zones_modified: List[str] = field(default_factory=list)
     total_adjustments: int = 0
@@ -128,10 +159,14 @@ class LootBalancer:
     def __init__(self):
         self._analyzer = LootAnalyzer()
 
-    def balance(self, world: WorldModel, region: Region,
-                monsters: Optional[Dict[str, int]] = None,
-                loot_tables: Optional[Dict[str, List[Dict]]] = None,
-                target_level: int = 150) -> LootBalanceResult:
+    def balance(
+        self,
+        world: WorldModel,
+        region: Region,
+        monsters: Optional[Dict[str, int]] = None,
+        loot_tables: Optional[Dict[str, List[Dict]]] = None,
+        target_level: int = 150,
+    ) -> LootBalanceResult:
         """
         Balance loot for a region.
 
@@ -175,8 +210,9 @@ class LootBalancer:
 
         return result
 
-    def _collect_spawns(self, world: WorldModel,
-                        region: Region) -> List[Tuple[int, int, int, Spawn]]:
+    def _collect_spawns(
+        self, world: WorldModel, region: Region
+    ) -> List[Tuple[int, int, int, Spawn]]:
         """Collect spawns in region."""
         spawns: List[Tuple[int, int, int, Spawn]] = []
         for tile in world.tiles.values():
@@ -184,7 +220,9 @@ class LootBalancer:
                 spawns.append((tile.x, tile.y, tile.z, tile.spawn))
         return spawns
 
-    def _estimate_difficulties(self, zone_spawns: List[Tuple[int, int, int, Spawn]]) -> Dict[str, str]:
+    def _estimate_difficulties(
+        self, zone_spawns: List[Tuple[int, int, int, Spawn]]
+    ) -> Dict[str, str]:
         """Estimate difficulty tags based on common monsters."""
         difficulty_map: Dict[str, str] = {}
         for _, _, _, spawn in zone_spawns:
@@ -194,10 +232,40 @@ class LootBalancer:
 
     def _guess_difficulty(self, monster: str) -> str:
         """Guess difficulty tier for a monster."""
-        easy_monsters = {"Rat", "Spider", "Cave Rat", "Troll", "Orc", "Goblin", "Skeleton"}
-        medium_monsters = {"Cyclops", "Lizard", "Dwarf", "Ghoul", "Mummy", "Vampire", "Banshee"}
-        hard_monsters = {"Dragon", "Hydra", "Giant Spider", "Warlock", "Nightmare", "Sea Serpent"}
-        very_hard_monsters = {"Dragon Lord", "Demon", "Black Knight", "Serpent Spawn", "Medusa", "Behemoth"}
+        easy_monsters = {
+            "Rat",
+            "Spider",
+            "Cave Rat",
+            "Troll",
+            "Orc",
+            "Goblin",
+            "Skeleton",
+        }
+        medium_monsters = {
+            "Cyclops",
+            "Lizard",
+            "Dwarf",
+            "Ghoul",
+            "Mummy",
+            "Vampire",
+            "Banshee",
+        }
+        hard_monsters = {
+            "Dragon",
+            "Hydra",
+            "Giant Spider",
+            "Warlock",
+            "Nightmare",
+            "Sea Serpent",
+        }
+        very_hard_monsters = {
+            "Dragon Lord",
+            "Demon",
+            "Black Knight",
+            "Serpent Spawn",
+            "Medusa",
+            "Behemoth",
+        }
 
         if monster in easy_monsters:
             return "easy"
@@ -209,11 +277,15 @@ class LootBalancer:
             return "very_hard"
         return "medium"
 
-    def _apply_loot_adjustment(self, world: WorldModel, region: Region,
-                               zone_spawns: List[Tuple[int, int, int, Spawn]],
-                               loot_tables: Dict[str, List[Dict]],
-                               loot_multiplier: float,
-                               result: LootBalanceResult) -> int:
+    def _apply_loot_adjustment(
+        self,
+        world: WorldModel,
+        region: Region,
+        zone_spawns: List[Tuple[int, int, int, Spawn]],
+        loot_tables: Dict[str, List[Dict]],
+        loot_multiplier: float,
+        result: LootBalanceResult,
+    ) -> int:
         """
         Apply loot adjustments by changing spawn composition.
 
@@ -226,8 +298,11 @@ class LootBalancer:
             target_adds = min(int(len(zone_spawns) * (loot_multiplier - 1.0)), 5)
             profitable = self._find_more_profitable_monsters(zone_spawns, loot_tables)
 
-            empty_tiles = [t for t in world.tiles.values()
-                           if t.zone == region.name and t.spawn is None]
+            empty_tiles = [
+                t
+                for t in world.tiles.values()
+                if t.zone == region.name and t.spawn is None
+            ]
 
             for i in range(min(target_adds, len(empty_tiles), len(profitable))):
                 tile = empty_tiles[i]
@@ -236,14 +311,16 @@ class LootBalancer:
                 tile.spawn = new_spawn
                 adjustments_made += 1
 
-                result.adjustments.append(LootAdjustment(
-                    zone_name=region.name,
-                    monster=monster,
-                    action="add_spawn",
-                    old_value=None,
-                    new_value=new_spawn.to_dict(),
-                    reason=f"Zone profit too low (multiplier={loot_multiplier})",
-                ))
+                result.adjustments.append(
+                    LootAdjustment(
+                        zone_name=region.name,
+                        monster=monster,
+                        action="add_spawn",
+                        old_value=None,
+                        new_value=new_spawn.to_dict(),
+                        reason=f"Zone profit too low (multiplier={loot_multiplier})",
+                    )
+                )
 
         elif loot_multiplier < 0.8:
             target_remove = min(int(len(zone_spawns) * (1.0 - loot_multiplier)), 3)
@@ -258,29 +335,45 @@ class LootBalancer:
                     tile.spawn = None
                     adjustments_made += 1
 
-                    result.adjustments.append(LootAdjustment(
-                        zone_name=region.name,
-                        monster=spawn.monster,
-                        action="remove_spawn",
-                        old_value=spawn.to_dict(),
-                        new_value=None,
-                        reason=f"Zone profit too high (multiplier={loot_multiplier})",
-                    ))
+                    result.adjustments.append(
+                        LootAdjustment(
+                            zone_name=region.name,
+                            monster=spawn.monster,
+                            action="remove_spawn",
+                            old_value=spawn.to_dict(),
+                            new_value=None,
+                            reason=f"Zone profit too high (multiplier={loot_multiplier})",
+                        )
+                    )
 
         result.total_adjustments += adjustments_made
         return adjustments_made
 
-    def _find_more_profitable_monsters(self, zone_spawns: List[Tuple[int, int, int, Spawn]],
-                                       loot_tables: Dict[str, List[Dict]]) -> List[str]:
+    def _find_more_profitable_monsters(
+        self,
+        zone_spawns: List[Tuple[int, int, int, Spawn]],
+        loot_tables: Dict[str, List[Dict]],
+    ) -> List[str]:
         """Find monsters not in the zone that would increase profit."""
         current_monsters = {s.monster for _, _, _, s in zone_spawns}
-        candidates = ["Demon", "Dragon Lord", "Warlock", "Serpent Spawn",
-                       "Hydra", "Giant Spider", "Black Knight"]
+        candidates = [
+            "Demon",
+            "Dragon Lord",
+            "Warlock",
+            "Serpent Spawn",
+            "Hydra",
+            "Giant Spider",
+            "Black Knight",
+        ]
         return [m for m in candidates if m not in current_monsters]
 
-    def analyze_zone_loot(self, world: WorldModel, region: Region,
-                          loot_tables: Optional[Dict[str, List[Dict]]] = None,
-                          target_level: int = 150) -> LootAnalysis:
+    def analyze_zone_loot(
+        self,
+        world: WorldModel,
+        region: Region,
+        loot_tables: Optional[Dict[str, List[Dict]]] = None,
+        target_level: int = 150,
+    ) -> LootAnalysis:
         """
         Analyze loot for a region without modifying it.
 

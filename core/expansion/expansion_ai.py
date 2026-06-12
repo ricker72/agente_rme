@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from core.world.world_model import WorldModel
-from core.world.region import Region
-from core.expansion.hunt_expander import HuntExpander, HuntExpansionResult
-from core.expansion.boss_expander import BossExpander, BossExpansionResult
-from core.expansion.region_expander import RegionExpander, RegionExpansionResult
-from core.expansion.quest_zone_expander import QuestZoneExpander, QuestZoneExpansionResult
-from core.expansion.road_expander import RoadExpander, RoadExpansionResult
+from core.expansion.hunt_expander import HuntExpander
+from core.expansion.boss_expander import BossExpander
+from core.expansion.region_expander import RegionExpander
+from core.expansion.quest_zone_expander import QuestZoneExpander
+from core.expansion.road_expander import RoadExpander
 
 
 @dataclass
 class ExpansionResult:
     """Result of a single expansion step."""
+
     step_name: str = ""
     success: bool = False
     tiles_before: int = 0
@@ -32,6 +32,7 @@ class ExpansionResult:
 @dataclass
 class ExpansionReport:
     """Complete expansion report."""
+
     results: List[ExpansionResult] = field(default_factory=list)
     tiles_original: int = 0
     tiles_final: int = 0
@@ -86,12 +87,15 @@ class ExpansionAI:
         self._quest_expander = QuestZoneExpander()
         self._road_expander = RoadExpander()
 
-    def expand(self, world: WorldModel,
-               max_hunts: int = 3,
-               max_boss_rooms: int = 2,
-               max_quest_zones: int = 3,
-               boss_difficulty: str = "medium",
-               theme: str = "cave") -> tuple:
+    def expand(
+        self,
+        world: WorldModel,
+        max_hunts: int = 3,
+        max_boss_rooms: int = 2,
+        max_quest_zones: int = 3,
+        boss_difficulty: str = "medium",
+        theme: str = "cave",
+    ) -> tuple:
         """
         Expand the world with new content.
 
@@ -112,25 +116,43 @@ class ExpansionAI:
         report.structures_original = world.structure_count()
 
         # Step 1: Fill gaps and connect existing regions
-        self._run_step(report, "region_expansion", lambda:
-            self._region_expander.expand(world, fill_gaps=True, connect_regions=True))
+        self._run_step(
+            report,
+            "region_expansion",
+            lambda: self._region_expander.expand(
+                world, fill_gaps=True, connect_regions=True
+            ),
+        )
 
         # Step 2: Generate new hunt zones
-        self._run_step(report, "hunt_expansion", lambda:
-            self._hunt_expander.expand(world, max_hunts=max_hunts, theme=theme))
+        self._run_step(
+            report,
+            "hunt_expansion",
+            lambda: self._hunt_expander.expand(world, max_hunts=max_hunts, theme=theme),
+        )
 
         # Step 3: Create boss rooms
-        self._run_step(report, "boss_expansion", lambda:
-            self._boss_expander.expand(world, max_rooms=max_boss_rooms,
-                                       difficulty=boss_difficulty))
+        self._run_step(
+            report,
+            "boss_expansion",
+            lambda: self._boss_expander.expand(
+                world, max_rooms=max_boss_rooms, difficulty=boss_difficulty
+            ),
+        )
 
         # Step 4: Create quest zones
-        self._run_step(report, "quest_zone_expansion", lambda:
-            self._quest_expander.expand(world, max_zones=max_quest_zones))
+        self._run_step(
+            report,
+            "quest_zone_expansion",
+            lambda: self._quest_expander.expand(world, max_zones=max_quest_zones),
+        )
 
         # Step 5: Build roads and shortcuts
-        self._run_step(report, "road_expansion", lambda:
-            self._road_expander.expand(world, create_shortcuts=True))
+        self._run_step(
+            report,
+            "road_expansion",
+            lambda: self._road_expander.expand(world, create_shortcuts=True),
+        )
 
         # Final stats
         report.tiles_final = world.tile_count()
@@ -140,8 +162,7 @@ class ExpansionAI:
 
         return world, report
 
-    def _run_step(self, report: ExpansionReport,
-                  step_name: str, fn) -> None:
+    def _run_step(self, report: ExpansionReport, step_name: str, fn) -> None:
         """Execute an expansion step and record results."""
         result = ExpansionResult(step_name=step_name)
         try:
@@ -149,7 +170,7 @@ class ExpansionAI:
             result.success = True
             if hasattr(step_result, "tiles_added"):
                 result.tiles_after = result.tiles_before + step_result.tiles_added
-        except Exception as e:
+        except Exception:
             result.success = False
         report.results.append(result)
 
@@ -166,9 +187,7 @@ class ExpansionAI:
         structure_count = world.structure_count()
 
         # Count spawns
-        spawn_count = sum(
-            1 for t in world.tiles.values() if t.spawn is not None
-        )
+        spawn_count = sum(1 for t in world.tiles.values() if t.spawn is not None)
 
         # Count zones with spawns vs without
         zones_with_spawns = set()
@@ -196,8 +215,9 @@ class ExpansionAI:
             ),
         }
 
-    def _generate_recommendations(self, tiles: int, regions: int,
-                                  spawns: int, empty_zones: int) -> List[str]:
+    def _generate_recommendations(
+        self, tiles: int, regions: int, spawns: int, empty_zones: int
+    ) -> List[str]:
         """Generate expansion recommendations."""
         recs = []
         if tiles < 200:

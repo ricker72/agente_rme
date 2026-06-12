@@ -48,8 +48,14 @@ class SeasonGenerator:
 
     def _design_seasonal_events(self, theme: str) -> List[Dict[str, object]]:
         return [
-            {"name": f"{theme} Skyfall", "description": "A skyborne assault that alters monster spawns temporarily."},
-            {"name": f"{theme} Harvest", "description": "Gather special materials during the season."},
+            {
+                "name": f"{theme} Skyfall",
+                "description": "A skyborne assault that alters monster spawns temporarily.",
+            },
+            {
+                "name": f"{theme} Harvest",
+                "description": "Gather special materials during the season.",
+            },
         ]
 
     def _design_seasonal_rewards(self, theme: str) -> List[str]:

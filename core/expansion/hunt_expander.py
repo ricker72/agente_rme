@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
@@ -14,6 +13,7 @@ from core.world.structure import Structure
 @dataclass
 class HuntExpansionResult:
     """Result of hunt expansion operation."""
+
     zones_created: List[str] = field(default_factory=list)
     tiles_added: int = 0
     spawns_added: int = 0
@@ -66,12 +66,15 @@ class HuntExpander:
     DEFAULT_HUNT_SIZE = 15
     SPAWN_DENSITY = 0.15  # 15% of tiles get spawns
     MIN_LEVEL_TIERS = {
-        "easy": 1, "medium": 80, "hard": 200, "very_hard": 400,
+        "easy": 1,
+        "medium": 80,
+        "hard": 200,
+        "very_hard": 400,
     }
 
-    def expand(self, world: WorldModel,
-               max_hunts: int = 3,
-               theme: str = "cave") -> HuntExpansionResult:
+    def expand(
+        self, world: WorldModel, max_hunts: int = 3, theme: str = "cave"
+    ) -> HuntExpansionResult:
         """
         Find empty areas and create new hunt zones.
 
@@ -112,13 +115,15 @@ class HuntExpander:
                 result.tiles_added += tiles
                 result.spawns_added += spawns
                 result.regions_added += 1
-                result.details.append({
-                    "name": zone_name,
-                    "tier": level_tier,
-                    "tiles": tiles,
-                    "spawns": spawns,
-                    "position": f"{area[0]},{area[1]}",
-                })
+                result.details.append(
+                    {
+                        "name": zone_name,
+                        "tier": level_tier,
+                        "tiles": tiles,
+                        "spawns": spawns,
+                        "position": f"{area[0]},{area[1]}",
+                    }
+                )
                 created += 1
 
         return result
@@ -178,11 +183,14 @@ class HuntExpander:
             return "hard"
         return "very_hard"
 
-    def _generate_hunt_zone(self, world: WorldModel,
-                            area: Tuple[int, int, int, int],
-                            zone_name: str,
-                            tier: str,
-                            theme: str) -> Tuple[int, int]:
+    def _generate_hunt_zone(
+        self,
+        world: WorldModel,
+        area: Tuple[int, int, int, int],
+        zone_name: str,
+        tier: str,
+        theme: str,
+    ) -> Tuple[int, int]:
         """
         Generate tiles and spawns for a hunt zone.
 

@@ -15,12 +15,11 @@ output, deduplicates, and writes a `KnowledgeDataset`.
 
 from __future__ import annotations
 
-import json
 import logging
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Union
+from typing import Any, Dict, Iterable, Optional
 
 from .extractors import (
     BiomeExtractor,
@@ -33,8 +32,7 @@ from .extractors import (
     StructureExtractor,
     WaypointExtractor,
 )
-from .knowledge_index import KnowledgeIndex
-from .models import EntryType, KnowledgeDataset, KnowledgeEntry
+from .models import KnowledgeDataset
 
 logger = logging.getLogger(__name__)
 
@@ -235,7 +233,11 @@ class DatasetBuilder:
             except Exception:  # noqa: BLE001
                 pass
         # Blueprint-like — flatten via to_dict
-        if hasattr(source, "name") and hasattr(source, "theme") and hasattr(source, "category"):
+        if (
+            hasattr(source, "name")
+            and hasattr(source, "theme")
+            and hasattr(source, "category")
+        ):
             return {
                 "name": getattr(source, "name", label),
                 "theme": getattr(source, "theme", "generic"),
@@ -260,8 +262,12 @@ class DatasetBuilder:
                 pass
         return {
             "meta": {"source": label, "raw": str(source)},
-            "tiles": [], "regions": [], "structures": [],
-            "spawns": [], "cities": [], "waypoints": [],
+            "tiles": [],
+            "regions": [],
+            "structures": [],
+            "spawns": [],
+            "cities": [],
+            "waypoints": [],
         }
 
     def _label_of(self, source: Any) -> str:

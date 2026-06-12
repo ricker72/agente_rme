@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional
 @dataclass
 class DesignExplanation:
     """An explanation of why a design decision was made."""
+
     topic: str
     summary: str
     factors: List[str] = field(default_factory=list)
@@ -84,7 +85,7 @@ class ReasoningEngine:
             return DesignExplanation(
                 topic=topic,
                 summary=f"La decisión sobre '{topic}' se basa en objetivos de diseño global, "
-                        f"restricciones de calidad y principios de game design.",
+                f"restricciones de calidad y principios de game design.",
                 factors=[
                     "Objetivos de diseño del World Brain",
                     "Restricciones de nivel y dificultad",
@@ -97,18 +98,22 @@ class ReasoningEngine:
     def register_decision(self, topic: str, explanation: DesignExplanation) -> None:
         """Register a design decision for future explanation queries."""
         self._explanations[topic] = explanation
-        self._decision_log.append({
-            "topic": topic,
-            "summary": explanation.summary,
-        })
+        self._decision_log.append(
+            {
+                "topic": topic,
+                "summary": explanation.summary,
+            }
+        )
 
     def log_decision(self, what: str, why: str, context: Optional[Dict] = None) -> None:
         """Log a raw decision for the audit trail."""
-        self._decision_log.append({
-            "topic": what,
-            "summary": why,
-            "context": context or {},
-        })
+        self._decision_log.append(
+            {
+                "topic": what,
+                "summary": why,
+                "context": context or {},
+            }
+        )
 
     def get_decision_log(self, limit: int = 50) -> List[Dict[str, Any]]:
         """Get the complete decision audit trail."""
@@ -123,10 +128,7 @@ class ReasoningEngine:
 
     def last_decisions(self, n: int = 5) -> List[str]:
         """Get the last n decision summaries."""
-        return [
-            f"[{d['topic']}] {d['summary'][:100]}"
-            for d in self._decision_log[-n:]
-        ]
+        return [f"[{d['topic']}] {d['summary'][:100]}" for d in self._decision_log[-n:]]
 
     # ------------------------------------------------------------------
     # Explanation generators
@@ -136,8 +138,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="Esta dungeon fue creada para proporcionar contenido de progresión "
-                    "con una curva de dificultad ascendente. Su diseño prioriza la "
-                    "experiencia de exploración, combate táctico y recompensa al final.",
+            "con una curva de dificultad ascendente. Su diseño prioriza la "
+            "experiencia de exploración, combate táctico y recompensa al final.",
             factors=[
                 "Necesidad de contenido endgame para jugadores nivel 150+",
                 "Objetivo ADD_ENDGAME prioridad 9",
@@ -157,9 +159,9 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="Este boss fue diseñado como punto culminante de la zona. "
-                    "Su ubicación al final del dungeon, con minions y mecánicas "
-                    "específicas, proporciona un desafío adecuado para grupos "
-                    "organizados.",
+            "Su ubicación al final del dungeon, con minions y mecánicas "
+            "específicas, proporciona un desafío adecuado para grupos "
+            "organizados.",
             factors=[
                 "Objetivo ADD_ENDGAME: 3+ bosses requeridos",
                 "Restricción boss_room: dificultad 6-10, tamaño 8-30",
@@ -179,8 +181,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="El templo se colocó en el centro de la ciudad porque es el "
-                    "punto de reaparición principal. Su tamaño y decoración "
-                    "reflejan la importancia cultural y religiosa de la zona.",
+            "punto de reaparición principal. Su tamaño y decoración "
+            "reflejan la importancia cultural y religiosa de la zona.",
             factors=[
                 "El templo es el primer lugar que ve un jugador al aparecer",
                 "Debe ser visualmente impactante y claramente identificable",
@@ -198,8 +200,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="La ciudad fue diseñada como centro neurálgico del mundo. "
-                    "Sus distritos (templo, depot, market, residencial) están "
-                    "conectados por calles principales que facilitan la navegación.",
+            "Sus distritos (templo, depot, market, residencial) están "
+            "connected by main streets that facilitate navigation.",
             factors=[
                 "Toda zona necesita una ciudad base cerca",
                 "Restricción city: PZ zone, tamaño mínimo 20x20",
@@ -219,8 +221,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="Estos monstruos fueron seleccionados para la zona basándose "
-                    "en compatibilidad temática, nivel de dificultad y sinergia "
-                    "de gameplay. La combinación crea encuentros tácticos interesantes.",
+            "en compatibilidad temática, nivel de dificultad y sinergia "
+            "de gameplay. La combinación crea encuentros tácticos interesantes.",
             factors=[
                 "Monstruos del mismo tema visual (issavi ↔ Frazzlemaw/Sphinx)",
                 "Rango de XP apropiado para el nivel de la zona",
@@ -240,8 +242,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="La decoración fue seleccionada del Asset Recommender para "
-                    "coincidir con el tema de la zona. Items like torch, statue, "
-                    "y fountain se colocaron estratégicamente para mejorar la estética.",
+            "coincidir con el tema de la zona. Items like torch, statue, "
+            "y fountain se colocaron estratégicamente para mejorar la estética.",
             factors=[
                 "AssetClassifier determinó items compatibles con el tema",
                 "AssetSimilarity encontró items visualmente coherentes",
@@ -259,10 +261,10 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="El tamaño fue determinado por las restricciones del perfil "
-                    "de diseño y el análisis de calidad. El objetivo es balancear "
-                    "suficiente espacio para gameplay sin crear zonas vacías.",
+            "de diseño y el análisis de calidad. El objetivo es balancear "
+            "suficiente espacio para gameplay sin crear zonas vacías.",
             factors=[
-                f"Restricción del perfil activo para dimensiones",
+                "Restricción del perfil activo para dimensiones",
                 "Quality Detector penaliza zonas muy pequeñas o muy grandes",
                 "Densidad ideal: 60% tiles transitables",
             ],
@@ -277,8 +279,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="La entrada se colocó siguiendo principios de diseño "
-                    "estándar: ciudades entran desde el sur/borde, dungeons "
-                    "desde el centro, y hunts desde el oeste para flujo natural.",
+            "estándar: ciudades entran desde el sur/borde, dungeons "
+            "desde el centro, y hunts desde el oeste para flujo natural.",
             factors=[
                 "Regla de diseño: entrada en borde sur para ciudades",
                 "Conexión con caminos existentes del mapa global",
@@ -295,8 +297,8 @@ class ReasoningEngine:
         return DesignExplanation(
             topic=topic,
             summary="Las zonas vacías fueron detectadas por el Quality Detector "
-                    "y priorizadas para mejora. El Improvement Engine las rellenará "
-                    "con contenido procedural en la siguiente iteración.",
+            "y priorizadas para mejora. El Improvement Engine las rellenará "
+            "con contenido procedural en la siguiente iteración.",
             factors=[
                 "Quality Detector score bajo activó FILL_EMPTY_ZONES",
                 "Goal FIX_QUALITY prioridad 6 objetivo: score > 85",
@@ -317,23 +319,34 @@ class ReasoningEngine:
         """Extract the main topic from a question."""
         lower = question.lower()
         # Remove "why" / "por que" prefixes
-        for prefix in ["por que ", "por qué ", "why ", "why is ", "why are ",
-                       "why does ", "why was ", "why did ", "why would "]:
+        for prefix in [
+            "por que ",
+            "por qué ",
+            "why ",
+            "why is ",
+            "why are ",
+            "why does ",
+            "why was ",
+            "why did ",
+            "why would ",
+        ]:
             if lower.startswith(prefix):
-                lower = lower[len(prefix):]
+                lower = lower[len(prefix) :]
 
         # Remove trailing punctuation and question words
-        topic = lower.strip()\
-            .replace("?", "")\
-            .replace("¿", "")\
-            .replace("this ", "")\
-            .replace("there ", "")\
-            .replace("a ", " ")\
-            .replace("an ", " ")\
-            .replace("the ", " ")\
-            .replace("se cre", "")\
-            .replace("existe ", "")\
+        topic = (
+            lower.strip()
+            .replace("?", "")
+            .replace("¿", "")
+            .replace("this ", "")
+            .replace("there ", "")
+            .replace("a ", " ")
+            .replace("an ", " ")
+            .replace("the ", " ")
+            .replace("se cre", "")
+            .replace("existe ", "")
             .strip()
+        )
 
         return topic.capitalize()
 

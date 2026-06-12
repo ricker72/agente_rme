@@ -5,11 +5,9 @@ SpawnAnalyzer — analyzes monster spawn distribution and density.
 from __future__ import annotations
 
 import logging
-from collections import defaultdict
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Set, Tuple
 
 from core.world.world_model import WorldModel
-from core.world.tile import Tile
 
 from .base_analyzer import (
     build_snapshots,
@@ -18,7 +16,6 @@ from .base_analyzer import (
     safe_ratio,
     clamp,
     average,
-    stddev,
 )
 
 logger = logging.getLogger(__name__)
@@ -38,18 +35,24 @@ class SpawnAnalyzer:
     IDEAL_MIN_DISTANCE = 4
     IDEAL_MAX_DISTANCE = 20
 
-    def __init__(self,
-                 target_density: float = TARGET_SPAWN_DENSITY,
-                 ideal_min_distance: int = IDEAL_MIN_DISTANCE,
-                 ideal_max_distance: int = IDEAL_MAX_DISTANCE):
+    def __init__(
+        self,
+        target_density: float = TARGET_SPAWN_DENSITY,
+        ideal_min_distance: int = IDEAL_MIN_DISTANCE,
+        ideal_max_distance: int = IDEAL_MAX_DISTANCE,
+    ):
         self.target_density = target_density
         self.ideal_min_distance = ideal_min_distance
         self.ideal_max_distance = ideal_max_distance
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snapshots = build_snapshots(world)
@@ -127,8 +130,12 @@ class SpawnAnalyzer:
             # Penalize if most distances are below ideal_min or above ideal_max
             too_close = sum(1 for d in distances if d < self.ideal_min_distance)
             too_far = sum(1 for d in distances if d > self.ideal_max_distance)
-            dist_score = max(0.0, 100.0 - (too_close + too_far) / len(distances) * 100.0)
-        score_value = density_score * 0.5 + dist_score * 0.3 + zone_coverage * 100.0 * 0.2
+            dist_score = max(
+                0.0, 100.0 - (too_close + too_far) / len(distances) * 100.0
+            )
+        score_value = (
+            density_score * 0.5 + dist_score * 0.3 + zone_coverage * 100.0 * 0.2
+        )
         score_value = clamp(score_value)
 
         score = CriticScore(
@@ -146,49 +153,61 @@ class SpawnAnalyzer:
         recs: List = []
 
         if total_spawns == 0:
-            issues.append(CriticIssue(
-                issue_type=IssueType.LOW_SPAWN_DENSITY,
-                severity=IssueSeverity.CRITICAL,
-                category=self.CATEGORY,
-                message="No monster spawns in the world",
-            ))
-            recs.append(CriticRecommendation(
-                title="Add monster spawns",
-                description="Place monster spawns in hunt areas. Aim for ~5% of grounded tiles.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.CRITICAL,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.LOW_SPAWN_DENSITY,
+                    severity=IssueSeverity.CRITICAL,
+                    category=self.CATEGORY,
+                    message="No monster spawns in the world",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Add monster spawns",
+                    description="Place monster spawns in hunt areas. Aim for ~5% of grounded tiles.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.CRITICAL,
+                )
+            )
         elif density < self.target_density * 0.5:
-            issues.append(CriticIssue(
-                issue_type=IssueType.LOW_SPAWN_DENSITY,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Spawn density {density*100:.2f}% is below target {self.target_density*100:.0f}%",
-                details={"density": density, "target": self.target_density},
-            ))
-            recs.append(CriticRecommendation(
-                title="Increase spawn density",
-                description="Add more monster spawns in hunt areas to reach the target density.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.LOW_SPAWN_DENSITY,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Spawn density {density * 100:.2f}% is below target {self.target_density * 100:.0f}%",
+                    details={"density": density, "target": self.target_density},
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Increase spawn density",
+                    description="Add more monster spawns in hunt areas to reach the target density.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         for i, cluster in enumerate(clusters[:3]):
-            issues.append(CriticIssue(
-                issue_type=IssueType.SPAWN_CLUSTER,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                location=f"({cluster[0][0]},{cluster[0][1]})",
-                message=f"Spawn cluster of {len(cluster)} creatures at {cluster[0]}",
-                details={"cluster_size": len(cluster)},
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.SPAWN_CLUSTER,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    location=f"({cluster[0][0]},{cluster[0][1]})",
+                    message=f"Spawn cluster of {len(cluster)} creatures at {cluster[0]}",
+                    details={"cluster_size": len(cluster)},
+                )
+            )
         if clusters:
-            recs.append(CriticRecommendation(
-                title="Spread spawn clusters",
-                description="Some spawns are clustered very close together. Spread them out for better gameplay.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.LOW,
-            ))
+            recs.append(
+                CriticRecommendation(
+                    title="Spread spawn clusters",
+                    description="Some spawns are clustered very close together. Spread them out for better gameplay.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.LOW,
+                )
+            )
 
         return {
             "category": self.CATEGORY,

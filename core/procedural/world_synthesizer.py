@@ -32,20 +32,18 @@ from __future__ import annotations
 import logging
 import random
 from dataclasses import dataclass, field
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union
+from typing import Any, Dict, List, Optional, Sequence
 
 from core.world import (
-    WorldModel, Tile, Item, Spawn, Structure, Region, Chunk,
-    WorldValidator, WorldValidationResult,
+    WorldModel,
+    WorldValidator,
+    WorldValidationResult,
 )
 
 from .continent_generator import (
-    ContinentGenerator, ContinentResult, generate_continent,
+    ContinentGenerator,
+    ContinentResult,
 )
-from .biome_generator import BiomeGenerator
-from .terrain_generator import TerrainGenerator
-from .road_generator import RoadGenerator
-from .river_generator import RiverGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -54,9 +52,11 @@ logger = logging.getLogger(__name__)
 # SynthesisReport
 # =============================================================================
 
+
 @dataclass
 class SynthesisReport:
     """Summary of a synthesis pass."""
+
     world: WorldModel
     total_tiles: int = 0
     total_structures: int = 0
@@ -87,6 +87,7 @@ class SynthesisReport:
 # =============================================================================
 # WorldSynthesizer
 # =============================================================================
+
 
 class WorldSynthesizer:
     """
@@ -146,8 +147,9 @@ class WorldSynthesizer:
                 metadata={
                     "seed": self._seed,
                     "prompt": _plan_attr(plan_or_result, "prompt", default=""),
-                    "primary_theme": _plan_attr(plan_or_result, "primary_theme",
-                                                default="generic"),
+                    "primary_theme": _plan_attr(
+                        plan_or_result, "primary_theme", default="generic"
+                    ),
                 },
             )
 
@@ -163,16 +165,14 @@ class WorldSynthesizer:
         themes = list(result.metadata.get("themes_resolved", []) or [])
         if not themes:
             # Fall back to the plan's themes or the primary theme
-            themes = list(
-                _plan_attr(plan_or_result, "themes", default=[]) or []
-            ) or [_plan_attr(plan_or_result, "primary_theme", default="generic")]
+            themes = list(_plan_attr(plan_or_result, "themes", default=[]) or []) or [
+                _plan_attr(plan_or_result, "primary_theme", default="generic")
+            ]
         report = SynthesisReport(
             world=world,
             total_tiles=world.tile_count(),
             total_structures=world.structure_count(),
-            total_spawns=sum(
-                1 for t in world.tiles.values() if t.spawn is not None
-            ),
+            total_spawns=sum(1 for t in world.tiles.values() if t.spawn is not None),
             total_regions=world.region_count(),
             total_chunks=world.chunk_count(),
             themes_used=themes,
@@ -217,9 +217,7 @@ class WorldSynthesizer:
             world=target,
             total_tiles=target.tile_count(),
             total_structures=target.structure_count(),
-            total_spawns=sum(
-                1 for t in target.tiles.values() if t.spawn is not None
-            ),
+            total_spawns=sum(1 for t in target.tiles.values() if t.spawn is not None),
             total_regions=target.region_count(),
             total_chunks=target.chunk_count(),
             metadata={"merged_from": len(worlds)},
@@ -249,7 +247,9 @@ class WorldSynthesizer:
         setattr(world, "_synthesis_source", "ai_architect")
 
     def attach_blueprint_registry(
-        self, world: WorldModel, registry: Any,
+        self,
+        world: WorldModel,
+        registry: Any,
     ) -> None:
         """Attach a BlueprintRegistry reference to the world model."""
         setattr(world, "_blueprint_registry", registry)
@@ -260,9 +260,7 @@ class WorldSynthesizer:
 
     def _looks_like_result(self, obj: Any) -> bool:
         return (
-            obj is not None
-            and hasattr(obj, "world")
-            and hasattr(obj, "zones_placed")
+            obj is not None and hasattr(obj, "world") and hasattr(obj, "zones_placed")
         )
 
     def _extract_zones_from_plan(self, plan: Any) -> List[Dict[str, Any]]:
@@ -275,16 +273,18 @@ class WorldSynthesizer:
             if isinstance(z, dict):
                 out.append(dict(z))
             else:
-                out.append({
-                    "x": getattr(z, "x", 0),
-                    "y": getattr(z, "y", 0),
-                    "z": getattr(z, "z", 7),
-                    "width": getattr(z, "width", 40),
-                    "height": getattr(z, "height", 40),
-                    "name": getattr(z, "name", "zone"),
-                    "theme": getattr(z, "theme", "generic"),
-                    "zone_kind": getattr(z, "zone_kind", "hunt"),
-                })
+                out.append(
+                    {
+                        "x": getattr(z, "x", 0),
+                        "y": getattr(z, "y", 0),
+                        "z": getattr(z, "z", 7),
+                        "width": getattr(z, "width", 40),
+                        "height": getattr(z, "height", 40),
+                        "name": getattr(z, "name", "zone"),
+                        "theme": getattr(z, "theme", "generic"),
+                        "zone_kind": getattr(z, "zone_kind", "hunt"),
+                    }
+                )
         return out
 
     def _normalize(self, world: WorldModel) -> WorldModel:
@@ -314,6 +314,7 @@ class WorldSynthesizer:
 # Helpers
 # =============================================================================
 
+
 def _plan_attr(plan: Any, *names: str, default: Any = None) -> Any:
     if plan is None:
         return default
@@ -332,6 +333,7 @@ def _plan_attr(plan: Any, *names: str, default: Any = None) -> Any:
 # =============================================================================
 # Module-level helpers
 # =============================================================================
+
 
 def synthesize(
     plan_or_result: Any,

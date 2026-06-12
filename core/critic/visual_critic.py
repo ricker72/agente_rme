@@ -12,12 +12,12 @@ from __future__ import annotations
 import logging
 import os
 import time
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, Optional, Union
 
 from core.world.world_model import WorldModel
 
 from .critic_engine import CriticEngine
-from .critic_report import CriticReport, CriticReportGenerator
+from .critic_report import CriticReportGenerator
 from .heatmap_renderer import HeatmapRenderer
 from .models import CriticResult
 
@@ -41,22 +41,25 @@ class VisualCritic:
         # result.metadata['artifacts'] is a dict of generated files
     """
 
-    def __init__(self,
-                 engine: Optional[CriticEngine] = None,
-                 report_generator: Optional[CriticReportGenerator] = None,
-                 heatmap_renderer: Optional[HeatmapRenderer] = None):
+    def __init__(
+        self,
+        engine: Optional[CriticEngine] = None,
+        report_generator: Optional[CriticReportGenerator] = None,
+        heatmap_renderer: Optional[HeatmapRenderer] = None,
+    ):
         self.engine = engine or CriticEngine()
         self.report_generator = report_generator or CriticReportGenerator()
         self.heatmap_renderer = heatmap_renderer or HeatmapRenderer()
 
-    def analyze(self,
-                world: Union[WorldModel, Dict[str, Any]],
-                map_name: str = "",
-                output_dir: Optional[str] = None,
-                preview_path: Optional[str] = None,
-                generate_heatmaps: bool = True,
-                base_name: str = "critic_report",
-                ) -> CriticResult:
+    def analyze(
+        self,
+        world: Union[WorldModel, Dict[str, Any]],
+        map_name: str = "",
+        output_dir: Optional[str] = None,
+        preview_path: Optional[str] = None,
+        generate_heatmaps: bool = True,
+        base_name: str = "critic_report",
+    ) -> CriticResult:
         """
         Run the full critic on a world and optionally save artifacts.
 
@@ -99,14 +102,15 @@ class VisualCritic:
         result.metadata["total_elapsed"] = round(time.time() - started, 4)
         return result
 
-    def analyze_and_save(self,
-                         world: Union[WorldModel, Dict[str, Any]],
-                         output_dir: str,
-                         map_name: str = "",
-                         preview_path: Optional[str] = None,
-                         generate_heatmaps: bool = True,
-                         base_name: str = "critic_report",
-                         ) -> Dict[str, Any]:
+    def analyze_and_save(
+        self,
+        world: Union[WorldModel, Dict[str, Any]],
+        output_dir: str,
+        map_name: str = "",
+        preview_path: Optional[str] = None,
+        generate_heatmaps: bool = True,
+        base_name: str = "critic_report",
+    ) -> Dict[str, Any]:
         """
         Convenience wrapper that returns a small dict with the result and
         artifact paths.
@@ -130,12 +134,14 @@ class VisualCritic:
     # Helpers
     # ------------------------------------------------------------------
 
-    def _write_artifacts(self,
-                         result: CriticResult,
-                         output_dir: str,
-                         base_name: str,
-                         world: WorldModel,
-                         generate_heatmaps: bool) -> Dict[str, str]:
+    def _write_artifacts(
+        self,
+        result: CriticResult,
+        output_dir: str,
+        base_name: str,
+        world: WorldModel,
+        generate_heatmaps: bool,
+    ) -> Dict[str, str]:
         os.makedirs(output_dir, exist_ok=True)
         report = self.report_generator.build(result)
         artifacts = report.write_all(output_dir, base_name=base_name)

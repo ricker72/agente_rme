@@ -1,0 +1,6 @@
+<waypoints>
+  <waypoint name="hunt_1" x="0" y="0" z="7" />
+  <waypoint name="hunt_2" x="0" y="0" z="7" />
+  <waypoint name="boss_1" x="0" y="0" z="7" />
+  <waypoint name="city_1" x="0" y="0" z="7" />
+</waypoints>

@@ -25,10 +25,11 @@ import json
 import os
 import threading
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 try:
     import yaml  # type: ignore
+
     _HAVE_YAML = True
 except ImportError:
     _HAVE_YAML = False
@@ -127,7 +128,7 @@ class ConfigManager:
         for key, value in os.environ.items():
             if not key.startswith(prefix):
                 continue
-            sub = key[len(prefix):].lower()
+            sub = key[len(prefix) :].lower()
             self._set_by_path(self._data, sub, _coerce_env(value))
 
     @staticmethod
@@ -148,9 +149,7 @@ class ConfigManager:
         for k, expected in _SCHEMA_KEYS.items():
             if k in self._data and not isinstance(self._data[k], expected):
                 raise ConfigError(
-                    f"config key '{k}' has wrong type: "
-                    f"expected {expected.__name__}, "
-                    f"got {type(self._data[k]).__name__}"
+                    f"config key '{k}' has wrong type: expected {expected.__name__}, got {type(self._data[k]).__name__}"
                 )
 
     def validate(self) -> List[str]:
@@ -159,10 +158,14 @@ class ConfigManager:
         for k, expected in _SCHEMA_KEYS.items():
             if k in self._data and not isinstance(self._data[k], expected):
                 issues.append(
-                    f"key '{k}' expected {expected.__name__}, "
-                    f"got {type(self._data[k]).__name__}"
+                    f"key '{k}' expected {expected.__name__}, got {type(self._data[k]).__name__}"
                 )
-        if self._data.get("log_level", "INFO") not in ("DEBUG", "INFO", "WARNING", "ERROR"):
+        if self._data.get("log_level", "INFO") not in (
+            "DEBUG",
+            "INFO",
+            "WARNING",
+            "ERROR",
+        ):
             issues.append("log_level must be one of DEBUG/INFO/WARNING/ERROR")
         gen = self._data.get("generation", {})
         if isinstance(gen, dict):
@@ -241,6 +244,7 @@ class ConfigManager:
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
+
 
 def _deep_merge(a: Dict[str, Any], b: Dict[str, Any]) -> Dict[str, Any]:
     out = dict(a)

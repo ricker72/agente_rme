@@ -36,6 +36,7 @@ Todo el contenido es **100% oficial** de OpenTibia (extraído directamente de `i
 ## ✨ Características Principales
 
 ### Generación de Mapas
+
 - 🏰 **Ciudades** completas (calles, edificios, templos, NPCs)
 - 🗡️ **Mazmorras** (salas, pasillos, jefes, trampas)
 - 🌲 **Zonas de hunt** con spawns progresivos y balanceados
@@ -43,12 +44,14 @@ Todo el contenido es **100% oficial** de OpenTibia (extraído directamente de `i
 - 🔄 **Mapas híbridos** (ciudad + mazmorra)
 
 ### Inteligencia Artificial
+
 - 🧠 **AIPlanner**: Convierte texto en planes de construcción detallados
 - 📐 **WorldBrain**: Sistema de razonamiento con objetivos y restricciones
 - 🔍 **RAG embebido**: Recuperación semántica de items, monstruos y NPCs
 - 🧬 **PatternLibrary**: Aprendizaje de patrones arquitectónicos reales
 
 ### Exportación Profesional
+
 - 📄 **Scripts Lua** para RME (Tools > Run Script)
 - 💾 **Archivos OTBM v4** (formato binario oficial)
 - 📋 **XML** de spawns y NPCs
@@ -101,6 +104,7 @@ Todo el contenido es **100% oficial** de OpenTibia (extraído directamente de `i
 - **v1.0.0 GA**: Lanzamiento general con estabilidad, soporte y optimizaciones.
 
 ### Flujo básico
+
 1. Describe tu mapa en lenguaje natural
 2. La IA genera el plan y construye el mundo
 3. Exporta el `.otbm` y el script `.lua`
@@ -138,8 +142,8 @@ output/
 ## 🗺️ Mapas de Referencia Soportados
 
 El sistema puede generar mapas inspirados en zonas oficiales como:
-- **Issavi**, **Marapur**, **Feyrist**, **Gnomprona**, **Roshamuul**, **Falcon Bastion**, etc.
 
+- **Issavi**, **Marapur**, **Feyrist**, **Gnomprona**, **Roshamuul**, **Falcon Bastion**, etc.
 
 ---
 
@@ -153,6 +157,7 @@ Las contribuciones son bienvenidas:
 4. Abre un Pull Request
 
 **Estándares:**
+
 - Type hints
 - Black (line-length=100)
 - flake8 + mypy

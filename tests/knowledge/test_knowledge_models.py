@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import os
 import tempfile
 import unittest
@@ -59,16 +58,20 @@ class TestKnowledgeEntry(unittest.TestCase):
         self.assertEqual(e.max_level, e2.max_level)
 
     def test_unknown_entry_type_falls_back(self):
-        e = KnowledgeEntry.from_dict({
-            "id": "x", "entry_type": "alien", "name": "X", "source": "y"
-        })
+        e = KnowledgeEntry.from_dict(
+            {"id": "x", "entry_type": "alien", "name": "X", "source": "y"}
+        )
         self.assertEqual(e.entry_type, EntryType.HUNT)
 
 
 class TestKnowledgeDataset(unittest.TestCase):
-    def _entry(self, name: str, entry_type: EntryType = EntryType.HUNT) -> KnowledgeEntry:
+    def _entry(
+        self, name: str, entry_type: EntryType = EntryType.HUNT
+    ) -> KnowledgeEntry:
         return KnowledgeEntry.build(
-            entry_type=entry_type, name=name, source="src",
+            entry_type=entry_type,
+            name=name,
+            source="src",
         )
 
     def test_add_dedup(self):
@@ -143,7 +146,9 @@ class TestKnowledgeDataset(unittest.TestCase):
 class TestQueryMatch(unittest.TestCase):
     def test_round_trip(self):
         e = KnowledgeEntry.build(
-            entry_type=EntryType.HUNT, name="x", source="y",
+            entry_type=EntryType.HUNT,
+            name="x",
+            source="y",
         )
         m = QueryMatch(entry=e, score=0.75, match_type="text", explanation="x")
         d = m.to_dict()

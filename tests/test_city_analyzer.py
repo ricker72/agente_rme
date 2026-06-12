@@ -13,7 +13,6 @@ from core.world.region import Region
 
 
 class CityAnalyzerTests(unittest.TestCase):
-
     def test_no_cities(self):
         w = WorldModel()
         for x in range(5):
@@ -21,7 +20,9 @@ class CityAnalyzerTests(unittest.TestCase):
                 w.set_tile(Tile(x=x, y=y, z=7, ground=100))
         result = CityAnalyzer().analyze(w)
         self.assertEqual(result["metrics"]["cities"], 0)
-        self.assertTrue(any("city" in r.title.lower() for r in result["recommendations"]))
+        self.assertTrue(
+            any("city" in r.title.lower() for r in result["recommendations"])
+        )
 
     def test_city_with_all_services(self):
         w = WorldModel()

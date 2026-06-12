@@ -4,7 +4,7 @@ KnowledgeIndex — bundle of per-type indexers used by the engine.
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 from .indexers import (
     BaseIndexer,

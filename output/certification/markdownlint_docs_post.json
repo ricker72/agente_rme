@@ -1,0 +1,1293 @@
+[
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 15,
+    "ruleNames": [
+      "MD040",
+      "fenced-code-language"
+    ],
+    "ruleDescription": "Fenced code blocks should have a language specified",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md040.md",
+    "errorDetail": null,
+    "errorContext": "```",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 48,
+    "ruleNames": [
+      "MD040",
+      "fenced-code-language"
+    ],
+    "ruleDescription": "Fenced code blocks should have a language specified",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md040.md",
+    "errorDetail": null,
+    "errorContext": "```",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 57,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 161",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      81
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 65,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 100",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      20
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 72,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      1,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 72,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      5,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 72,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      5,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 72,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      9,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 94,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 123",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      43
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 96,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 90",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      10
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 97,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 92",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      12
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 101,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 157",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      77
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "ARCHITECTURE.md",
+    "lineNumber": 103,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 161",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      81
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 9,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 147",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      67
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 16,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 115",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      35
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 23,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 103",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      23
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 24,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 103",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      23
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 26,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 141",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      61
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 27,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 138",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      58
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 28,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 111",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      31
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 30,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 165",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      85
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 34,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 97",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      17
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 35,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 124",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      44
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "CHANGELOG.md",
+    "lineNumber": 40,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 104",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      24
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "DEVELOPER_GUIDE.md",
+    "lineNumber": 7,
+    "ruleNames": [
+      "MD040",
+      "fenced-code-language"
+    ],
+    "ruleDescription": "Fenced code blocks should have a language specified",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md040.md",
+    "errorDetail": null,
+    "errorContext": "```",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "DEVELOPER_GUIDE.md",
+    "lineNumber": 43,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 118",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      38
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "DEVELOPER_GUIDE.md",
+    "lineNumber": 87,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 101",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      21
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "DEVELOPER_GUIDE.md",
+    "lineNumber": 100,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 186",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      106
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 3,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 146",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      66
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 8,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      1,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 8,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      5,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 8,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      5,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 8,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      9,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 8,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the right for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      9,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 8,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe is missing space to the left for style \"compact\"",
+    "errorContext": null,
+    "errorRange": [
+      13,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 15,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 168",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      88
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 54,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 107",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      27
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "INSTALL.md",
+    "lineNumber": 80,
+    "ruleNames": [
+      "MD040",
+      "fenced-code-language"
+    ],
+    "ruleDescription": "Fenced code blocks should have a language specified",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md040.md",
+    "errorDetail": null,
+    "errorContext": "```",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 1,
+    "ruleNames": [
+      "MD041",
+      "first-line-heading",
+      "first-line-h1"
+    ],
+    "ruleDescription": "First line in a file should be a top-level heading",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md041.md",
+    "errorDetail": null,
+    "errorContext": "<div align=\"center\">",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 1,
+    "ruleNames": [
+      "MD033",
+      "no-inline-html"
+    ],
+    "ruleDescription": "Inline HTML",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md033.md",
+    "errorDetail": "Element: div",
+    "errorContext": null,
+    "errorRange": [
+      1,
+      20
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 21,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 124",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      44
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 23,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 98",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      18
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 30,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 117",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      37
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 66,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 66,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      64,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 67,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 67,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      64,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 68,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 68,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      67,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 69,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 69,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      66,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 70,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 70,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      64,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 71,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 71,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      64,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 72,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 72,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      64,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 73,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 73,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      63,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 74,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      26,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 74,
+    "ruleNames": [
+      "MD060",
+      "table-column-style"
+    ],
+    "ruleDescription": "Table column style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md060.md",
+    "errorDetail": "Table pipe does not align with header for style \"aligned\"",
+    "errorContext": null,
+    "errorRange": [
+      64,
+      1
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 91,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 84",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      4
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 117,
+    "ruleNames": [
+      "MD040",
+      "fenced-code-language"
+    ],
+    "ruleDescription": "Fenced code blocks should have a language specified",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md040.md",
+    "errorDetail": null,
+    "errorContext": "```",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 146,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 94",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      14
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 167,
+    "ruleNames": [
+      "MD033",
+      "no-inline-html"
+    ],
+    "ruleDescription": "Inline HTML",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md033.md",
+    "errorDetail": "Element: div",
+    "errorContext": null,
+    "errorRange": [
+      1,
+      20
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 173,
+    "ruleNames": [
+      "MD033",
+      "no-inline-html"
+    ],
+    "ruleDescription": "Inline HTML",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md033.md",
+    "errorDetail": "Element: div",
+    "errorContext": null,
+    "errorRange": [
+      1,
+      20
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 174,
+    "ruleNames": [
+      "MD033",
+      "no-inline-html"
+    ],
+    "ruleDescription": "Inline HTML",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md033.md",
+    "errorDetail": "Element: strong",
+    "errorContext": null,
+    "errorRange": [
+      21,
+      8
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 178,
+    "ruleNames": [
+      "MD033",
+      "no-inline-html"
+    ],
+    "ruleDescription": "Inline HTML",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md033.md",
+    "errorDetail": "Element: div",
+    "errorContext": null,
+    "errorRange": [
+      1,
+      20
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "README.md",
+    "lineNumber": 183,
+    "ruleNames": [
+      "MD003",
+      "heading-style"
+    ],
+    "ruleDescription": "Heading style",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md003.md",
+    "errorDetail": "Expected: atx; Actual: setext",
+    "errorContext": null,
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "USER_GUIDE.md",
+    "lineNumber": 13,
+    "ruleNames": [
+      "MD040",
+      "fenced-code-language"
+    ],
+    "ruleDescription": "Fenced code blocks should have a language specified",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md040.md",
+    "errorDetail": null,
+    "errorContext": "```",
+    "errorRange": null,
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "USER_GUIDE.md",
+    "lineNumber": 44,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 98",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      18
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "USER_GUIDE.md",
+    "lineNumber": 79,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 122",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      42
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  },
+  {
+    "fileName": "USER_GUIDE.md",
+    "lineNumber": 108,
+    "ruleNames": [
+      "MD013",
+      "line-length"
+    ],
+    "ruleDescription": "Line length",
+    "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.40.0/doc/md013.md",
+    "errorDetail": "Expected: 80; Actual: 111",
+    "errorContext": null,
+    "errorRange": [
+      81,
+      31
+    ],
+    "fixInfo": null,
+    "severity": "error"
+  }
+]

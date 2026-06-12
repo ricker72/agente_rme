@@ -1,8 +1,7 @@
 """Additional tests for the AutonomousWorldDesigner to lift coverage."""
 
-import json
 import os
-import pytest
+from unittest.mock import MagicMock
 
 from core.autonomous import AutonomousWorldDesigner
 
@@ -86,9 +85,14 @@ class TestAutonomousWorldDesignerExtra:
         designer.optimizer.use_real_engines = False
         report = designer.benchmark(num_worlds=2)
         for key in (
-            "total_worlds", "successful_worlds", "average_score",
-            "max_score", "min_score", "converged_worlds",
-            "total_duration_seconds", "average_improvement",
+            "total_worlds",
+            "successful_worlds",
+            "average_score",
+            "max_score",
+            "min_score",
+            "converged_worlds",
+            "total_duration_seconds",
+            "average_improvement",
         ):
             assert key in report, f"Missing {key}"
 

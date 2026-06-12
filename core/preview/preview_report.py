@@ -18,7 +18,6 @@ from collections import defaultdict
 from typing import Any, Dict, List
 
 from . import palette
-from .preview_renderer import render_tile
 
 
 def generate_report(world_model: Any) -> Dict[str, Any]:

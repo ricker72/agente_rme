@@ -27,15 +27,39 @@ class PromptInterpreter:
     """
 
     KNOWN_THEMES = {
-        "issavi", "roshamuul", "falcon", "cobra", "lion", "asura",
-        "mirror", "library", "soulwar", "ferumbras", "thais", "carlin",
-        "venore", "edron", "darashia", "ankrahmun", "port hope",
-        "yalahar", "svargrond", "liberty bay", "kazordoon", "ab'dendriel",
-        "feyrist", "oramond", "roshamuul",
+        "issavi",
+        "roshamuul",
+        "falcon",
+        "cobra",
+        "lion",
+        "asura",
+        "mirror",
+        "library",
+        "soulwar",
+        "ferumbras",
+        "thais",
+        "carlin",
+        "venore",
+        "edron",
+        "darashia",
+        "ankrahmun",
+        "port hope",
+        "yalahar",
+        "svargrond",
+        "liberty bay",
+        "kazordoon",
+        "ab'dendriel",
+        "feyrist",
+        "oramond",
+        "roshamuul",
     }
 
     KNOWN_TYPES = {
-        "hunt", "dungeon", "city", "boss", "hybrid",
+        "hunt",
+        "dungeon",
+        "city",
+        "boss",
+        "hybrid",
     }
 
     def interpret(self, prompt: str) -> PromptIntent:
@@ -66,8 +90,8 @@ class PromptInterpreter:
 
         # Pattern: "nivel X-Y" or "level X-Y" or "X-Y"
         patterns = [
-            r'(?:nivel|level)\s*(\d+)\s*[-–a]+\s*(\d+)',
-            r'(\d{2,4})\s*[-–]\s*(\d{2,4})',
+            r"(?:nivel|level)\s*(\d+)\s*[-–a]+\s*(\d+)",
+            r"(\d{2,4})\s*[-–]\s*(\d{2,4})",
         ]
 
         for pattern in patterns:

@@ -14,7 +14,6 @@ import json
 import logging
 import os
 import time
-import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -48,7 +47,9 @@ class AutonomousWorldDesigner:
 
     director: AutonomousDirector = field(default_factory=AutonomousDirector)
     planner: AutonomousPlanner = field(default_factory=AutonomousPlanner)
-    decision_engine: AutonomousDecisionEngine = field(default_factory=AutonomousDecisionEngine)
+    decision_engine: AutonomousDecisionEngine = field(
+        default_factory=AutonomousDecisionEngine
+    )
     optimizer: AutonomousOptimizer = field(default_factory=AutonomousOptimizer)
     goal_manager: GoalManager = field(default_factory=GoalManager)
 
@@ -148,9 +149,14 @@ class AutonomousWorldDesigner:
             "average_score": (sum(scores) / len(scores)) if scores else 0.0,
             "max_score": max(scores) if scores else 0.0,
             "min_score": min(scores) if scores else 0.0,
-            "average_improvement": (sum(improvement) / len(improvement)) if improvement else 0.0,
+            "average_improvement": (sum(improvement) / len(improvement))
+            if improvement
+            else 0.0,
             "converged_worlds": sum(
-                1 for r in results if len(r.convergence_data) > 1 and abs(r.convergence_data[-1] - r.convergence_data[-2]) < 0.1
+                1
+                for r in results
+                if len(r.convergence_data) > 1
+                and abs(r.convergence_data[-1] - r.convergence_data[-2]) < 0.1
             ),
             "total_duration_seconds": time.time() - start,
             "timestamp": datetime.now().isoformat(),
@@ -189,11 +195,17 @@ class AutonomousWorldDesigner:
 
             # Record these decisions in the director memory for the report
             self.director.record_decision(
-                "blueprint", region.region_id, region.selected_blueprints[0], 0.85,
+                "blueprint",
+                region.region_id,
+                region.selected_blueprints[0],
+                0.85,
                 metadata={"region_type": region.region_type},
             )
             self.director.record_decision(
-                "pattern", region.region_id, region.patterns[0], 0.8,
+                "pattern",
+                region.region_id,
+                region.patterns[0],
+                0.8,
                 metadata={"region_type": region.region_type},
             )
 
@@ -211,16 +223,21 @@ class AutonomousWorldDesigner:
         world = WorldModel()
         cursor_x = 0
         for region in plan.regions:
-            width = max(1, int(region.target_size ** 0.5))
+            width = max(1, int(region.target_size**0.5))
             height = max(1, int((region.target_size / max(1, width))))
             for dx in range(width):
                 for dy in range(height):
                     tile = Tile(
-                        x=cursor_x + dx, y=dy, z=7,
+                        x=cursor_x + dx,
+                        y=dy,
+                        z=7,
                         ground=200 + (hash(region.region_id) % 50),
                         zone=region.region_id,
                     )
-                    if region.region_type in ("hunt", "raid", "boss") and (dx + dy) % 4 == 0:
+                    if (
+                        region.region_type in ("hunt", "raid", "boss")
+                        and (dx + dy) % 4 == 0
+                    ):
                         try:
                             tile.spawn = Spawn(monster="Demon", respawn=60, radius=2)
                         except Exception:
@@ -229,19 +246,30 @@ class AutonomousWorldDesigner:
                         tile.items = [{"itemid": 200 + (dx + dy) % 10, "count": 1}]
                     world.set_tile(tile)
             try:
-                world.add_region(Region(
-                    name=region.region_id, theme=region.region_name,
-                    min_level=region.level_range[0], max_level=region.level_range[1],
-                ))
+                world.add_region(
+                    Region(
+                        name=region.region_id,
+                        theme=region.region_name,
+                        min_level=region.level_range[0],
+                        max_level=region.level_range[1],
+                    )
+                )
             except Exception:
                 pass
             if region.region_type in ("boss", "raid", "city"):
                 try:
-                    world.add_structure(Structure(
-                        name=f"struct_{region.region_id}",
-                        category=region.region_type, x=cursor_x, y=0, z=7,
-                        width=width, height=height, tags=[region.region_type],
-                    ))
+                    world.add_structure(
+                        Structure(
+                            name=f"struct_{region.region_id}",
+                            category=region.region_type,
+                            x=cursor_x,
+                            y=0,
+                            z=7,
+                            width=width,
+                            height=height,
+                            tags=[region.region_type],
+                        )
+                    )
                 except Exception:
                     pass
             cursor_x += width + 4
@@ -295,6 +323,7 @@ class AutonomousWorldDesigner:
         # Visualisation
         try:
             from .autonomous_visualizer import AutonomousVisualizer  # local import
+
             visualizer = AutonomousVisualizer(self.output_dir)
             visualizer.plot_iteration_scores(result)
             visualizer.plot_critic_progress(result)
@@ -342,7 +371,9 @@ class AutonomousWorldDesigner:
                 try:
                     self.blueprint_intelligence = cls()
                     self.director.blueprint_intelligence = self.blueprint_intelligence
-                    self.decision_engine.blueprint_intelligence = self.blueprint_intelligence
+                    self.decision_engine.blueprint_intelligence = (
+                        self.blueprint_intelligence
+                    )
                 except Exception as exc:
                     logger.debug("BlueprintIntelligence init failed: %s", exc)
         if self.visual_critic is None:
@@ -375,7 +406,9 @@ class AutonomousWorldDesigner:
         if "planner" in data:
             designer.planner = AutonomousPlanner.from_dict(data["planner"])
         if "decision_engine" in data:
-            designer.decision_engine = AutonomousDecisionEngine.from_dict(data["decision_engine"])
+            designer.decision_engine = AutonomousDecisionEngine.from_dict(
+                data["decision_engine"]
+            )
         if "optimizer" in data:
             designer.optimizer = AutonomousOptimizer.from_dict(data["optimizer"])
         if "goal_manager" in data:

@@ -18,11 +18,15 @@ class WorldValidator:
             errors.append("Necesita rutas que conecten ciudades y dungeons.")
 
         if len(cities) > 1 and len(roads) < len(cities) - 1:
-            errors.append("Debe haber rutas suficientes para conectar todas las ciudades.")
+            errors.append(
+                "Debe haber rutas suficientes para conectar todas las ciudades."
+            )
 
         for city in cities:
             if city.get("population", 0) < 100:
-                errors.append(f"La ciudad {city.get('name')} tiene población demasiado baja.")
+                errors.append(
+                    f"La ciudad {city.get('name')} tiene población demasiado baja."
+                )
 
         for dungeon in dungeons:
             if dungeon.get("difficulty") not in ["easy", "medium", "hard", "extreme"]:

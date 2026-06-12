@@ -23,7 +23,7 @@ from __future__ import annotations
 import io
 import struct
 import logging
-from typing import Any, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -79,7 +79,8 @@ class BinaryWriter:
         if len(encoded) > max_len:
             logger.warning(
                 "BinaryWriter.write_string truncating %d -> %d bytes",
-                len(encoded), max_len,
+                len(encoded),
+                max_len,
             )
             encoded = encoded[:max_len]
 
@@ -87,7 +88,9 @@ class BinaryWriter:
         buf.write(encoded)
         return 2 + len(encoded)
 
-    def write_signed_byte(self, buf: io.BytesIO, value: int, *, context: str = "i8") -> int:
+    def write_signed_byte(
+        self, buf: io.BytesIO, value: int, *, context: str = "i8"
+    ) -> int:
         """Write a signed int8 to ``buf``, clamping to [-128, 127]."""
         coerced = self._coerce(value, -128, 127, context)
         buf.write(struct.pack("<b", coerced))
@@ -114,9 +117,7 @@ class BinaryWriter:
             except (TypeError, ValueError):
                 raise ValueError(f"{context}: cannot convert {value!r} to int")
         if value < 0 or value > 255:
-            raise ValueError(
-                f"{context}: value {value} out of uint8 range [0, 255]"
-            )
+            raise ValueError(f"{context}: value {value} out of uint8 range [0, 255]")
         return int(value)
 
     @staticmethod
@@ -130,9 +131,7 @@ class BinaryWriter:
             except (TypeError, ValueError):
                 raise ValueError(f"{context}: cannot convert {value!r} to int")
         if value < 0 or value > 65535:
-            raise ValueError(
-                f"{context}: value {value} out of uint16 range [0, 65535]"
-            )
+            raise ValueError(f"{context}: value {value} out of uint16 range [0, 65535]")
         return int(value)
 
     @staticmethod
@@ -176,7 +175,11 @@ class BinaryWriter:
             clamped = max(lo, min(hi, iv))
             logger.warning(
                 "BinaryWriter: %s value %d out of [%d,%d], clamped to %d",
-                context, iv, lo, hi, clamped,
+                context,
+                iv,
+                lo,
+                hi,
+                clamped,
             )
             return clamped
         return iv

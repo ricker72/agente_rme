@@ -76,6 +76,7 @@ class MapQualityReport:
 
     def to_json(self) -> str:
         import json
+
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
 
@@ -106,7 +107,9 @@ class QualityDetector:
     # Public API
     # ------------------------------------------------------------------
 
-    def analyze(self, otbm_data: Dict[str, Any], map_name: str = "unknown") -> MapQualityReport:
+    def analyze(
+        self, otbm_data: Dict[str, Any], map_name: str = "unknown"
+    ) -> MapQualityReport:
         """
         Full quality analysis of an OTBM map.
 
@@ -237,7 +240,9 @@ class QualityDetector:
     # Zone classification
     # ------------------------------------------------------------------
 
-    def _classify_zones(self, zones: Dict[str, Any]) -> Dict[str, Tuple[Any, ZoneCategory]]:
+    def _classify_zones(
+        self, zones: Dict[str, Any]
+    ) -> Dict[str, Tuple[Any, ZoneCategory]]:
         """Classify each zone by its content patterns."""
         classified: Dict[str, Tuple[Any, ZoneCategory]] = {}
 
@@ -251,7 +256,13 @@ class QualityDetector:
             elif zone_type == "spawn_area":
                 # Check if it has boss-like spawns
                 monster_names = [m.get("name", "") for m in spawns]
-                if any("boss" in mn.lower() or "lord" in mn.lower() or "king" in mn.lower() or "queen" in mn.lower() for mn in monster_names):
+                if any(
+                    "boss" in mn.lower()
+                    or "lord" in mn.lower()
+                    or "king" in mn.lower()
+                    or "queen" in mn.lower()
+                    for mn in monster_names
+                ):
                     category = ZoneCategory.BOSS_ROOM
                 elif len(monster_names) >= 4:
                     category = ZoneCategory.HUNT
@@ -272,7 +283,9 @@ class QualityDetector:
     # Metrics computation
     # ------------------------------------------------------------------
 
-    def _compute_metrics(self, zone_data: Dict[str, Any], category: ZoneCategory) -> ZoneMetrics:
+    def _compute_metrics(
+        self, zone_data: Dict[str, Any], category: ZoneCategory
+    ) -> ZoneMetrics:
         """Compute raw metrics for a zone."""
         tiles = zone_data.get("tiles", [])
         spawns = zone_data.get("spawns", [])
@@ -342,7 +355,8 @@ class QualityDetector:
         nodes = 0
         for tx, ty in tile_set:
             neighbors = sum(
-                1 for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
+                1
+                for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
                 if (tx + dx, ty + dy) in tile_set
             )
             if neighbors >= 3:
@@ -357,7 +371,8 @@ class QualityDetector:
         dead_ends = 0
         for tx, ty in tile_set:
             neighbors = sum(
-                1 for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
+                1
+                for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
                 if (tx + dx, ty + dy) in tile_set
             )
             if neighbors == 1:
@@ -372,7 +387,8 @@ class QualityDetector:
         total_connections = 0
         for tx, ty in tile_set:
             neighbors = sum(
-                1 for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
+                1
+                for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
                 if (tx + dx, ty + dy) in tile_set
             )
             total_connections += neighbors
@@ -395,21 +411,33 @@ class QualityDetector:
         if metrics.tile_count == 0:
             return 0.0
         decor_per_100 = (metrics.decoration_count / metrics.tile_count) * 100
-        decor_score = min(100, (decor_per_100 / max(self.MIN_DECORATION_PER_100_TILES, 1)) * 100)
-        ground_score = min(100, (metrics.ground_variety / max(self.IDEAL_GROUND_VARIETY, 1)) * 100)
+        decor_score = min(
+            100, (decor_per_100 / max(self.MIN_DECORATION_PER_100_TILES, 1)) * 100
+        )
+        ground_score = min(
+            100, (metrics.ground_variety / max(self.IDEAL_GROUND_VARIETY, 1)) * 100
+        )
         return round((decor_score * 0.6 + ground_score * 0.4), 1)
 
-    def _compute_spawn_balance(self, metrics: ZoneMetrics, category: ZoneCategory) -> float:
+    def _compute_spawn_balance(
+        self, metrics: ZoneMetrics, category: ZoneCategory
+    ) -> float:
         """Score 0-100: spawn distribution quality."""
         if category in (ZoneCategory.CITY, ZoneCategory.TRANSITION, ZoneCategory.EMPTY):
             return 100.0  # N/A for non-hunt zones
         if metrics.spawn_count == 0:
             return 0.0
-        type_score = min(100, (metrics.monster_types / max(self.MIN_MONSTER_TYPES_PER_HUNT, 1)) * 100)
-        count_score = min(100, (metrics.spawn_count / max(self.MIN_SPAWNS_PER_HUNT_ZONE, 1)) * 100)
+        type_score = min(
+            100, (metrics.monster_types / max(self.MIN_MONSTER_TYPES_PER_HUNT, 1)) * 100
+        )
+        count_score = min(
+            100, (metrics.spawn_count / max(self.MIN_SPAWNS_PER_HUNT_ZONE, 1)) * 100
+        )
         return round((type_score * 0.5 + count_score * 0.5), 1)
 
-    def _compute_architecture_score(self, metrics: ZoneMetrics, category: ZoneCategory) -> float:
+    def _compute_architecture_score(
+        self, metrics: ZoneMetrics, category: ZoneCategory
+    ) -> float:
         """Score 0-100: structural integrity of the zone layout."""
         dead_end_penalty = max(0, metrics.dead_ends - self.MAX_DEAD_ENDS_PER_ZONE) * 5
         base = 70.0  # Default decent architecture
@@ -421,7 +449,9 @@ class QualityDetector:
     # Zone scoring
     # ------------------------------------------------------------------
 
-    def _score_zone(self, metrics: ZoneMetrics, category: ZoneCategory) -> Tuple[int, List[str], List[str]]:
+    def _score_zone(
+        self, metrics: ZoneMetrics, category: ZoneCategory
+    ) -> Tuple[int, List[str], List[str]]:
         """
         Compute a 0-100 score for a zone and generate issues/suggestions.
         Weights depend on zone category.
@@ -443,59 +473,119 @@ class QualityDetector:
     def _get_weights(self, category: ZoneCategory) -> Dict[str, float]:
         """Get scoring weights per dimension based on zone category."""
         base = {
-            "city": {"navigation": 0.25, "density": 0.20, "spawns": 0.05, "architecture": 0.25, "decoration": 0.25},
-            "hunt": {"navigation": 0.20, "density": 0.15, "spawns": 0.35, "architecture": 0.15, "decoration": 0.15},
-            "boss_room": {"navigation": 0.10, "density": 0.10, "spawns": 0.40, "architecture": 0.25, "decoration": 0.15},
-            "quest_zone": {"navigation": 0.25, "density": 0.15, "spawns": 0.20, "architecture": 0.25, "decoration": 0.15},
-            "cave": {"navigation": 0.30, "density": 0.20, "spawns": 0.25, "architecture": 0.15, "decoration": 0.10},
-            "wilderness": {"navigation": 0.20, "density": 0.20, "spawns": 0.25, "architecture": 0.15, "decoration": 0.20},
-            "transition": {"navigation": 0.40, "density": 0.20, "spawns": 0.05, "architecture": 0.20, "decoration": 0.15},
-            "empty": {"navigation": 0.30, "density": 0.25, "spawns": 0.05, "architecture": 0.20, "decoration": 0.20},
+            "city": {
+                "navigation": 0.25,
+                "density": 0.20,
+                "spawns": 0.05,
+                "architecture": 0.25,
+                "decoration": 0.25,
+            },
+            "hunt": {
+                "navigation": 0.20,
+                "density": 0.15,
+                "spawns": 0.35,
+                "architecture": 0.15,
+                "decoration": 0.15,
+            },
+            "boss_room": {
+                "navigation": 0.10,
+                "density": 0.10,
+                "spawns": 0.40,
+                "architecture": 0.25,
+                "decoration": 0.15,
+            },
+            "quest_zone": {
+                "navigation": 0.25,
+                "density": 0.15,
+                "spawns": 0.20,
+                "architecture": 0.25,
+                "decoration": 0.15,
+            },
+            "cave": {
+                "navigation": 0.30,
+                "density": 0.20,
+                "spawns": 0.25,
+                "architecture": 0.15,
+                "decoration": 0.10,
+            },
+            "wilderness": {
+                "navigation": 0.20,
+                "density": 0.20,
+                "spawns": 0.25,
+                "architecture": 0.15,
+                "decoration": 0.20,
+            },
+            "transition": {
+                "navigation": 0.40,
+                "density": 0.20,
+                "spawns": 0.05,
+                "architecture": 0.20,
+                "decoration": 0.15,
+            },
+            "empty": {
+                "navigation": 0.30,
+                "density": 0.25,
+                "spawns": 0.05,
+                "architecture": 0.20,
+                "decoration": 0.20,
+            },
         }
         return base.get(category.value, base["wilderness"])
 
-    def _generate_feedback(self, metrics: ZoneMetrics, category: ZoneCategory, scores: Dict[str, float]) -> Tuple[List[str], List[str]]:
+    def _generate_feedback(
+        self, metrics: ZoneMetrics, category: ZoneCategory, scores: Dict[str, float]
+    ) -> Tuple[List[str], List[str]]:
         """Generate human-readable issues and suggestions from metrics."""
         issues: List[str] = []
         suggestions: List[str] = []
 
         # Navigation
         if metrics.connectivity_score < 40:
-            issues.append(f"Baja conectividad ({metrics.connectivity_score:.0f}/100)")
-            suggestions.append("Añadir pasillos o puentes para mejorar la conectividad")
+            issues.append(f"Low connectivity ({metrics.connectivity_score:.0f}/100)")
+            suggestions.append("Add hallways or bridges to improve connectivity")
         if metrics.dead_ends > self.MAX_DEAD_ENDS_PER_ZONE:
-            issues.append(f"Demasiados callejones sin salida ({metrics.dead_ends})")
-            suggestions.append("Convertir callejones sin salida en pasillos conectados")
+            issues.append(f"Too many dead ends ({metrics.dead_ends})")
+            suggestions.append("Convert dead-end alleys into connected hallways")
 
         # Density
         if metrics.density_score < 50:
-            issues.append(f"Baja densidad de contenido ({metrics.density_score:.0f}/100)")
-            suggestions.append("Añadir más tiles transitables o contenido jugable")
+            issues.append(f"Low content density ({metrics.density_score:.0f}/100)")
+            suggestions.append("Add more walkable tiles or playable content")
         if metrics.density_score > 95:
-            issues.append(f"Densidad excesiva — mapa saturado")
-            suggestions.append("Abrir espacios; considerar expandir la zona")
+            issues.append("Excessive density — saturated map")
+            suggestions.append("Open up spaces; consider expanding the zone")
 
         # Spawns
         if category in (ZoneCategory.HUNT, ZoneCategory.CAVE, ZoneCategory.BOSS_ROOM):
             if metrics.monster_types < self.MIN_MONSTER_TYPES_PER_HUNT:
-                issues.append(f"Pocos tipos de monstruos ({metrics.monster_types})")
-                suggestions.append(f"Añadir al menos {self.MIN_MONSTER_TYPES_PER_HUNT - metrics.monster_types} tipo(s) de monstruo adicional(es)")
+                issues.append(f"Few monster types ({metrics.monster_types})")
+                suggestions.append(
+                    f"Add at least {self.MIN_MONSTER_TYPES_PER_HUNT - metrics.monster_types} additional monster type(s)"
+                )
             if metrics.spawn_count < self.MIN_SPAWNS_PER_HUNT_ZONE:
-                issues.append(f"Pocos spawns ({metrics.spawn_count})")
-                suggestions.append(f"Añadir al menos {self.MIN_SPAWNS_PER_HUNT_ZONE - metrics.spawn_count} spawn(s)")
+                issues.append(f"Few spawns ({metrics.spawn_count})")
+                suggestions.append(
+                    f"Add at least {self.MIN_SPAWNS_PER_HUNT_ZONE - metrics.spawn_count} more spawn(s)"
+                )
 
         # Decoration
         if metrics.decoration_score < 40:
-            issues.append(f"Decoración pobre ({metrics.decoration_score:.0f}/100)")
-            suggestions.append("Añadir más elementos decorativos: antorchas, estatuas, alfombras, etc.")
+            issues.append(f"Poor decoration ({metrics.decoration_score:.0f}/100)")
+            suggestions.append(
+                "Add more decorative elements: torches, statues, carpets, etc."
+            )
         if metrics.ground_variety < 3:
-            issues.append(f"Poca variedad de suelo ({metrics.ground_variety} tipos)")
-            suggestions.append("Variar los tiles de suelo para mejorar la estética")
+            issues.append(f"Low ground variety ({metrics.ground_variety} types)")
+            suggestions.append("Vary ground tiles to improve aesthetics")
 
         # Architecture
         if metrics.architecture_score < 50:
-            issues.append(f"Problemas arquitectónicos ({metrics.architecture_score:.0f}/100)")
-            suggestions.append("Revisar la estructura general: formas, transiciones y coherencia")
+            issues.append(
+                f"Architectural problems ({metrics.architecture_score:.0f}/100)"
+            )
+            suggestions.append(
+                "Review overall structure: shapes, transitions, and coherence"
+            )
 
         return issues, suggestions
 
@@ -503,10 +593,17 @@ class QualityDetector:
     # Overall scoring
     # ------------------------------------------------------------------
 
-    def _compute_overall(self, zone_reports: List[ZoneQualityReport], otbm_data: Dict[str, Any]) -> Dict[str, Any]:
+    def _compute_overall(
+        self, zone_reports: List[ZoneQualityReport], otbm_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Compute global score and cross-zone issues."""
         if not zone_reports:
-            return {"score": 0, "global_issues": ["Mapa vacío"], "global_suggestions": ["Crear contenido desde cero"], "summary": {}}
+            return {
+                "score": 0,
+                "global_issues": ["Empty map"],
+                "global_suggestions": ["Create content from scratch"],
+                "summary": {},
+            }
 
         avg_score = sum(r.score for r in zone_reports) / len(zone_reports)
 
@@ -514,38 +611,53 @@ class QualityDetector:
         global_suggestions: List[str] = []
 
         # Check for empty zones
-        empty_zones = [r.zone_name for r in zone_reports if r.category == ZoneCategory.EMPTY]
+        empty_zones = [
+            r.zone_name for r in zone_reports if r.category == ZoneCategory.EMPTY
+        ]
         if empty_zones:
-            global_issues.append(f"Zonas vacías detectadas: {', '.join(empty_zones)}")
-            global_suggestions.append("Rellenar zonas vacías con hunts, quests o decoración")
+            global_issues.append(f"Empty zones detected: {', '.join(empty_zones)}")
+            global_suggestions.append(
+                "Fill empty zones with hunts, quests, or decoration"
+            )
 
         # Check city presence
         has_city = any(r.category == ZoneCategory.CITY for r in zone_reports)
         if not has_city:
-            global_issues.append("No se detectó ninguna ciudad")
-            global_suggestions.append("Añadir al menos una ciudad con temple, depot y NPCs")
+            global_issues.append("No city detected")
+            global_suggestions.append(
+                "Add at least one city with temple, depot, and NPCs"
+            )
 
         # Check hunt balance
         hunt_zones = [r for r in zone_reports if r.category == ZoneCategory.HUNT]
         if hunt_zones:
             hunt_scores = [r.score for r in hunt_zones]
             if max(hunt_scores) - min(hunt_scores) > 40:
-                global_issues.append("Hunts desbalanceadas: gran diferencia de calidad entre zonas")
-                global_suggestions.append("Nivelar la calidad de las hunts para experiencia consistente")
+                global_issues.append(
+                    "Unbalanced hunts: large quality difference between zones"
+                )
+                global_suggestions.append(
+                    "Level hunt quality for a consistent experience"
+                )
 
         # Boss room check
         has_boss = any(r.category == ZoneCategory.BOSS_ROOM for r in zone_reports)
         if not has_boss and len(zone_reports) > 3:
-            global_suggestions.append("Considerar añadir una boss room para contenido end-game")
+            global_suggestions.append(
+                "Consider adding a boss room for end-game content"
+            )
 
         # Quest zone check
         has_quest = any(r.category == ZoneCategory.QUEST_ZONE for r in zone_reports)
         if not has_quest and len(zone_reports) > 3:
-            global_suggestions.append("Considerar añadir zonas de quest para progresión")
+            global_suggestions.append("Consider adding quest zones for progression")
 
         summary = {
             "total_zones": len(zone_reports),
-            "zone_categories": {cat.value: sum(1 for r in zone_reports if r.category.value == cat.value) for cat in ZoneCategory},
+            "zone_categories": {
+                cat.value: sum(1 for r in zone_reports if r.category.value == cat.value)
+                for cat in ZoneCategory
+            },
             "avg_zone_score": round(avg_score, 1),
             "min_zone_score": min(r.score for r in zone_reports),
             "max_zone_score": max(r.score for r in zone_reports),

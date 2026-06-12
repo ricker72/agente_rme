@@ -7,7 +7,7 @@ for reuse during generation.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Optional
 
 from .knowledge_index import KnowledgeIndex
 from .knowledge_ranker import KnowledgeRanker, RankerWeights
@@ -46,11 +46,13 @@ class KnowledgeRecommender:
         if indexer is None:
             return result
         # Use a richer search text that combines name + biome + signature
-        search_text = " ".join([
-            entry.name,
-            entry.biome or "",
-            entry.signature or "",
-        ]).strip()
+        search_text = " ".join(
+            [
+                entry.name,
+                entry.biome or "",
+                entry.signature or "",
+            ]
+        ).strip()
         scored = indexer.search(search_text, k=max(k + 5, 10))
         # Remove the entry itself
         candidates = [(e, s) for e, s in scored if e.id != entry.id]
@@ -60,15 +62,18 @@ class KnowledgeRecommender:
             target_max_level=target_max_level,
         )
         for e, sim, final in ranked[:k]:
-            result.add(QueryMatch(
-                entry=e, score=float(final),
-                match_type="similarity",
-                explanation=(
-                    f"similarity={sim:.2f}, quality={e.quality_score:.0f}, "
-                    f"critic={e.critic_score:.0f}, playtest={e.playtest_score:.0f}, "
-                    f"reuse={e.reuse_score:.0f}"
-                ),
-            ))
+            result.add(
+                QueryMatch(
+                    entry=e,
+                    score=float(final),
+                    match_type="similarity",
+                    explanation=(
+                        f"similarity={sim:.2f}, quality={e.quality_score:.0f}, "
+                        f"critic={e.critic_score:.0f}, playtest={e.playtest_score:.0f}, "
+                        f"reuse={e.reuse_score:.0f}"
+                    ),
+                )
+            )
         result.sort()
         return result
 
@@ -102,10 +107,13 @@ class KnowledgeRecommender:
         )
         new = KnowledgeQueryResult(query=query)
         for e, sim, final in ranked[:k]:
-            new.add(QueryMatch(
-                entry=e, score=float(final),
-                match_type="ranked",
-                explanation=f"final={final:.2f}, sim={sim:.2f}",
-            ))
+            new.add(
+                QueryMatch(
+                    entry=e,
+                    score=float(final),
+                    match_type="ranked",
+                    explanation=f"final={final:.2f}, sim={sim:.2f}",
+                )
+            )
         new.sort()
         return new

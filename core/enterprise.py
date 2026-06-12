@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 from .factory import ExpansionFactory
 from .playtest import LootSimulator
@@ -32,11 +32,15 @@ class OpenTibiaMapStudioEnterprise:
         output_path: Optional[str | Path] = None,
     ) -> Dict[str, object]:
         theme, level_range, map_size = self._parse_prompt(prompt)
-        output_dir = Path(output_path) if output_path else Path.cwd() / "enterprise_output"
+        output_dir = (
+            Path(output_path) if output_path else Path.cwd() / "enterprise_output"
+        )
         output_dir.mkdir(parents=True, exist_ok=True)
 
         try:
-            result = self.factory.create_expansion(theme, level_range, map_size, output_path=output_dir)
+            result = self.factory.create_expansion(
+                theme, level_range, map_size, output_path=output_dir
+            )
         except RuntimeError as exc:
             return {
                 "prompt": prompt,
@@ -51,7 +55,9 @@ class OpenTibiaMapStudioEnterprise:
         review = self.reviewer.review(world_model)
         playtest_report = self._run_playtest(world_model, theme, level_range)
         preview = self._build_preview(world_model)
-        documentation = self._build_documentation(prompt, theme, level_range, map_size, result, review, playtest_report)
+        documentation = self._build_documentation(
+            prompt, theme, level_range, map_size, result, review, playtest_report
+        )
         self._save_documentation(output_dir, documentation)
 
         return {
@@ -80,13 +86,18 @@ class OpenTibiaMapStudioEnterprise:
 
     def _extract_theme(self, prompt: str) -> str:
         prompt_lower = prompt.lower()
-        match = re.search(r"(issavi|roshamuul|hybrid|twilight|mythic|legendary|abyssal)", prompt_lower)
+        match = re.search(
+            r"(issavi|roshamuul|hybrid|twilight|mythic|legendary|abyssal)", prompt_lower
+        )
         if match:
             theme = match.group(1)
         else:
             plus_match = re.search(r"([a-z]+\s*\+\s*[a-z]+)", prompt_lower)
             theme = plus_match.group(1) if plus_match else "Mythic"
-        return " ".join(part.capitalize() for part in theme.replace(",", " ").replace("+", " ").split())
+        return " ".join(
+            part.capitalize()
+            for part in theme.replace(",", " ").replace("+", " ").split()
+        )
 
     def _extract_level_range(self, prompt: str) -> str:
         match = re.search(r"(\d{2,4})\s*[-–to]+\s*(\d{2,4})", prompt)
@@ -100,10 +111,14 @@ class OpenTibiaMapStudioEnterprise:
     def _extract_map_size(self, prompt: str) -> str:
         size = "Large"
         if re.search(r"\b(small|medium|large|epic|huge)\b", prompt.lower()):
-            size = re.search(r"\b(small|medium|large|epic|huge)\b", prompt.lower()).group(1)
+            size = re.search(
+                r"\b(small|medium|large|epic|huge)\b", prompt.lower()
+            ).group(1)
         return size.capitalize()
 
-    def _run_playtest(self, world_model: Any, theme: str, level_range: str) -> Dict[str, object]:
+    def _run_playtest(
+        self, world_model: Any, theme: str, level_range: str
+    ) -> Dict[str, object]:
         zones = getattr(world_model, "spawns", [])
         if not zones:
             return {"routes": [], "summary": "No spawn zones available for playtest."}
@@ -112,18 +127,24 @@ class OpenTibiaMapStudioEnterprise:
         zones_to_simulate = zones[:4]
         for zone in zones_to_simulate:
             monster_name = zone.get("monster") or zone.get("monster_pool", [""])[0]
-            route.add_zone(SpawnZone(
-                name=zone.get("zone", zone.get("name", "Unnamed Zone")),
-                monster_name=monster_name,
-                monster_count=zone.get("monster_count", 15),
-                monster_xp_each=zone.get("monster_xp", 180),
-                monster_damage_each=zone.get("monster_damage", 30),
-                monster_hp_each=zone.get("monster_hp", 120),
-                respawn_seconds=zone.get("respawn_seconds", 30.0),
-                travel_from_previous_seconds=zone.get("travel_time", 12.0),
-            ))
+            route.add_zone(
+                SpawnZone(
+                    name=zone.get("zone", zone.get("name", "Unnamed Zone")),
+                    monster_name=monster_name,
+                    monster_count=zone.get("monster_count", 15),
+                    monster_xp_each=zone.get("monster_xp", 180),
+                    monster_damage_each=zone.get("monster_damage", 30),
+                    monster_hp_each=zone.get("monster_hp", 120),
+                    respawn_seconds=zone.get("respawn_seconds", 30.0),
+                    travel_from_previous_seconds=zone.get("travel_time", 12.0),
+                )
+            )
 
-        result = route.run(player_dps=self._estimate_player_dps(level_range), cycles=2, loot_gp_per_kill=60)
+        result = route.run(
+            player_dps=self._estimate_player_dps(level_range),
+            cycles=2,
+            loot_gp_per_kill=60,
+        )
         return {
             "route_name": result.route_name,
             "viable": result.viable,
@@ -144,7 +165,9 @@ class OpenTibiaMapStudioEnterprise:
             "minimap": self.minimap_renderer.render(world_model),
             "biome_view": self.structure_renderer.render_biome_view(world_model),
             "spawn_heatmap": self.heatmap_renderer.render_spawn_heatmap(world_model),
-            "difficulty_heatmap": self.heatmap_renderer.render_difficulty_heatmap(world_model),
+            "difficulty_heatmap": self.heatmap_renderer.render_difficulty_heatmap(
+                world_model
+            ),
             "road_view": self.structure_renderer.render_road_view(world_model),
             "dungeon_view": self.structure_renderer.render_dungeon_view(world_model),
             "tile_layer": self.tile_renderer.render_layer(world_model),
@@ -174,25 +197,44 @@ class OpenTibiaMapStudioEnterprise:
                 "dungeons": len(world_plan.get("dungeons", [])),
                 "bosses": len(result["expansion"].get("bosses", [])),
                 "quests": len(result["expansion"].get("quests", [])),
-                "spawns": len(result["expansion"].get("hunts", [])) + len(result["expansion"].get("bosses", [])),
+                "spawns": len(result["expansion"].get("hunts", []))
+                + len(result["expansion"].get("bosses", [])),
             },
             "quality_score": review.get("score"),
             "quality_categories": review.get("categories"),
-            "qa_issues": review.get("accessibility_issues", []) + review.get("design_issues", []) + review.get("progression_issues", []),
+            "qa_issues": review.get("accessibility_issues", [])
+            + review.get("design_issues", [])
+            + review.get("progression_issues", []),
             "playtest_viable": playtest_report.get("viable"),
             "playtest_warnings": playtest_report.get("warnings", []),
             "release_files": {
                 "lua": "generated from world plan",
                 "otbm": result.get("otbm_path"),
                 "xml_templates": [
-                    str(Path(result.get("template_dir")) / f"{Path(result.get('otbm_path')).stem}.house.xml"),
-                    str(Path(result.get("template_dir")) / f"{Path(result.get('otbm_path')).stem}.monster.xml"),
-                    str(Path(result.get("template_dir")) / f"{Path(result.get('otbm_path')).stem}.npc.xml"),
-                    str(Path(result.get("template_dir")) / f"{Path(result.get('otbm_path')).stem}.zones.xml"),
+                    str(
+                        Path(result.get("template_dir"))
+                        / f"{Path(result.get('otbm_path')).stem}.house.xml"
+                    ),
+                    str(
+                        Path(result.get("template_dir"))
+                        / f"{Path(result.get('otbm_path')).stem}.monster.xml"
+                    ),
+                    str(
+                        Path(result.get("template_dir"))
+                        / f"{Path(result.get('otbm_path')).stem}.npc.xml"
+                    ),
+                    str(
+                        Path(result.get("template_dir"))
+                        / f"{Path(result.get('otbm_path')).stem}.zones.xml"
+                    ),
                 ],
             },
         }
 
-    def _save_documentation(self, output_dir: Path, documentation: Dict[str, object]) -> None:
+    def _save_documentation(
+        self, output_dir: Path, documentation: Dict[str, object]
+    ) -> None:
         report_file = output_dir / "enterprise_report.json"
-        report_file.write_text(json.dumps(documentation, indent=2, ensure_ascii=False), encoding="utf-8")
+        report_file.write_text(
+            json.dumps(documentation, indent=2, ensure_ascii=False), encoding="utf-8"
+        )

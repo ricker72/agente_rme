@@ -7,7 +7,9 @@ from typing import Any, Dict
 class BalanceAnalyzer:
     def analyze(self, world_model: Any) -> Dict[str, object]:
         spawns = getattr(world_model, "spawns", []) or []
-        monster_names = [spawn.get("monster") for spawn in spawns if spawn.get("monster")]
+        monster_names = [
+            spawn.get("monster") for spawn in spawns if spawn.get("monster")
+        ]
         frequency = Counter(monster_names)
         distinct = len(frequency)
         top_share = max(frequency.values(), default=0) / max(len(monster_names), 1)

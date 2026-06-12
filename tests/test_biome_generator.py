@@ -35,13 +35,14 @@ from core.procedural.biome_generator import (
     biome_generator_lua,
 )
 
-
 # =============================================================================
 # Test data
 # =============================================================================
 
+
 class FakeTheme:
     """A minimal stand-in for ThemeAssets for tests."""
+
     def __init__(self, name="issavi", biome="desert", **extras):
         self.name = name
         self.metadata = {"biome": biome}
@@ -52,6 +53,7 @@ class FakeTheme:
 # =============================================================================
 # Tests
 # =============================================================================
+
 
 def test_biome_palette_known_theme():
     """A known theme should return its palette."""
@@ -135,9 +137,7 @@ def test_biome_generator_different_seeds_differ():
     BiomeGenerator(seed=1).generate(w1, 0, 0, 19, 19, 7, "issavi")
     BiomeGenerator(seed=2).generate(w2, 0, 0, 19, 19, 7, "issavi")
     # Compare ground IDs - at least some should differ
-    diffs = sum(
-        1 for k in w1.tiles if w1.tiles[k].ground != w2.tiles.get(k).ground
-    )
+    diffs = sum(1 for k in w1.tiles if w1.tiles[k].ground != w2.tiles.get(k).ground)
     assert diffs > 0
     print("  [OK] test_biome_generator_different_seeds_differ")
 
@@ -157,7 +157,9 @@ def test_biome_generator_overwrite_when_asked():
     """With overwrite=True, the generator should replace existing tiles."""
     world = WorldModel()
     world.set_tile(Tile(x=5, y=5, z=7, ground=9999))
-    gen = BiomeGenerator(seed=42, )
+    gen = BiomeGenerator(
+        seed=42,
+    )
     gen.generate(world, 0, 0, 9, 9, 7, "issavi", overwrite=True)
     # The pre-existing tile should now have a biome ground
     new_ground = world.get_tile(5, 5, 7).ground
@@ -169,8 +171,7 @@ def test_biome_generator_uses_primary_tag():
     """Passing primary_tag should drive the surface choice."""
     world = WorldModel()
     gen = BiomeGenerator(seed=42)
-    gen.generate(world, 0, 0, 9, 9, 7, "issavi",
-                 primary_tag="sand", water_chance=0.0)
+    gen.generate(world, 0, 0, 9, 9, 7, "issavi", primary_tag="sand", water_chance=0.0)
     # We should have at least some sand tiles
     ground_ids = {t.ground for t in world.tiles.values()}
     palette = get_biome_palette("issavi")
@@ -183,8 +184,7 @@ def test_biome_generator_water_chance():
     """Increasing water_chance should produce water tiles."""
     world = WorldModel()
     gen = BiomeGenerator(seed=1)
-    gen.generate(world, 0, 0, 99, 99, 7, "issavi",
-                 water_chance=0.5)
+    gen.generate(world, 0, 0, 99, 99, 7, "issavi", water_chance=0.5)
     palette = get_biome_palette("issavi")
     water_set = set(palette["water"])
     water_tiles = sum(1 for t in world.tiles.values() if t.ground in water_set)
@@ -244,9 +244,21 @@ def test_module_level_generate_zone_biome():
 
 def test_biome_palettes_dict_has_all_themes():
     """BIOME_PALETTES should contain at least the standard themes."""
-    for name in ("generic", "issavi", "roshamuul", "soul_war",
-                 "library", "yalahar", "falcon", "cobra",
-                 "ice", "jungle", "thais", "venore", "ankrahmun"):
+    for name in (
+        "generic",
+        "issavi",
+        "roshamuul",
+        "soul_war",
+        "library",
+        "yalahar",
+        "falcon",
+        "cobra",
+        "ice",
+        "jungle",
+        "thais",
+        "venore",
+        "ankrahmun",
+    ):
         assert name in BIOME_PALETTES
         assert "grass" in BIOME_PALETTES[name]
         assert "water" in BIOME_PALETTES[name]
@@ -255,8 +267,17 @@ def test_biome_palettes_dict_has_all_themes():
 
 def test_biome_tag_by_theme_covers_known_biomes():
     """BIOME_TAG_BY_THEME should map every well-known biome."""
-    for biome in ("desert", "arctic", "tropical", "temperate",
-                  "nightmare", "nether", "arcane", "swamp", "mountain"):
+    for biome in (
+        "desert",
+        "arctic",
+        "tropical",
+        "temperate",
+        "nightmare",
+        "nether",
+        "arcane",
+        "swamp",
+        "mountain",
+    ):
         assert biome in BIOME_TAG_BY_THEME
     print("  [OK] test_biome_tag_by_theme_covers_known_biomes")
 
@@ -293,6 +314,7 @@ def test_biome_generator_threshold_alignment():
 # =============================================================================
 # Runner
 # =============================================================================
+
 
 def run_all():
     tests = [

@@ -1,0 +1,35 @@
+{
+  "product": "Agente RME",
+  "version": "1.0.1",
+  "build": "HOTFIX",
+  "branch": "hotfix/v1.0.1",
+  "base": "release/v1.0.0-ga",
+  "status": "STABLE",
+  "support_tier": "STANDARD",
+  "release_date": "2026-06-10T04:33:01.662426+00:00",
+  "criteria": {
+    "OTBM": "PASS",
+    "LUA": "PASS",
+    "CLI": "PASS",
+    "Memory & Performance": "PASS",
+    "Regression": "PASS",
+    "Security": "PASS"
+  },
+  "all_pass": true,
+  "health": "healthy",
+  "checks": {
+    "all_tests_pass": true,
+    "health_pass": true,
+    "regression_pass": true,
+    "security_pass": true,
+    "memory_pass": true,
+    "performance_pass": true,
+    "cli_pass": true,
+    "otbm_pass": true,
+    "lua_pass": true
+  },
+  "signoff": {
+    "release_manager": "Agente RME Release Engineering",
+    "qa": "Auto-cert pipeline (hotfix/v1.0.1)"
+  }
+}

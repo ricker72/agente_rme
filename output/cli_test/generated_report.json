@@ -15,7 +15,7 @@
     "spawns": 108,
     "houses": 0,
     "waypoints": 1,
-    "otbm_bytes": 25432,
+    "otbm_bytes": 25485,
     "validation": {
       "passed": true,
       "errors": [],
@@ -28,5 +28,5 @@
       "waypoints_xml": "output\\cli_test\\generated.waypoints.xml"
     }
   },
-  "generation_time": 0.21886968612670898
+  "generation_time": 0.20505499839782715
 }

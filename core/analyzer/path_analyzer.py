@@ -1,31 +1,31 @@
 """
-HITO 12 — Path Analyzer: analiza rutas, conectividad y distancias
-entre waypoints, spawns y puntos de interés en un mapa.
+HITO 12 — Path Analyzer: analyzes routes, connectivity and distances
+between waypoints, spawns and points of interest on a map.
 """
 
 from __future__ import annotations
 
 import math
 from collections import defaultdict
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 
 class PathAnalyzer:
-    """Analiza conectividad entre waypoints, spawns y houses."""
+    """Analyzes connectivity between waypoints, spawns and houses."""
 
     def analyze(
         self,
         waypoints: List[Dict[str, object]],
         spawns: List[Dict[str, object]],
     ) -> Dict[str, object]:
-        """Analiza rutas y conectividad del mapa.
+        """Analyze routes and map connectivity.
 
         Args:
-            waypoints: Lista de waypoints [{name, x, y, z}, ...].
-            spawns: Lista de spawns [{monster, x, y, z, radius}, ...].
+            waypoints: List of waypoints [{name, x, y, z}, ...].
+            spawns: List of spawns [{monster, x, y, z, radius}, ...].
 
         Returns:
-            Dict con análisis de rutas.
+            Dict with route analysis.
         """
         if not waypoints:
             return {
@@ -36,13 +36,13 @@ class PathAnalyzer:
                 "connectivity_summary": "No waypoints available",
             }
 
-        # Calcular distancias entre waypoints
+        # Calculate distances between waypoints
         wp_distances = self._compute_waypoint_distances(waypoints)
 
         # Calcular nearest waypoint for each spawn
         nearest = self._nearest_waypoint_for_spawns(waypoints, spawns)
 
-        # Construir grafo de conectividad
+        # Build connectivity graph
         graph = self._build_path_graph(waypoints, wp_distances)
 
         return {
@@ -59,19 +59,19 @@ class PathAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Cálculos de distancia
+    # Distance calculations
     # ------------------------------------------------------------------
 
     @staticmethod
     def _manhattan(a: Dict[str, object], b: Dict[str, object]) -> int:
-        """Calcula distancia Manhattan entre dos puntos."""
+        """Calculate Manhattan distance between two points."""
         return abs(int(a.get("x", 0)) - int(b.get("x", 0))) + abs(
             int(a.get("y", 0)) - int(b.get("y", 0))
         )
 
     @staticmethod
     def _euclidean(a: Dict[str, object], b: Dict[str, object]) -> float:
-        """Calcula distancia euclidiana entre dos puntos."""
+        """Calculate Euclidean distance between two points."""
         dx = int(a.get("x", 0)) - int(b.get("x", 0))
         dy = int(a.get("y", 0)) - int(b.get("y", 0))
         return math.sqrt(dx * dx + dy * dy)
@@ -81,29 +81,31 @@ class PathAnalyzer:
         return int(a.get("z", 0)) == int(b.get("z", 0))
 
     # ------------------------------------------------------------------
-    # Distancias entre waypoints
+    # Waypoint distances
     # ------------------------------------------------------------------
 
     def _compute_waypoint_distances(
         self, waypoints: List[Dict[str, object]]
     ) -> List[Dict[str, object]]:
-        """Calcula matriz de distancias entre todos los waypoints."""
+        """Calculate distance matrix between all waypoints."""
         distances = []
         n = len(waypoints)
         for i in range(n):
             for j in range(i + 1, n):
                 d = self._manhattan(waypoints[i], waypoints[j])
-                distances.append({
-                    "from": waypoints[i].get("name", f"wp_{i}"),
-                    "to": waypoints[j].get("name", f"wp_{j}"),
-                    "distance": d,
-                    "same_floor": self._same_floor(waypoints[i], waypoints[j]),
-                })
+                distances.append(
+                    {
+                        "from": waypoints[i].get("name", f"wp_{i}"),
+                        "to": waypoints[j].get("name", f"wp_{j}"),
+                        "distance": d,
+                        "same_floor": self._same_floor(waypoints[i], waypoints[j]),
+                    }
+                )
         distances.sort(key=lambda x: x["distance"])
         return distances
 
     # ------------------------------------------------------------------
-    # Nearest waypoint para spawns
+    # Nearest waypoint for spawns
     # ------------------------------------------------------------------
 
     def _nearest_waypoint_for_spawns(
@@ -111,7 +113,7 @@ class PathAnalyzer:
         waypoints: List[Dict[str, object]],
         spawns: List[Dict[str, object]],
     ) -> List[Dict[str, object]]:
-        """Encuentra el waypoint más cercano para cada spawn."""
+        """Find the nearest waypoint for each spawn."""
         if not spawns or not waypoints:
             return []
 
@@ -125,22 +127,24 @@ class PathAnalyzer:
                     best_dist = d
                     best_wp = wp
             if best_wp:
-                results.append({
-                    "spawn_monster": sp.get("monster", "unknown"),
-                    "spawn_x": sp.get("x", 0),
-                    "spawn_y": sp.get("y", 0),
-                    "waypoint": best_wp.get("name", ""),
-                    "waypoint_x": best_wp.get("x", 0),
-                    "waypoint_y": best_wp.get("y", 0),
-                    "distance": best_dist,
-                })
+                results.append(
+                    {
+                        "spawn_monster": sp.get("monster", "unknown"),
+                        "spawn_x": sp.get("x", 0),
+                        "spawn_y": sp.get("y", 0),
+                        "waypoint": best_wp.get("name", ""),
+                        "waypoint_x": best_wp.get("x", 0),
+                        "waypoint_y": best_wp.get("y", 0),
+                        "distance": best_dist,
+                    }
+                )
 
-        # Sort por distancia
+        # Sort by distance
         results.sort(key=lambda x: x["distance"])
         return results
 
     # ------------------------------------------------------------------
-    # Grafo de conectividad
+    # Connectivity graph
     # ------------------------------------------------------------------
 
     def _build_path_graph(
@@ -148,21 +152,23 @@ class PathAnalyzer:
         waypoints: List[Dict[str, object]],
         distances: List[Dict[str, object]],
     ) -> Dict[str, object]:
-        """Construye grafo de conectividad entre waypoints."""
+        """Build connectivity graph between waypoints."""
         nodes = []
         seen = set()
         for wp in waypoints:
             name = wp.get("name", "")
             if name and name not in seen:
                 seen.add(name)
-                nodes.append({
-                    "name": name,
-                    "x": wp.get("x", 0),
-                    "y": wp.get("y", 0),
-                    "z": wp.get("z", 0),
-                })
+                nodes.append(
+                    {
+                        "name": name,
+                        "x": wp.get("x", 0),
+                        "y": wp.get("y", 0),
+                        "z": wp.get("z", 0),
+                    }
+                )
 
-        # Edges: solo conexiones cercanas (top 5 por nodo)
+        # Edges: only close connections (top 5 per node)
         edges = []
         adjacency = defaultdict(list)
         for d in distances:
@@ -174,16 +180,18 @@ class PathAnalyzer:
             key = tuple(sorted([str(d["from"]), str(d["to"])]))
             if key not in edge_seen:
                 edge_seen.add(key)
-                edges.append({
-                    "from": d["from"],
-                    "to": d["to"],
-                    "distance": d["distance"],
-                })
+                edges.append(
+                    {
+                        "from": d["from"],
+                        "to": d["to"],
+                        "distance": d["distance"],
+                    }
+                )
 
         return {"nodes": nodes, "edges": edges}
 
     # ------------------------------------------------------------------
-    # Resúmenes
+    # Summaries
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -191,23 +199,19 @@ class PathAnalyzer:
         waypoints: List[Dict[str, object]],
         distances: List[Dict[str, object]],
     ) -> str:
-        """Genera resumen textual de conectividad."""
+        """Generate textual connectivity summary."""
         if not waypoints:
             return "No waypoints"
         if not distances:
             return f"{len(waypoints)} waypoints, no interconnections"
         avg_dist = sum(d["distance"] for d in distances) / len(distances)
-        return (
-            f"{len(waypoints)} waypoints, "
-            f"{len(distances)} connections, "
-            f"avg distance: {avg_dist:.0f}"
-        )
+        return f"{len(waypoints)} waypoints, {len(distances)} connections, avg distance: {avg_dist:.0f}"
 
     @staticmethod
     def _find_furthest_pair(
-        distances: List[Dict[str, object]]
+        distances: List[Dict[str, object]],
     ) -> Optional[Dict[str, object]]:
-        """Encuentra el par de waypoints más distantes."""
+        """Find the furthest pair of waypoints."""
         if not distances:
             return None
         furthest = max(distances, key=lambda x: x["distance"])
@@ -215,30 +219,30 @@ class PathAnalyzer:
 
     @staticmethod
     def _find_closest_pair(
-        distances: List[Dict[str, object]]
+        distances: List[Dict[str, object]],
     ) -> Optional[Dict[str, object]]:
-        """Encuentra el par de waypoints más cercanos."""
+        """Find the closest pair of waypoints."""
         if not distances:
             return None
         closest = min(distances, key=lambda x: x["distance"])
         return closest
 
     # ------------------------------------------------------------------
-    # Clustering simple de waypoints
+    # Simple waypoint clustering
     # ------------------------------------------------------------------
 
     @staticmethod
     def _cluster_waypoints(
         waypoints: List[Dict[str, object]], max_distance: int = 100
     ) -> List[Dict[str, object]]:
-        """Agrupa waypoints cercanos en clusters (simple greedy).
+        """Cluster nearby waypoints (simple greedy).
 
         Args:
-            waypoints: Lista de waypoints.
-            max_distance: Distancia máxima para agrupar.
+            waypoints: List of waypoints.
+            max_distance: Maximum distance for grouping.
 
         Returns:
-            Lista de clusters con sus miembros.
+            List of clusters with their members.
         """
         if not waypoints:
             return []
@@ -265,12 +269,14 @@ class PathAnalyzer:
             cx = sum(int(m.get("x", 0)) for m in cluster) // len(cluster)
             cy = sum(int(m.get("y", 0)) for m in cluster) // len(cluster)
 
-            clusters.append({
-                "cluster_id": cluster_id,
-                "center_x": cx,
-                "center_y": cy,
-                "size": len(cluster),
-                "members": [m.get("name", "?") for m in cluster[:10]],
-            })
+            clusters.append(
+                {
+                    "cluster_id": cluster_id,
+                    "center_x": cx,
+                    "center_y": cy,
+                    "size": len(cluster),
+                    "members": [m.get("name", "?") for m in cluster[:10]],
+                }
+            )
 
         return clusters

@@ -115,7 +115,9 @@ class BlueprintRegistry:
             List of Blueprint instances with matching category.
         """
         cat_lower = category.lower()
-        return [bp for bp in self._loader.list_all() if bp.category.lower() == cat_lower]
+        return [
+            bp for bp in self._loader.list_all() if bp.category.lower() == cat_lower
+        ]
 
     def search(self, keyword: str) -> List[Blueprint]:
         """
@@ -131,11 +133,13 @@ class BlueprintRegistry:
         kw = keyword.lower()
         results: List[Blueprint] = []
         for bp in self._loader.list_all():
-            if (kw in bp.name.lower()
-                    or kw in bp.theme.lower()
-                    or kw in bp.category.lower()
-                    or kw in bp.description.lower()
-                    or any(kw in tag.lower() for tag in bp.tags)):
+            if (
+                kw in bp.name.lower()
+                or kw in bp.theme.lower()
+                or kw in bp.category.lower()
+                or kw in bp.description.lower()
+                or any(kw in tag.lower() for tag in bp.tags)
+            ):
                 results.append(bp)
         return results
 

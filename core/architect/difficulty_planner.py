@@ -37,7 +37,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
-
 # =============================================================================
 # Difficulty curve definitions
 # =============================================================================
@@ -57,6 +56,7 @@ DENSITY_CURVE: Dict[str, str] = {
 # ZoneDifficulty — one window in a multi-zone progression
 # =============================================================================
 
+
 @dataclass
 class ZoneDifficulty:
     """
@@ -64,13 +64,14 @@ class ZoneDifficulty:
 
     Used to drive spawn density, monster selection, and reward scaling.
     """
+
     zone_index: int
-    zone_kind: str                # "city" | "dungeon" | "hunt" | "boss" | "quest"
+    zone_kind: str  # "city" | "dungeon" | "hunt" | "boss" | "quest"
     level_min: int
     level_max: int
-    band: str                     # "easy" | "medium" | ... | "legendary"
-    rank: int                     # 1..6
-    spawn_density: str            # "low" | "medium" | "high" | "extreme"
+    band: str  # "easy" | "medium" | ... | "legendary"
+    rank: int  # 1..6
+    spawn_density: str  # "low" | "medium" | "high" | "extreme"
     monster_pool: List[str] = field(default_factory=list)
     notes: List[str] = field(default_factory=list)
 
@@ -94,18 +95,19 @@ class ZoneDifficulty:
 # =============================================================================
 
 _BANDS: List[Dict[str, Any]] = [
-    {"label": "easy",       "min": 1,   "max": 50,   "rank": 1},
-    {"label": "medium",     "min": 50,  "max": 100,  "rank": 2},
-    {"label": "hard",       "min": 100, "max": 200,  "rank": 3},
-    {"label": "extreme",    "min": 200, "max": 300,  "rank": 4},
-    {"label": "epic",       "min": 300, "max": 500,  "rank": 5},
-    {"label": "legendary",  "min": 500, "max": 9999, "rank": 6},
+    {"label": "easy", "min": 1, "max": 50, "rank": 1},
+    {"label": "medium", "min": 50, "max": 100, "rank": 2},
+    {"label": "hard", "min": 100, "max": 200, "rank": 3},
+    {"label": "extreme", "min": 200, "max": 300, "rank": 4},
+    {"label": "epic", "min": 300, "max": 500, "rank": 5},
+    {"label": "legendary", "min": 500, "max": 9999, "rank": 6},
 ]
 
 
 # =============================================================================
 # DifficultyPlanner
 # =============================================================================
+
 
 class DifficultyPlanner:
     """
@@ -175,7 +177,10 @@ class DifficultyPlanner:
 
         # Compute each zone's level window
         windows = self._compute_windows(
-            zone_kinds, level_min, level_max, style,
+            zone_kinds,
+            level_min,
+            level_max,
+            style,
         )
 
         # For "spike" style, push the boss's level well above the rest
@@ -190,17 +195,19 @@ class DifficultyPlanner:
             density = DENSITY_CURVE.get(band, "medium")
             pool = self._slice_monster_pool(monsters, idx, len(zone_kinds))
             notes = self._notes_for(kind, band, style)
-            result.append(ZoneDifficulty(
-                zone_index=idx,
-                zone_kind=kind,
-                level_min=lo,
-                level_max=hi,
-                band=band,
-                rank=rank,
-                spawn_density=density,
-                monster_pool=pool,
-                notes=notes,
-            ))
+            result.append(
+                ZoneDifficulty(
+                    zone_index=idx,
+                    zone_kind=kind,
+                    level_min=lo,
+                    level_max=hi,
+                    band=band,
+                    rank=rank,
+                    spawn_density=density,
+                    monster_pool=pool,
+                    notes=notes,
+                )
+            )
 
         return result
 
@@ -213,7 +220,11 @@ class DifficultyPlanner:
     ) -> ZoneDifficulty:
         """Plan a single zone's difficulty (convenience helper)."""
         zones = self.plan_progression(
-            [zone_kind], level_min, level_max, theme_monsters, style="linear",
+            [zone_kind],
+            level_min,
+            level_max,
+            theme_monsters,
+            style="linear",
         )
         return zones[0]
 
@@ -272,10 +283,12 @@ class DifficultyPlanner:
             main_step = main_share / (n - 1)
             windows: List[Tuple[int, int]] = []
             for i in range(n - 1):
-                windows.append((
-                    int(level_min + i * main_step),
-                    int(level_min + (i + 1) * main_step),
-                ))
+                windows.append(
+                    (
+                        int(level_min + i * main_step),
+                        int(level_min + (i + 1) * main_step),
+                    )
+                )
             # Boss zone covers the rest
             windows.append((windows[-1][1] if windows else level_min, level_max))
             return windows

@@ -11,6 +11,7 @@ try:
 except ImportError:
     SentenceTransformer = None
 
+
 class Embedder:
     def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
         self.model_name = model_name
@@ -23,10 +24,14 @@ class Embedder:
 
     def encode(self, texts: List[str]) -> np.ndarray:
         if self.model is not None:
-            embeddings = self.model.encode(texts, convert_to_numpy=True, normalize_embeddings=True)
+            embeddings = self.model.encode(
+                texts, convert_to_numpy=True, normalize_embeddings=True
+            )
             return np.asarray(embeddings, dtype=np.float32)
 
-        logger.warning("Usando embedder de respaldo por texto hash. Instala sentence-transformers para mejores resultados.")
+        logger.warning(
+            "Usando embedder de respaldo por texto hash. Instala sentence-transformers para mejores resultados."
+        )
         vectors = []
         for text in texts:
             digest = hashlib.sha256(text.encode("utf-8")).digest()

@@ -13,7 +13,6 @@ for higher-level decoders to process.
 
 from __future__ import annotations
 
-import io
 import struct
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -27,12 +26,9 @@ from .node_encoder import (
     OTBM_NODE_TILE_SQUARE,
     OTBM_NODE_SPAWNS,
     OTBM_NODE_SPAWN_AREA,
-    OTBM_NODE_MONSTER,
     OTBM_NODE_TOWNS,
-    OTBM_NODE_TOWN,
     OTBM_NODE_HOUSETILE,
     OTBM_NODE_WAYPOINTS,
-    OTBM_NODE_WAYPOINT,
 )
 
 # OTBM magic bytes
@@ -41,7 +37,6 @@ OTBM_MAGIC = b"OTBM"
 
 class OtbmParseError(Exception):
     """Raised when OTBM binary data is malformed."""
-    pass
 
 
 class OtbmParser:
@@ -113,9 +108,7 @@ class OtbmParser:
     # Node parsing
     # ------------------------------------------------------------------
 
-    def _parse_node(
-        self, data: bytes, offset: int
-    ) -> Tuple[Dict[str, Any], int]:
+    def _parse_node(self, data: bytes, offset: int) -> Tuple[Dict[str, Any], int]:
         """
         Parse a single node from binary data at given offset.
 
@@ -193,8 +186,7 @@ class OtbmParser:
 
         if end_offset > len(data):
             raise OtbmParseError(
-                f"Node type 0x{node_type:02X} claims size {size} "
-                f"but only {len(data) - offset} bytes remain"
+                f"Node type 0x{node_type:02X} claims size {size} but only {len(data) - offset} bytes remain"
             )
 
         node_data = data[offset:end_offset]
@@ -293,7 +285,7 @@ class OtbmParser:
                 child = {
                     "type": OTBM_NODE_ITEM,
                     "size": item_size,
-                    "payload": data[idx + 3:idx + 3 + item_size],
+                    "payload": data[idx + 3 : idx + 3 + item_size],
                     "children": [],
                 }
                 children.append(child)
@@ -302,9 +294,7 @@ class OtbmParser:
                 offset = idx + 1
         return children
 
-    def _parse_map_data_children(
-        self, data: bytes
-    ) -> Tuple[List[Dict[str, Any]], int]:
+    def _parse_map_data_children(self, data: bytes) -> Tuple[List[Dict[str, Any]], int]:
         """
         Parse MAP_DATA payload which has mixed content:
             [desc_str][spawn_str][house_str][child_nodes...]
@@ -393,9 +383,7 @@ class OtbmParser:
         for child in node.get("children", []):
             if child.get("type") == target_type:
                 results.append(child)
-            results.extend(
-                OtbmParser.find_all_descendants_of_type(child, target_type)
-            )
+            results.extend(OtbmParser.find_all_descendants_of_type(child, target_type))
         return results
 
     # ------------------------------------------------------------------

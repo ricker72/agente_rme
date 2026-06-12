@@ -4,6 +4,7 @@ CriticResult — aggregated critic output for a map.
 
 from __future__ import annotations
 
+from datetime import timezone
 import datetime
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
@@ -45,9 +46,14 @@ class CriticCategoryResult:
     def from_dict(cls, data: Dict[str, Any]) -> "CriticCategoryResult":
         return cls(
             category=data.get("category", "general"),
-            score=CriticScore.from_dict(data.get("score", {"category": "general", "value": 0.0})),
+            score=CriticScore.from_dict(
+                data.get("score", {"category": "general", "value": 0.0})
+            ),
             issues=[CriticIssue.from_dict(i) for i in data.get("issues", [])],
-            recommendations=[CriticRecommendation.from_dict(r) for r in data.get("recommendations", [])],
+            recommendations=[
+                CriticRecommendation.from_dict(r)
+                for r in data.get("recommendations", [])
+            ],
             metrics=data.get("metrics", {}) or {},
         )
 
@@ -77,7 +83,7 @@ class CriticResult:
 
     def __post_init__(self) -> None:
         if not self.timestamp:
-            self.timestamp = datetime.datetime.utcnow().isoformat()
+            self.timestamp = datetime.datetime.now(timezone.utc).isoformat()
         # Clamp overall score
         try:
             v = float(self.overall_score)
@@ -163,7 +169,10 @@ class CriticResult:
             map_name=data.get("map_name", ""),
             scores=scores,
             issues=[CriticIssue.from_dict(i) for i in data.get("issues", [])],
-            recommendations=[CriticRecommendation.from_dict(r) for r in data.get("recommendations", [])],
+            recommendations=[
+                CriticRecommendation.from_dict(r)
+                for r in data.get("recommendations", [])
+            ],
             overall_score=data.get("overall_score", 0.0),
             timestamp=data.get("timestamp", ""),
             metadata=data.get("metadata", {}) or {},

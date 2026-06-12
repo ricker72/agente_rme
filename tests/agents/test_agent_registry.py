@@ -3,8 +3,8 @@ Tests for AgentRegistry and BaseAgent.
 """
 
 import pytest
-from agente_rme.core.agents import AgentRegistry, BaseAgent
-from agente_rme.core.agents.contracts import AgentRequest, AgentResponse
+from core.agents import AgentRegistry, BaseAgent
+from core.agents.contracts import AgentRequest, AgentResponse
 
 
 class TestBaseAgent:
@@ -15,6 +15,7 @@ class TestBaseAgent:
     def test_agent_id_custom(self):
         class CustomAgent(BaseAgent):
             AGENT_ID = "custom"
+
         agent = CustomAgent()
         assert agent.agent_id == "custom"
 
@@ -27,6 +28,7 @@ class TestBaseAgent:
     def test_repr(self):
         class CustomAgent(BaseAgent):
             AGENT_ID = "test_agent"
+
         agent = CustomAgent()
         assert "CustomAgent" in repr(agent)
         assert "test_agent" in repr(agent)

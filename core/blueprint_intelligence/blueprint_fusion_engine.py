@@ -82,9 +82,7 @@ class BlueprintFusionEngine:
     # ------------------------------------------------------------------
 
     @staticmethod
-    def _fuse_weighted(
-        a: Blueprint, b: Blueprint, ratio: float
-    ) -> Blueprint:
+    def _fuse_weighted(a: Blueprint, b: Blueprint, ratio: float) -> Blueprint:
         """Weighted fusion: blend tiles proportionally."""
         name = f"{a.name}_x_{b.name}"
         size = (
@@ -128,9 +126,7 @@ class BlueprintFusionEngine:
         return result
 
     @staticmethod
-    def _fuse_interleave(
-        a: Blueprint, b: Blueprint, ratio: float
-    ) -> Blueprint:
+    def _fuse_interleave(a: Blueprint, b: Blueprint, ratio: float) -> Blueprint:
         """Interleave: alternate rows/columns from each source."""
         result = Blueprint(
             name=f"{a.name}_x_{b.name}_interleave",
@@ -148,13 +144,16 @@ class BlueprintFusionEngine:
         tile_map_a = {(t.x, t.y): t for t in a.tiles}
         tile_map_b = {(t.x, t.y): t for t in b.tiles}
 
-        width = max(
-            max((t.x for t in a.tiles), default=0),
-            max((t.x for t in b.tiles), default=0),
-        ) + 1
+        (
+            max(
+                max((t.x for t in a.tiles), default=0),
+                max((t.x for t in b.tiles), default=0),
+            )
+            + 1
+        )
 
         for y in range(result.size[1]):
-            use_a = (y % 2 == 0)
+            use_a = y % 2 == 0
             tiles_source = tile_map_a if use_a else tile_map_b
             for x in range(result.size[0]):
                 key = (x, y)
@@ -167,9 +166,7 @@ class BlueprintFusionEngine:
         return result
 
     @staticmethod
-    def _fuse_blend(
-        a: Blueprint, b: Blueprint, ratio: float
-    ) -> Blueprint:
+    def _fuse_blend(a: Blueprint, b: Blueprint, ratio: float) -> Blueprint:
         """Blend: mix features at the tile level with randomness."""
         result = Blueprint(
             name=f"{a.name}_x_{b.name}_blend",
@@ -217,9 +214,7 @@ class BlueprintFusionEngine:
 # ------------------------------------------------------------------
 
 
-def _merge_list(
-    list_a: List[Any], list_b: List[Any], ratio: float
-) -> List[Any]:
+def _merge_list(list_a: List[Any], list_b: List[Any], ratio: float) -> List[Any]:
     """Merge two lists by taking ratio from a, (1-ratio) from b."""
     count_a = int(len(list_a) * ratio)
     count_b = int(len(list_b) * (1.0 - ratio))
@@ -228,9 +223,7 @@ def _merge_list(
     return merged
 
 
-def _interleave_list(
-    list_a: List[Any], list_b: List[Any]
-) -> List[Any]:
+def _interleave_list(list_a: List[Any], list_b: List[Any]) -> List[Any]:
     """Interleave two lists."""
     result: List[Any] = []
     max_len = max(len(list_a), len(list_b))

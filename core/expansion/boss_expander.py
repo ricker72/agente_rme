@@ -13,6 +13,7 @@ from core.world.structure import Structure
 @dataclass
 class BossExpansionResult:
     """Result of boss room expansion."""
+
     rooms_created: int = 0
     tiles_added: int = 0
     bosses_placed: int = 0
@@ -64,9 +65,9 @@ class BossExpander:
     ROOM_SIZE_MIN = 8
     ROOM_SIZE_MAX = 14
 
-    def expand(self, world: WorldModel,
-               max_rooms: int = 2,
-               difficulty: str = "medium") -> BossExpansionResult:
+    def expand(
+        self, world: WorldModel, max_rooms: int = 2, difficulty: str = "medium"
+    ) -> BossExpansionResult:
         """
         Create boss rooms adjacent to existing regions.
 
@@ -109,17 +110,20 @@ class BossExpander:
                 result.rooms_created += 1
                 result.tiles_added += tiles
                 result.bosses_placed += bosses
-                result.details.append({
-                    "position": f"{room_x},{room_y}",
-                    "size": room_size,
-                    "linked_region": region.name,
-                    "difficulty": difficulty,
-                })
+                result.details.append(
+                    {
+                        "position": f"{room_x},{room_y}",
+                        "size": room_size,
+                        "linked_region": region.name,
+                        "difficulty": difficulty,
+                    }
+                )
 
         return result
 
-    def _find_room_position(self, world: WorldModel,
-                            bounds: Dict[str, int]) -> Optional[Tuple[int, int]]:
+    def _find_room_position(
+        self, world: WorldModel, bounds: Dict[str, int]
+    ) -> Optional[Tuple[int, int]]:
         """Find a valid position for a boss room."""
         offset = 20
         candidates = [
@@ -148,11 +152,16 @@ class BossExpander:
         sizes = {"easy": self.ROOM_SIZE_MIN, "medium": 10, "hard": self.ROOM_SIZE_MAX}
         return sizes.get(difficulty, 10)
 
-    def _generate_boss_room(self, world: WorldModel,
-                            rx: int, ry: int, size: int,
-                            linked_region: Region,
-                            difficulty: str,
-                            index: int) -> Tuple[int, int]:
+    def _generate_boss_room(
+        self,
+        world: WorldModel,
+        rx: int,
+        ry: int,
+        size: int,
+        linked_region: Region,
+        difficulty: str,
+        index: int,
+    ) -> Tuple[int, int]:
         """
         Generate a boss room with walls and a boss spawn.
 
@@ -168,17 +177,14 @@ class BossExpander:
                 if world.has_tile(x, y, 7):
                     continue
 
-                is_wall = (
-                    x == rx or x == rx + size - 1 or
-                    y == ry or y == ry + size - 1
-                )
+                is_wall = x == rx or x == rx + size - 1 or y == ry or y == ry + size - 1
 
                 if is_wall:
-                    tile = Tile(x=x, y=y, z=7, ground=WALL_GROUND,
-                                zone=f"boss_{index}")
+                    tile = Tile(x=x, y=y, z=7, ground=WALL_GROUND, zone=f"boss_{index}")
                 else:
-                    tile = Tile(x=x, y=y, z=7, ground=FLOOR_GROUND,
-                                zone=f"boss_{index}")
+                    tile = Tile(
+                        x=x, y=y, z=7, ground=FLOOR_GROUND, zone=f"boss_{index}"
+                    )
 
                 world.set_tile(tile)
                 tiles_added += 1
@@ -191,8 +197,9 @@ class BossExpander:
 
         center_tile = world.get_tile(center_x, center_y, 7)
         if center_tile is None:
-            center_tile = Tile(x=center_x, y=center_y, z=7,
-                               ground=FLOOR_GROUND, zone=f"boss_{index}")
+            center_tile = Tile(
+                x=center_x, y=center_y, z=7, ground=FLOOR_GROUND, zone=f"boss_{index}"
+            )
             world.set_tile(center_tile)
             tiles_added += 1
 
@@ -219,8 +226,11 @@ class BossExpander:
         structure = Structure(
             name=f"boss_room_{index}",
             category="boss_room",
-            x=rx, y=ry, z=7,
-            width=size, height=size,
+            x=rx,
+            y=ry,
+            z=7,
+            width=size,
+            height=size,
             tile_count=tiles_added,
             tags=["boss", difficulty],
         )

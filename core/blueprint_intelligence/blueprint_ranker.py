@@ -7,8 +7,8 @@ Ranking based on:
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from dataclasses import dataclass
+from typing import Dict, List, Optional
 
 from core.blueprints.blueprint import Blueprint
 from .models.blueprint_embedding import BlueprintEmbedding
@@ -18,6 +18,7 @@ from .blueprint_embedding_engine import BlueprintEmbeddingEngine
 @dataclass
 class RankedBlueprint:
     """A blueprint with its ranking scores."""
+
     blueprint_name: str = ""
     critic_score: float = 0.0
     playtest_score: float = 0.0
@@ -109,16 +110,12 @@ class BlueprintRanker:
         )
 
     @staticmethod
-    def _score_critic(
-        bp: Blueprint, embedding: BlueprintEmbedding
-    ) -> float:
+    def _score_critic(bp: Blueprint, embedding: BlueprintEmbedding) -> float:
         """Critic score (0-100)."""
         return embedding.critic_score * 100.0
 
     @staticmethod
-    def _score_playtest(
-        bp: Blueprint, embedding: BlueprintEmbedding
-    ) -> float:
+    def _score_playtest(bp: Blueprint, embedding: BlueprintEmbedding) -> float:
         """Playtest score (0-100)."""
         return embedding.playtest_score * 100.0
 
@@ -138,9 +135,7 @@ class BlueprintRanker:
         return min(100.0, score)
 
     @staticmethod
-    def _score_knowledge(
-        bp: Blueprint, embedding: BlueprintEmbedding
-    ) -> float:
+    def _score_knowledge(bp: Blueprint, embedding: BlueprintEmbedding) -> float:
         """Knowledge contribution score."""
         score = 30.0
         score += embedding.tile_density * 20.0
@@ -151,9 +146,7 @@ class BlueprintRanker:
         return min(100.0, score)
 
     @staticmethod
-    def _score_complexity(
-        bp: Blueprint, embedding: BlueprintEmbedding
-    ) -> float:
+    def _score_complexity(bp: Blueprint, embedding: BlueprintEmbedding) -> float:
         """Complexity score based on structural features."""
         score = 20.0
         score += embedding.branch_factor * 20.0

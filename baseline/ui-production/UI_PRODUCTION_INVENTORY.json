@@ -1,0 +1,271 @@
+{
+  "counts": {
+    "adapters": 8,
+    "dtos": 7,
+    "events": 25,
+    "pages": 9,
+    "services": 13,
+    "test_support_files": 3,
+    "tests": 56,
+    "widgets": 42
+  },
+  "event_classes": [
+    {
+      "name": "BaseEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "ApplicationStartedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "ApplicationClosingEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "PageChangedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "ThemeChangedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "ConsoleMessageEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "StatusMessageEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "ServiceStateChangedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "WorldGenerationRequestedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "WorldGeneratedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "CriticAnalysisRequestedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "CriticCompletedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "KnowledgeQueryRequestedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "KnowledgeQueryCompletedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "KnowledgeQueryEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "CampaignGeneratedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "OTBMImportCompletedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "OTBMExportCompletedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "OTBMExportedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "AutonomousDesignStartedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "AutonomousIterationCompletedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "AutonomousDesignCompletedEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "AutonomousIterationEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "ServiceErrorEvent",
+      "path": "ui/event_bus.py"
+    },
+    {
+      "name": "EventBus",
+      "path": "ui/event_bus.py"
+    }
+  ],
+  "generated_at": "2026-06-12T06:42:35+00:00",
+  "paths": {
+    "adapters": [
+      "ui/adapters/_helpers.py",
+      "ui/adapters/autonomous_adapter.py",
+      "ui/adapters/campaign_adapter.py",
+      "ui/adapters/critic_adapter.py",
+      "ui/adapters/dashboard_adapter.py",
+      "ui/adapters/knowledge_adapter.py",
+      "ui/adapters/otbm_adapter.py",
+      "ui/adapters/world_adapter.py"
+    ],
+    "dtos": [
+      "ui/models/autonomous_dto.py",
+      "ui/models/campaign_dto.py",
+      "ui/models/critic_dto.py",
+      "ui/models/dashboard_dto.py",
+      "ui/models/knowledge_dto.py",
+      "ui/models/otbm_dto.py",
+      "ui/models/world_dto.py"
+    ],
+    "events": [
+      "ui/event_bus.py"
+    ],
+    "pages": [
+      "ui/pages/architect_page.py",
+      "ui/pages/autonomous_page.py",
+      "ui/pages/campaign_page.py",
+      "ui/pages/critic_page.py",
+      "ui/pages/dashboard_page.py",
+      "ui/pages/knowledge_page.py",
+      "ui/pages/otbm_page.py",
+      "ui/pages/settings_page.py",
+      "ui/pages/world_page.py"
+    ],
+    "services": [
+      "ui/services/autonomous_service.py",
+      "ui/services/base_service.py",
+      "ui/services/campaign_service.py",
+      "ui/services/critic_service.py",
+      "ui/services/dashboard_data_provider.py",
+      "ui/services/dashboard_service.py",
+      "ui/services/knowledge_service.py",
+      "ui/services/null_services.py",
+      "ui/services/otbm_service.py",
+      "ui/services/service_container.py",
+      "ui/services/service_exceptions.py",
+      "ui/services/service_registry.py",
+      "ui/services/world_service.py"
+    ],
+    "tests": [
+      "tests/ui/__init__.py",
+      "tests/ui/conftest.py",
+      "tests/ui/runtime_audit_support.py",
+      "tests/ui/test_app_container_coverage.py",
+      "tests/ui/test_autonomous_adapter.py",
+      "tests/ui/test_autonomous_chart_viewer.py",
+      "tests/ui/test_autonomous_constraints.py",
+      "tests/ui/test_autonomous_decision_feed.py",
+      "tests/ui/test_autonomous_goal_panel.py",
+      "tests/ui/test_autonomous_iterations.py",
+      "tests/ui/test_autonomous_metrics.py",
+      "tests/ui/test_autonomous_page.py",
+      "tests/ui/test_campaign_adapter.py",
+      "tests/ui/test_core_adapter_boundaries.py",
+      "tests/ui/test_critic_adapter.py",
+      "tests/ui/test_critic_heatmap_viewer.py",
+      "tests/ui/test_critic_issue_list.py",
+      "tests/ui/test_critic_page.py",
+      "tests/ui/test_critic_recommendations.py",
+      "tests/ui/test_critic_score_cards.py",
+      "tests/ui/test_dashboard_adapter.py",
+      "tests/ui/test_dashboard_page.py",
+      "tests/ui/test_dashboard_provider.py",
+      "tests/ui/test_dashboard_widget_coverage.py",
+      "tests/ui/test_generation_history.py",
+      "tests/ui/test_generation_metrics.py",
+      "tests/ui/test_generation_settings.py",
+      "tests/ui/test_knowledge_adapter.py",
+      "tests/ui/test_knowledge_metrics.py",
+      "tests/ui/test_knowledge_page.py",
+      "tests/ui/test_knowledge_results.py",
+      "tests/ui/test_knowledge_search.py",
+      "tests/ui/test_knowledge_similarity.py",
+      "tests/ui/test_main_window_navigation.py",
+      "tests/ui/test_metric_card.py",
+      "tests/ui/test_navigation.py",
+      "tests/ui/test_null_services.py",
+      "tests/ui/test_otbm_adapter.py",
+      "tests/ui/test_page_registry.py",
+      "tests/ui/test_placeholder_pages_coverage.py",
+      "tests/ui/test_recent_artifacts.py",
+      "tests/ui/test_runtime_events.py",
+      "tests/ui/test_runtime_navigation.py",
+      "tests/ui/test_runtime_shutdown.py",
+      "tests/ui/test_runtime_startup.py",
+      "tests/ui/test_runtime_threads.py",
+      "tests/ui/test_service_adapter_floor_coverage.py",
+      "tests/ui/test_service_container.py",
+      "tests/ui/test_service_contracts.py",
+      "tests/ui/test_service_events.py",
+      "tests/ui/test_service_registry.py",
+      "tests/ui/test_session_restore.py",
+      "tests/ui/test_shell_components.py",
+      "tests/ui/test_sidebar_navigation.py",
+      "tests/ui/test_system_health_widget.py",
+      "tests/ui/test_ui_infrastructure_coverage.py",
+      "tests/ui/test_world_adapter.py",
+      "tests/ui/test_world_page.py",
+      "tests/ui/test_world_preview.py"
+    ],
+    "widgets": [
+      "ui/widgets/autonomous_artifacts_widget.py",
+      "ui/widgets/autonomous_chart_viewer.py",
+      "ui/widgets/autonomous_constraints_panel.py",
+      "ui/widgets/autonomous_control_panel.py",
+      "ui/widgets/autonomous_decision_feed.py",
+      "ui/widgets/autonomous_goal_panel.py",
+      "ui/widgets/autonomous_iteration_table.py",
+      "ui/widgets/autonomous_metrics_widget.py",
+      "ui/widgets/autonomous_status_widget.py",
+      "ui/widgets/critic_analysis_panel.py",
+      "ui/widgets/critic_heatmap_viewer.py",
+      "ui/widgets/critic_issue_list.py",
+      "ui/widgets/critic_recommendation_list.py",
+      "ui/widgets/critic_report_summary.py",
+      "ui/widgets/critic_score_card.py",
+      "ui/widgets/critic_score_grid.py",
+      "ui/widgets/critic_world_selector.py",
+      "ui/widgets/generation_history_widget.py",
+      "ui/widgets/generation_metrics_widget.py",
+      "ui/widgets/generation_progress_widget.py",
+      "ui/widgets/generation_settings_panel.py",
+      "ui/widgets/generation_summary_widget.py",
+      "ui/widgets/health_widget.py",
+      "ui/widgets/knowledge_dataset_summary.py",
+      "ui/widgets/knowledge_entry_viewer.py",
+      "ui/widgets/knowledge_filters_widget.py",
+      "ui/widgets/knowledge_metrics_widget.py",
+      "ui/widgets/knowledge_recommendation_panel.py",
+      "ui/widgets/knowledge_results_table.py",
+      "ui/widgets/knowledge_search_panel.py",
+      "ui/widgets/knowledge_similarity_panel.py",
+      "ui/widgets/metric_card.py",
+      "ui/widgets/quick_action_card.py",
+      "ui/widgets/recent_activity_widget.py",
+      "ui/widgets/recent_artifacts_widget.py",
+      "ui/widgets/recent_projects_widget.py",
+      "ui/widgets/release_info_widget.py",
+      "ui/widgets/status_card.py",
+      "ui/widgets/system_health_widget.py",
+      "ui/widgets/system_status_widget.py",
+      "ui/widgets/world_preview_widget.py",
+      "ui/widgets/world_prompt_panel.py"
+    ]
+  },
+  "product": "Agente RME Studio UI"
+}

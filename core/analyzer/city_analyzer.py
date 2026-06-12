@@ -3,7 +3,9 @@ from typing import Dict, List
 
 
 class CityAnalyzer:
-    def detect_districts(self, rooms: List[dict], tiles: Dict[str, int]) -> Dict[str, object]:
+    def detect_districts(
+        self, rooms: List[dict], tiles: Dict[str, int]
+    ) -> Dict[str, object]:
         district_types = Counter()
         for room in rooms:
             name = room.get("name", "").lower()

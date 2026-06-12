@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 
-from core.architecture import ArchitectureAnalyzer, BlueprintGenerator, PatternLibrary
+from core.architecture import ArchitectureAnalyzer, BlueprintGenerator
 
 
 def main() -> None:
@@ -11,9 +11,13 @@ def main() -> None:
 
     if source_file.exists():
         learned = analyzer.learn_from_map(str(source_file))
-        print(f"Aprendido desde {source_file}: {json.dumps(learned, ensure_ascii=False, indent=2)}")
+        print(
+            f"Aprendido desde {source_file}: {json.dumps(learned, ensure_ascii=False, indent=2)}"
+        )
     else:
-        print("Ciudades.otbm no encontrado. Generando blueprints de ejemplo para Issavi.")
+        print(
+            "Ciudades.otbm no encontrado. Generando blueprints de ejemplo para Issavi."
+        )
         generator = BlueprintGenerator(analyzer.pattern_library)
         generator.create_blueprint(
             "issavi_temple",
@@ -38,7 +42,9 @@ def main() -> None:
     output_dir = Path("analysis/cities")
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / "ciudades_architecture_learning.json"
-    output_file.write_text(json.dumps(learned, ensure_ascii=False, indent=2), encoding="utf-8")
+    output_file.write_text(
+        json.dumps(learned, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     print(f"Guardado aprendizaje arquitectónico en {output_file}")
 
 

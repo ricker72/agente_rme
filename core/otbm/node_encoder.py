@@ -3,7 +3,7 @@ from __future__ import annotations
 import io
 import struct
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Optional
 
 from .binary_writer import BinaryWriter
 
@@ -31,25 +31,25 @@ OTBM_NODE_WAYPOINTS = 0x0C
 OTBM_NODE_WAYPOINT = 0x0D
 
 # Attribute types (used inside item nodes)
-ATTR_DESCRIPTION = 0x01       # string
-ATTR_EXT_HOUSE_FILE = 0x02    # string (deprecated extension style)
-ATTR_EXT_SPAWN_FILE = 0x03    # string (deprecated extension style)
-ATTR_TILE_FLAGS = 0x04        # uint32 (bitmask for PZ, protection, etc.)
-ATTR_ITEM = 0x05              # item id (uint16)
-ATTR_COUNT = 0x06             # uint8 (stack count or fluid type)
-ATTR_ACTION_ID = 0x07         # uint16
-ATTR_UNIQUE_ID = 0x08         # uint16
-ATTR_TEXT = 0x09              # string
-ATTR_DESC = 0x0A              # string (deprecated)
-ATTR_EXT_FILE = 0x0B          # string
-ATTR_DURATION = 0x0C          # uint32
-ATTR_DECAYING_STATE = 0x0D    # uint8 (0=false, 1=decaying, 2=decayed)
-ATTR_WRITTEN_DATE = 0x0E      # uint32
-ATTR_WRITTEN_BY = 0x0F        # string
-ATTR_SLEEPERGUID = 0x10       # uint32
-ATTR_SLEEPSTART = 0x11        # uint32
-ATTR_CHARGES = 0x12           # uint8
-ATTR_SUBTYPE = 0x13           # uint8 (alternative to COUNT for some items)
+ATTR_DESCRIPTION = 0x01  # string
+ATTR_EXT_HOUSE_FILE = 0x02  # string (deprecated extension style)
+ATTR_EXT_SPAWN_FILE = 0x03  # string (deprecated extension style)
+ATTR_TILE_FLAGS = 0x04  # uint32 (bitmask for PZ, protection, etc.)
+ATTR_ITEM = 0x05  # item id (uint16)
+ATTR_COUNT = 0x06  # uint8 (stack count or fluid type)
+ATTR_ACTION_ID = 0x07  # uint16
+ATTR_UNIQUE_ID = 0x08  # uint16
+ATTR_TEXT = 0x09  # string
+ATTR_DESC = 0x0A  # string (deprecated)
+ATTR_EXT_FILE = 0x0B  # string
+ATTR_DURATION = 0x0C  # uint32
+ATTR_DECAYING_STATE = 0x0D  # uint8 (0=false, 1=decaying, 2=decayed)
+ATTR_WRITTEN_DATE = 0x0E  # uint32
+ATTR_WRITTEN_BY = 0x0F  # string
+ATTR_SLEEPERGUID = 0x10  # uint32
+ATTR_SLEEPSTART = 0x11  # uint32
+ATTR_CHARGES = 0x12  # uint8
+ATTR_SUBTYPE = 0x13  # uint8 (alternative to COUNT for some items)
 
 # Tile flags (bitmask)
 TILESTATE_NONE = 0x0000
@@ -217,7 +217,9 @@ class NodeEncoder:
             self._bw.write_u8(buf, ATTR_DURATION, context="item.duration_attr")
             self._bw.write_u32(buf, duration, context="item.duration")
         if decaying_state is not None:
-            self._bw.write_u8(buf, ATTR_DECAYING_STATE, context="item.decaying_state_attr")
+            self._bw.write_u8(
+                buf, ATTR_DECAYING_STATE, context="item.decaying_state_attr"
+            )
             self._bw.write_u8(buf, decaying_state, context="item.decaying_state")
         buf.write(children)
         return self._wrap_node(OTBM_NODE_ITEM, buf.getvalue())
@@ -263,7 +265,9 @@ class NodeEncoder:
         """Build a MONSTER node (inside SPAWN_AREA)."""
         buf = io.BytesIO()
         self._bw.write_string(buf, name)
-        self._bw.write_u8(buf, direction, context="monster.direction")  # 0=N, 1=E, 2=S, 3=W
+        self._bw.write_u8(
+            buf, direction, context="monster.direction"
+        )  # 0=N, 1=E, 2=S, 3=W
         self._bw.write_u32(buf, spawntime, context="monster.spawntime")
         return self._wrap_node(OTBM_NODE_MONSTER, buf.getvalue())
 
@@ -369,7 +373,7 @@ class NodeEncoder:
     @staticmethod
     def read_string(data: bytes, offset: int) -> tuple:
         length, offset = struct.unpack_from("<H", data, offset)[0], offset + 2
-        text = data[offset: offset + length].decode("utf-8", errors="ignore")
+        text = data[offset : offset + length].decode("utf-8", errors="ignore")
         return text, offset + length
 
     @staticmethod

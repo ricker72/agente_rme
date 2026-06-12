@@ -20,7 +20,6 @@ def _ground_square(size: int = 10, z: int = 7, ground: int = 100) -> WorldModel:
 
 
 class NavigationAnalyzerTests(unittest.TestCase):
-
     def test_score_in_range(self):
         w = _ground_square(10)
         result = NavigationAnalyzer().analyze(w)

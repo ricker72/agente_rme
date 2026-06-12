@@ -6,6 +6,7 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class ProjectVersion:
     """Semantic versioning for Agente RME."""
+
     major: int
     minor: int
     patch: int = 0
@@ -49,7 +50,13 @@ class ProjectVersion:
         return ProjectVersion(major=self.major, minor=self.minor, patch=self.patch + 1)
 
     def to_dict(self) -> dict:
-        return {"major": self.major, "minor": self.minor, "patch": self.patch, "label": self.label, "string": str(self)}
+        return {
+            "major": self.major,
+            "minor": self.minor,
+            "patch": self.patch,
+            "label": self.label,
+            "string": str(self),
+        }
 
 
 __version__ = str(ProjectVersion.current())

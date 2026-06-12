@@ -3,6 +3,7 @@ Asset Validator — Verifica IDs de items contra el AssetRegistry.
 
 Usa AssetRegistry como fuente de verdad única.
 """
+
 import re
 from typing import List, Tuple
 
@@ -28,14 +29,14 @@ def validate_asset(lua_text: str) -> Tuple[bool, List[str]]:
     errors: List[str] = []
 
     # Check tile:addItem(N)
-    additem_pattern = re.compile(r'\w+:addItem\((\d+)\)')
+    additem_pattern = re.compile(r"\w+:addItem\((\d+)\)")
     for match in additem_pattern.finditer(lua_text):
         item_id = int(match.group(1))
         if not registry.item_exists(item_id):
             errors.append(f"Unknown ItemID {item_id} in tile:addItem()")
 
     # Check tile.ground = N
-    ground_pattern = re.compile(r'\w+\.ground\s*=\s*(\d+)')
+    ground_pattern = re.compile(r"\w+\.ground\s*=\s*(\d+)")
     for match in ground_pattern.finditer(lua_text):
         ground_id = int(match.group(1))
         if not registry.item_exists(ground_id):

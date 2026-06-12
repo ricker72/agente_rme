@@ -1,4 +1,5 @@
 """Smoke test for the knowledge subsystem."""
+
 import os
 import sys
 import json
@@ -7,8 +8,9 @@ import tempfile
 sys.path.insert(0, os.path.dirname(__file__))
 
 from core.knowledge import (
-    KnowledgeEngine, DatasetBuilder, build_metrics,
-    KnowledgeReport, KnowledgeCatalog, EntryType, parse_query,
+    KnowledgeEngine,
+    build_metrics,
+    parse_query,
 )
 
 
@@ -16,45 +18,96 @@ def main():
     src1 = {
         "meta": {"name": "roshamuul", "theme": "roshamuul"},
         "regions": [
-            {"name": "roshamuul_circular_hunt", "theme": "roshamuul",
-             "min_level": 280, "max_level": 380, "tags": ["circular", "soul_war"]},
-            {"name": "roshamuul_outer", "theme": "roshamuul",
-             "min_level": 250, "max_level": 350},
+            {
+                "name": "roshamuul_circular_hunt",
+                "theme": "roshamuul",
+                "min_level": 280,
+                "max_level": 380,
+                "tags": ["circular", "soul_war"],
+            },
+            {
+                "name": "roshamuul_outer",
+                "theme": "roshamuul",
+                "min_level": 250,
+                "max_level": 350,
+            },
         ],
-        "cities": [{"name": "Issavi", "theme": "issavi",
-                    "min_level": 250, "max_level": 450}],
-        "structures": [{"name": "roshamuul_boss_arena", "category": "boss_room",
-                        "theme": "roshamuul", "min_level": 300, "max_level": 500,
-                        "width": 30, "height": 30, "tags": ["boss", "circular", "arena"]}],
+        "cities": [
+            {"name": "Issavi", "theme": "issavi", "min_level": 250, "max_level": 450}
+        ],
+        "structures": [
+            {
+                "name": "roshamuul_boss_arena",
+                "category": "boss_room",
+                "theme": "roshamuul",
+                "min_level": 300,
+                "max_level": 500,
+                "width": 30,
+                "height": 30,
+                "tags": ["boss", "circular", "arena"],
+            }
+        ],
         "spawns": [
             {"monster": "Guzzlemaw", "zone": "roshamuul_circular_hunt", "level": 280},
             {"monster": "Hellflayer", "zone": "roshamuul_circular_hunt", "level": 320},
         ],
         "waypoints": [{"name": "roshamuul_tp", "theme": "roshamuul"}],
-        "quests": [{"name": "Soul War", "theme": "roshamuul", "min_level": 250,
-                    "max_level": 500, "difficulty": "hard", "style": "linear"}],
+        "quests": [
+            {
+                "name": "Soul War",
+                "theme": "roshamuul",
+                "min_level": 250,
+                "max_level": 500,
+                "difficulty": "hard",
+                "style": "linear",
+            }
+        ],
     }
     src2 = {
         "meta": {"name": "issavi", "theme": "issavi"},
         "regions": [
-            {"name": "issavi_sewers_hunt", "theme": "issavi",
-             "min_level": 250, "max_level": 400, "tags": ["sewer"]},
-            {"name": "issavi_desert_hunt", "theme": "issavi",
-             "min_level": 280, "max_level": 380},
+            {
+                "name": "issavi_sewers_hunt",
+                "theme": "issavi",
+                "min_level": 250,
+                "max_level": 400,
+                "tags": ["sewer"],
+            },
+            {
+                "name": "issavi_desert_hunt",
+                "theme": "issavi",
+                "min_level": 280,
+                "max_level": 380,
+            },
         ],
         "cities": [{"name": "Issavi_City_Center", "theme": "issavi"}],
         "spawns": [{"monster": "Scarab", "zone": "issavi_sewers_hunt", "level": 280}],
-        "quests": [{"name": "Issavi Main Quest", "theme": "issavi", "difficulty": "medium"}],
+        "quests": [
+            {"name": "Issavi Main Quest", "theme": "issavi", "difficulty": "medium"}
+        ],
     }
     src3 = {
         "meta": {"name": "soul_war", "theme": "roshamuul"},
         "regions": [
-            {"name": "soul_war_surface", "theme": "roshamuul",
-             "min_level": 250, "max_level": 500, "tags": ["soul_war", "circular"]},
+            {
+                "name": "soul_war_surface",
+                "theme": "roshamuul",
+                "min_level": 250,
+                "max_level": 500,
+                "tags": ["soul_war", "circular"],
+            },
         ],
-        "structures": [{"name": "soul_war_boss_arena", "category": "arena",
-                        "tags": ["boss", "circular"], "width": 40, "height": 40,
-                        "min_level": 250, "max_level": 500}],
+        "structures": [
+            {
+                "name": "soul_war_boss_arena",
+                "category": "arena",
+                "tags": ["boss", "circular"],
+                "width": 40,
+                "height": 40,
+                "min_level": 250,
+                "max_level": 500,
+            }
+        ],
         "raids": [{"name": "Ferumbras Raid", "theme": "generic", "min_level": 300}],
         "spawns": [{"monster": "Guzzlemaw", "zone": "soul_war_surface", "level": 320}],
     }
@@ -89,7 +142,13 @@ def main():
     print("Saved to:", out)
     print()
     parsed = parse_query("hunts with circular routes level 300-500")
-    print("Parsed query:", parsed.entry_type, parsed.min_level, parsed.max_level, parsed.attrs)
+    print(
+        "Parsed query:",
+        parsed.entry_type,
+        parsed.min_level,
+        parsed.max_level,
+        parsed.attrs,
+    )
     return 0
 
 

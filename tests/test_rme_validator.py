@@ -1,12 +1,9 @@
 import pytest
 
-from validators.rme_validator import (
-    validate,
-    RMEValidationError
-)
-
+from validators.rme_validator import validate, RMEValidationError
 
 # ---- Casos válidos ----
+
 
 def test_valid_getOrCreateTile():
     lua = """
@@ -73,6 +70,7 @@ def test_valid_full_script():
 
 
 # ---- Casos inválidos ----
+
 
 def test_invalid_Map_addItem():
     lua = """

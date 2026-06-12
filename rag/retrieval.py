@@ -3,6 +3,7 @@ from typing import List
 from .embeddings import Embedder
 from .vector_store import VectorStore
 
+
 class RagRetriever:
     def __init__(self):
         self.embedder = Embedder()

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class PlaytestReport:
     """Final playtest report output."""
+
     playable: bool
     difficulty: str
     xp_hour: float
@@ -112,22 +113,19 @@ class ReportGenerator:
         if xp_per_hour < self.MIN_XP_PER_HOUR:
             playable = False
             all_issues.append(
-                f"XP/hour too low ({xp_per_hour:.0f} < {self.MIN_XP_PER_HOUR}). "
-                "Players cannot progress."
+                f"XP/hour too low ({xp_per_hour:.0f} < {self.MIN_XP_PER_HOUR}). Players cannot progress."
             )
 
         if deaths > self.MAX_DEATHS_PER_HOUR:
             playable = False
             all_issues.append(
-                f"Too many deaths ({deaths} > {self.MAX_DEATHS_PER_HOUR}/hr). "
-                "Zone is unplayable."
+                f"Too many deaths ({deaths} > {self.MAX_DEATHS_PER_HOUR}/hr). Zone is unplayable."
             )
 
         if survival_rate < self.MIN_SURVIVAL_RATE:
             playable = False
             all_issues.append(
-                f"Survival rate too low ({survival_rate:.1%} < {self.MIN_SURVIVAL_RATE:.0%}). "
-                "Players will quit."
+                f"Survival rate too low ({survival_rate:.1%} < {self.MIN_SURVIVAL_RATE:.0%}). Players will quit."
             )
 
         if total_spawns == 0 and zone_count > 0:
@@ -146,6 +144,7 @@ class ReportGenerator:
         vocation_data = vocation_results or {}
 
         from datetime import timezone
+
         timestamp = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
         return PlaytestReport(

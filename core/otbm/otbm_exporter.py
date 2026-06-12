@@ -34,7 +34,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from .otbm_writer import WorldModelToOTBM
 from .otbm_serializer import OtbmSerializer
@@ -126,7 +126,6 @@ class OTBMExporter:
             templates = self._write_templates(world_model, path)
 
         # 5. Reporte de exportación
-        base_name = path.stem
         report: Dict[str, Any] = {
             "tiles": start_count["tiles"],
             "items": start_count["items"],
@@ -212,9 +211,7 @@ class OTBMExporter:
     # Helpers privados
     # ------------------------------------------------------------------
 
-    def _write_templates(
-        self, world_model: Any, otbm_path: Path
-    ) -> Dict[str, Path]:
+    def _write_templates(self, world_model: Any, otbm_path: Path) -> Dict[str, Path]:
         """Escribe archivos XML auxiliares junto al .otbm."""
         base = otbm_path.parent / otbm_path.stem
         templates = {}

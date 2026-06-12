@@ -12,7 +12,6 @@ Verifies:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -174,11 +173,15 @@ class TestLuaScriptContent:
         assert script.map_name == "MyMap"
 
     def test_lua_with_borderize(self):
-        world = WorldModel()
-        tile = Tile(x=0, y=0, z=7, ground=106)
+        WorldModel()
+        Tile(x=0, y=0, z=7, ground=106)
         # Add a marker that triggers borderized
         tile_dict = {
-            "x": 0, "y": 0, "z": 7, "ground": 106, "borderized": True,
+            "x": 0,
+            "y": 0,
+            "z": 7,
+            "ground": 106,
+            "borderized": True,
         }
         world_dict = {"tiles": [tile_dict], "base_x": 0, "base_y": 0, "base_z": 7}
         gen = LuaGenerator()
@@ -188,10 +191,15 @@ class TestLuaScriptContent:
 
     def test_lua_with_items(self):
         world = WorldModel()
-        world.set_tile(Tile(
-            x=0, y=0, z=7, ground=106,
-            items=[{"id": 2050}, {"id": 2016}],
-        ))
+        world.set_tile(
+            Tile(
+                x=0,
+                y=0,
+                z=7,
+                ground=106,
+                items=[{"id": 2050}, {"id": 2016}],
+            )
+        )
         gen = LuaGenerator()
         script = gen.generate(world)
         assert "addItem(2050)" in script.code
@@ -200,8 +208,12 @@ class TestLuaScriptContent:
 
     def test_lua_with_wall(self):
         tile_dict = {
-            "x": 0, "y": 0, "z": 7, "ground": 106,
-            "wall_id": 159, "tile_type": "wall",
+            "x": 0,
+            "y": 0,
+            "z": 7,
+            "ground": 106,
+            "wall_id": 159,
+            "tile_type": "wall",
         }
         world_dict = {"tiles": [tile_dict], "base_x": 0, "base_y": 0, "base_z": 7}
         gen = LuaGenerator()

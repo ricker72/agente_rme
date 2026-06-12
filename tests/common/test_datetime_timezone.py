@@ -11,8 +11,6 @@ Verifies:
 
 import os
 import sys
-import subprocess
-import re
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -23,47 +21,56 @@ class TestTimezoneAwareTimestamps:
     """Verify the agent dataclasses produce timezone-aware timestamps."""
 
     def test_multi_agent_result_timestamp_is_timezone_aware(self):
-        from agente_rme.core.agents.agent_result import MultiAgentResult
+        from core.agents.agent_result import MultiAgentResult
+
         r = MultiAgentResult()
         # Must be a string ending in +00:00 (timezone-aware)
         assert isinstance(r.completed_at, str)
-        assert r.completed_at.endswith("+00:00"), \
+        assert r.completed_at.endswith("+00:00"), (
             f"Missing +00:00 suffix: {r.completed_at}"
+        )
         # Must NOT contain the bare utcnow call
         assert "utcnow" not in r.completed_at.lower()
 
     def test_agent_response_timestamp_is_timezone_aware(self):
-        from agente_rme.core.agents.contracts.agent_response import AgentResponse
+        from core.agents.contracts.agent_response import AgentResponse
+
         ar = AgentResponse(agent_id="test")
-        assert ar.timestamp.endswith("+00:00"), \
-            f"Missing +00:00 suffix: {ar.timestamp}"
+        assert ar.timestamp.endswith("+00:00"), f"Missing +00:00 suffix: {ar.timestamp}"
         assert "utcnow" not in ar.timestamp.lower()
 
     def test_agent_task_timestamps_are_timezone_aware(self):
-        from agente_rme.core.agents.contracts.agent_task import AgentTask
+        from core.agents.contracts.agent_task import AgentTask
+
         at = AgentTask(agent_id="test")
-        assert at.created_at.endswith("+00:00"), \
+        assert at.created_at.endswith("+00:00"), (
             f"Missing +00:00 suffix: {at.created_at}"
+        )
         # Complete the task to populate completed_at
         at.status = "running"
-        from agente_rme.core.agents.contracts.agent_response import AgentResponse
+        from core.agents.contracts.agent_response import AgentResponse
+
         at.mark_completed(AgentResponse(agent_id="test", success=True))
-        assert at.completed_at.endswith("+00:00"), \
+        assert at.completed_at.endswith("+00:00"), (
             f"Missing +00:00 suffix: {at.completed_at}"
+        )
         assert "utcnow" not in at.created_at.lower()
         assert "utcnow" not in (at.completed_at or "").lower()
 
     def test_workflow_state_timestamps_are_timezone_aware(self):
-        from agente_rme.core.agents.contracts.workflow_state import WorkflowState
+        from core.agents.contracts.workflow_state import WorkflowState
+
         ws = WorkflowState()
         ws.start()
         assert ws.started_at is not None
-        assert ws.started_at.endswith("+00:00"), \
+        assert ws.started_at.endswith("+00:00"), (
             f"Missing +00:00 suffix: {ws.started_at}"
+        )
         ws.complete()
         assert ws.completed_at is not None
-        assert ws.completed_at.endswith("+00:00"), \
+        assert ws.completed_at.endswith("+00:00"), (
             f"Missing +00:00 suffix: {ws.completed_at}"
+        )
         assert "utcnow" not in ws.started_at.lower()
         assert "utcnow" not in ws.completed_at.lower()
 
@@ -81,6 +88,8 @@ class TestNoDatetimeUtcnowInSource:
         os.path.join("fix_utcnow.py"),
         os.path.join("test_utcnow.py"),
         os.path.join("validate_hito_26_1e.py"),
+        os.path.join("_quality_report.py"),
+        os.path.join("audit_dependency_consistency.py"),
     }
 
     def _walk_source_files(self):
@@ -112,11 +121,10 @@ class TestNoDatetimeUtcnowInSource:
                         if "utcnow" in line:
                             offenders.append((path, i, line.rstrip()))
             except Exception:
-                # Binary or unreadable — skip.
+                # Binary or unreadable â€” skip.
                 pass
-        assert not offenders, (
-            "datetime.utcnow() is still used in:\n"
-            + "\n".join(f"  {p}:{i}: {l}" for p, i, l in offenders)
+        assert not offenders, "datetime.utcnow() is still used in:\n" + "\n".join(
+            f"  {p}:{i}: {l}" for p, i, l in offenders  # noqa: E741
         )
 
 

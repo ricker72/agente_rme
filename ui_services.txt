@@ -1,0 +1,14 @@
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\autonomous_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\base_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\campaign_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\critic_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\dashboard_data_provider.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\dashboard_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\knowledge_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\null_services.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\otbm_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\service_container.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\service_exceptions.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\service_registry.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\world_service.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\services\__init__.py

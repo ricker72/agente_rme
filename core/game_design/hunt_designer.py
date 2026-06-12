@@ -4,7 +4,9 @@ from typing import Dict
 
 
 class HuntDesigner:
-    def design(self, recommended_level: str, theme: str, index: int) -> Dict[str, object]:
+    def design(
+        self, recommended_level: str, theme: str, index: int
+    ) -> Dict[str, object]:
         return {
             "name": f"{theme} Hunt {index}",
             "recommended_level": recommended_level,

@@ -1,6 +1,5 @@
 """Tests for BlueprintEvolutionEngine."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_evolution_engine import (
     BlueprintEvolutionEngine,
@@ -13,7 +12,9 @@ class TestBlueprintEvolutionEngine:
     def setup_method(self):
         self.engine = BlueprintEvolutionEngine(random_seed=42)
 
-    def _make_bp(self, name="test", category="hunt", tiles=None, zones=None, tags=None, raw=None):
+    def _make_bp(
+        self, name="test", category="hunt", tiles=None, zones=None, tags=None, raw=None
+    ):
         return Blueprint(
             name=name,
             category=category,
@@ -64,10 +65,13 @@ class TestBlueprintEvolutionEngine:
 
     def test_mutate_change_topology(self):
         """Test change_topology mutation."""
-        bp = self._make_bp("topo_test", zones=[
-            {"type": "zone", "connections": ["zone_a"]},
-            {"type": "zone", "connections": ["zone_b"]},
-        ])
+        bp = self._make_bp(
+            "topo_test",
+            zones=[
+                {"type": "zone", "connections": ["zone_a"]},
+                {"type": "zone", "connections": ["zone_b"]},
+            ],
+        )
         mutated = self.engine.mutate(bp, "change_topology")
         conns = mutated.zones[0].get("connections", [])
         assert len(conns) > 1
@@ -114,7 +118,9 @@ class TestBlueprintEvolutionEngine:
 
     def test_calc_complexity(self):
         """Test complexity calculation."""
-        bp = self._make_bp("complexity", tiles=[BlueprintTile(x=i, y=0, ground=100) for i in range(20)])
+        bp = self._make_bp(
+            "complexity", tiles=[BlueprintTile(x=i, y=0, ground=100) for i in range(20)]
+        )
         complexity = self.engine._calc_complexity(bp)
         assert 0.0 <= complexity <= 100.0
 

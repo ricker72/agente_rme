@@ -23,13 +23,12 @@ Usage:
 from __future__ import annotations
 
 import json
-import os
 import shutil
 import sys
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List
 
 from .logger import _utc_iso
 
@@ -78,6 +77,7 @@ class HealthReport:
 
 # ── Individual check functions ──────────────────────────────────────────────
 
+
 def _check_system() -> CheckResult:
     details: Dict[str, Any] = {}
     status = HealthStatus.HEALTHY
@@ -87,6 +87,7 @@ def _check_system() -> CheckResult:
         details["platform"] = sys.platform
         try:
             import psutil  # type: ignore
+
             vm = psutil.virtual_memory()
             details["cpu_count"] = psutil.cpu_count()
             details["memory_total_mb"] = round(vm.total / (1024 * 1024), 2)
@@ -111,8 +112,12 @@ def _check_system() -> CheckResult:
         status = HealthStatus.UNHEALTHY
         msg = f"system check failed: {e}"
     return CheckResult(
-        name="system", category="system", status=status,
-        message=msg, details=details, timestamp=_utc_iso(),
+        name="system",
+        category="system",
+        status=status,
+        message=msg,
+        details=details,
+        timestamp=_utc_iso(),
     )
 
 
@@ -120,13 +125,19 @@ def _check_module(name: str, import_path: str) -> CheckResult:
     try:
         __import__(import_path)
         return CheckResult(
-            name=name, category="module", status=HealthStatus.HEALTHY,
-            message=f"import ok: {import_path}", timestamp=_utc_iso(),
+            name=name,
+            category="module",
+            status=HealthStatus.HEALTHY,
+            message=f"import ok: {import_path}",
+            timestamp=_utc_iso(),
         )
     except Exception as e:
         return CheckResult(
-            name=name, category="module", status=HealthStatus.DEGRADED,
-            message=f"import failed: {e}", timestamp=_utc_iso(),
+            name=name,
+            category="module",
+            status=HealthStatus.DEGRADED,
+            message=f"import failed: {e}",
+            timestamp=_utc_iso(),
         )
 
 
@@ -161,25 +172,42 @@ def _check_blueprint_intelligence() -> CheckResult:
 def _check_pipeline() -> CheckResult:
     try:
         from core.generators import WorldGenerator
+
         gen = WorldGenerator(seed=42)
-        world = gen.generate({"type": "hunt", "theme": "issavi",
-                              "level_min": 250, "level_max": 320,
-                              "width": 8, "height": 8})
+        world = gen.generate(
+            {
+                "type": "hunt",
+                "theme": "issavi",
+                "level_min": 250,
+                "level_max": 320,
+                "width": 8,
+                "height": 8,
+            }
+        )
         tiles = world.tile_count() if hasattr(world, "tile_count") else 0
         if tiles == 0:
             return CheckResult(
-                name="pipeline", category="pipeline", status=HealthStatus.UNHEALTHY,
-                message="pipeline produced empty world", timestamp=_utc_iso(),
+                name="pipeline",
+                category="pipeline",
+                status=HealthStatus.UNHEALTHY,
+                message="pipeline produced empty world",
+                timestamp=_utc_iso(),
             )
         return CheckResult(
-            name="pipeline", category="pipeline", status=HealthStatus.HEALTHY,
-            message=f"pipeline ok ({tiles} tiles)", details={"tiles": tiles},
+            name="pipeline",
+            category="pipeline",
+            status=HealthStatus.HEALTHY,
+            message=f"pipeline ok ({tiles} tiles)",
+            details={"tiles": tiles},
             timestamp=_utc_iso(),
         )
     except Exception as e:
         return CheckResult(
-            name="pipeline", category="pipeline", status=HealthStatus.UNHEALTHY,
-            message=f"pipeline failed: {e}", timestamp=_utc_iso(),
+            name="pipeline",
+            category="pipeline",
+            status=HealthStatus.UNHEALTHY,
+            message=f"pipeline failed: {e}",
+            timestamp=_utc_iso(),
         )
 
 
@@ -197,20 +225,28 @@ def _check_knowledge() -> CheckResult:
                 entries = data.get("entries", []) if isinstance(data, dict) else data
                 count = len(entries) if isinstance(entries, list) else 0
                 return CheckResult(
-                    name="knowledge", category="knowledge", status=HealthStatus.HEALTHY,
+                    name="knowledge",
+                    category="knowledge",
+                    status=HealthStatus.HEALTHY,
                     message=f"dataset ok ({count} entries)",
                     details={"path": str(p), "entries": count},
                     timestamp=_utc_iso(),
                 )
             except Exception as e:
                 return CheckResult(
-                    name="knowledge", category="knowledge", status=HealthStatus.DEGRADED,
+                    name="knowledge",
+                    category="knowledge",
+                    status=HealthStatus.DEGRADED,
                     message=f"dataset unreadable: {e}",
-                    details={"path": str(p)}, timestamp=_utc_iso(),
+                    details={"path": str(p)},
+                    timestamp=_utc_iso(),
                 )
     return CheckResult(
-        name="knowledge", category="knowledge", status=HealthStatus.DEGRADED,
-        message="no knowledge dataset found", timestamp=_utc_iso(),
+        name="knowledge",
+        category="knowledge",
+        status=HealthStatus.DEGRADED,
+        message="no knowledge dataset found",
+        timestamp=_utc_iso(),
     )
 
 
@@ -226,20 +262,25 @@ def _check_blueprints() -> CheckResult:
             found += sum(1 for _ in d.glob("*.json"))
     if found == 0:
         return CheckResult(
-            name="blueprints", category="blueprint",
+            name="blueprints",
+            category="blueprint",
             status=HealthStatus.DEGRADED,
             message="no blueprints found",
             details={"checked": [str(c) for c in candidates]},
             timestamp=_utc_iso(),
         )
     return CheckResult(
-        name="blueprints", category="blueprint", status=HealthStatus.HEALTHY,
+        name="blueprints",
+        category="blueprint",
+        status=HealthStatus.HEALTHY,
         message=f"{found} blueprint file(s) present",
-        details={"count": found}, timestamp=_utc_iso(),
+        details={"count": found},
+        timestamp=_utc_iso(),
     )
 
 
 # ── Aggregator ──────────────────────────────────────────────────────────────
+
 
 class HealthChecker:
     """Aggregator for health checks."""
@@ -266,13 +307,15 @@ class HealthChecker:
             try:
                 results.append(c())
             except Exception as e:
-                results.append(CheckResult(
-                    name=getattr(c, "__name__", "check"),
-                    category="unknown",
-                    status=HealthStatus.UNHEALTHY,
-                    message=f"check raised: {e}",
-                    timestamp=_utc_iso(),
-                ))
+                results.append(
+                    CheckResult(
+                        name=getattr(c, "__name__", "check"),
+                        category="unknown",
+                        status=HealthStatus.UNHEALTHY,
+                        message=f"check raised: {e}",
+                        timestamp=_utc_iso(),
+                    )
+                )
         summary = {"healthy": 0, "degraded": 0, "unhealthy": 0}
         for r in results:
             summary[r.status.value] += 1

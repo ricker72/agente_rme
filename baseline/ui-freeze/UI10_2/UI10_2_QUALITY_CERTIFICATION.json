@@ -1,0 +1,120 @@
+{
+  "audit": "UI-10.2 \u2014 Quality Certification",
+  "branch": "release/ui-v1",
+  "final_status": "UI-10.2 QUALITY AUDIT NOT CERTIFIED",
+  "certified": false,
+  "coverage_exception": false,
+  "checks": {
+    "ruff": {
+      "status": "PASS",
+      "issues": 0
+    },
+    "flake8": {
+      "status": "PASS",
+      "issues": 0
+    },
+    "mypy": {
+      "status": "PASS",
+      "issues": 0
+    },
+    "pytest": {
+      "status": "PASS",
+      "total": 208,
+      "passed": 208,
+      "failed": 0
+    },
+    "import_boundary": {
+      "status": "PASS",
+      "violations": 0
+    },
+    "pytest_warnings": {
+      "status": "PASS",
+      "warnings": 0
+    },
+    "coverage": {
+      "status": "FAIL",
+      "overall": 78.6,
+      "target": 90
+    }
+  },
+  "blockers": [
+    {
+      "file": "ui/dashboard_data_provider.py",
+      "coverage": 0.0
+    },
+    {
+      "file": "ui/plugins/__init__.py",
+      "coverage": 0.0
+    },
+    {
+      "file": "ui/widgets/status_card.py",
+      "coverage": 0.0
+    },
+    {
+      "file": "ui/titlebar.py",
+      "coverage": 24.7
+    },
+    {
+      "file": "ui/widgets/release_info_widget.py",
+      "coverage": 28.6
+    },
+    {
+      "file": "ui/main_window.py",
+      "coverage": 28.7
+    },
+    {
+      "file": "ui/widgets/system_status_widget.py",
+      "coverage": 28.9
+    },
+    {
+      "file": "ui/widgets/health_widget.py",
+      "coverage": 30.0
+    },
+    {
+      "file": "ui/widgets/recent_activity_widget.py",
+      "coverage": 30.4
+    },
+    {
+      "file": "ui/sidebar.py",
+      "coverage": 33.3
+    },
+    {
+      "file": "ui/statusbar.py",
+      "coverage": 39.5
+    },
+    {
+      "file": "ui/console.py",
+      "coverage": 41.0
+    },
+    {
+      "file": "ui/pages/architect_page.py",
+      "coverage": 47.1
+    },
+    {
+      "file": "ui/pages/campaign_page.py",
+      "coverage": 47.1
+    },
+    {
+      "file": "ui/pages/otbm_page.py",
+      "coverage": 47.1
+    },
+    {
+      "file": "ui/pages/settings_page.py",
+      "coverage": 47.1
+    },
+    {
+      "file": "ui/app.py",
+      "coverage": 52.8
+    },
+    {
+      "file": "ui/pages/dashboard_page.py",
+      "coverage": 65.9
+    }
+  ],
+  "risks": [
+    "Overall coverage is 78.6% (target: 90%)",
+    "18 files below 70% coverage threshold",
+    "Infrastructure and shell components remain untested"
+  ],
+  "timestamp": "2026-06-11T22:00:00-06:00"
+}

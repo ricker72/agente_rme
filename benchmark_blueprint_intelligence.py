@@ -10,7 +10,6 @@ Processes 500+ blueprints and validates:
   - No exceptions
 """
 
-import json
 import os
 import sys
 import time
@@ -20,8 +19,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
-from core.blueprint_intelligence.blueprint_intelligence_engine import (
+from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata  # noqa: E402
+from core.blueprint_intelligence.blueprint_intelligence_engine import (  # noqa: E402
     BlueprintIntelligenceEngine,
 )
 
@@ -30,14 +29,25 @@ def _generate_blueprints(count: int) -> list:
     """Generate test blueprints."""
     bps = []
     categories = ["hunt", "city", "boss_room", "dungeon", "raid"]
-    themes = ["roshamuul", "soul_war", "issavi", "falcon", "ferumbras",
-              "library", "asylum", "catacomb", "ice", "fire"]
+    themes = [
+        "roshamuul",
+        "soul_war",
+        "issavi",
+        "falcon",
+        "ferumbras",
+        "library",
+        "asylum",
+        "catacomb",
+        "ice",
+        "fire",
+    ]
 
     for i in range(count):
         cat = categories[i % len(categories)]
         theme = themes[i % len(themes)]
-        tiles = [BlueprintTile(x=x, y=y, ground=100)
-                 for x in range(5) for y in range(5)]
+        tiles = [
+            BlueprintTile(x=x, y=y, ground=100) for x in range(5) for y in range(5)
+        ]
         bp = Blueprint(
             name=f"bench_bp_{i}",
             category=cat,
@@ -45,7 +55,10 @@ def _generate_blueprints(count: int) -> list:
             size=(10, 10),
             tiles=tiles,
             metadata=BlueprintMetadata(tags=[cat, theme, f"benchmark_{i}"]),
-            _raw={"critic_score": float(i % 100), "playtest_score": float((i * 7) % 100)},
+            _raw={
+                "critic_score": float(i % 100),
+                "playtest_score": float((i * 7) % 100),
+            },
             zones=[{"type": "zone", "name": f"zone_{i}"}],
         )
         bps.append(bp)
@@ -72,7 +85,7 @@ def run_benchmark():
     t0 = time.time()
     embeddings = engine.build_embeddings()
     t1 = time.time()
-    print(f"   Generated {len(embeddings)} embeddings in {t1-t0:.2f}s")
+    print(f"   Generated {len(embeddings)} embeddings in {t1 - t0:.2f}s")
     assert len(embeddings) == 500, f"Expected 500 embeddings, got {len(embeddings)}"
 
     # 2. Similarity
@@ -81,14 +94,14 @@ def run_benchmark():
     t0 = time.time()
     similar = engine.find_similar(target, top_k=10)
     t1 = time.time()
-    print(f"   Found {len(similar)} similar in {t1-t0:.2f}s")
+    print(f"   Found {len(similar)} similar in {t1 - t0:.2f}s")
 
     # 3. Fusion
     print("\n3. Blueprint Fusion...")
     t0 = time.time()
     hybrid = engine.fuse(blueprints[0], blueprints[1], ratio=0.7)
     t1 = time.time()
-    print(f"   Fusion result: {hybrid.name} in {t1-t0:.2f}s")
+    print(f"   Fusion result: {hybrid.name} in {t1 - t0:.2f}s")
     assert hybrid.is_valid, "Fusion should produce valid blueprint"
 
     # 4. Evolution
@@ -96,7 +109,9 @@ def run_benchmark():
     t0 = time.time()
     evolved = engine.evolve(blueprints[0], target_critic_score=60.0, max_generations=5)
     t1 = time.time()
-    print(f"   Evolved to gen {evolved.generation}, score {evolved.critic_score:.1f} in {t1-t0:.2f}s")
+    print(
+        f"   Evolved to gen {evolved.generation}, score {evolved.critic_score:.1f} in {t1 - t0:.2f}s"
+    )
     assert evolved.is_valid, "Evolution should produce valid result"
 
     # 5. Clustering
@@ -104,7 +119,7 @@ def run_benchmark():
     t0 = time.time()
     clusters = engine.cluster()
     t1 = time.time()
-    print(f"   Found {len(clusters)} clusters in {t1-t0:.2f}s")
+    print(f"   Found {len(clusters)} clusters in {t1 - t0:.2f}s")
     assert len(clusters) > 0, "Should have at least 1 cluster"
 
     # 6. Ranking
@@ -112,7 +127,7 @@ def run_benchmark():
     t0 = time.time()
     ranked = engine.rank_all(top_k=20)
     t1 = time.time()
-    print(f"   Ranked {len(ranked)} top blueprints in {t1-t0:.2f}s")
+    print(f"   Ranked {len(ranked)} top blueprints in {t1 - t0:.2f}s")
     assert len(ranked) == 20, "Should have 20 ranked results"
 
     # 7. Pattern Mining
@@ -120,21 +135,21 @@ def run_benchmark():
     t0 = time.time()
     patterns = engine.mine_patterns()
     t1 = time.time()
-    print(f"   Mined {len(patterns)} patterns in {t1-t0:.2f}s")
+    print(f"   Mined {len(patterns)} patterns in {t1 - t0:.2f}s")
 
     # 8. Recommendations
     print("\n8. Recommendations...")
     t0 = time.time()
     recs = engine.recommend_patterns(top_k=5)
     t1 = time.time()
-    print(f"   Generated {len(recs)} recommendations in {t1-t0:.2f}s")
+    print(f"   Generated {len(recs)} recommendations in {t1 - t0:.2f}s")
 
     # 9. Generation
     print("\n9. Blueprint Generation...")
     t0 = time.time()
     generated = engine.generate("Generate hunt level 400 roshamuul style")
     t1 = time.time()
-    print(f"   Generated '{generated.name}' in {t1-t0:.2f}s")
+    print(f"   Generated '{generated.name}' in {t1 - t0:.2f}s")
 
     # 10. Export
     print("\n10. Export...")

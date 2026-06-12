@@ -25,10 +25,9 @@ from core.campaign import (
     PackageStatus,
     REQUIRED_KEYS,
 )
-from agente_rme.core.agents.contracts import AgentRequest
-from agente_rme.core.agents.quest_agent import QuestAgent
-from agente_rme.core.agents.export_agent import ExportAgent
-
+from core.agents.contracts import AgentRequest
+from core.agents.quest_agent import QuestAgent
+from core.agents.export_agent import ExportAgent
 
 # ----------------------------------------------------------------------
 # Fixtures
@@ -182,9 +181,11 @@ class TestExportAgentFallback:
     def test_export_with_no_context(self, output_dir):
         exporter = ExportAgent(output_dir=output_dir)
         req = AgentRequest(agent_id="export", prompt="X", context={})
-        resp = exporter.execute(req)
+        exporter.execute(req)
         path = os.path.join(output_dir, "campaign.json")
-        assert os.path.exists(path), "campaign.json must be written even without context"
+        assert os.path.exists(path), (
+            "campaign.json must be written even without context"
+        )
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         for k in REQUIRED_KEYS:
@@ -197,7 +198,7 @@ class TestExportAgentFallback:
             prompt="X",
             context={"campaign": None},
         )
-        resp = exporter.execute(req)
+        exporter.execute(req)
         path = os.path.join(output_dir, "campaign.json")
         assert os.path.exists(path)
         with open(path, "r", encoding="utf-8") as f:
@@ -212,7 +213,7 @@ class TestExportAgentFallback:
             prompt="X",
             context={"campaign": {}},
         )
-        resp = exporter.execute(req)
+        exporter.execute(req)
         path = os.path.join(output_dir, "campaign.json")
         assert os.path.exists(path)
         with open(path, "r", encoding="utf-8") as f:
@@ -228,7 +229,7 @@ class TestExportAgentFallback:
             prompt="X",
             context={"campaign": "this is not a campaign"},
         )
-        resp = exporter.execute(req)
+        exporter.execute(req)
         path = os.path.join(output_dir, "campaign.json")
         assert os.path.exists(path)
         with open(path, "r", encoding="utf-8") as f:
@@ -329,7 +330,7 @@ class TestEndToEndFallback:
             prompt="X",
             context={"campaign": quest_resp.output_data},
         )
-        export_resp = export_agent.execute(export_req)
+        export_agent.execute(export_req)
         path = os.path.join(output_dir, "campaign.json")
         assert os.path.exists(path)
         with open(path, "r", encoding="utf-8") as f:

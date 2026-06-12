@@ -6,8 +6,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from .levels import LogLevel
-
 
 class Logger:
     """
@@ -79,22 +77,48 @@ class Logger:
         _log_event("generation", "start", event, **kwargs)
 
     @staticmethod
-    def generation_complete(event: str = "generation", tiles: int = 0,
-                            duration_ms: float = 0, **kwargs) -> None:
-        _log_event("generation", "complete", event,
-                   tiles=tiles, duration_ms=duration_ms, **kwargs)
+    def generation_complete(
+        event: str = "generation", tiles: int = 0, duration_ms: float = 0, **kwargs
+    ) -> None:
+        _log_event(
+            "generation",
+            "complete",
+            event,
+            tiles=tiles,
+            duration_ms=duration_ms,
+            **kwargs,
+        )
 
     @staticmethod
-    def validation_result(event: str = "validation", passed: bool = True,
-                          errors: int = 0, warnings: int = 0, **kwargs) -> None:
-        _log_event("validation", "result", event,
-                   passed=passed, errors=errors, warnings=warnings, **kwargs)
+    def validation_result(
+        event: str = "validation",
+        passed: bool = True,
+        errors: int = 0,
+        warnings: int = 0,
+        **kwargs,
+    ) -> None:
+        _log_event(
+            "validation",
+            "result",
+            event,
+            passed=passed,
+            errors=errors,
+            warnings=warnings,
+            **kwargs,
+        )
 
     @staticmethod
-    def export_complete(format: str = "otbm", path: str = "",
-                        size_bytes: int = 0, **kwargs) -> None:
-        _log_event("export", "complete", f"{format}_export",
-                   path=path, size_bytes=size_bytes, **kwargs)
+    def export_complete(
+        format: str = "otbm", path: str = "", size_bytes: int = 0, **kwargs
+    ) -> None:
+        _log_event(
+            "export",
+            "complete",
+            f"{format}_export",
+            path=path,
+            size_bytes=size_bytes,
+            **kwargs,
+        )
 
     @staticmethod
     def error_summary(component: str = "", error: str = "", **kwargs) -> None:
@@ -104,7 +128,7 @@ class Logger:
 def _log_event(category: str, event_type: str, event_name: str, **kwargs) -> None:
     """Internal structured event logger."""
     log = logging.getLogger(f"agent_rme.{category}")
-    extra = {f"ev_{k}": v for k, v in kwargs.items()}
+    {f"ev_{k}": v for k, v in kwargs.items()}
     msg = f"[{event_type.upper()}] {event_name}"
     if kwargs:
         details = " ".join(f"{k}={v}" for k, v in kwargs.items())

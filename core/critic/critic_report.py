@@ -8,8 +8,8 @@ from __future__ import annotations
 import json
 import logging
 import os
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from dataclasses import dataclass
+from typing import Any, Dict, List
 
 from .models import CriticResult
 
@@ -45,7 +45,7 @@ class CriticReport:
 
     def to_metrics(self) -> Dict[str, Any]:
         """Flattened metrics dict for dashboards / benchmark tracking."""
-        d = self.to_dict()
+        self.to_dict()
         return {
             "map_name": self.result.map_name,
             "overall_score": self.result.overall_score,
@@ -82,8 +82,15 @@ class CriticReport:
         lines.append("| Category | Score |")
         lines.append("|----------|-------|")
         for cat in [
-            "visual", "navigation", "density", "spawn", "hunt",
-            "boss", "city", "decor", "pathfinding",
+            "visual",
+            "navigation",
+            "density",
+            "spawn",
+            "hunt",
+            "boss",
+            "city",
+            "decor",
+            "pathfinding",
         ]:
             s = r.get_score(cat)
             if s is not None:
@@ -98,8 +105,7 @@ class CriticReport:
             lines.append("|----------|------|----------|----------|---------|")
             for i in r.issues:
                 lines.append(
-                    f"| {i.severity.value} | {i.issue_type.value} | {i.category} | "
-                    f"{i.location or '-'} | {i.message} |"
+                    f"| {i.severity.value} | {i.issue_type.value} | {i.category} | {i.location or '-'} | {i.message} |"
                 )
             lines.append("")
         else:
@@ -114,7 +120,9 @@ class CriticReport:
             lines.append("")
             for rec in r.recommendations:
                 lines.append(f"### {rec.title}")
-                lines.append(f"_Priority: {rec.priority.value}  •  Category: {rec.category}_")
+                lines.append(
+                    f"_Priority: {rec.priority.value}  •  Category: {rec.category}_"
+                )
                 if rec.target_location:
                     lines.append(f"_Location: {rec.target_location}_")
                 lines.append("")
@@ -150,12 +158,16 @@ class CriticReport:
             f.write(self.to_markdown())
         return path
 
-    def write_all(self, output_dir: str, base_name: str = "critic_report") -> Dict[str, str]:
+    def write_all(
+        self, output_dir: str, base_name: str = "critic_report"
+    ) -> Dict[str, str]:
         os.makedirs(output_dir, exist_ok=True)
         paths = {
             "json": self.write_json(os.path.join(output_dir, f"{base_name}.json")),
             "md": self.write_markdown(os.path.join(output_dir, f"{base_name}.md")),
-            "metrics": self.write_metrics(os.path.join(output_dir, f"{base_name}_metrics.json")),
+            "metrics": self.write_metrics(
+                os.path.join(output_dir, f"{base_name}_metrics.json")
+            ),
         }
         return paths
 
@@ -171,15 +183,18 @@ class CriticReportGenerator:
         self.version = version
 
     def build(self, result: CriticResult) -> CriticReport:
+        from datetime import timezone
         import datetime
+
         return CriticReport(
             result=result,
-            generated_at=datetime.datetime.utcnow().isoformat(),
+            generated_at=datetime.datetime.now(timezone.utc).isoformat(),
             version=self.version,
         )
 
-    def build_and_save(self, result: CriticResult, output_dir: str,
-                       base_name: str = "critic_report") -> CriticReport:
+    def build_and_save(
+        self, result: CriticResult, output_dir: str, base_name: str = "critic_report"
+    ) -> CriticReport:
         report = self.build(result)
         report.write_all(output_dir, base_name=base_name)
         return report

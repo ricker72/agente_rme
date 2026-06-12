@@ -2,9 +2,8 @@
 Tests for QuestAgent.
 """
 
-import pytest
-from agente_rme.core.agents import QuestAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import QuestAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestQuestAgent:

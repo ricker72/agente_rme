@@ -1,7 +1,6 @@
 import re
 from typing import List, Tuple
 
-
 MIN_X = 0
 MAX_X = 65535
 MIN_Y = 0
@@ -22,7 +21,9 @@ def validate_tile(lua_text: str) -> Tuple[bool, List[str]]:
     errors: List[str] = []
 
     # Pattern: map:getOrCreateTile(x, y, z) — allow negatives with optional minus
-    tile_pattern = re.compile(r'map:getOrCreateTile\s*\(\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*(-?\d+)\s*\)')
+    tile_pattern = re.compile(
+        r"map:getOrCreateTile\s*\(\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*(-?\d+)\s*\)"
+    )
     for match in tile_pattern.finditer(lua_text):
         x = int(match.group(1))
         y = int(match.group(2))

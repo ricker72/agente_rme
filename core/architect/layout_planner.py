@@ -39,28 +39,29 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from .zone_planner import ZonePlanner
 
-
 # =============================================================================
 # PlacedZone — a zone plus its concrete position inside the world
 # =============================================================================
+
 
 @dataclass
 class PlacedZone:
     """
     A zone (any kind) with its concrete position and size in world coords.
     """
-    zone_kind: str                # "city" | "dungeon" | "hunt" | "boss" | "quest"
+
+    zone_kind: str  # "city" | "dungeon" | "hunt" | "boss" | "quest"
     name: str
     theme: str
-    x: int                        # world coord (top-left)
-    y: int                        # world coord (top-left)
-    width: int                    # tiles
-    height: int                   # tiles
-    z: int = 7                    # default z
+    x: int  # world coord (top-left)
+    y: int  # world coord (top-left)
+    width: int  # tiles
+    height: int  # tiles
+    z: int = 7  # default z
     level_min: int = 1
     level_max: int = 100
     band: str = "medium"
-    plan: Any = None              # original plan dataclass
+    plan: Any = None  # original plan dataclass
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,11 +84,13 @@ class PlacedZone:
 # WorldLayout — the complete spatial arrangement
 # =============================================================================
 
+
 @dataclass
 class WorldLayout:
     """
     Complete 2D layout of all zones, plus the routes that link them.
     """
+
     world_width: int
     world_height: int
     zones: List[PlacedZone] = field(default_factory=list)
@@ -126,17 +129,18 @@ class WorldLayout:
 # =============================================================================
 
 DEFAULT_SIZES: Dict[str, Tuple[int, int]] = {
-    "city":    (60, 60),
+    "city": (60, 60),
     "dungeon": (40, 40),
-    "hunt":    (50, 50),
-    "boss":    (20, 20),
-    "quest":   (16, 16),
+    "hunt": (50, 50),
+    "boss": (20, 20),
+    "quest": (16, 16),
 }
 
 
 # =============================================================================
 # Layout Planner
 # =============================================================================
+
 
 class LayoutPlanner:
     """
@@ -161,7 +165,11 @@ class LayoutPlanner:
     """
 
     SUPPORTED_STRATEGIES = (
-        "auto", "city_centric", "linear", "hub_spoke", "scattered",
+        "auto",
+        "city_centric",
+        "linear",
+        "hub_spoke",
+        "scattered",
     )
 
     def __init__(
@@ -285,7 +293,12 @@ class LayoutPlanner:
                     if bp is not None:
                         bw = bp.get("width") or bp.get("size", [w, h])[0]
                         bh = bp.get("height") or bp.get("size", [w, h])[1]
-                        if isinstance(bw, int) and isinstance(bh, int) and bw > 0 and bh > 0:
+                        if (
+                            isinstance(bw, int)
+                            and isinstance(bh, int)
+                            and bw > 0
+                            and bh > 0
+                        ):
                             w, h = bw, bh
             except Exception:
                 pass
@@ -315,10 +328,13 @@ class LayoutPlanner:
             zone_kind=kind,
             name=name,
             theme=theme,
-            x=0, y=0,                  # will be set by placement strategy
-            width=size[0], height=size[1],
+            x=0,
+            y=0,  # will be set by placement strategy
+            width=size[0],
+            height=size[1],
             z=z,
-            level_min=lo, level_max=hi,
+            level_min=lo,
+            level_max=hi,
             band=band,
             plan=zone,
         )
@@ -345,7 +361,8 @@ class LayoutPlanner:
     def _place_city_centric(
         self,
         placed: List[PlacedZone],
-        w: int, h: int,
+        w: int,
+        h: int,
         rng: random.Random,
     ) -> List[PlacedZone]:
         """City at center, hunts in a ring around it, boss at edge."""
@@ -392,7 +409,8 @@ class LayoutPlanner:
     def _place_linear(
         self,
         placed: List[PlacedZone],
-        w: int, h: int,
+        w: int,
+        h: int,
     ) -> List[PlacedZone]:
         """Place zones left-to-right in a single row."""
         if not placed:
@@ -410,7 +428,8 @@ class LayoutPlanner:
     def _place_hub_spoke(
         self,
         placed: List[PlacedZone],
-        w: int, h: int,
+        w: int,
+        h: int,
         rng: random.Random,
     ) -> List[PlacedZone]:
         """City in the center, hunts arranged around it like spokes."""
@@ -441,7 +460,8 @@ class LayoutPlanner:
     def _place_scattered(
         self,
         placed: List[PlacedZone],
-        w: int, h: int,
+        w: int,
+        h: int,
         rng: random.Random,
     ) -> List[PlacedZone]:
         """Place zones in a deterministic but spread-out fashion."""
@@ -496,13 +516,15 @@ class LayoutPlanner:
             step_y = 1 if zy >= ay else -1
             for y in range(ay, zy + step_y, step_y):
                 path.append({"x": int(mid_x), "y": int(y), "z": anchor.z})
-            roads.append({
-                "type": "main_road",
-                "from": anchor.name,
-                "to": z.name,
-                "path": path,
-                "length": len(path),
-            })
+            roads.append(
+                {
+                    "type": "main_road",
+                    "from": anchor.name,
+                    "to": z.name,
+                    "path": path,
+                    "length": len(path),
+                }
+            )
 
         return roads
 
@@ -517,33 +539,39 @@ class LayoutPlanner:
             if z is city:
                 continue
             if z.zone_kind in ("dungeon", "boss"):
-                teleports.append({
-                    "name": f"teleport_{city.name}_to_{z.name}",
-                    "from": {
-                        "x": city.x + city.width - 1,
-                        "y": city.y + city.height // 2,
-                        "z": city.z,
-                    },
-                    "to": {
-                        "x": z.x + z.width // 2,
-                        "y": z.y + z.height // 2,
-                        "z": z.z,
-                    },
-                    "type": "teleport",
-                })
+                teleports.append(
+                    {
+                        "name": f"teleport_{city.name}_to_{z.name}",
+                        "from": {
+                            "x": city.x + city.width - 1,
+                            "y": city.y + city.height // 2,
+                            "z": city.z,
+                        },
+                        "to": {
+                            "x": z.x + z.width // 2,
+                            "y": z.y + z.height // 2,
+                            "z": z.z,
+                        },
+                        "type": "teleport",
+                    }
+                )
         return teleports
 
     def _build_waypoints(
-        self, placed: List[PlacedZone], z: int,
+        self,
+        placed: List[PlacedZone],
+        z: int,
     ) -> List[Dict[str, Any]]:
         waypoints: List[Dict[str, Any]] = []
         for zone in placed:
-            waypoints.append({
-                "name": f"waypoint_{zone.name}",
-                "x": zone.x + zone.width // 2,
-                "y": zone.y + zone.height // 2,
-                "z": z,
-                "zone_kind": zone.zone_kind,
-                "theme": zone.theme,
-            })
+            waypoints.append(
+                {
+                    "name": f"waypoint_{zone.name}",
+                    "x": zone.x + zone.width // 2,
+                    "y": zone.y + zone.height // 2,
+                    "z": z,
+                    "zone_kind": zone.zone_kind,
+                    "theme": zone.theme,
+                }
+            )
         return waypoints

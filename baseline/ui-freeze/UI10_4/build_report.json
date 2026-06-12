@@ -1,0 +1,11 @@
+{
+  "audit": "UI-10.4 build test",
+  "command": "python -m PyInstaller packaging/rme_studio.spec --clean --noconfirm",
+  "dist_path": "dist/RMEAgenteStudio",
+  "executable_path": "dist/RMEAgenteStudio/RMEAgenteStudio.exe",
+  "generated_at": "2026-06-12T05:52:01+00:00",
+  "pyinstaller_version": "6.20.0",
+  "status": "PASS",
+  "warnings_classification": "Optional/platform conditional imports only; packaged executable smoke test passed.",
+  "warnings_file": "build/rme_studio/warn-rme_studio.txt"
+}

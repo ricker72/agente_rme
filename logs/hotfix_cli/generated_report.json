@@ -1,0 +1,32 @@
+{
+  "prompt": "",
+  "config": {
+    "type": "hunt",
+    "theme_def": "ThemeDefinition(theme='generic', grounds=[396], walls=[1498], decorations=[2148], monsters=['Demon', 'Skeleton', 'Crypt Warden'])",
+    "theme": "generic"
+  },
+  "tiles": 2500,
+  "regions": 1,
+  "structures": 1,
+  "lua_bytes": 31321,
+  "otbm_report": {
+    "tiles": 2500,
+    "items": 2572,
+    "spawns": 108,
+    "houses": 0,
+    "waypoints": 1,
+    "otbm_bytes": 25485,
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    "status": "success",
+    "files": {
+      "otbm": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\logs\\hotfix_cli\\generated.otbm",
+      "monster_xml": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\logs\\hotfix_cli\\generated.monster.xml",
+      "waypoints_xml": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme\\logs\\hotfix_cli\\generated.waypoints.xml"
+    }
+  },
+  "generation_time": 0.3044285774230957
+}

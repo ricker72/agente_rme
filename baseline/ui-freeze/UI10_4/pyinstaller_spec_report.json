@@ -1,0 +1,28 @@
+{
+  "audit": "UI-10.4 PyInstaller spec validation",
+  "baseline_test_artifacts_bundled": false,
+  "console": false,
+  "datas_included": [
+    "assets/images -> assets/images",
+    "recursos/favicon.ico -> recursos",
+    "config.json -> .",
+    "pyproject.toml -> .",
+    "requirements-lock.txt -> ."
+  ],
+  "entry_script": "ui/main.py",
+  "excluded_artifacts": [
+    "baseline",
+    "tests",
+    "pytest",
+    "coverage",
+    "mypy",
+    "ruff",
+    "flake8"
+  ],
+  "executable_name": "RMEAgenteStudio",
+  "generated_at": "2026-06-12T05:52:01+00:00",
+  "onedir": true,
+  "pyside6_included": true,
+  "spec_path": "packaging/rme_studio.spec",
+  "status": "PASS"
+}

@@ -1,4 +1,4 @@
-﻿"""
+"""
 HITO 13 â€” Blueprint Extractor: orquesta todo el pipeline de extraccion
 de blueprints desde datos OTBM â†’ WorldModel â†’ Blueprint.
 
@@ -38,6 +38,7 @@ from .structure_detector import StructureDetector
 @dataclass
 class ExtractionResult:
     """Resultado completo de la extraccion."""
+
     blueprint: Optional[Blueprint] = None
     success: bool = False
     theme: Dict[str, Any] = field(default_factory=dict)
@@ -117,7 +118,9 @@ class BlueprintExtractor:
                 return result
 
             # 2. Extraer desde WorldModel dict
-            return self.extract_from_world_dict(world_dict, source_name=source_name, save=save)
+            return self.extract_from_world_dict(
+                world_dict, source_name=source_name, save=save
+            )
 
         except Exception as e:
             result.errors.append(f"Extraction error: {e}")
@@ -150,8 +153,12 @@ class BlueprintExtractor:
         cities_raw = world_dict.get("cities", [])
         waypoints_raw = world_dict.get("waypoints", [])
 
-        if not world_dict or (not tiles_raw and not spawns_raw and not cities_raw and not waypoints_raw):
-            result.errors.append("Empty or invalid world_dict: no tiles, spawns, cities, or waypoints found")
+        if not world_dict or (
+            not tiles_raw and not spawns_raw and not cities_raw and not waypoints_raw
+        ):
+            result.errors.append(
+                "Empty or invalid world_dict: no tiles, spawns, cities, or waypoints found"
+            )
             return result
 
         try:
@@ -279,7 +286,11 @@ class BlueprintExtractor:
         result = ExtractionResult()
 
         try:
-            source_name = Path(analysis.source).stem if hasattr(analysis, "source") else "analysis"
+            source_name = (
+                Path(analysis.source).stem
+                if hasattr(analysis, "source")
+                else "analysis"
+            )
             result.stats["source"] = source_name
             result.stats["timestamp"] = datetime.now().isoformat()
 
@@ -289,9 +300,15 @@ class BlueprintExtractor:
             houses = analysis.houses if hasattr(analysis, "houses") else []
             spawns = analysis.spawns if hasattr(analysis, "spawns") else []
             waypoints = analysis.waypoints if hasattr(analysis, "waypoints") else []
-            map_size = analysis.map_size if hasattr(analysis, "map_size") else {"width": 100, "height": 100}
+            map_size = (
+                analysis.map_size
+                if hasattr(analysis, "map_size")
+                else {"width": 100, "height": 100}
+            )
 
-            result.stats["tile_count"] = sum(tile_stats.values()) if tile_stats else analysis.tile_count
+            result.stats["tile_count"] = (
+                sum(tile_stats.values()) if tile_stats else analysis.tile_count
+            )
             result.stats["spawn_count"] = len(spawns)
             result.stats["city_count"] = len(houses)
             result.stats["waypoint_count"] = len(waypoints)
@@ -382,7 +399,7 @@ class BlueprintExtractor:
                 # Fallback: intentar con WorldBuilder directamente
                 return BlueprintExtractor._import_otbm_fallback(otbm_path)
 
-        except Exception as e:
+        except Exception:
             return BlueprintExtractor._import_otbm_fallback(otbm_path)
         except Exception:
             return None
@@ -400,7 +417,7 @@ class BlueprintExtractor:
 
             builder = WorldBuilder()
             return builder.build(parsed)
-        except Exception as e:
+        except Exception:
             return None
         except Exception:
             return None
@@ -441,7 +458,7 @@ class BlueprintExtractor:
 
     @staticmethod
     def _aggregate_stats(
-        tiles_raw: List[Dict[str, Any]]
+        tiles_raw: List[Dict[str, Any]],
     ) -> Tuple[Dict[str, int], Dict[str, int]]:
         """
         Agrega estadisticas de tiles e items desde lista de tile dicts.
@@ -461,7 +478,9 @@ class BlueprintExtractor:
                 try:
                     gid = int(ground)
                     # Usar nombre tematico si existe, sino usar ID numerico
-                    name = BlueprintExtractor.GROUND_ID_TO_NAME.get(gid, f"ground_{gid}")
+                    name = BlueprintExtractor.GROUND_ID_TO_NAME.get(
+                        gid, f"ground_{gid}"
+                    )
                     tile_counter[name] += 1
                 except (ValueError, TypeError):
                     tile_counter[f"ground_{ground}"] += 1
@@ -481,13 +500,15 @@ class BlueprintExtractor:
         """Convierte cities/towns a formato houses."""
         houses = []
         for city in cities:
-            houses.append({
-                "id": city.get("town_id", 0),
-                "name": city.get("name", ""),
-                "temple_x": city.get("temple_x", city.get("x", 0)),
-                "temple_y": city.get("temple_y", city.get("y", 0)),
-                "temple_z": city.get("temple_z", city.get("z", 0)),
-            })
+            houses.append(
+                {
+                    "id": city.get("town_id", 0),
+                    "name": city.get("name", ""),
+                    "temple_x": city.get("temple_x", city.get("x", 0)),
+                    "temple_y": city.get("temple_y", city.get("y", 0)),
+                    "temple_z": city.get("temple_z", city.get("z", 0)),
+                }
+            )
         return houses
 
     # ------------------------------------------------------------------
@@ -563,7 +584,9 @@ class BlueprintExtractor:
             item_id = None
             if items:
                 first = items[0]
-                item_id = first.get("item_id", first) if isinstance(first, dict) else first
+                item_id = (
+                    first.get("item_id", first) if isinstance(first, dict) else first
+                )
 
             # Spawn en este tile
             spawn = None
@@ -572,13 +595,15 @@ class BlueprintExtractor:
                     spawn = {"monster": sp.get("monster", "unknown")}
                     break
 
-            bp_tiles.append(BlueprintTile(
-                x=tile.get("x", 0),
-                y=tile.get("y", 0),
-                ground=ground_int,
-                item=item_id if isinstance(item_id, int) else None,
-                spawn=spawn,
-            ))
+            bp_tiles.append(
+                BlueprintTile(
+                    x=tile.get("x", 0),
+                    y=tile.get("y", 0),
+                    ground=ground_int,
+                    item=item_id if isinstance(item_id, int) else None,
+                    spawn=spawn,
+                )
+            )
 
         # Entry point: primer waypoint o primer spawn o centro
         entry = self._determine_entry(waypoints, spawns, houses, width, height)
@@ -587,17 +612,20 @@ class BlueprintExtractor:
         size = (width, height) if width > 0 and height > 0 else (100, 100)
 
         # Top grounds (para modo descriptivo)
-        top_grounds = sorted(
-            tile_stats.items(), key=lambda x: x[1], reverse=True
-        )[:5]
-        grounds = [int(k.replace("ground_", "")) for k, _ in top_grounds
-                   if k.replace("ground_", "").isdigit()]
+        top_grounds = sorted(tile_stats.items(), key=lambda x: x[1], reverse=True)[:5]
+        grounds = [
+            int(k.replace("ground_", ""))
+            for k, _ in top_grounds
+            if k.replace("ground_", "").isdigit()
+        ]
 
         # Top items (muros/items)
         wall_ids = {101, 102, 103, 108, 109, 1000, 1001, 2100, 2101}
         walls_items: List[int] = []
         decorations: List[int] = []
-        for item_key, count in sorted(item_stats.items(), key=lambda x: x[1], reverse=True):
+        for item_key, count in sorted(
+            item_stats.items(), key=lambda x: x[1], reverse=True
+        ):
             try:
                 iid = int(item_key.replace("item_", ""))
             except (ValueError, AttributeError):
@@ -626,9 +654,10 @@ class BlueprintExtractor:
             version="1.0.0",
             size=size,
             entry=entry,
-            description=description or f"Blueprint extracted from {source_name}"
-                        f" ({len(tiles_raw)} tiles, {len(spawns)} spawns, "
-                        f"{len(houses)} houses)",
+            description=description
+            or f"Blueprint extracted from {source_name}"
+            f" ({len(tiles_raw)} tiles, {len(spawns)} spawns, "
+            f"{len(houses)} houses)",
             tiles=bp_tiles,
             rooms=self._extract_room_dicts(structures),
             features=self._extract_feature_dicts(patterns, structures),
@@ -723,26 +752,30 @@ class BlueprintExtractor:
             if s.get("structure_type") == "room":
                 props = s.get("properties", {})
                 bounds = s.get("bounds", [0, 0, 0, 0])
-                rooms.append({
-                    "name": s.get("name", "room"),
-                    "bounds": bounds,
-                    "area": s.get("area", 0),
-                    "type": props.get("room_type", "room"),
-                    "tile_count": props.get("tile_count", 0),
-                })
+                rooms.append(
+                    {
+                        "name": s.get("name", "room"),
+                        "bounds": bounds,
+                        "area": s.get("area", 0),
+                        "type": props.get("room_type", "room"),
+                        "tile_count": props.get("tile_count", 0),
+                    }
+                )
             elif s.get("structure_type") == "building":
                 # Extraer sub-rooms del building
                 for sub in s.get("sub_structures", []):
                     if sub.get("structure_type") == "room":
                         props = sub.get("properties", {})
                         bounds = sub.get("bounds", [0, 0, 0, 0])
-                        rooms.append({
-                            "name": f"{s.get('name', 'bld')}_{sub.get('name', 'r')}",
-                            "bounds": bounds,
-                            "area": sub.get("area", 0),
-                            "type": props.get("room_type", "room"),
-                            "tile_count": props.get("tile_count", 0),
-                        })
+                        rooms.append(
+                            {
+                                "name": f"{s.get('name', 'bld')}_{sub.get('name', 'r')}",
+                                "bounds": bounds,
+                                "area": sub.get("area", 0),
+                                "type": props.get("room_type", "room"),
+                                "tile_count": props.get("tile_count", 0),
+                            }
+                        )
         return rooms
 
     @staticmethod
@@ -755,12 +788,14 @@ class BlueprintExtractor:
         for p in patterns:
             ptype = p.get("pattern_type", "unknown")
             if ptype not in ("room", "building", "zone"):
-                features.append({
-                    "type": ptype,
-                    "bounds": p.get("bounds", [0, 0, 0, 0]),
-                    "confidence": p.get("confidence", 0),
-                    "description": p.get("description", ""),
-                })
+                features.append(
+                    {
+                        "type": ptype,
+                        "bounds": p.get("bounds", [0, 0, 0, 0]),
+                        "confidence": p.get("confidence", 0),
+                        "description": p.get("description", ""),
+                    }
+                )
         return features
 
     @staticmethod
@@ -774,13 +809,15 @@ class BlueprintExtractor:
         for s in structures:
             if s.get("structure_type") == "zone":
                 props = s.get("properties", {})
-                zones.append({
-                    "name": s.get("name", "zone"),
-                    "type": props.get("zone_type", "unknown"),
-                    "bounds": s.get("bounds", [0, 0, 0, 0]),
-                    "confidence": s.get("confidence", 0),
-                    "description": s.get("description", ""),
-                })
+                zones.append(
+                    {
+                        "name": s.get("name", "zone"),
+                        "type": props.get("zone_type", "unknown"),
+                        "bounds": s.get("bounds", [0, 0, 0, 0]),
+                        "confidence": s.get("confidence", 0),
+                        "description": s.get("description", ""),
+                    }
+                )
         return zones
 
     # ------------------------------------------------------------------
@@ -835,7 +872,7 @@ class BlueprintExtractor:
         try:
             data = json.loads(filepath.read_text(encoding="utf-8"))
             return Blueprint.from_dict(data)
-        except (json.JSONDecodeError, KeyError) as e:
+        except (json.JSONDecodeError, KeyError):
             return None
 
     def list_blueprints(self) -> List[str]:
@@ -843,10 +880,9 @@ class BlueprintExtractor:
         if not self.output_dir.exists():
             return []
 
-        return sorted([
-            f.stem for f in self.output_dir.glob("*.json")
-            if f.stem != "__init__"
-        ])
+        return sorted(
+            [f.stem for f in self.output_dir.glob("*.json") if f.stem != "__init__"]
+        )
 
     # ------------------------------------------------------------------
     # Batch extraction

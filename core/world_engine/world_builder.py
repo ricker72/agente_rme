@@ -4,7 +4,13 @@ from typing import Optional
 
 from core.architecture import ArchitectureGraph
 from core.knowledge.knowledge_base import KnowledgeGraph
-from .world_engine import WorldModel, TileFactory, BiomeApplicator, StructurePlacer, CollisionEngine
+from .world_engine import (
+    WorldModel,
+    TileFactory,
+    BiomeApplicator,
+    StructurePlacer,
+    CollisionEngine,
+)
 from .city_builder import CityBuilder
 from .dungeon_builder import DungeonBuilder
 from .road_builder import RoadBuilder
@@ -33,7 +39,11 @@ class WorldBuilder:
         self.collision = CollisionEngine()
 
     def _entries(self, world_plan: object, key: str):
-        value = getattr(world_plan, key, None) if not isinstance(world_plan, dict) else world_plan.get(key)
+        value = (
+            getattr(world_plan, key, None)
+            if not isinstance(world_plan, dict)
+            else world_plan.get(key)
+        )
         return value or []
 
     def _default_style(self) -> str:
@@ -61,7 +71,11 @@ class WorldBuilder:
             world_model.add_road(road_model)
             self._place_road_tiles(world_model, road)
 
-        for spawn in self._entries(world_plan, "hunting_zones") + self._entries(world_plan, "boss_zones") + self._entries(world_plan, "quest_zones"):
+        for spawn in (
+            self._entries(world_plan, "hunting_zones")
+            + self._entries(world_plan, "boss_zones")
+            + self._entries(world_plan, "quest_zones")
+        ):
             spawn_model = self.spawn_builder.build(spawn)
             world_model.add_spawn(spawn_model)
 
@@ -91,10 +105,14 @@ class WorldBuilder:
         width = dungeon.get("floors", 1) * 12
         height = 18
         if self.collision.validate(world_model, x, y, 8, 8):
-            self.structurer.place(world_model, x, y, 7, width, height, ground="stone_floor")
+            self.structurer.place(
+                world_model, x, y, 7, width, height, ground="stone_floor"
+            )
 
     def _place_road_tiles(self, world_model: WorldModel, road: dict) -> None:
         segments = road.get("path", [])
         for idx, segment in enumerate(segments):
-            tile = self.tile_factory.create_tile(segment.get("x", 0), segment.get("y", 0), 7, ground="road")
+            tile = self.tile_factory.create_tile(
+                segment.get("x", 0), segment.get("y", 0), 7, ground="road"
+            )
             world_model.add_tile(tile)

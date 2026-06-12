@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional
 
 
 class GoalType(Enum):
@@ -29,6 +29,7 @@ class WorldGoal:
             targets={"cities": 2, "hunts": 5, "bosses": 8, "quests": 20}
         )
     """
+
     goal_type: GoalType
     name: str
     priority: int = 5  # 1-10
@@ -37,7 +38,7 @@ class WorldGoal:
     constraints: Dict[str, Any] = field(default_factory=dict)
     dependencies: List[str] = field(default_factory=list)
     status: str = "pending"  # pending, active, completed, blocked
-    progress: float = 0.0    # 0.0 to 1.0
+    progress: float = 0.0  # 0.0 to 1.0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -88,7 +89,10 @@ class GoalEngine:
         GoalType.BALANCE_GAMEPLAY: {
             "description": "Balancear la dificultad y distribución de contenido",
             "targets": {"score_balance": 20},
-            "constraints": {"spawn_density_range": (0.3, 0.7), "level_range": (50, 300)},
+            "constraints": {
+                "spawn_density_range": (0.3, 0.7),
+                "level_range": (50, 300),
+            },
         },
         GoalType.ADD_ENDGAME: {
             "description": "Crear contenido de alto nivel para jugadores avanzados",
@@ -120,9 +124,14 @@ class GoalEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def create_goal(self, name: str, goal_type: Optional[GoalType] = None,
-                    priority: int = 5, targets: Optional[Dict[str, int]] = None,
-                    constraints: Optional[Dict[str, Any]] = None) -> WorldGoal:
+    def create_goal(
+        self,
+        name: str,
+        goal_type: Optional[GoalType] = None,
+        priority: int = 5,
+        targets: Optional[Dict[str, int]] = None,
+        constraints: Optional[Dict[str, Any]] = None,
+    ) -> WorldGoal:
         """
         Create a new world goal.
 
@@ -165,45 +174,57 @@ class GoalEngine:
         goals: List[WorldGoal] = []
 
         if "expans" in lower or "nuev" in lower:
-            goals.append(self.create_goal(
-                f"Expand world: {prompt[:40]}",
-                GoalType.EXPAND_WORLD,
-                priority=8,
-            ))
+            goals.append(
+                self.create_goal(
+                    f"Expand world: {prompt[:40]}",
+                    GoalType.EXPAND_WORLD,
+                    priority=8,
+                )
+            )
 
         if "endgame" in lower or "boss" in lower or "end game" in lower:
-            goals.append(self.create_goal(
-                f"Add endgame content: {prompt[:40]}",
-                GoalType.ADD_ENDGAME,
-                priority=9,
-            ))
+            goals.append(
+                self.create_goal(
+                    f"Add endgame content: {prompt[:40]}",
+                    GoalType.ADD_ENDGAME,
+                    priority=9,
+                )
+            )
 
         if "quest" in lower or "mision" in lower or "misi" in lower:
-            goals.append(self.create_goal(
-                f"Add quests: {prompt[:40]}",
-                GoalType.ADD_QUESTS,
-                priority=7,
-            ))
+            goals.append(
+                self.create_goal(
+                    f"Add quests: {prompt[:40]}",
+                    GoalType.ADD_QUESTS,
+                    priority=7,
+                )
+            )
 
         if "calidad" in lower or "quality" in lower or "mejor" in lower:
-            goals.append(self.create_goal(
-                f"Fix quality: {prompt[:40]}",
-                GoalType.FIX_QUALITY,
-                priority=6,
-            ))
+            goals.append(
+                self.create_goal(
+                    f"Fix quality: {prompt[:40]}",
+                    GoalType.FIX_QUALITY,
+                    priority=6,
+                )
+            )
 
         if "balance" in lower or "balancear" in lower:
-            goals.append(self.create_goal(
-                f"Balance gameplay: {prompt[:40]}",
-                GoalType.BALANCE_GAMEPLAY,
-                priority=6,
-            ))
+            goals.append(
+                self.create_goal(
+                    f"Balance gameplay: {prompt[:40]}",
+                    GoalType.BALANCE_GAMEPLAY,
+                    priority=6,
+                )
+            )
 
         if not goals:
-            goals.append(self.create_goal(
-                prompt,
-                priority=5,
-            ))
+            goals.append(
+                self.create_goal(
+                    prompt,
+                    priority=5,
+                )
+            )
 
         return goals
 
@@ -282,24 +303,40 @@ class GoalEngine:
         sub_goals: List[WorldGoal] = []
 
         if goal.goal_type == GoalType.EXPAND_WORLD:
-            sub_goals.append(self.create_goal(
-                "Add city district", GoalType.EXPAND_WORLD, priority=6,
-                targets={"cities": 1},
-            ))
-            sub_goals.append(self.create_goal(
-                "Add hunting grounds", GoalType.ADD_CONTENT, priority=7,
-                targets={"hunts": 2},
-            ))
+            sub_goals.append(
+                self.create_goal(
+                    "Add city district",
+                    GoalType.EXPAND_WORLD,
+                    priority=6,
+                    targets={"cities": 1},
+                )
+            )
+            sub_goals.append(
+                self.create_goal(
+                    "Add hunting grounds",
+                    GoalType.ADD_CONTENT,
+                    priority=7,
+                    targets={"hunts": 2},
+                )
+            )
 
         elif goal.goal_type == GoalType.ADD_ENDGAME:
-            sub_goals.append(self.create_goal(
-                "Add boss rooms", GoalType.ADD_CONTENT, priority=9,
-                targets={"boss_rooms": goal.targets.get("bosses", 3)},
-            ))
-            sub_goals.append(self.create_goal(
-                "Add high-level hunts", GoalType.ADD_CONTENT, priority=8,
-                targets={"hunts": goal.targets.get("hunts_high", 3)},
-            ))
+            sub_goals.append(
+                self.create_goal(
+                    "Add boss rooms",
+                    GoalType.ADD_CONTENT,
+                    priority=9,
+                    targets={"boss_rooms": goal.targets.get("bosses", 3)},
+                )
+            )
+            sub_goals.append(
+                self.create_goal(
+                    "Add high-level hunts",
+                    GoalType.ADD_CONTENT,
+                    priority=8,
+                    targets={"hunts": goal.targets.get("hunts_high", 3)},
+                )
+            )
 
         if not sub_goals:
             return [goal]  # Can't decompose further

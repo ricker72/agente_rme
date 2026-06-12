@@ -1,6 +1,5 @@
 """Tests for BlueprintGenerator."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_generator import BlueprintGenerator
 

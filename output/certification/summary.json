@@ -1,0 +1,28 @@
+{
+  "generated": "2026-06-11T10:39:58.870237+00:00",
+  "exit_codes": {
+    "ruff": 1,
+    "flake8": 1,
+    "mypy": 1,
+    "markdownlint_docs": 1,
+    "bandit_json_reused": 1
+  },
+  "counts": {
+    "ruff": 119,
+    "flake8": 292,
+    "mypy": 804,
+    "bandit": {
+      "LOW": 3904,
+      "HIGH": 1,
+      "MEDIUM": 33
+    },
+    "markdownlint_docs": 73,
+    "documentation_english": 14
+  },
+  "issues_fixed": {
+    "ruff_safe_autofix": 93,
+    "ruff_format_partial": "235 files reformatted; remaining writes blocked by Windows mapped-file locks",
+    "markdownlint_autofix": "attempted; manual issues remain"
+  },
+  "certification_status": "NOT CERTIFIED"
+}

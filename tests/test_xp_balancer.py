@@ -1,12 +1,16 @@
 from __future__ import annotations
 
-import pytest
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
 from core.world.spawn import Spawn
 from core.world.region import Region
-from core.balance.xp_balancer import XPBalancer, XPBalanceResult, XPAdjustment, MONSTER_XP_DB
+from core.balance.xp_balancer import (
+    XPBalancer,
+    XPBalanceResult,
+    XPAdjustment,
+    MONSTER_XP_DB,
+)
 from core.balance.xp_analyzer import XPAnalysis
 
 
@@ -29,8 +33,7 @@ def _build_world(zone_name: str, monsters: list, zone_tiles: int = 30) -> WorldM
 
 def _count_spawns(world: WorldModel, zone_name: str) -> int:
     return sum(
-        1 for t in world.tiles.values()
-        if t.zone == zone_name and t.spawn is not None
+        1 for t in world.tiles.values() if t.zone == zone_name and t.spawn is not None
     )
 
 
@@ -166,9 +169,12 @@ class TestXPBalancerMultiplier:
 class TestXPAdjustment:
     def test_to_dict(self):
         adj = XPAdjustment(
-            zone_name="test", monster="Dragon",
-            old_xp=700, new_xp=700, multiplier=1.0,
-            reason="test"
+            zone_name="test",
+            monster="Dragon",
+            old_xp=700,
+            new_xp=700,
+            multiplier=1.0,
+            reason="test",
         )
         d = adj.to_dict()
         assert d["zone_name"] == "test"

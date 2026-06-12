@@ -9,15 +9,14 @@ and can be run through a simulated hunting session.
 from __future__ import annotations
 
 import random
-import math
 from dataclasses import dataclass, field
 from enum import Enum, auto
-from typing import Dict, List, Optional, Tuple
-
+from typing import Dict, Optional
 
 # ---------------------------------------------------------------------------
 # Vocations
 # ---------------------------------------------------------------------------
+
 
 class Vocation(Enum):
     KNIGHT = auto()
@@ -34,18 +33,20 @@ class Vocation(Enum):
 # Base Stats per Vocation at level L
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class VocationStats:
     """Stat block describing a vocation at a given level."""
+
     level: int
     max_hp: int
     max_mp: int
     capacity: int
-    base_damage: int          # average auto-attack damage per turn
-    healing_per_turn: int     # self-sustain hp/turn
-    magic_damage: int         # average spell/area damage per turn
+    base_damage: int  # average auto-attack damage per turn
+    healing_per_turn: int  # self-sustain hp/turn
+    magic_damage: int  # average spell/area damage per turn
     armor: int
-    attack_speed: float       # attacks per second (approx)
+    attack_speed: float  # attacks per second (approx)
 
     def effective_hp(self) -> float:
         """HP after armor mitigation for an incoming hit of `raw_dmg`."""
@@ -57,27 +58,37 @@ class VocationStats:
 # Level-scaling formulas (Tibia-inspired, simplified)
 # ---------------------------------------------------------------------------
 
+
 def _scale_stats(vocation: Vocation, level: int) -> VocationStats:
     """Return a VocationStats for the given vocation at `level`."""
     lvl = max(1, level)
 
     base = {
-        Vocation.KNIGHT:   (185, 90, 470, 25, 15, 0, 35, 1.0),
-        Vocation.PALADIN:  (155, 130, 310, 35, 20, 15, 25, 1.2),
-        Vocation.DRUID:    (105, 210, 230, 0, 30, 55, 15, 1.0),
+        Vocation.KNIGHT: (185, 90, 470, 25, 15, 0, 35, 1.0),
+        Vocation.PALADIN: (155, 130, 310, 35, 20, 15, 25, 1.2),
+        Vocation.DRUID: (105, 210, 230, 0, 30, 55, 15, 1.0),
         Vocation.SORCERER: (85, 240, 210, 0, 25, 75, 12, 1.0),
-        Vocation.MONK:     (150, 150, 290, 30, 22, 20, 28, 1.1),
+        Vocation.MONK: (150, 150, 290, 30, 22, 20, 28, 1.1),
     }[vocation]
 
-    hp_per_lv, mp_per_lv, cap_per_lv, atk_per_lv, heal_per_lv, magic_per_lv, arm_per_lv, atk_spd = base
+    (
+        hp_per_lv,
+        mp_per_lv,
+        cap_per_lv,
+        atk_per_lv,
+        heal_per_lv,
+        magic_per_lv,
+        arm_per_lv,
+        atk_spd,
+    ) = base
 
-    hp_scale   = 5
-    mp_scale   = 10
-    cap_scale  = 10
-    atk_scale  = 0.5
+    hp_scale = 5
+    mp_scale = 10
+    cap_scale = 10
+    atk_scale = 0.5
     heal_scale = 0.4
     magic_scale = 1.0
-    arm_scale  = 0.3
+    arm_scale = 0.3
 
     return VocationStats(
         level=lvl,
@@ -96,6 +107,7 @@ def _scale_stats(vocation: Vocation, level: int) -> VocationStats:
 # PlayerBot
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class PlayerBot:
     """
@@ -104,6 +116,7 @@ class PlayerBot:
     Holds current HP/MP, cooldowns, and exposes a step() method
     that processes one combat turn (≈2 seconds in Tibia).
     """
+
     name: str
     vocation: Vocation
     level: int
@@ -174,11 +187,11 @@ class PlayerBot:
 
         # Mages cast every 2 turns; paladins/monks every 3; knights cast rarely
         cd_map = {
-            Vocation.KNIGHT:   6,
-            Vocation.PALADIN:  3,
-            Vocation.DRUID:    2,
+            Vocation.KNIGHT: 6,
+            Vocation.PALADIN: 3,
+            Vocation.DRUID: 2,
             Vocation.SORCERER: 2,
-            Vocation.MONK:     3,
+            Vocation.MONK: 3,
         }
         self._spell_cooldown = cd_map[self.vocation]
 
@@ -198,7 +211,9 @@ class PlayerBot:
             return
 
         # Heal when below 70% HP (mages heal more aggressively at 60%)
-        threshold = 0.60 if self.vocation in (Vocation.DRUID, Vocation.SORCERER) else 0.70
+        threshold = (
+            0.60 if self.vocation in (Vocation.DRUID, Vocation.SORCERER) else 0.70
+        )
         if self.current_hp / self.stats.max_hp < threshold:
             self.current_hp = min(self.stats.max_hp, int(self.current_hp + heal))
             self._heal_cooldown = 2
@@ -209,7 +224,9 @@ class PlayerBot:
 
     def apply_party_buff(self, buff_multiplier: float) -> None:
         """Shared-experience or shared-boost multiplier (1.0 = no change)."""
-        self.equipment_coefficient = min(2.0, self.equipment_coefficient * buff_multiplier)
+        self.equipment_coefficient = min(
+            2.0, self.equipment_coefficient * buff_multiplier
+        )
 
     def reset(self) -> None:
         """Reset bot to full health for a new simulation run."""

@@ -18,7 +18,7 @@ al Blueprint Extractor para generar Blueprint objects.
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
 
@@ -26,6 +26,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 @dataclass
 class DetectedStructure:
     """Estructura constructiva detectada."""
+
     structure_type: str  # "room", "corridor", "building", "zone", "poi"
     name: str = ""
     bounds: Tuple[int, int, int, int] = (0, 0, 0, 0)  # (min_x, min_y, max_x, max_y)
@@ -59,11 +60,23 @@ class StructureDetector:
 
     # Tipos de estructura
     STRUCTURE_TYPES = [
-        "room", "corridor", "hall", "chamber",
-        "building", "temple", "depot", "arena",
-        "market", "housing_block", "city_center",
-        "dungeon_level", "cavern", "mine",
-        "wall_segment", "bridge", "staircase",
+        "room",
+        "corridor",
+        "hall",
+        "chamber",
+        "building",
+        "temple",
+        "depot",
+        "arena",
+        "market",
+        "housing_block",
+        "city_center",
+        "dungeon_level",
+        "cavern",
+        "mine",
+        "wall_segment",
+        "bridge",
+        "staircase",
     ]
 
     # IDs de items que indican puntos de interes (POI)
@@ -178,20 +191,22 @@ class StructureDetector:
 
             room_type = self._classify_room_type(grounds, bx)
 
-            structures.append(DetectedStructure(
-                structure_type="room",
-                name=f"room_{i+1}",
-                bounds=bx,
-                area=area,
-                confidence=min(0.95, len(cluster) / 50.0),
-                properties={
-                    "grounds": list(grounds)[:10],
-                    "tile_count": len(cluster),
-                    "room_type": room_type,
-                },
-                description=f"Room {i+1}: {bx[2]-bx[0]}x{bx[3]-bx[1]}, "
-                            f"{len(cluster)} tiles, type={room_type}",
-            ))
+            structures.append(
+                DetectedStructure(
+                    structure_type="room",
+                    name=f"room_{i + 1}",
+                    bounds=bx,
+                    area=area,
+                    confidence=min(0.95, len(cluster) / 50.0),
+                    properties={
+                        "grounds": list(grounds)[:10],
+                        "tile_count": len(cluster),
+                        "room_type": room_type,
+                    },
+                    description=f"Room {i + 1}: {bx[2] - bx[0]}x{bx[3] - bx[1]}, "
+                    f"{len(cluster)} tiles, type={room_type}",
+                )
+            )
 
         return structures
 
@@ -244,21 +259,22 @@ class StructureDetector:
                 if is_corridor:
                     idx += 1
                     bx = (min(xs), min(ys), max(xs), max(ys))
-                    structures.append(DetectedStructure(
-                        structure_type="corridor",
-                        name=f"corridor_{idx}",
-                        bounds=bx,
-                        area=(bx[2] - bx[0]) * (bx[3] - bx[1]),
-                        confidence=min(0.9, len(cluster) / 40.0),
-                        properties={
-                            "orientation": orientation,
-                            "length": max(w, h),
-                            "width": min(w, h),
-                            "ground_id": gid,
-                        },
-                        description=f"Corridor {idx}: {orientation}, "
-                                    f"length={max(w,h)}, ground={gid}",
-                    ))
+                    structures.append(
+                        DetectedStructure(
+                            structure_type="corridor",
+                            name=f"corridor_{idx}",
+                            bounds=bx,
+                            area=(bx[2] - bx[0]) * (bx[3] - bx[1]),
+                            confidence=min(0.9, len(cluster) / 40.0),
+                            properties={
+                                "orientation": orientation,
+                                "length": max(w, h),
+                                "width": min(w, h),
+                                "ground_id": gid,
+                            },
+                            description=f"Corridor {idx}: {orientation}, length={max(w, h)}, ground={gid}",
+                        )
+                    )
 
         return structures
 
@@ -308,25 +324,28 @@ class StructureDetector:
                 )
                 area = (bx[2] - bx[0]) * (bx[3] - bx[1])
 
-                structures.append(DetectedStructure(
-                    structure_type="building",
-                    name=f"building_{building_idx}",
-                    bounds=bx,
-                    area=area,
-                    confidence=min(0.85, len(building_parts) / 5.0),
-                    sub_structures=building_parts,
-                    properties={
-                        "room_count": sum(
-                            1 for s in building_parts if s.structure_type == "room"
-                        ),
-                        "corridor_count": sum(
-                            1 for s in building_parts if s.structure_type == "corridor"
-                        ),
-                        "total_parts": len(building_parts),
-                    },
-                    description=f"Building {building_idx}: {len(building_parts)} parts, "
-                                f"area={area}",
-                ))
+                structures.append(
+                    DetectedStructure(
+                        structure_type="building",
+                        name=f"building_{building_idx}",
+                        bounds=bx,
+                        area=area,
+                        confidence=min(0.85, len(building_parts) / 5.0),
+                        sub_structures=building_parts,
+                        properties={
+                            "room_count": sum(
+                                1 for s in building_parts if s.structure_type == "room"
+                            ),
+                            "corridor_count": sum(
+                                1
+                                for s in building_parts
+                                if s.structure_type == "corridor"
+                            ),
+                            "total_parts": len(building_parts),
+                        },
+                        description=f"Building {building_idx}: {len(building_parts)} parts, area={area}",
+                    )
+                )
 
         return structures
 
@@ -353,59 +372,63 @@ class StructureDetector:
         if not all_xs:
             return structures
 
-        total_bounds = (min(all_xs), min(all_ys), max(all_xs), max(all_ys))
+        (min(all_xs), min(all_ys), max(all_xs), max(all_ys))
 
         # Zona de spawns (hunting)
         if spawns:
             spawn_positions = [
-                (sp["x"], sp["y"]) for sp in spawns
+                (sp["x"], sp["y"])
+                for sp in spawns
                 if isinstance(sp.get("x"), (int, float))
                 and isinstance(sp.get("y"), (int, float))
             ]
             if spawn_positions:
                 sx = [p[0] for p in spawn_positions]
                 sy = [p[1] for p in spawn_positions]
-                spawn_area = (
-                    (max(sx) - min(sx)) * (max(sy) - min(sy))
+                spawn_area = (max(sx) - min(sx)) * (max(sy) - min(sy))
+                structures.append(
+                    DetectedStructure(
+                        structure_type="zone",
+                        name="hunting_zone",
+                        bounds=(min(sx), min(sy), max(sx), max(sy)),
+                        area=spawn_area,
+                        confidence=min(0.9, len(spawns) / 20.0),
+                        properties={
+                            "zone_type": "hunting",
+                            "spawn_count": len(spawns),
+                            "unique_monsters": len(
+                                set(sp.get("monster", "") for sp in spawns)
+                            ),
+                        },
+                        description=f"Hunting zone: {len(spawns)} spawns",
+                    )
                 )
-                structures.append(DetectedStructure(
-                    structure_type="zone",
-                    name="hunting_zone",
-                    bounds=(min(sx), min(sy), max(sx), max(sy)),
-                    area=spawn_area,
-                    confidence=min(0.9, len(spawns) / 20.0),
-                    properties={
-                        "zone_type": "hunting",
-                        "spawn_count": len(spawns),
-                        "unique_monsters": len(set(
-                            sp.get("monster", "") for sp in spawns
-                        )),
-                    },
-                    description=f"Hunting zone: {len(spawns)} spawns",
-                ))
 
         # Zona urbana (houses)
         if houses:
             house_positions = [
-                (h.get("temple_x", h.get("x", 0)),
-                 h.get("temple_y", h.get("y", 0)))
+                (h.get("temple_x", h.get("x", 0)), h.get("temple_y", h.get("y", 0)))
                 for h in houses
             ]
             hx = [p[0] for p in house_positions]
             hy = [p[1] for p in house_positions]
-            structures.append(DetectedStructure(
-                structure_type="zone",
-                name="urban_zone",
-                bounds=(min(hx), min(hy), max(hx), max(hy)),
-                area=(max(hx) - min(hx)) * (max(hy) - min(hy)),
-                confidence=min(0.85, len(houses) / 10.0),
-                properties={
-                    "zone_type": "urban",
-                    "house_count": len(houses),
-                    "city_names": [h.get("name", "") for h in houses if h.get("name")],
-                },
-                description=f"Urban zone: {len(houses)} buildings",
-            ))
+            structures.append(
+                DetectedStructure(
+                    structure_type="zone",
+                    name="urban_zone",
+                    bounds=(min(hx), min(hy), max(hx), max(hy)),
+                    area=(max(hx) - min(hx)) * (max(hy) - min(hy)),
+                    confidence=min(0.85, len(houses) / 10.0),
+                    properties={
+                        "zone_type": "urban",
+                        "house_count": len(houses),
+                        "city_names": [
+                            h.get("name", "") for h in houses if h.get("name")
+                        ],
+                    },
+                    description=f"Urban zone: {len(houses)} buildings",
+                )
+            )
 
         return structures
 
@@ -430,30 +453,34 @@ class StructureDetector:
                 item_id = item.get("item_id", item) if isinstance(item, dict) else item
                 if isinstance(item_id, int) and item_id in self.POI_ITEM_IDS:
                     poi_type = self.POI_ITEM_IDS[item_id]
-                    structures.append(DetectedStructure(
-                        structure_type="poi",
-                        name=f"{poi_type}_{item_id}",
-                        bounds=(tile["x"], tile["y"], tile["x"], tile["y"]),
-                        area=1,
-                        confidence=0.9,
-                        properties={"poi_type": poi_type, "item_id": item_id},
-                        description=f"POI: {poi_type} at ({tile['x']},{tile['y']})",
-                    ))
+                    structures.append(
+                        DetectedStructure(
+                            structure_type="poi",
+                            name=f"{poi_type}_{item_id}",
+                            bounds=(tile["x"], tile["y"], tile["x"], tile["y"]),
+                            area=1,
+                            confidence=0.9,
+                            properties={"poi_type": poi_type, "item_id": item_id},
+                            description=f"POI: {poi_type} at ({tile['x']},{tile['y']})",
+                        )
+                    )
 
         # Waypoints como POIs
         for wp in waypoints:
-            structures.append(DetectedStructure(
-                structure_type="poi",
-                name=f"waypoint_{wp.get('name', 'unknown')}",
-                bounds=(wp["x"], wp["y"], wp["x"], wp["y"]),
-                area=1,
-                confidence=0.7,
-                properties={
-                    "poi_type": "waypoint",
-                    "name": wp.get("name", ""),
-                },
-                description=f"Waypoint: {wp.get('name', '')}",
-            ))
+            structures.append(
+                DetectedStructure(
+                    structure_type="poi",
+                    name=f"waypoint_{wp.get('name', 'unknown')}",
+                    bounds=(wp["x"], wp["y"], wp["x"], wp["y"]),
+                    area=1,
+                    confidence=0.7,
+                    properties={
+                        "poi_type": "waypoint",
+                        "name": wp.get("name", ""),
+                    },
+                    description=f"Waypoint: {wp.get('name', '')}",
+                )
+            )
 
         # Temple como POI especial
         for house in houses:
@@ -461,18 +488,20 @@ class StructureDetector:
             if "temple" in name:
                 tx = house.get("temple_x", house.get("x", 0))
                 ty = house.get("temple_y", house.get("y", 0))
-                structures.append(DetectedStructure(
-                    structure_type="poi",
-                    name=f"temple_{house.get('id', 0)}",
-                    bounds=(tx, ty, tx, ty),
-                    area=1,
-                    confidence=1.0,
-                    properties={
-                        "poi_type": "temple",
-                        "temple_id": house.get("id", 0),
-                    },
-                    description=f"Temple at ({tx},{ty})",
-                ))
+                structures.append(
+                    DetectedStructure(
+                        structure_type="poi",
+                        name=f"temple_{house.get('id', 0)}",
+                        bounds=(tx, ty, tx, ty),
+                        area=1,
+                        confidence=1.0,
+                        properties={
+                            "poi_type": "temple",
+                            "temple_id": house.get("id", 0),
+                        },
+                        description=f"Temple at ({tx},{ty})",
+                    )
+                )
 
         return structures
 
@@ -544,8 +573,7 @@ class StructureDetector:
                 "std_dev_y": round(std_y, 2),
                 "tile_density": n / max(x_span * y_span, 1),
             },
-            description=f"Layout: {layout_type} ({n} tiles, "
-                        f"{x_span}x{y_span} area)",
+            description=f"Layout: {layout_type} ({n} tiles, {x_span}x{y_span} area)",
         )
 
     # ------------------------------------------------------------------
@@ -582,8 +610,8 @@ class StructureDetector:
                 },
             },
             description=f"Hierarchy: {len(buildings)} buildings, "
-                        f"{len(rooms)} rooms, {len(corridors)} corridors, "
-                        f"{len(pois)} POIs",
+            f"{len(rooms)} rooms, {len(corridors)} corridors, "
+            f"{len(pois)} POIs",
         )
 
     # ------------------------------------------------------------------
@@ -622,83 +650,93 @@ class StructureDetector:
         else:
             layout_type = "sparse"
 
-        structures.append(DetectedStructure(
-            structure_type="layout",
-            name="layout",
-            bounds=(0, 0, width, height),
-            area=area,
-            confidence=0.7,
-            properties={
-                "layout_type": layout_type,
-                "tile_density": round(tile_density, 4),
-                "total_tiles": total_tiles,
-            },
-            description=f"Layout: {layout_type}, density={tile_density:.3f}",
-        ))
+        structures.append(
+            DetectedStructure(
+                structure_type="layout",
+                name="layout",
+                bounds=(0, 0, width, height),
+                area=area,
+                confidence=0.7,
+                properties={
+                    "layout_type": layout_type,
+                    "tile_density": round(tile_density, 4),
+                    "total_tiles": total_tiles,
+                },
+                description=f"Layout: {layout_type}, density={tile_density:.3f}",
+            )
+        )
 
         # Inferir habitaciones
         unique_tiles = len(tiles_stats)
         if unique_tiles >= 3:
             estimated_rooms = max(1, unique_tiles // 3)
-            structures.append(DetectedStructure(
-                structure_type="room",
-                name="estimated_rooms",
-                confidence=0.5,
-                properties={
-                    "estimated_count": estimated_rooms,
-                    "unique_grounds": unique_tiles,
-                },
-                description=f"Estimated {estimated_rooms} rooms from {unique_tiles} grounds",
-            ))
+            structures.append(
+                DetectedStructure(
+                    structure_type="room",
+                    name="estimated_rooms",
+                    confidence=0.5,
+                    properties={
+                        "estimated_count": estimated_rooms,
+                        "unique_grounds": unique_tiles,
+                    },
+                    description=f"Estimated {estimated_rooms} rooms from {unique_tiles} grounds",
+                )
+            )
 
         # Zonas
         if spawn_count > 0:
-            structures.append(DetectedStructure(
-                structure_type="zone",
-                name="hunting_zone",
-                confidence=min(0.7, spawn_count / 20.0),
-                properties={
-                    "zone_type": "hunting",
-                    "spawn_count": spawn_count,
-                },
-                description=f"Hunting zone: {spawn_count} spawns",
-            ))
+            structures.append(
+                DetectedStructure(
+                    structure_type="zone",
+                    name="hunting_zone",
+                    confidence=min(0.7, spawn_count / 20.0),
+                    properties={
+                        "zone_type": "hunting",
+                        "spawn_count": spawn_count,
+                    },
+                    description=f"Hunting zone: {spawn_count} spawns",
+                )
+            )
 
         if house_count > 0:
-            structures.append(DetectedStructure(
-                structure_type="zone",
-                name="urban_zone",
-                confidence=min(0.7, house_count / 10.0),
-                properties={
-                    "zone_type": "urban",
-                    "house_count": house_count,
-                },
-                description=f"Urban zone: {house_count} buildings",
-            ))
+            structures.append(
+                DetectedStructure(
+                    structure_type="zone",
+                    name="urban_zone",
+                    confidence=min(0.7, house_count / 10.0),
+                    properties={
+                        "zone_type": "urban",
+                        "house_count": house_count,
+                    },
+                    description=f"Urban zone: {house_count} buildings",
+                )
+            )
 
         # Jerarquia
-        structures.append(DetectedStructure(
-            structure_type="hierarchy",
-            name="structural_hierarchy",
-            confidence=0.8,
-            properties={
-                "levels": {
-                    "primary": house_count + (1 if spawn_count > 10 else 0),
-                    "secondary": max(1, unique_tiles // 2),
-                    "tertiary": waypoint_count + spawn_count,
+        structures.append(
+            DetectedStructure(
+                structure_type="hierarchy",
+                name="structural_hierarchy",
+                confidence=0.8,
+                properties={
+                    "levels": {
+                        "primary": house_count + (1 if spawn_count > 10 else 0),
+                        "secondary": max(1, unique_tiles // 2),
+                        "tertiary": waypoint_count + spawn_count,
+                    },
+                    "total_structures": len(structures),
+                    "summary": {
+                        "rooms": max(1, unique_tiles // 3),
+                        "corridors": 0,
+                        "buildings": house_count,
+                        "zones": (1 if spawn_count > 0 else 0)
+                        + (1 if house_count > 0 else 0),
+                        "pois": waypoint_count,
+                    },
                 },
-                "total_structures": len(structures),
-                "summary": {
-                    "rooms": max(1, unique_tiles // 3),
-                    "corridors": 0,
-                    "buildings": house_count,
-                    "zones": (1 if spawn_count > 0 else 0) + (1 if house_count > 0 else 0),
-                    "pois": waypoint_count,
-                },
-            },
-            description=f"Hierarchy: {house_count} buildings, "
-                        f"{waypoint_count} POIs",
-        ))
+                description=f"Hierarchy: {house_count} buildings, {waypoint_count} POIs",
+            )
+        )
 
         return structures
 
@@ -775,10 +813,7 @@ class StructureDetector:
 
         # Verificar interseccion
         return not (
-            x1_max < x2_min
-            or x2_max < x1_min
-            or y1_max < y2_min
-            or y2_max < y1_min
+            x1_max < x2_min or x2_max < x1_min or y1_max < y2_min or y2_max < y1_min
         )
 
     @staticmethod

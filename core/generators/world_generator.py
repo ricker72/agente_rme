@@ -24,10 +24,10 @@ from __future__ import annotations
 
 import logging
 import re
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, Optional, Union
 
 from .base_generator import BaseGenerator
-from .theme_generator import ThemeGenerator, ThemeDefinition
+from .theme_generator import ThemeGenerator
 from .hunt_generator import HuntGenerator
 from .city_generator import CityGenerator
 from .dungeon_generator import DungeonGenerator
@@ -165,8 +165,7 @@ class WorldGenerator(BaseGenerator):
         self._validate_result(world)
 
         logger.info(
-            f"WorldGenerator: generated {gen_type} world "
-            f"({theme_def.theme}) with {world.tile_count()} tiles"
+            f"WorldGenerator: generated {gen_type} world ({theme_def.theme}) with {world.tile_count()} tiles"
         )
         return world
 
@@ -186,14 +185,14 @@ class WorldGenerator(BaseGenerator):
         prompt_lower = prompt.lower()
 
         # Extract level
-        level_match = re.search(r'level\s*(\d+)', prompt_lower)
+        level_match = re.search(r"level\s*(\d+)", prompt_lower)
         if level_match:
             level = int(level_match.group(1))
             config["level_min"] = max(1, level - 20)
             config["level_max"] = level + 20
         else:
             # Try range: "level 300-500"
-            range_match = re.search(r'level\s*(\d+)\s*[-–]\s*(\d+)', prompt_lower)
+            range_match = re.search(r"level\s*(\d+)\s*[-–]\s*(\d+)", prompt_lower)
             if range_match:
                 config["level_min"] = int(range_match.group(1))
                 config["level_max"] = int(range_match.group(2))
@@ -251,9 +250,7 @@ class WorldGenerator(BaseGenerator):
         result = validator.validate(world)
 
         if not result.passed:
-            logger.warning(
-                f"WorldGenerator: validation failed:\n{result.summary()}"
-            )
+            logger.warning(f"WorldGenerator: validation failed:\n{result.summary()}")
         if result.warnings:
             for w in result.warnings:
                 logger.debug(f"WorldGenerator validation warning: {w}")

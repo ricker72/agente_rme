@@ -2,9 +2,8 @@
 Tests for ExpansionAgent.
 """
 
-import pytest
-from agente_rme.core.agents import ExpansionAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import ExpansionAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestExpansionAgent:

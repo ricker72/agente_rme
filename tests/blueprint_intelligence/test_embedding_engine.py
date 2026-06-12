@@ -1,6 +1,5 @@
 """Tests for BlueprintEmbeddingEngine."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_embedding_engine import (
     BlueprintEmbeddingEngine,
@@ -13,7 +12,18 @@ class TestBlueprintEmbeddingEngine:
     def setup_method(self):
         self.engine = BlueprintEmbeddingEngine()
 
-    def _make_bp(self, name="test", category="hunt", size=(10, 10), tiles=None, rooms=None, zones=None, tags=None, raw=None, entry=None):
+    def _make_bp(
+        self,
+        name="test",
+        category="hunt",
+        size=(10, 10),
+        tiles=None,
+        rooms=None,
+        zones=None,
+        tags=None,
+        raw=None,
+        entry=None,
+    ):
         bp = Blueprint(
             name=name,
             category=category,
@@ -30,7 +40,9 @@ class TestBlueprintEmbeddingEngine:
 
     def test_embed_basic_blueprint(self):
         """Test basic embedding produces correct vector."""
-        bp = self._make_bp("roshamuul_hunt", "hunt", tiles=[BlueprintTile(x=0, y=0, ground=100)])
+        bp = self._make_bp(
+            "roshamuul_hunt", "hunt", tiles=[BlueprintTile(x=0, y=0, ground=100)]
+        )
         emb = self.engine.embed(bp)
         assert emb.blueprint_name == "roshamuul_hunt"
         assert emb.blueprint_category == "hunt"
@@ -67,7 +79,9 @@ class TestBlueprintEmbeddingEngine:
 
     def test_embed_with_rooms(self):
         """Test embedding a descriptive blueprint with rooms."""
-        bp = self._make_bp("city_test", "city", rooms=[{"name": "room1"}, {"name": "room2"}])
+        bp = self._make_bp(
+            "city_test", "city", rooms=[{"name": "room1"}, {"name": "room2"}]
+        )
         emb = self.engine.embed(bp)
         assert emb.room_count > 0.0
 
@@ -123,20 +137,30 @@ class TestBlueprintEmbeddingEngine:
 
     def test_clamp_values(self):
         """Test that values are clamped to [0, 1]."""
-        from core.blueprint_intelligence.models.blueprint_embedding import BlueprintEmbedding
+        from core.blueprint_intelligence.models.blueprint_embedding import (
+            BlueprintEmbedding,
+        )
+
         emb = BlueprintEmbedding(tile_density=1.5, room_count=-0.5)
         assert emb.tile_density == 1.0
         assert emb.room_count == 0.0
+
     def test_cosine_similarity_identical(self):
         """Test cosine similarity of identical vectors."""
-        from core.blueprint_intelligence.models.blueprint_embedding import BlueprintEmbedding
+        from core.blueprint_intelligence.models.blueprint_embedding import (
+            BlueprintEmbedding,
+        )
+
         v = [0.5, 0.3, 0.8, 0.1, 0.6, 0.2, 0.0, 0.9, 0.4, 0.7, 0.5, 0.3]
         sim = BlueprintEmbedding.cosine_similarity(v, v)
         assert abs(sim - 1.0) < 0.0001
 
     def test_cosine_similarity_orthogonal(self):
         """Test cosine similarity of orthogonal vectors."""
-        from core.blueprint_intelligence.models.blueprint_embedding import BlueprintEmbedding
+        from core.blueprint_intelligence.models.blueprint_embedding import (
+            BlueprintEmbedding,
+        )
+
         v1 = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         v2 = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         sim = BlueprintEmbedding.cosine_similarity(v1, v2)
@@ -144,7 +168,9 @@ class TestBlueprintEmbeddingEngine:
 
     def test_embed_to_dict_roundtrip(self):
         """Test serialization roundtrip."""
-        bp = self._make_bp("roundtrip", "city", tiles=[BlueprintTile(x=0, y=0, ground=100)])
+        bp = self._make_bp(
+            "roundtrip", "city", tiles=[BlueprintTile(x=0, y=0, ground=100)]
+        )
         emb = self.engine.embed(bp)
         data = emb.to_dict()
         assert data["blueprint_name"] == "roundtrip"
@@ -161,6 +187,8 @@ class TestBlueprintEmbeddingEngine:
 
     def test_embed_waypoints_from_raw(self):
         """Test waypoint extraction from raw."""
-        bp = self._make_bp("wps", raw={"waypoints": [{"x": 0, "y": 0}, {"x": 1, "y": 1}]})
+        bp = self._make_bp(
+            "wps", raw={"waypoints": [{"x": 0, "y": 0}, {"x": 1, "y": 1}]}
+        )
         emb = self.engine.embed(bp)
         assert emb.waypoint_count > 0.0

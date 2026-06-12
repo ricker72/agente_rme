@@ -2,26 +2,22 @@
 Integration test for agent error recovery in the multi-agent pipeline.
 """
 
-import pytest
-from typing import Any, Dict, Optional
-from agente_rme.core.agents import (
-    OrchestratorAgent, AgentRegistry, BaseAgent, MultiAgentResult
-)
-from agente_rme.core.agents.contracts import AgentRequest, AgentResponse
+from core.agents import OrchestratorAgent, AgentRegistry, BaseAgent
+from core.agents.contracts import AgentRequest, AgentResponse
 
 
 class FailingAgent(BaseAgent):
     """Agent that always fails."""
+
     AGENT_ID = "failing"
 
     def execute(self, request: AgentRequest) -> AgentResponse:
-        return AgentResponse.error_response(
-            self.agent_id, "Intentional failure"
-        )
+        return AgentResponse.error_response(self.agent_id, "Intentional failure")
 
 
 class PartiallyFailingAgent(BaseAgent):
     """Agent that fails if parameter is set."""
+
     AGENT_ID = "conditional"
 
     def __init__(self, should_fail: bool = False) -> None:
@@ -30,9 +26,7 @@ class PartiallyFailingAgent(BaseAgent):
 
     def execute(self, request: AgentRequest) -> AgentResponse:
         if self.should_fail:
-            return AgentResponse.error_response(
-                self.agent_id, "Conditional failure"
-            )
+            return AgentResponse.error_response(self.agent_id, "Conditional failure")
         return AgentResponse.success_response(
             self.agent_id,
             output_data={"status": "ok"},
@@ -47,41 +41,61 @@ class TestAgentErrorRecovery:
         # Create a pipeline where one agent fails
         class OkArchitect(BaseAgent):
             AGENT_ID = "architect"
+
             def execute(self, request):
-                return AgentResponse.success_response(self.agent_id, output_data={"plan": "test"})
+                return AgentResponse.success_response(
+                    self.agent_id, output_data={"plan": "test"}
+                )
 
         class FailingMapper(BaseAgent):
             AGENT_ID = "mapper"
+
             def execute(self, request):
                 return AgentResponse.error_response(self.agent_id, "Mapper failed")
 
         class OkExpansion(BaseAgent):
             AGENT_ID = "expansion"
+
             def execute(self, request):
-                return AgentResponse.success_response(self.agent_id, output_data={"world": "expanded"})
+                return AgentResponse.success_response(
+                    self.agent_id, output_data={"world": "expanded"}
+                )
 
         class OkQuest(BaseAgent):
             AGENT_ID = "quest"
+
             def execute(self, request):
-                return AgentResponse.success_response(self.agent_id, output_data={"campaign": {}})
+                return AgentResponse.success_response(
+                    self.agent_id, output_data={"campaign": {}}
+                )
 
         class OkPlaytest(BaseAgent):
             AGENT_ID = "playtest"
+
             def execute(self, request):
-                return AgentResponse.success_response(self.agent_id, output_data={"report": {}})
+                return AgentResponse.success_response(
+                    self.agent_id, output_data={"report": {}}
+                )
 
         class OkBalance(BaseAgent):
             AGENT_ID = "balance"
+
             def execute(self, request):
-                return AgentResponse.success_response(self.agent_id, output_data={"world": "balanced"})
+                return AgentResponse.success_response(
+                    self.agent_id, output_data={"world": "balanced"}
+                )
 
         class OkQA(BaseAgent):
             AGENT_ID = "qa"
+
             def execute(self, request):
-                return AgentResponse.success_response(self.agent_id, output_data={"qa": "passed"})
+                return AgentResponse.success_response(
+                    self.agent_id, output_data={"qa": "passed"}
+                )
 
         class OkExport(BaseAgent):
             AGENT_ID = "export"
+
             def execute(self, request):
                 return AgentResponse.success_response(self.agent_id)
 
@@ -113,9 +127,11 @@ class TestAgentErrorRecovery:
     def test_empty_registry_handling(self, tmpdir):
         """Orchestrator should handle empty registry gracefully."""
         registry = AgentRegistry()
+
         # Register only some agents
         class BasicAgent(BaseAgent):
             AGENT_ID = "architect"
+
             def execute(self, request):
                 return AgentResponse.success_response(self.agent_id)
 
@@ -134,12 +150,24 @@ class TestAgentErrorRecovery:
         """Pipeline should complete even if all agents fail."""
         registry = AgentRegistry()
 
-        for agent_id in ["architect", "mapper", "expansion", "quest",
-                          "playtest", "balance", "qa", "export"]:
+        for agent_id in [
+            "architect",
+            "mapper",
+            "expansion",
+            "quest",
+            "playtest",
+            "balance",
+            "qa",
+            "export",
+        ]:
+
             class FailAll(BaseAgent):
                 AGENT_ID = agent_id
+
                 def execute(self, request):
-                    return AgentResponse.error_response(self.agent_id, f"{agent_id} failed")
+                    return AgentResponse.error_response(
+                        self.agent_id, f"{agent_id} failed"
+                    )
 
             registry.register(FailAll())
 

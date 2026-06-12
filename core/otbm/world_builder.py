@@ -18,22 +18,17 @@ Handles:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .node_decoder import NodeDecoder
 from .tile_decoder import TileDecoder
 from .node_encoder import (
     TILESTATE_NONE,
-    TILESTATE_PROTECTIONZONE,
-    TILESTATE_NOPVPZONE,
-    TILESTATE_NOLOGOUT,
-    TILESTATE_PVPZONE,
 )
 
 
 class WorldBuildError(Exception):
     """Raised when building a WorldModel from OTBM data fails."""
-    pass
 
 
 class WorldBuilder:
@@ -133,9 +128,7 @@ class WorldBuilder:
 
         return result
 
-    def build_to_worldmodel_dict(
-        self, parsed_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def build_to_worldmodel_dict(self, parsed_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Build a dict that can be directly used to create a WorldModel instance.
 
@@ -171,7 +164,7 @@ class WorldBuilder:
                 area_decoded = self._node_decoder.decode_tile_area(area_node)
                 area_tiles = self._tile_decoder.decode_area(area_decoded)
                 tiles.extend(area_tiles)
-            except Exception as e:
+            except Exception:
                 # Skip malformed areas
                 continue
 
@@ -188,15 +181,17 @@ class WorldBuilder:
 
         for area in spawns_decoded.get("spawn_areas", []):
             for monster in area.get("monsters", []):
-                result.append({
-                    "monster": monster["name"],
-                    "x": area["center_x"],
-                    "y": area["center_y"],
-                    "z": area["center_z"],
-                    "radius": area["radius"],
-                    "respawn": monster.get("spawntime", 60),
-                    "direction": monster.get("direction", 2),
-                })
+                result.append(
+                    {
+                        "monster": monster["name"],
+                        "x": area["center_x"],
+                        "y": area["center_y"],
+                        "z": area["center_z"],
+                        "radius": area["radius"],
+                        "respawn": monster.get("spawntime", 60),
+                        "direction": monster.get("direction", 2),
+                    }
+                )
 
         return result
 
@@ -210,22 +205,22 @@ class WorldBuilder:
         result = []
 
         for town in towns_decoded.get("towns", []):
-            result.append({
-                "name": town["name"],
-                "x": town["temple_x"],
-                "y": town["temple_y"],
-                "z": town["temple_z"],
-                "temple_x": town["temple_x"],
-                "temple_y": town["temple_y"],
-                "temple_z": town["temple_z"],
-                "town_id": town.get("town_id", 0),
-            })
+            result.append(
+                {
+                    "name": town["name"],
+                    "x": town["temple_x"],
+                    "y": town["temple_y"],
+                    "z": town["temple_z"],
+                    "temple_x": town["temple_x"],
+                    "temple_y": town["temple_y"],
+                    "temple_z": town["temple_z"],
+                    "town_id": town.get("town_id", 0),
+                }
+            )
 
         return result
 
-    def _extract_waypoints(
-        self, decoded_root: Dict[str, Any]
-    ) -> List[Dict[str, Any]]:
+    def _extract_waypoints(self, decoded_root: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Extract waypoints from decoded root."""
         wp_node = decoded_root.get("waypoints")
         if not wp_node:
@@ -289,14 +284,14 @@ class WorldBuilder:
         Returns:
             WorldModel dataclass instance.
         """
-        from core.world_engine.world_engine import WorldModel, Tile
+        from core.world_engine.world_engine import WorldModel
 
         built = self.build(parsed_data)
         wm = WorldModel()
 
         # Set dimensions
-        wm_width = built.get("width", 0)
-        wm_height = built.get("height", 0)
+        built.get("width", 0)
+        built.get("height", 0)
 
         # Add tiles
         for td in built.get("tiles", []):

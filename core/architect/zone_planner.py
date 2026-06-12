@@ -25,24 +25,22 @@ Architecture:
 from __future__ import annotations
 
 import random
-import re
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 from .theme_resolver import ThemeAssets
-
 
 # =============================================================================
 # Difficulty band definitions
 # =============================================================================
 
 DIFFICULTY_BANDS: List[Dict[str, Any]] = [
-    {"label": "easy",       "min": 1,   "max": 50,   "rank": 1},
-    {"label": "medium",     "min": 50,  "max": 100,  "rank": 2},
-    {"label": "hard",       "min": 100, "max": 200,  "rank": 3},
-    {"label": "extreme",    "min": 200, "max": 300,  "rank": 4},
-    {"label": "epic",       "min": 300, "max": 500,  "rank": 5},
-    {"label": "legendary",  "min": 500, "max": 9999, "rank": 6},
+    {"label": "easy", "min": 1, "max": 50, "rank": 1},
+    {"label": "medium", "min": 50, "max": 100, "rank": 2},
+    {"label": "hard", "min": 100, "max": 200, "rank": 3},
+    {"label": "extreme", "min": 200, "max": 300, "rank": 4},
+    {"label": "epic", "min": 300, "max": 500, "rank": 5},
+    {"label": "legendary", "min": 500, "max": 9999, "rank": 6},
 ]
 
 
@@ -50,9 +48,11 @@ DIFFICULTY_BANDS: List[Dict[str, Any]] = [
 # Zone-specific plan dataclasses
 # =============================================================================
 
+
 @dataclass
 class CityPlan:
     """A complete city plan: districts + features + population."""
+
     name: str
     theme: str
     population: int
@@ -77,6 +77,7 @@ class CityPlan:
 @dataclass
 class DungeonPlan:
     """A complete dungeon plan: floors + rooms + loot tiers + boss."""
+
     name: str
     theme: str
     floors: int
@@ -105,6 +106,7 @@ class DungeonPlan:
 @dataclass
 class HuntPlan:
     """A complete hunt plan: monster pool, density, area size, geometry."""
+
     name: str
     theme: str
     min_level: int
@@ -131,6 +133,7 @@ class HuntPlan:
 @dataclass
 class BossPlan:
     """A complete boss plan: monster, arena, mechanics, loot."""
+
     name: str
     theme: str
     boss_monster: str
@@ -159,6 +162,7 @@ class BossPlan:
 @dataclass
 class QuestPlan:
     """A complete quest plan: title, objectives, NPCs, rewards."""
+
     name: str
     title: str
     theme: str
@@ -186,6 +190,7 @@ class QuestPlan:
 # Zone Planner
 # =============================================================================
 
+
 class ZonePlanner:
     """
     Builds detailed plans for each kind of zone (city, dungeon, hunt, boss, quest).
@@ -207,41 +212,102 @@ class ZonePlanner:
 
     # City district templates by theme difficulty
     CITY_DISTRICTS_BY_BAND: Dict[str, List[str]] = {
-        "easy":       ["Market", "Temple", "Houses", "Town Square"],
-        "medium":     ["Market", "Temple", "Depot", "Houses", "Tavern"],
-        "hard":       ["Temple District", "Depot Quarter", "Central Plaza",
-                       "Residential Block", "Market", "Harbor Front"],
-        "extreme":    ["Temple District", "Depot Quarter", "Central Plaza",
-                       "Residential Block A", "Residential Block B", "Market",
-                       "Harbor Front", "Arena"],
-        "epic":       ["Temple District", "Depot Quarter", "Central Plaza",
-                       "Residential Block A", "Residential Block B",
-                       "Market", "Harbor Front", "Arena", "Noble Quarter"],
-        "legendary":  ["Temple District", "Depot Quarter", "Grand Plaza",
-                       "Residential Block A", "Residential Block B",
-                       "Residential Block C", "Market", "Harbor Front",
-                       "Arena", "Noble Quarter", "Wizard Tower"],
+        "easy": ["Market", "Temple", "Houses", "Town Square"],
+        "medium": ["Market", "Temple", "Depot", "Houses", "Tavern"],
+        "hard": [
+            "Temple District",
+            "Depot Quarter",
+            "Central Plaza",
+            "Residential Block",
+            "Market",
+            "Harbor Front",
+        ],
+        "extreme": [
+            "Temple District",
+            "Depot Quarter",
+            "Central Plaza",
+            "Residential Block A",
+            "Residential Block B",
+            "Market",
+            "Harbor Front",
+            "Arena",
+        ],
+        "epic": [
+            "Temple District",
+            "Depot Quarter",
+            "Central Plaza",
+            "Residential Block A",
+            "Residential Block B",
+            "Market",
+            "Harbor Front",
+            "Arena",
+            "Noble Quarter",
+        ],
+        "legendary": [
+            "Temple District",
+            "Depot Quarter",
+            "Grand Plaza",
+            "Residential Block A",
+            "Residential Block B",
+            "Residential Block C",
+            "Market",
+            "Harbor Front",
+            "Arena",
+            "Noble Quarter",
+            "Wizard Tower",
+        ],
     }
 
     # Default room distribution per dungeon floor
     DUNGEON_ROOMS_PER_FLOOR: Dict[str, int] = {
-        "easy": 3, "medium": 5, "hard": 7, "extreme": 9,
-        "epic": 11, "legendary": 14,
+        "easy": 3,
+        "medium": 5,
+        "hard": 7,
+        "extreme": 9,
+        "epic": 11,
+        "legendary": 14,
     }
 
     # Boss mechanics per difficulty
     BOSS_MECHANICS: Dict[str, List[str]] = {
-        "easy":       ["melee", "single_target"],
-        "medium":     ["melee", "aoe_burst", "summon_minions"],
-        "hard":       ["melee", "aoe_burst", "summon_minions", "ranged"],
-        "extreme":    ["melee", "aoe_burst", "summon_minions", "ranged",
-                       "status_inflight", "teleport", "heal"],
-        "epic":       ["melee", "aoe_burst", "summon_minions", "ranged",
-                       "status_inflight", "teleport", "heal", "lifesteal",
-                       "shields", "waves"],
-        "legendary":  ["melee", "aoe_burst", "summon_minions", "ranged",
-                       "status_inflight", "teleport", "heal", "lifesteal",
-                       "shields", "waves", "phases", "enrage"],
+        "easy": ["melee", "single_target"],
+        "medium": ["melee", "aoe_burst", "summon_minions"],
+        "hard": ["melee", "aoe_burst", "summon_minions", "ranged"],
+        "extreme": [
+            "melee",
+            "aoe_burst",
+            "summon_minions",
+            "ranged",
+            "status_inflight",
+            "teleport",
+            "heal",
+        ],
+        "epic": [
+            "melee",
+            "aoe_burst",
+            "summon_minions",
+            "ranged",
+            "status_inflight",
+            "teleport",
+            "heal",
+            "lifesteal",
+            "shields",
+            "waves",
+        ],
+        "legendary": [
+            "melee",
+            "aoe_burst",
+            "summon_minions",
+            "ranged",
+            "status_inflight",
+            "teleport",
+            "heal",
+            "lifesteal",
+            "shields",
+            "waves",
+            "phases",
+            "enrage",
+        ],
     }
 
     # Quest objective templates
@@ -256,9 +322,16 @@ class ZonePlanner:
 
     # Quest NPC names
     QUEST_NPCS: List[str] = [
-        "Old Hermit", "Ship Captain", "Royal Advisor", "Tavern Keeper",
-        "Wandering Monk", "Mysterious Stranger", "Retired Hunter",
-        "Royal Mage", "Village Elder", "Dwarven Engineer",
+        "Old Hermit",
+        "Ship Captain",
+        "Royal Advisor",
+        "Tavern Keeper",
+        "Wandering Monk",
+        "Mysterious Stranger",
+        "Retired Hunter",
+        "Royal Mage",
+        "Village Elder",
+        "Dwarven Engineer",
     ]
 
     def __init__(self, seed: Optional[int] = None):
@@ -309,7 +382,7 @@ class ZonePlanner:
         The number of districts, features, and population scale with the
         difficulty band derived from the level range.
         """
-        rng = random.Random(seed) if seed is not None else self._rng
+        random.Random(seed) if seed is not None else self._rng
         band = self.classify_range(min_level, max_level)
         districts = list(self.CITY_DISTRICTS_BY_BAND.get(band, []))
 
@@ -400,14 +473,18 @@ class ZonePlanner:
             room_type = rng.choice(
                 ["combat", "treasure", "lore", "trap", "ambush", "shrine"]
             )
-            room_level = min_level + (i % floors) * ((max_level - min_level) // max(1, floors))
-            rooms.append({
-                "id": f"room_{i:03d}",
-                "type": room_type,
-                "floor": i % floors,
-                "level": room_level,
-                "monster_count": rng.randint(2, 6),
-            })
+            room_level = min_level + (i % floors) * (
+                (max_level - min_level) // max(1, floors)
+            )
+            rooms.append(
+                {
+                    "id": f"room_{i:03d}",
+                    "type": room_type,
+                    "floor": i % floors,
+                    "level": room_level,
+                    "monster_count": rng.randint(2, 6),
+                }
+            )
 
         # Boss room
         boss: Optional[Dict[str, Any]] = None
@@ -459,7 +536,7 @@ class ZonePlanner:
         Monster pool is taken from the theme's monster list; spawn count
         scales with area and density.
         """
-        rng = random.Random(seed) if seed is not None else self._rng
+        random.Random(seed) if seed is not None else self._rng
         band = self.classify_range(min_level, max_level)
 
         # Pick a balanced subset of monsters from the theme
@@ -516,7 +593,9 @@ class ZonePlanner:
         boss_name = boss_monster or (theme.monsters[0] if theme.monsters else "Demon")
 
         # Minions are the rest of the pool
-        minions = [m for m in theme.monsters if m != boss_name] if theme.monsters else []
+        minions = (
+            [m for m in theme.monsters if m != boss_name] if theme.monsters else []
+        )
 
         # Loot scales with band
         loot_table = self._boss_loot(band, rng)
@@ -581,13 +660,22 @@ class ZonePlanner:
                     count=rng.randint(3, 12),
                     monster=theme.pick_monster(i),
                     location=location,
-                    item=rng.choice(["Sacred Relic", "Ancient Map", "Crystal Shard",
-                                     "Tome of Power", "Royal Signet", "Mystic Orb"]),
+                    item=rng.choice(
+                        [
+                            "Sacred Relic",
+                            "Ancient Map",
+                            "Crystal Shard",
+                            "Tome of Power",
+                            "Royal Signet",
+                            "Mystic Orb",
+                        ]
+                    ),
                     npc=npc,
                     boss=theme.pick_monster(0),
                 ),
                 "type": template.split("{")[0].strip().lower(),
-                "level": min_level + i * ((max_level - min_level) // max(1, objective_count)),
+                "level": min_level
+                + i * ((max_level - min_level) // max(1, objective_count)),
             }
             objectives.append(objective)
 
@@ -616,41 +704,94 @@ class ZonePlanner:
 
     def _boss_loot(self, band: str, rng: random.Random) -> List[str]:
         loot_by_band: Dict[str, List[str]] = {
-            "easy":      ["Gold Coin", "Health Potion", "Bread"],
-            "medium":    ["Platinum Coin", "Ultimate Health Potion", "Crystal Sword",
-                          "Royal Helmet"],
-            "hard":      ["Gold Ingot", "Supreme Health Potion", "Mastermind Shield",
-                          "Dragon Scale Boots", "Frazzlemaw Tongue"],
-            "extreme":   ["Demonic Essence", "Great Mana Potion", "Spellbook of Wards",
-                          "Vampire Lord Token", "Cloak of Terror"],
-            "epic":      ["Soul War Relic", "Frozen Heart", "Soulshard",
-                          "Hellstalker Edge", "Dream Warden Boots"],
-            "legendary": ["Legendary Token", "Master Shroud", "Soulcutter",
-                          "Riftwalker Cape", "Hellforged Helm"],
+            "easy": ["Gold Coin", "Health Potion", "Bread"],
+            "medium": [
+                "Platinum Coin",
+                "Ultimate Health Potion",
+                "Crystal Sword",
+                "Royal Helmet",
+            ],
+            "hard": [
+                "Gold Ingot",
+                "Supreme Health Potion",
+                "Mastermind Shield",
+                "Dragon Scale Boots",
+                "Frazzlemaw Tongue",
+            ],
+            "extreme": [
+                "Demonic Essence",
+                "Great Mana Potion",
+                "Spellbook of Wards",
+                "Vampire Lord Token",
+                "Cloak of Terror",
+            ],
+            "epic": [
+                "Soul War Relic",
+                "Frozen Heart",
+                "Soulshard",
+                "Hellstalker Edge",
+                "Dream Warden Boots",
+            ],
+            "legendary": [
+                "Legendary Token",
+                "Master Shroud",
+                "Soulcutter",
+                "Riftwalker Cape",
+                "Hellforged Helm",
+            ],
         }
         base = loot_by_band.get(band, loot_by_band["medium"])
-        count = {"easy": 2, "medium": 3, "hard": 3, "extreme": 4, "epic": 4, "legendary": 5}.get(
-            band, 3
-        )
+        count = {
+            "easy": 2,
+            "medium": 3,
+            "hard": 3,
+            "extreme": 4,
+            "epic": 4,
+            "legendary": 5,
+        }.get(band, 3)
         return rng.sample(base, min(count, len(base)))
 
     def _quest_rewards(self, band: str, rng: random.Random) -> List[str]:
         reward_by_band: Dict[str, List[str]] = {
-            "easy":      ["1000 Gold", "Experience (5000)"],
-            "medium":    ["5000 Gold", "Experience (25000)", "Minor Loot Box"],
-            "hard":      ["15000 Gold", "Experience (75000)", "Skill Boost",
-                          "Temple Blessing"],
-            "extreme":   ["50000 Gold", "Experience (200000)", "Achievement Point",
-                          "Access to Hunt Zone", "Rare Mount"],
-            "epic":      ["100000 Gold", "Experience (500000)", "Legendary Outfit",
-                          "Outfit Unlock", "Title: Hero of {theme}"],
-            "legendary": ["500000 Gold", "Experience (1500000)", "Custom Outfit",
-                          "Announcement Reward", "Unique Weapon Skin"],
+            "easy": ["1000 Gold", "Experience (5000)"],
+            "medium": ["5000 Gold", "Experience (25000)", "Minor Loot Box"],
+            "hard": [
+                "15000 Gold",
+                "Experience (75000)",
+                "Skill Boost",
+                "Temple Blessing",
+            ],
+            "extreme": [
+                "50000 Gold",
+                "Experience (200000)",
+                "Achievement Point",
+                "Access to Hunt Zone",
+                "Rare Mount",
+            ],
+            "epic": [
+                "100000 Gold",
+                "Experience (500000)",
+                "Legendary Outfit",
+                "Outfit Unlock",
+                "Title: Hero of {theme}",
+            ],
+            "legendary": [
+                "500000 Gold",
+                "Experience (1500000)",
+                "Custom Outfit",
+                "Announcement Reward",
+                "Unique Weapon Skin",
+            ],
         }
         base = reward_by_band.get(band, reward_by_band["medium"])
-        count = {"easy": 1, "medium": 2, "hard": 2, "extreme": 3, "epic": 3, "legendary": 4}.get(
-            band, 2
-        )
+        count = {
+            "easy": 1,
+            "medium": 2,
+            "hard": 2,
+            "extreme": 3,
+            "epic": 3,
+            "legendary": 4,
+        }.get(band, 2)
         return rng.sample(base, min(count, len(base)))
 
     def _quest_location(self, theme: ThemeAssets) -> str:

@@ -1,5 +1,3 @@
-import pytest
-
 from validators.tile_validator import validate_tile
 
 

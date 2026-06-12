@@ -5,7 +5,6 @@ DensityAnalyzer — analyzes tile density and content concentration.
 from __future__ import annotations
 
 import logging
-from collections import Counter
 from typing import Any, Dict, List, Tuple
 
 from core.world.world_model import WorldModel
@@ -39,8 +38,12 @@ class DensityAnalyzer:
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snapshots = build_snapshots(world)
@@ -72,7 +75,7 @@ class DensityAnalyzer:
         # Concentration: standard deviation / mean of item count
         if avg_items > 0:
             variance = sum((c - avg_items) ** 2 for c in item_counts) / total
-            std = variance ** 0.5
+            std = variance**0.5
             cv = std / avg_items  # coefficient of variation
         else:
             cv = 0.0
@@ -121,26 +124,32 @@ class DensityAnalyzer:
         recs: List = []
 
         if content_ratio < 0.2 and total > 10:
-            issues.append(CriticIssue(
-                issue_type=IssueType.UNDERDECORATED_AREA,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Only {content_ratio*100:.0f}% of tiles have content",
-            ))
-            recs.append(CriticRecommendation(
-                title="Add decoration to empty areas",
-                description="Large portions of the map are empty. Add decoration, structures or spawns to improve density.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.UNDERDECORATED_AREA,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Only {content_ratio * 100:.0f}% of tiles have content",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Add decoration to empty areas",
+                    description="Large portions of the map are empty. Add decoration, structures or spawns to improve density.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         if avg_items > 10:
-            issues.append(CriticIssue(
-                issue_type=IssueType.OVERDECORATED_AREA,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Average items per tile is {avg_items:.1f} — possibly over-decorated",
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.OVERDECORATED_AREA,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Average items per tile is {avg_items:.1f} — possibly over-decorated",
+                )
+            )
 
         return {
             "category": self.CATEGORY,

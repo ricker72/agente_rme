@@ -7,10 +7,10 @@ into the unified WorldModel from core/world/.
 
 from __future__ import annotations
 
-from typing import Any, List, Optional, Tuple
+from typing import Optional
 
 from core.world import Tile, Item, Spawn, Structure, WorldModel
-from core.blueprints import Blueprint, BlueprintTile
+from core.blueprints import Blueprint
 from core.blueprints.blueprint_placer import BlueprintPlacer as BasePlacer
 
 
@@ -56,11 +56,25 @@ class UnifiedBlueprintPlacer(BasePlacer):
 
         if blueprint.is_tile_based:
             tiles_placed = self._place_tile_based(
-                blueprint, world, x, y, z, check_collision, offset_x, offset_y,
+                blueprint,
+                world,
+                x,
+                y,
+                z,
+                check_collision,
+                offset_x,
+                offset_y,
             )
         else:
             tiles_placed = self._place_descriptive(
-                blueprint, world, x, y, z, check_collision, offset_x, offset_y,
+                blueprint,
+                world,
+                x,
+                y,
+                z,
+                check_collision,
+                offset_x,
+                offset_y,
             )
 
         # Register the structure

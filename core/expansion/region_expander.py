@@ -5,14 +5,13 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
-from core.world.spawn import Spawn
 from core.world.region import Region
-from core.world.structure import Structure
 
 
 @dataclass
 class RegionExpansionResult:
     """Result of region expansion operation."""
+
     regions_expanded: int = 0
     tiles_added: int = 0
     connections_made: int = 0
@@ -41,9 +40,9 @@ class RegionExpander:
     GAP_FILL_GROUND = 814
     MAX_GAP_SIZE = 30
 
-    def expand(self, world: WorldModel,
-               fill_gaps: bool = True,
-               connect_regions: bool = True) -> RegionExpansionResult:
+    def expand(
+        self, world: WorldModel, fill_gaps: bool = True, connect_regions: bool = True
+    ) -> RegionExpansionResult:
         """
         Expand and connect existing regions.
 
@@ -65,12 +64,12 @@ class RegionExpander:
 
         return result
 
-    def _fill_incomplete_regions(self, world: WorldModel,
-                                 result: RegionExpansionResult) -> None:
+    def _fill_incomplete_regions(
+        self, world: WorldModel, result: RegionExpansionResult
+    ) -> None:
         """Fill gaps within existing regions to make them more rectangular."""
         for region in world.regions:
-            region_tiles = [t for t in world.tiles.values()
-                            if t.zone == region.name]
+            region_tiles = [t for t in world.tiles.values() if t.zone == region.name]
 
             if len(region_tiles) < 10:
                 continue
@@ -85,23 +84,26 @@ class RegionExpander:
             for x in range(min_x, max_x + 1):
                 for y in range(min_y, max_y + 1):
                     if not world.has_tile(x, y, 7):
-                        tile = Tile(x=x, y=y, z=7,
-                                    ground=self.GAP_FILL_GROUND,
-                                    zone=region.name)
+                        tile = Tile(
+                            x=x, y=y, z=7, ground=self.GAP_FILL_GROUND, zone=region.name
+                        )
                         world.set_tile(tile)
                         tiles_added += 1
 
             if tiles_added > 0:
                 result.regions_expanded += 1
                 result.tiles_added += tiles_added
-                result.details.append({
-                    "region": region.name,
-                    "action": "fill_gaps",
-                    "tiles_added": tiles_added,
-                })
+                result.details.append(
+                    {
+                        "region": region.name,
+                        "action": "fill_gaps",
+                        "tiles_added": tiles_added,
+                    }
+                )
 
-    def _connect_regions(self, world: WorldModel,
-                         result: RegionExpansionResult) -> None:
+    def _connect_regions(
+        self, world: WorldModel, result: RegionExpansionResult
+    ) -> None:
         """Create paths between disconnected regions."""
         regions = world.regions
         if len(regions) < 2:
@@ -119,8 +121,9 @@ class RegionExpander:
                     continue
 
                 # Skip if already close enough
-                dist = ((center1[0] - center2[0]) ** 2 +
-                        (center1[1] - center2[1]) ** 2) ** 0.5
+                dist = (
+                    (center1[0] - center2[0]) ** 2 + (center1[1] - center2[1]) ** 2
+                ) ** 0.5
                 if dist < 20:
                     continue
 
@@ -128,21 +131,22 @@ class RegionExpander:
                 if self._regions_connected(world, r1, r2, threshold=5):
                     continue
 
-                path_tiles = self._create_path(
-                    world, center1, center2, r1.name
-                )
+                path_tiles = self._create_path(world, center1, center2, r1.name)
                 if path_tiles > 0:
                     result.connections_made += 1
                     result.tiles_added += path_tiles
-                    result.details.append({
-                        "from": r1.name,
-                        "to": r2.name,
-                        "action": "connect",
-                        "path_tiles": path_tiles,
-                    })
+                    result.details.append(
+                        {
+                            "from": r1.name,
+                            "to": r2.name,
+                            "action": "connect",
+                            "path_tiles": path_tiles,
+                        }
+                    )
 
-    def _region_center(self, world: WorldModel,
-                       region: Region) -> Optional[Tuple[int, int]]:
+    def _region_center(
+        self, world: WorldModel, region: Region
+    ) -> Optional[Tuple[int, int]]:
         """Calculate the center of a region."""
         tiles = [t for t in world.tiles.values() if t.zone == region.name]
         if not tiles:
@@ -151,9 +155,9 @@ class RegionExpander:
         cy = sum(t.y for t in tiles) // len(tiles)
         return (cx, cy)
 
-    def _regions_connected(self, world: WorldModel,
-                           r1: Region, r2: Region,
-                           threshold: int = 5) -> bool:
+    def _regions_connected(
+        self, world: WorldModel, r1: Region, r2: Region, threshold: int = 5
+    ) -> bool:
         """Check if two regions are close to each other."""
         tiles1 = [t for t in world.tiles.values() if t.zone == r1.name]
         tiles2 = [t for t in world.tiles.values() if t.zone == r2.name]
@@ -164,9 +168,13 @@ class RegionExpander:
                     return True
         return False
 
-    def _create_path(self, world: WorldModel,
-                     start: Tuple[int, int], end: Tuple[int, int],
-                     zone_name: str) -> int:
+    def _create_path(
+        self,
+        world: WorldModel,
+        start: Tuple[int, int],
+        end: Tuple[int, int],
+        zone_name: str,
+    ) -> int:
         """Create a simple L-shaped path between two points."""
         tiles_added = 0
         x, y = start
@@ -176,8 +184,7 @@ class RegionExpander:
         step_x = 1 if ex > x else -1
         while x != ex:
             if not world.has_tile(x, y, 7):
-                tile = Tile(x=x, y=y, z=7, ground=self.GAP_FILL_GROUND,
-                            zone=zone_name)
+                tile = Tile(x=x, y=y, z=7, ground=self.GAP_FILL_GROUND, zone=zone_name)
                 world.set_tile(tile)
                 tiles_added += 1
             x += step_x
@@ -185,8 +192,7 @@ class RegionExpander:
         step_y = 1 if ey > y else -1
         while y != ey:
             if not world.has_tile(x, y, 7):
-                tile = Tile(x=x, y=y, z=7, ground=self.GAP_FILL_GROUND,
-                            zone=zone_name)
+                tile = Tile(x=x, y=y, z=7, ground=self.GAP_FILL_GROUND, zone=zone_name)
                 world.set_tile(tile)
                 tiles_added += 1
             y += step_y

@@ -1,4 +1,5 @@
 """Run coverage on the critic package."""
+
 import subprocess
 import sys
 
@@ -18,6 +19,8 @@ args = [
     "--cov-report=html:htmlcov_critic",
     "--tb=short",
 ]
-res = subprocess.run([sys.executable, "-m", "pytest", *args],
-                     cwd=r"c:\Users\samatha\OneDrive\Desktop\agente_rme")
+res = subprocess.run(
+    [sys.executable, "-m", "pytest", *args],
+    cwd=r"c:\Users\samatha\OneDrive\Desktop\agente_rme",
+)
 sys.exit(res.returncode)

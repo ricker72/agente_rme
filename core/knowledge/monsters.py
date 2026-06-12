@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
+
 @dataclass
 class Monster:
     name: str
@@ -23,6 +24,7 @@ class Monster:
         if self.experience < 2200:
             return "high_level"
         return "endgame"
+
 
 MONSTERS = [
     Monster(

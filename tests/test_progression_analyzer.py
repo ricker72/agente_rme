@@ -7,9 +7,10 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from core.playtest.combat_simulator import MonsterStats
-from core.playtest.player_bot import Vocation
 from core.playtest.progression_analyzer import (
-    ProgressionAnalyzer, ProgressionPoint, ProgressionReport,
+    ProgressionAnalyzer,
+    ProgressionPoint,
+    ProgressionReport,
 )
 from core.playtest.difficulty_evaluator import DifficultyEvaluator
 from core.playtest.survival_analyzer import SurvivalAnalyzer
@@ -24,10 +25,24 @@ def analyzer():
 @pytest.fixture
 def sample_monsters():
     return [
-        MonsterStats(name="Dragon", health=1000, attack=100,
-                     defense=60, magic_defense=50, experience=700, level=50),
-        MonsterStats(name="Hydra", health=2100, attack=150,
-                     defense=80, magic_defense=70, experience=1500, level=80),
+        MonsterStats(
+            name="Dragon",
+            health=1000,
+            attack=100,
+            defense=60,
+            magic_defense=50,
+            experience=700,
+            level=50,
+        ),
+        MonsterStats(
+            name="Hydra",
+            health=2100,
+            attack=150,
+            defense=80,
+            magic_defense=70,
+            experience=1500,
+            level=80,
+        ),
     ]
 
 
@@ -56,11 +71,11 @@ class TestTimeToLevel:
 
     def test_time_to_level_zero_xp(self, analyzer):
         t = analyzer.time_to_level(0, 300)
-        assert t == float('inf')
+        assert t == float("inf")
 
     def test_time_to_level_negative_xp(self, analyzer):
         t = analyzer.time_to_level(-100, 300)
-        assert t == float('inf')
+        assert t == float("inf")
 
     def test_time_to_level_higher_xp_faster(self, analyzer):
         t1 = analyzer.time_to_level(100000, 300)
@@ -117,12 +132,26 @@ class TestProgressionCurve:
     def test_bottleneck_detection(self, analyzer):
         # Create zones with very different difficulty
         easy_monsters = [
-            MonsterStats(name="Rat", health=20, attack=5,
-                         defense=2, magic_defense=2, experience=5, level=1),
+            MonsterStats(
+                name="Rat",
+                health=20,
+                attack=5,
+                defense=2,
+                magic_defense=2,
+                experience=5,
+                level=1,
+            ),
         ]
         hard_monsters = [
-            MonsterStats(name="Demon", health=5000, attack=300,
-                         defense=200, magic_defense=180, experience=3500, level=120),
+            MonsterStats(
+                name="Demon",
+                health=5000,
+                attack=300,
+                defense=200,
+                magic_defense=180,
+                experience=3500,
+                level=120,
+            ),
         ]
         zones = {"easy": easy_monsters, "hard": hard_monsters}
         report = analyzer.analyze_progression_curve(
@@ -226,19 +255,31 @@ class TestDifficultyEvaluator:
         evaluator = DifficultyEvaluator(seed=42)
         zones = {
             "easy_zone": {
-                "spawn_count": 30, "total_tiles": 2500,
-                "monster_avg_level": 100, "has_boss": False,
-                "has_healing": True, "monster_xp": 100,
+                "spawn_count": 30,
+                "total_tiles": 2500,
+                "monster_avg_level": 100,
+                "has_boss": False,
+                "has_healing": True,
+                "monster_xp": 100,
             },
             "hard_zone": {
-                "spawn_count": 100, "total_tiles": 2500,
-                "monster_avg_level": 500, "has_boss": True,
-                "has_healing": False, "monster_xp": 5000,
+                "spawn_count": 100,
+                "total_tiles": 2500,
+                "monster_avg_level": 500,
+                "has_boss": True,
+                "has_healing": False,
+                "monster_xp": 5000,
             },
         }
         report = evaluator.evaluate_world(zones, player_level=300)
         assert report.difficulty_score >= 0
-        assert report.overall_difficulty in ("trivial", "easy", "medium", "hard", "extreme")
+        assert report.overall_difficulty in (
+            "trivial",
+            "easy",
+            "medium",
+            "hard",
+            "extreme",
+        )
 
     def test_is_balanced(self):
         evaluator = DifficultyEvaluator(seed=42)
@@ -301,10 +342,12 @@ class TestLootSimulator:
 
     def test_register_custom_table(self):
         from core.playtest.loot_simulator import LootTable
+
         loot = LootSimulator(seed=42)
         custom = LootTable(
             monster_name="Custom",
-            gold_min=100, gold_max=200,
+            gold_min=100,
+            gold_max=200,
             items=[("Custom Item", 50, 9999)],
             rare_items=[],
         )
@@ -322,8 +365,15 @@ class TestSurvivalAnalyzer:
     def test_analyze_zone(self):
         analyzer = SurvivalAnalyzer(seed=42)
         monsters = [
-            MonsterStats(name="Dragon", health=1000, attack=100,
-                         defense=60, magic_defense=50, experience=700, level=50),
+            MonsterStats(
+                name="Dragon",
+                health=1000,
+                attack=100,
+                defense=60,
+                magic_defense=50,
+                experience=700,
+                level=50,
+            ),
         ]
         report = analyzer.analyze_zone("test_zone", monsters, 300)
         assert report.zone_name == "test_zone"
@@ -334,8 +384,15 @@ class TestSurvivalAnalyzer:
         analyzer = SurvivalAnalyzer(seed=42)
         zones = {
             "zone_a": [
-                MonsterStats(name="Rat", health=20, attack=5,
-                             defense=2, magic_defense=2, experience=5, level=1),
+                MonsterStats(
+                    name="Rat",
+                    health=20,
+                    attack=5,
+                    defense=2,
+                    magic_defense=2,
+                    experience=5,
+                    level=1,
+                ),
             ],
         }
         report = analyzer.analyze_world(zones, 300)

@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 from .lua_ast import Block
 from .lua_parser import LuaParser, ParseError
 from .lua_optimizer import LuaOptimizer
-from .lua_validator import LuaValidator, AutoFixer, ValidationResult
+from .lua_validator import LuaValidator, AutoFixer
 from .lua_formatter import LuaFormatter
 
 
@@ -83,7 +83,13 @@ class LuaMetrics:
 
 
 class ScriptScore:
-    def calculate(self, metrics: Dict[str, object], errors: List[str], warnings: List[str], optimizations: List[str]) -> int:
+    def calculate(
+        self,
+        metrics: Dict[str, object],
+        errors: List[str],
+        warnings: List[str],
+        optimizations: List[str],
+    ) -> int:
         score = 100
         score -= min(30, len(errors) * 8)
         score -= min(20, len(warnings) * 2)
@@ -124,7 +130,9 @@ class LuaCompiler:
         except ParseError as err:
             report.status = "failure"
             report.errors.append(f"Syntax error: {err}")
-            report.score = self.scorer.calculate({}, report.errors, report.warnings, report.optimizations)
+            report.score = self.scorer.calculate(
+                {}, report.errors, report.warnings, report.optimizations
+            )
             return report
 
         validation = self.validator.validate(source)
@@ -141,14 +149,20 @@ class LuaCompiler:
                 except ParseError as err:
                     report.status = "failure"
                     report.errors.append(f"Syntax error after auto-fix: {err}")
-                    report.score = self.scorer.calculate({}, report.errors, report.warnings, report.optimizations)
+                    report.score = self.scorer.calculate(
+                        {}, report.errors, report.warnings, report.optimizations
+                    )
                     return report
 
         optimized_ast = self.optimizer.optimize(ast)
         report.metrics = self.metrics.measure(optimized_ast)
-        report.optimizations.extend(["removed duplicate assignments", "eliminated dead local variables"])
+        report.optimizations.extend(
+            ["removed duplicate assignments", "eliminated dead local variables"]
+        )
         formatted_source = self.formatter.format(optimized_ast)
         report.script = self.emitter.emit(formatted_source)
-        report.score = self.scorer.calculate(report.metrics, report.errors, report.warnings, report.optimizations)
+        report.score = self.scorer.calculate(
+            report.metrics, report.errors, report.warnings, report.optimizations
+        )
         report.status = "success" if not report.errors else "failure"
         return report

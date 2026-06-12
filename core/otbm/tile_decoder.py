@@ -16,7 +16,7 @@ Handles:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .node_encoder import (
     TILESTATE_NONE,
@@ -58,16 +58,123 @@ class TileDecoder:
 
     # Known wall item IDs (for decoration categorization)
     WALL_ITEM_IDS = {
-        154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165,
-        166, 167, 168, 169, 170, 313, 314, 315, 316, 317, 318, 319,
-        320, 321, 322, 323, 353, 354, 355, 356, 357, 358, 359, 360,
-        361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372,
-        373, 374, 375, 376, 402, 403, 404, 409, 410, 411, 412, 413,
-        414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425,
-        426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437,
-        438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449,
-        450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461,
-        462, 463, 464, 465, 466, 467, 468, 469, 470,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        376,
+        402,
+        403,
+        404,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
     }
 
     def __init__(self):
@@ -116,9 +223,7 @@ class TileDecoder:
 
         return result
 
-    def decode_area(
-        self, area_decoded: Dict[str, Any]
-    ) -> List[Dict[str, Any]]:
+    def decode_area(self, area_decoded: Dict[str, Any]) -> List[Dict[str, Any]]:
         """
         Decode all tiles in a TILE_AREA.
 
@@ -128,10 +233,7 @@ class TileDecoder:
         Returns:
             List of WorldModel-compatible tile dicts.
         """
-        return [
-            self.to_worldmodel_tile(tile)
-            for tile in area_decoded.get("tiles", [])
-        ]
+        return [self.to_worldmodel_tile(tile) for tile in area_decoded.get("tiles", [])]
 
     def flags_to_strings(self, flags: int) -> List[str]:
         """

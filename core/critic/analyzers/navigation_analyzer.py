@@ -5,8 +5,7 @@ NavigationAnalyzer — analyzes path connectivity, dead-ends, and bottlenecks.
 from __future__ import annotations
 
 import logging
-from collections import Counter, defaultdict
-from typing import Any, Dict, List, Set, Tuple
+from typing import Any, Dict, List, Tuple
 
 from core.world.world_model import WorldModel
 
@@ -31,16 +30,18 @@ class NavigationAnalyzer:
 
     CATEGORY = "navigation"
 
-    def __init__(self,
-                 min_region_size: int = 5,
-                 dead_end_threshold: int = 1):
+    def __init__(self, min_region_size: int = 5, dead_end_threshold: int = 1):
         self.min_region_size = min_region_size
         self.dead_end_threshold = dead_end_threshold
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snapshots = build_snapshots(world)
@@ -139,52 +140,64 @@ class NavigationAnalyzer:
         recs: List = []
 
         if region_count > 1 and total_grounded > 20:
-            issues.append(CriticIssue(
-                issue_type=IssueType.ISOLATED_REGION,
-                severity=IssueSeverity.ERROR,
-                category=self.CATEGORY,
-                message=f"Map has {region_count} disconnected regions",
-                details={"region_count": region_count},
-            ))
-            recs.append(CriticRecommendation(
-                title="Connect disconnected regions",
-                description=f"There are {region_count} disconnected map regions. Add paths, doors, teleporters or stairs to connect them.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.HIGH,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.ISOLATED_REGION,
+                    severity=IssueSeverity.ERROR,
+                    category=self.CATEGORY,
+                    message=f"Map has {region_count} disconnected regions",
+                    details={"region_count": region_count},
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Connect disconnected regions",
+                    description=f"There are {region_count} disconnected map regions. Add paths, doors, teleporters or stairs to connect them.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.HIGH,
+                )
+            )
 
         for de in dead_ends[:5]:
-            issues.append(CriticIssue(
-                issue_type=IssueType.DEAD_END,
-                severity=IssueSeverity.INFO,
-                category=self.CATEGORY,
-                location=f"({de[0]},{de[1]},{de[2]})",
-                message="Dead-end path detected",
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.DEAD_END,
+                    severity=IssueSeverity.INFO,
+                    category=self.CATEGORY,
+                    location=f"({de[0]},{de[1]},{de[2]})",
+                    message="Dead-end path detected",
+                )
+            )
         if dead_end_ratio > 0.10:
-            recs.append(CriticRecommendation(
-                title="Reduce dead ends in dungeon",
-                description=f"Dead ends represent {dead_end_ratio*100:.1f}% of tiles. Consider adding loops or secondary paths.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.LOW,
-            ))
+            recs.append(
+                CriticRecommendation(
+                    title="Reduce dead ends in dungeon",
+                    description=f"Dead ends represent {dead_end_ratio * 100:.1f}% of tiles. Consider adding loops or secondary paths.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.LOW,
+                )
+            )
 
         for bn in bottlenecks[:3]:
-            issues.append(CriticIssue(
-                issue_type=IssueType.BOTTLENECK,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                location=f"({bn[0]},{bn[1]},{bn[2]})",
-                message="Bottleneck: only 2 connections",
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.BOTTLENECK,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    location=f"({bn[0]},{bn[1]},{bn[2]})",
+                    message="Bottleneck: only 2 connections",
+                )
+            )
 
         if isolated_count > 0:
-            issues.append(CriticIssue(
-                issue_type=IssueType.POOR_NAVIGATION,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"{isolated_count} small isolated regions detected",
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.POOR_NAVIGATION,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"{isolated_count} small isolated regions detected",
+                )
+            )
 
         return {
             "category": self.CATEGORY,

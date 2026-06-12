@@ -16,11 +16,11 @@ Architecture:
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Tuple
 
 from .lua_writer import LuaWriter
 from .lua_validator import LuaValidator, LuaValidationResult
-from core.world import WorldModel, Tile, Spawn, Region, Structure
+from core.world import WorldModel, Tile, Spawn
 
 logger = logging.getLogger(__name__)
 
@@ -108,6 +108,7 @@ class LuaExporter:
         """
         lua_code = self.export(world, title=title)
         import os
+
         os.makedirs(os.path.dirname(filepath) or ".", exist_ok=True)
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(lua_code)
@@ -143,9 +144,7 @@ class LuaExporter:
         # Export regions as comments
         for region in world.regions:
             self._writer.comment(
-                f"Region: {region.name} "
-                f"(theme={region.theme}, "
-                f"levels={region.min_level}-{region.max_level})"
+                f"Region: {region.name} (theme={region.theme}, levels={region.min_level}-{region.max_level})"
             )
 
         if world.structures or world.regions:
@@ -246,7 +245,9 @@ class LuaExporter:
 
         for x, y, z, spawn in spawns:
             self._writer.set_spawn(
-                x, y, z,
+                x,
+                y,
+                z,
                 monster_name=spawn.monster,
                 respawn=spawn.respawn,
                 radius=spawn.radius,

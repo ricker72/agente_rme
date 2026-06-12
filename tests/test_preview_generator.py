@@ -22,19 +22,32 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from core.preview import (
     PreviewGenerator,
-    render_tile, render_layer, compute_bounds, add_structure_overlay,
-    generate_report, save_minimap,
-    GROUND, WALL, WATER, SPAWN, BOSS, DECORATION, TEMPLE, EMPTY, STRUCTURE,
-    get_color_for_ground, get_color_for_item, is_boss,
-    WALL_IDS, GROUND_IDS, DECORATION_IDS, BOSS_MONSTERS,
+    render_tile,
+    render_layer,
+    compute_bounds,
+    add_structure_overlay,
+    generate_report,
+    save_minimap,
+    GROUND,
+    WALL,
+    WATER,
+    SPAWN,
+    BOSS,
+    DECORATION,
+    TEMPLE,
+    EMPTY,
+    STRUCTURE,
+    get_color_for_ground,
+    get_color_for_item,
+    is_boss,
 )
 from core.world import WorldModel, Tile, Spawn, Item, Structure, Region
 from core.generators import WorldGenerator
 
-
 # =========================================================================
 # TEST OBLIGATORIO
 # =========================================================================
+
 
 def test_preview_generation():
     """
@@ -53,15 +66,18 @@ def test_preview_generation():
     world.set_tile(tile)
 
     pg = PreviewGenerator(tile_size=10)
-    result = pg.generate(world, output_png="output/test_mandatory.png")
+    pg.generate(world, output_png="output/test_mandatory.png")
     assert Path("output/test_mandatory.png").exists(), "preview.png no se generó"
     assert os.path.getsize("output/test_mandatory.png") > 0, "preview.png está vacío"
-    print(f"  [OK] Test obligatorio: preview.png generado ({os.path.getsize('output/test_mandatory.png')} bytes)")
+    print(
+        f"  [OK] Test obligatorio: preview.png generado ({os.path.getsize('output/test_mandatory.png')} bytes)"
+    )
 
 
 # =========================================================================
 # Tests de componentes
 # =========================================================================
+
 
 def test_palette_colors():
     """Verificar que los colores de la paleta son tuplas RGB válidas."""
@@ -75,7 +91,7 @@ def test_palette_colors():
 def test_get_color_for_ground():
     """Verificar clasificación de ground IDs."""
     assert get_color_for_ground(None) == EMPTY
-    assert get_color_for_ground(1495) == WALL   # Wall ID
+    assert get_color_for_ground(1495) == WALL  # Wall ID
     assert get_color_for_ground(415) == GROUND  # Ground ID
     assert get_color_for_ground(4821) == WATER  # Water ID
     assert get_color_for_ground(99999) == GROUND  # Desconocido → ground
@@ -163,7 +179,9 @@ def test_compute_bounds():
     assert bounds["max_y"] == 10
     assert bounds["min_z"] == 7
     assert bounds["max_z"] == 8
-    print(f"  [OK] compute_bounds: ({bounds['min_x']},{bounds['min_y']})~({bounds['max_x']},{bounds['max_y']})")
+    print(
+        f"  [OK] compute_bounds: ({bounds['min_x']},{bounds['min_y']})~({bounds['max_x']},{bounds['max_y']})"
+    )
 
 
 def test_compute_bounds_empty():
@@ -194,8 +212,9 @@ def test_add_structure_overlay():
     """Overlay de estructura sobre imagen."""
     tiles = {"0:0:7": Tile(x=0, y=0, z=7, ground=415)}
     structures = [
-        Structure(name="test_temple", category="temple",
-                  x=0, y=0, z=7, width=1, height=1),
+        Structure(
+            name="test_temple", category="temple", x=0, y=0, z=7, width=1, height=1
+        ),
     ]
     bounds = compute_bounds(tiles)
     img = render_layer(tiles, z=7, tile_size=10, padding=1)
@@ -224,6 +243,7 @@ def test_save_minimap():
 # Tests de reportes
 # =========================================================================
 
+
 def test_generate_report():
     """Generar reporte de estadísticas."""
     world = WorldModel()
@@ -236,8 +256,9 @@ def test_generate_report():
     tile2.spawn = Spawn(monster="Demon", respawn=120)
     world.set_tile(tile2)
 
-    world.add_structure(Structure(name="t1", category="temple",
-                                  x=100, y=100, z=7, width=2, height=1))
+    world.add_structure(
+        Structure(name="t1", category="temple", x=100, y=100, z=7, width=2, height=1)
+    )
     world.add_region(Region(name="test", theme="issavi"))
 
     report = generate_report(world)
@@ -279,6 +300,7 @@ def test_report_json_serializable():
 # =========================================================================
 # Tests de integración con WorldGenerator
 # =========================================================================
+
 
 def test_generate_from_generated_world():
     """Pipeline completo: WorldGenerator → PreviewGenerator → preview.png + .json."""
@@ -322,7 +344,7 @@ def test_distinguir_visualmente():
     world = WorldModel()
 
     # Terreno (ground)
-    world.set_tile(Tile(x=0, y=0, z=7, ground=415))      # GROUND
+    world.set_tile(Tile(x=0, y=0, z=7, ground=415))  # GROUND
 
     # Decoración (item)
     tile_deco = Tile(x=1, y=0, z=7, ground=415)
@@ -340,16 +362,19 @@ def test_distinguir_visualmente():
     world.set_tile(tile_boss)
 
     # Estructura (temple overlay)
-    world.add_structure(Structure(name="temple", category="temple",
-                                  x=4, y=0, z=7, width=1, height=1))
+    world.add_structure(
+        Structure(name="temple", category="temple", x=4, y=0, z=7, width=1, height=1)
+    )
 
     # Verificar colores individuales
     tiles = world.tiles
-    assert render_tile(tiles["0:0:7"]) == GROUND,     "ground no es GROUND"
+    assert render_tile(tiles["0:0:7"]) == GROUND, "ground no es GROUND"
     assert render_tile(tiles["1:0:7"]) == DECORATION, "deco no es DECORATION"
-    assert render_tile(tiles["2:0:7"]) == SPAWN,      "spawn no es SPAWN"
-    assert render_tile(tiles["3:0:7"]) == BOSS,       "boss no es BOSS"
-    print("  [OK] Distinción visual: GROUND, DECORATION, SPAWN, BOSS, STRUCTURE confirmados")
+    assert render_tile(tiles["2:0:7"]) == SPAWN, "spawn no es SPAWN"
+    assert render_tile(tiles["3:0:7"]) == BOSS, "boss no es BOSS"
+    print(
+        "  [OK] Distinción visual: GROUND, DECORATION, SPAWN, BOSS, STRUCTURE confirmados"
+    )
 
 
 def test_empty_world_preview():
@@ -361,6 +386,7 @@ def test_empty_world_preview():
     assert "png" not in result, "No debería generar PNG sin tiles"
     if "json" in result:
         import json as _json
+
         with open(result["json"]) as f:
             report = _json.load(f)
         assert report["tiles"] == 0
@@ -380,11 +406,11 @@ def test_multi_z_preview():
     png = pg.generate_png(world, "output/test_z7.png", z=7)
     if png:
         assert os.path.exists(png)
-        print(f"  [OK] Multi-Z: Z=7 generado")
+        print("  [OK] Multi-Z: Z=7 generado")
     png8 = pg.generate_png(world, "output/test_z8.png", z=8)
     if png8:
         assert os.path.exists(png8)
-        print(f"  [OK] Multi-Z: Z=8 generado")
+        print("  [OK] Multi-Z: Z=8 generado")
 
     report = generate_report(world)
     assert report["z_layers"] == {7: 2, 8: 2}
@@ -431,6 +457,7 @@ if __name__ == "__main__":
         except Exception as e:
             failed += 1
             import traceback
+
             print(f"  [FAIL] {name}: {e}")
             traceback.print_exc()
         print()

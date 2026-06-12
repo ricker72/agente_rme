@@ -1,18 +1,18 @@
 """
-HITO 12 — Architecture Analyzer: analiza la arquitectura del mapa:
-distribución de estructuras, ciudades, zonas, patrón de construcción.
+HITO 12 — Architecture Analyzer: analyzes map architecture:
+structure distribution, cities, zones, construction patterns.
 """
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
-from typing import Any, Dict, List, Tuple
+from collections import defaultdict
+from typing import Dict, List
 
 
 class ArchitectureAnalyzer:
-    """Analiza la arquitectura y estructura del mapa."""
+    """Analyze map architecture and structure."""
 
-    # IDs de suelo por tipo estructural
+    # Ground IDs by structural type
     STRUCTURAL_GROUNDS = {
         "sandstone_floor": "natural",
         "polished_stone": "urban",
@@ -22,17 +22,59 @@ class ArchitectureAnalyzer:
         "roshamuul_stone": "wild",
     }
 
-    # IDs de items estructurales conocidos
+    # Known structural item IDs
     WALL_ITEM_IDS = {
-        101, 102, 103, 104, 105, 106, 107, 108, 109, 110,
-        1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009,
-        2100, 2101, 2102, 2103, 2104, 2105,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        1000,
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        2100,
+        2101,
+        2102,
+        2103,
+        2104,
+        2105,
     }
 
     DOOR_ITEM_IDS = {
-        1209, 1210, 1211, 1212, 1213, 1214, 1215, 1216, 1217,
-        1220, 1221, 1222, 1223, 1224, 1225,
-        5000, 5001, 5002, 5003, 5004, 5005, 5006,
+        1209,
+        1210,
+        1211,
+        1212,
+        1213,
+        1214,
+        1215,
+        1216,
+        1217,
+        1220,
+        1221,
+        1222,
+        1223,
+        1224,
+        1225,
+        5000,
+        5001,
+        5002,
+        5003,
+        5004,
+        5005,
+        5006,
     }
 
     def analyze(
@@ -44,18 +86,18 @@ class ArchitectureAnalyzer:
         waypoints: List[Dict[str, object]],
         map_size: Dict[str, int],
     ) -> Dict[str, object]:
-        """Analiza la arquitectura completa del mapa.
+        """Analyze the complete map architecture.
 
         Args:
             tiles: Dict {tile_type: count}.
             items: Dict {item_type: count}.
-            houses: Lista de houses/towns.
-            spawns: Lista de spawns.
-            waypoints: Lista de waypoints.
+            houses: List of houses/towns.
+            spawns: List of spawns.
+            waypoints: List of waypoints.
             map_size: Dict {"width": w, "height": h}.
 
         Returns:
-            Dict con análisis arquitectónico.
+            Dict with architectural analysis.
         """
         return {
             "structural_composition": self._analyze_structural_composition(tiles),
@@ -73,28 +115,25 @@ class ArchitectureAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Composición estructural
+    # Structural composition
     # ------------------------------------------------------------------
 
     @staticmethod
-    def _analyze_structural_composition(
-        tiles: Dict[str, int]
-    ) -> Dict[str, object]:
-        """Analiza la composición de tipos de suelo."""
+    def _analyze_structural_composition(tiles: Dict[str, int]) -> Dict[str, object]:
+        """Analyze ground type composition."""
         if not tiles:
             return {"categories": {}, "dominant": "unknown"}
 
         categories = defaultdict(int)
         for tile_name, count in tiles.items():
-            # Limpiar el nombre del tile
+            # Clean the tile name
             clean = tile_name.replace("ground_", "").replace("tile_", "")
             category = ArchitectureAnalyzer.STRUCTURAL_GROUNDS.get(clean, "misc")
             categories[category] += count
 
         total = sum(categories.values())
         categories_pct = {
-            cat: round(100 * cnt / max(total, 1), 1)
-            for cat, cnt in categories.items()
+            cat: round(100 * cnt / max(total, 1), 1) for cat, cnt in categories.items()
         }
 
         dominant = max(categories, key=categories.get) if categories else "unknown"
@@ -108,7 +147,7 @@ class ArchitectureAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Zonas urbanas
+    # Urban zones
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -116,7 +155,7 @@ class ArchitectureAnalyzer:
         tiles: Dict[str, int],
         houses: List[Dict[str, object]],
     ) -> Dict[str, object]:
-        """Detecta zonas urbanas basado en houses y tiles urbanos."""
+        """Detect urban zones based on houses and urban tiles."""
         urban_tiles = tiles.get("polished_stone", 0) + tiles.get("yalahar_floor", 0)
         house_count = len(houses)
 
@@ -145,12 +184,12 @@ class ArchitectureAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Análisis de muros
+    # Wall analysis
     # ------------------------------------------------------------------
 
     @staticmethod
     def _analyze_walls(items: Dict[str, int]) -> Dict[str, object]:
-        """Analiza la distribución de muros."""
+        """Analyze wall distribution."""
         wall_count = 0
         wall_types = {}
 
@@ -172,12 +211,12 @@ class ArchitectureAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Análisis de puertas
+    # Door analysis
     # ------------------------------------------------------------------
 
     @staticmethod
     def _analyze_doors(items: Dict[str, int]) -> Dict[str, object]:
-        """Analiza la distribución de puertas."""
+        """Analyze door distribution."""
         door_count = 0
         door_types = {}
 
@@ -199,7 +238,7 @@ class ArchitectureAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Clasificación de edificios
+    # Building classification
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -208,7 +247,7 @@ class ArchitectureAnalyzer:
         spawns: List[Dict[str, object]],
         map_size: Dict[str, int],
     ) -> Dict[str, object]:
-        """Clasifica el tipo de construcción del mapa."""
+        """Classify the map construction type."""
         width = map_size.get("width", 100)
         height = map_size.get("height", 100)
 
@@ -233,14 +272,14 @@ class ArchitectureAnalyzer:
             "house_density_per_10ksq": round(house_density, 2),
             "spawn_density_per_100sq": round(spawn_density, 2),
             "has_temple": any(
-                h.get("name", "").lower() == "temple" or
-                "temple" in str(h.get("name", "")).lower()
+                h.get("name", "").lower() == "temple"
+                or "temple" in str(h.get("name", "")).lower()
                 for h in houses
             ),
         }
 
     # ------------------------------------------------------------------
-    # Score de infraestructura
+    # Infrastructure score
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -251,7 +290,7 @@ class ArchitectureAnalyzer:
         waypoints: List[Dict[str, object]],
         map_size: Dict[str, int],
     ) -> Dict[str, object]:
-        """Calcula score de infraestructura (0-100)."""
+        """Calculate infrastructure score (0-100)."""
         width = map_size.get("width", 100)
         height = map_size.get("height", 100)
         area = max(width * height, 1)
@@ -267,11 +306,17 @@ class ArchitectureAnalyzer:
         return {
             "total_score": total,
             "infrastructure_level": (
-                "excellent" if total >= 80
-                else "good" if total >= 60
-                else "moderate" if total >= 40
-                else "basic" if total >= 20
-                else "minimal"
+                "excellent"
+                if total >= 80
+                else (
+                    "good"
+                    if total >= 60
+                    else "moderate"
+                    if total >= 40
+                    else "basic"
+                    if total >= 20
+                    else "minimal"
+                )
             ),
             "breakdown": {
                 "house_score": round(house_score, 1),
@@ -282,7 +327,7 @@ class ArchitectureAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Clasificación de zonas
+    # Zone classification
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -292,41 +337,47 @@ class ArchitectureAnalyzer:
         houses: List[Dict[str, object]],
         spawns: List[Dict[str, object]],
     ) -> List[Dict[str, object]]:
-        """Clasifica zonas del mapa en categorías."""
+        """Classify map zones into categories."""
         zones = []
 
-        # Zona urbana
+        # Urban zone
         if houses:
             urban_tiles = tiles.get("polished_stone", 0)
-            zones.append({
-                "zone": "urban",
-                "house_count": len(houses),
-                "tile_count": urban_tiles,
-                "description": f"Urban zone with {len(houses)} buildings",
-            })
+            zones.append(
+                {
+                    "zone": "urban",
+                    "house_count": len(houses),
+                    "tile_count": urban_tiles,
+                    "description": f"Urban zone with {len(houses)} buildings",
+                }
+            )
 
-        # Zona de hunt
+        # Hunting zone
         if spawns:
-            zones.append({
-                "zone": "hunting",
-                "spawn_count": len(spawns),
-                "unique_monsters": len(set(sp.get("monster", "") for sp in spawns)),
-                "description": f"Hunting zone with {len(spawns)} spawns",
-            })
+            zones.append(
+                {
+                    "zone": "hunting",
+                    "spawn_count": len(spawns),
+                    "unique_monsters": len(set(sp.get("monster", "") for sp in spawns)),
+                    "description": f"Hunting zone with {len(spawns)} spawns",
+                }
+            )
 
-        # Zona natural
+        # Natural zone
         natural = tiles.get("sandstone_floor", 0)
         if natural > 500:
-            zones.append({
-                "zone": "natural",
-                "tile_count": natural,
-                "description": "Natural terrain area",
-            })
+            zones.append(
+                {
+                    "zone": "natural",
+                    "tile_count": natural,
+                    "description": "Natural terrain area",
+                }
+            )
 
         return zones
 
     # ------------------------------------------------------------------
-    # Métricas de complejidad
+    # Complexity metrics
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -337,7 +388,7 @@ class ArchitectureAnalyzer:
         spawns: List[Dict[str, object]],
         waypoints: List[Dict[str, object]],
     ) -> Dict[str, object]:
-        """Calcula métricas de complejidad del mapa."""
+        """Calculate map complexity metrics."""
         unique_tiles = len(tiles)
         unique_items = len(items)
 
@@ -352,11 +403,19 @@ class ArchitectureAnalyzer:
         return {
             "complexity_score": round(complexity_score, 1),
             "complexity_level": (
-                "very_high" if complexity_score >= 80
-                else "high" if complexity_score >= 60
-                else "medium" if complexity_score >= 40
-                else "low" if complexity_score >= 20
-                else "minimal"
+                "very_high"
+                if complexity_score >= 80
+                else (
+                    "high"
+                    if complexity_score >= 60
+                    else (
+                        "medium"
+                        if complexity_score >= 40
+                        else "low"
+                        if complexity_score >= 20
+                        else "minimal"
+                    )
+                )
             ),
             "components": {
                 "unique_tile_types": unique_tiles,

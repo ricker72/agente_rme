@@ -32,23 +32,25 @@ class QuestExtractor(BaseExtractor):
             if not name or name.lower() in seen:
                 continue
             seen.add(name.lower())
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.QUEST,
-                name=name,
-                source=source,
-                biome=_as_str(q.get("biome", "generic")),
-                min_level=_as_int(q.get("min_level", q.get("level_min", 1))),
-                max_level=_as_int(q.get("max_level", q.get("level_max", 9999))),
-                tags=_coerce_tags(q) + ["quest"],
-                attributes={
-                    "theme": _as_str(q.get("theme", "generic")),
-                    "difficulty": _as_str(q.get("difficulty", "medium")),
-                    "style": _as_str(q.get("style", "linear")),
-                    "bosses": _as_list(q.get("bosses", [])),
-                    "steps": _as_list(q.get("steps", [])),
-                    "monsters": _as_list(q.get("monsters", [])),
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.QUEST,
+                    name=name,
+                    source=source,
+                    biome=_as_str(q.get("biome", "generic")),
+                    min_level=_as_int(q.get("min_level", q.get("level_min", 1))),
+                    max_level=_as_int(q.get("max_level", q.get("level_max", 9999))),
+                    tags=_coerce_tags(q) + ["quest"],
+                    attributes={
+                        "theme": _as_str(q.get("theme", "generic")),
+                        "difficulty": _as_str(q.get("difficulty", "medium")),
+                        "style": _as_str(q.get("style", "linear")),
+                        "bosses": _as_list(q.get("bosses", [])),
+                        "steps": _as_list(q.get("steps", [])),
+                        "monsters": _as_list(q.get("monsters", [])),
+                    },
+                )
+            )
 
         for r in _as_list(world.get("regions")):
             if not isinstance(r, dict):
@@ -60,20 +62,22 @@ class QuestExtractor(BaseExtractor):
             if not any(kw in lname for kw in self.QUEST_KEYWORDS):
                 continue
             seen.add(lname)
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.QUEST,
-                name=rname,
-                source=source,
-                biome=_as_str(r.get("theme", "generic")),
-                min_level=_as_int(r.get("min_level", 1)),
-                max_level=_as_int(r.get("max_level", 9999)),
-                tags=_coerce_tags(r) + ["quest"],
-                attributes={
-                    "theme": _as_str(r.get("theme", "generic")),
-                    "difficulty": _as_str(r.get("difficulty", "medium")),
-                    "style": "linear",
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.QUEST,
+                    name=rname,
+                    source=source,
+                    biome=_as_str(r.get("theme", "generic")),
+                    min_level=_as_int(r.get("min_level", 1)),
+                    max_level=_as_int(r.get("max_level", 9999)),
+                    tags=_coerce_tags(r) + ["quest"],
+                    attributes={
+                        "theme": _as_str(r.get("theme", "generic")),
+                        "difficulty": _as_str(r.get("difficulty", "medium")),
+                        "style": "linear",
+                    },
+                )
+            )
 
         for s in _as_list(world.get("structures")):
             if not isinstance(s, dict):
@@ -86,20 +90,22 @@ class QuestExtractor(BaseExtractor):
             if cat not in self.QUEST_CATEGORIES:
                 continue
             seen.add(lname)
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.QUEST,
-                name=name,
-                source=source,
-                biome=_as_str(s.get("biome", "generic")),
-                min_level=_as_int(s.get("min_level", 1)),
-                max_level=_as_int(s.get("max_level", 9999)),
-                tags=_coerce_tags(s) + ["quest"],
-                attributes={
-                    "theme": _as_str(s.get("theme", "generic")),
-                    "difficulty": _as_str(s.get("difficulty", "medium")),
-                    "style": cat,
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.QUEST,
+                    name=name,
+                    source=source,
+                    biome=_as_str(s.get("biome", "generic")),
+                    min_level=_as_int(s.get("min_level", 1)),
+                    max_level=_as_int(s.get("max_level", 9999)),
+                    tags=_coerce_tags(s) + ["quest"],
+                    attributes={
+                        "theme": _as_str(s.get("theme", "generic")),
+                        "difficulty": _as_str(s.get("difficulty", "medium")),
+                        "style": cat,
+                    },
+                )
+            )
         return entries
 
 

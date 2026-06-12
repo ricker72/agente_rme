@@ -1,0 +1,106 @@
+{
+  "phase": "FASE 5 - MEMORY & PERFORMANCE",
+  "generated_at": "2026-06-09T09:37:21.976028+00:00",
+  "count": 200,
+  "elapsed_s": 133.462,
+  "per_generation_ms": {
+    "avg": 313.63,
+    "min": 133.543,
+    "max": 1434.717
+  },
+  "memory_mb": {
+    "rss_start": 0.0,
+    "rss_end": 0.0,
+    "rss_peak": 0.0,
+    "rss_growth": 0.0,
+    "vms_start": 0.0,
+    "vms_end": 0.0
+  },
+  "object_growth": {
+    "start": 28325,
+    "end": 37847,
+    "growth": 9522
+  },
+  "tracemalloc": {
+    "available": true,
+    "total_alloc_diff_bytes": 9591555,
+    "total_count_diff": 71722,
+    "top_growth": [
+      {
+        "file": "<frozen importlib._bootstrap_external>",
+        "size_diff": 5438984,
+        "count_diff": 43178
+      },
+      {
+        "file": "C:\\Python314\\Lib\\dataclasses.py",
+        "size_diff": 723005,
+        "count_diff": 5662
+      },
+      {
+        "file": "<frozen importlib._bootstrap>",
+        "size_diff": 423971,
+        "count_diff": 4047
+      },
+      {
+        "file": "C:\\Python314\\Lib\\enum.py",
+        "size_diff": 298621,
+        "count_diff": 1704
+      },
+      {
+        "file": "C:\\Python314\\Lib\\logging\\__init__.py",
+        "size_diff": 103670,
+        "count_diff": 523
+      },
+      {
+        "file": "<string>",
+        "size_diff": 90856,
+        "count_diff": 900
+      },
+      {
+        "file": "C:\\Users\\samatha\\AppData\\Roaming\\Python\\Python314\\site-packages\\PIL\\Image.py",
+        "size_diff": 86359,
+        "count_diff": 598
+      },
+      {
+        "file": "C:\\Python314\\Lib\\collections\\__init__.py",
+        "size_diff": 81934,
+        "count_diff": 764
+      },
+      {
+        "file": "<frozen abc>",
+        "size_diff": 79994,
+        "count_diff": 306
+      },
+      {
+        "file": "C:\\Python314\\Lib\\inspect.py",
+        "size_diff": 70348,
+        "count_diff": 477
+      }
+    ]
+  },
+  "cpu_pct_avg": 0.0,
+  "samples": [
+    {
+      "iteration": 1,
+      "rss_mb": 0.0,
+      "vms_mb": 0.0,
+      "elapsed_s": 71.189
+    },
+    {
+      "iteration": 100,
+      "rss_mb": 0.0,
+      "vms_mb": 0.0,
+      "elapsed_s": 106.759
+    },
+    {
+      "iteration": 200,
+      "rss_mb": 0.0,
+      "vms_mb": 0.0,
+      "elapsed_s": 133.462
+    }
+  ],
+  "verdict": {
+    "no_crash": true,
+    "no_memory_leak": true
+  }
+}

@@ -1,5 +1,3 @@
-import pytest
-
 from validators.monster_validator import validate_monster
 
 

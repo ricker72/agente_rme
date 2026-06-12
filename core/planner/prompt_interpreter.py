@@ -15,7 +15,15 @@ class PromptInterpreter:
             "story_tags": [],
         }
 
-        styles = ["issavi", "roshamuul", "yalahar", "library", "ankrahmun", "soul war", "soulwar"]
+        styles = [
+            "issavi",
+            "roshamuul",
+            "yalahar",
+            "library",
+            "ankrahmun",
+            "soul war",
+            "soulwar",
+        ]
         for style in styles:
             if style in lower:
                 if "city" in lower or "ciudad" in lower or "expansión" in lower:
@@ -31,7 +39,10 @@ class PromptInterpreter:
 
         range_match = re.search(r"(\d+)[^\d]+(\d+)", prompt)
         if range_match:
-            result["difficulty_range"] = (int(range_match.group(1)), int(range_match.group(2)))
+            result["difficulty_range"] = (
+                int(range_match.group(1)),
+                int(range_match.group(2)),
+            )
 
         if "expansión" in lower or "expansion" in lower:
             result["story_tags"].append("expansion")

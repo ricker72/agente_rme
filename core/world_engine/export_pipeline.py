@@ -17,14 +17,20 @@ class LuaGenerator:
         ]
 
         for tile in world_model.tiles.values():
-            lines.append(f"    local tile = map:getOrCreateTile({tile.x}, {tile.y}, {tile.z})")
-            lines.append(f"    tile.ground = \"{tile.ground}\"")
+            lines.append(
+                f"    local tile = map:getOrCreateTile({tile.x}, {tile.y}, {tile.z})"
+            )
+            lines.append(f'    tile.ground = "{tile.ground}"')
             for item in tile.items:
                 lines.append(f"    tile:addItem({item.get('id', 0)})")
             if tile.spawn:
-                lines.append(f"    tile:setSpawn(\"{tile.spawn.get('monster', 'unknown')}\")")
+                lines.append(
+                    f'    tile:setSpawn("{tile.spawn.get("monster", "unknown")}")'
+                )
             if tile.creature:
-                lines.append(f"    tile:setCreature(\"{tile.creature.get('name', 'unknown')}\")")
+                lines.append(
+                    f'    tile:setCreature("{tile.creature.get("name", "unknown")}")'
+                )
             if tile.decorations:
                 lines.append("    tile:borderize()")
 

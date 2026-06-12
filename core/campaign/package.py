@@ -31,9 +31,10 @@ from typing import Any, Dict, List, Optional, Union
 
 class PackageStatus(str, Enum):
     """Lifecycle status of a CampaignPackage."""
-    OK = "ok"               # Generated successfully
-    FALLBACK = "fallback"   # Pipeline errored, fallback produced
-    EMPTY = "empty"         # No data, minimal scaffold only
+
+    OK = "ok"  # Generated successfully
+    FALLBACK = "fallback"  # Pipeline errored, fallback produced
+    EMPTY = "empty"  # No data, minimal scaffold only
 
 
 # Top-level required keys (validated by CampaignValidator).
@@ -251,7 +252,11 @@ class CampaignPackage:
             "workflow_id": self.workflow_id,
             "theme": self.theme,
             "level_range": list(self.level_range),
-            "status": self.status.value if isinstance(self.status, PackageStatus) else str(self.status),
+            "status": (
+                self.status.value
+                if isinstance(self.status, PackageStatus)
+                else str(self.status)
+            ),
             "source": self.source,
             "errors": list(self.errors),
             "generated_at": self.generated_at,
@@ -259,7 +264,8 @@ class CampaignPackage:
             "quests": quests_list,
             "bosses": campaign_dict.get("bosses", []) or [],
             "raids": campaign_dict.get("raids", []) or [],
-            "story": campaign_dict.get("story", campaign_dict.get("main_story", {})) or {},
+            "story": campaign_dict.get("story", campaign_dict.get("main_story", {}))
+            or {},
             "rewards": campaign_dict.get("rewards", {}) or {},
             # Full inner campaign for consumers that want everything
             "campaign": campaign_dict,

@@ -51,7 +51,9 @@ class DungeonGenerator:
         "dragon",
     ]
 
-    def __init__(self, style: str = "issavi", min_level: int = 50, max_level: int = 150):
+    def __init__(
+        self, style: str = "issavi", min_level: int = 50, max_level: int = 150
+    ):
         self.style = style.lower()
         self.min_level = min_level
         self.max_level = max_level
@@ -87,7 +89,12 @@ class DungeonGenerator:
         return 300, 500
 
     def _load_theme_template(self, style: str) -> Dict[str, List[int]]:
-        template_path = Path(__file__).resolve().parents[2] / "templates" / "dungeons" / f"{style}.json"
+        template_path = (
+            Path(__file__).resolve().parents[2]
+            / "templates"
+            / "dungeons"
+            / f"{style}.json"
+        )
         if template_path.exists():
             try:
                 return json.loads(template_path.read_text(encoding="utf-8"))
@@ -110,16 +117,29 @@ class DungeonGenerator:
             theme=self.style,
             floors=built_floors,
         )
-        dungeon.rooms = [room for floor in built_floors for room in floor.rooms if isinstance(room, Room)]
-        dungeon.corridors = [corridor for floor in built_floors for corridor in floor.corridors]
+        dungeon.rooms = [
+            room
+            for floor in built_floors
+            for room in floor.rooms
+            if isinstance(room, Room)
+        ]
+        dungeon.corridors = [
+            corridor for floor in built_floors for corridor in floor.corridors
+        ]
         dungeon.bosses = [boss for floor in built_floors for boss in floor.boss_rooms]
-        dungeon.quests = [quest for floor in built_floors for quest in floor.quest_rooms]
-        dungeon.shortcuts = [Shortcut(
-            type=shortcut["type"],
-            from_coord=shortcut["from"],
-            to_coord=shortcut["to"],
-            description=shortcut["description"],
-        ) for floor in built_floors for shortcut in floor.shortcuts]
+        dungeon.quests = [
+            quest for floor in built_floors for quest in floor.quest_rooms
+        ]
+        dungeon.shortcuts = [
+            Shortcut(
+                type=shortcut["type"],
+                from_coord=shortcut["from"],
+                to_coord=shortcut["to"],
+                description=shortcut["description"],
+            )
+            for floor in built_floors
+            for shortcut in floor.shortcuts
+        ]
         dungeon.spawns = [spawn for floor in built_floors for spawn in floor.spawns]
         return dungeon
 
@@ -157,36 +177,58 @@ class DungeonGenerator:
                     for dy in range(room.height):
                         x = room.x + dx
                         y = room.y + dy
-                        lines.append(f"  tileAt({x}, {y}, z + {z_level}).ground = {floor_ground}")
+                        lines.append(
+                            f"  tileAt({x}, {y}, z + {z_level}).ground = {floor_ground}"
+                        )
                 lines.append(f"  for ix = {room.x}, {room.x + room.width - 1} do")
                 lines.append(f"    tileAt(ix, {room.y}, z + {z_level}):borderize()")
-                lines.append(f"    tileAt(ix, {room.y + room.height - 1}, z + {z_level}):borderize()")
+                lines.append(
+                    f"    tileAt(ix, {room.y + room.height - 1}, z + {z_level}):borderize()"
+                )
                 lines.append("  end")
                 lines.append(f"  for iy = {room.y}, {room.y + room.height - 1} do")
                 lines.append(f"    tileAt({room.x}, iy, z + {z_level}):borderize()")
-                lines.append(f"    tileAt({room.x + room.width - 1}, iy, z + {z_level}):borderize()")
+                lines.append(
+                    f"    tileAt({room.x + room.width - 1}, iy, z + {z_level}):borderize()"
+                )
                 lines.append("  end")
                 if room.type == "BossRoom":
                     cx, cy = room.center()
-                    lines.append(f"  tileAt({cx}, {cy}, z + {z_level}):setCreature(\"{boss_monster}\", 120, Direction.SOUTH)")
-                    lines.append(f"  tileAt({cx}, {cy - 1}, z + {z_level}):addItem({deco_id})")
+                    lines.append(
+                        f'  tileAt({cx}, {cy}, z + {z_level}):setCreature("{boss_monster}", 120, Direction.SOUTH)'
+                    )
+                    lines.append(
+                        f"  tileAt({cx}, {cy - 1}, z + {z_level}):addItem({deco_id})"
+                    )
                 if room.type == "TreasureRoom":
-                    lines.append(f"  tileAt({room.x + 1}, {room.y + 1}, z + {z_level}):addItem({deco_id})")
+                    lines.append(
+                        f"  tileAt({room.x + 1}, {room.y + 1}, z + {z_level}):addItem({deco_id})"
+                    )
                 if room.type == "QuestRoom":
-                    lines.append(f"  tileAt({room.x + 2}, {room.y + 2}, z + {z_level}):addItem({wall_id})")
+                    lines.append(
+                        f"  tileAt({room.x + 2}, {room.y + 2}, z + {z_level}):addItem({wall_id})"
+                    )
 
-            if getattr(floor, 'cave_tiles', None):
+            if getattr(floor, "cave_tiles", None):
                 for x, y in floor.cave_tiles:
-                    lines.append(f"  tileAt({x}, {y}, z + {z_level}).ground = {floor_ground}")
-                lines.append(f"  -- Cave floor with cellular layout ({len(floor.cave_tiles)} tiles)")
+                    lines.append(
+                        f"  tileAt({x}, {y}, z + {z_level}).ground = {floor_ground}"
+                    )
+                lines.append(
+                    f"  -- Cave floor with cellular layout ({len(floor.cave_tiles)} tiles)"
+                )
             else:
                 for corridor in floor.corridors:
-                    for (x, y) in corridor:
-                        lines.append(f"  tileAt({x}, {y}, z + {z_level}).ground = {floor_ground}")
+                    for x, y in corridor:
+                        lines.append(
+                            f"  tileAt({x}, {y}, z + {z_level}).ground = {floor_ground}"
+                        )
                         lines.append(f"  tileAt({x}, {y}, z + {z_level}):borderize()")
 
             for spawn in floor.spawns:
-                lines.append(f"  tileAt({spawn['x']}, {spawn['y']}, z + {spawn['z']}):setSpawn({spawn['radius']})")
+                lines.append(
+                    f"  tileAt({spawn['x']}, {spawn['y']}, z + {spawn['z']}):setSpawn({spawn['radius']})"
+                )
 
             floor_index += 1
 
@@ -195,4 +237,6 @@ class DungeonGenerator:
 
     def supports_prompt(self, prompt: str) -> bool:
         lower = prompt.lower()
-        return "dungeon" in lower or any(style in lower for style in self.DUNGEON_STYLES)
+        return "dungeon" in lower or any(
+            style in lower for style in self.DUNGEON_STYLES
+        )

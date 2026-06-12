@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass
+from typing import Dict, List, Optional
 
 
 @dataclass
@@ -11,17 +11,18 @@ class StyleDNA:
 
     Each float property ranges from 0.0 (none) to 1.0 (maximum).
     """
+
     style: str
-    open_spaces: float = 0.5          # Prefer wide-open areas vs tight corridors
-    symmetry: float = 0.3              # Prefer mirrored layouts
-    decoration_density: float = 0.5    # How many decorative items per tile
-    verticality: float = 0.2           # Use of height differences / stairs
-    organic_layout: float = 0.5        # Irregular/natural shapes vs grid-aligned
-    darkness: float = 0.3              # Dark/ominous atmosphere factor
-    complexity: float = 0.5            # Layout intricacy (number of branches)
-    water_presence: float = 0.1        # Water/lava features
-    spawn_density: float = 0.5         # Monster placement density
-    reward_richness: float = 0.5       # Loot quality factor
+    open_spaces: float = 0.5  # Prefer wide-open areas vs tight corridors
+    symmetry: float = 0.3  # Prefer mirrored layouts
+    decoration_density: float = 0.5  # How many decorative items per tile
+    verticality: float = 0.2  # Use of height differences / stairs
+    organic_layout: float = 0.5  # Irregular/natural shapes vs grid-aligned
+    darkness: float = 0.3  # Dark/ominous atmosphere factor
+    complexity: float = 0.5  # Layout intricacy (number of branches)
+    water_presence: float = 0.1  # Water/lava features
+    spawn_density: float = 0.5  # Monster placement density
+    reward_richness: float = 0.5  # Loot quality factor
 
     def blend(self, other: StyleDNA, ratio: float = 0.5) -> StyleDNA:
         """Blend two StyleDNAs with given ratio (0.0 = all self, 1.0 = all other)."""
@@ -217,11 +218,27 @@ class StyleEngine:
     """
 
     KNOWN_STYLES = {
-        "issavi", "roshamuul", "soulwar", "soul war",
-        "library", "yalahar", "falcon", "cobra",
-        "ice", "jungle", "thais", "venore", "carlin",
-        "ankrahmun", "darashia", "edron", "port hope",
-        "svargrond", "liberty bay", "kazordoon", "ab'dendriel",
+        "issavi",
+        "roshamuul",
+        "soulwar",
+        "soul war",
+        "library",
+        "yalahar",
+        "falcon",
+        "cobra",
+        "ice",
+        "jungle",
+        "thais",
+        "venore",
+        "carlin",
+        "ankrahmun",
+        "darashia",
+        "edron",
+        "port hope",
+        "svargrond",
+        "liberty bay",
+        "kazordoon",
+        "ab'dendriel",
     }
 
     def detect(self, name: str) -> StyleDNA:
@@ -232,7 +249,9 @@ class StyleEngine:
         # Default to issavi-like
         return StyleDNA(style=name)
 
-    def merge(self, styles: List[str], ratios: Optional[List[float]] = None) -> StyleDNA:
+    def merge(
+        self, styles: List[str], ratios: Optional[List[float]] = None
+    ) -> StyleDNA:
         """
         Merge multiple styles with given ratios.
         If ratios not provided, uses equal weighting.
@@ -271,25 +290,37 @@ class StyleEngine:
         recs = []
 
         if dna.open_spaces > 0.7:
-            recs.append(f"Use wide open plazas and broad corridors (open_spaces={dna.open_spaces})")
+            recs.append(
+                f"Use wide open plazas and broad corridors (open_spaces={dna.open_spaces})"
+            )
         if dna.symmetry > 0.6:
             recs.append(f"Apply symmetric layout principles (symmetry={dna.symmetry})")
         if dna.organic_layout > 0.6:
-            recs.append(f"Prefer organic/natural shapes over grid-aligned (organic={dna.organic_layout})")
+            recs.append(
+                f"Prefer organic/natural shapes over grid-aligned (organic={dna.organic_layout})"
+            )
         if dna.verticality > 0.4:
-            recs.append(f"Incorporate multi-floor vertical design (verticality={dna.verticality})")
+            recs.append(
+                f"Incorporate multi-floor vertical design (verticality={dna.verticality})"
+            )
         if dna.darkness > 0.5:
-            recs.append(f"Use dark/ominous atmosphere with dim lighting (darkness={dna.darkness})")
+            recs.append(
+                f"Use dark/ominous atmosphere with dim lighting (darkness={dna.darkness})"
+            )
         if dna.water_presence > 0.3:
-            recs.append(f"Include water features: rivers, lakes, or underground pools")
+            recs.append("Include water features: rivers, lakes, or underground pools")
         if dna.decoration_density > 0.6:
-            recs.append(f"Apply high decoration density: statues, torches, rubble")
+            recs.append("Apply high decoration density: statues, torches, rubble")
         if dna.complexity > 0.6:
-            recs.append(f"Create complex multi-branch layouts with secondary paths")
+            recs.append("Create complex multi-branch layouts with secondary paths")
         if dna.spawn_density > 0.6:
-            recs.append(f"Pack monsters densely with varied tiers (spawn_density={dna.spawn_density})")
+            recs.append(
+                f"Pack monsters densely with varied tiers (spawn_density={dna.spawn_density})"
+            )
         if dna.reward_richness > 0.6:
-            recs.append(f"Place high-value loot in treasure rooms (reward_richness={dna.reward_richness})")
+            recs.append(
+                f"Place high-value loot in treasure rooms (reward_richness={dna.reward_richness})"
+            )
 
         if map_type == "city":
             if dna.symmetry > 0.5:
@@ -297,7 +328,9 @@ class StyleEngine:
             recs.append(f"Decorate streets with {dna.style}-themed items")
         elif map_type == "dungeon":
             if dna.complexity > 0.5:
-                recs.append("Create branching paths with optional dead-ends containing loot")
+                recs.append(
+                    "Create branching paths with optional dead-ends containing loot"
+                )
             if dna.darkness > 0.5:
                 recs.append("Use dim corridors and surprise monster ambushes")
         elif map_type == "hunt":

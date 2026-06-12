@@ -38,8 +38,7 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass, field
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
-
+from typing import Any, Dict, List, Optional, Sequence
 
 # =============================================================================
 # Static knowledge: road & bridge tile IDs per theme
@@ -47,35 +46,35 @@ from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 # Default ground ID for a road on each theme
 ROAD_GROUND_IDS: Dict[str, int] = {
-    "generic":    360,
-    "issavi":     415,
-    "roshamuul":  1053,
-    "soul_war":   514,
-    "library":    396,
-    "yalahar":    450,
-    "falcon":     428,
-    "cobra":      514,
-    "ice":        670,
-    "jungle":     440,
-    "thais":      351,
-    "venore":     360,
-    "ankrahmun":  480,
+    "generic": 360,
+    "issavi": 415,
+    "roshamuul": 1053,
+    "soul_war": 514,
+    "library": 396,
+    "yalahar": 450,
+    "falcon": 428,
+    "cobra": 514,
+    "ice": 670,
+    "jungle": 440,
+    "thais": 351,
+    "venore": 360,
+    "ankrahmun": 480,
 }
 
 # Bridge tile IDs
 BRIDGE_GROUND_IDS: Dict[str, int] = {
-    "generic":   3610,
-    "issavi":    3610,
+    "generic": 3610,
+    "issavi": 3610,
     "roshamuul": 3610,
-    "soul_war":  3610,
-    "library":   3610,
-    "yalahar":   3610,
-    "falcon":    3610,
-    "cobra":     3610,
-    "ice":       3610,
-    "jungle":    3610,
-    "thais":     3610,
-    "venore":    3610,
+    "soul_war": 3610,
+    "library": 3610,
+    "yalahar": 3610,
+    "falcon": 3610,
+    "cobra": 3610,
+    "ice": 3610,
+    "jungle": 3610,
+    "thais": 3610,
+    "venore": 3610,
     "ankrahmun": 3610,
 }
 
@@ -102,6 +101,7 @@ def _theme_name(theme: Any) -> str:
 # Data classes
 # =============================================================================
 
+
 @dataclass
 class Point:
     x: int
@@ -125,12 +125,13 @@ class Point:
 @dataclass
 class RoadSegment:
     """A single connected path of road tiles."""
+
     name: str
     points: List[Point]
     z: int
     width: int
     ground_id: int
-    kind: str = "road"           # "road" | "bridge" | "path" | "city_street"
+    kind: str = "road"  # "road" | "bridge" | "path" | "city_street"
     from_label: str = ""
     to_label: str = ""
     tiles_written: int = 0
@@ -159,6 +160,7 @@ class RoadSegment:
 @dataclass
 class RoadNetwork:
     """A whole network of road segments inside the world."""
+
     segments: List[RoadSegment] = field(default_factory=list)
     bridges: List[Point] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
@@ -187,6 +189,7 @@ class RoadNetwork:
 # =============================================================================
 # Path helpers
 # =============================================================================
+
 
 def _manhattan_path(a: Point, b: Point) -> List[Point]:
     """L-shaped Manhattan path from a to b (horizontal first, then vertical)."""
@@ -233,6 +236,7 @@ def _thick_points(points: Sequence[Point], width: int) -> List[Point]:
 # =============================================================================
 # RoadGenerator
 # =============================================================================
+
 
 class RoadGenerator:
     """
@@ -304,9 +308,11 @@ class RoadGenerator:
 
         for p in wide:
             existing = world.get_tile(p.x, p.y, p.z)
-            is_water = (
-                existing is not None
-                and existing.ground in (4597, 4598, 4600, 4601)
+            is_water = existing is not None and existing.ground in (
+                4597,
+                4598,
+                4600,
+                4601,
             )
             if auto_bridge and is_water:
                 # Replace water with bridge tile and record it
@@ -315,8 +321,7 @@ class RoadGenerator:
             else:
                 new_gid = gid
                 zone = f"road:{kind}"
-            world.set_tile(Tile(x=p.x, y=p.y, z=p.z,
-                                ground=new_gid, zone=zone))
+            world.set_tile(Tile(x=p.x, y=p.y, z=p.z, ground=new_gid, zone=zone))
             seg.tiles_written += 1
         return seg
 
@@ -332,12 +337,18 @@ class RoadGenerator:
         """Connect a list of points in order (P1 -> P2 -> P3 -> ...)."""
         pts = [Point.from_dict(p) for p in points]
         if len(pts) < 2:
-            return RoadNetwork(metadata={"points": len(pts), "theme": _theme_name(theme)})
+            return RoadNetwork(
+                metadata={"points": len(pts), "theme": _theme_name(theme)}
+            )
         net = RoadNetwork(metadata={"theme": _theme_name(theme), "kind": kind})
         for i in range(len(pts) - 1):
             seg = self.build_path(
-                world, pts[i], pts[i + 1], theme,
-                width=width, kind=kind,
+                world,
+                pts[i],
+                pts[i + 1],
+                theme,
+                width=width,
+                kind=kind,
                 name=f"{name_prefix}_{i + 1}",
             )
             net.segments.append(seg)
@@ -365,8 +376,12 @@ class RoadGenerator:
         anchors = [self._zone_anchor(z) for z in zones]
         for i in range(len(anchors) - 1):
             seg = self.build_path(
-                world, anchors[i], anchors[i + 1], theme,
-                width=width, kind=kind,
+                world,
+                anchors[i],
+                anchors[i + 1],
+                theme,
+                width=width,
+                kind=kind,
                 name=f"road_{i + 1}",
             )
             net.segments.append(seg)
@@ -375,7 +390,10 @@ class RoadGenerator:
     def build_city_grid(
         self,
         world: Any,
-        x: int, y: int, width: int, height: int,
+        x: int,
+        y: int,
+        width: int,
+        height: int,
         z: int,
         theme: Any,
         step: int = 4,
@@ -393,8 +411,13 @@ class RoadGenerator:
         """
         gid = ground_id if ground_id is not None else get_road_ground_id(theme)
         from core.world.tile import Tile
+
         net = RoadNetwork(
-            metadata={"theme": _theme_name(theme), "kind": "city_street", "grid_step": step},
+            metadata={
+                "theme": _theme_name(theme),
+                "kind": "city_street",
+                "grid_step": step,
+            },
         )
 
         x0 = x + margin
@@ -420,8 +443,9 @@ class RoadGenerator:
                 to_label=f"h{row_index}_r",
             )
             for p in pts:
-                world.set_tile(Tile(x=p.x, y=p.y, z=p.z,
-                                    ground=gid, zone="road:city_street"))
+                world.set_tile(
+                    Tile(x=p.x, y=p.y, z=p.z, ground=gid, zone="road:city_street")
+                )
             seg.tiles_written = len(pts)
             net.segments.append(seg)
             iy += step
@@ -445,8 +469,9 @@ class RoadGenerator:
                 to_label=f"v{col_index}_b",
             )
             for p in pts:
-                world.set_tile(Tile(x=p.x, y=p.y, z=p.z,
-                                    ground=gid, zone="road:city_street"))
+                world.set_tile(
+                    Tile(x=p.x, y=p.y, z=p.z, ground=gid, zone="road:city_street")
+                )
             seg.tiles_written = len(pts)
             net.segments.append(seg)
             ix += step
@@ -457,13 +482,16 @@ class RoadGenerator:
     def build_bridge(
         self,
         world: Any,
-        x: int, y: int, z: int,
+        x: int,
+        y: int,
+        z: int,
         theme: Any,
         ground_id: Optional[int] = None,
     ) -> int:
         """Place a single bridge tile and return 1 (success)."""
         gid = ground_id if ground_id is not None else get_bridge_ground_id(theme)
         from core.world.tile import Tile
+
         world.set_tile(Tile(x=x, y=y, z=z, ground=gid, zone="road:bridge"))
         return 1
 
@@ -496,6 +524,7 @@ class RoadGenerator:
 # Module-level helpers
 # =============================================================================
 
+
 def generate_road(
     world: Any,
     a: Dict[str, Any],
@@ -508,8 +537,12 @@ def generate_road(
     """One-shot helper: build a single road between two anchor dicts."""
     gen = RoadGenerator(seed=seed)
     return gen.build_path(
-        world, Point.from_dict(a), Point.from_dict(b), theme,
-        width=width, kind=kind,
+        world,
+        Point.from_dict(a),
+        Point.from_dict(b),
+        theme,
+        width=width,
+        kind=kind,
     )
 
 
@@ -528,7 +561,10 @@ def connect_zones(
 
 def build_city_grid(
     world: Any,
-    x: int, y: int, width: int, height: int,
+    x: int,
+    y: int,
+    width: int,
+    height: int,
     z: int,
     theme: Any,
     step: int = 4,
@@ -538,13 +574,23 @@ def build_city_grid(
     """One-shot helper: build a regular city street grid."""
     gen = RoadGenerator(seed=seed)
     return gen.build_city_grid(
-        world, x, y, width, height, z, theme, step=step, margin=margin,
+        world,
+        x,
+        y,
+        width,
+        height,
+        z,
+        theme,
+        step=step,
+        margin=margin,
     )
 
 
 def build_bridge(
     world: Any,
-    x: int, y: int, z: int,
+    x: int,
+    y: int,
+    z: int,
     theme: Any,
     ground_id: Optional[int] = None,
     seed: Optional[int] = None,
@@ -555,7 +601,9 @@ def build_bridge(
 
 
 # Backwards-compatible alias for the old string-returning Lua-style helper.
-def road_generator_lua(x1: int, y1: int, x2: int, y2: int, z: int, floor_id: int) -> str:
+def road_generator_lua(
+    x1: int, y1: int, x2: int, y2: int, z: int, floor_id: int
+) -> str:
     """Legacy Lua-style helper preserved for compatibility."""
     return (
         f"-- Road generator\n"
@@ -571,4 +619,3 @@ def road_generator_lua(x1: int, y1: int, x2: int, y2: int, z: int, floor_id: int
         f"    end\n"
         f"end)\n"
     )
-   

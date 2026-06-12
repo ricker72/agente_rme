@@ -7,7 +7,6 @@ This script shows how to use the LearningPipeline to:
 3. Generate new blueprints from learned patterns
 """
 
-import json
 import os
 import sys
 
@@ -15,12 +14,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from core.learning import (
-    DatasetBuilder,
-    MapEmbedder,
-    StyleEncoder,
-    PatternEncoder,
-    SimilarityEngine,
-    LearningPipeline
+    LearningPipeline,
 )
 from core.learning.learning_pipeline import LearningConfig
 
@@ -30,7 +24,7 @@ def demo_basic_learning():
     print("=" * 60)
     print("MAP LEARNING AI DEMO")
     print("=" * 60)
-    
+
     # Create learning configuration
     config = LearningConfig(
         maps_directory="templates",  # Use templates directory for demo
@@ -39,16 +33,16 @@ def demo_basic_learning():
         style_profiles_path="data/demo_style_profiles.json",
         pattern_profiles_path="data/demo_pattern_profiles.json",
         similarity_index_path="data/demo_similarity_index.json",
-        blueprints_path="data/demo_blueprints"
+        blueprints_path="data/demo_blueprints",
     )
-    
+
     # Initialize pipeline
     pipeline = LearningPipeline(config)
-    
+
     # Create sample dataset for demonstration
     print("\n1. Creating sample dataset...")
     sample_dataset = create_sample_dataset()
-    
+
     # Train the pipeline
     print("\n2. Training learning pipeline...")
     metrics = pipeline.train(sample_dataset)
@@ -57,7 +51,7 @@ def demo_basic_learning():
     print(f"   Regions processed: {metrics.regions_extracted}")
     print(f"   Styles learned: {metrics.styles_learned}")
     print(f"   Patterns learned: {metrics.patterns_learned}")
-    
+
     return pipeline
 
 
@@ -66,11 +60,11 @@ def demo_similarity_search(pipeline: LearningPipeline):
     print("\n" + "=" * 60)
     print("SIMILARITY SEARCH DEMO")
     print("=" * 60)
-    
+
     # Query for similar maps
     print("\n3. Searching for maps similar to Roshamuul...")
     results = pipeline.find_similar("Find maps similar to Roshamuul", top_k=5)
-    
+
     if results:
         for i, result in enumerate(results[:3], 1):
             print(f"   Result {i}: {result['matched_id']}")
@@ -78,11 +72,11 @@ def demo_similarity_search(pipeline: LearningPipeline):
             print(f"      Style: {result['metadata'].get('style', 'unknown')}")
     else:
         print("   No results found (expected with sample data)")
-    
+
     # Search by type
     print("\n4. Searching for dungeons...")
     results = pipeline.find_similar("Find dungeons", top_k=5)
-    
+
     if results:
         for i, result in enumerate(results[:3], 1):
             print(f"   Result {i}: {result['matched_id']}")
@@ -95,11 +89,11 @@ def demo_blueprint_generation(pipeline: LearningPipeline):
     print("\n" + "=" * 60)
     print("BLUEPRINT GENERATION DEMO")
     print("=" * 60)
-    
+
     # Generate blueprints
     print("\n5. Generating new map blueprints...")
     blueprints = pipeline.generate_blueprint(style="roshamuul", count=3)
-    
+
     for i, blueprint in enumerate(blueprints, 1):
         print(f"\n   Blueprint {i}:")
         print(f"      ID: {blueprint.blueprint_id}")
@@ -116,21 +110,21 @@ def demo_statistics(pipeline: LearningPipeline):
     print("\n" + "=" * 60)
     print("STATISTICS DEMO")
     print("=" * 60)
-    
+
     # Get statistics
     print("\n6. Retrieving learning statistics...")
     stats = pipeline.get_statistics()
-    
+
     if "dataset" in stats:
-        print(f"   Dataset statistics:")
+        print("   Dataset statistics:")
         for key, value in stats["dataset"].items():
             print(f"      {key}: {value}")
-    
+
     if "styles" in stats:
-        print(f"\n   Style statistics:")
+        print("\n   Style statistics:")
         for style, style_stats in stats["styles"].items():
             print(f"      {style}: {style_stats}")
-    
+
     if "quality_score" in stats:
         print(f"\n   Overall quality score: {stats['quality_score']:.2f}")
 
@@ -140,16 +134,18 @@ def demo_export(pipeline: LearningPipeline):
     print("\n" + "=" * 60)
     print("EXPORT DEMO")
     print("=" * 60)
-    
+
     # Export for generation
     print("\n7. Exporting learned data for generation...")
     export_data = pipeline.export_for_generation("data/export_for_generation.json")
-    
+
     if export_data:
         print(f"   Exported at: {export_data.get('exported_at', 'unknown')}")
         print(f"   Style guides: {len(export_data.get('style_guides', {}))}")
         print(f"   Pattern guides: {len(export_data.get('pattern_guides', {}))}")
-        print(f"   Similarity clusters: {len(export_data.get('similarity_clusters', {}))}")
+        print(
+            f"   Similarity clusters: {len(export_data.get('similarity_clusters', {}))}"
+        )
 
 
 def demo_recommendations(pipeline: LearningPipeline):
@@ -157,24 +153,28 @@ def demo_recommendations(pipeline: LearningPipeline):
     print("\n" + "=" * 60)
     print("RECOMMENDATIONS DEMO")
     print("=" * 60)
-    
+
     # Get recommendations
     print("\n8. Getting generation recommendations...")
     recommendations = pipeline.get_recommendations(style="roshamuul")
-    
+
     if "style_recommendations" in recommendations:
         for rec in recommendations["style_recommendations"]:
             print(f"\n   Style: {rec['style']}")
             print(f"   Confidence: {rec['confidence']:.2f}")
             if "suggestions" in rec:
-                print(f"   Suggested grounds: {rec['suggestions'].get('ground_tiles', [])}")
+                print(
+                    f"   Suggested grounds: {rec['suggestions'].get('ground_tiles', [])}"
+                )
                 print(f"   Suggested walls: {rec['suggestions'].get('wall_tiles', [])}")
-    
+
     if "combination_suggestions" in recommendations:
-        print(f"\n   Combination suggestions:")
+        print("\n   Combination suggestions:")
         for suggestion in recommendations["combination_suggestions"][:3]:
-            print(f"      {suggestion['primary']} + {suggestion['secondary']} "
-                  f"({suggestion['blend_ratio']})")
+            print(
+                f"      {suggestion['primary']} + {suggestion['secondary']} "
+                f"({suggestion['blend_ratio']})"
+            )
 
 
 def create_sample_dataset() -> dict:
@@ -184,18 +184,48 @@ def create_sample_dataset() -> dict:
         "total_maps": 6,
         "total_regions": 12,
         "metadata": [
-            {"file_path": "templates/roshamuul.json", "map_name": "Roshamuul", 
-             "width": 100, "height": 100, "floors": 3},
-            {"file_path": "templates/issavi.json", "map_name": "Issavi",
-             "width": 80, "height": 80, "floors": 2},
-            {"file_path": "templates/library_dungeon.lua", "map_name": "Library",
-             "width": 60, "height": 60, "floors": 4},
-            {"file_path": "templates/yalahar.json", "map_name": "Yalahar",
-             "width": 90, "height": 90, "floors": 2},
-            {"file_path": "templates/ice.json", "map_name": "Ice Dungeon",
-             "width": 50, "height": 50, "floors": 3},
-            {"file_path": "templates/jungle.json", "map_name": "Jungle",
-             "width": 70, "height": 70, "floors": 1}
+            {
+                "file_path": "templates/roshamuul.json",
+                "map_name": "Roshamuul",
+                "width": 100,
+                "height": 100,
+                "floors": 3,
+            },
+            {
+                "file_path": "templates/issavi.json",
+                "map_name": "Issavi",
+                "width": 80,
+                "height": 80,
+                "floors": 2,
+            },
+            {
+                "file_path": "templates/library_dungeon.lua",
+                "map_name": "Library",
+                "width": 60,
+                "height": 60,
+                "floors": 4,
+            },
+            {
+                "file_path": "templates/yalahar.json",
+                "map_name": "Yalahar",
+                "width": 90,
+                "height": 90,
+                "floors": 2,
+            },
+            {
+                "file_path": "templates/ice.json",
+                "map_name": "Ice Dungeon",
+                "width": 50,
+                "height": 50,
+                "floors": 3,
+            },
+            {
+                "file_path": "templates/jungle.json",
+                "map_name": "Jungle",
+                "width": 70,
+                "height": 70,
+                "floors": 1,
+            },
         ],
         "regions": [
             # Roshamuul regions
@@ -209,17 +239,33 @@ def create_sample_dataset() -> dict:
                     {"x": 0, "y": 0, "ground": "roshamuul_stone", "walkable": True},
                     {"x": 1, "y": 0, "ground": "roshamuul_stone", "walkable": True},
                     {"x": 0, "y": 1, "ground": "prison_floor", "walkable": True},
-                    {"x": 1, "y": 1, "ground": "dark_tile", "walkable": False}
+                    {"x": 1, "y": 1, "ground": "dark_tile", "walkable": False},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 10, "height": 8, "area": 80, "shape": "rectangular"},
-                    {"id": "room_1", "x": 15, "y": 0, "width": 12, "height": 10, "area": 120, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 10,
+                        "height": 8,
+                        "area": 80,
+                        "shape": "rectangular",
+                    },
+                    {
+                        "id": "room_1",
+                        "x": 15,
+                        "y": 0,
+                        "width": 12,
+                        "height": 10,
+                        "area": 120,
+                        "shape": "rectangular",
+                    },
                 ],
                 "corridors": [
                     {"from": "room_0", "to": "room_1", "length": 5, "width": 2}
                 ],
                 "connections": [{"from": "room_0", "to": "room_1"}],
-                "bounds": {"width": 30, "height": 20}
+                "bounds": {"width": 30, "height": 20},
             },
             {
                 "region_id": "roshamuul_r2",
@@ -229,14 +275,22 @@ def create_sample_dataset() -> dict:
                 "features": {"boss": "deathslicer"},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "roshamuul_stone", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "roshamuul_stone", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "roshamuul_stone", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "boss_room", "x": 0, "y": 0, "width": 15, "height": 15, "area": 225, "shape": "rectangular"}
+                    {
+                        "id": "boss_room",
+                        "x": 0,
+                        "y": 0,
+                        "width": 15,
+                        "height": 15,
+                        "area": 225,
+                        "shape": "rectangular",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 20, "height": 20}
+                "bounds": {"width": 20, "height": 20},
             },
             # Issavi regions
             {
@@ -249,19 +303,46 @@ def create_sample_dataset() -> dict:
                     {"x": 0, "y": 0, "ground": "sand", "walkable": True},
                     {"x": 1, "y": 0, "ground": "ancient_stone", "walkable": True},
                     {"x": 0, "y": 1, "ground": "desert_tile", "walkable": True},
-                    {"x": 1, "y": 1, "ground": "sandstone", "walkable": True}
+                    {"x": 1, "y": 1, "ground": "sandstone", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 20, "height": 15, "area": 300, "shape": "rectangular"},
-                    {"id": "room_1", "x": 25, "y": 0, "width": 18, "height": 12, "area": 216, "shape": "rectangular"},
-                    {"id": "room_2", "x": 0, "y": 20, "width": 15, "height": 15, "area": 225, "shape": "irregular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 15,
+                        "area": 300,
+                        "shape": "rectangular",
+                    },
+                    {
+                        "id": "room_1",
+                        "x": 25,
+                        "y": 0,
+                        "width": 18,
+                        "height": 12,
+                        "area": 216,
+                        "shape": "rectangular",
+                    },
+                    {
+                        "id": "room_2",
+                        "x": 0,
+                        "y": 20,
+                        "width": 15,
+                        "height": 15,
+                        "area": 225,
+                        "shape": "irregular",
+                    },
                 ],
                 "corridors": [
                     {"from": "room_0", "to": "room_1", "length": 5, "width": 3},
-                    {"from": "room_0", "to": "room_2", "length": 5, "width": 3}
+                    {"from": "room_0", "to": "room_2", "length": 5, "width": 3},
                 ],
-                "connections": [{"from": "room_0", "to": "room_1"}, {"from": "room_0", "to": "room_2"}],
-                "bounds": {"width": 50, "height": 40}
+                "connections": [
+                    {"from": "room_0", "to": "room_1"},
+                    {"from": "room_0", "to": "room_2"},
+                ],
+                "bounds": {"width": 50, "height": 40},
             },
             # Library regions
             {
@@ -272,17 +353,33 @@ def create_sample_dataset() -> dict:
                 "features": {"bookshelves": True, "study": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "library_floor", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "wooden_floor", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "wooden_floor", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 12, "height": 10, "area": 120, "shape": "rectangular"},
-                    {"id": "room_1", "x": 15, "y": 5, "width": 10, "height": 8, "area": 80, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 12,
+                        "height": 10,
+                        "area": 120,
+                        "shape": "rectangular",
+                    },
+                    {
+                        "id": "room_1",
+                        "x": 15,
+                        "y": 5,
+                        "width": 10,
+                        "height": 8,
+                        "area": 80,
+                        "shape": "rectangular",
+                    },
                 ],
                 "corridors": [
                     {"from": "room_0", "to": "room_1", "length": 5, "width": 2}
                 ],
                 "connections": [{"from": "room_0", "to": "room_1"}],
-                "bounds": {"width": 30, "height": 20}
+                "bounds": {"width": 30, "height": 20},
             },
             # Falcon regions
             {
@@ -293,19 +390,46 @@ def create_sample_dataset() -> dict:
                 "features": {"noble": True, "bird_motif": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "falcon_tile", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "marble_floor", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "marble_floor", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 8, "height": 8, "area": 64, "shape": "rectangular"},
-                    {"id": "room_1", "x": 0, "y": 10, "width": 8, "height": 8, "area": 64, "shape": "rectangular"},
-                    {"id": "room_2", "x": 0, "y": 20, "width": 8, "height": 8, "area": 64, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 8,
+                        "height": 8,
+                        "area": 64,
+                        "shape": "rectangular",
+                    },
+                    {
+                        "id": "room_1",
+                        "x": 0,
+                        "y": 10,
+                        "width": 8,
+                        "height": 8,
+                        "area": 64,
+                        "shape": "rectangular",
+                    },
+                    {
+                        "id": "room_2",
+                        "x": 0,
+                        "y": 20,
+                        "width": 8,
+                        "height": 8,
+                        "area": 64,
+                        "shape": "rectangular",
+                    },
                 ],
                 "corridors": [
                     {"from": "room_0", "to": "room_1", "length": 2, "width": 2},
-                    {"from": "room_1", "to": "room_2", "length": 2, "width": 2}
+                    {"from": "room_1", "to": "room_2", "length": 2, "width": 2},
                 ],
-                "connections": [{"from": "room_0", "to": "room_1"}, {"from": "room_1", "to": "room_2"}],
-                "bounds": {"width": 10, "height": 30}
+                "connections": [
+                    {"from": "room_0", "to": "room_1"},
+                    {"from": "room_1", "to": "room_2"},
+                ],
+                "bounds": {"width": 10, "height": 30},
             },
             # Cobra regions
             {
@@ -316,17 +440,33 @@ def create_sample_dataset() -> dict:
                 "features": {"serpent": True, "exotic": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "cobra_tile", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "serpent_stone", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "serpent_stone", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 15, "height": 12, "area": 180, "shape": "irregular"},
-                    {"id": "room_1", "x": 20, "y": 5, "width": 10, "height": 10, "area": 100, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 15,
+                        "height": 12,
+                        "area": 180,
+                        "shape": "irregular",
+                    },
+                    {
+                        "id": "room_1",
+                        "x": 20,
+                        "y": 5,
+                        "width": 10,
+                        "height": 10,
+                        "area": 100,
+                        "shape": "rectangular",
+                    },
                 ],
                 "corridors": [
                     {"from": "room_0", "to": "room_1", "length": 5, "width": 3}
                 ],
                 "connections": [{"from": "room_0", "to": "room_1"}],
-                "bounds": {"width": 35, "height": 20}
+                "bounds": {"width": 35, "height": 20},
             },
             # Additional regions for variety
             {
@@ -337,14 +477,22 @@ def create_sample_dataset() -> dict:
                 "features": {"mysterious": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "yalahar_stone", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "mystery_tile", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "mystery_tile", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 25, "height": 20, "area": 500, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 25,
+                        "height": 20,
+                        "area": 500,
+                        "shape": "rectangular",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 30, "height": 25}
+                "bounds": {"width": 30, "height": 25},
             },
             {
                 "region_id": "ice_r1",
@@ -354,14 +502,22 @@ def create_sample_dataset() -> dict:
                 "features": {"ice": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "ice", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "snow", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "snow", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 20, "height": 15, "area": 300, "shape": "irregular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 15,
+                        "area": 300,
+                        "shape": "irregular",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 25, "height": 20}
+                "bounds": {"width": 25, "height": 20},
             },
             {
                 "region_id": "jungle_r1",
@@ -371,14 +527,22 @@ def create_sample_dataset() -> dict:
                 "features": {"jungle": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "grass", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "dirt", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "dirt", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 18, "height": 12, "area": 216, "shape": "organic"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 18,
+                        "height": 12,
+                        "area": 216,
+                        "shape": "organic",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 22, "height": 16}
+                "bounds": {"width": 22, "height": 16},
             },
             # Temple regions
             {
@@ -389,14 +553,22 @@ def create_sample_dataset() -> dict:
                 "features": {"temple": True, "sacred": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "ancient_stone", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "sand", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "sand", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 20, "height": 20, "area": 400, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 20,
+                        "area": 400,
+                        "shape": "rectangular",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 25, "height": 25}
+                "bounds": {"width": 25, "height": 25},
             },
             {
                 "region_id": "roshamuul_temple_r1",
@@ -406,14 +578,22 @@ def create_sample_dataset() -> dict:
                 "features": {"temple": True, "dark": True},
                 "tiles": [
                     {"x": 0, "y": 0, "ground": "roshamuul_stone", "walkable": True},
-                    {"x": 1, "y": 0, "ground": "dark_tile", "walkable": True}
+                    {"x": 1, "y": 0, "ground": "dark_tile", "walkable": True},
                 ],
                 "rooms": [
-                    {"id": "room_0", "x": 0, "y": 0, "width": 18, "height": 18, "area": 324, "shape": "rectangular"}
+                    {
+                        "id": "room_0",
+                        "x": 0,
+                        "y": 0,
+                        "width": 18,
+                        "height": 18,
+                        "area": 324,
+                        "shape": "rectangular",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 22, "height": 22}
+                "bounds": {"width": 22, "height": 22},
             },
             {
                 "region_id": "library_boss_r1",
@@ -425,12 +605,20 @@ def create_sample_dataset() -> dict:
                     {"x": 0, "y": 0, "ground": "library_floor", "walkable": True}
                 ],
                 "rooms": [
-                    {"id": "boss_room", "x": 0, "y": 0, "width": 20, "height": 20, "area": 400, "shape": "rectangular"}
+                    {
+                        "id": "boss_room",
+                        "x": 0,
+                        "y": 0,
+                        "width": 20,
+                        "height": 20,
+                        "area": 400,
+                        "shape": "rectangular",
+                    }
                 ],
                 "corridors": [],
                 "connections": [],
-                "bounds": {"width": 25, "height": 25}
-            }
+                "bounds": {"width": 25, "height": 25},
+            },
         ],
         "features": [],
         "statistics": {
@@ -441,7 +629,7 @@ def create_sample_dataset() -> dict:
                 "falcon": 1,
                 "cobra": 1,
                 "yalahar": 1,
-                "unknown": 2
+                "unknown": 2,
             },
             "type_distribution": {
                 "dungeon": 3,
@@ -449,11 +637,11 @@ def create_sample_dataset() -> dict:
                 "boss_room": 2,
                 "tower": 1,
                 "cave": 2,
-                "temple": 2
+                "temple": 2,
             },
             "avg_map_size": 4900,
-            "total_files": 6
-        }
+            "total_files": 6,
+        },
     }
 
 
@@ -461,7 +649,7 @@ def main():
     """Run all demos."""
     # Create data directory
     os.makedirs("data", exist_ok=True)
-    
+
     # Run demos
     pipeline = demo_basic_learning()
     demo_similarity_search(pipeline)
@@ -469,7 +657,7 @@ def main():
     demo_statistics(pipeline)
     demo_export(pipeline)
     demo_recommendations(pipeline)
-    
+
     print("\n" + "=" * 60)
     print("DEMO COMPLETE!")
     print("=" * 60)

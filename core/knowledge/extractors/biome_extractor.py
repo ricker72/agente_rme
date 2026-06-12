@@ -29,16 +29,18 @@ class BiomeExtractor(BaseExtractor):
             if key in seen or key == "generic":
                 return
             seen.add(key)
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.BIOME,
-                name=name,
-                source=source,
-                biome=name,
-                min_level=level_min,
-                max_level=level_max,
-                tags=[key, "biome"],
-                attributes=attrs,
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.BIOME,
+                    name=name,
+                    source=source,
+                    biome=name,
+                    min_level=level_min,
+                    max_level=level_max,
+                    tags=[key, "biome"],
+                    attributes=attrs,
+                )
+            )
 
         # 1) Explicit biomes list
         for b in _as_list(world.get("biomes")):
@@ -47,11 +49,16 @@ class BiomeExtractor(BaseExtractor):
             name = _as_str(b.get("name"))
             if not name:
                 continue
-            _add(name, {
-                "theme": name,
-                "style": _as_str(b.get("style", "wilderness")),
-                "climate": _as_str(b.get("climate", "temperate")),
-            }, _as_int(b.get("min_level", 1)), _as_int(b.get("max_level", 9999)))
+            _add(
+                name,
+                {
+                    "theme": name,
+                    "style": _as_str(b.get("style", "wilderness")),
+                    "climate": _as_str(b.get("climate", "temperate")),
+                },
+                _as_int(b.get("min_level", 1)),
+                _as_int(b.get("max_level", 9999)),
+            )
 
         # 2) Distinct region themes
         for r in _as_list(world.get("regions")):
@@ -60,11 +67,16 @@ class BiomeExtractor(BaseExtractor):
             theme = _as_str(r.get("theme"))
             if not theme or theme == "generic":
                 continue
-            _add(theme.title(), {
-                "theme": theme,
-                "style": "biome",
-                "climate": _as_str(r.get("climate", "temperate")),
-            }, _as_int(r.get("min_level", 1)), _as_int(r.get("max_level", 9999)))
+            _add(
+                theme.title(),
+                {
+                    "theme": theme,
+                    "style": "biome",
+                    "climate": _as_str(r.get("climate", "temperate")),
+                },
+                _as_int(r.get("min_level", 1)),
+                _as_int(r.get("max_level", 9999)),
+            )
 
         # 3) World-level theme from meta
         meta = world.get("meta", {}) or {}

@@ -1,4 +1,5 @@
 """core.agents.orchestrator_agent — Real orchestrator agent."""
+
 from __future__ import annotations
 import time
 from typing import Any, Dict
@@ -7,6 +8,7 @@ from .agent_registry import BaseAgent
 
 class OrchestratorAgent(BaseAgent):
     """Real orchestrator agent. NO FALLBACKS."""
+
     AGENT_ID = "orchestrator"
 
     def execute(self, request: Any) -> Dict[str, Any]:

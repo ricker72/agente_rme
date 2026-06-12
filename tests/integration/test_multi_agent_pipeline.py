@@ -2,11 +2,9 @@
 Integration test for the full multi-agent pipeline.
 """
 
-import pytest
 import os
 import json
-from agente_rme.core.agents import OrchestratorAgent, MultiAgentResult
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import OrchestratorAgent, MultiAgentResult
 
 
 class TestMultiAgentPipeline:
@@ -46,7 +44,7 @@ class TestMultiAgentPipeline:
             output_dir=str(tmpdir),
             log_dir=str(tmpdir),
         )
-        result = orch.execute_prompt(
+        orch.execute_prompt(
             "Generate Issavi map",
             input_data={"tiles": {}, "structures": [], "regions": []},
         )

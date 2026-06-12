@@ -38,37 +38,36 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
-from core.world import WorldModel, Tile, Item, Spawn, Structure, Region
+from core.world import WorldModel, Spawn, Structure, Region
 
 from .biome_generator import (
-    BiomeGenerator, BiomeTile, get_biome_palette, pick_primary_tag,
-    BIOME_PALETTES, BIOME_TAG_BY_THEME,
+    BiomeGenerator,
+    pick_primary_tag,
 )
 from .terrain_generator import (
-    TerrainGenerator, TerrainFeature, get_terrain_ground_id,
-    TERRAIN_GROUND_IDS,
+    TerrainGenerator,
+    TerrainFeature,
 )
 from .road_generator import (
-    RoadGenerator, RoadSegment, RoadNetwork, Point,
-    get_road_ground_id, get_bridge_ground_id,
-    ROAD_GROUND_IDS, BRIDGE_GROUND_IDS,
+    RoadGenerator,
+    RoadSegment,
 )
 from .river_generator import (
-    RiverGenerator, River, RiverPoint,
-    get_river_ground_id, get_river_bank_id,
-    RIVER_GROUND_IDS, RIVER_BANK_IDS,
+    RiverGenerator,
+    River,
 )
-
 
 # =============================================================================
 # ContinentResult — what the generator produced
 # =============================================================================
 
+
 @dataclass
 class ContinentResult:
     """Aggregated report of a full continent generation."""
+
     world: WorldModel
     zones_placed: List[Dict[str, Any]] = field(default_factory=list)
     roads: List[RoadSegment] = field(default_factory=list)
@@ -115,6 +114,7 @@ class ContinentResult:
 # Helpers
 # =============================================================================
 
+
 def _plan_attr(plan: Any, *names: str, default: Any = None) -> Any:
     """Get an attribute from a plan that may be a dict or an object."""
     if plan is None:
@@ -148,20 +148,22 @@ def _layout_zones(plan: Any) -> List[Dict[str, Any]]:
         if isinstance(z, dict):
             out.append(dict(z))
         else:
-            out.append({
-                "x": getattr(z, "x", 0),
-                "y": getattr(z, "y", 0),
-                "z": getattr(z, "z", 7),
-                "width": getattr(z, "width", 40),
-                "height": getattr(z, "height", 40),
-                "name": getattr(z, "name", "zone"),
-                "theme": getattr(z, "theme", "generic"),
-                "zone_kind": getattr(z, "zone_kind", "hunt"),
-                "level_min": getattr(z, "level_min", 1),
-                "level_max": getattr(z, "level_max", 200),
-                "band": getattr(z, "band", "medium"),
-                "plan": getattr(z, "plan", None),
-            })
+            out.append(
+                {
+                    "x": getattr(z, "x", 0),
+                    "y": getattr(z, "y", 0),
+                    "z": getattr(z, "z", 7),
+                    "width": getattr(z, "width", 40),
+                    "height": getattr(z, "height", 40),
+                    "name": getattr(z, "name", "zone"),
+                    "theme": getattr(z, "theme", "generic"),
+                    "zone_kind": getattr(z, "zone_kind", "hunt"),
+                    "level_min": getattr(z, "level_min", 1),
+                    "level_max": getattr(z, "level_max", 200),
+                    "band": getattr(z, "band", "medium"),
+                    "plan": getattr(z, "plan", None),
+                }
+            )
     return out
 
 
@@ -183,7 +185,9 @@ def _plan_z(plan: Any) -> int:
 
 
 def _plan_primary_theme(plan: Any) -> str:
-    return str(_plan_attr(plan, "primary_theme", "theme", default="generic") or "generic")
+    return str(
+        _plan_attr(plan, "primary_theme", "theme", default="generic") or "generic"
+    )
 
 
 def _plan_difficulty_progression(plan: Any) -> List[Dict[str, Any]]:
@@ -193,15 +197,17 @@ def _plan_difficulty_progression(plan: Any) -> List[Dict[str, Any]]:
         if isinstance(it, dict):
             out.append(dict(it))
         else:
-            out.append({
-                "zone_index": getattr(it, "zone_index", 0),
-                "zone_kind": getattr(it, "zone_kind", "hunt"),
-                "level_min": getattr(it, "level_min", 1),
-                "level_max": getattr(it, "level_max", 100),
-                "band": getattr(it, "band", "medium"),
-                "spawn_density": getattr(it, "spawn_density", "medium"),
-                "monster_pool": list(getattr(it, "monster_pool", []) or []),
-            })
+            out.append(
+                {
+                    "zone_index": getattr(it, "zone_index", 0),
+                    "zone_kind": getattr(it, "zone_kind", "hunt"),
+                    "level_min": getattr(it, "level_min", 1),
+                    "level_max": getattr(it, "level_max", 100),
+                    "band": getattr(it, "band", "medium"),
+                    "spawn_density": getattr(it, "spawn_density", "medium"),
+                    "monster_pool": list(getattr(it, "monster_pool", []) or []),
+                }
+            )
     return out
 
 
@@ -222,6 +228,7 @@ def _theme_assets_for_zone(plan: Any, theme_resolver: Any, zone: Dict[str, Any])
 # ContinentGenerator
 # =============================================================================
 
+
 class ContinentGenerator:
     """
     Turns a WorldPlan into a fully populated WorldModel.
@@ -236,7 +243,10 @@ class ContinentGenerator:
     """
 
     DEFAULT_DENSITY: Dict[str, int] = {
-        "low": 4, "medium": 8, "high": 14, "extreme": 20,
+        "low": 4,
+        "medium": 8,
+        "high": 14,
+        "extreme": 20,
     }
 
     def __init__(
@@ -269,11 +279,14 @@ class ContinentGenerator:
         populated WorldModel.
         """
         world = WorldModel()
-        result = ContinentResult(world=world, metadata={
-            "seed": self._seed,
-            "prompt": _plan_attr(plan, "prompt", default=""),
-            "primary_theme": _plan_primary_theme(plan),
-        })
+        result = ContinentResult(
+            world=world,
+            metadata={
+                "seed": self._seed,
+                "prompt": _plan_attr(plan, "prompt", default=""),
+                "primary_theme": _plan_primary_theme(plan),
+            },
+        )
 
         world_width, world_height = _plan_world_size(plan)
         z = _plan_z(plan)
@@ -293,8 +306,9 @@ class ContinentGenerator:
         self._step_per_zone_biome(world, zones, z, themes)
 
         # 5. Terrain features around zones
-        self._step_terrain_features(world, world_width, world_height, z, primary_theme,
-                                    zones, result)
+        self._step_terrain_features(
+            world, world_width, world_height, z, primary_theme, zones, result
+        )
 
         # 6. Rivers
         self._step_rivers(world, world_width, world_height, z, primary_theme, result)
@@ -309,11 +323,13 @@ class ContinentGenerator:
         self._step_regions(plan, zones, result)
 
         # 10. Final metadata
-        result.metadata.update({
-            "world_size": [world_width, world_height],
-            "z": z,
-            "themes_resolved": list(themes.keys()),
-        })
+        result.metadata.update(
+            {
+                "world_size": [world_width, world_height],
+                "z": z,
+                "themes_resolved": list(themes.keys()),
+            }
+        )
         return world
 
     # ------------------------------------------------------------------
@@ -323,11 +339,19 @@ class ContinentGenerator:
     def _step_continental_biome(
         self,
         world: WorldModel,
-        width: int, height: int, z: int,
+        width: int,
+        height: int,
+        z: int,
         theme: str,
     ) -> int:
         return self._biome.generate(
-            world, 0, 0, width - 1, height - 1, z, theme,
+            world,
+            0,
+            0,
+            width - 1,
+            height - 1,
+            z,
+            theme,
             water_chance=0.04,
         )
 
@@ -348,10 +372,12 @@ class ContinentGenerator:
             primary = pick_primary_tag(theme)
             self._biome.generate(
                 world,
-                zone["x"], zone["y"],
+                zone["x"],
+                zone["y"],
                 zone["x"] + zone["width"] - 1,
                 zone["y"] + zone["height"] - 1,
-                z, theme,
+                z,
+                theme,
                 primary_tag=primary,
                 water_chance=0.0,
                 overwrite=True,
@@ -364,22 +390,42 @@ class ContinentGenerator:
     def _step_terrain_features(
         self,
         world: WorldModel,
-        width: int, height: int, z: int,
+        width: int,
+        height: int,
+        z: int,
         theme: str,
         zones: List[Dict[str, Any]],
         result: ContinentResult,
     ) -> None:
         mountains = self._terrain.generate_mountains(
-            world, 0, 0, width - 1, height - 1, z, theme,
+            world,
+            0,
+            0,
+            width - 1,
+            height - 1,
+            z,
+            theme,
             threshold=0.80,
         )
         result.terrain_features.append(mountains)
         hills = self._terrain.generate_hills(
-            world, 0, 0, width - 1, height - 1, z, theme,
+            world,
+            0,
+            0,
+            width - 1,
+            height - 1,
+            z,
+            theme,
         )
         result.terrain_features.append(hills)
         water = self._terrain.generate_water_bodies(
-            world, 0, 0, width - 1, height - 1, z, theme,
+            world,
+            0,
+            0,
+            width - 1,
+            height - 1,
+            z,
+            theme,
         )
         result.terrain_features.extend(water)
 
@@ -390,7 +436,9 @@ class ContinentGenerator:
     def _step_rivers(
         self,
         world: WorldModel,
-        width: int, height: int, z: int,
+        width: int,
+        height: int,
+        z: int,
         theme: str,
         result: ContinentResult,
     ) -> None:
@@ -405,15 +453,25 @@ class ContinentGenerator:
             if edge == "top":
                 sinks.append((self._biome._rng.randint(0, max(0, width - 1)), 0))
             elif edge == "bottom":
-                sinks.append((self._biome._rng.randint(0, max(0, width - 1)), height - 1))
+                sinks.append(
+                    (self._biome._rng.randint(0, max(0, width - 1)), height - 1)
+                )
             elif edge == "left":
                 sinks.append((0, self._biome._rng.randint(0, max(0, height - 1))))
             else:
-                sinks.append((width - 1, self._biome._rng.randint(0, max(0, height - 1))))
+                sinks.append(
+                    (width - 1, self._biome._rng.randint(0, max(0, height - 1)))
+                )
             sources.append((sx, sy))
         rivers = self._rivers.generate_rivers(
-            world, sources, sinks, z, theme,
-            width=2, meander=0.35, add_banks=True,
+            world,
+            sources,
+            sinks,
+            z,
+            theme,
+            width=2,
+            meander=0.35,
+            add_banks=True,
         )
         result.rivers.extend(rivers)
 
@@ -432,22 +490,23 @@ class ContinentGenerator:
     ) -> None:
         diff = _plan_difficulty_progression(plan)
         diff_by_index: Dict[int, Dict[str, Any]] = {
-            int(d.get("zone_index", i)): d
-            for i, d in enumerate(diff)
+            int(d.get("zone_index", i)): d for i, d in enumerate(diff)
         }
-        from core.world.tile import Tile
 
         for idx, zone in enumerate(zones):
             zone_kind = zone.get("zone_kind") or zone.get("kind") or "hunt"
             theme_name = zone.get("theme") or "generic"
             theme = themes.get(theme_name) or theme_name
-            d = diff_by_index.get(idx, {
-                "level_min": zone.get("level_min", 1),
-                "level_max": zone.get("level_max", 100),
-                "band": zone.get("band", "medium"),
-                "spawn_density": zone.get("spawn_density", "medium"),
-                "monster_pool": [],
-            })
+            d = diff_by_index.get(
+                idx,
+                {
+                    "level_min": zone.get("level_min", 1),
+                    "level_max": zone.get("level_max", 100),
+                    "band": zone.get("band", "medium"),
+                    "spawn_density": zone.get("spawn_density", "medium"),
+                    "monster_pool": [],
+                },
+            )
             pool = list(d.get("monster_pool") or [])
 
             x, y = zone["x"], zone["y"]
@@ -455,13 +514,31 @@ class ContinentGenerator:
 
             # Place structure and (optionally) decorations
             self._place_zone_structure(
-                world, zone, zone_kind, x, y, w, h, z, theme, result,
+                world,
+                zone,
+                zone_kind,
+                x,
+                y,
+                w,
+                h,
+                z,
+                theme,
+                result,
             )
 
             # Place spawns
             self._place_zone_spawns(
-                world, zone, zone_kind, x, y, w, h, z, theme,
-                pool=pool, density=d.get("spawn_density", "medium"),
+                world,
+                zone,
+                zone_kind,
+                x,
+                y,
+                w,
+                h,
+                z,
+                theme,
+                pool=pool,
+                density=d.get("spawn_density", "medium"),
                 result=result,
             )
 
@@ -470,8 +547,12 @@ class ContinentGenerator:
         world: WorldModel,
         zone: Dict[str, Any],
         kind: str,
-        x: int, y: int, w: int, h: int,
-        z: int, theme: Any,
+        x: int,
+        y: int,
+        w: int,
+        h: int,
+        z: int,
+        theme: Any,
         result: ContinentResult,
     ) -> None:
         """Place a single structure record + its perimeter walls/temple."""
@@ -501,15 +582,31 @@ class ContinentGenerator:
             wall_ids = list(getattr(theme, "walls", []) or [])
             wall_id = wall_ids[0] if wall_ids else 1498
             for ix in range(cx, cx + struct_w):
-                world.set_tile(Tile(x=ix, y=cy, z=z, ground=wall_id,
-                                    zone=f"{category}:wall"))
-                world.set_tile(Tile(x=ix, y=cy + struct_h - 1, z=z, ground=wall_id,
-                                    zone=f"{category}:wall"))
+                world.set_tile(
+                    Tile(x=ix, y=cy, z=z, ground=wall_id, zone=f"{category}:wall")
+                )
+                world.set_tile(
+                    Tile(
+                        x=ix,
+                        y=cy + struct_h - 1,
+                        z=z,
+                        ground=wall_id,
+                        zone=f"{category}:wall",
+                    )
+                )
             for iy in range(cy, cy + struct_h):
-                world.set_tile(Tile(x=cx, y=iy, z=z, ground=wall_id,
-                                    zone=f"{category}:wall"))
-                world.set_tile(Tile(x=cx + struct_w - 1, y=iy, z=z, ground=wall_id,
-                                    zone=f"{category}:wall"))
+                world.set_tile(
+                    Tile(x=cx, y=iy, z=z, ground=wall_id, zone=f"{category}:wall")
+                )
+                world.set_tile(
+                    Tile(
+                        x=cx + struct_w - 1,
+                        y=iy,
+                        z=z,
+                        ground=wall_id,
+                        zone=f"{category}:wall",
+                    )
+                )
 
             # Drop a "feature" item at the center (altar, chest, fountain, ...)
             mid_x = cx + struct_w // 2
@@ -525,8 +622,11 @@ class ContinentGenerator:
         structure = Structure(
             name=str(name),
             category=category,
-            x=x, y=y, z=z,
-            width=w, height=h,
+            x=x,
+            y=y,
+            z=z,
+            width=w,
+            height=h,
             tile_count=(struct_w * struct_h if struct_w and struct_h else w * h),
             tags=[kind, str(zone.get("theme", "generic"))],
         )
@@ -538,8 +638,12 @@ class ContinentGenerator:
         world: WorldModel,
         zone: Dict[str, Any],
         kind: str,
-        x: int, y: int, w: int, h: int,
-        z: int, theme: Any,
+        x: int,
+        y: int,
+        w: int,
+        h: int,
+        z: int,
+        theme: Any,
         pool: List[str],
         density: str,
         result: ContinentResult,
@@ -613,9 +717,15 @@ class ContinentGenerator:
             for zone in zones:
                 if zone.get("zone_kind") == "city":
                     grid = self._roads.build_city_grid(
-                        world, zone["x"], zone["y"],
-                        zone["width"], zone["height"], z, theme,
-                        step=4, margin=2,
+                        world,
+                        zone["x"],
+                        zone["y"],
+                        zone["width"],
+                        zone["height"],
+                        z,
+                        theme,
+                        step=4,
+                        margin=2,
                     )
                     result.roads.extend(grid.segments)
             return
@@ -630,9 +740,15 @@ class ContinentGenerator:
         for zone in zones:
             if zone.get("zone_kind") == "city":
                 grid = self._roads.build_city_grid(
-                    world, zone["x"], zone["y"],
-                    zone["width"], zone["height"], z, theme,
-                    step=4, margin=2,
+                    world,
+                    zone["x"],
+                    zone["y"],
+                    zone["width"],
+                    zone["height"],
+                    z,
+                    theme,
+                    step=4,
+                    margin=2,
                 )
                 result.roads.extend(grid.segments)
 
@@ -650,12 +766,17 @@ class ContinentGenerator:
         for i, zone in enumerate(zones):
             lo = int(zone.get("level_min", 1))
             hi = int(zone.get("level_max", 200))
-            name = f"{zone.get('zone_kind', 'zone')}_{i + 1}_{zone.get('name', '')}".strip("_")
+            name = (
+                f"{zone.get('zone_kind', 'zone')}_{i + 1}_{zone.get('name', '')}".strip(
+                    "_"
+                )
+            )
             theme_name = zone.get("theme") or "generic"
             region = Region(
                 name=name,
                 theme=str(theme_name),
-                min_level=lo, max_level=hi,
+                min_level=lo,
+                max_level=hi,
                 tags=[str(zone.get("zone_kind", "hunt")), str(theme_name)],
             )
             world.add_region(region)
@@ -695,6 +816,7 @@ class ContinentGenerator:
 # Module-level helpers
 # =============================================================================
 
+
 def generate_continent(plan: Any, seed: Optional[int] = None) -> WorldModel:
     """
     One-shot helper: turn a WorldPlan into a fully populated WorldModel.
@@ -724,6 +846,7 @@ def generate_from_prompt(
     both, use AIArchitect + ContinentGenerator directly.
     """
     from core.architect import AIArchitect
+
     architect = AIArchitect()
     plan = architect.plan(prompt, world_width=world_width, world_height=world_height)
     return generate_continent(plan, seed=seed)

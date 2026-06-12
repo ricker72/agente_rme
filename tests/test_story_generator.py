@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 
 from core.campaign.story_generator import StoryGenerator, StoryArc
 
@@ -58,8 +57,9 @@ class TestStoryArcData:
             assert len(arc.objectives) > 0
 
     def test_arc_to_dict(self):
-        arc = StoryArc(title="Test", chapter=1, description="Test desc",
-                       reward_gold=1000)
+        arc = StoryArc(
+            title="Test", chapter=1, description="Test desc", reward_gold=1000
+        )
         d = arc.to_dict()
         assert d["title"] == "Test"
         assert d["chapter"] == 1

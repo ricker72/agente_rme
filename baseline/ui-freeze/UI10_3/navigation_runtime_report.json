@@ -1,0 +1,82 @@
+{
+  "all_pages_load": true,
+  "cycles": 1,
+  "errors": [],
+  "main_window_autonomous": {
+    "layout_ok": true,
+    "lazy_before_navigation": true,
+    "lazy_loaded_once": true,
+    "loaded_from_shell": true,
+    "registered": true,
+    "status": "PASS",
+    "switch_time_ms": 30.175
+  },
+  "no_crash": true,
+  "page_changed_events": 9,
+  "pages": [
+    {
+      "child_widget_count": 47,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "dashboard",
+      "switch_time_ms": 35.87
+    },
+    {
+      "child_widget_count": 103,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "world",
+      "switch_time_ms": 22.82
+    },
+    {
+      "child_widget_count": 1,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "architect",
+      "switch_time_ms": 1.261
+    },
+    {
+      "child_widget_count": 106,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "critic",
+      "switch_time_ms": 23.258
+    },
+    {
+      "child_widget_count": 120,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "knowledge",
+      "switch_time_ms": 12.409
+    },
+    {
+      "child_widget_count": 1,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "campaign",
+      "switch_time_ms": 1.155
+    },
+    {
+      "child_widget_count": 1,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "otbm",
+      "switch_time_ms": 0.795
+    },
+    {
+      "child_widget_count": 135,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "autonomous",
+      "switch_time_ms": 15.873
+    },
+    {
+      "child_widget_count": 1,
+      "layout_ok": true,
+      "loaded": true,
+      "page_id": "settings",
+      "switch_time_ms": 3.171
+    }
+  ],
+  "status": "PASS"
+}

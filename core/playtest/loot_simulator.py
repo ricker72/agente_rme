@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import logging
 import random
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
 logger = logging.getLogger(__name__)
@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class LootDrop:
     """A single loot drop event."""
+
     item_name: str
     item_id: int
     gold: int
@@ -27,6 +28,7 @@ class LootDrop:
 @dataclass
 class LootReport:
     """Aggregated loot statistics from simulation."""
+
     total_gold: int
     gold_per_hour: float
     total_items: int
@@ -43,6 +45,7 @@ class LootReport:
 @dataclass
 class LootTable:
     """Loot table for a monster type."""
+
     monster_name: str
     gold_min: int
     gold_max: int
@@ -55,7 +58,8 @@ class LootTable:
 COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     "Dragon": LootTable(
         monster_name="Dragon",
-        gold_min=150, gold_max=400,
+        gold_min=150,
+        gold_max=400,
         items=[
             ("Gold Coin", 100, 3031),
             ("Dragon Ham", 80, 11451),
@@ -68,7 +72,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Hydra": LootTable(
         monster_name="Hydra",
-        gold_min=300, gold_max=800,
+        gold_min=300,
+        gold_max=800,
         items=[
             ("Gold Coin", 100, 3031),
             ("Green Dragon Leather", 40, 5893),
@@ -81,7 +86,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Demon": LootTable(
         monster_name="Demon",
-        gold_min=500, gold_max=1200,
+        gold_min=500,
+        gold_max=1200,
         items=[
             ("Gold Coin", 100, 3031),
             ("Demon Helmet", 2, 3168),
@@ -97,7 +103,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Rat": LootTable(
         monster_name="Rat",
-        gold_min=5, gold_max=15,
+        gold_min=5,
+        gold_max=15,
         items=[
             ("Gold Coin", 100, 3031),
             ("Cheese", 30, 2696),
@@ -106,7 +113,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Rotworm": LootTable(
         monster_name="Rotworm",
-        gold_min=15, gold_max=40,
+        gold_min=15,
+        gold_max=40,
         items=[
             ("Gold Coin", 100, 3031),
             ("Meat", 50, 2681),
@@ -116,7 +124,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Goblin": LootTable(
         monster_name="Goblin",
-        gold_min=20, gold_max=60,
+        gold_min=20,
+        gold_max=60,
         items=[
             ("Gold Coin", 100, 3031),
             ("Short Sword", 15, 3294),
@@ -126,7 +135,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Orc Shaman": LootTable(
         monster_name="Orc Shaman",
-        gold_min=80, gold_max=200,
+        gold_min=80,
+        gold_max=200,
         items=[
             ("Gold Coin", 100, 3031),
             ("Staff", 10, 3210),
@@ -138,7 +148,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Minotaur": LootTable(
         monster_name="Minotaur",
-        gold_min=30, gold_max=100,
+        gold_min=30,
+        gold_max=100,
         items=[
             ("Gold Coin", 100, 3031),
             ("Minotaur Axe", 5, 3318),
@@ -150,7 +161,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Vampire": LootTable(
         monster_name="Vampire",
-        gold_min=100, gold_max=300,
+        gold_min=100,
+        gold_max=300,
         items=[
             ("Gold Coin", 100, 3031),
             ("Vampire Shield", 3, 3116),
@@ -163,7 +175,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Behemoth": LootTable(
         monster_name="Behemoth",
-        gold_min=800, gold_max=2000,
+        gold_min=800,
+        gold_max=2000,
         items=[
             ("Gold Coin", 100, 3031),
             ("Magic Plate Armor", 1, 3366),
@@ -177,7 +190,8 @@ COMMON_LOOT_TABLES: Dict[str, LootTable] = {
     ),
     "Grim Reaper": LootTable(
         monster_name="Grim Reaper",
-        gold_min=1000, gold_max=3000,
+        gold_min=1000,
+        gold_max=3000,
         items=[
             ("Gold Coin", 100, 3031),
             ("Magic Plate Armor", 1.5, 3366),

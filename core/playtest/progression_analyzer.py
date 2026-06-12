@@ -9,10 +9,10 @@ from __future__ import annotations
 
 import logging
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
-from .combat_simulator import CombatSimulator, EncounterResult, MonsterStats
+from .combat_simulator import CombatSimulator, MonsterStats
 from .player_bot import Vocation
 
 logger = logging.getLogger(__name__)
@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ProgressionPoint:
     """A single point on the progression curve."""
+
     level: int
     xp_per_hour: float
     loot_per_hour: float
@@ -32,6 +33,7 @@ class ProgressionPoint:
 @dataclass
 class ProgressionReport:
     """Full progression analysis for a world."""
+
     level_range: Tuple[int, int]
     xp_per_hour_min: float
     xp_per_hour_max: float
@@ -64,7 +66,7 @@ class ProgressionAnalyzer:
         """Estimate hours to reach next level at given XP/hour."""
         xp_needed = self.xp_required_for_level(current_level)
         if xp_per_hour <= 0:
-            return float('inf')
+            return float("inf")
         return xp_needed / xp_per_hour
 
     def analyze_zone_progression(
@@ -81,9 +83,13 @@ class ProgressionAnalyzer:
         )
 
         # Average across vocations
-        avg_xp = sum(r.experience_per_hour for r in results_by_voc.values()) / len(results_by_voc)
-        avg_deaths = sum(r.deaths for r in results_by_voc.values()) / len(results_by_voc)
-        total_time = sum(r.total_time for r in results_by_voc.values()) / len(results_by_voc)
+        avg_xp = sum(r.experience_per_hour for r in results_by_voc.values()) / len(
+            results_by_voc
+        )
+        avg_deaths = sum(r.deaths for r in results_by_voc.values()) / len(
+            results_by_voc
+        )
+        sum(r.total_time for r in results_by_voc.values()) / len(results_by_voc)
 
         # Loot estimate (simplified)
         avg_loot = avg_xp * 0.2  # rough gold/xp ratio
@@ -136,8 +142,11 @@ class ProgressionAnalyzer:
 
             if best_point is None:
                 best_point = ProgressionPoint(
-                    level=level, xp_per_hour=0, loot_per_hour=0,
-                    deaths_per_hour=0, time_to_next_level_hours=float('inf'),
+                    level=level,
+                    xp_per_hour=0,
+                    loot_per_hour=0,
+                    deaths_per_hour=0,
+                    time_to_next_level_hours=float("inf"),
                     hunt_efficiency=0,
                 )
 
@@ -177,7 +186,7 @@ class ProgressionAnalyzer:
             # Find closest point
             closest = min(points, key=lambda p: abs(p.level - level))
             t = self.time_to_level(closest.xp_per_hour, level)
-            if t < float('inf'):
+            if t < float("inf"):
                 total_hours += t
             level_times[level] = total_hours
 
@@ -204,7 +213,9 @@ class ProgressionAnalyzer:
                 f"Dead zones ({', '.join(dead_zones[:3])}) provide no value. Remove or rebalance."
             )
         if smoothness < 0.6:
-            recommendations.append("XP curve is erratic. Smooth monster level transitions.")
+            recommendations.append(
+                "XP curve is erratic. Smooth monster level transitions."
+            )
         if xp_avg < self.xp_required_for_level(level_min) * 0.1:
             recommendations.append("XP rates too low. Players will feel stuck.")
         if not recommendations:
@@ -245,7 +256,9 @@ class ProgressionAnalyzer:
                     rotation_time_minutes=60.0,
                 )
                 time_to_next = self.time_to_level(encounter.experience_per_hour, level)
-                efficiency = encounter.experience_per_hour / max(encounter.deaths * 10000 + 1, 1)
+                efficiency = encounter.experience_per_hour / max(
+                    encounter.deaths * 10000 + 1, 1
+                )
 
                 point = ProgressionPoint(
                     level=level,

@@ -12,7 +12,6 @@ from core.world.tile import Tile
 
 
 class DensityAnalyzerTests(unittest.TestCase):
-
     def test_empty_world(self):
         w = WorldModel()
         result = DensityAnalyzer().analyze(w)
@@ -23,10 +22,18 @@ class DensityAnalyzerTests(unittest.TestCase):
         w = WorldModel()
         for x in range(10):
             for y in range(10):
-                w.set_tile(Tile(
-                    x=x, y=y, z=7, ground=100,
-                    items=[{"itemid": 200, "count": 1}, {"itemid": 201, "count": 1}],
-                ))
+                w.set_tile(
+                    Tile(
+                        x=x,
+                        y=y,
+                        z=7,
+                        ground=100,
+                        items=[
+                            {"itemid": 200, "count": 1},
+                            {"itemid": 201, "count": 1},
+                        ],
+                    )
+                )
         result = DensityAnalyzer().analyze(w)
         self.assertGreaterEqual(result["score"].value, 50.0)
         self.assertEqual(result["metrics"]["total_tiles"], 100)
@@ -46,10 +53,15 @@ class DensityAnalyzerTests(unittest.TestCase):
         w = WorldModel()
         for x in range(5):
             for y in range(5):
-                w.set_tile(Tile(
-                    x=x, y=y, z=7, ground=100,
-                    items=[{"itemid": i, "count": 1} for i in range(20)],
-                ))
+                w.set_tile(
+                    Tile(
+                        x=x,
+                        y=y,
+                        z=7,
+                        ground=100,
+                        items=[{"itemid": i, "count": 1} for i in range(20)],
+                    )
+                )
         result = DensityAnalyzer().analyze(w)
         issue_types = {i.issue_type.value for i in result["issues"]}
         self.assertIn("overdecorated_area", issue_types)

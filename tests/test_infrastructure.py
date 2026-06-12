@@ -1,13 +1,16 @@
 """Tests for V1.0 production infrastructure modules."""
+
 from __future__ import annotations
 
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 
 def test_version():
     from core.versioning import ProjectVersion, __version__, VERSION
+
     v = ProjectVersion.current()
     assert v.major == 1
     assert v.minor == 0
@@ -62,13 +65,15 @@ def test_benchmark():
 
     summary = bm.summary()
     assert "smoke" in summary
-    print(f"[PASS] test_benchmark ({result.duration_ms:.1f}ms, {result.tiles_per_second:.0f} tps)")
+    print(
+        f"[PASS] test_benchmark ({result.duration_ms:.1f}ms, {result.tiles_per_second:.0f} tps)"
+    )
 
 
 def test_asset_registry():
     from core.registry.asset_registry import AssetRegistry
-    import xml.etree.ElementTree as ET
-    import tempfile, os
+    import tempfile
+    import os
 
     reg = AssetRegistry()
 
@@ -164,6 +169,7 @@ if __name__ == "__main__":
         except Exception as e:
             failed += 1
             import traceback
+
             print(f"[FAIL] {fn.__name__}: {e}")
             traceback.print_exc()
     print(f"\n{'=' * 50}")

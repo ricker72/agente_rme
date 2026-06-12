@@ -17,8 +17,12 @@ class PathingAnalyzer:
             }
 
         adjacency = self._build_adjacency(traversable)
-        dead_ends = [coords for coords, neighbors in adjacency.items() if len(neighbors) == 1]
-        isolated = [coords for coords, neighbors in adjacency.items() if len(neighbors) == 0]
+        dead_ends = [
+            coords for coords, neighbors in adjacency.items() if len(neighbors) == 1
+        ]
+        isolated = [
+            coords for coords, neighbors in adjacency.items() if len(neighbors) == 0
+        ]
         soft_locks = []
         hard_locks = []
         unreachable = self._find_unreachable_zones(world_model, traversable)
@@ -57,7 +61,9 @@ class PathingAnalyzer:
                 traversable.add((tile.x, tile.y, tile.z))
         return traversable
 
-    def _build_adjacency(self, traversable: Set[Tuple[int, int, int]]) -> Dict[Tuple[int, int, int], List[Tuple[int, int, int]]]:
+    def _build_adjacency(
+        self, traversable: Set[Tuple[int, int, int]]
+    ) -> Dict[Tuple[int, int, int], List[Tuple[int, int, int]]]:
         adjacency = {}
         for x, y, z in traversable:
             neighbors = []
@@ -68,7 +74,9 @@ class PathingAnalyzer:
             adjacency[(x, y, z)] = neighbors
         return adjacency
 
-    def _find_unreachable_zones(self, world_model: Any, traversable: Set[Tuple[int, int, int]]) -> List[Dict[str, int]]:
+    def _find_unreachable_zones(
+        self, world_model: Any, traversable: Set[Tuple[int, int, int]]
+    ) -> List[Dict[str, int]]:
         if not traversable:
             return []
         visited = set()
@@ -91,7 +99,9 @@ class PathingAnalyzer:
         ]
 
     def _tile_at(self, world_model: Any, coords: Tuple[int, int, int]) -> Any:
-        return getattr(world_model, "tiles", {}).get(f"{coords[0]}:{coords[1]}:{coords[2]}")
+        return getattr(world_model, "tiles", {}).get(
+            f"{coords[0]}:{coords[1]}:{coords[2]}"
+        )
 
     def _find_reachable_tiles(self, world_model: Any) -> List[Tuple[int, int, int]]:
         traversable = self._build_traversable_set(world_model)

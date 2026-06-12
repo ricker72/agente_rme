@@ -1,4 +1,5 @@
 """Run all critic unit tests via pytest."""
+
 import subprocess
 import sys
 
@@ -16,6 +17,8 @@ args = [
     "-v",
     "--tb=short",
 ]
-res = subprocess.run([sys.executable, "-m", "pytest", *args],
-                     cwd=r"c:\Users\samatha\OneDrive\Desktop\agente_rme")
+res = subprocess.run(
+    [sys.executable, "-m", "pytest", *args],
+    cwd=r"c:\Users\samatha\OneDrive\Desktop\agente_rme",
+)
 sys.exit(res.returncode)

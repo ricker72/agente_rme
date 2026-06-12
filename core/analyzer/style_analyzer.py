@@ -22,9 +22,13 @@ class StyleAnalyzer:
         best = max(scores, key=scores.get)
         return best if scores[best] > 0 else "unknown"
 
-    def summarize_style(self, tile_stats: Dict[str, int], house_data: List[Dict[str, object]]) -> Dict[str, object]:
+    def summarize_style(
+        self, tile_stats: Dict[str, int], house_data: List[Dict[str, object]]
+    ) -> Dict[str, object]:
         return {
             "dominant_style": self.detect_style(tile_stats),
-            "top_tiles": sorted(tile_stats.items(), key=lambda item: item[1], reverse=True)[:10],
+            "top_tiles": sorted(
+                tile_stats.items(), key=lambda item: item[1], reverse=True
+            )[:10],
             "house_count": len(house_data),
         }

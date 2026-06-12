@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional
 @dataclass
 class PackageResult:
     """Result of package building."""
+
     package_dir: str = ""
     files_created: List[str] = field(default_factory=list)
     total_size_kb: float = 0.0
@@ -54,12 +55,16 @@ class PackageBuilder:
     # Public API
     # ------------------------------------------------------------------
 
-    def build(self, name: str, otbm_bytes: Optional[bytes] = None,
-              lua_scripts: Optional[Dict[str, str]] = None,
-              xml_files: Optional[Dict[str, str]] = None,
-              docs: Optional[Dict[str, str]] = None,
-              preview_path: Optional[str] = None,
-              reports: Optional[Dict[str, Any]] = None) -> PackageResult:
+    def build(
+        self,
+        name: str,
+        otbm_bytes: Optional[bytes] = None,
+        lua_scripts: Optional[Dict[str, str]] = None,
+        xml_files: Optional[Dict[str, str]] = None,
+        docs: Optional[Dict[str, str]] = None,
+        preview_path: Optional[str] = None,
+        reports: Optional[Dict[str, Any]] = None,
+    ) -> PackageResult:
         """
         Build a complete release package.
 
@@ -131,7 +136,9 @@ class PackageBuilder:
                 if isinstance(data, str):
                     path.write_text(data, encoding="utf-8")
                 else:
-                    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+                    path.write_text(
+                        json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8"
+                    )
                 created.append(str(path))
 
         # Calculate total size
@@ -165,9 +172,13 @@ class PackageBuilder:
             reports=package_data.get("reports"),
         )
 
-    def create_metadata(self, name: str, version: str = "1.0.0",
-                        author: str = "RME AI",
-                        description: str = "") -> str:
+    def create_metadata(
+        self,
+        name: str,
+        version: str = "1.0.0",
+        author: str = "RME AI",
+        description: str = "",
+    ) -> str:
         """Create a package.json metadata file."""
         meta = {
             "name": name,

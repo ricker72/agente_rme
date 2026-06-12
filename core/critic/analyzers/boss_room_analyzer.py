@@ -12,7 +12,6 @@ from core.world.world_model import WorldModel
 from .base_analyzer import (
     build_snapshots,
     snapshots_by_zone,
-    safe_ratio,
     clamp,
     average,
 )
@@ -33,25 +32,30 @@ class BossRoomAnalyzer:
     CATEGORY = "boss"
     BOSS_KEYWORDS = ("boss", "arena", "throne", "lair")
 
-    def __init__(self,
-                 min_arena_size: int = 25,
-                 ideal_arena_size: int = 100,
-                 min_escape_routes: int = 1):
+    def __init__(
+        self,
+        min_arena_size: int = 25,
+        ideal_arena_size: int = 100,
+        min_escape_routes: int = 1,
+    ):
         self.min_arena_size = min_arena_size
         self.ideal_arena_size = ideal_arena_size
         self.min_escape_routes = min_escape_routes
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticRecommendation,
+            RecommendationPriority,
         )
 
         bosses = self._identify_bosses(world)
         if not bosses:
             return {
                 "category": self.CATEGORY,
-                "score": CriticScore(self.CATEGORY, 60.0, notes="No boss arenas detected"),
+                "score": CriticScore(
+                    self.CATEGORY, 60.0, notes="No boss arenas detected"
+                ),
                 "issues": [],
                 "recommendations": [
                     CriticRecommendation(
@@ -105,28 +109,42 @@ class BossRoomAnalyzer:
             tags = [t.lower() for t in (s.tags or [])]
             cat = (s.category or "").lower()
             if "boss" in tags or cat in ("boss", "boss_room", "arena"):
-                out.append({
-                    "name": s.name,
-                    "x": s.x, "y": s.y, "z": s.z,
-                    "width": s.width, "height": s.height,
-                    "source": "structure",
-                })
+                out.append(
+                    {
+                        "name": s.name,
+                        "x": s.x,
+                        "y": s.y,
+                        "z": s.z,
+                        "width": s.width,
+                        "height": s.height,
+                        "source": "structure",
+                    }
+                )
         # 2. Regions with boss names
         for r in world.regions:
             if any(kw in r.name.lower() for kw in self.BOSS_KEYWORDS):
-                out.append({
-                    "name": r.name,
-                    "x": 0, "y": 0, "z": 7,
-                    "width": 0, "height": 0,
-                    "source": "region",
-                })
+                out.append(
+                    {
+                        "name": r.name,
+                        "x": 0,
+                        "y": 0,
+                        "z": 7,
+                        "width": 0,
+                        "height": 0,
+                        "source": "region",
+                    }
+                )
         return out
 
-    def _analyze_boss(self, boss: Dict[str, Any],
-                      by_zone: Dict[str, List]) -> Tuple[float, List, List, Dict[str, Any]]:
+    def _analyze_boss(
+        self, boss: Dict[str, Any], by_zone: Dict[str, List]
+    ) -> Tuple[float, List, List, Dict[str, Any]]:
         from ..models import (
-            CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         issues: List = []
@@ -143,9 +161,12 @@ class BossRoomAnalyzer:
         if arena_size >= self.ideal_arena_size:
             size_score = 100.0
         elif arena_size >= self.min_arena_size:
-            size_score = 60.0 + (arena_size - self.min_arena_size) / (
-                self.ideal_arena_size - self.min_arena_size
-            ) * 40.0
+            size_score = (
+                60.0
+                + (arena_size - self.min_arena_size)
+                / (self.ideal_arena_size - self.min_arena_size)
+                * 40.0
+            )
         elif arena_size > 0:
             size_score = arena_size / self.min_arena_size * 60.0
         else:
@@ -198,20 +219,27 @@ class BossRoomAnalyzer:
         overall = clamp(size_score * 0.5 + escape_score * 0.3 + access_score * 0.2)
 
         if arena_size < self.min_arena_size:
-            issues.append(CriticIssue(
-                issue_type=IssueType.INVALID_BOSS_ROOM,
-                severity=IssueSeverity.ERROR,
-                category=self.CATEGORY,
-                location=name,
-                message=f"Boss arena '{name}' is too small ({arena_size} tiles)",
-            ))
-            recs.append(CriticRecommendation(
-                title=f"Enlarge boss arena {name}",
-                description=f"Boss arena '{name}' has only {arena_size} tiles. Enlarge to at least {self.min_arena_size}.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.HIGH,
-                target_location=name,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.INVALID_BOSS_ROOM,
+                    severity=IssueSeverity.ERROR,
+                    category=self.CATEGORY,
+                    location=name,
+                    message=f"Boss arena '{name}' is too small ({arena_size} tiles)",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title=f"Enlarge boss arena {name}",
+                    description=(
+                        f"Boss arena '{name}' has only {arena_size} tiles. "
+                        f"Enlarge to at least {self.min_arena_size}."
+                    ),
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.HIGH,
+                    target_location=name,
+                )
+            )
 
         # For structure-based bosses with no zone name, derive arena size
         # from the structure's width x height if zone snapshot lookup failed
@@ -223,29 +251,40 @@ class BossRoomAnalyzer:
                 escape_routes = 1
                 escape_score = 100.0
                 access_score = 100.0
-                overall = clamp(size_score * 0.5 + escape_score * 0.3 + access_score * 0.2)
+                overall = clamp(
+                    size_score * 0.5 + escape_score * 0.3 + access_score * 0.2
+                )
 
         if escape_routes < self.min_escape_routes:
-            issues.append(CriticIssue(
-                issue_type=IssueType.BOSS_NO_ESCAPE,
-                severity=IssueSeverity.ERROR,
-                category=self.CATEGORY,
-                location=name,
-                message=f"Boss arena '{name}' has no escape route",
-            ))
-            recs.append(CriticRecommendation(
-                title=f"Add escape route to {name}",
-                description=f"Boss arena '{name}' has no escape route. Add a secondary exit or teleport.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.HIGH,
-                target_location=name,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.BOSS_NO_ESCAPE,
+                    severity=IssueSeverity.ERROR,
+                    category=self.CATEGORY,
+                    location=name,
+                    message=f"Boss arena '{name}' has no escape route",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title=f"Add escape route to {name}",
+                    description=f"Boss arena '{name}' has no escape route. Add a secondary exit or teleport.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.HIGH,
+                    target_location=name,
+                )
+            )
 
-        return overall, issues, recs, {
-            "name": name,
-            "arena_size": arena_size,
-            "escape_routes": escape_routes,
-            "size_score": round(size_score, 2),
-            "escape_score": round(escape_score, 2),
-            "access_score": round(access_score, 2),
-        }
+        return (
+            overall,
+            issues,
+            recs,
+            {
+                "name": name,
+                "arena_size": arena_size,
+                "escape_routes": escape_routes,
+                "size_score": round(size_score, 2),
+                "escape_score": round(escape_score, 2),
+                "access_score": round(access_score, 2),
+            },
+        )

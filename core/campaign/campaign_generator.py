@@ -5,13 +5,12 @@ import logging
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
-from core.campaign.lore_generator import LoreGenerator, LoreEntry
-from core.campaign.npc_generator import NPCGenerator, NPC
+from core.campaign.lore_generator import LoreGenerator
+from core.campaign.npc_generator import NPCGenerator
 from core.campaign.faction_generator import FactionGenerator, Faction
-from core.campaign.story_generator import StoryGenerator, StoryArc
-from core.campaign.dialog_generator import DialogGenerator, DialogLine
-from core.campaign.economy_generator import EconomyGenerator, EconomyData
-
+from core.campaign.story_generator import StoryGenerator
+from core.campaign.dialog_generator import DialogGenerator
+from core.campaign.economy_generator import EconomyGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +18,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class Campaign:
     """A complete MMORPG campaign."""
+
     theme: str = ""
     name: str = ""
     level_range: tuple = (1, 100)
@@ -35,14 +35,18 @@ class Campaign:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "theme": self.theme, "name": self.name,
+            "theme": self.theme,
+            "name": self.name,
             "level_range": list(self.level_range),
-            "lore": self.lore, "factions": self.factions,
+            "lore": self.lore,
+            "factions": self.factions,
             "npcs": self.npcs,
             "main_story": self.main_story,
             "side_quests": self.side_quests,
-            "economy": self.economy, "dialogs": self.dialogs,
-            "raids": self.raids, "bosses": self.bosses,
+            "economy": self.economy,
+            "dialogs": self.dialogs,
+            "raids": self.raids,
+            "bosses": self.bosses,
         }
 
     def to_json(self, indent: int = 2) -> str:
@@ -76,10 +80,13 @@ class CampaignGenerator:
         self._dialog_gen = DialogGenerator(seed)
         self._economy_gen = EconomyGenerator(seed)
 
-    def generate(self, theme: str = "default",
-                 level_range: tuple = (1, 100),
-                 npc_count: int = 8,
-                 faction_count: int = 3) -> Campaign:
+    def generate(
+        self,
+        theme: str = "default",
+        level_range: tuple = (1, 100),
+        npc_count: int = 8,
+        faction_count: int = 3,
+    ) -> Campaign:
         """
         Generate a complete MMORPG campaign.
 
@@ -117,17 +124,13 @@ class CampaignGenerator:
             faction_count = 3
 
         try:
-            return self._generate(
-                key, (lo, hi), npc_count, faction_count
-            )
+            return self._generate(key, (lo, hi), npc_count, faction_count)
         except Exception as exc:  # pragma: no cover — defensive
             logger.exception(
                 "CampaignGenerator.generate failed; returning minimal fallback: %s",
                 exc,
             )
-            return self._minimal_campaign(
-                theme=key, lo=lo, hi=hi, error=str(exc)
-            )
+            return self._minimal_campaign(theme=key, lo=lo, hi=hi, error=str(exc))
 
     def _generate(
         self,
@@ -148,17 +151,19 @@ class CampaignGenerator:
         faction_names = [f.name for f in factions]
 
         # Step 2: Generate lore
-        lore_entries = self._lore_gen.generate(theme, faction_names=faction_names,
-                                               count=5)
+        lore_entries = self._lore_gen.generate(
+            theme, faction_names=faction_names, count=5
+        )
         # Add prophecy
         prophecy = self._lore_gen.generate_prophecy(theme, faction_names[:2])
         lore_entries.append(prophecy)
-        campaign.lore = [l.to_dict() for l in lore_entries]
+        campaign.lore = [entry.to_dict() for entry in lore_entries]
 
         # Step 3: Generate NPCs
         locations = self._generate_locations(theme, factions)
-        npcs = self._npc_gen.generate(theme, faction_names=faction_names,
-                                      count=npc_count, locations=locations)
+        npcs = self._npc_gen.generate(
+            theme, faction_names=faction_names, count=npc_count, locations=locations
+        )
         campaign.npcs = [n.to_dict() for n in npcs]
 
         # Step 4: Generate story arcs
@@ -185,8 +190,12 @@ class CampaignGenerator:
         # Step 7: Generate boss encounters from story
         bosses = [a.boss_name for a in story_arcs if a.boss_name]
         campaign.bosses = [
-            {"name": b, "level": level_range[1],
-             "theme": theme, "is_campaign_boss": True}
+            {
+                "name": b,
+                "level": level_range[1],
+                "theme": theme,
+                "is_campaign_boss": True,
+            }
             for b in bosses
         ]
 
@@ -195,31 +204,38 @@ class CampaignGenerator:
 
         return campaign
 
-    def _generate_locations(self, theme: str,
-                            factions: List[Faction]) -> List[str]:
+    def _generate_locations(self, theme: str, factions: List[Faction]) -> List[str]:
         """Generate location names based on theme and factions."""
-        base_locations = [f"{theme} Town Center", f"{theme} Market",
-                          f"{theme} Temple", f"{theme} Outskirts"]
+        base_locations = [
+            f"{theme} Town Center",
+            f"{theme} Market",
+            f"{theme} Temple",
+            f"{theme} Outskirts",
+        ]
         for faction in factions:
             base_locations.append(f"{faction.capital}")
         return base_locations
 
-    def _generate_raids(self, theme: str, level_range: tuple,
-                        boss_names: List[str]) -> List[Dict[str, Any]]:
+    def _generate_raids(
+        self, theme: str, level_range: tuple, boss_names: List[str]
+    ) -> List[Dict[str, Any]]:
         """Generate raid encounters."""
         raids: List[Dict[str, Any]] = []
         for i, boss in enumerate(boss_names[:3]):
-            raids.append({
-                "name": f"Raid: {boss}",
-                "type": "raid",
-                "level_required": level_range[0] + (level_range[1] - level_range[0]) * i // 3,
-                "boss": boss,
-                "max_players": 5 if i < 2 else 8,
-                "rewards": {
-                    "gold": 50000 * (i + 1),
-                    "items": [f"{theme} Raid Token {i + 1}"],
-                },
-            })
+            raids.append(
+                {
+                    "name": f"Raid: {boss}",
+                    "type": "raid",
+                    "level_required": level_range[0]
+                    + (level_range[1] - level_range[0]) * i // 3,
+                    "boss": boss,
+                    "max_players": 5 if i < 2 else 8,
+                    "rewards": {
+                        "gold": 50000 * (i + 1),
+                        "items": [f"{theme} Raid Token {i + 1}"],
+                    },
+                }
+            )
         return raids
 
     def save(self, campaign: Campaign, path: str) -> None:
@@ -238,9 +254,7 @@ class CampaignGenerator:
                 data = json.load(f)
         except (OSError, json.JSONDecodeError, ValueError) as exc:
             logger.warning("Could not load campaign from %s: %s", path, exc)
-            return self._minimal_campaign(
-                theme="default", lo=1, hi=200, error=str(exc)
-            )
+            return self._minimal_campaign(theme="default", lo=1, hi=200, error=str(exc))
         try:
             return Campaign(
                 theme=data.get("theme", ""),
@@ -258,13 +272,10 @@ class CampaignGenerator:
             )
         except Exception as exc:  # pragma: no cover — defensive
             logger.warning("Malformed campaign JSON: %s", exc)
-            return self._minimal_campaign(
-                theme="default", lo=1, hi=200, error=str(exc)
-            )
+            return self._minimal_campaign(theme="default", lo=1, hi=200, error=str(exc))
 
     def _minimal_campaign(
-        self, theme: str = "default", lo: int = 1, hi: int = 200,
-        error: str = ""
+        self, theme: str = "default", lo: int = 1, hi: int = 200, error: str = ""
     ) -> Campaign:
         """Last-resort minimal campaign — never None."""
         return Campaign(

@@ -9,7 +9,6 @@ from .blueprint import Blueprint
 
 class BlueprintLoadError(Exception):
     """Raised when a blueprint cannot be loaded from a file."""
-    pass
 
 
 class BlueprintLoader:
@@ -54,7 +53,9 @@ class BlueprintLoader:
             raise BlueprintLoadError(f"Failed to parse {p}: {e}") from e
 
         if not isinstance(data, dict):
-            raise BlueprintLoadError(f"Invalid blueprint format in {p}: expected dict, got {type(data).__name__}")
+            raise BlueprintLoadError(
+                f"Invalid blueprint format in {p}: expected dict, got {type(data).__name__}"
+            )
 
         bp = Blueprint.from_dict(data)
         self._blueprints[bp.name] = bp
@@ -91,6 +92,7 @@ class BlueprintLoader:
 
         if errors:
             import logging
+
             for err in errors:
                 logging.warning(err)
 

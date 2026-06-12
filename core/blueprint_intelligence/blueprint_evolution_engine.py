@@ -10,9 +10,9 @@ from __future__ import annotations
 
 import copy
 import random
-from typing import Any, Dict, List, Optional, Tuple
+from typing import List, Optional
 
-from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
+from core.blueprints.blueprint import Blueprint, BlueprintTile
 from .models.blueprint_evolution import BlueprintEvolution
 
 
@@ -159,11 +159,13 @@ class BlueprintEvolutionEngine:
     @staticmethod
     def _mutate_add_boss(bp: Blueprint) -> Blueprint:
         """Add a boss room zone."""
-        bp.zones.append({
-            "type": "boss_room",
-            "name": f"boss_{random.randint(1, 999)}",
-            "difficulty": "hard",
-        })
+        bp.zones.append(
+            {
+                "type": "boss_room",
+                "name": f"boss_{random.randint(1, 999)}",
+                "difficulty": "hard",
+            }
+        )
         return bp
 
     @staticmethod
@@ -180,10 +182,12 @@ class BlueprintEvolutionEngine:
     @staticmethod
     def _mutate_add_shortcuts(bp: Blueprint) -> Blueprint:
         """Add shortcut features."""
-        bp.features.append({
-            "type": "shortcut",
-            "name": f"shortcut_{random.randint(1, 999)}",
-        })
+        bp.features.append(
+            {
+                "type": "shortcut",
+                "name": f"shortcut_{random.randint(1, 999)}",
+            }
+        )
         return bp
 
     @staticmethod

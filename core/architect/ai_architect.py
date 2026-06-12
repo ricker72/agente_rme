@@ -32,21 +32,20 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 from .theme_resolver import (
-    ThemeResolver, ThemeAssets,
-    resolve_theme, resolve_themes, merge_themes,
+    ThemeResolver,
+    ThemeAssets,
 )
 from .zone_planner import (
-    ZonePlanner, CityPlan, DungeonPlan, HuntPlan, BossPlan, QuestPlan,
-    DIFFICULTY_BANDS,
+    ZonePlanner,
 )
-from .difficulty_planner import DifficultyPlanner, ZoneDifficulty
-from .layout_planner import LayoutPlanner, WorldLayout, PlacedZone
+from .difficulty_planner import DifficultyPlanner
+from .layout_planner import LayoutPlanner
 from .world_planner import WorldPlanner, WorldPlan, WorldRequest, PromptParser
-
 
 # =============================================================================
 # AIArchitect - the public entry point
 # =============================================================================
+
 
 class AIArchitect:
     """
@@ -119,12 +118,17 @@ class AIArchitect:
             WorldPlan with all city, dungeon, hunt, boss, and quest plans.
         """
         return self.world_planner.plan(
-            prompt, world_width=world_width, world_height=world_height,
+            prompt,
+            world_width=world_width,
+            world_height=world_height,
         )
 
     # Backward-compat alias
     def __call__(
-        self, prompt: str, world_width: int = 200, world_height: int = 200,
+        self,
+        prompt: str,
+        world_width: int = 200,
+        world_height: int = 200,
     ) -> WorldPlan:
         return self.plan(prompt, world_width, world_height)
 
@@ -134,8 +138,11 @@ class AIArchitect:
 
     def analyze(self, prompt: str) -> WorldRequest:
         """Parse a prompt into a structured WorldRequest without planning."""
-        return self.world_planner.prompt_parser.parse.__class__() if False else \
-               _request_from_prompt(self.world_planner.prompt_parser, prompt)
+        return (
+            self.world_planner.prompt_parser.parse.__class__()
+            if False
+            else _request_from_prompt(self.world_planner.prompt_parser, prompt)
+        )
 
     def explain(self, plan: WorldPlan) -> str:
         """
@@ -166,43 +173,52 @@ class AIArchitect:
         if plan.cities:
             lines.append(f"Cities ({len(plan.cities)}):")
             for c in plan.cities:
-                lines.append(f"  - {c.name} (pop {c.population}, districts {len(c.districts)}, "
-                             f"features {len(c.features)})")
+                lines.append(
+                    f"  - {c.name} (pop {c.population}, districts {len(c.districts)}, features {len(c.features)})"
+                )
             lines.append("")
 
         if plan.hunting_zones:
             lines.append(f"Hunting Zones ({len(plan.hunting_zones)}):")
             for h in plan.hunting_zones:
-                lines.append(f"  - {h.name} (lvl {h.min_level}-{h.max_level}, "
-                             f"pool {len(h.monster_pool)}, spawns {h.spawn_count})")
+                lines.append(
+                    f"  - {h.name} (lvl {h.min_level}-{h.max_level}, "
+                    f"pool {len(h.monster_pool)}, spawns {h.spawn_count})"
+                )
             lines.append("")
 
         if plan.boss_zones:
             lines.append(f"Boss Zones ({len(plan.boss_zones)}):")
             for b in plan.boss_zones:
-                lines.append(f"  - {b.name} (boss: {b.boss_monster}, "
-                             f"loot: {len(b.loot_table)} items)")
+                lines.append(
+                    f"  - {b.name} (boss: {b.boss_monster}, loot: {len(b.loot_table)} items)"
+                )
             lines.append("")
 
         if plan.quest_zones:
             lines.append(f"Quest Zones ({len(plan.quest_zones)}):")
             for q in plan.quest_zones:
-                lines.append(f"  - {q.title} (objectives: {len(q.objectives)}, "
-                             f"rewards: {len(q.rewards)})")
+                lines.append(
+                    f"  - {q.title} (objectives: {len(q.objectives)}, rewards: {len(q.rewards)})"
+                )
             lines.append("")
 
         if plan.difficulty_progression:
             lines.append("Difficulty Progression:")
             for d in plan.difficulty_progression:
                 notes = f" - {d.notes[0]}" if d.notes else ""
-                lines.append(f"  - {d.zone_kind:8s} lvl {d.level_min}-{d.level_max} "
-                             f"({d.band:9s}, density={d.spawn_density}){notes}")
+                lines.append(
+                    f"  - {d.zone_kind:8s} lvl {d.level_min}-{d.level_max} "
+                    f"({d.band:9s}, density={d.spawn_density}){notes}"
+                )
             lines.append("")
 
         if plan.layout:
             lines.append("Layout:")
             lines.append(f"  Strategy:    {plan.layout.strategy}")
-            lines.append(f"  World size:  {plan.layout.world_width} x {plan.layout.world_height}")
+            lines.append(
+                f"  World size:  {plan.layout.world_width} x {plan.layout.world_height}"
+            )
             lines.append(f"  Bounds:      {plan.layout.bounds()}")
             lines.append(f"  Roads:       {len(plan.roads)}")
             lines.append(f"  Teleports:   {len(plan.teleports)}")
@@ -277,6 +293,7 @@ class AIArchitect:
 # Helpers
 # =============================================================================
 
+
 def _request_from_prompt(parser: PromptParser, prompt: str) -> WorldRequest:
     parsed = parser.parse(prompt)
     return WorldRequest(
@@ -291,6 +308,7 @@ def _request_from_prompt(parser: PromptParser, prompt: str) -> WorldRequest:
 # =============================================================================
 # Module-level convenience
 # =============================================================================
+
 
 def plan(
     prompt: str,

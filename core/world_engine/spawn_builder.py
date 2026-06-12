@@ -16,7 +16,9 @@ class SpawnBuilder:
     def build(self, zone_plan: Dict[str, object]) -> Dict[str, object]:
         difficulty = zone_plan.get("difficulty", "normal")
         spawn_type = zone_plan.get("zone_type", "HuntingZone")
-        biome = self.biome_planner.place_biome(zone_plan.get("name", ""), region="outer")
+        biome = self.biome_planner.place_biome(
+            zone_plan.get("name", ""), region="outer"
+        )
         monster = self._pick_monster(difficulty, biome.get("biome", "generic"))
         return {
             "zone": zone_plan.get("name"),

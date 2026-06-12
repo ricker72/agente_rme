@@ -1,0 +1,16 @@
+{
+  "audit": "Import Boundary",
+  "audit_id": "AUDIT 1",
+  "scanned_directories": [
+    "ui/pages",
+    "ui/widgets",
+    "ui/services",
+    "ui/models",
+    "ui"
+  ],
+  "total_files_scanned": 163,
+  "forbidden_imports_found": 0,
+  "forbidden_imports": [],
+  "allowed_exception": "ui/adapters/ (permitted to reference core.* and agents.*)",
+  "status": "PASS"
+}

@@ -1,0 +1,52 @@
+{
+  "active_qthreads_after_completion": 0,
+  "no_blocked_ui": true,
+  "no_orphan_qthreads": true,
+  "status": "PASS",
+  "workflows": [
+    {
+      "button_disabled_during_run": true,
+      "button_enabled_after_run": true,
+      "dangling_thread": false,
+      "elapsed_ms": 23.845,
+      "finished": true,
+      "name": "world_generation",
+      "started": true,
+      "status": "PASS",
+      "ui_blocked": false
+    },
+    {
+      "button_disabled_during_run": true,
+      "button_enabled_after_run": true,
+      "dangling_thread": false,
+      "elapsed_ms": 1.39,
+      "finished": true,
+      "name": "critic_analysis",
+      "started": true,
+      "status": "PASS",
+      "ui_blocked": false
+    },
+    {
+      "button_disabled_during_run": true,
+      "button_enabled_after_run": true,
+      "dangling_thread": false,
+      "elapsed_ms": 0.631,
+      "finished": true,
+      "name": "knowledge_search",
+      "started": true,
+      "status": "PASS",
+      "ui_blocked": false
+    },
+    {
+      "button_disabled_during_run": true,
+      "button_enabled_after_run": true,
+      "dangling_thread": false,
+      "elapsed_ms": 0.583,
+      "finished": true,
+      "name": "autonomous_design",
+      "started": true,
+      "status": "PASS",
+      "ui_blocked": false
+    }
+  ]
+}

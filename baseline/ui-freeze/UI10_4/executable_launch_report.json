@@ -1,0 +1,58 @@
+{
+  "all_pages_loaded": true,
+  "audit": "UI-10.4 executable launch test",
+  "command": "dist/RMEAgenteStudio/RMEAgenteStudio.exe --packaging-smoke",
+  "exit_code": 0,
+  "generated_at": "2026-06-12T05:52:01+00:00",
+  "main_window_created": true,
+  "pages": [
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "dashboard"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "world"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "architect"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "critic"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "knowledge"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "campaign"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "otbm"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "autonomous"
+    },
+    {
+      "layout": true,
+      "loaded": true,
+      "page_id": "settings"
+    }
+  ],
+  "startup": true,
+  "status": "PASS",
+  "traceback": false
+}

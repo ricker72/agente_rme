@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 from .blueprint import Blueprint, BlueprintTile
 
 
 class ValidationError(Exception):
     """Raised when a blueprint fails validation."""
-    pass
 
 
 class ValidationResult:
@@ -102,7 +101,9 @@ class BlueprintValidator:
 
         return result
 
-    def validate_batch(self, blueprints: List[Blueprint]) -> Dict[str, ValidationResult]:
+    def validate_batch(
+        self, blueprints: List[Blueprint]
+    ) -> Dict[str, ValidationResult]:
         """Validate multiple blueprints. Returns dict of name -> result."""
         return {bp.name: self.validate(bp) for bp in blueprints}
 
@@ -127,8 +128,7 @@ class BlueprintValidator:
 
         if w > self.MAX_SIZE or h > self.MAX_SIZE:
             result.add_warning(
-                f"Large blueprint size [{w}, {h}] "
-                f"(max recommended: {self.MAX_SIZE}x{self.MAX_SIZE})"
+                f"Large blueprint size [{w}, {h}] (max recommended: {self.MAX_SIZE}x{self.MAX_SIZE})"
             )
 
         if bp.is_tile_based:
@@ -150,9 +150,7 @@ class BlueprintValidator:
 
         tiles = bp.tiles
         if len(tiles) > self.MAX_TILES:
-            result.add_error(
-                f"Too many tiles ({len(tiles)}, max {self.MAX_TILES})"
-            )
+            result.add_error(f"Too many tiles ({len(tiles)}, max {self.MAX_TILES})")
             return
 
         # Check each tile
@@ -161,7 +159,9 @@ class BlueprintValidator:
                 result.add_error(f"Tile at index {i} is not a BlueprintTile instance")
                 continue
             if tile.ground == 0:
-                result.add_warning(f"Tile [{tile.x}, {tile.y}] has ground=0 (no ground set)")
+                result.add_warning(
+                    f"Tile [{tile.x}, {tile.y}] has ground=0 (no ground set)"
+                )
             self._validate_tile_items(tile, i, result)
 
         # Check for duplicate coordinates
@@ -172,7 +172,9 @@ class BlueprintValidator:
                 result.add_warning(f"Duplicate tile at [{tile.x}, {tile.y}]")
             seen.add(key)
 
-    def _validate_tile_items(self, tile: BlueprintTile, index: int, result: ValidationResult) -> None:
+    def _validate_tile_items(
+        self, tile: BlueprintTile, index: int, result: ValidationResult
+    ) -> None:
         """Validate items and spawn on a single tile."""
         if self._asset_registry is None:
             return
@@ -181,16 +183,14 @@ class BlueprintValidator:
             item_name = self._asset_registry.get_item_name(tile.ground)
             if item_name is None:
                 result.add_warning(
-                    f"Tile [{tile.x}, {tile.y}] (index {index}): "
-                    f"ground ID {tile.ground} not found in asset registry"
+                    f"Tile [{tile.x}, {tile.y}] (index {index}): ground ID {tile.ground} not found in asset registry"
                 )
 
         if tile.item is not None:
             item_name = self._asset_registry.get_item_name(tile.item)
             if item_name is None:
                 result.add_warning(
-                    f"Tile [{tile.x}, {tile.y}] (index {index}): "
-                    f"item ID {tile.item} not found in asset registry"
+                    f"Tile [{tile.x}, {tile.y}] (index {index}): item ID {tile.item} not found in asset registry"
                 )
 
         if tile.spawn is not None:
@@ -199,8 +199,7 @@ class BlueprintValidator:
                 monsters = self._asset_registry.get_monsters()
                 if monster_name not in monsters:
                     result.add_warning(
-                        f"Tile [{tile.x}, {tile.y}]: spawn monster "
-                        f"'{monster_name}' not in known monsters list"
+                        f"Tile [{tile.x}, {tile.y}]: spawn monster '{monster_name}' not in known monsters list"
                     )
 
     def _validate_entry(self, bp: Blueprint, result: ValidationResult) -> None:

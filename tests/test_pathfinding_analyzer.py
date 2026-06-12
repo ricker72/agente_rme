@@ -8,8 +8,14 @@ import math
 import unittest
 
 from core.critic.analyzers.pathfinding_analyzer import (
-    bfs, dijkstra, astar, WalkableGraph, octile_heuristic,
-    octile_cost, manhattan_heuristic, PathfindingAnalyzer,
+    bfs,
+    dijkstra,
+    astar,
+    WalkableGraph,
+    octile_heuristic,
+    octile_cost,
+    manhattan_heuristic,
+    PathfindingAnalyzer,
 )
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
@@ -24,7 +30,6 @@ def _linear_world(length: int = 10) -> WorldModel:
 
 
 class AlgorithmTests(unittest.TestCase):
-
     def test_bfs_finds_path(self):
         w = _linear_world(5)
         g = WalkableGraph(w).build()
@@ -52,8 +57,9 @@ class AlgorithmTests(unittest.TestCase):
     def test_astar_shortest(self):
         w = _linear_world(5)
         g = WalkableGraph(w).build()
-        path = astar((0, 0, 7), (4, 0, 7), g.neighbors_fn,
-                     octile_heuristic, octile_cost)
+        path = astar(
+            (0, 0, 7), (4, 0, 7), g.neighbors_fn, octile_heuristic, octile_cost
+        )
         self.assertIsNotNone(path)
         self.assertEqual(path[-1], (4, 0, 7))
 
@@ -78,8 +84,9 @@ class AlgorithmTests(unittest.TestCase):
         w = WorldModel()
         w.set_tile(Tile(x=0, y=0, z=7, ground=100))
         g = WalkableGraph(w).build()
-        path = astar((0, 0, 7), (5, 0, 7), g.neighbors_fn,
-                     octile_heuristic, octile_cost)
+        path = astar(
+            (0, 0, 7), (5, 0, 7), g.neighbors_fn, octile_heuristic, octile_cost
+        )
         self.assertIsNone(path)
 
     def test_dijkstra_no_path(self):
@@ -91,7 +98,6 @@ class AlgorithmTests(unittest.TestCase):
 
 
 class PathfindingAnalyzerTests(unittest.TestCase):
-
     def test_empty_world(self):
         w = WorldModel()
         result = PathfindingAnalyzer().analyze(w)
@@ -103,8 +109,9 @@ class PathfindingAnalyzerTests(unittest.TestCase):
         w = _linear_world(20)
         result = PathfindingAnalyzer().analyze(w)
         self.assertGreater(result["score"].value, 60.0)
-        self.assertEqual(result["metrics"]["reachable_tiles"],
-                         result["metrics"]["walkable_tiles"])
+        self.assertEqual(
+            result["metrics"]["reachable_tiles"], result["metrics"]["walkable_tiles"]
+        )
 
     def test_disconnected_zones(self):
         w = WorldModel()

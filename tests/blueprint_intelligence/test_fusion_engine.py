@@ -1,7 +1,6 @@
 """Tests for BlueprintFusionEngine."""
 
-import pytest
-from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
+from core.blueprints.blueprint import Blueprint, BlueprintTile
 from core.blueprint_intelligence.blueprint_fusion_engine import (
     BlueprintFusionEngine,
     _merge_list,
@@ -15,7 +14,16 @@ class TestBlueprintFusionEngine:
     def setup_method(self):
         self.engine = BlueprintFusionEngine()
 
-    def _make_bp(self, name="test", category="hunt", tiles=None, rooms=None, zones=None, features=None, grounds=None):
+    def _make_bp(
+        self,
+        name="test",
+        category="hunt",
+        tiles=None,
+        rooms=None,
+        zones=None,
+        features=None,
+        grounds=None,
+    ):
         return Blueprint(
             name=name,
             category=category,
@@ -28,14 +36,20 @@ class TestBlueprintFusionEngine:
 
     def test_fuse_weighted(self):
         """Test weighted fusion creates hybrid."""
-        bp_a = self._make_bp("roshamuul", tiles=[
-            BlueprintTile(x=0, y=0, ground=100),
-            BlueprintTile(x=1, y=0, ground=100),
-        ])
-        bp_b = self._make_bp("soul_war", tiles=[
-            BlueprintTile(x=0, y=0, ground=200),
-            BlueprintTile(x=0, y=1, ground=200),
-        ])
+        bp_a = self._make_bp(
+            "roshamuul",
+            tiles=[
+                BlueprintTile(x=0, y=0, ground=100),
+                BlueprintTile(x=1, y=0, ground=100),
+            ],
+        )
+        bp_b = self._make_bp(
+            "soul_war",
+            tiles=[
+                BlueprintTile(x=0, y=0, ground=200),
+                BlueprintTile(x=0, y=1, ground=200),
+            ],
+        )
         result = self.engine.fuse(bp_a, bp_b, ratio=0.7)
         assert result.is_valid
         assert result.source_a == "roshamuul"

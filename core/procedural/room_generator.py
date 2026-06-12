@@ -1,4 +1,6 @@
-def room_generator_lua(x1: int, y1: int, x2: int, y2: int, z: int, floor_id: int, wall_id: int) -> str:
+def room_generator_lua(
+    x1: int, y1: int, x2: int, y2: int, z: int, floor_id: int, wall_id: int
+) -> str:
     return f"""-- Room generator
 if not app.hasMap() then
     return

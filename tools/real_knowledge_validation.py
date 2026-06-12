@@ -3,9 +3,9 @@ tools/real_knowledge_validation.py — Phase 7: Real Knowledge Validation.
 
 1000 real knowledge queries using real KnowledgeEngine with correct API.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import time
 import random
@@ -21,14 +21,29 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 QUERIES = [
-    "Tell me about Issavi", "What is Roshamuul", "Soul War warzone",
-    "Library dungeon loot", "Falcon bastion monsters", "Ferumbras citadel",
-    "Issavi lizard dragon", "Roshamuul pale count", "Library scion atlantes",
-    "Hunting grounds level 200", "Bosses level 300", "Undead zone 250",
-    "Dragon lair", "Demon invasion", "Lizard chosen",
-    "Where to hunt at level 100", "Where to hunt at level 200",
-    "Bestiary bosses", "Hunt rotation", "Magic creatures",
-    "Rare loot", "Boss mechanics", "Drops and rewards",
+    "Tell me about Issavi",
+    "What is Roshamuul",
+    "Soul War warzone",
+    "Library dungeon loot",
+    "Falcon bastion monsters",
+    "Ferumbras citadel",
+    "Issavi lizard dragon",
+    "Roshamuul pale count",
+    "Library scion atlantes",
+    "Hunting grounds level 200",
+    "Bosses level 300",
+    "Undead zone 250",
+    "Dragon lair",
+    "Demon invasion",
+    "Lizard chosen",
+    "Where to hunt at level 100",
+    "Where to hunt at level 200",
+    "Bestiary bosses",
+    "Hunt rotation",
+    "Magic creatures",
+    "Rare loot",
+    "Boss mechanics",
+    "Drops and rewards",
 ]
 
 
@@ -52,10 +67,18 @@ def run(n: int = 1000) -> Dict[str, Any]:
             # Use the real API
             if hasattr(engine, "query_text"):
                 result = engine.query_text(q, k=5)
-                results = result.results if hasattr(result, "results") else ([result] if result else [])
+                results = (
+                    result.results
+                    if hasattr(result, "results")
+                    else ([result] if result else [])
+                )
             elif hasattr(engine, "query_structured"):
                 result = engine.query_structured(q, top_k=5)
-                results = result.results if hasattr(result, "results") else ([result] if result else [])
+                results = (
+                    result.results
+                    if hasattr(result, "results")
+                    else ([result] if result else [])
+                )
             elif hasattr(engine, "query"):
                 results = engine.query(q, top_k=5)
             else:
@@ -73,7 +96,7 @@ def run(n: int = 1000) -> Dict[str, Any]:
         except Exception as e:
             exceptions += 1
             if exceptions < 5:
-                print(f"  [{i+1}/{n}] FAILED: {e}", flush=True)
+                print(f"  [{i + 1}/{n}] FAILED: {e}", flush=True)
 
     return {
         "version": "1.0.0-RC1.1",

@@ -25,10 +25,13 @@ logger = logging.getLogger(__name__)
 # Algorithms: A*, BFS, Dijkstra
 # ---------------------------------------------------------------------------
 
-def bfs(start: Tuple[int, int, int],
-        goal: Tuple[int, int, int],
-        neighbors_fn: Callable[[Tuple[int, int, int]], List[Tuple[int, int, int]]],
-        max_nodes: int = 50000) -> Optional[List[Tuple[int, int, int]]]:
+
+def bfs(
+    start: Tuple[int, int, int],
+    goal: Tuple[int, int, int],
+    neighbors_fn: Callable[[Tuple[int, int, int]], List[Tuple[int, int, int]]],
+    max_nodes: int = 50000,
+) -> Optional[List[Tuple[int, int, int]]]:
     """Breadth-First Search — uniform cost grid expansion."""
     if start == goal:
         return [start]
@@ -52,11 +55,15 @@ def bfs(start: Tuple[int, int, int],
     return None
 
 
-def dijkstra(start: Tuple[int, int, int],
-             goal: Tuple[int, int, int],
-             neighbors_fn: Callable[[Tuple[int, int, int]], List[Tuple[int, int, int]]],
-             cost_fn: Optional[Callable[[Tuple[int, int, int], Tuple[int, int, int]], float]] = None,
-             max_nodes: int = 50000) -> Optional[List[Tuple[int, int, int]]]:
+def dijkstra(
+    start: Tuple[int, int, int],
+    goal: Tuple[int, int, int],
+    neighbors_fn: Callable[[Tuple[int, int, int]], List[Tuple[int, int, int]]],
+    cost_fn: Optional[
+        Callable[[Tuple[int, int, int], Tuple[int, int, int]], float]
+    ] = None,
+    max_nodes: int = 50000,
+) -> Optional[List[Tuple[int, int, int]]]:
     """Dijkstra — weighted shortest path (cost 1 for cardinal, sqrt(2) for diagonal)."""
     if start == goal:
         return [start]
@@ -84,12 +91,18 @@ def dijkstra(start: Tuple[int, int, int],
     return None
 
 
-def astar(start: Tuple[int, int, int],
-          goal: Tuple[int, int, int],
-          neighbors_fn: Callable[[Tuple[int, int, int]], List[Tuple[int, int, int]]],
-          heuristic_fn: Optional[Callable[[Tuple[int, int, int], Tuple[int, int, int]], float]] = None,
-          cost_fn: Optional[Callable[[Tuple[int, int, int], Tuple[int, int, int]], float]] = None,
-          max_nodes: int = 50000) -> Optional[List[Tuple[int, int, int]]]:
+def astar(
+    start: Tuple[int, int, int],
+    goal: Tuple[int, int, int],
+    neighbors_fn: Callable[[Tuple[int, int, int]], List[Tuple[int, int, int]]],
+    heuristic_fn: Optional[
+        Callable[[Tuple[int, int, int], Tuple[int, int, int]], float]
+    ] = None,
+    cost_fn: Optional[
+        Callable[[Tuple[int, int, int], Tuple[int, int, int]], float]
+    ] = None,
+    max_nodes: int = 50000,
+) -> Optional[List[Tuple[int, int, int]]]:
     """A* — best-first search with heuristic."""
     if start == goal:
         return [start]
@@ -123,9 +136,11 @@ def astar(start: Tuple[int, int, int],
     return None
 
 
-def _reconstruct(parent: Dict[Tuple[int, int, int], Tuple[int, int, int]],
-                 start: Tuple[int, int, int],
-                 goal: Tuple[int, int, int]) -> List[Tuple[int, int, int]]:
+def _reconstruct(
+    parent: Dict[Tuple[int, int, int], Tuple[int, int, int]],
+    start: Tuple[int, int, int],
+    goal: Tuple[int, int, int],
+) -> List[Tuple[int, int, int]]:
     path = [goal]
     cur = goal
     while cur in parent:
@@ -174,6 +189,7 @@ def octile_cost(a: Tuple[int, int, int], b: Tuple[int, int, int]) -> float:
 # Walkable graph
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class WalkableGraph:
     """A graph of walkable tiles built from a world model."""
@@ -211,9 +227,12 @@ class WalkableGraph:
     def is_walkable(self, pos: Tuple[int, int, int]) -> bool:
         return pos in self.positions
 
-    def neighbors(self, pos: Tuple[int, int, int],
-                  allow_diagonal: bool = False,
-                  allow_z_change: bool = True) -> List[Tuple[int, int, int]]:
+    def neighbors(
+        self,
+        pos: Tuple[int, int, int],
+        allow_diagonal: bool = False,
+        allow_z_change: bool = True,
+    ) -> List[Tuple[int, int, int]]:
         x, y, z = pos
         out: List[Tuple[int, int, int]] = []
         deltas_4 = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -247,6 +266,7 @@ class WalkableGraph:
 # PathfindingAnalyzer — produces pathfinding_score
 # ---------------------------------------------------------------------------
 
+
 class PathfindingAnalyzer:
     """
     Uses A*, BFS, and Dijkstra to analyze the navigability of the world.
@@ -267,36 +287,45 @@ class PathfindingAnalyzer:
     # Public API
     # ------------------------------------------------------------------
 
-    def analyze(self, world: WorldModel,
-                entry: Optional[Tuple[int, int, int]] = None
-                ) -> Dict[str, Any]:
+    def analyze(
+        self, world: WorldModel, entry: Optional[Tuple[int, int, int]] = None
+    ) -> Dict[str, Any]:
         graph = WalkableGraph(world).build()
         return self._analyze_with_graph(world, graph, entry)
 
-    def analyze_with_graph(self, world: WorldModel,
-                           graph: WalkableGraph,
-                           entry: Optional[Tuple[int, int, int]] = None
-                           ) -> Dict[str, Any]:
+    def analyze_with_graph(
+        self,
+        world: WorldModel,
+        graph: WalkableGraph,
+        entry: Optional[Tuple[int, int, int]] = None,
+    ) -> Dict[str, Any]:
         return self._analyze_with_graph(world, graph, entry)
 
     # ------------------------------------------------------------------
     # Internals
     # ------------------------------------------------------------------
 
-    def _analyze_with_graph(self, world: WorldModel,
-                            graph: WalkableGraph,
-                            entry: Optional[Tuple[int, int, int]] = None
-                            ) -> Dict[str, Any]:
+    def _analyze_with_graph(
+        self,
+        world: WorldModel,
+        graph: WalkableGraph,
+        entry: Optional[Tuple[int, int, int]] = None,
+    ) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         if not graph.positions:
             return {
                 "category": self.CATEGORY,
-                "score": CriticScore(self.CATEGORY, 0.0,
-                                     notes="World has no walkable tiles"),
+                "score": CriticScore(
+                    self.CATEGORY, 0.0, notes="World has no walkable tiles"
+                ),
                 "issues": [
                     CriticIssue(
                         issue_type=IssueType.INACCESSIBLE_ZONE,
@@ -329,7 +358,9 @@ class PathfindingAnalyzer:
         astar_len = 0
         if far_target is not None and far_target != entry:
             astar_path = astar(
-                entry, far_target, graph.neighbors_fn,
+                entry,
+                far_target,
+                graph.neighbors_fn,
                 heuristic_fn=octile_heuristic,
                 cost_fn=octile_cost,
                 max_nodes=self.max_search_nodes,
@@ -340,11 +371,7 @@ class PathfindingAnalyzer:
 
         # Composite score: 70 baseline + 25 reachability + 5 bottleneck health
         bn_score = max(0.0, 1.0 - (len(bottlenecks) / max(len(reachable), 1)) * 25.0)
-        score_value = (
-            70.0
-            + reach_ratio * 100.0 * 0.25
-            + bn_score * 5.0
-        )
+        score_value = 70.0 + reach_ratio * 100.0 * 0.25 + bn_score * 5.0
         score_value = max(0.0, min(100.0, score_value))
 
         score = CriticScore(
@@ -362,52 +389,67 @@ class PathfindingAnalyzer:
         recs: List = []
 
         if reach_ratio < 0.5 and len(graph.positions) > 10:
-            issues.append(CriticIssue(
-                issue_type=IssueType.ISOLATED_REGION,
-                severity=IssueSeverity.CRITICAL,
-                category=self.CATEGORY,
-                message=f"Only {reach_ratio*100:.0f}% of tiles are reachable from entry point",
-                details={"reach_ratio": reach_ratio, "unreachable_count": len(unreachable)},
-            ))
-            recs.append(CriticRecommendation(
-                title="Connect isolated regions",
-                description="Several map regions are unreachable. Add paths, doors or teleporters to connect them.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.CRITICAL,
-                action={"connect_to": [list(p) for p in list(unreachable)[:3]]},
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.ISOLATED_REGION,
+                    severity=IssueSeverity.CRITICAL,
+                    category=self.CATEGORY,
+                    message=f"Only {reach_ratio * 100:.0f}% of tiles are reachable from entry point",
+                    details={
+                        "reach_ratio": reach_ratio,
+                        "unreachable_count": len(unreachable),
+                    },
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Connect isolated regions",
+                    description="Several map regions are unreachable. Add paths, doors or teleporters to connect them.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.CRITICAL,
+                    action={"connect_to": [list(p) for p in list(unreachable)[:3]]},
+                )
+            )
         elif len(unreachable) > 0 and reach_ratio < 0.9 and len(graph.positions) > 10:
-            issues.append(CriticIssue(
-                issue_type=IssueType.ISOLATED_REGION,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"{len(unreachable)} tiles are unreachable from entry point",
-                details={"unreachable_count": len(unreachable)},
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.ISOLATED_REGION,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"{len(unreachable)} tiles are unreachable from entry point",
+                    details={"unreachable_count": len(unreachable)},
+                )
+            )
 
         if bottlenecks:
             for tile in bottlenecks[:3]:
-                issues.append(CriticIssue(
-                    issue_type=IssueType.BOTTLENECK,
-                    severity=IssueSeverity.WARNING,
+                issues.append(
+                    CriticIssue(
+                        issue_type=IssueType.BOTTLENECK,
+                        severity=IssueSeverity.WARNING,
+                        category=self.CATEGORY,
+                        location=f"({tile[0]},{tile[1]},{tile[2]})",
+                        message="Navigation bottleneck detected — routes funnel through this tile",
+                    )
+                )
+            recs.append(
+                CriticRecommendation(
+                    title="Reduce navigation bottlenecks",
+                    description="Add secondary routes around bottleneck tiles to improve movement.",
                     category=self.CATEGORY,
-                    location=f"({tile[0]},{tile[1]},{tile[2]})",
-                    message="Navigation bottleneck detected — routes funnel through this tile",
-                ))
-            recs.append(CriticRecommendation(
-                title="Reduce navigation bottlenecks",
-                description="Add secondary routes around bottleneck tiles to improve movement.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         if astar_path is None and far_target is not None and far_target != entry:
-            issues.append(CriticIssue(
-                issue_type=IssueType.BROKEN_PATH,
-                severity=IssueSeverity.CRITICAL,
-                category=self.CATEGORY,
-                message=f"No path found from entry {entry} to target {far_target}",
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.BROKEN_PATH,
+                    severity=IssueSeverity.CRITICAL,
+                    category=self.CATEGORY,
+                    message=f"No path found from entry {entry} to target {far_target}",
+                )
+            )
 
         return {
             "category": self.CATEGORY,
@@ -429,8 +471,9 @@ class PathfindingAnalyzer:
     # Helpers
     # ------------------------------------------------------------------
 
-    def _bfs_visit(self, graph: WalkableGraph,
-                   start: Tuple[int, int, int]) -> Set[Tuple[int, int, int]]:
+    def _bfs_visit(
+        self, graph: WalkableGraph, start: Tuple[int, int, int]
+    ) -> Set[Tuple[int, int, int]]:
         visited: Set[Tuple[int, int, int]] = {start}
         q: deque = deque([start])
         nodes = 0
@@ -446,9 +489,9 @@ class PathfindingAnalyzer:
                 q.append(n)
         return visited
 
-    def _dijkstra_distances(self, graph: WalkableGraph,
-                            start: Tuple[int, int, int]
-                            ) -> Dict[Tuple[int, int, int], float]:
+    def _dijkstra_distances(
+        self, graph: WalkableGraph, start: Tuple[int, int, int]
+    ) -> Dict[Tuple[int, int, int], float]:
         dist: Dict[Tuple[int, int, int], float] = {start: 0.0}
         pq: List[Tuple[float, Tuple[int, int, int]]] = [(0.0, start)]
         nodes = 0
@@ -466,16 +509,16 @@ class PathfindingAnalyzer:
                     heapq.heappush(pq, (nd, n))
         return dist
 
-    def _pick_far_target(self, graph: WalkableGraph,
-                         distances: Dict[Tuple[int, int, int], float]
-                         ) -> Optional[Tuple[int, int, int]]:
+    def _pick_far_target(
+        self, graph: WalkableGraph, distances: Dict[Tuple[int, int, int], float]
+    ) -> Optional[Tuple[int, int, int]]:
         if not distances:
             return None
         return max(distances.items(), key=lambda kv: kv[1])[0]
 
-    def _detect_bottlenecks(self, graph: WalkableGraph,
-                            reachable: Set[Tuple[int, int, int]]
-                            ) -> List[Tuple[int, int, int]]:
+    def _detect_bottlenecks(
+        self, graph: WalkableGraph, reachable: Set[Tuple[int, int, int]]
+    ) -> List[Tuple[int, int, int]]:
         bottlenecks: List[Tuple[int, int, int]] = []
         if len(reachable) > 2000:
             sample = list(reachable)[:200]

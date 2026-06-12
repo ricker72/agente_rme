@@ -1,7 +1,5 @@
 """Tests for the World Strategy."""
 
-import pytest
-
 from core.autonomous.world_strategy import WorldStrategy, StrategyType
 
 
@@ -40,7 +38,13 @@ class TestWorldStrategy:
 
     def test_apply_strategy_with_metrics(self):
         s = WorldStrategy(strategy_type=StrategyType.BALANCED)
-        metrics = {"size": 0.8, "density": 0.6, "difficulty": 0.5, "navigation": 0.7, "reuse": 0.4}
+        metrics = {
+            "size": 0.8,
+            "density": 0.6,
+            "difficulty": 0.5,
+            "navigation": 0.7,
+            "reuse": 0.4,
+        }
         score = s.apply_strategy(metrics)
         assert 0.0 < score <= 1.0
 

@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict
 
 from .rme_validator import validate as rme_validate, RMEValidationError
 from .asset_validator import validate_asset

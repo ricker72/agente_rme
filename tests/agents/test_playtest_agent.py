@@ -2,9 +2,8 @@
 Tests for PlaytestAgent.
 """
 
-import pytest
-from agente_rme.core.agents import PlaytestAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import PlaytestAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestPlaytestAgent:

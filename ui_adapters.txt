@@ -1,0 +1,9 @@
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\autonomous_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\campaign_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\critic_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\dashboard_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\knowledge_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\otbm_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\world_adapter.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\_helpers.py
+c:\Users\samatha\OneDrive\Desktop\agente_rme\ui\adapters\__init__.py

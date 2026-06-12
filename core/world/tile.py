@@ -18,6 +18,7 @@ class Tile:
       - spawn: Optional Spawn dict or Spawn object for monster spawns.
       - zone: Named zone this tile belongs to (e.g. "temple", "market").
     """
+
     x: int
     y: int
     z: int
@@ -60,7 +61,9 @@ class Tile:
                 for item in self.items
             ]
         if self.spawn is not None:
-            d["spawn"] = self.spawn.to_dict() if hasattr(self.spawn, "to_dict") else self.spawn
+            d["spawn"] = (
+                self.spawn.to_dict() if hasattr(self.spawn, "to_dict") else self.spawn
+            )
         if self.zone is not None:
             d["zone"] = self.zone
         return d
@@ -82,7 +85,9 @@ class Tile:
         spawn_raw = data.get("spawn")
         spawn: Optional[Spawn] = None
         if spawn_raw is not None:
-            spawn = Spawn.from_dict(spawn_raw) if isinstance(spawn_raw, dict) else spawn_raw
+            spawn = (
+                Spawn.from_dict(spawn_raw) if isinstance(spawn_raw, dict) else spawn_raw
+            )
 
         return cls(
             x=data["x"],

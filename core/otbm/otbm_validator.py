@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import struct
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List
 
 from .node_encoder import (
     NodeEncoder,
@@ -59,6 +59,7 @@ class OtbmValidator:
         self.node = NodeEncoder()
         # HITO 26.1A — own a ByteValidator for post-write byte checks
         from .byte_validator import ByteValidator
+
         self.byte_validator = ByteValidator()
         self.stats = {
             "total_nodes": 0,
@@ -111,21 +112,36 @@ class OtbmValidator:
 
         end_root = len(data)
 
-        if end_root - offset < 14:
+        # v1.0.1 HOTFIX: the root header actually consumes 4+2+2+4+4 = 16
+        # bytes (version + width + height + item_major + item_minor). The
+        # previous check used 14 which was off-by-two and caused a
+        # ``struct.error`` to leak out of ``validate()`` on truncated
+        # inputs (clis crashed with a traceback on corrupt OTBM files).
+        if end_root - offset < 16:
             report.errors.append("Root node too small for header attributes")
             report.status = "failure"
             return report
 
-        version = struct.unpack_from("<I", data, offset)[0]
-        offset += 4
-        width = struct.unpack_from("<H", data, offset)[0]
-        offset += 2
-        height = struct.unpack_from("<H", data, offset)[0]
-        offset += 2
-        item_major = struct.unpack_from("<I", data, offset)[0]
-        offset += 4
-        item_minor = struct.unpack_from("<I", data, offset)[0]
-        offset += 4
+        try:
+            version = struct.unpack_from("<I", data, offset)[0]
+            offset += 4
+            width = struct.unpack_from("<H", data, offset)[0]
+            offset += 2
+            height = struct.unpack_from("<H", data, offset)[0]
+            offset += 2
+            item_major = struct.unpack_from("<I", data, offset)[0]
+            offset += 4
+            item_minor = struct.unpack_from("<I", data, offset)[0]
+            offset += 4
+        except (struct.error, IndexError) as e:
+            # v1.0.1 HOTFIX: never let a malformed input leak a
+            # ``struct.error`` out of the validator; instead mark the
+            # report as failed and stop.
+            report.errors.append(
+                f"Validation error: failed to read root header at offset {offset}: {e}"
+            )
+            report.status = "failure"
+            return report
 
         self.stats["version"] = version
         self.stats["width"] = width
@@ -141,7 +157,9 @@ class OtbmValidator:
             report.status = "failure"
 
         try:
-            offset = self._validate_children(data, offset, end_root, report, context="ROOT")
+            offset = self._validate_children(
+                data, offset, end_root, report, context="ROOT"
+            )
         except Exception as e:
             report.errors.append(f"Validation error at offset {offset}: {e}")
             report.status = "failure"
@@ -150,7 +168,9 @@ class OtbmValidator:
             report.warnings.append("Map contains no tiles or monsters")
 
         if self.stats["tiles"] > 0 and self.stats["items"] == 0:
-            report.warnings.append("Tiles present but no items found (may be missing ground items)")
+            report.warnings.append(
+                "Tiles present but no items found (may be missing ground items)"
+            )
 
         report.stats = self.stats
         return report
@@ -158,7 +178,9 @@ class OtbmValidator:
     def _validate_children(self, data, offset, end, report, context):
         while offset < end:
             if offset + 3 > len(data):
-                report.errors.append(f"Truncated node header at offset {offset} in {context}")
+                report.errors.append(
+                    f"Truncated node header at offset {offset} in {context}"
+                )
                 report.status = "failure"
                 break
             node_type = data[offset]
@@ -166,7 +188,9 @@ class OtbmValidator:
             offset += 3
             child_end = offset + child_size
             if child_end > end and end < len(data):
-                report.errors.append(f"Node 0x{node_type:02X} at offset {offset - 3} extends beyond parent")
+                report.errors.append(
+                    f"Node 0x{node_type:02X} at offset {offset - 3} extends beyond parent"
+                )
                 report.status = "failure"
                 child_end = end
             self.stats["total_nodes"] += 1
@@ -223,9 +247,13 @@ class OtbmValidator:
             offset += 2
             self.stats["items"] += 1
             if item_id > self.MAX_ITEM_ID:
-                report.warnings.append(f"Item ID {item_id} exceeds 65535 at offset {offset - 5}")
+                report.warnings.append(
+                    f"Item ID {item_id} exceeds 65535 at offset {offset - 5}"
+                )
             if item_id == 0:
-                report.warnings.append(f"Item ID 0 (empty) at offset {offset - 5} - this may cause issues in RME")
+                report.warnings.append(
+                    f"Item ID 0 (empty) at offset {offset - 5} - this may cause issues in RME"
+                )
             while offset < end:
                 if offset >= end:
                     break
@@ -307,9 +335,15 @@ class OtbmValidator:
         if not tiles:
             report.warnings.append("WorldModel has no tiles")
         for key, tile in tiles.items():
-            x = getattr(tile, "x", None) or (tile.get("x") if isinstance(tile, dict) else 0)
-            y = getattr(tile, "y", None) or (tile.get("y") if isinstance(tile, dict) else 0)
-            z = getattr(tile, "z", None) or (tile.get("z") if isinstance(tile, dict) else 0)
+            x = getattr(tile, "x", None) or (
+                tile.get("x") if isinstance(tile, dict) else 0
+            )
+            y = getattr(tile, "y", None) or (
+                tile.get("y") if isinstance(tile, dict) else 0
+            )
+            z = getattr(tile, "z", None) or (
+                tile.get("z") if isinstance(tile, dict) else 0
+            )
             if x is None or y is None or z is None:
                 report.errors.append(f"Tile {key} missing coordinates")
                 report.status = "failure"
@@ -321,7 +355,11 @@ class OtbmValidator:
                 report.status = "failure"
         spawns = getattr(world_model, "spawns", []) or []
         for i, spawn in enumerate(spawns):
-            if isinstance(spawn, dict) and not spawn.get("monster") and not spawn.get("name"):
+            if (
+                isinstance(spawn, dict)
+                and not spawn.get("monster")
+                and not spawn.get("name")
+            ):
                 report.warnings.append(f"Spawn [{i}] has no monster name")
         report.stats["tile_count"] = len(tiles)
         report.stats["spawn_count"] = len(spawns)

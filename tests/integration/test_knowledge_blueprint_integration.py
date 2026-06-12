@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import unittest
 
-from core.knowledge import DatasetBuilder, KnowledgeEngine
+from core.knowledge import DatasetBuilder
+
 
 class _StubBlueprint:
     """Stand-in for a Blueprint-like object."""
+
     def __init__(self, name: str, theme: str, category: str):
         self.name = name
         self.theme = theme
@@ -22,9 +24,15 @@ class _StubBlueprint:
             "min_level": 200,
             "max_level": 500,
             "structures": [
-                {"name": self.name, "category": self.category,
-                 "theme": self.theme, "min_level": 200, "max_level": 500,
-                 "width": 30, "height": 30},
+                {
+                    "name": self.name,
+                    "category": self.category,
+                    "theme": self.theme,
+                    "min_level": 200,
+                    "max_level": 500,
+                    "width": 30,
+                    "height": 30,
+                },
             ],
         }
 
@@ -50,9 +58,15 @@ class TestKnowledgeBlueprintIntegration(unittest.TestCase):
             "size": [30, 30],
             "tags": ["temple", "desert"],
             "structures": [
-                {"name": "issavi_temple_full", "category": "temple",
-                 "theme": "issavi", "min_level": 200, "max_level": 500,
-                 "width": 30, "height": 30},
+                {
+                    "name": "issavi_temple_full",
+                    "category": "temple",
+                    "theme": "issavi",
+                    "min_level": 200,
+                    "max_level": 500,
+                    "width": 30,
+                    "height": 30,
+                },
             ],
         }
         builder = DatasetBuilder()

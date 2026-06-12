@@ -1,5 +1,3 @@
-import pytest
-
 from validators.asset_validator import validate_asset
 
 

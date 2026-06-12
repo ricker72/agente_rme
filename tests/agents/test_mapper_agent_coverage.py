@@ -1,7 +1,7 @@
 """
 Coverage tests for MapperAgent.
 
-Hito 26.1D — covers all branches:
+Hito 26.1D â€” covers all branches:
   * Happy path with WorldPlan input
   * Empty world plan fallback
   * Tiles conversion (list->dict normalization)
@@ -14,12 +14,11 @@ Hito 26.1D — covers all branches:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from agente_rme.core.agents.mapper_agent import MapperAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.mapper_agent import MapperAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestMapperAgentHappyPath:
@@ -68,13 +67,17 @@ class TestMapperAgentHappyPath:
 
     def test_mapper_normalizes_list_tiles_to_dict(self):
         agent = MapperAgent()
-        world = {"tiles": [
-            {"x": 0, "y": 0, "z": 7},
-            {"x": 1, "y": 0, "z": 7},
-            {"x": 2, "y": 0, "z": 7},
-        ]}
+        world = {
+            "tiles": [
+                {"x": 0, "y": 0, "z": 7},
+                {"x": 1, "y": 0, "z": 7},
+                {"x": 2, "y": 0, "z": 7},
+            ]
+        }
         request = AgentRequest(
-            agent_id="mapper", prompt="t", input_data=world,
+            agent_id="mapper",
+            prompt="t",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success and "tiles" in response.output_data:
@@ -149,7 +152,9 @@ class TestMapperAgentErrorHandling:
             "regions": [],
         }
         request = AgentRequest(
-            agent_id="mapper", prompt="test", input_data=world,
+            agent_id="mapper",
+            prompt="test",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success:
@@ -165,7 +170,9 @@ class TestMapperAgentErrorHandling:
             "structures": [],
         }
         request = AgentRequest(
-            agent_id="mapper", prompt="test", input_data=world,
+            agent_id="mapper",
+            prompt="test",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success:
@@ -185,7 +192,8 @@ class TestMapperAgentErrorHandling:
     def test_mapper_with_issavi_plan(self):
         agent = MapperAgent()
         request = AgentRequest(
-            agent_id="mapper", prompt="issavi",
+            agent_id="mapper",
+            prompt="issavi",
             input_data={"primary_theme": "issavi", "themes": ["issavi"]},
         )
         response = agent.execute(request)
@@ -207,6 +215,7 @@ class TestMapperAgentErrorHandling:
                     "structures": [],
                     "regions": [],
                 }
+
         result = agent._world_to_dict(FakeWM())
         assert isinstance(result["tiles"], dict)
         assert len(result["tiles"]) == 2
@@ -226,6 +235,7 @@ class TestMapperAgentErrorHandling:
         class FakeWM:
             def to_dict(self):
                 return {"tiles": "invalid", "structures": [], "regions": []}
+
         result = agent._world_to_dict(FakeWM())
         assert result["tiles"] == {}
 
@@ -236,6 +246,7 @@ class TestMapperAgentErrorHandling:
         class FakeWM:
             def to_dict(self):
                 return {"tiles": {"0,0,7": {"x": 0}}, "structures": [], "regions": []}
+
         result = agent._world_to_dict(FakeWM())
         assert isinstance(result["tiles"], dict)
         assert "0,0,7" in result["tiles"]

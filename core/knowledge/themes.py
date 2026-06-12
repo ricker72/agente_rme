@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class Theme:
     name: str
@@ -8,6 +9,7 @@ class Theme:
     floor_types: List[int]
     wall_types: List[int]
     decoration_types: List[int]
+
 
 THEMES = [
     Theme(

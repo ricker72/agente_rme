@@ -1,17 +1,15 @@
 from __future__ import annotations
 
-import copy
 import logging
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, List, Tuple
 
-from .blueprint import Blueprint, BlueprintTile
+from .blueprint import Blueprint
 
 logger = logging.getLogger(__name__)
 
 
 class BlueprintPlacerError(Exception):
     """Raised when a blueprint cannot be placed."""
-    pass
 
 
 class BlueprintPlacer:
@@ -75,17 +73,30 @@ class BlueprintPlacer:
 
         if world_model is None:
             from core.world_engine.world_engine import WorldModel
+
             world_model = WorldModel()
 
         if blueprint.is_tile_based:
             self._place_tile_based(
-                blueprint, world_model, x, y, z,
-                check_collision, offset_x, offset_y,
+                blueprint,
+                world_model,
+                x,
+                y,
+                z,
+                check_collision,
+                offset_x,
+                offset_y,
             )
         else:
             self._place_descriptive(
-                blueprint, world_model, x, y, z,
-                check_collision, offset_x, offset_y,
+                blueprint,
+                world_model,
+                x,
+                y,
+                z,
+                check_collision,
+                offset_x,
+                offset_y,
             )
 
         return world_model
@@ -109,11 +120,18 @@ class BlueprintPlacer:
         """
         if world_model is None:
             from core.world_engine.world_engine import WorldModel
+
             world_model = WorldModel()
 
         for bp, bx, by, bz in blueprints:
-            self.place(bp, x=bx, y=by, z=bz, world_model=world_model,
-                       check_collision=check_collision)
+            self.place(
+                bp,
+                x=bx,
+                y=by,
+                z=bz,
+                world_model=world_model,
+                check_collision=check_collision,
+            )
 
         return world_model
 
@@ -172,10 +190,9 @@ class BlueprintPlacer:
             world_model.add_tile(tile)
             tiles_placed += 1
 
-        count = bp.tile_count if hasattr(bp, 'tile_count') else len(bp.tiles)
+        bp.tile_count if hasattr(bp, "tile_count") else len(bp.tiles)
         logger.info(
-            f"Placed '{bp.name}' at ({base_x},{base_y},z={z}): "
-            f"{tiles_placed}/{tiles_placed + tiles_skipped} tiles"
+            f"Placed '{bp.name}' at ({base_x},{base_y},z={z}): {tiles_placed}/{tiles_placed + tiles_skipped} tiles"
         )
 
     # ------------------------------------------------------------------
@@ -279,4 +296,5 @@ class BlueprintPlacer:
     def create_world_model(self) -> Any:
         """Create a fresh WorldModel instance."""
         from core.world_engine.world_engine import WorldModel
+
         return WorldModel()

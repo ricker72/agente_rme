@@ -166,7 +166,11 @@ class TestBossGenerator:
         pkg = generator.generate(level_range=(100, 200))
         text = " ".join(pkg.objectives)
         # Should mention location or chamber
-        assert "chamber" in text.lower() or "lair" in text.lower() or "navigate" in text.lower()
+        assert (
+            "chamber" in text.lower()
+            or "lair" in text.lower()
+            or "navigate" in text.lower()
+        )
 
     # ------------------------------------------------------------------
     # Validation

@@ -1,4 +1,5 @@
 """core.agents.expansion_agent — Real expansion agent."""
+
 from __future__ import annotations
 import time
 from typing import Any, Dict
@@ -7,6 +8,7 @@ from .agent_registry import BaseAgent
 
 class ExpansionAgent(BaseAgent):
     """Real expansion agent. Uses core.expansion. NO FALLBACKS."""
+
     AGENT_ID = "expansion"
 
     def execute(self, request: Any) -> Dict[str, Any]:

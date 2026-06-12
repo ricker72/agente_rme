@@ -22,8 +22,7 @@ Soporta temas:
 
 from __future__ import annotations
 
-from collections import Counter
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 
 class ThemeClassifier:
@@ -34,36 +33,62 @@ class ThemeClassifier:
     # ----------------------------------------------------------------
     GROUND_SIGNATURES: Dict[str, List[str]] = {
         "issavi": [
-            "sandstone_floor", "sandstone", "sand_floor",
-            "desert_ground", "sand", "dried_earth",
+            "sandstone_floor",
+            "sandstone",
+            "sand_floor",
+            "desert_ground",
+            "sand",
+            "dried_earth",
         ],
         "roshamuul": [
-            "roshamuul_floor", "roshamuul_stone", "volcanic_floor",
-            "lava_ground", "ash_floor", "charred_earth",
+            "roshamuul_floor",
+            "roshamuul_stone",
+            "volcanic_floor",
+            "lava_ground",
+            "ash_floor",
+            "charred_earth",
         ],
         "yalahar": [
-            "yalahar_floor", "yalahar_stone", "exotic_floor",
-            "mosaic_floor", "patterned_stone",
+            "yalahar_floor",
+            "yalahar_stone",
+            "exotic_floor",
+            "mosaic_floor",
+            "patterned_stone",
         ],
         "temple": [
-            "polished_stone", "marble_floor", "temple_floor",
-            "holy_ground", "sanctuary_floor",
+            "polished_stone",
+            "marble_floor",
+            "temple_floor",
+            "holy_ground",
+            "sanctuary_floor",
         ],
         "dungeon": [
-            "mossy_stone", "dungeon_floor", "cave_floor",
-            "stone_floor", "rough_stone",
+            "mossy_stone",
+            "dungeon_floor",
+            "cave_floor",
+            "stone_floor",
+            "rough_stone",
         ],
         "city": [
-            "polished_stone", "cobblestone", "paved_road",
-            "city_floor", "urban_ground",
+            "polished_stone",
+            "cobblestone",
+            "paved_road",
+            "city_floor",
+            "urban_ground",
         ],
         "jungle": [
-            "jungle_floor", "grass_floor", "mud_floor",
-            "swamp_ground", "forest_floor",
+            "jungle_floor",
+            "grass_floor",
+            "mud_floor",
+            "swamp_ground",
+            "forest_floor",
         ],
         "ice": [
-            "ice_floor", "snow_floor", "frozen_ground",
-            "glacier_floor", "frost_ground",
+            "ice_floor",
+            "snow_floor",
+            "frozen_ground",
+            "glacier_floor",
+            "frost_ground",
         ],
     }
 
@@ -82,12 +107,34 @@ class ThemeClassifier:
     # Marcadores de zona (spawn types)
     # ----------------------------------------------------------------
     HUNT_MONSTER_INDICATORS = [
-        "dragon", "demon", "behemoth", "hydra", "serpent",
-        "spider", "ghoul", "skeleton", "vampire", "lich",
-        "rotworm", "troll", "ork", "minotaur", "cyclops",
-        "wyrm", "warlock", "hero", "hunter", "monk",
-        "crypt", "necromancer", "dragon_lord", "frost",
-        "fiery", "blightwalker", "gazer", "wyvern",
+        "dragon",
+        "demon",
+        "behemoth",
+        "hydra",
+        "serpent",
+        "spider",
+        "ghoul",
+        "skeleton",
+        "vampire",
+        "lich",
+        "rotworm",
+        "troll",
+        "ork",
+        "minotaur",
+        "cyclops",
+        "wyrm",
+        "warlock",
+        "hero",
+        "hunter",
+        "monk",
+        "crypt",
+        "necromancer",
+        "dragon_lord",
+        "frost",
+        "fiery",
+        "blightwalker",
+        "gazer",
+        "wyvern",
     ]
 
     def classify(
@@ -167,10 +214,7 @@ class ThemeClassifier:
 
         # Temas secundarios (confianza > 0.2)
         secondary = sorted(
-            [
-                t for t, c in normalized.items()
-                if t != primary and c > 0.2
-            ],
+            [t for t, c in normalized.items() if t != primary and c > 0.2],
             key=lambda t: normalized[t],
             reverse=True,
         )[:3]
@@ -360,9 +404,7 @@ class ThemeClassifier:
             "era": result["recommended_era"],
             "difficulty": difficulty,
             "tags": tags,
-            "capacity": self._estimate_capacity(
-                tiles, spawns or [], houses or []
-            ),
+            "capacity": self._estimate_capacity(tiles, spawns or [], houses or []),
             "hybrid": hybrid,
         }
 

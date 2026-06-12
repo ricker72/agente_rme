@@ -1,8 +1,8 @@
-﻿"""Tests for the Autonomous Director."""
+"""Tests for the Autonomous Director."""
 
 import pytest
 
-from core.autonomous.autonomous_director import AutonomousDirector, THEME_HINTS
+from core.autonomous.autonomous_director import AutonomousDirector
 from core.autonomous.models.design_goal import DesignGoal
 from core.autonomous.models.region_plan import RegionPlan
 
@@ -55,7 +55,10 @@ class TestAutonomousDirector:
     def test_decide_regions(self):
         director = AutonomousDirector()
         goal = DesignGoal(
-            prompt="Test", num_hunts=2, num_bosses=1, num_raids=1,
+            prompt="Test",
+            num_hunts=2,
+            num_bosses=1,
+            num_raids=1,
         )
         regions = director.decide_regions(goal)
         # 2 hunts + 1 boss + 1 raid + 1 city
@@ -74,7 +77,10 @@ class TestAutonomousDirector:
     def test_decide_regions_with_zero_counts(self):
         director = AutonomousDirector()
         goal = DesignGoal(
-            prompt="Test", num_hunts=0, num_bosses=0, num_raids=0,
+            prompt="Test",
+            num_hunts=0,
+            num_bosses=0,
+            num_raids=0,
         )
         regions = director.decide_regions(goal)
         assert len(regions) == 1
@@ -83,7 +89,9 @@ class TestAutonomousDirector:
     def test_select_blueprints(self):
         director = AutonomousDirector()
         region = RegionPlan(
-            region_id="test_1", region_name="Test Region", region_type="hunt",
+            region_id="test_1",
+            region_name="Test Region",
+            region_type="hunt",
         )
         blueprints = director.select_blueprints(region)
         assert len(blueprints) >= 1
@@ -92,7 +100,9 @@ class TestAutonomousDirector:
     def test_select_patterns(self):
         director = AutonomousDirector()
         region = RegionPlan(
-            region_id="test_1", region_name="Test Region", region_type="hunt",
+            region_id="test_1",
+            region_name="Test Region",
+            region_type="hunt",
         )
         patterns = director.select_patterns(region)
         assert len(patterns) >= 1
@@ -130,7 +140,9 @@ class TestAutonomousDirector:
         goal = director.parse_prompt("Issavi Roshamuul expansion")
         regions = director.decide_regions(goal)
         # At least one region name should contain the theme
-        assert any("Issavi" in r.region_name or "Roshamuul" in r.region_name for r in regions)
+        assert any(
+            "Issavi" in r.region_name or "Roshamuul" in r.region_name for r in regions
+        )
 
     def test_to_dict_from_dict_roundtrip(self):
         director = AutonomousDirector()
@@ -144,7 +156,10 @@ class TestAutonomousDirector:
         # Mock blueprint intelligence that returns names
         class MockBI:
             def recommend(self, region_type, top_k=5):
-                return [{"name": f"smart_bp_{region_type}_1"}, {"name": f"smart_bp_{region_type}_2"}]
+                return [
+                    {"name": f"smart_bp_{region_type}_1"},
+                    {"name": f"smart_bp_{region_type}_2"},
+                ]
 
         director = AutonomousDirector(blueprint_intelligence=MockBI())
         region = RegionPlan(region_id="r1", region_name="r1", region_type="hunt")
@@ -158,10 +173,13 @@ class TestAutonomousDirector:
 
             def find_similar_cities(self, name, k=5):
                 return []
+
             def find_similar_boss_rooms(self, name, k=5):
                 return []
+
             def find_similar_raids(self, name, k=5):
                 return []
+
             def find_similar_regions(self, name, k=5):
                 return []
 

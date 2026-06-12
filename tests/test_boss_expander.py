@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
@@ -53,8 +52,7 @@ class TestBossExpanderRun:
         world = _build_world_with_region()
         b = BossExpander()
         b.expand(world, max_rooms=1)
-        boss_structures = [s for s in world.structures
-                           if s.category == "boss_room"]
+        boss_structures = [s for s in world.structures if s.category == "boss_room"]
         assert len(boss_structures) >= 1
 
     def test_adds_region(self):

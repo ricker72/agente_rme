@@ -1,7 +1,7 @@
 """
 Coverage tests for BalanceAgent.
 
-Hito 26.1D — covers all branches:
+Hito 26.1D â€” covers all branches:
   * Happy path with world data
   * Player level parameter
   * No engine available (fallback)
@@ -14,12 +14,11 @@ Hito 26.1D — covers all branches:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from agente_rme.core.agents.balance_agent import BalanceAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.balance_agent import BalanceAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestBalanceAgentHappyPath:
@@ -44,7 +43,8 @@ class TestBalanceAgentHappyPath:
     def test_balance_with_default_player_level(self):
         agent = BalanceAgent()
         request = AgentRequest(
-            agent_id="balance", prompt="b",
+            agent_id="balance",
+            prompt="b",
             input_data={"tiles": {}},
         )
         response = agent.execute(request)
@@ -53,7 +53,8 @@ class TestBalanceAgentHappyPath:
     def test_balance_with_high_player_level(self):
         agent = BalanceAgent()
         request = AgentRequest(
-            agent_id="balance", prompt="b",
+            agent_id="balance",
+            prompt="b",
             input_data={"tiles": {}},
             parameters={"player_level": 500},
         )
@@ -63,7 +64,8 @@ class TestBalanceAgentHappyPath:
     def test_balance_with_playtest_data_in_context(self):
         agent = BalanceAgent()
         request = AgentRequest(
-            agent_id="balance", prompt="b",
+            agent_id="balance",
+            prompt="b",
             input_data={"tiles": {}},
             context={"playtest_report": {"player_level": 300, "issues": []}},
         )
@@ -73,7 +75,8 @@ class TestBalanceAgentHappyPath:
     def test_balance_no_engine_uses_fallback(self):
         agent = BalanceAgent()
         request = AgentRequest(
-            agent_id="balance", prompt="b",
+            agent_id="balance",
+            prompt="b",
             input_data={"tiles": {}},
         )
         response = agent.execute(request)
@@ -90,7 +93,9 @@ class TestBalanceAgentHappyPath:
             "structures": [],
         }
         request = AgentRequest(
-            agent_id="balance", prompt="b", input_data=world,
+            agent_id="balance",
+            prompt="b",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success and "tiles" in response.output_data:
@@ -114,9 +119,7 @@ class TestBalanceAgentErrorHandling:
 
     def test_balance_with_invalid_input(self):
         agent = BalanceAgent()
-        request = AgentRequest(
-            agent_id="balance", prompt="b", input_data="not a dict"
-        )
+        request = AgentRequest(agent_id="balance", prompt="b", input_data="not a dict")
         response = agent.execute(request)
         assert response.success or response.error is not None
 
@@ -134,7 +137,8 @@ class TestBalanceAgentErrorHandling:
     def test_balance_zero_player_level(self):
         agent = BalanceAgent()
         request = AgentRequest(
-            agent_id="balance", prompt="b",
+            agent_id="balance",
+            prompt="b",
             input_data={"tiles": {}},
             parameters={"player_level": 0},
         )
@@ -161,13 +165,17 @@ class TestBalanceAgentErrorHandling:
     def test_balance_resolve_world_with_dict(self):
         """_resolve_world with dict tiles."""
         agent = BalanceAgent()
-        result = agent._resolve_world({"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}})
+        result = agent._resolve_world(
+            {"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}}
+        )
         assert result is not None
 
     def test_balance_resolve_world_with_list_tiles(self):
         """_resolve_world with list tiles (the enumerate branch)."""
         agent = BalanceAgent()
-        result = agent._resolve_world({"tiles": [{"x": 0, "y": 0, "z": 7, "ground": 106}]})
+        result = agent._resolve_world(
+            {"tiles": [{"x": 0, "y": 0, "z": 7, "ground": 106}]}
+        )
         assert result is not None
 
     def test_balance_resolve_world_passthrough(self):
@@ -203,6 +211,7 @@ class TestBalanceAgentErrorHandling:
                     "structures": [],
                     "regions": [],
                 }
+
         result = agent._world_to_dict(FakeWorld())
         assert isinstance(result["tiles"], dict)
         assert "0,0,7" in result["tiles"]
@@ -214,6 +223,7 @@ class TestBalanceAgentErrorHandling:
         class FakeWorld:
             def to_dict(self):
                 return {"tiles": "bad", "structures": [], "regions": []}
+
         result = agent._world_to_dict(FakeWorld())
         assert result["tiles"] == {}
 
@@ -224,6 +234,7 @@ class TestBalanceAgentErrorHandling:
         class FakeWorld:
             def to_dict(self):
                 return {"tiles": {"0,0,7": {"x": 0}}, "structures": [], "regions": []}
+
         result = agent._world_to_dict(FakeWorld())
         assert isinstance(result["tiles"], dict)
         assert "0,0,7" in result["tiles"]
@@ -247,7 +258,8 @@ class TestBalanceAgentErrorHandling:
         """Test with empty playtest report in context."""
         agent = BalanceAgent()
         request = AgentRequest(
-            agent_id="balance", prompt="b",
+            agent_id="balance",
+            prompt="b",
             input_data={"tiles": {}},
             context={"playtest_report": {}},
         )

@@ -92,11 +92,17 @@ class ExpansionEngine:
 
     # Decorative items for different expansion types
     EXPANSION_DECOR = {
-        ExpansionType.BOSS_ROOM: [1510, 1545, 2052, 2064, 2060],   # Statues, pillars, torches
-        ExpansionType.QUEST_ZONE: [1740, 1753, 1764, 1775, 1738],   # Chests, barrels
+        ExpansionType.BOSS_ROOM: [
+            1510,
+            1545,
+            2052,
+            2064,
+            2060,
+        ],  # Statues, pillars, torches
+        ExpansionType.QUEST_ZONE: [1740, 1753, 1764, 1775, 1738],  # Chests, barrels
         ExpansionType.CITY_EXPANSION: [1770, 1779, 1786, 1740, 1738],  # Furniture
-        ExpansionType.NEW_AREA: [1304, 2705, 2104, 1499, 1507],     # Nature decor
-        ExpansionType.NEW_CAVE: [1304, 1499, 2050, 1775, 1738],     # Cave decor
+        ExpansionType.NEW_AREA: [1304, 2705, 2104, 1499, 1507],  # Nature decor
+        ExpansionType.NEW_CAVE: [1304, 1499, 2050, 1775, 1738],  # Cave decor
         ExpansionType.HUNT_EXPANSION: [1304, 2050, 1775, 1499, 2104],  # Mixed
     }
 
@@ -107,8 +113,11 @@ class ExpansionEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def expand(self, otbm_data: Dict[str, Any],
-               expansions: Optional[List[ExpansionType]] = None) -> ExpansionResult:
+    def expand(
+        self,
+        otbm_data: Dict[str, Any],
+        expansions: Optional[List[ExpansionType]] = None,
+    ) -> ExpansionResult:
         """
         Expand an OTBM map with new areas.
 
@@ -151,8 +160,9 @@ class ExpansionEngine:
             summary=summary,
         )
 
-    def expand_with_plan(self, otbm_data: Dict[str, Any],
-                         plans: List[ExpansionPlan]) -> ExpansionResult:
+    def expand_with_plan(
+        self, otbm_data: Dict[str, Any], plans: List[ExpansionPlan]
+    ) -> ExpansionResult:
         """Expand using pre-configured expansion plans."""
         tiles_before = len(self._get_tiles(otbm_data))
         data = otbm_data
@@ -190,7 +200,15 @@ class ExpansionEngine:
             expansions.append(ExpansionType.CITY_EXPANSION)
 
         # Check for boss rooms (look for boss-like monster names)
-        boss_names = {"boss", "lord", "king", "queen", "emperor", "demon", "dragon lord"}
+        boss_names = {
+            "boss",
+            "lord",
+            "king",
+            "queen",
+            "emperor",
+            "demon",
+            "dragon lord",
+        }
         has_boss = any(
             any(bn in (m.get("name", "")).lower() for bn in boss_names)
             for s in spawns
@@ -223,8 +241,9 @@ class ExpansionEngine:
     # Plan creation
     # ------------------------------------------------------------------
 
-    def _create_expansion_plan(self, exp_type: ExpansionType,
-                               data: Dict[str, Any]) -> Optional[ExpansionPlan]:
+    def _create_expansion_plan(
+        self, exp_type: ExpansionType, data: Dict[str, Any]
+    ) -> Optional[ExpansionPlan]:
         """Create an expansion plan based on the map's current layout."""
         tiles = self._get_tiles(data)
 
@@ -258,7 +277,10 @@ class ExpansionEngine:
                 width=12,
                 height=10,
                 attached_to="main_map",
-                details={"terrain": "cave_floor", "description": "Underground cave system"},
+                details={
+                    "terrain": "cave_floor",
+                    "description": "Underground cave system",
+                },
             )
         elif exp_type == ExpansionType.BOSS_ROOM:
             return ExpansionPlan(
@@ -282,7 +304,10 @@ class ExpansionEngine:
                 width=10,
                 height=8,
                 attached_to="main_map",
-                details={"terrain": "marble", "description": "Quest zone with chests and rewards"},
+                details={
+                    "terrain": "marble",
+                    "description": "Quest zone with chests and rewards",
+                },
             )
         elif exp_type == ExpansionType.CITY_EXPANSION:
             return ExpansionPlan(
@@ -311,7 +336,9 @@ class ExpansionEngine:
     # Expansion execution
     # ------------------------------------------------------------------
 
-    def _execute_expansion(self, plan: ExpansionPlan, data: Dict[str, Any]) -> Dict[str, Any]:
+    def _execute_expansion(
+        self, plan: ExpansionPlan, data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Execute a single expansion plan on the OTBM data."""
         handler = self._get_expansion_handler(plan.expansion_type)
         if handler:
@@ -333,7 +360,9 @@ class ExpansionEngine:
     # Builder methods
     # ------------------------------------------------------------------
 
-    def _build_new_area(self, data: Dict[str, Any], plan: ExpansionPlan) -> Dict[str, Any]:
+    def _build_new_area(
+        self, data: Dict[str, Any], plan: ExpansionPlan
+    ) -> Dict[str, Any]:
         """Build a new wilderness area."""
         tiles = self._get_tiles(data)
         bx, by, bz = plan.position
@@ -349,53 +378,110 @@ class ExpansionEngine:
                 if (x + y) % 4 == 0:
                     decor_id = decor_ids[(x + y) % len(decor_ids)]
                     items.append({"id": decor_id, "count": 1})
-                tiles.append({
-                    "x": x, "y": y, "z": bz,
-                    "items": items,
-                    "flags": 0,
-                })
+                tiles.append(
+                    {
+                        "x": x,
+                        "y": y,
+                        "z": bz,
+                        "items": items,
+                        "flags": 0,
+                    }
+                )
 
         # Add walls around the border
         for x in range(bx - 1, bx + w + 1):
-            tiles.append({"x": x, "y": by - 1, "z": bz, "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}], "flags": 64})
-            tiles.append({"x": x, "y": by + h, "z": bz, "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}], "flags": 64})
+            tiles.append(
+                {
+                    "x": x,
+                    "y": by - 1,
+                    "z": bz,
+                    "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}],
+                    "flags": 64,
+                }
+            )
+            tiles.append(
+                {
+                    "x": x,
+                    "y": by + h,
+                    "z": bz,
+                    "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}],
+                    "flags": 64,
+                }
+            )
         for y in range(by, by + h):
-            tiles.append({"x": bx - 1, "y": y, "z": bz, "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}], "flags": 64})
-            tiles.append({"x": bx + w, "y": y, "z": bz, "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}], "flags": 64})
+            tiles.append(
+                {
+                    "x": bx - 1,
+                    "y": y,
+                    "z": bz,
+                    "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}],
+                    "flags": 64,
+                }
+            )
+            tiles.append(
+                {
+                    "x": bx + w,
+                    "y": y,
+                    "z": bz,
+                    "items": [{"id": self.WALL_IDS["stone_wall"], "count": 1}],
+                    "flags": 64,
+                }
+            )
 
         # Create entrance (gap in wall on the west side)
         entrance_x = bx - 1
         entrance_y = by + h // 2
         # Remove wall at entrance
-        tiles = [t for t in tiles if not (t["x"] == entrance_x and t["y"] == entrance_y and t.get("flags") == 64)]
-        tiles.append({"x": entrance_x, "y": entrance_y, "z": bz, "items": [{"id": ground_id, "count": 1}], "flags": 0})
+        tiles = [
+            t
+            for t in tiles
+            if not (
+                t["x"] == entrance_x and t["y"] == entrance_y and t.get("flags") == 64
+            )
+        ]
+        tiles.append(
+            {
+                "x": entrance_x,
+                "y": entrance_y,
+                "z": bz,
+                "items": [{"id": ground_id, "count": 1}],
+                "flags": 0,
+            }
+        )
 
         # Add spawns in the new area
         spawns = self._get_spawns(data)
-        spawns.append({
-            "name": f"{plan.name}_spawn",
-            "center_position": (bx + w // 2, by + h // 2, bz),
-            "radius": 8,
-            "monsters": [
-                {"name": "Orc Warrior", "count": 3},
-                {"name": "Minotaur", "count": 2},
-            ],
-        })
+        spawns.append(
+            {
+                "name": f"{plan.name}_spawn",
+                "center_position": (bx + w // 2, by + h // 2, bz),
+                "radius": 8,
+                "monsters": [
+                    {"name": "Orc Warrior", "count": 3},
+                    {"name": "Minotaur", "count": 2},
+                ],
+            }
+        )
 
         data = self._set_spawns(data, spawns)
         return self._set_tiles(data, tiles)
 
-    def _build_new_cave(self, data: Dict[str, Any], plan: ExpansionPlan) -> Dict[str, Any]:
+    def _build_new_cave(
+        self, data: Dict[str, Any], plan: ExpansionPlan
+    ) -> Dict[str, Any]:
         """Build a cave system with winding corridors and chambers."""
         tiles = self._get_tiles(data)
         bx, by, bz = plan.position
         w, h = plan.width, plan.height
-        ground_id = self.TERRAIN_GROUNDS.get(plan.details.get("terrain", "cave_floor"), 438)
+        ground_id = self.TERRAIN_GROUNDS.get(
+            plan.details.get("terrain", "cave_floor"), 438
+        )
         wall_id = self.WALL_IDS["cave_wall"]
         decor_ids = self.EXPANSION_DECOR.get(plan.expansion_type, [1304, 1499, 2050])
 
         # Create natural-looking cave (irregular shape)
         import random
+
         random.seed(42)
 
         cave_tiles: Set[Tuple[int, int]] = set()
@@ -439,93 +525,182 @@ class ExpansionEngine:
                 if random.random() < 0.15:
                     decor_id = decor_ids[random.randint(0, len(decor_ids) - 1)]
                     items.append({"id": decor_id, "count": 1})
-                tiles.append({
-                    "x": x, "y": y, "z": bz,
-                    "items": items,
-                    "flags": 0,
-                })
+                tiles.append(
+                    {
+                        "x": x,
+                        "y": y,
+                        "z": bz,
+                        "items": items,
+                        "flags": 0,
+                    }
+                )
 
         # Border walls for cave feeling
         for x in range(bx - 1, bx + w + 1):
             for y in [by - 1, by + h]:
                 if (x, y + (1 if y == by + h else 0)) not in cave_tiles:
-                    tiles.append({"x": x, "y": y, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+                    tiles.append(
+                        {
+                            "x": x,
+                            "y": y,
+                            "z": bz,
+                            "items": [{"id": wall_id, "count": 1}],
+                            "flags": 64,
+                        }
+                    )
         for y in range(by - 1, by + h + 1):
             for x_d in [bx - 1, bx + w]:
                 if (x_d, y) not in cave_tiles:
-                    tiles.append({"x": x_d, "y": y, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+                    tiles.append(
+                        {
+                            "x": x_d,
+                            "y": y,
+                            "z": bz,
+                            "items": [{"id": wall_id, "count": 1}],
+                            "flags": 64,
+                        }
+                    )
 
         # Entrance
-        tiles.append({"x": bx, "y": by + h // 2, "z": bz, "items": [{"id": ground_id, "count": 1}], "flags": 0})
+        tiles.append(
+            {
+                "x": bx,
+                "y": by + h // 2,
+                "z": bz,
+                "items": [{"id": ground_id, "count": 1}],
+                "flags": 0,
+            }
+        )
 
         # Add spawns
         spawns = self._get_spawns(data)
-        spawns.append({
-            "name": f"{plan.name}_spawn",
-            "center_position": (bx + w // 2, by + h // 2, bz),
-            "radius": 6,
-            "monsters": [
-                {"name": "Dwarf", "count": 2},
-                {"name": "Dwarf Soldier", "count": 2},
-                {"name": "Dwarf Guard", "count": 1},
-            ],
-        })
+        spawns.append(
+            {
+                "name": f"{plan.name}_spawn",
+                "center_position": (bx + w // 2, by + h // 2, bz),
+                "radius": 6,
+                "monsters": [
+                    {"name": "Dwarf", "count": 2},
+                    {"name": "Dwarf Soldier", "count": 2},
+                    {"name": "Dwarf Guard", "count": 1},
+                ],
+            }
+        )
 
         data = self._set_spawns(data, spawns)
         return self._set_tiles(data, tiles)
 
-    def _build_boss_room(self, data: Dict[str, Any], plan: ExpansionPlan) -> Dict[str, Any]:
+    def _build_boss_room(
+        self, data: Dict[str, Any], plan: ExpansionPlan
+    ) -> Dict[str, Any]:
         """Build a dedicated boss arena."""
         tiles = self._get_tiles(data)
         bx, by, bz = plan.position
         w, h = plan.width, plan.height
-        ground_id = self.TERRAIN_GROUNDS.get(plan.details.get("terrain", "boss_floor"), 426)
+        ground_id = self.TERRAIN_GROUNDS.get(
+            plan.details.get("terrain", "boss_floor"), 426
+        )
         wall_id = self.WALL_IDS["boss_wall"]
-        decor_ids = self.EXPANSION_DECOR.get(plan.expansion_type, [1510, 1545, 2052])
+        self.EXPANSION_DECOR.get(plan.expansion_type, [1510, 1545, 2052])
 
         # Arena floor
         for x in range(bx, bx + w):
             for y in range(by, by + h):
                 items = [{"id": ground_id, "count": 1}]
                 # Pillars at corners and center edges
-                if ((x == bx or x == bx + w - 1) and (y == by or y == by + h - 1)):
+                if (x == bx or x == bx + w - 1) and (y == by or y == by + h - 1):
                     items.append({"id": 1545, "count": 1})  # Pillar
-                elif (x == bx + w // 2 and (y == by + 1 or y == by + h - 2)):
+                elif x == bx + w // 2 and (y == by + 1 or y == by + h - 2):
                     items.append({"id": 2052, "count": 1})  # Wall torch
                 tiles.append({"x": x, "y": y, "z": bz, "items": items, "flags": 0})
 
         # Walls around arena
         for x in range(bx - 1, bx + w + 1):
-            tiles.append({"x": x, "y": by - 1, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
-            tiles.append({"x": x, "y": by + h, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+            tiles.append(
+                {
+                    "x": x,
+                    "y": by - 1,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
+            tiles.append(
+                {
+                    "x": x,
+                    "y": by + h,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
         for y in range(by, by + h):
-            tiles.append({"x": bx - 1, "y": y, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
-            tiles.append({"x": bx + w, "y": y, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+            tiles.append(
+                {
+                    "x": bx - 1,
+                    "y": y,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
+            tiles.append(
+                {
+                    "x": bx + w,
+                    "y": y,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
 
         # Grand entrance on south side
         entrance_y = by + h
         for ex in range(bx + w // 2 - 1, bx + w // 2 + 2):
-            tiles = [t for t in tiles if not (t["x"] == ex and t["y"] == entrance_y and t.get("flags") == 64)]
-            tiles.append({"x": ex, "y": entrance_y, "z": bz, "items": [{"id": ground_id, "count": 1}], "flags": 0})
+            tiles = [
+                t
+                for t in tiles
+                if not (t["x"] == ex and t["y"] == entrance_y and t.get("flags") == 64)
+            ]
+            tiles.append(
+                {
+                    "x": ex,
+                    "y": entrance_y,
+                    "z": bz,
+                    "items": [{"id": ground_id, "count": 1}],
+                    "flags": 0,
+                }
+            )
 
         # Boss spawn
         boss_name = plan.details.get("boss_name", "Demon Lord")
         spawns = self._get_spawns(data)
-        spawns.append({
-            "name": f"{plan.name}_boss",
-            "center_position": (bx + w // 2, by + h // 2, bz),
-            "radius": 2,
-            "monsters": [{"name": boss_name, "count": 1}],
-        })
+        spawns.append(
+            {
+                "name": f"{plan.name}_boss",
+                "center_position": (bx + w // 2, by + h // 2, bz),
+                "radius": 2,
+                "monsters": [{"name": boss_name, "count": 1}],
+            }
+        )
 
         # Add minion spawns around the boss
-        for i, (mx, my) in enumerate([(bx + 2, by + 2), (bx + w - 3, by + 2), (bx + 2, by + h - 3), (bx + w - 3, by + h - 3)]):
-            spawns.append({
-                "name": f"{plan.name}_minion_{i}",
-                "center_position": (mx, my, bz),
-                "radius": 2,
-                "monsters": [{"name": "Fire Elemental", "count": 2}],
-            })
+        for i, (mx, my) in enumerate(
+            [
+                (bx + 2, by + 2),
+                (bx + w - 3, by + 2),
+                (bx + 2, by + h - 3),
+                (bx + w - 3, by + h - 3),
+            ]
+        ):
+            spawns.append(
+                {
+                    "name": f"{plan.name}_minion_{i}",
+                    "center_position": (mx, my, bz),
+                    "radius": 2,
+                    "monsters": [{"name": "Fire Elemental", "count": 2}],
+                }
+            )
 
         # Add a teleport/entrance point for the town
         town_data = data.get("map_data", data)
@@ -536,12 +711,16 @@ class ExpansionEngine:
         data = self._set_spawns(data, spawns)
         return self._set_tiles(data, tiles)
 
-    def _build_quest_zone(self, data: Dict[str, Any], plan: ExpansionPlan) -> Dict[str, Any]:
+    def _build_quest_zone(
+        self, data: Dict[str, Any], plan: ExpansionPlan
+    ) -> Dict[str, Any]:
         """Build a quest zone with rooms and chests."""
         tiles = self._get_tiles(data)
         bx, by, bz = plan.position
         w, h = plan.width, plan.height
-        ground_id = self.TERRAIN_GROUNDS.get(plan.details.get("terrain", "marble"), 1118)
+        ground_id = self.TERRAIN_GROUNDS.get(
+            plan.details.get("terrain", "marble"), 1118
+        )
 
         # Main hall
         for x in range(bx, bx + w):
@@ -552,19 +731,67 @@ class ExpansionEngine:
         # Walls
         wall_id = self.WALL_IDS["marble_wall"]
         for x in range(bx - 1, bx + w + 1):
-            tiles.append({"x": x, "y": by - 1, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
-            tiles.append({"x": x, "y": by + h, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+            tiles.append(
+                {
+                    "x": x,
+                    "y": by - 1,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
+            tiles.append(
+                {
+                    "x": x,
+                    "y": by + h,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
         for y in range(by, by + h):
-            tiles.append({"x": bx - 1, "y": y, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
-            tiles.append({"x": bx + w, "y": y, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+            tiles.append(
+                {
+                    "x": bx - 1,
+                    "y": y,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
+            tiles.append(
+                {
+                    "x": bx + w,
+                    "y": y,
+                    "z": bz,
+                    "items": [{"id": wall_id, "count": 1}],
+                    "flags": 64,
+                }
+            )
 
         # Entrance
         entrance_y = by + h // 2
-        tiles = [t for t in tiles if not (t["x"] == bx - 1 and t["y"] == entrance_y and t.get("flags") == 64)]
-        tiles.append({"x": bx - 1, "y": entrance_y, "z": bz, "items": [{"id": ground_id, "count": 1}], "flags": 0})
+        tiles = [
+            t
+            for t in tiles
+            if not (t["x"] == bx - 1 and t["y"] == entrance_y and t.get("flags") == 64)
+        ]
+        tiles.append(
+            {
+                "x": bx - 1,
+                "y": entrance_y,
+                "z": bz,
+                "items": [{"id": ground_id, "count": 1}],
+                "flags": 0,
+            }
+        )
 
         # Place chests with rewards
-        chest_positions = [(bx + w - 2, by + 2), (bx + w - 2, by + h - 3), (bx + 2, by + h - 3)]
+        chest_positions = [
+            (bx + w - 2, by + 2),
+            (bx + w - 2, by + h - 3),
+            (bx + 2, by + h - 3),
+        ]
         for cx, cy in chest_positions:
             for t in tiles:
                 if t["x"] == cx and t["y"] == cy and t["z"] == bz:
@@ -573,20 +800,24 @@ class ExpansionEngine:
 
         # Add quest NPCs / spawns area
         spawns = self._get_spawns(data)
-        spawns.append({
-            "name": f"{plan.name}_quest_guardians",
-            "center_position": (bx + w // 2, by + h - 2, bz),
-            "radius": 3,
-            "monsters": [
-                {"name": "Hero", "count": 2},
-                {"name": "Necromancer", "count": 1},
-            ],
-        })
+        spawns.append(
+            {
+                "name": f"{plan.name}_quest_guardians",
+                "center_position": (bx + w // 2, by + h - 2, bz),
+                "radius": 3,
+                "monsters": [
+                    {"name": "Hero", "count": 2},
+                    {"name": "Necromancer", "count": 1},
+                ],
+            }
+        )
 
         data = self._set_spawns(data, spawns)
         return self._set_tiles(data, tiles)
 
-    def _build_city_expansion(self, data: Dict[str, Any], plan: ExpansionPlan) -> Dict[str, Any]:
+    def _build_city_expansion(
+        self, data: Dict[str, Any], plan: ExpansionPlan
+    ) -> Dict[str, Any]:
         """Build a city district expansion with buildings."""
         tiles = self._get_tiles(data)
         bx, by, bz = plan.position
@@ -600,13 +831,15 @@ class ExpansionEngine:
                 # Decorative elements in the plaza
                 if x == bx + w // 2 and y == by + h // 2:
                     items.append({"id": 1510, "count": 1})  # Central statue
-                tiles.append({"x": x, "y": y, "z": bz, "items": items, "flags": 1})  # PZ zone
+                tiles.append(
+                    {"x": x, "y": y, "z": bz, "items": items, "flags": 1}
+                )  # PZ zone
 
         # Building outlines (using walls to create structures)
         buildings = [
-            (bx + 2, by + 2, 4, 3),   # Building 1
-            (bx + 7, by + 2, 3, 3),   # Building 2
-            (bx + 2, by + 7, 3, 3),   # Building 3
+            (bx + 2, by + 2, 4, 3),  # Building 1
+            (bx + 7, by + 2, 3, 3),  # Building 2
+            (bx + 2, by + 7, 3, 3),  # Building 3
         ]
 
         wall_id = self.WALL_IDS["stone_wall"]
@@ -617,34 +850,94 @@ class ExpansionEngine:
             for ix in range(bld_x, bld_x + bld_w):
                 for iy in range(bld_y, bld_y + bld_h):
                     # Replace ground tile with wooden floor
-                    tiles = [t for t in tiles if not (t["x"] == ix and t["y"] == iy and t["z"] == bz)]
-                    tiles.append({"x": ix, "y": iy, "z": bz, "items": [{"id": floor_id, "count": 1}], "flags": 1})
+                    tiles = [
+                        t
+                        for t in tiles
+                        if not (t["x"] == ix and t["y"] == iy and t["z"] == bz)
+                    ]
+                    tiles.append(
+                        {
+                            "x": ix,
+                            "y": iy,
+                            "z": bz,
+                            "items": [{"id": floor_id, "count": 1}],
+                            "flags": 1,
+                        }
+                    )
             # Walls around building
             for wx in range(bld_x - 1, bld_x + bld_w + 1):
-                tiles.append({"x": wx, "y": bld_y - 1, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
-                tiles.append({"x": wx, "y": bld_y + bld_h, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+                tiles.append(
+                    {
+                        "x": wx,
+                        "y": bld_y - 1,
+                        "z": bz,
+                        "items": [{"id": wall_id, "count": 1}],
+                        "flags": 64,
+                    }
+                )
+                tiles.append(
+                    {
+                        "x": wx,
+                        "y": bld_y + bld_h,
+                        "z": bz,
+                        "items": [{"id": wall_id, "count": 1}],
+                        "flags": 64,
+                    }
+                )
             for wy in range(bld_y, bld_y + bld_h):
-                tiles.append({"x": bld_x - 1, "y": wy, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
-                tiles.append({"x": bld_x + bld_w, "y": wy, "z": bz, "items": [{"id": wall_id, "count": 1}], "flags": 64})
+                tiles.append(
+                    {
+                        "x": bld_x - 1,
+                        "y": wy,
+                        "z": bz,
+                        "items": [{"id": wall_id, "count": 1}],
+                        "flags": 64,
+                    }
+                )
+                tiles.append(
+                    {
+                        "x": bld_x + bld_w,
+                        "y": wy,
+                        "z": bz,
+                        "items": [{"id": wall_id, "count": 1}],
+                        "flags": 64,
+                    }
+                )
             # Door opening
             door_y = bld_y + bld_h
             door_x = bld_x + bld_w // 2
-            tiles = [t for t in tiles if not (t["x"] == door_x and t["y"] == door_y and t.get("flags") == 64)]
-            tiles.append({"x": door_x, "y": door_y, "z": bz, "items": [{"id": ground_id, "count": 1}], "flags": 1})
+            tiles = [
+                t
+                for t in tiles
+                if not (t["x"] == door_x and t["y"] == door_y and t.get("flags") == 64)
+            ]
+            tiles.append(
+                {
+                    "x": door_x,
+                    "y": door_y,
+                    "z": bz,
+                    "items": [{"id": ground_id, "count": 1}],
+                    "flags": 1,
+                }
+            )
 
         # Add town data
         town_data = data.get("map_data", data)
         if "towns" not in town_data:
             town_data["towns"] = []
-        town_data["towns"].append({
-            "name": plan.name,
-            "position": (bx + w // 2, by + h // 2, bz),
-            "temple_position": (bx + w // 2, by + h // 2, bz),
-        })
+        town_data["towns"].append(
+            {
+                "name": plan.name,
+                "position": (bx + w // 2, by + h // 2, bz),
+                "temple_position": (bx + w // 2, by + h // 2, bz),
+            }
+        )
 
         return self._set_tiles(data, tiles)
 
-    def _build_hunt_expansion(self, data: Dict[str, Any], plan: ExpansionPlan) -> Dict[str, Any]:
+    def _build_hunt_expansion(
+        self, data: Dict[str, Any], plan: ExpansionPlan
+    ) -> Dict[str, Any]:
         """Build expanded hunting grounds with varied terrain."""
         tiles = self._get_tiles(data)
         bx, by, bz = plan.position
@@ -652,6 +945,7 @@ class ExpansionEngine:
         ground_id = self.TERRAIN_GROUNDS.get(plan.details.get("terrain", "dirt"), 102)
 
         import random
+
         random.seed(123)
 
         # Varied terrain patches
@@ -679,12 +973,14 @@ class ExpansionEngine:
         for i, pack in enumerate(monster_packs):
             sx = bx + 2 + (i % 2) * (w // 2 - 2)
             sy = by + 2 + (i // 2) * (h // 2 - 2)
-            spawns.append({
-                "name": f"{plan.name}_pack_{i}",
-                "center_position": (sx, sy, bz),
-                "radius": 4,
-                "monsters": pack,
-            })
+            spawns.append(
+                {
+                    "name": f"{plan.name}_pack_{i}",
+                    "center_position": (sx, sy, bz),
+                    "radius": 4,
+                    "monsters": pack,
+                }
+            )
 
         data = self._set_spawns(data, spawns)
         return self._set_tiles(data, tiles)

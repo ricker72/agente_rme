@@ -10,14 +10,15 @@ from core.balance.xp_balancer import XPBalancer, XPBalanceResult
 from core.balance.loot_balancer import LootBalancer, LootBalanceResult
 from core.balance.difficulty_balancer import DifficultyBalancer, DifficultyBalanceResult
 from core.balance.risk_balancer import RiskBalancer, RiskBalanceResult, RiskAssessment
-from core.balance.xp_analyzer import XPAnalyzer, XPAnalysis
-from core.balance.loot_analyzer import LootAnalyzer, LootAnalysis
-from core.balance.difficulty_analyzer import DifficultyAnalyzer, DifficultyAnalysis
+from core.balance.xp_analyzer import XPAnalysis
+from core.balance.loot_analyzer import LootAnalysis
+from core.balance.difficulty_analyzer import DifficultyAnalysis
 
 
 @dataclass
 class ZoneBalanceReport:
     """Balance report for a single zone."""
+
     zone_name: str = ""
     spawn_result: Optional[SpawnBalanceResult] = None
     xp_result: Optional[XPBalanceResult] = None
@@ -37,7 +38,9 @@ class ZoneBalanceReport:
             "spawn_result": self.spawn_result.to_dict() if self.spawn_result else None,
             "xp_result": self.xp_result.to_dict() if self.xp_result else None,
             "loot_result": self.loot_result.to_dict() if self.loot_result else None,
-            "difficulty_result": self.difficulty_result.to_dict() if self.difficulty_result else None,
+            "difficulty_result": (
+                self.difficulty_result.to_dict() if self.difficulty_result else None
+            ),
             "risk_result": self.risk_result.to_dict() if self.risk_result else None,
         }
 
@@ -45,6 +48,7 @@ class ZoneBalanceReport:
 @dataclass
 class BalanceReport:
     """Complete balance report for the entire world."""
+
     zones: List[ZoneBalanceReport] = field(default_factory=list)
     total_adjustments: int = 0
     zones_modified: int = 0
@@ -132,8 +136,10 @@ class BalanceEngine:
         zone_report.loot_analysis = self._loot_balancer.analyze_zone_loot(
             world, region, target_level=self._player_level
         )
-        zone_report.difficulty_analysis = self._difficulty_balancer.analyze_zone_difficulty(
-            world, region, player_level=self._player_level
+        zone_report.difficulty_analysis = (
+            self._difficulty_balancer.analyze_zone_difficulty(
+                world, region, player_level=self._player_level
+            )
         )
         zone_report.risk_assessment = self._risk_balancer.assess_risk(
             world, region, player_level=self._player_level
@@ -218,8 +224,10 @@ class BalanceEngine:
             zone_report.loot_analysis = self._loot_balancer.analyze_zone_loot(
                 world, region, target_level=self._player_level
             )
-            zone_report.difficulty_analysis = self._difficulty_balancer.analyze_zone_difficulty(
-                world, region, player_level=self._player_level
+            zone_report.difficulty_analysis = (
+                self._difficulty_balancer.analyze_zone_difficulty(
+                    world, region, player_level=self._player_level
+                )
             )
             zone_report.risk_assessment = self._risk_balancer.assess_risk(
                 world, region, player_level=self._player_level

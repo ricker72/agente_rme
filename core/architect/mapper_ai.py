@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
-from .architect import ArchitectAI, DesignRationale, ArchitecturalDecision
+from .architect import ArchitectAI, DesignRationale
 from .design_rules import DesignRules
-from .style_engine import StyleEngine, StyleDNA
+from .style_engine import StyleEngine
 from .layout_engine import LayoutEngine, LayoutPlan
 from .composition_engine import CompositionEngine, StyleComposition
 
@@ -13,6 +13,7 @@ from .composition_engine import CompositionEngine, StyleComposition
 @dataclass
 class MapperDecision:
     """Complete architectural output from MapperAI."""
+
     prompt: str
     map_type: str
     rationale: DesignRationale
@@ -38,8 +39,13 @@ class MapperAI:
         self.layout_engine = LayoutEngine()
         self.composer = CompositionEngine()
 
-    def design(self, prompt: str, map_type: Optional[str] = None,
-               map_width: int = 50, map_height: int = 50) -> MapperDecision:
+    def design(
+        self,
+        prompt: str,
+        map_type: Optional[str] = None,
+        map_width: int = 50,
+        map_height: int = 50,
+    ) -> MapperDecision:
         """
         Full architectural design pipeline.
 
@@ -90,10 +96,14 @@ class MapperAI:
         log.append(f"[ARCHITECT] Map type: {map_type}")
         log.append(f"[ARCHITECT] Style: {composition.name}")
         log.append(f"[ARCHITECT] DNA: {dna.to_dict()}")
-        log.append(f"[COMPOSITION] Ratio: {[f'{r*100:.0f}% {n}' for n, r in composition.styles]}")
+        log.append(
+            f"[COMPOSITION] Ratio: {[f'{r * 100:.0f}% {n}' for n, r in composition.styles]}"
+        )
         log.append(f"[COMPOSITION] Description: {composition.description}")
         for dec in rationale.decisions:
-            log.append(f"[DECISION] {dec.question}: {dec.answer} ({dec.reason[:80]}...)")
+            log.append(
+                f"[DECISION] {dec.question}: {dec.answer} ({dec.reason[:80]}...)"
+            )
         for line in layout.decisions_log:
             log.append(f"[LAYOUT] {line}")
         for rec in recommendations:
@@ -176,7 +186,9 @@ class MapperAI:
         """Generate a complete natural-language explanation of the design."""
         lines = []
         lines.append("=" * 60)
-        lines.append(f"  ARQUITECTURA: {decision.map_type.upper()} - {decision.rationale.style.upper()}")
+        lines.append(
+            f"  ARQUITECTURA: {decision.map_type.upper()} - {decision.rationale.style.upper()}"
+        )
         lines.append("=" * 60)
         lines.append("")
 
@@ -204,7 +216,7 @@ class MapperAI:
 
         lines.append("COMPOSICIÓN DE ESTILOS:")
         for name, ratio in decision.composition.styles:
-            lines.append(f"  {ratio*100:.0f}% {name}")
+            lines.append(f"  {ratio * 100:.0f}% {name}")
         lines.append(f"  Descripción: {decision.composition.description}")
         lines.append("")
 

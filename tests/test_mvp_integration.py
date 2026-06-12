@@ -1,12 +1,13 @@
 """
 MVP V0.1 Integration Tests — Verifica todos los sprints de extremo a extremo.
 """
+
 from __future__ import annotations
 
 import sys
-import json
 import os
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 os.environ["PYTHONIOENCODING"] = "utf-8"
 
@@ -18,6 +19,7 @@ PASS = "[PASS]"
 
 def test_sprint1_prompt_interpreter():
     from core.prompt_interpreter import PromptInterpreter
+
     pi = PromptInterpreter()
     intent = pi.interpret("Genera una zona Issavi + Roshamuul nivel 300-500")
     assert "issavi" in intent.theme
@@ -29,6 +31,7 @@ def test_sprint1_prompt_interpreter():
 
 def test_sprint1_theme_resolver():
     from core.themes.theme_resolver import ThemeResolver
+
     tr = ThemeResolver()
     themes = tr.resolve_all(["issavi", "roshamuul"])
     assert len(themes) == 2
@@ -44,6 +47,7 @@ def test_sprint1_theme_resolver():
 def test_sprint1_hunt_generator():
     from core.generators.hunt_generator import HuntGenerator
     from core.world import WorldModel
+
     hg = HuntGenerator(seed=42)
     world = WorldModel()
     context = {
@@ -63,21 +67,27 @@ def test_sprint1_hunt_generator():
 
 def test_sprint1_spawn_generator():
     from core.generators.spawn_generator import SpawnGenerator
+
     sg = SpawnGenerator()
     assert sg is not None
     from core.world import WorldModel
+
     world = WorldModel()
     from core.world import Tile
+
     world.set_tile(Tile(x=0, y=0, z=7, ground=817))
     world.set_tile(Tile(x=0, y=1, z=7, ground=817))
     world.set_tile(Tile(x=1, y=0, z=7, ground=817))
     world.set_tile(Tile(x=1, y=1, z=7, ground=817))
-    result = sg.generate(world, {
-        "level_min": 300,
-        "level_max": 500,
-        "density": "medium",
-        "area": (0, 0, 2, 2),
-    })
+    result = sg.generate(
+        world,
+        {
+            "level_min": 300,
+            "level_max": 500,
+            "density": "medium",
+            "area": (0, 0, 2, 2),
+        },
+    )
     assert result is not None
     assert result.tile_count() > 0
     print(f"{PASS} Sprint 1: SpawnGenerator")
@@ -85,6 +95,7 @@ def test_sprint1_spawn_generator():
 
 def test_sprint1_lua_generator():
     from core.lua import LuaGenerator
+
     lg = LuaGenerator()
     assert lg is not None
     print(f"{PASS} Sprint 1: LuaGenerator (module loaded)")
@@ -92,6 +103,7 @@ def test_sprint1_lua_generator():
 
 def test_sprint1_preview_generator():
     from core.preview import PreviewGenerator
+
     pg = PreviewGenerator()
     assert pg is not None
     print(f"{PASS} Sprint 1: PreviewGenerator (module loaded)")
@@ -100,9 +112,13 @@ def test_sprint1_preview_generator():
 def test_sprint2_otbm_export():
     from core.otbm.otbm_serializer import OtbmSerializer
     from core.otbm.otbm_validator import OtbmValidator
+
     s = OtbmSerializer()
-    v = OtbmValidator()
-    data = s.serialize_hunt_area({"width": 5, "height": 5, "tiles": [], "base_x": 0, "base_y": 0, "base_z": 7}, None)
+    OtbmValidator()
+    data = s.serialize_hunt_area(
+        {"width": 5, "height": 5, "tiles": [], "base_x": 0, "base_y": 0, "base_z": 7},
+        None,
+    )
     if data is None:
         data = b"OTBM_V4_SMOKE_TEST"
     print(f"{PASS} Sprint 2: OTBM Export ({len(data)} bytes)")
@@ -110,6 +126,7 @@ def test_sprint2_otbm_export():
 
 def test_sprint3_blueprint_system():
     from core.blueprints import BlueprintSearch
+
     bs = BlueprintSearch()
     count = bs.load_blueprints("data/blueprints")
     assert count >= 6
@@ -124,6 +141,7 @@ def test_sprint3_blueprint_system():
 
 def test_sprint4_architect_ai():
     from core.architect import MapperAI
+
     ma = MapperAI()
     decision = ma.design("Crea una dungeon oscura con tematica roshamuul", "dungeon")
     assert decision.map_type == "dungeon"
@@ -134,6 +152,7 @@ def test_sprint4_architect_ai():
 def test_sprint5_quality_analysis():
     from core.quality.pathing_analyzer import PathingAnalyzer
     from core.quality.spawn_analyzer import SpawnAnalyzer
+
     pa = PathingAnalyzer()
     sa = SpawnAnalyzer()
     world_mock = {"tiles": [{"x": i % 10, "y": i // 10, "z": 7} for i in range(100)]}
@@ -144,25 +163,42 @@ def test_sprint5_quality_analysis():
 
 def test_sprint7_release_builder():
     from core.release import ReleaseBuilder
+
     rb = ReleaseBuilder()
     result = rb.build_minimal(
         "test_release",
         otbm_bytes=b"OTBM_TEST",
         map_data={
             "tiles": [{"x": 0, "y": 0, "z": 7}],
-            "spawns": [{"name": "Test", "center_position": (0, 0, 7), "monsters": [{"name": "Rat", "count": 1}]}],
+            "spawns": [
+                {
+                    "name": "Test",
+                    "center_position": (0, 0, 7),
+                    "monsters": [{"name": "Rat", "count": 1}],
+                }
+            ],
             "towns": [{"name": "TestTown", "position": (0, 0, 7)}],
-        }
+        },
     )
     assert result.package.total_size_kb > 0
     assert len(result.docs.files_created) >= 3
     import shutil
+
     shutil.rmtree("release/test_release", ignore_errors=True)
-    print(f"{PASS} Sprint 7: ReleaseBuilder ({len(result.package.files_created)} files)")
+    print(
+        f"{PASS} Sprint 7: ReleaseBuilder ({len(result.package.files_created)} files)"
+    )
 
 
 def test_evolution_modules():
-    from core.evolution import MapEvolver, QualityDetector, ImprovementEngine, ExpansionEngine, ModernizationEngine
+    from core.evolution import (
+        MapEvolver,
+        QualityDetector,
+        ImprovementEngine,
+        ExpansionEngine,
+        ModernizationEngine,
+    )
+
     MapEvolver()
     QualityDetector()
     ImprovementEngine()
@@ -172,26 +208,38 @@ def test_evolution_modules():
 
 
 def test_asset_intelligence():
-    from core.assets import AssetIndexer, AssetClassifier, AssetSimilarity, AssetRecommender
+    from core.assets import (
+        AssetIndexer,
+        AssetClassifier,
+        AssetSimilarity,
+        AssetRecommender,
+    )
+
     idx = AssetIndexer()
     cl = AssetClassifier(idx)
     sim = AssetSimilarity(idx, cl)
-    rec = AssetRecommender(idx, cl, sim)
+    AssetRecommender(idx, cl, sim)
     print(f"{PASS} Asset Intelligence")
 
 
 def test_world_brain():
     from core.world_brain import WorldBrain
+
     brain = WorldBrain()
-    session = brain.think("Crear una expansion endgame con bosses", {"width": 100, "height": 100})
+    session = brain.think(
+        "Crear una expansion endgame con bosses", {"width": 100, "height": 100}
+    )
     assert len(session.goals) > 0
     assert len(session.decisions) > 0
-    print(f"{PASS} WorldBrain ({len(session.goals)} goals, {len(session.decisions)} decisions)")
+    print(
+        f"{PASS} WorldBrain ({len(session.goals)} goals, {len(session.decisions)} decisions)"
+    )
 
 
 def test_balance_modules():
-    from core.balance import BalanceEngine, XPAnalyzer, LootAnalyzer, DifficultyAnalyzer
+    from core.balance import BalanceEngine
     from core.world import WorldModel, Tile, Spawn
+
     be = BalanceEngine(player_level=150)
     world = WorldModel()
     world.set_tile(Tile(x=0, y=0, z=7, ground=817))
@@ -199,7 +247,10 @@ def test_balance_modules():
     tile = world.get_tile(0, 0, 7)
     tile.spawn = Spawn(monster="Dragon", respawn=60)
     from core.world import Region
-    world.add_region(Region(name="test_zone", theme="issavi", min_level=100, max_level=200))
+
+    world.add_region(
+        Region(name="test_zone", theme="issavi", min_level=100, max_level=200)
+    )
     balanced, report = be.balance(world)
     assert report is not None
     assert len(report.zones) > 0
@@ -208,17 +259,28 @@ def test_balance_modules():
 
 def test_release_package():
     from core.release import ReleaseBuilder
+
     rb = ReleaseBuilder()
-    result = rb.build("test_package", otbm_bytes=b"TEST_OTBM",
-                       map_data={"tiles": [{"x": 0, "y": 0, "z": 7}],
-                                "spawns": [{"name": "Spawn1", "center_position": (0, 0, 7), "monsters": []}],
-                                "towns": [{"name": "Town1", "position": (0, 0, 7)}]},
-                       version="1.0.0")
+    result = rb.build(
+        "test_package",
+        otbm_bytes=b"TEST_OTBM",
+        map_data={
+            "tiles": [{"x": 0, "y": 0, "z": 7}],
+            "spawns": [
+                {"name": "Spawn1", "center_position": (0, 0, 7), "monsters": []}
+            ],
+            "towns": [{"name": "Town1", "position": (0, 0, 7)}],
+        },
+        version="1.0.0",
+    )
     assert result.package.total_size_kb > 0
     assert len(result.docs.files_created) == 6
     import shutil
+
     shutil.rmtree("release/test_package", ignore_errors=True)
-    print(f"{PASS} ReleaseBuilder ({len(result.package.files_created)} files, {result.package.total_size_kb:.1f} KB)")
+    print(
+        f"{PASS} ReleaseBuilder ({len(result.package.files_created)} files, {result.package.total_size_kb:.1f} KB)"
+    )
 
 
 def test_output_files_exist():
@@ -230,14 +292,15 @@ def test_output_files_exist():
             print(f"  WARN: {f} not found (may need pipeline run first)")
             continue
         assert fp.stat().st_size > 0, f"Empty: {fp}"
-    print(f"{PASS} Output files: {[f for f in files if (output/f).exists()]}")
+    print(f"{PASS} Output files: {[f for f in files if (output / f).exists()]}")
 
 
 def test_pipeline_cli():
     from pipeline_runner import PipelineRunner
+
     runner = PipelineRunner()
     import tempfile
-    import os
+
     tmpdir = tempfile.mkdtemp()
     try:
         report = runner.run("test zona 1-10")
@@ -246,6 +309,7 @@ def test_pipeline_cli():
         print(f"{PASS} Pipeline CLI (report generated)")
     finally:
         import shutil
+
         shutil.rmtree(tmpdir, ignore_errors=True)
 
 
@@ -279,6 +343,7 @@ if __name__ == "__main__":
         except Exception as e:
             failed += 1
             import traceback
+
             print(f"  {FAIL} {name}: {e}")
             traceback.print_exc()
         print()

@@ -3,17 +3,17 @@ data_extractor.py
 Parses items.xml and builds an enriched item knowledge base for OpenTibiaBR RME.
 Each item includes classification data such as category, theme, biome y usage.
 """
+
 import json
 import os
 import re
 from pathlib import Path
-from typing import Optional
 
 try:
     from lxml import etree as LET
+
     _LXML = True
 except ImportError:
-    import xml.etree.ElementTree as _StdET  # type: ignore
     _LXML = False
 
 CACHE_FILE = "rme_knowledge_cache.json"
@@ -36,10 +36,28 @@ BIOME_KEYWORDS = {
 }
 
 CATEGORY_KEYWORDS = {
-    "terrain": ["floor", "ground", "sand", "grass", "stone", "pavement", "dirt", "tile"],
+    "terrain": [
+        "floor",
+        "ground",
+        "sand",
+        "grass",
+        "stone",
+        "pavement",
+        "dirt",
+        "tile",
+    ],
     "wall": ["wall", "pillar", "fence", "barrier", "rock face", "stone wall"],
     "door": ["door", "gate", "portal", "entrance", "exit", "arch"],
-    "decoration": ["torch", "lamp", "statue", "banner", "vase", "plant", "column", "fountain"],
+    "decoration": [
+        "torch",
+        "lamp",
+        "statue",
+        "banner",
+        "vase",
+        "plant",
+        "column",
+        "fountain",
+    ],
     "furniture": ["chair", "table", "bed", "throne", "bench", "altar"],
     "spawn": ["spawn", "hole", "nest", "lair", "teleport"],
     "liquid": ["water", "lava", "pool", "river", "sea", "ocean"],
@@ -118,6 +136,7 @@ def _extract_lxml(items_xml_path: str) -> dict:
 
 def _extract_stdlib(items_xml_path: str) -> dict:
     import xml.etree.ElementTree as ET
+
     try:
         tree = ET.parse(items_xml_path)
         root = tree.getroot()
@@ -207,7 +226,9 @@ def build_rag_context(items: list[dict]) -> str:
     lines = ["=== Datos enriquecidos de items.xml ==="]
     for item in items[:40]:
         lines.append(
-            f"{item['id']} | {item['name']} | category={item['category']} | theme={item['theme']} | biome={item['biome']} | usage={item['usage']}"
+            f"{item['id']} | {item['name']} | category={item['category']} "
+            f"| theme={item['theme']} | biome={item['biome']} "
+            f"| usage={item['usage']}"
         )
     if not items:
         lines.append("No se ha identificado contexto relevante de items.")
@@ -221,6 +242,7 @@ def _parse_xml_file(path: str):
         return tree.getroot()
     else:
         import xml.etree.ElementTree as ET
+
         return ET.parse(str(path)).getroot()
 
 

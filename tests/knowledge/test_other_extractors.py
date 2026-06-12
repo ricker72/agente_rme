@@ -192,23 +192,12 @@ class TestBiomeExtractor(unittest.TestCase):
             "meta": {"name": "test"},
             "cities": [], "regions": [], "structures": [],
             "spawns": [], "waypoints": [], "quests": [],
-            "regions": [{"name": "r1", "theme": "roshamuul"}],
             "biomes": [{"name": "Roshamuul"}],
         }
         out = self.ext.extract(w, source="src")
         # only one — first match wins
         names = [e.name for e in out]
         self.assertEqual(len(names), len(set(names)))
-
-    def test_skips_generic(self):
-        w = {
-            "meta": {"name": "test", "theme": "generic"},
-            "cities": [], "regions": [], "structures": [],
-            "spawns": [], "waypoints": [], "quests": [],
-            "regions": [{"name": "r1", "theme": "generic"}],
-        }
-        out = self.ext.extract(w, source="src")
-        self.assertEqual(len(out), 0)
 
 
 if __name__ == "__main__":

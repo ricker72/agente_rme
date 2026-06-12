@@ -1,22 +1,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional
 
 
 @dataclass
 class DifficultyProfile:
     """Difficulty profile for a single monster, zone, or the map."""
+
     entity_name: str = ""
-    difficulty_score: float = 0.0   # 0-100
+    difficulty_score: float = 0.0  # 0-100
     damage_dealt_min: int = 0
     damage_dealt_max: int = 0
-    damage_taken: int = 0            # combined damage from all monsters
+    damage_taken: int = 0  # combined damage from all monsters
     health_pool: int = 0
     average_hits_to_kill: float = 0.0
     kill_time_seconds: float = 0.0
     player_death_chance: float = 0.0
-    rating: str = ""                 # "trivial", "easy", "medium", "hard", "deadly", "impossible"
+    rating: str = ""  # "trivial", "easy", "medium", "hard", "deadly", "impossible"
     concerns: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -33,6 +34,7 @@ class DifficultyProfile:
 @dataclass
 class DifficultyAnalysis:
     """Complete difficulty analysis for a zone."""
+
     zone_name: str = ""
     overall_score: float = 0.0
     min_difficulty: float = 0.0
@@ -84,23 +86,28 @@ class DifficultyAnalyzer:
 
     # Player stat approximations for different levels
     PLAYER_STATS = {
-        (1, 20):     {"hp": 500,  "defense": 25,  "dps": 50,   "heal_per_sec": 30},
-        (20, 50):    {"hp": 1200, "defense": 50,  "dps": 150,  "heal_per_sec": 80},
-        (50, 100):   {"hp": 2500, "defense": 75,  "dps": 350,  "heal_per_sec": 150},
-        (100, 200):  {"hp": 4000, "defense": 100, "dps": 600,  "heal_per_sec": 300},
-        (200, 400):  {"hp": 6000, "defense": 130, "dps": 1000, "heal_per_sec": 500},
-        (400, 700):  {"hp": 8500, "defense": 160, "dps": 1500, "heal_per_sec": 800},
-        (700, 1000): {"hp": 11000, "defense": 190, "dps": 2000,"heal_per_sec": 1200},
-        (1000, 9999):{"hp": 15000,"defense": 220, "dps": 3000,"heal_per_sec": 2000},
+        (1, 20): {"hp": 500, "defense": 25, "dps": 50, "heal_per_sec": 30},
+        (20, 50): {"hp": 1200, "defense": 50, "dps": 150, "heal_per_sec": 80},
+        (50, 100): {"hp": 2500, "defense": 75, "dps": 350, "heal_per_sec": 150},
+        (100, 200): {"hp": 4000, "defense": 100, "dps": 600, "heal_per_sec": 300},
+        (200, 400): {"hp": 6000, "defense": 130, "dps": 1000, "heal_per_sec": 500},
+        (400, 700): {"hp": 8500, "defense": 160, "dps": 1500, "heal_per_sec": 800},
+        (700, 1000): {"hp": 11000, "defense": 190, "dps": 2000, "heal_per_sec": 1200},
+        (1000, 9999): {"hp": 15000, "defense": 220, "dps": 3000, "heal_per_sec": 2000},
     }
 
     # Monster stat templates (estimated from standard Tibia)
     MONSTER_TEMPLATES = {
-        "easy":     {"hp": 500,   "damage_min": 10,   "damage_max": 50,   "hit_chance": 0.3},
-        "medium":   {"hp": 2000,  "damage_min": 80,   "damage_max": 250,  "hit_chance": 0.4},
-        "hard":     {"hp": 5000,  "damage_min": 200,  "damage_max": 600,  "hit_chance": 0.5},
-        "very_hard":{"hp": 12000, "damage_min": 400,  "damage_max": 1200, "hit_chance": 0.6},
-        "boss":     {"hp": 50000, "damage_min": 800,  "damage_max": 2500, "hit_chance": 0.7},
+        "easy": {"hp": 500, "damage_min": 10, "damage_max": 50, "hit_chance": 0.3},
+        "medium": {"hp": 2000, "damage_min": 80, "damage_max": 250, "hit_chance": 0.4},
+        "hard": {"hp": 5000, "damage_min": 200, "damage_max": 600, "hit_chance": 0.5},
+        "very_hard": {
+            "hp": 12000,
+            "damage_min": 400,
+            "damage_max": 1200,
+            "hit_chance": 0.6,
+        },
+        "boss": {"hp": 50000, "damage_min": 800, "damage_max": 2500, "hit_chance": 0.7},
     }
 
     def __init__(self):
@@ -110,9 +117,13 @@ class DifficultyAnalyzer:
     # Public API
     # ------------------------------------------------------------------
 
-    def analyze_zone(self, zone_name: str, spawns: List[Dict[str, Any]],
-                     monster_difficulties: Optional[Dict[str, str]] = None,
-                     player_level: int = 150) -> DifficultyAnalysis:
+    def analyze_zone(
+        self,
+        zone_name: str,
+        spawns: List[Dict[str, Any]],
+        monster_difficulties: Optional[Dict[str, str]] = None,
+        player_level: int = 150,
+    ) -> DifficultyAnalysis:
         """
         Analyze the difficulty of a hunt zone.
 
@@ -140,7 +151,9 @@ class DifficultyAnalyzer:
             count = spawn.get("count", 1)
             difficulty_tag = monster_difficulties.get(monster_name, "medium")
 
-            template = self.MONSTER_TEMPLATES.get(difficulty_tag, self.MONSTER_TEMPLATES["medium"])
+            template = self.MONSTER_TEMPLATES.get(
+                difficulty_tag, self.MONSTER_TEMPLATES["medium"]
+            )
             monster_hp = template["hp"]
             dmg_min = template["damage_min"]
             dmg_max = template["damage_max"]
@@ -154,11 +167,15 @@ class DifficultyAnalyzer:
             avg_dmg = (dmg_min + dmg_max) / 2 * hit_chance
 
             # Difficulty score for this monster type
-            def_effective = player_stats["defense"]
+            player_stats["defense"]
             heal_per_sec = player_stats["heal_per_sec"]
-            damage_per_second = avg_dmg * count * 0.17  # ~17% of monsters active at once
+            damage_per_second = (
+                avg_dmg * count * 0.17
+            )  # ~17% of monsters active at once
             net_damage = max(0, damage_per_second - heal_per_sec)
-            time_to_die = player_stats["hp"] / max(net_damage, 1) if net_damage > 0 else 999
+            time_to_die = (
+                player_stats["hp"] / max(net_damage, 1) if net_damage > 0 else 999
+            )
 
             death_chance = max(0, min(1, 1.0 - (time_to_die / 60)))  # Death within 60s
 
@@ -199,17 +216,26 @@ class DifficultyAnalyzer:
         # Spawn density
         spawns_too_dense = len(spawns) > 15 and total_damage_per_round > 10000
 
-        overall = self._calc_overall_difficulty(difficulties, total_dps_to_player, player_stats)
+        overall = self._calc_overall_difficulty(
+            difficulties, total_dps_to_player, player_stats
+        )
         rating = self._rate_difficulty(overall, 0)
         recommended = self._recommend_level(overall)
 
-        has_deadly = any(p.rating == "impossible" or p.rating == "deadly" for p in monster_profiles.values())
+        has_deadly = any(
+            p.rating == "impossible" or p.rating == "deadly"
+            for p in monster_profiles.values()
+        )
         has_easy = any(p.rating == "trivial" for p in monster_profiles.values())
 
-        warnings = self._generate_warnings(overall, spread, spawns_too_dense, has_deadly, has_easy)
+        warnings = self._generate_warnings(
+            overall, spread, spawns_too_dense, has_deadly, has_easy
+        )
 
         # Auto-balance suggestions
-        suggestions = self._auto_balance(overall, recommended, spawns, monster_profiles, monster_difficulties)
+        suggestions = self._auto_balance(
+            overall, recommended, spawns, monster_profiles, monster_difficulties
+        )
 
         analysis = DifficultyAnalysis(
             zone_name=zone_name,
@@ -253,8 +279,13 @@ class DifficultyAnalyzer:
     # Scoring
     # ------------------------------------------------------------------
 
-    def _calc_difficulty_score(self, avg_damage: float, monster_hp: float,
-                                count: int, player_stats: Dict[str, float]) -> float:
+    def _calc_difficulty_score(
+        self,
+        avg_damage: float,
+        monster_hp: float,
+        count: int,
+        player_stats: Dict[str, float],
+    ) -> float:
         """Calculate difficulty score (0-100) for a monster type."""
         damage_ratio = avg_damage / max(player_stats["defense"], 1)
         hp_ratio = monster_hp / max(player_stats["hp"], 1)
@@ -263,9 +294,12 @@ class DifficultyAnalyzer:
         score = (damage_ratio * 25 + hp_ratio * 30) * density_factor
         return min(100, max(0, score))
 
-    def _calc_overall_difficulty(self, difficulties: List[float],
-                                  dps_to_player: float,
-                                  player_stats: Dict[str, float]) -> float:
+    def _calc_overall_difficulty(
+        self,
+        difficulties: List[float],
+        dps_to_player: float,
+        player_stats: Dict[str, float],
+    ) -> float:
         """Calculate overall zone difficulty."""
         if not difficulties:
             return 0.0
@@ -295,8 +329,9 @@ class DifficultyAnalyzer:
             return "easy"
         return "trivial"
 
-    def _get_concerns(self, difficulty: float, death_chance: float,
-                       count: int) -> List[str]:
+    def _get_concerns(
+        self, difficulty: float, death_chance: float, count: int
+    ) -> List[str]:
         """Get specific concerns about this monster type."""
         concerns = []
         if death_chance > 0.5:
@@ -327,9 +362,14 @@ class DifficultyAnalyzer:
             return 30
         return 1
 
-    def _generate_warnings(self, overall: float, spread: float,
-                           spawns_too_dense: bool, has_deadly: bool,
-                           has_easy: bool) -> List[str]:
+    def _generate_warnings(
+        self,
+        overall: float,
+        spread: float,
+        spawns_too_dense: bool,
+        has_deadly: bool,
+        has_easy: bool,
+    ) -> List[str]:
         """Generate zone-level warnings."""
         warnings = []
         if has_deadly:
@@ -343,16 +383,23 @@ class DifficultyAnalyzer:
         if overall > 85:
             warnings.append("Zone is nearly impossible; reduce monster stats")
         if spread > 40:
-            warnings.append(f"Large difficulty spread ({spread:.0f}); inconsistent experience")
+            warnings.append(
+                f"Large difficulty spread ({spread:.0f}); inconsistent experience"
+            )
         return warnings
 
     # ------------------------------------------------------------------
     # Auto-balance
     # ------------------------------------------------------------------
 
-    def _auto_balance(self, overall: float, recommended_level: int,
-                       spawns: List[Dict], profiles: Dict[str, DifficultyProfile],
-                       difficulties: Dict[str, str]) -> Dict[str, Any]:
+    def _auto_balance(
+        self,
+        overall: float,
+        recommended_level: int,
+        spawns: List[Dict],
+        profiles: Dict[str, DifficultyProfile],
+        difficulties: Dict[str, str],
+    ) -> Dict[str, Any]:
         """Generate auto-balance suggestions."""
         suggestions: Dict[str, Any] = {}
         adjustments: List[Dict[str, Any]] = []
@@ -365,12 +412,14 @@ class DifficultyAnalyzer:
                 if profile.difficulty_score > 70:
                     difficulty_tag = difficulties.get(monster_name, "medium")
                     new_tag = self._lower_difficulty(difficulty_tag)
-                    adjustments.append({
-                        "monster": monster_name,
-                        "current_difficulty": difficulty_tag,
-                        "suggested_difficulty": new_tag,
-                        "reason": "Too hard for recommended level",
-                    })
+                    adjustments.append(
+                        {
+                            "monster": monster_name,
+                            "current_difficulty": difficulty_tag,
+                            "suggested_difficulty": new_tag,
+                            "reason": "Too hard for recommended level",
+                        }
+                    )
 
         elif overall < 15:
             # Zone is too easy → increase difficulty
@@ -380,12 +429,14 @@ class DifficultyAnalyzer:
                 if profile.difficulty_score < 10:
                     difficulty_tag = difficulties.get(monster_name, "easy")
                     new_tag = self._raise_difficulty(difficulty_tag)
-                    adjustments.append({
-                        "monster": monster_name,
-                        "current_difficulty": difficulty_tag,
-                        "suggested_difficulty": new_tag,
-                        "reason": "Too easy for recommended level",
-                    })
+                    adjustments.append(
+                        {
+                            "monster": monster_name,
+                            "current_difficulty": difficulty_tag,
+                            "suggested_difficulty": new_tag,
+                            "reason": "Too easy for recommended level",
+                        }
+                    )
 
         else:
             suggestions["action"] = "none"

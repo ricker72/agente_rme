@@ -11,6 +11,7 @@ from .documentation_builder import DocumentationBuilder, DocumentationResult
 @dataclass
 class ReleaseResult:
     """Complete result of a release build."""
+
     name: str = ""
     version: str = ""
     package: PackageResult = field(default_factory=PackageResult)
@@ -52,14 +53,19 @@ class ReleaseBuilder:
     # Public API
     # ------------------------------------------------------------------
 
-    def build(self, name: str, otbm_bytes: Optional[bytes] = None,
-              map_data: Optional[Dict[str, Any]] = None,
-              version: str = "1.0.0", author: str = "RME AI",
-              lua_scripts: Optional[Dict[str, str]] = None,
-              xml_files: Optional[Dict[str, str]] = None,
-              preview_path: Optional[str] = None,
-              reports: Optional[Dict[str, Any]] = None,
-              changelog_entries: Optional[List[str]] = None) -> ReleaseResult:
+    def build(
+        self,
+        name: str,
+        otbm_bytes: Optional[bytes] = None,
+        map_data: Optional[Dict[str, Any]] = None,
+        version: str = "1.0.0",
+        author: str = "RME AI",
+        lua_scripts: Optional[Dict[str, str]] = None,
+        xml_files: Optional[Dict[str, str]] = None,
+        preview_path: Optional[str] = None,
+        reports: Optional[Dict[str, Any]] = None,
+        changelog_entries: Optional[List[str]] = None,
+    ) -> ReleaseResult:
         """
         Full release: build package + generate docs + create metadata.
 
@@ -104,7 +110,9 @@ class ReleaseBuilder:
         if reports is None:
             reports = {}
         reports["package.json"] = self.package_builder.create_metadata(
-            name, version, author,
+            name,
+            version,
+            author,
             description=f"RME generated expansion: {name} v{version}",
         )
 
@@ -120,11 +128,8 @@ class ReleaseBuilder:
 
         # Step 4: Build the final artifact list for summary
         total_files = len(package_result.files_created) + len(docs_result.files_created)
-        summary = (
-            f"Release '{name}' v{version}: "
-            f"{package_result.total_size_kb:.1f} KB package, "
-            f"{total_files} files total."
-        )
+        pkg_kb = package_result.total_size_kb
+        summary = f"Release '{name}' v{version}: {pkg_kb:.1f} KB package, {total_files} files total."
 
         return ReleaseResult(
             name=name,
@@ -134,8 +139,9 @@ class ReleaseBuilder:
             summary=summary,
         )
 
-    def build_minimal(self, name: str, otbm_bytes: bytes,
-                      map_data: Optional[Dict[str, Any]] = None) -> ReleaseResult:
+    def build_minimal(
+        self, name: str, otbm_bytes: bytes, map_data: Optional[Dict[str, Any]] = None
+    ) -> ReleaseResult:
         """
         Quick minimal release with default settings.
 
@@ -154,8 +160,9 @@ class ReleaseBuilder:
             version="1.0.0",
         )
 
-    def build_from_world_model(self, name: str, world_model: Any,
-                               version: str = "1.0.0") -> ReleaseResult:
+    def build_from_world_model(
+        self, name: str, world_model: Any, version: str = "1.0.0"
+    ) -> ReleaseResult:
         """
         Build release from a WorldModel object.
 
@@ -189,12 +196,21 @@ class ReleaseBuilder:
 
         # Build map_data from world_model
         map_data: Dict[str, Any] = {
-            "tiles": list(getattr(world_model, "tiles", {}).values())
-                    if hasattr(world_model, "tiles") else [],
-            "spawns": list(getattr(world_model, "spawns", []))
-                     if hasattr(world_model, "spawns") else [],
-            "towns": list(getattr(world_model, "towns", []))
-                    if hasattr(world_model, "towns") else [],
+            "tiles": (
+                list(getattr(world_model, "tiles", {}).values())
+                if hasattr(world_model, "tiles")
+                else []
+            ),
+            "spawns": (
+                list(getattr(world_model, "spawns", []))
+                if hasattr(world_model, "spawns")
+                else []
+            ),
+            "towns": (
+                list(getattr(world_model, "towns", []))
+                if hasattr(world_model, "towns")
+                else []
+            ),
         }
 
         return self.build(
@@ -208,8 +224,9 @@ class ReleaseBuilder:
     # Internal helpers
     # ------------------------------------------------------------------
 
-    def _generate_xml_from_map(self, map_data: Dict[str, Any],
-                                name: str) -> Dict[str, str]:
+    def _generate_xml_from_map(
+        self, map_data: Dict[str, Any], name: str
+    ) -> Dict[str, str]:
         """Generate XML files from map data."""
         xml: Dict[str, str] = {}
         spawns = map_data.get("spawns", [])
@@ -226,7 +243,9 @@ class ReleaseBuilder:
             monster_lines = []
             for mname in sorted(monsters.keys()):
                 monster_lines.append(f'  <monster name="{mname}" respawn="60" />')
-            xml["monster.xml"] = "<monsters>\n" + "\n".join(monster_lines) + "\n</monsters>\n"
+            xml["monster.xml"] = (
+                "<monsters>\n" + "\n".join(monster_lines) + "\n</monsters>\n"
+            )
 
         # NPC XML (minimal)
         towns = map_data.get("towns", [])
@@ -250,7 +269,7 @@ class ReleaseBuilder:
                 f'<zones>\n  <zone id="1" name="{name}">\n'
                 f'    <area x1="{min(xs)}" y1="{min(ys)}" '
                 f'x2="{max(xs)}" y2="{max(ys)}" z="{min(zs)}" />\n'
-                f'  </zone>\n</zones>\n'
+                f"  </zone>\n</zones>\n"
             )
 
         return xml
@@ -262,5 +281,6 @@ class ReleaseBuilder:
     def cleanup(self) -> None:
         """Remove all release packages."""
         import shutil
+
         if self.output_root.exists():
             shutil.rmtree(self.output_root)

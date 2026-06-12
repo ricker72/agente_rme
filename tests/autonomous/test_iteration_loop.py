@@ -1,12 +1,9 @@
 """Tests for the iterative design loop end-to-end."""
 
 import json
-import os
-import pytest
 
 from core.autonomous import AutonomousWorldDesigner
 from core.autonomous.models.design_iteration import DesignIteration
-from core.autonomous.models.design_result import DesignResult
 
 
 class TestIterationLoop:

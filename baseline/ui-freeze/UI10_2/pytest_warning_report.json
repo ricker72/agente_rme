@@ -1,0 +1,15 @@
+{
+  "audit": "UI-10.2 \u2014 Pytest Warning Report",
+  "branch": "release/ui-v1",
+  "total_warnings": 0,
+  "categories": {
+    "pyside_warnings": 0,
+    "deprecation_warnings": 0,
+    "resource_warnings": 0,
+    "thread_warnings": 0,
+    "other_warnings": 0
+  },
+  "warnings_list": [],
+  "status": "PASS \u2014 Zero warnings emitted",
+  "timestamp": "2026-06-11T22:00:00-06:00"
+}

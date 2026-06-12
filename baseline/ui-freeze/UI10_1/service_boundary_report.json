@@ -1,0 +1,107 @@
+{
+  "audit": "Service Boundary",
+  "audit_id": "AUDIT 3",
+  "service_files_analyzed": 14,
+  "services": {
+    "__init__.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": false,
+      "uses_dto": false,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "autonomous_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "base_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": false,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "campaign_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "critic_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "dashboard_data_provider.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": false,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "dashboard_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "knowledge_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "null_services.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": false,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "otbm_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "service_container.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": false,
+      "uses_dto": false,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "service_exceptions.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": false,
+      "uses_dto": false,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "service_registry.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": false,
+      "uses_dto": false,
+      "returns_raw_dict": false,
+      "issues": []
+    },
+    "world_service.py": {
+      "core_imports": [],
+      "has_protocol_or_abc": true,
+      "uses_dto": true,
+      "returns_raw_dict": false,
+      "issues": []
+    }
+  },
+  "total_issues": 0,
+  "status": "PASS"
+}

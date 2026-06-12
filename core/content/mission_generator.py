@@ -9,7 +9,7 @@ and area placement.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict
 
 from .quest_package import QuestPackage, RoomType
 from .map_designer import MapDesigner
@@ -22,72 +22,63 @@ _MISSION_TYPES: Dict[str, Dict[str, Any]] = {
         "reward_mult": 1.0,
         "enemy_count_base": 3,
         "description_template": (
-            "Chart unknown territory in {area}. "
-            "Discover hidden chambers and map all pathways."
+            "Chart unknown territory in {area}. Discover hidden chambers and map all pathways."
         ),
     },
     "rescue": {
         "reward_mult": 1.2,
         "enemy_count_base": 8,
         "description_template": (
-            "A captive is held in {area}. "
-            "Defeat the guards and escort the prisoner to safety."
+            "A captive is held in {area}. Defeat the guards and escort the prisoner to safety."
         ),
     },
     "combat": {
         "reward_mult": 1.5,
         "enemy_count_base": 15,
         "description_template": (
-            "Heavy enemy presence detected in {area}. "
-            "Eliminate hostiles and secure the zone."
+            "Heavy enemy presence detected in {area}. Eliminate hostiles and secure the zone."
         ),
     },
     "collection": {
         "reward_mult": 1.1,
         "enemy_count_base": 5,
         "description_template": (
-            "Ancient relics are scattered across {area}. "
-            "Gather them before the enemy does."
+            "Ancient relics are scattered across {area}. Gather them before the enemy does."
         ),
     },
     "escort": {
         "reward_mult": 1.3,
         "enemy_count_base": 10,
         "description_template": (
-            "An NPC must travel through dangerous {area}. "
-            "Protect them along the route."
+            "An NPC must travel through dangerous {area}. Protect them along the route."
         ),
     },
     "stealth": {
         "reward_mult": 1.4,
         "enemy_count_base": 6,
         "description_template": (
-            "Infiltrate {area} without being detected. "
-            "Retrieve the objective and escape."
+            "Infiltrate {area} without being detected. Retrieve the objective and escape."
         ),
     },
     "boss": {
         "reward_mult": 2.0,
         "enemy_count_base": 12,
         "description_template": (
-            "A powerful boss controls {area}. "
-            "Clear the path and defeat the boss."
+            "A powerful boss controls {area}. Clear the path and defeat the boss."
         ),
     },
     "lever": {
         "reward_mult": 1.3,
         "enemy_count_base": 7,
         "description_template": (
-            "Hidden mechanisms control access to {area}. "
-            "Find and activate the levers to progress."
+            "Hidden mechanisms control access to {area}. Find and activate the levers to progress."
         ),
     },
     "puzzle": {
         "reward_mult": 1.3,
         "enemy_count_base": 4,
         "description_template": (
-            "Ancient puzzles guard treasures in {area}. "
-            "Solve each challenge to claim the rewards."
+            "Ancient puzzles guard treasures in {area}. Solve each challenge to claim the rewards."
         ),
     },
 }
@@ -129,9 +120,7 @@ class MissionGenerator:
             A fully populated QuestPackage.
         """
         min_level, max_level = level_range
-        config = _MISSION_TYPES.get(
-            mission_type, _MISSION_TYPES["exploration"]
-        )
+        config = _MISSION_TYPES.get(mission_type, _MISSION_TYPES["exploration"])
 
         # Resolve area
         area = self.map_designer.select_mission_area(min_level, max_level)
@@ -176,9 +165,7 @@ class MissionGenerator:
         items = self.map_designer.select_rewards(min_level, count=item_count)
 
         # Enemy count
-        enemy_count = max(
-            config["enemy_count_base"], min_level // 12
-        )
+        enemy_count = max(config["enemy_count_base"], min_level // 12)
 
         name = f"{mission_type.title()} Mission: {area}"
         description = config["description_template"].format(area=area)
@@ -210,6 +197,8 @@ class MissionGenerator:
 
         logger.info(
             "Generated mission '%s' for levels %d-%d",
-            name, min_level, max_level,
+            name,
+            min_level,
+            max_level,
         )
         return package

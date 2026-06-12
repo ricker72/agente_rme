@@ -8,7 +8,7 @@ abilities, loot table, and encounter objectives.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Optional
 
 from .quest_package import QuestPackage, RoomType
 from .map_designer import MapDesigner
@@ -60,9 +60,7 @@ class BossGenerator:
         boss = self.map_designer.select_boss(min_level, boss_type)
 
         # Coordinates from lair
-        lair_hash = self.map_designer._deterministic_offset(
-            f"boss:{lair}", 500
-        )
+        lair_hash = self.map_designer._deterministic_offset(f"boss:{lair}", 500)
         wx = 3000 + lair_hash
         wy = 3000 + lair_hash * 2
         wz = 7
@@ -75,8 +73,11 @@ class BossGenerator:
         abilities = boss.get("abilities", [])
         objectives = [
             f"Navigate to the {lair} boss chamber",
-            f"Prepare for abilities: {', '.join(abilities)}" if abilities
-            else "Prepare for the encounter",
+            (
+                f"Prepare for abilities: {', '.join(abilities)}"
+                if abilities
+                else "Prepare for the encounter"
+            ),
             f"Defeat the {boss['name']}",
             "Claim the boss loot",
         ]
@@ -115,7 +116,9 @@ class BossGenerator:
 
         logger.info(
             "Generated boss encounter '%s' for levels %d-%d",
-            name, min_level, max_level,
+            name,
+            min_level,
+            max_level,
         )
         return package
 

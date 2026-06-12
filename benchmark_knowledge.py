@@ -8,7 +8,6 @@ queries to measure search throughput and memory footprint.
 from __future__ import annotations
 
 import json
-import os
 import random
 import sys
 import time
@@ -18,30 +17,59 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from core.knowledge import (
+from core.knowledge import (  # noqa: E402
     DatasetBuilder,
-    EntryType,
     KnowledgeEngine,
-    build_metrics,
 )
-from core.knowledge.knowledge_metrics import build_metrics
-
+from core.knowledge.knowledge_metrics import build_metrics  # noqa: E402
 
 THEMES = [
-    "roshamuul", "issavi", "yalahar", "venore", "thais",
-    "carlin", "edron", "darashia", "ankrahmun", "asura",
-    "krailos", "vippre", "hellgate", "orcsoberfest", "feyrist",
+    "roshamuul",
+    "issavi",
+    "yalahar",
+    "venore",
+    "thais",
+    "carlin",
+    "edron",
+    "darashia",
+    "ankrahmun",
+    "asura",
+    "krailos",
+    "vippre",
+    "hellgate",
+    "orcsoberfest",
+    "feyrist",
 ]
 HUNT_PREFIX = ["outer", "inner", "upper", "lower", "circular", "sewer", "lair"]
 BOSS_PREFIX = ["boss", "arena", "throne", "lair", "pit", "coliseum"]
 MONSTER_NAMES = [
-    "Guzzlemaw", "Hellflayer", "Demon", "Dragon Lord", "Grim Reaper",
-    "Frazzlemaw", "Lizard Guard", "Scarab", "Vampire", "Hydra",
+    "Guzzlemaw",
+    "Hellflayer",
+    "Demon",
+    "Dragon Lord",
+    "Grim Reaper",
+    "Frazzlemaw",
+    "Lizard Guard",
+    "Scarab",
+    "Vampire",
+    "Hydra",
 ]
 CITIES = [
-    "Issavi", "Roshamuul", "Yalahar", "Venore", "Thais",
-    "Carlin", "Edron", "Darashia", "Ankrahmun", "Asura",
-    "Feyrist", "Krailos", "Vippre", "Farmine", "Liberty Bay",
+    "Issavi",
+    "Roshamuul",
+    "Yalahar",
+    "Venore",
+    "Thais",
+    "Carlin",
+    "Edron",
+    "Darashia",
+    "Ankrahmun",
+    "Asura",
+    "Feyrist",
+    "Krailos",
+    "Vippre",
+    "Farmine",
+    "Liberty Bay",
 ]
 
 
@@ -132,12 +160,11 @@ def run_benchmark(n_maps: int = 100):
     q_t0 = time.perf_counter()
     total_q = 0
     for q in queries * 5:  # 35 queries
-        r = engine.query_text(q, k=10)
+        engine.query_text(q, k=10)
         total_q += 1
     q_t = (time.perf_counter() - q_t0) * 1000
     avg_ms = q_t / max(1, total_q)
-    print(f"[3/5] Ran {total_q} text queries in {q_t:.0f}ms "
-          f"({avg_ms:.2f}ms/query)")
+    print(f"[3/5] Ran {total_q} text queries in {q_t:.0f}ms ({avg_ms:.2f}ms/query)")
 
     # Find-similar queries
     s_t0 = time.perf_counter()
@@ -148,7 +175,7 @@ def run_benchmark(n_maps: int = 100):
 
     # Metrics
     m = build_metrics(ds)
-    print(f"[5/5] Metrics computed:")
+    print("[5/5] Metrics computed:")
     print(f"  Total entries: {m.total_entries}")
     print(f"  Coverage: {m.coverage_pct:.1f}%")
     print(f"  Avg quality: {m.avg_quality_score:.1f}")
@@ -171,6 +198,7 @@ def run_benchmark(n_maps: int = 100):
     print(f"Catalog saved to: {catalog_path}")
     report_path = out_dir / "knowledge_report.md"
     from core.knowledge import KnowledgeReport
+
     report = KnowledgeReport.build(ds, m, cat)
     report.write(str(report_path))
     print(f"Report saved to: {report_path}")
@@ -190,6 +218,7 @@ def run_benchmark(n_maps: int = 100):
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--n", type=int, default=100, help="Number of maps to process")
     args = parser.parse_args()

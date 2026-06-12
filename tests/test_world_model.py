@@ -81,15 +81,20 @@ class TestWorldModel:
 
     def test_add_structure(self, world):
         """add_structure registers a Structure."""
-        s = Structure(name="test_bp", category="temple",
-                      x=1000, y=1000, z=7, width=20, height=20)
+        s = Structure(
+            name="test_bp", category="temple", x=1000, y=1000, z=7, width=20, height=20
+        )
         world.add_structure(s)
         assert world.structure_count() == 1
 
     def test_get_structure_by_name(self, world):
         """get_structure finds by name."""
-        s1 = Structure(name="temple_a", category="temple", x=0, y=0, z=7, width=10, height=10)
-        s2 = Structure(name="temple_b", category="temple", x=10, y=0, z=7, width=10, height=10)
+        s1 = Structure(
+            name="temple_a", category="temple", x=0, y=0, z=7, width=10, height=10
+        )
+        s2 = Structure(
+            name="temple_b", category="temple", x=10, y=0, z=7, width=10, height=10
+        )
         world.add_structure(s1)
         world.add_structure(s2)
 
@@ -101,9 +106,15 @@ class TestWorldModel:
 
     def test_get_structures_by_category(self, world):
         """get_structures_by_category filters by category."""
-        world.add_structure(Structure(name="t1", category="temple", x=0, y=0, z=7, width=5, height=5))
-        world.add_structure(Structure(name="m1", category="market", x=0, y=0, z=7, width=5, height=5))
-        world.add_structure(Structure(name="t2", category="temple", x=0, y=0, z=7, width=5, height=5))
+        world.add_structure(
+            Structure(name="t1", category="temple", x=0, y=0, z=7, width=5, height=5)
+        )
+        world.add_structure(
+            Structure(name="m1", category="market", x=0, y=0, z=7, width=5, height=5)
+        )
+        world.add_structure(
+            Structure(name="t2", category="temple", x=0, y=0, z=7, width=5, height=5)
+        )
 
         temples = world.get_structures_by_category("temple")
         assert len(temples) == 2
@@ -163,7 +174,9 @@ class TestWorldModel:
     def test_clear(self, world):
         """clear removes everything."""
         world.set_tile(Tile(x=0, y=0, z=7))
-        world.add_structure(Structure(name="s", category="t", x=0, y=0, z=7, width=5, height=5))
+        world.add_structure(
+            Structure(name="s", category="t", x=0, y=0, z=7, width=5, height=5)
+        )
         world.add_region(Region(name="r", theme="g"))
         world.clear()
 
@@ -175,7 +188,9 @@ class TestWorldModel:
     def test_summary(self, world):
         """summary returns a structured dict."""
         world.set_tile(Tile(x=0, y=0, z=7))
-        world.add_structure(Structure(name="s", category="t", x=0, y=0, z=7, width=5, height=5))
+        world.add_structure(
+            Structure(name="s", category="t", x=0, y=0, z=7, width=5, height=5)
+        )
 
         summary = world.summary()
         assert "tiles" in summary
@@ -186,11 +201,12 @@ class TestWorldModel:
 
     def test_serialization_round_trip(self, world):
         """to_dict() + from_dict() should round-trip."""
-        import copy
 
         world.set_tile(Tile(x=10, y=20, z=7, ground=817))
         world.set_tile(Tile(x=11, y=20, z=7, ground=415))
-        world.add_structure(Structure(name="s1", category="temple", x=10, y=20, z=7, width=2, height=1))
+        world.add_structure(
+            Structure(name="s1", category="temple", x=10, y=20, z=7, width=2, height=1)
+        )
         world.add_region(Region(name="test", theme="issavi"))
 
         data = world.to_dict()

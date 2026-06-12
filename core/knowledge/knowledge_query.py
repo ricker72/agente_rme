@@ -21,7 +21,6 @@ from .models import (
     hybrid_similarity,
 )
 
-
 # Map of free-text hints -> EntryType
 _TYPE_HINTS: List[Tuple[List[str], EntryType]] = [
     (["city", "cities", "town", "village", "hub"], EntryType.CITY),
@@ -40,15 +39,33 @@ _TYPE_HINTS: List[Tuple[List[str], EntryType]] = [
 
 # Map of free-text hints -> biome
 _BIOME_HINTS = (
-    "desert", "jungle", "ice", "snow", "forest", "swamp", "cave",
-    "fire", "roshamuul", "issavi", "yalahar", "venore", "thais",
-    "ab'dendriel", "carlin", "ankrahmun", "darashia", "edron",
+    "desert",
+    "jungle",
+    "ice",
+    "snow",
+    "forest",
+    "swamp",
+    "cave",
+    "fire",
+    "roshamuul",
+    "issavi",
+    "yalahar",
+    "venore",
+    "thais",
+    "ab'dendriel",
+    "carlin",
+    "ankrahmun",
+    "darashia",
+    "edron",
 )
 
 # Map of free-text hints -> difficulty
 _DIFF_HINTS = {
-    "trivial": "trivial", "easy": "easy",
-    "medium": "medium", "hard": "hard", "extreme": "extreme",
+    "trivial": "trivial",
+    "easy": "easy",
+    "medium": "medium",
+    "hard": "hard",
+    "extreme": "extreme",
 }
 
 # Map of free-text hints -> structural
@@ -138,9 +155,24 @@ def parse_query(query: str) -> ParsedQuery:
     # Keywords: remove type / biome words
     keywords: List[str] = []
     for tok in re.findall(r"[A-Za-z][A-Za-z0-9_]+", lower):
-        if tok in ("level", "levels", "with", "and", "the", "a", "an",
-                   "of", "in", "to", "for", "biome", "route", "routes",
-                   "rooms", "room"):
+        if tok in (
+            "level",
+            "levels",
+            "with",
+            "and",
+            "the",
+            "a",
+            "an",
+            "of",
+            "in",
+            "to",
+            "for",
+            "biome",
+            "route",
+            "routes",
+            "rooms",
+            "room",
+        ):
             continue
         keywords.append(tok)
     return ParsedQuery(
@@ -208,18 +240,20 @@ class KnowledgeQuery:
                 # Discard pure-zero matches so "no match" queries return empty.
                 if score <= 0.0:
                     continue
-                result.add(QueryMatch(
-                    entry=e, score=float(score),
-                    match_type="text",
-                    explanation=self._explain(parsed, e),
-                ))
+                result.add(
+                    QueryMatch(
+                        entry=e,
+                        score=float(score),
+                        match_type="text",
+                        explanation=self._explain(parsed, e),
+                    )
+                )
         else:
             # Search across all indexers
             for et, idx in self.index._by_type.items():  # noqa: SLF001
                 if idx is None or len(idx) == 0:
                     continue
-                scored = idx.search(parsed.cleaned, k=k,
-                                    attrs=parsed.attrs)
+                scored = idx.search(parsed.cleaned, k=k, attrs=parsed.attrs)
                 for e, score in scored:
                     if e.entry_type != et:
                         continue
@@ -227,11 +261,14 @@ class KnowledgeQuery:
                         continue
                     if score <= 0.0:
                         continue
-                    result.add(QueryMatch(
-                        entry=e, score=float(score),
-                        match_type="text",
-                        explanation=self._explain(parsed, e),
-                    ))
+                    result.add(
+                        QueryMatch(
+                            entry=e,
+                            score=float(score),
+                            match_type="text",
+                            explanation=self._explain(parsed, e),
+                        )
+                    )
         result.sort()
         result.took_ms = (time.perf_counter() - t0) * 1000.0
         return result
@@ -265,7 +302,8 @@ class KnowledgeQuery:
             score = hybrid_similarity(
                 f"{entry_type.value} {biome or ''} {min_level or ''}",
                 entry.signature or entry.name,
-                q_attrs, entry.attributes,
+                q_attrs,
+                entry.attributes,
             )
             # Substring match boost
             if biome and biome.lower() in (entry.signature or "").lower():
@@ -274,11 +312,14 @@ class KnowledgeQuery:
                 score *= 0.5
             if max_level is not None and entry.min_level > max_level:
                 score *= 0.5
-            result.add(QueryMatch(
-                entry=entry, score=float(score),
-                match_type="filter",
-                explanation=f"entry_type={entry_type.value}",
-            ))
+            result.add(
+                QueryMatch(
+                    entry=entry,
+                    score=float(score),
+                    match_type="filter",
+                    explanation=f"entry_type={entry_type.value}",
+                )
+            )
         result.sort()
         result.matches = result.matches[:k]
         result.total = len(result.matches)
@@ -302,11 +343,14 @@ class KnowledgeQuery:
         for entry in indexer.entries:
             try:
                 if predicate(entry):
-                    result.add(QueryMatch(
-                        entry=entry, score=1.0,
-                        match_type="filter",
-                        explanation="user predicate",
-                    ))
+                    result.add(
+                        QueryMatch(
+                            entry=entry,
+                            score=1.0,
+                            match_type="filter",
+                            explanation="user predicate",
+                        )
+                    )
             except Exception:
                 continue
         result.matches = result.matches[:k]
@@ -337,16 +381,23 @@ class KnowledgeQuery:
     ) -> bool:
         if not self._passes_level(entry, parsed.min_level, parsed.max_level):
             return False
-        if parsed.biome and parsed.biome not in (entry.biome or "").lower() \
-                and parsed.biome not in (entry.signature or "").lower():
+        if (
+            parsed.biome
+            and parsed.biome not in (entry.biome or "").lower()
+            and parsed.biome not in (entry.signature or "").lower()
+        ):
             return False
-        if parsed.difficulty and \
-                (entry.attributes or {}).get("difficulty", "").lower() != parsed.difficulty:
+        if (
+            parsed.difficulty
+            and (entry.attributes or {}).get("difficulty", "").lower()
+            != parsed.difficulty
+        ):
             # Allow non-strict — still keep results
             pass
         for k, v in parsed.attrs.items():
-            if (entry.attributes or {}).get(k) != v and \
-                    v not in (entry.signature or "").lower():
+            if (entry.attributes or {}).get(k) != v and v not in (
+                entry.signature or ""
+            ).lower():
                 return False
         return True
 

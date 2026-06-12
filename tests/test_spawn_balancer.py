@@ -1,17 +1,20 @@
 from __future__ import annotations
 
-import pytest
-from typing import Dict, List
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
 from core.world.spawn import Spawn
 from core.world.region import Region
-from core.balance.spawn_balancer import SpawnBalancer, SpawnBalanceResult, SpawnAdjustment
+from core.balance.spawn_balancer import (
+    SpawnBalancer,
+    SpawnBalanceResult,
+    SpawnAdjustment,
+)
 
 
-def _build_world(zone_name: str, spawn_count: int,
-                 monster: str = "Dragon", zone_tiles: int = 30) -> WorldModel:
+def _build_world(
+    zone_name: str, spawn_count: int, monster: str = "Dragon", zone_tiles: int = 30
+) -> WorldModel:
     """Build a world with a given number of spawns in a region."""
     world = WorldModel()
     region = Region(name=zone_name, theme="test", min_level=100, max_level=200)
@@ -31,8 +34,7 @@ def _build_world(zone_name: str, spawn_count: int,
 
 def _count_spawns(world: WorldModel, zone_name: str) -> int:
     return sum(
-        1 for t in world.tiles.values()
-        if t.zone == zone_name and t.spawn is not None
+        1 for t in world.tiles.values() if t.zone == zone_name and t.spawn is not None
     )
 
 
@@ -203,8 +205,13 @@ class TestSpawnBalanceResult:
 
     def test_adjustment_to_dict(self):
         adj = SpawnAdjustment(
-            zone_name="test", action="add", monster="Dragon",
-            x=1, y=2, z=7, reason="test"
+            zone_name="test",
+            action="add",
+            monster="Dragon",
+            x=1,
+            y=2,
+            z=7,
+            reason="test",
         )
         d = adj.to_dict()
         assert d["zone_name"] == "test"

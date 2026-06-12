@@ -21,12 +21,11 @@ Statistics:
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from .otbm_parser import OtbmParser, OtbmParseError
-from .node_decoder import NodeDecoder, NodeDecodeError
+from .node_decoder import NodeDecoder
 from .tile_decoder import TileDecoder
 from .item_decoder import ItemDecoder
 from .world_builder import WorldBuilder, WorldBuildError
@@ -97,9 +96,7 @@ class OTBMImporter:
                 "map_info": {},
             }
 
-    def import_bytes(
-        self, data: bytes, source: str = "bytes"
-    ) -> Dict[str, Any]:
+    def import_bytes(self, data: bytes, source: str = "bytes") -> Dict[str, Any]:
         """
         Import OTBM data from bytes.
 
@@ -388,13 +385,21 @@ class OTBMImporter:
             "original_size": len(source_data),
             "exported_size": len(exported_data) if exported_data else 0,
             "tiles_match": (
-                import_result.get("stats", {}).get("tiles", 0) ==
-                self._count_tiles_in_bytes(exported_data)
-            ) if exported_data else False,
+                (
+                    import_result.get("stats", {}).get("tiles", 0)
+                    == self._count_tiles_in_bytes(exported_data)
+                )
+                if exported_data
+                else False
+            ),
             "spawns_match": (
-                import_result.get("stats", {}).get("spawns", 0) ==
-                self._count_spawns_in_bytes(exported_data)
-            ) if exported_data else False,
+                (
+                    import_result.get("stats", {}).get("spawns", 0)
+                    == self._count_spawns_in_bytes(exported_data)
+                )
+                if exported_data
+                else False
+            ),
         }
 
         if not export_success:
@@ -413,6 +418,7 @@ class OTBMImporter:
         if not data:
             return 0
         from .node_encoder import OTBM_NODE_TILE
+
         count = 0
         offset = 0
         while offset < len(data):
@@ -430,6 +436,7 @@ class OTBMImporter:
         if not data:
             return 0
         from .node_encoder import OTBM_NODE_MONSTER
+
         count = 0
         offset = 0
         while offset < len(data):

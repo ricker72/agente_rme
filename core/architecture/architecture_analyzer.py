@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -49,7 +48,9 @@ class ArchitectureAnalyzer:
                     self._structure_tiles(structure),
                     metadata=structure,
                 )
-                self.architecture_graph.add_structure(structure["type"], ["walls", "decorations", "exits"])
+                self.architecture_graph.add_structure(
+                    structure["type"], ["walls", "decorations", "exits"]
+                )
                 blueprints.append(blueprint)
 
         if getattr(analysis, "patterns", None):
@@ -67,7 +68,9 @@ class ArchitectureAnalyzer:
                         "height": pattern.get("height", 0),
                     },
                 )
-                self.architecture_graph.add_structure(category, ["floor", "walls", "decorations"])
+                self.architecture_graph.add_structure(
+                    category, ["floor", "walls", "decorations"]
+                )
                 blueprints.append(blueprint)
 
         return {
@@ -79,7 +82,7 @@ class ArchitectureAnalyzer:
         }
 
     def _guess_category_from_pattern(self, pattern: Dict[str, object]) -> str:
-        style = str(pattern.get("style", "unknown")).lower()
+        str(pattern.get("style", "unknown")).lower()
         width = int(pattern.get("width", 0) or 0)
         height = int(pattern.get("height", 0) or 0)
         if width >= 20 and height >= 20:
@@ -88,7 +91,11 @@ class ArchitectureAnalyzer:
             return "Market"
         if width <= 8 and height <= 8:
             return "House"
-        if "road" in pattern.get("source", "").lower() or width > height * 2 or height > width * 2:
+        if (
+            "road" in pattern.get("source", "").lower()
+            or width > height * 2
+            or height > width * 2
+        ):
             return "Road"
         return "Temple"
 
@@ -96,7 +103,11 @@ class ArchitectureAnalyzer:
         return {
             "map_size": getattr(analysis, "map_size", {}),
             "style": getattr(analysis, "style", "unknown"),
-            "tile_count": sum(getattr(analysis, "tiles", {}).values()) if getattr(analysis, "tiles", None) else 0,
+            "tile_count": (
+                sum(getattr(analysis, "tiles", {}).values())
+                if getattr(analysis, "tiles", None)
+                else 0
+            ),
             "houses": len(getattr(analysis, "houses", [])),
             "patterns": len(getattr(analysis, "patterns", [])),
         }

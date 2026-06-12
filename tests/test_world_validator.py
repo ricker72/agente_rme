@@ -6,8 +6,11 @@ Covers validation of tiles, spawns, items, structures, and chunks.
 import pytest
 
 from core.world import (
-    Tile, Item, Spawn, Structure, Region, WorldModel,
-    WorldValidator, WorldValidationResult,
+    Tile,
+    Structure,
+    WorldModel,
+    WorldValidator,
+    WorldValidationResult,
 )
 
 
@@ -25,8 +28,11 @@ class TestWorldValidator:
         w = WorldModel()
         w.set_tile(Tile(x=0, y=0, z=7, ground=817))
         w.set_tile(Tile(x=1, y=0, z=7, ground=415))
-        w.add_structure(Structure(name="temple", category="temple",
-                                  x=0, y=0, z=7, width=2, height=1))
+        w.add_structure(
+            Structure(
+                name="temple", category="temple", x=0, y=0, z=7, width=2, height=1
+            )
+        )
         return w
 
     def test_valid_world_passes(self, validator, valid_world):
@@ -84,7 +90,9 @@ class TestWorldValidator:
         """Structures with bad data should produce warnings."""
         w = WorldModel()
         # Structure with no name
-        w.add_structure(Structure(name="", category="t", x=0, y=0, z=7, width=5, height=5))
+        w.add_structure(
+            Structure(name="", category="t", x=0, y=0, z=7, width=5, height=5)
+        )
         result = validator.validate(w)
         assert result.passed
         assert any("no name" in w.lower() for w in result.warnings)
@@ -92,14 +100,18 @@ class TestWorldValidator:
     def test_structure_negative_position(self, validator):
         """Structure with negative position should warn."""
         w = WorldModel()
-        w.add_structure(Structure(name="s", category="t", x=-10, y=-10, z=7, width=5, height=5))
+        w.add_structure(
+            Structure(name="s", category="t", x=-10, y=-10, z=7, width=5, height=5)
+        )
         result = validator.validate(w)
         assert any("negative" in w.lower() for w in result.warnings)
 
     def test_structure_non_positive_dimensions(self, validator):
         """Structure with non-positive dimensions should warn."""
         w = WorldModel()
-        w.add_structure(Structure(name="s", category="t", x=0, y=0, z=7, width=0, height=5))
+        w.add_structure(
+            Structure(name="s", category="t", x=0, y=0, z=7, width=0, height=5)
+        )
         result = validator.validate(w)
         assert any("non-positive" in w.lower() for w in result.warnings)
 
@@ -134,11 +146,10 @@ class TestWorldValidator:
 
     def test_large_tile_count_warning(self, validator):
         """Very large worlds produce a warning."""
-        w = WorldModel()
+        WorldModel()
         # This would be too many, but we just check the count field
         # No need to actually create 10M tiles - the count is derived
         # so this would only happen if the count is wrong.
-        pass
 
     def test_definition_of_success_integration(self):
         """Integration: the exact pattern from the task spec works."""

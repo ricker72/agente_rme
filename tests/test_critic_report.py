@@ -11,8 +11,12 @@ import unittest
 
 from core.critic import CriticResult, CriticReport, CriticReportGenerator
 from core.critic.models import (
-    CriticScore, CriticIssue, CriticRecommendation,
-    IssueType, IssueSeverity, RecommendationPriority,
+    CriticScore,
+    CriticIssue,
+    CriticRecommendation,
+    IssueType,
+    IssueSeverity,
+    RecommendationPriority,
 )
 
 
@@ -46,7 +50,6 @@ def _make_sample_result() -> CriticResult:
 
 
 class CriticReportTests(unittest.TestCase):
-
     def test_to_dict(self):
         r = _make_sample_result()
         report = CriticReport(result=r, generated_at="2026-06-08T00:00:00Z")
@@ -105,7 +108,7 @@ class CriticReportTests(unittest.TestCase):
         self.assertTrue(report.generated_at)
         self.assertEqual(report.version, CriticReportGenerator.VERSION)
         with tempfile.TemporaryDirectory() as tmp:
-            report2 = gen.build_and_save(_make_sample_result(), tmp, base_name="x")
+            gen.build_and_save(_make_sample_result(), tmp, base_name="x")
             self.assertTrue(os.path.exists(os.path.join(tmp, "x.json")))
             self.assertTrue(os.path.exists(os.path.join(tmp, "x.md")))
             self.assertTrue(os.path.exists(os.path.join(tmp, "x_metrics.json")))

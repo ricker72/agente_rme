@@ -1,4 +1,5 @@
 """Replace datetime.utcnow() with datetime.now(timezone.utc) in project files."""
+
 import os
 import re
 

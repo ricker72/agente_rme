@@ -1,0 +1,9 @@
+{
+  "audit": "UI-10.2 — Import Boundary Recheck",
+  "branch": "release/ui-v1",
+  "check": "No core/agent imports in ui/pages, ui/widgets, ui/services, ui/models",
+  "result": "PASS",
+  "matches_found": 0,
+  "scanned_directories": ["ui/pages", "ui/widgets", "ui/services", "ui/models"],
+  "timestamp": "2026-06-11T21:59:00-06:00"
+}

@@ -1,5 +1,5 @@
 """
-HITO 18 — Tests for :mod:`agente_rme.core.designer.decision_engine`.
+HITO 18 â€” Tests for :mod:`agente_rme.core.designer.decision_engine`.
 
 Covers prompt parsing, level range detection, style detection, theme
 sequence generation, count estimation and the registry-bias path.
@@ -7,16 +7,13 @@ sequence generation, count estimation and the registry-bias path.
 
 from __future__ import annotations
 
-import re
 import unittest
 from typing import List
 
-from agente_rme.core.designer import (
+from core.designer import (
     DecisionEngine,
-    DesignDecision,
     DesignGoal,
     THEME_CATALOG,
-    STYLE_THEME_SEQUENCES,
     difficulty_for_level,
     layout_for_zone_count,
 )
@@ -45,7 +42,7 @@ class TestDecisionEnginePromptParsing(unittest.TestCase):
         self.assertEqual(goal.max_level, 80)
 
     def test_level_range_en_dash(self) -> None:
-        goal = self.engine.parse_goal("levels 50–200")
+        goal = self.engine.parse_goal("levels 50â€“200")
         self.assertEqual(goal.min_level, 50)
         self.assertEqual(goal.max_level, 200)
 
@@ -54,7 +51,7 @@ class TestDecisionEnginePromptParsing(unittest.TestCase):
         self.assertEqual(goal.target_size, (512, 512))
 
     def test_size_with_x_mark(self) -> None:
-        goal = self.engine.parse_goal("map 256×256 level 1-50")
+        goal = self.engine.parse_goal("map 256Ã—256 level 1-50")
         self.assertEqual(goal.target_size, (256, 256))
 
     def test_default_size_heuristic(self) -> None:
@@ -103,7 +100,9 @@ class TestDecisionEnginePromptParsing(unittest.TestCase):
         )
 
     def test_unknown_style_falls_back_to_mixed(self) -> None:
-        self.assertEqual(self.engine.parse_goal("random gibberish level 1-50").style, "mixed")
+        self.assertEqual(
+            self.engine.parse_goal("random gibberish level 1-50").style, "mixed"
+        )
 
     # ------------------------------------------------------------------
     # Difficulty curve
@@ -180,8 +179,12 @@ class TestDecisionEngineThemeSequence(unittest.TestCase):
     def test_world_layout_selected(self) -> None:
         decision_small = self.engine.decide("tiny map level 1-5")
         decision_huge = self.engine.decide("huge map level 1-2000")
-        self.assertIn(decision_small.world_layout, ("linear", "organic", "radial", "grid"))
-        self.assertIn(decision_huge.world_layout, ("linear", "organic", "radial", "grid"))
+        self.assertIn(
+            decision_small.world_layout, ("linear", "organic", "radial", "grid")
+        )
+        self.assertIn(
+            decision_huge.world_layout, ("linear", "organic", "radial", "grid")
+        )
 
 
 class TestDecisionEngineCounts(unittest.TestCase):
@@ -239,9 +242,7 @@ class TestDecisionEngineRegistryBias(unittest.TestCase):
         engine = DecisionEngine(blueprint_registry=FakeRegistry())
         decision = engine.decide("map level 1-200")
         # Both "ice" and "temple" are in the registry and in THEME_CATALOG
-        self.assertTrue(
-            any(t in ("ice", "temple") for t in decision.theme_sequence)
-        )
+        self.assertTrue(any(t in ("ice", "temple") for t in decision.theme_sequence))
 
     def test_no_registry_uses_defaults(self) -> None:
         engine = DecisionEngine(blueprint_registry=None)

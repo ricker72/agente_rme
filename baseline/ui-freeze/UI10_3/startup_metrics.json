@@ -1,0 +1,14 @@
+{
+  "application_import_time_ms": 0.02,
+  "command": "from ui import RMEStudioApp; app=RMEStudioApp(); print('startup ok')",
+  "command_exit_code": 0,
+  "command_stderr": "",
+  "command_stdout": "startup ok",
+  "first_render_readiness_time_ms": 33.924,
+  "main_window_creation_time_ms": 62.501,
+  "no_traceback": true,
+  "qapplication_creation_time_ms": 17.363,
+  "ready": true,
+  "startup_command_time_ms": 934.101,
+  "status": "PASS"
+}

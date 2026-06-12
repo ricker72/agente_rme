@@ -178,8 +178,15 @@ class TestQuestGenerator:
 
     def test_all_quest_types_valid(self, generator):
         """All quest types should produce valid packages."""
-        for qtype in ("exploration", "combat", "rescue", "collection",
-                       "lever", "puzzle", "boss"):
+        for qtype in (
+            "exploration",
+            "combat",
+            "rescue",
+            "collection",
+            "lever",
+            "puzzle",
+            "boss",
+        ):
             pkg = generator.generate(level_range=(50, 100), quest_type=qtype)
             assert pkg.is_valid(), (
                 f"Quest type '{qtype}' failed validation: {pkg.validate()}"

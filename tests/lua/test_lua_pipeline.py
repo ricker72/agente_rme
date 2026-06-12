@@ -17,10 +17,6 @@ syntax, and exports both monsters and spawns.
 
 import os
 import sys
-import tempfile
-import re
-import pytest
-from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -33,7 +29,6 @@ from core.spawn.spawn_generator import (
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
 from core.world.spawn import Spawn
-
 
 # ----------------------------------------------------------------------
 # Helpers
@@ -77,10 +72,15 @@ class TestLuaPipeline:
         world = WorldModel()
         for x in range(3):
             for y in range(3):
-                world.set_tile(Tile(
-                    x=x, y=y, z=7, ground=106,
-                    spawn=Spawn(monster=f"Mob_{x}_{y}", respawn=60, radius=5),
-                ))
+                world.set_tile(
+                    Tile(
+                        x=x,
+                        y=y,
+                        z=7,
+                        ground=106,
+                        spawn=Spawn(monster=f"Mob_{x}_{y}", respawn=60, radius=5),
+                    )
+                )
 
         gen = LuaGenerator()
         script = gen.generate(world)
@@ -111,7 +111,9 @@ class TestLuaPipeline:
                 SpawnEntry(x=0, y=0, z=7, monster_name="Skeleton", interval=60),
                 SpawnEntry(x=1, y=0, z=7, monster_name="Demon", interval=60),
             ],
-            boss_spawn=SpawnEntry(x=2, y=0, z=7, monster_name="Orshabaal", interval=600),
+            boss_spawn=SpawnEntry(
+                x=2, y=0, z=7, monster_name="Orshabaal", interval=600
+            ),
         )
 
         gen = LuaGenerator()
@@ -135,15 +137,25 @@ class TestLuaPipeline:
         for x in range(5):
             for y in range(5):
                 m_idx = (x + y) % len(monsters)
-                world.set_tile(Tile(
-                    x=x, y=y, z=7, ground=106,
-                    spawn=Spawn(monster=monsters[m_idx], respawn=60, radius=5),
-                ))
+                world.set_tile(
+                    Tile(
+                        x=x,
+                        y=y,
+                        z=7,
+                        ground=106,
+                        spawn=Spawn(monster=monsters[m_idx], respawn=60, radius=5),
+                    )
+                )
         # Replace one tile with a boss
-        world.set_tile(Tile(
-            x=2, y=2, z=7, ground=106,
-            spawn=Spawn(monster="MegaBoss", respawn=600, radius=8),
-        ))
+        world.set_tile(
+            Tile(
+                x=2,
+                y=2,
+                z=7,
+                ground=106,
+                spawn=Spawn(monster="MegaBoss", respawn=600, radius=8),
+            )
+        )
 
         gen = LuaGenerator()
         script = gen.generate(world)
@@ -172,17 +184,27 @@ class TestLuaPipeline:
         # Issavi zone (ground 406)
         for x in range(3):
             for y in range(3):
-                world.set_tile(Tile(
-                    x=100 + x, y=100 + y, z=7, ground=406,
-                    spawn=Spawn(monster="Frazzlemaw", respawn=60, radius=5),
-                ))
+                world.set_tile(
+                    Tile(
+                        x=100 + x,
+                        y=100 + y,
+                        z=7,
+                        ground=406,
+                        spawn=Spawn(monster="Frazzlemaw", respawn=60, radius=5),
+                    )
+                )
         # Roshamuul zone (ground 319)
         for x in range(3):
             for y in range(3):
-                world.set_tile(Tile(
-                    x=200 + x, y=200 + y, z=7, ground=319,
-                    spawn=Spawn(monster="Demon", respawn=60, radius=5),
-                ))
+                world.set_tile(
+                    Tile(
+                        x=200 + x,
+                        y=200 + y,
+                        z=7,
+                        ground=319,
+                        spawn=Spawn(monster="Demon", respawn=60, radius=5),
+                    )
+                )
 
         gen = LuaGenerator()
         script = gen.generate(world, map_name="IssaviRoshamuul")
@@ -217,19 +239,29 @@ class TestLuaPipeline:
         # 5x5 grid of mixed monsters
         for x in range(5):
             for y in range(5):
-                world.set_tile(Tile(
-                    x=x, y=y, z=7, ground=106,
-                    spawn=Spawn(
-                        monster="Crypt Warden" if (x + y) % 2 == 0 else "Skeleton",
-                        respawn=60,
-                        radius=5,
-                    ),
-                ))
+                world.set_tile(
+                    Tile(
+                        x=x,
+                        y=y,
+                        z=7,
+                        ground=106,
+                        spawn=Spawn(
+                            monster="Crypt Warden" if (x + y) % 2 == 0 else "Skeleton",
+                            respawn=60,
+                            radius=5,
+                        ),
+                    )
+                )
         # Add a boss in the middle
-        world.set_tile(Tile(
-            x=2, y=2, z=7, ground=106,
-            spawn=Spawn(monster="Orshabaal", respawn=600, radius=10),
-        ))
+        world.set_tile(
+            Tile(
+                x=2,
+                y=2,
+                z=7,
+                ground=106,
+                spawn=Spawn(monster="Orshabaal", respawn=600, radius=10),
+            )
+        )
 
         gen = LuaGenerator()
         # Both call patterns must work
@@ -257,10 +289,15 @@ class TestSpawnDerivationInPipeline:
     def test_auto_plan_uses_world_spawns(self):
         world = WorldModel()
         for i in range(4):
-            world.set_tile(Tile(
-                x=i, y=0, z=7, ground=106,
-                spawn=Spawn(monster=f"AutoMob{i}", respawn=60, radius=5),
-            ))
+            world.set_tile(
+                Tile(
+                    x=i,
+                    y=0,
+                    z=7,
+                    ground=106,
+                    spawn=Spawn(monster=f"AutoMob{i}", respawn=60, radius=5),
+                )
+            )
 
         gen = LuaGenerator()
         # No spawn_plan provided — auto-fallback must build one
@@ -274,14 +311,24 @@ class TestSpawnDerivationInPipeline:
 
     def test_auto_plan_with_boss(self):
         world = WorldModel()
-        world.set_tile(Tile(
-            x=0, y=0, z=7, ground=106,
-            spawn=Spawn(monster="Orshabaal", respawn=600, radius=10),
-        ))
-        world.set_tile(Tile(
-            x=1, y=0, z=7, ground=106,
-            spawn=Spawn(monster="Skeleton", respawn=60, radius=5),
-        ))
+        world.set_tile(
+            Tile(
+                x=0,
+                y=0,
+                z=7,
+                ground=106,
+                spawn=Spawn(monster="Orshabaal", respawn=600, radius=10),
+            )
+        )
+        world.set_tile(
+            Tile(
+                x=1,
+                y=0,
+                z=7,
+                ground=106,
+                spawn=Spawn(monster="Skeleton", respawn=60, radius=5),
+            )
+        )
 
         gen = LuaGenerator()
         script = gen.generate(world)
@@ -294,15 +341,25 @@ class TestSpawnDerivationInPipeline:
         world = WorldModel()
         for i in range(3):
             for j in range(3):
-                world.set_tile(Tile(
-                    x=i, y=j, z=7, ground=106,
-                    spawn=Spawn(monster="Skeleton", respawn=60, radius=5),
-                ))
+                world.set_tile(
+                    Tile(
+                        x=i,
+                        y=j,
+                        z=7,
+                        ground=106,
+                        spawn=Spawn(monster="Skeleton", respawn=60, radius=5),
+                    )
+                )
         # Add a boss
-        world.set_tile(Tile(
-            x=1, y=1, z=7, ground=106,
-            spawn=Spawn(monster="Boss", respawn=600, radius=10),
-        ))
+        world.set_tile(
+            Tile(
+                x=1,
+                y=1,
+                z=7,
+                ground=106,
+                spawn=Spawn(monster="Boss", respawn=600, radius=10),
+            )
+        )
 
         # Build a SpawnPlan via the generator
         sg = SpawnGenerator()

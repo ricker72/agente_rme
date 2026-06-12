@@ -39,9 +39,7 @@ class WorldModelToOTBM:
         # Pre-serialization validation
         pre_report = self.validator.validate_world_model(world_model)
         if pre_report.status == "failure":
-            raise ValueError(
-                f"WorldModel validation failed: {pre_report.errors}"
-            )
+            raise ValueError(f"WorldModel validation failed: {pre_report.errors}")
 
         return self.serializer.serialize(world_model)
 
@@ -68,11 +66,10 @@ class WorldModelToOTBM:
         # Post-serialization validation
         post_report = self.validator.validate(content)
         if post_report.status == "failure":
-            raise ValueError(
-                f"OTBM binary validation failed: {post_report.errors}"
-            )
+            raise ValueError(f"OTBM binary validation failed: {post_report.errors}")
         if post_report.warnings:
             import warnings
+
             for w in post_report.warnings:
                 warnings.warn(f"OTBM: {w}")
 
@@ -119,8 +116,6 @@ class OtbmWriter:
         converter = WorldModelToOTBM()
         return converter.save(world_model, destination, generate_templates)
 
-    def write_templates(
-        self, world_model: Any, destination_dir: str | Path
-    ) -> None:
+    def write_templates(self, world_model: Any, destination_dir: str | Path) -> None:
         """Write house/monster/npc/zone XML files only."""
         self.templates.write_all_files(world_model, destination_dir)

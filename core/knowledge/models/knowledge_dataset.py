@@ -171,13 +171,19 @@ class KnowledgeDataset:
         ds = cls()
         ds.cities = [KnowledgeEntry.from_dict(d) for d in data.get("cities", []) or []]
         ds.hunts = [KnowledgeEntry.from_dict(d) for d in data.get("hunts", []) or []]
-        ds.boss_rooms = [KnowledgeEntry.from_dict(d) for d in data.get("boss_rooms", []) or []]
+        ds.boss_rooms = [
+            KnowledgeEntry.from_dict(d) for d in data.get("boss_rooms", []) or []
+        ]
         ds.raids = [KnowledgeEntry.from_dict(d) for d in data.get("raids", []) or []]
         ds.quests = [KnowledgeEntry.from_dict(d) for d in data.get("quests", []) or []]
-        ds.regions = [KnowledgeEntry.from_dict(d) for d in data.get("regions", []) or []]
+        ds.regions = [
+            KnowledgeEntry.from_dict(d) for d in data.get("regions", []) or []
+        ]
         ds.biomes = [KnowledgeEntry.from_dict(d) for d in data.get("biomes", []) or []]
         ds.spawns = [KnowledgeEntry.from_dict(d) for d in data.get("spawns", []) or []]
-        ds.waypoints = [KnowledgeEntry.from_dict(d) for d in data.get("waypoints", []) or []]
+        ds.waypoints = [
+            KnowledgeEntry.from_dict(d) for d in data.get("waypoints", []) or []
+        ]
         meta = data.get("_meta", {}) or {}
         ds.created_at = meta.get("created_at", ds.created_at)
         ds.sources = list(meta.get("sources", []) or [])
@@ -208,8 +214,8 @@ class KnowledgeDataset:
             EntryType.SPAWN: self.spawns,
             EntryType.WAYPOINT: self.waypoints,
             EntryType.STRUCTURE: self.regions,  # structures index as regions
-            EntryType.DUNGEON: self.regions,    # dungeons index as regions
-            EntryType.NPC: self.cities,         # npcs grouped with cities
+            EntryType.DUNGEON: self.regions,  # dungeons index as regions
+            EntryType.NPC: self.cities,  # npcs grouped with cities
         }[entry_type]
 
     def _all_buckets(self) -> List[List[KnowledgeEntry]]:

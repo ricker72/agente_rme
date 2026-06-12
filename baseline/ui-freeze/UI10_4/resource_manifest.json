@@ -1,0 +1,56 @@
+{
+  "audit": "UI-10.4 resource discovery",
+  "baseline_artifacts_bundled": false,
+  "generated_at": "2026-06-12T05:52:01+00:00",
+  "missing_optional": [
+    "VERSION"
+  ],
+  "missing_required": [],
+  "qss_theme_files": [],
+  "resources": [
+    {
+      "bundled_destination": "assets/images",
+      "exists": true,
+      "path": "assets/images/rme_agent_ai_banner.png",
+      "required": true,
+      "type": "png"
+    },
+    {
+      "bundled_destination": "recursos",
+      "exists": true,
+      "path": "recursos/favicon.ico",
+      "required": true,
+      "type": "icon"
+    },
+    {
+      "bundled_destination": ".",
+      "exists": true,
+      "path": "config.json",
+      "required": true,
+      "type": "config"
+    },
+    {
+      "bundled_destination": ".",
+      "exists": true,
+      "path": "pyproject.toml",
+      "required": true,
+      "type": "metadata"
+    },
+    {
+      "bundled_destination": ".",
+      "exists": true,
+      "path": "requirements-lock.txt",
+      "required": true,
+      "type": "metadata"
+    },
+    {
+      "bundled_destination": null,
+      "exists": false,
+      "path": "VERSION",
+      "required": false,
+      "type": "metadata"
+    }
+  ],
+  "status": "PASS",
+  "theme_strategy": "Code-based theme in ui/theme.py; no QSS files required."
+}

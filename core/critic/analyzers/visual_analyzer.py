@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import logging
 from collections import Counter
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from core.world.world_model import WorldModel
 
@@ -34,19 +34,26 @@ class VisualAnalyzer:
 
     CATEGORY = "visual"
 
-    def __init__(self,
-                 min_tiles: int = 50,
-                 ideal_tiles: int = 5000,
-                 ideal_ground_variety: int = 5):
+    def __init__(
+        self,
+        min_tiles: int = 50,
+        ideal_tiles: int = 5000,
+        ideal_ground_variety: int = 5,
+    ):
         self.min_tiles = min_tiles
         self.ideal_tiles = ideal_tiles
         self.ideal_ground_variety = ideal_ground_variety
 
-    def analyze(self, world: WorldModel,
-                preview_path: Optional[str] = None) -> Dict[str, Any]:
+    def analyze(
+        self, world: WorldModel, preview_path: Optional[str] = None
+    ) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snapshots = build_snapshots(world)
@@ -65,13 +72,19 @@ class VisualAnalyzer:
         if total >= self.ideal_tiles:
             quantity_score = 100.0
         elif total >= self.min_tiles:
-            quantity_score = (total - self.min_tiles) / (self.ideal_tiles - self.min_tiles) * 100.0
+            quantity_score = (
+                (total - self.min_tiles) / (self.ideal_tiles - self.min_tiles) * 100.0
+            )
         else:
             quantity_score = total / max(self.min_tiles, 1) * 60.0
 
         # 2. Useful content: tiles with ground + items OR spawn
         grounded = [s for s in snapshots if s.ground is not None]
-        useful = [s for s in snapshots if s.ground is not None and (s.item_count > 0 or s.has_spawn)]
+        useful = [
+            s
+            for s in snapshots
+            if s.ground is not None and (s.item_count > 0 or s.has_spawn)
+        ]
         content_ratio = safe_ratio(len(useful), len(grounded))
 
         # 3. Visual density: items per tile (saturating)
@@ -135,32 +148,40 @@ class VisualAnalyzer:
         recs: List = []
 
         if total < self.min_tiles:
-            issues.append(CriticIssue(
-                issue_type=IssueType.EMPTY_REGION,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Map has only {total} tiles (minimum {self.min_tiles})",
-            ))
-            recs.append(CriticRecommendation(
-                title="Add more tiles",
-                description=f"The map has only {total} tiles. Consider expanding or generating more content.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.EMPTY_REGION,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Map has only {total} tiles (minimum {self.min_tiles})",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Add more tiles",
+                    description=f"The map has only {total} tiles. Consider expanding or generating more content.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         if content_ratio < 0.30 and total > 10:
-            issues.append(CriticIssue(
-                issue_type=IssueType.UNDERDECORATED_AREA,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                message=f"Only {content_ratio*100:.0f}% of ground tiles have content",
-            ))
-            recs.append(CriticRecommendation(
-                title="Add visual content",
-                description="Large portions of the map are visually empty. Add items, spawns or decoration.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.UNDERDECORATED_AREA,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    message=f"Only {content_ratio * 100:.0f}% of ground tiles have content",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title="Add visual content",
+                    description="Large portions of the map are visually empty. Add items, spawns or decoration.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                )
+            )
 
         return {
             "category": self.CATEGORY,

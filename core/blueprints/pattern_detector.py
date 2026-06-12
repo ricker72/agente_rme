@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 @dataclass
 class Pattern:
     """Un patron constructivo detectado."""
+
     pattern_type: str  # "wall", "floor", "decoration_cluster", "spawn_cluster", "room", "corridor", "entrance"
     bounds: Tuple[int, int, int, int]  # (min_x, min_y, max_x, max_y)
     confidence: float  # 0.0 - 1.0
@@ -54,16 +55,58 @@ class PatternDetector:
 
     # Muro IDs (referencia rapida)
     WALL_IDS: Set[int] = {
-        101, 102, 103, 104, 105, 106, 107, 108, 109, 110,
-        1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009,
-        2100, 2101, 2102, 2103, 2104, 2105,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        1000,
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        2100,
+        2101,
+        2102,
+        2103,
+        2104,
+        2105,
     }
 
     # Puerta IDs
     DOOR_IDS: Set[int] = {
-        1209, 1210, 1211, 1212, 1213, 1214, 1215, 1216, 1217,
-        1220, 1221, 1222, 1223, 1224, 1225,
-        5000, 5001, 5002, 5003, 5004, 5005, 5006,
+        1209,
+        1210,
+        1211,
+        1212,
+        1213,
+        1214,
+        1215,
+        1216,
+        1217,
+        1220,
+        1221,
+        1222,
+        1223,
+        1224,
+        1225,
+        5000,
+        5001,
+        5002,
+        5003,
+        5004,
+        5005,
+        5006,
     }
 
     def detect(
@@ -151,27 +194,34 @@ class PatternDetector:
 
                     # Validar que parece una habitacion
                     if 3 <= width <= 50 and 3 <= height <= 50:
-                        patterns.append(Pattern(
-                            pattern_type="room",
-                            bounds=bounds,
-                            confidence=min(0.9, len(cluster) / 20.0),
-                            tile_ids=sorted(set(
-                                t.get("ground", 0) for t in tiles
-                                if bounds[0] <= t.get("x", 0) <= bounds[2]
-                                and bounds[1] <= t.get("y", 0) <= bounds[3]
-                            )),
-                            description=f"Room {i+1}: {width}x{height} tiles, {len(cluster)} walls",
-                        ))
+                        patterns.append(
+                            Pattern(
+                                pattern_type="room",
+                                bounds=bounds,
+                                confidence=min(0.9, len(cluster) / 20.0),
+                                tile_ids=sorted(
+                                    set(
+                                        t.get("ground", 0)
+                                        for t in tiles
+                                        if bounds[0] <= t.get("x", 0) <= bounds[2]
+                                        and bounds[1] <= t.get("y", 0) <= bounds[3]
+                                    )
+                                ),
+                                description=f"Room {i + 1}: {width}x{height} tiles, {len(cluster)} walls",
+                            )
+                        )
 
         # Si hay puertas, marcar entradas
         if door_tiles:
             for dx, dy in door_tiles:
-                patterns.append(Pattern(
-                    pattern_type="entrance",
-                    bounds=(dx, dy, dx, dy),
-                    confidence=0.8,
-                    description=f"Entrance at ({dx},{dy})",
-                ))
+                patterns.append(
+                    Pattern(
+                        pattern_type="entrance",
+                        bounds=(dx, dy, dx, dy),
+                        confidence=0.8,
+                        description=f"Entrance at ({dx},{dy})",
+                    )
+                )
 
         return patterns
 
@@ -211,18 +261,19 @@ class PatternDetector:
 
                 # Un pasillo es estrecho en una dimension y largo en otra
                 is_corridor = (
-                    (width >= 5 and height <= 3 and width / max(height, 1) >= 3)
-                    or (height >= 5 and width <= 3 and height / max(width, 1) >= 3)
-                )
+                    width >= 5 and height <= 3 and width / max(height, 1) >= 3
+                ) or (height >= 5 and width <= 3 and height / max(width, 1) >= 3)
 
                 if is_corridor:
-                    patterns.append(Pattern(
-                        pattern_type="corridor",
-                        bounds=(min(xs), min(ys), max(xs), max(ys)),
-                        confidence=min(0.85, len(cluster) / 30.0),
-                        tile_ids=[gid],
-                        description=f"Corridor: {width}x{height} tiles, ground_id={gid}",
-                    ))
+                    patterns.append(
+                        Pattern(
+                            pattern_type="corridor",
+                            bounds=(min(xs), min(ys), max(xs), max(ys)),
+                            confidence=min(0.85, len(cluster) / 30.0),
+                            tile_ids=[gid],
+                            description=f"Corridor: {width}x{height} tiles, ground_id={gid}",
+                        )
+                    )
 
         return patterns
 
@@ -264,13 +315,15 @@ class PatternDetector:
                 xs = [t["x"] for t in tiles if int(t.get("ground", 0)) == gid]
                 ys = [t["y"] for t in tiles if int(t.get("ground", 0)) == gid]
                 if xs and ys:
-                    patterns.append(Pattern(
-                        pattern_type="floor",
-                        bounds=(min(xs), min(ys), max(xs), max(ys)),
-                        confidence=min(1.0, pct * 3),
-                        tile_ids=[gid],
-                        description=f"Floor zone: ground_id={gid}, coverage={pct:.1%}",
-                    ))
+                    patterns.append(
+                        Pattern(
+                            pattern_type="floor",
+                            bounds=(min(xs), min(ys), max(xs), max(ys)),
+                            confidence=min(1.0, pct * 3),
+                            tile_ids=[gid],
+                            description=f"Floor zone: ground_id={gid}, coverage={pct:.1%}",
+                        )
+                    )
 
         return patterns
 
@@ -308,18 +361,23 @@ class PatternDetector:
                 xs = [p[0] for p in cluster]
                 ys = [p[1] for p in cluster]
                 # Obtener los item_ids en este cluster
-                item_ids = list(set(
-                    iid for x, y, iid in deco_positions
-                    if min(xs) <= x <= max(xs) and min(ys) <= y <= max(ys)
-                ))
+                item_ids = list(
+                    set(
+                        iid
+                        for x, y, iid in deco_positions
+                        if min(xs) <= x <= max(xs) and min(ys) <= y <= max(ys)
+                    )
+                )
 
-                patterns.append(Pattern(
-                    pattern_type="decoration_cluster",
-                    bounds=(min(xs), min(ys), max(xs), max(ys)),
-                    confidence=min(0.9, len(cluster) / 15.0),
-                    item_ids=item_ids[:20],
-                    description=f"Decoration cluster {i+1}: {len(cluster)} decorations",
-                ))
+                patterns.append(
+                    Pattern(
+                        pattern_type="decoration_cluster",
+                        bounds=(min(xs), min(ys), max(xs), max(ys)),
+                        confidence=min(0.9, len(cluster) / 15.0),
+                        item_ids=item_ids[:20],
+                        description=f"Decoration cluster {i + 1}: {len(cluster)} decorations",
+                    )
+                )
 
         return patterns
 
@@ -342,28 +400,29 @@ class PatternDetector:
                 item_id = item.get("item_id", item) if isinstance(item, dict) else item
                 if isinstance(item_id, int) and item_id in self.DOOR_IDS:
                     entrance_count += 1
-                    patterns.append(Pattern(
-                        pattern_type="entrance",
-                        bounds=(tile["x"], tile["y"], tile["x"], tile["y"]),
-                        confidence=0.85,
-                        item_ids=[item_id],
-                        description=f"Entrance at ({tile['x']},{tile['y']}), door_id={item_id}",
-                    ))
+                    patterns.append(
+                        Pattern(
+                            pattern_type="entrance",
+                            bounds=(tile["x"], tile["y"], tile["x"], tile["y"]),
+                            confidence=0.85,
+                            item_ids=[item_id],
+                            description=f"Entrance at ({tile['x']},{tile['y']}), door_id={item_id}",
+                        )
+                    )
 
         # Si hay muchas puertas, condensar en un solo patron
         if entrance_count > 10:
             all_xs = [p.bounds[0] for p in patterns[-entrance_count:]]
             all_ys = [p.bounds[1] for p in patterns[-entrance_count:]]
-            patterns = [
-                p for p in patterns
-                if p.pattern_type != "entrance"
-            ]
-            patterns.append(Pattern(
-                pattern_type="entrance",
-                bounds=(min(all_xs), min(all_ys), max(all_xs), max(all_ys)),
-                confidence=0.7,
-                description=f"Multiple entrances: {entrance_count} doors",
-            ))
+            patterns = [p for p in patterns if p.pattern_type != "entrance"]
+            patterns.append(
+                Pattern(
+                    pattern_type="entrance",
+                    bounds=(min(all_xs), min(all_ys), max(all_xs), max(all_ys)),
+                    confidence=0.7,
+                    description=f"Multiple entrances: {entrance_count} doors",
+                )
+            )
 
         return patterns
 
@@ -371,9 +430,7 @@ class PatternDetector:
     # Spawn cluster detection
     # ------------------------------------------------------------------
 
-    def _detect_spawn_clusters(
-        self, spawns: List[Dict[str, Any]]
-    ) -> List[Pattern]:
+    def _detect_spawn_clusters(self, spawns: List[Dict[str, Any]]) -> List[Pattern]:
         """Detecta clusters de spawns."""
         patterns: List[Pattern] = []
 
@@ -398,20 +455,23 @@ class PatternDetector:
                 ys = [p[1] for p in cluster]
                 # Encontrar spawn names en este cluster
                 names = [
-                    sp.get("monster", "") for sp in spawns
+                    sp.get("monster", "")
+                    for sp in spawns
                     if min(xs) <= sp.get("x", 0) <= max(xs)
                     and min(ys) <= sp.get("y", 0) <= max(ys)
                 ]
 
                 unique_names = list(set(names))
-                patterns.append(Pattern(
-                    pattern_type="spawn_cluster",
-                    bounds=(min(xs), min(ys), max(xs), max(ys)),
-                    confidence=min(0.95, len(cluster) / 10.0),
-                    spawn_names=unique_names[:10],
-                    description=f"Spawn cluster {i+1}: {len(cluster)} spawns, "
-                                f"monsters: {', '.join(unique_names[:5])}",
-                ))
+                patterns.append(
+                    Pattern(
+                        pattern_type="spawn_cluster",
+                        bounds=(min(xs), min(ys), max(xs), max(ys)),
+                        confidence=min(0.95, len(cluster) / 10.0),
+                        spawn_names=unique_names[:10],
+                        description=f"Spawn cluster {i + 1}: {len(cluster)} spawns, "
+                        f"monsters: {', '.join(unique_names[:5])}",
+                    )
+                )
 
         return patterns
 
@@ -514,12 +574,14 @@ class PatternDetector:
                 wall_count += count
 
         if wall_count > 20:
-            patterns.append(Pattern(
-                pattern_type="wall",
-                bounds=(0, 0, 0, 0),
-                confidence=min(0.9, wall_count / 200.0),
-                description=f"Wall pattern: {wall_count} wall items",
-            ))
+            patterns.append(
+                Pattern(
+                    pattern_type="wall",
+                    bounds=(0, 0, 0, 0),
+                    confidence=min(0.9, wall_count / 200.0),
+                    description=f"Wall pattern: {wall_count} wall items",
+                )
+            )
 
         # Patron de suelo dominante
         if tiles_stats:
@@ -527,30 +589,36 @@ class PatternDetector:
             dom_count = tiles_stats[dominant]
             total = sum(tiles_stats.values())
             if dom_count / max(total, 1) > 0.4:
-                patterns.append(Pattern(
-                    pattern_type="floor",
-                    bounds=(0, 0, 0, 0),
-                    confidence=min(1.0, dom_count / total * 2),
-                    description=f"Dominant floor: {dominant} ({dom_count} tiles)",
-                ))
+                patterns.append(
+                    Pattern(
+                        pattern_type="floor",
+                        bounds=(0, 0, 0, 0),
+                        confidence=min(1.0, dom_count / total * 2),
+                        description=f"Dominant floor: {dominant} ({dom_count} tiles)",
+                    )
+                )
 
         # Patron de spawns
         if spawn_count > 5:
-            patterns.append(Pattern(
-                pattern_type="spawn_cluster",
-                bounds=(0, 0, 0, 0),
-                confidence=min(0.8, spawn_count / 30.0),
-                description=f"Spawn pattern: {spawn_count} spawns",
-            ))
+            patterns.append(
+                Pattern(
+                    pattern_type="spawn_cluster",
+                    bounds=(0, 0, 0, 0),
+                    confidence=min(0.8, spawn_count / 30.0),
+                    description=f"Spawn pattern: {spawn_count} spawns",
+                )
+            )
 
         # Patron de estructuras
         if house_count > 3:
-            patterns.append(Pattern(
-                pattern_type="room",
-                bounds=(0, 0, 0, 0),
-                confidence=min(0.7, house_count / 15.0),
-                description=f"Structure pattern: {house_count} buildings",
-            ))
+            patterns.append(
+                Pattern(
+                    pattern_type="room",
+                    bounds=(0, 0, 0, 0),
+                    confidence=min(0.7, house_count / 15.0),
+                    description=f"Structure pattern: {house_count} buildings",
+                )
+            )
 
         return patterns
 
@@ -597,17 +665,19 @@ class PatternDetector:
 
         for window_size in (2, 3, 4):
             for i in range(len(signatures) - window_size + 1):
-                seq = " -> ".join(signatures[i:i + window_size])
+                seq = " -> ".join(signatures[i : i + window_size])
                 patterns[seq] += 1
 
         # Filtrar resultados significativos
         result = []
         for seq, count in patterns.most_common(20):
             if count >= min_repetitions:
-                result.append({
-                    "sequence": seq,
-                    "repetitions": count,
-                    "window_size": len(seq.split(" -> ")),
-                })
+                result.append(
+                    {
+                        "sequence": seq,
+                        "repetitions": count,
+                        "window_size": len(seq.split(" -> ")),
+                    }
+                )
 
         return result

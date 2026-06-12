@@ -1,0 +1,25 @@
+{
+  "audit": "Service Container",
+  "audit_id": "AUDIT 8",
+  "container": {
+    "has_register_defaults": true,
+    "has_register_core_adapters": true,
+    "references_null_services": true
+  },
+  "null_services": {
+    "file_exists": true,
+    "class_names": [
+      "_NullBase:",
+      "NullWorldService",
+      "NullCriticService",
+      "NullKnowledgeService",
+      "NullCampaignService",
+      "NullOTBMService",
+      "NullAutonomousService",
+      "NullDashboardService"
+    ]
+  },
+  "issues": [],
+  "total_issues": 0,
+  "status": "PASS"
+}

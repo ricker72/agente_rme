@@ -1,0 +1,53 @@
+{
+  "audit": "Page Architecture",
+  "audit_id": "AUDIT 6",
+  "required_pages": [
+    "dashboard_page.py",
+    "world_page.py",
+    "critic_page.py",
+    "knowledge_page.py",
+    "autonomous_page.py",
+    "settings_page.py"
+  ],
+  "pages_analyzed": 6,
+  "details": {
+    "autonomous_page.py": {
+      "core_imports": [],
+      "uses_services": true,
+      "uses_qthread": true,
+      "issues": []
+    },
+    "critic_page.py": {
+      "core_imports": [],
+      "uses_services": true,
+      "uses_qthread": true,
+      "issues": []
+    },
+    "dashboard_page.py": {
+      "core_imports": [],
+      "uses_services": false,
+      "uses_qthread": false,
+      "issues": []
+    },
+    "knowledge_page.py": {
+      "core_imports": [],
+      "uses_services": true,
+      "uses_qthread": true,
+      "issues": []
+    },
+    "settings_page.py": {
+      "core_imports": [],
+      "uses_services": false,
+      "uses_qthread": false,
+      "issues": []
+    },
+    "world_page.py": {
+      "core_imports": [],
+      "uses_services": true,
+      "uses_qthread": true,
+      "issues": []
+    }
+  },
+  "total_issues": 0,
+  "status": "PASS"
+}

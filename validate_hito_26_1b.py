@@ -41,15 +41,25 @@ def build_world_from_prompt(prompt: str) -> WorldModel:
     for x in range(5):
         for y in range(5):
             m = monsters[(x + y) % len(monsters)]
-            world.set_tile(Tile(
-                x=x, y=y, z=7, ground=106,
-                spawn=Spawn(monster=m, respawn=60, radius=5),
-            ))
+            world.set_tile(
+                Tile(
+                    x=x,
+                    y=y,
+                    z=7,
+                    ground=106,
+                    spawn=Spawn(monster=m, respawn=60, radius=5),
+                )
+            )
     # Add a boss
-    world.set_tile(Tile(
-        x=2, y=2, z=7, ground=106,
-        spawn=Spawn(monster="Orshabaal", respawn=600, radius=10),
-    ))
+    world.set_tile(
+        Tile(
+            x=2,
+            y=2,
+            z=7,
+            ground=106,
+            spawn=Spawn(monster="Orshabaal", respawn=600, radius=10),
+        )
+    )
     return world
 
 
@@ -74,10 +84,14 @@ def main():
     out_path = os.path.join(os.path.dirname(__file__), "generated.lua")
 
     # ---- Step 1: Prompt → WorldModel ----
-    prompt = "Generate a 5x5 dungeon hunt zone with mixed monsters and a boss at the center."
+    prompt = (
+        "Generate a 5x5 dungeon hunt zone with mixed monsters and a boss at the center."
+    )
     world = build_world_from_prompt(prompt)
-    print(f"=== WorldModel built: {world.tile_count()} tiles, "
-          f"{world.tile_count()} with spawns ===\n")
+    print(
+        f"=== WorldModel built: {world.tile_count()} tiles, "
+        f"{world.tile_count()} with spawns ===\n"
+    )
 
     # ---- Step 2: WorldModel → LuaGenerator (no spawn_plan) ----
     # This is the regression case: the call must not raise.
@@ -128,7 +142,9 @@ def main():
         f"setCreature count mismatch: code={n_setCreature}, "
         f"expected={script.spawn_count + script.creature_count}"
     )
-    print(f"[OK] spawns exportados ({n_setSpawn} setSpawn, {n_setCreature} setCreature)")
+    print(
+        f"[OK] spawns exportados ({n_setSpawn} setSpawn, {n_setCreature} setCreature)"
+    )
 
     print("\n=== DEFINICIÓN DE DONE — ALL GREEN ===\n")
     print("generated.lua generado correctamente.")

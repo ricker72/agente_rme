@@ -24,21 +24,23 @@ class WaypointExtractor(BaseExtractor):
             if not name or name.lower() in seen:
                 continue
             seen.add(name.lower())
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.WAYPOINT,
-                name=name,
-                source=source,
-                biome=_as_str(w.get("biome", "generic")),
-                min_level=_as_int(w.get("min_level", 1)),
-                max_level=_as_int(w.get("max_level", 9999)),
-                tags=_coerce_tags(w) + ["waypoint"],
-                attributes={
-                    "theme": _as_str(w.get("theme", "generic")),
-                    "x": _as_int(w.get("x", 0)),
-                    "y": _as_int(w.get("y", 0)),
-                    "z": _as_int(w.get("z", 7)),
-                },
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.WAYPOINT,
+                    name=name,
+                    source=source,
+                    biome=_as_str(w.get("biome", "generic")),
+                    min_level=_as_int(w.get("min_level", 1)),
+                    max_level=_as_int(w.get("max_level", 9999)),
+                    tags=_coerce_tags(w) + ["waypoint"],
+                    attributes={
+                        "theme": _as_str(w.get("theme", "generic")),
+                        "x": _as_int(w.get("x", 0)),
+                        "y": _as_int(w.get("y", 0)),
+                        "z": _as_int(w.get("z", 7)),
+                    },
+                )
+            )
         return entries
 
 

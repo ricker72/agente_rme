@@ -3,14 +3,14 @@ Region Plan model - represents a plan for a specific region within the world.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict
+from typing import List
 from datetime import datetime
 
 
 @dataclass
 class RegionPlan:
     """Represents a plan for a specific region within the world."""
-    
+
     region_id: str
     region_name: str
     region_type: str  # "hunt", "boss", "raid", "city", "mixed"
@@ -24,7 +24,7 @@ class RegionPlan:
     patterns: List[str] = field(default_factory=list)
     dependencies: List[str] = field(default_factory=list)
     created_at: datetime = field(default_factory=datetime.now)
-    
+
     def __post_init__(self):
         """Validate region plan after initialization."""
         valid_types = ["hunt", "boss", "raid", "city", "mixed"]
@@ -38,7 +38,7 @@ class RegionPlan:
             raise ValueError("Target density must be between 0 and 1")
         if not (0 <= self.target_difficulty <= 1):
             raise ValueError("Target difficulty must be between 0 and 1")
-    
+
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
         return {
@@ -56,7 +56,7 @@ class RegionPlan:
             "dependencies": self.dependencies,
             "created_at": self.created_at.isoformat(),
         }
-    
+
     @classmethod
     def from_dict(cls, data: dict) -> "RegionPlan":
         """Create from dictionary."""

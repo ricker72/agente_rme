@@ -2,11 +2,10 @@
 Tests for ExportAgent.
 """
 
-import pytest
 import os
 import json
-from agente_rme.core.agents import ExportAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import ExportAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestExportAgent:
@@ -58,7 +57,7 @@ class TestExportAgent:
                 "campaign": {"theme": "issavi"},
             },
         )
-        response = agent.execute(request)
+        agent.execute(request)
         report_path = os.path.join(str(tmpdir), "report.json")
         assert os.path.exists(report_path)
         with open(report_path) as f:
@@ -77,6 +76,6 @@ class TestExportAgent:
             prompt="Export",
             context={"campaign": {"theme": "issavi", "name": "Test"}},
         )
-        response = agent.execute(request)
+        agent.execute(request)
         campaign_path = os.path.join(str(tmpdir), "campaign.json")
         assert os.path.exists(campaign_path)

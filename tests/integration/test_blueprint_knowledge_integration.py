@@ -1,6 +1,5 @@
 """Integration test: Blueprint Intelligence + Knowledge Engine."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_intelligence_engine import (
     BlueprintIntelligenceEngine,
@@ -70,6 +69,7 @@ class TestBlueprintKnowledgeIntegration:
         self.engine.export_recommendations(f"{base}/recommendations.json")
 
         import os
+
         assert os.path.exists(f"{base}/embeddings.json")
         assert os.path.exists(f"{base}/clusters.json")
         assert os.path.exists(f"{base}/patterns.json")

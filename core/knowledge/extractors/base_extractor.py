@@ -51,9 +51,15 @@ def _as_list(value: Any) -> List[Any]:
 def _coerce_world(obj: Any, source_label: str) -> WorldDict:
     """Normalize input to a dict with the standard world shape."""
     if obj is None:
-        return {"tiles": [], "regions": [], "structures": [],
-                "spawns": [], "cities": [], "waypoints": [],
-                "meta": {"source": source_label}}
+        return {
+            "tiles": [],
+            "regions": [],
+            "structures": [],
+            "spawns": [],
+            "cities": [],
+            "waypoints": [],
+            "meta": {"source": source_label},
+        }
     if isinstance(obj, dict):
         # Already shaped?  Make sure all keys are present.
         out: WorldDict = {
@@ -70,8 +76,18 @@ def _coerce_world(obj: Any, source_label: str) -> WorldDict:
         out["meta"].setdefault("source", source_label)
         # If the dict is a WorldModel.to_dict() shape it has the same keys.
         # If it is a blueprint shape, propagate patterns/structures.
-        for k in ("name", "theme", "category", "patterns", "size",
-                  "entry", "description", "metadata", "width", "height"):
+        for k in (
+            "name",
+            "theme",
+            "category",
+            "patterns",
+            "size",
+            "entry",
+            "description",
+            "metadata",
+            "width",
+            "height",
+        ):
             if k in obj and k not in out["meta"]:
                 out["meta"][k] = obj[k]
         return out
@@ -83,9 +99,15 @@ def _coerce_world(obj: Any, source_label: str) -> WorldDict:
         except Exception:
             pass
     # Anything else — wrap it
-    return {"meta": {"source": source_label, "raw": str(obj)},
-            "tiles": [], "regions": [], "structures": [],
-            "spawns": [], "cities": [], "waypoints": []}
+    return {
+        "meta": {"source": source_label, "raw": str(obj)},
+        "tiles": [],
+        "regions": [],
+        "structures": [],
+        "spawns": [],
+        "cities": [],
+        "waypoints": [],
+    }
 
 
 def _coerce_source(source: Union[str, Path, None]) -> str:
@@ -143,7 +165,12 @@ class BaseExtractor:
                 return _coerce_world(otbm_dict, label)
             return _coerce_world(None, label)
         if isinstance(source, dict):
-            return _coerce_world(source, _coerce_source(source.get("name") if isinstance(source, dict) else None))
+            return _coerce_world(
+                source,
+                _coerce_source(
+                    source.get("name") if isinstance(source, dict) else None
+                ),
+            )
         # Assume an object with .to_dict()
         return _coerce_world(source, _coerce_source(getattr(source, "name", None)))
 
@@ -172,5 +199,9 @@ class BaseExtractor:
     def __call__(self, source: Union[str, Path, Dict[str, Any], Any]) -> List[Any]:
         """Convenience: load + extract in one call."""
         wd = self.load(source)
-        label = _coerce_source(source) if not isinstance(source, (dict,)) else _as_str(wd.get("meta", {}).get("source"), "unknown")
+        label = (
+            _coerce_source(source)
+            if not isinstance(source, (dict,))
+            else _as_str(wd.get("meta", {}).get("source"), "unknown")
+        )
         return self.extract(wd, source=label)

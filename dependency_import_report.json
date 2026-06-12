@@ -1,0 +1,2532 @@
+[
+  {
+    "module": "benchmark_autonomous",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "benchmark_blueprint_intelligence",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "benchmark_critic",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "benchmark_knowledge",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "boss_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "check_utcnow",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "cli",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "config_manager",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.agent_registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.architect_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.balance_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.critic_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.expansion_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.export_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.mapper_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.orchestrator_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.playtest_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.qa_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.agents.quest_agent",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.architecture_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.city_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.dataset_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.density_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.map_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.path_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.pattern_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.room_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.spawn_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.style_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.analyzer.tile_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.ai_architect",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.architect",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.composition_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.design_rules",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.difficulty_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.layout_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.layout_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.mapper_ai",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.style_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.theme_resolver",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.world_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architect.zone_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.architecture_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.architecture_graph",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.blueprint_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.building_classifier",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.composer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.pattern_library",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.structure_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.architecture.style_mixer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.asset_cache",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.asset_classifier",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.asset_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.asset_recommender",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.asset_registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.asset_similarity",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.item_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.monster_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.assets.npc_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.autonomous_decision_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.autonomous_director",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.autonomous_optimizer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.autonomous_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.autonomous_visualizer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.autonomous_world_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.goal_manager",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models.design_decision",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models.design_goal",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models.design_iteration",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models.design_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models.design_result",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.models.region_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.world_objective",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.autonomous.world_strategy",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.balance_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.difficulty_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.difficulty_balancer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.loot_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.loot_balancer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.risk_balancer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.spawn_balancer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.xp_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.balance.xp_balancer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.benchmark",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.benchmark.runner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_embedding_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_evolution_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_fusion_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_intelligence_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_ranker",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_recommender",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.blueprint_similarity_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models.blueprint_cluster",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models.blueprint_embedding",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models.blueprint_evolution",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models.blueprint_fusion",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models.blueprint_pattern",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprint_intelligence.models.blueprint_similarity",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_loader",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_mixer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_placer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_search",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.blueprint_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.pattern_detector",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.structure_detector",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.blueprints.theme_classifier",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.cache",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.cache.generation_cache",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.campaign_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.dialog_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.economy_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.faction_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.lore_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.npc_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.package",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.story_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.campaign.validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler.lua_ast",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler.lua_emitter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler.lua_formatter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler.lua_optimizer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler.lua_parser",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.compiler.lua_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.config_manager",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.boss_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.map_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.mission_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.quest_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.quest_package",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.raid_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.content.reward_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.base_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.boss_room_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.city_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.decor_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.density_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.hunt_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.navigation_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.pathfinding_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.region_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.spawn_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.analyzers.visual_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.critic_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.critic_report",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.heatmap_renderer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.models",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.models.critic_issue",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.models.critic_recommendation",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.models.critic_result",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.models.critic_score",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.score_calculator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.critic.visual_critic",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.enterprise",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.evolution",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.evolution.expansion_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.evolution.improvement_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.evolution.map_evolver",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.evolution.modernization_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.evolution.quality_detector",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion.boss_expander",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion.expansion_ai",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion.hunt_expander",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion.quest_zone_expander",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion.region_expander",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.expansion.road_expander",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.export",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.export.release_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.exporters",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.exporters.lua_exporter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.exporters.lua_formatter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.exporters.lua_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.exporters.lua_writer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.factory",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.factory.campaign_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.factory.expansion_factory",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.factory.season_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.factory.world_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.boss_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.content_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.economy_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.expansion_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.hunt_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.lore_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.progression_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.quest_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.game_design.reward_designer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.base_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.building_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.city_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.city_to_worldmodel",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.depot_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.district_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.harbor_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.market_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.road_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city.temple_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.city_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.boss_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.cave_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.corridor_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.density_controller",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.dungeon_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.dungeon_to_worldmodel",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.floor_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.loop_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.quest_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.respawn_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.room_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon.shortcut_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.dungeon_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.hunt_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.spawn_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.theme_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.generators.world_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.biomes",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.cities",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.dataset_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.base_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.biome_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.boss_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.city_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.hunt_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.quest_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.raid_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.spawn_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.structure_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.extractors.waypoint_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.base_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.biome_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.boss_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.city_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.hunt_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.quest_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.indexers.region_indexer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_base",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_catalog",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_index",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_metrics",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_query",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_ranker",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_recommender",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_report",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.knowledge_search",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.models",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.models.knowledge_dataset",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.models.knowledge_entry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.models.knowledge_query_result",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.models.knowledge_similarity",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.monsters",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.npcs",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.progression",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.knowledge.themes",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.blueprint_catalog",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.blueprint_learner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.blueprint_ranker",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.dataset_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.learning_pipeline",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.map_embedding",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.pattern_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.pattern_miner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.similarity_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.learning.style_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.logging",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.logging.levels",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.logging.logger",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.lua",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.lua.lua_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.observability",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.observability.diagnostics",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.observability.health",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.observability.logger",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.observability.metrics",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.binary_writer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.byte_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.house_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.item_decoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.item_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.node_decoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.node_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_deserializer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_exporter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_importer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_nodes",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_parser",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_reader",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_serializer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_templates",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.otbm_writer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.spawn_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.tile_decoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.tile_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.waypoint_encoder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.otbm.world_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.pipeline",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.pipeline.full_pipeline",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.biome_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.city_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.difficulty_planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.dungeon_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.expansion_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.planner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.prompt_interpreter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.route_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.world_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.world_size_estimator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.world_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.planner.zone_plan",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.combat_simulator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.difficulty_evaluator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.loot_simulator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.party_bot",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.pathfinder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.player_bot",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.playtest_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.progression_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.report_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.route_simulator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.playtest.survival_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.heatmap_renderer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.minimap_renderer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.palette",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.preview_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.preview_renderer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.preview_report",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.structure_renderer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.preview.tile_renderer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.biome_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.cave_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.continent_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.noise_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.river_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.road_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.room_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.terrain_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.procedural.world_synthesizer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.prompt_interpreter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality.balance_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality.map_reviewer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality.pathing_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality.quality_score",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality.spawn_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.quality.visual_analyzer",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.recovery",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.registry.asset_registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.registry.blueprint_registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.release",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.release.documentation_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.release.package_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.release.release_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.spawn",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.spawn.spawn_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.studio",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.themes",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.themes.theme_resolver",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.versioning",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.versioning.version",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.blueprint_placer_adapter",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.chunk",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.item",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.region",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.spawn",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.structure",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.tile",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.world_model",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world.world_validator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_brain",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_brain.constraint_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_brain.decision_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_brain.goal_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_brain.reasoning_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_brain.world_brain",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.boss_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.city_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.dungeon_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.export_pipeline",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.quest_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.road_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.spawn_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.world_builder",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "core.world_engine.world_engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "create_tests",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "data_extractor",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "fix_utcnow",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ga_benchmark",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ga_certify",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "gen_coverage",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "generate_all_tests",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "generate_report",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "generate_tests",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "hito26_1_benchmark",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "installer.run_tests",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "installer.setup",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "main",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "mission_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "mkall",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ollama_client",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "pipeline_runner",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "quest_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "raid_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "reward_generator",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "rme",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "run_all",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "run_coverage",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "run_e2e",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "run_integration",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "run_pytest",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "show_cov",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "smoke_critic",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "smoke_knowledge",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "test_lua_diag",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "test_orch_diag",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "test_otbm_diag",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "test_utcnow",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools._append_certify",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_audit",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_certify",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_cli_stability",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_lua_hardening",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_otbm_hardening",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_performance",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_regression",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.hotfix_security",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_autonomous_certification",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_blueprint_validation",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_knowledge_validation",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_memory_profile",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_otbm_certification",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_performance_profile",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.real_world_stress",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.run_rc1_1",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "tools.validate_modules",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.adapters",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.app",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.console",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.dashboard_data_provider",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.event_bus",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.main_window",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.models",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.navigation",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.page_registry",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.architect_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.campaign_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.critic_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.dashboard_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.knowledge_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.otbm_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.settings_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.pages.world_page",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.plugins",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.services",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.sidebar",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.statusbar",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.theme",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.titlebar",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets.health_widget",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets.metric_card",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets.recent_activity_widget",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets.recent_artifacts_widget",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets.release_info_widget",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "ui.widgets.system_status_widget",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "validate_hito_26_1b",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "module": "validate_hito_26_1e",
+    "status": "PASS",
+    "error": null
+  }
+]

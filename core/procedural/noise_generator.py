@@ -1,4 +1,12 @@
-def simplex_noise_script(origin_x: int, origin_y: int, width: int, height: int, z: int, floor_high: int, floor_low: int) -> str:
+def simplex_noise_script(
+    origin_x: int,
+    origin_y: int,
+    width: int,
+    height: int,
+    z: int,
+    floor_high: int,
+    floor_low: int,
+) -> str:
     return f"""-- Procedural noise terrain generator
 if not app.hasMap() then
     return

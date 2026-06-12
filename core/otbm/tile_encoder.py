@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import io
 import logging
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional
 
-from .node_encoder import NodeEncoder, TILESTATE_NONE, TILESTATE_PROTECTIONZONE
+from .node_encoder import NodeEncoder, TILESTATE_PROTECTIONZONE
 from .binary_writer import BinaryWriter
 
 logger = logging.getLogger(__name__)
@@ -114,7 +114,7 @@ class TileEncoder:
         """
         x = int(tile_data.get("x", 0))
         y = int(tile_data.get("y", 0))
-        z = int(tile_data.get("z", 0))
+        int(tile_data.get("z", 0))
 
         # Compute offset relative to TILE_AREA base, normalising to [0, 255].
         offset_x = self._normalize_offset(x - base_x, "offset_x", tile_data)
@@ -339,7 +339,9 @@ class TileEncoder:
         return 0
 
     @staticmethod
-    def _normalize_offset(value: Any, context: str, source: Optional[dict] = None) -> int:
+    def _normalize_offset(
+        value: Any, context: str, source: Optional[dict] = None
+    ) -> int:
         """Clamp an offset to the [0, 255] uint8 range used by OTBM tiles.
 
         When the resulting offset would be negative or > 255, the value
@@ -354,7 +356,10 @@ class TileEncoder:
             clamped = max(0, min(255, iv))
             logger.warning(
                 "TileEncoder.%s offset %d out of [0,255] (source=%s), clamped to %d",
-                context, iv, context, clamped,
+                context,
+                iv,
+                context,
+                clamped,
             )
             return clamped
         return iv

@@ -13,6 +13,7 @@ DISTRICT_TYPES = [
     "HuntingGate",
 ]
 
+
 @dataclass
 class District:
     name: str
@@ -27,7 +28,9 @@ class District:
         return (self.x + self.width // 2, self.y + self.height // 2)
 
 
-def generate_city_districts(city_style: str, origin_x: int, origin_y: int) -> List[District]:
+def generate_city_districts(
+    city_style: str, origin_x: int, origin_y: int
+) -> List[District]:
     base_size = 12
     spread = 18
     return [

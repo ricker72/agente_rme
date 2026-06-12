@@ -25,9 +25,11 @@ def load_monster_names(monster_source: str) -> Tuple[List[str], List[dict]]:
         name = monster.get("name") or monster.findtext("name") or ""
         if name:
             monster_names.append(name)
-            documents.append({
-                "title": f"Monster {name}",
-                "text": f"Monster {name} found in RME data.",
-                "metadata": {"type": "monster", "name": name},
-            })
+            documents.append(
+                {
+                    "title": f"Monster {name}",
+                    "text": f"Monster {name} found in RME data.",
+                    "metadata": {"type": "monster", "name": name},
+                }
+            )
     return monster_names, documents

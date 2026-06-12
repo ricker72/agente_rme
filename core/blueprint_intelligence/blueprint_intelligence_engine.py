@@ -12,9 +12,7 @@ Pipeline:
 from __future__ import annotations
 
 import json
-import os
-import time
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from core.blueprints.blueprint import Blueprint
 
@@ -56,9 +54,8 @@ class BlueprintIntelligenceEngine:
         generator: Optional[BlueprintGenerator] = None,
     ) -> None:
         self.embedding_engine = embedding_engine or BlueprintEmbeddingEngine()
-        self.similarity_engine = (
-            similarity_engine
-            or BlueprintSimilarityEngine(embedding_engine=self.embedding_engine)
+        self.similarity_engine = similarity_engine or BlueprintSimilarityEngine(
+            embedding_engine=self.embedding_engine
         )
         self.fusion_engine = fusion_engine or BlueprintFusionEngine(
             embedding_engine=self.embedding_engine,
@@ -152,9 +149,7 @@ class BlueprintIntelligenceEngine:
         top_k: int = 10,
     ) -> List[BlueprintSimilarityResult]:
         """Find similar hunts."""
-        return self.similarity_engine.find_similar_hunts(
-            target, self.blueprints, top_k
-        )
+        return self.similarity_engine.find_similar_hunts(target, self.blueprints, top_k)
 
     def find_similar_cities(
         self,
@@ -227,9 +222,7 @@ class BlueprintIntelligenceEngine:
         top_k: int = 3,
     ) -> List[Dict[str, Any]]:
         """Get recommendations by type."""
-        return self.recommender.recommend_pattern(
-            query_type, self.blueprints, top_k
-        )
+        return self.recommender.recommend_pattern(query_type, self.blueprints, top_k)
 
     def recommend_patterns(self, top_k: int = 5) -> List[Dict[str, Any]]:
         """Get general recommendations."""
@@ -249,9 +242,7 @@ class BlueprintIntelligenceEngine:
         ratios: Optional[Dict[str, float]] = None,
     ) -> Blueprint:
         """Generate a hybrid blueprint."""
-        return self.generator.generate_hybrid(
-            prompt, self.blueprints, ratios
-        )
+        return self.generator.generate_hybrid(prompt, self.blueprints, ratios)
 
     # ------------------------------------------------------------------
     # Pattern Mining
@@ -271,11 +262,11 @@ class BlueprintIntelligenceEngine:
 
         for ptype, keywords in pattern_types.items():
             matches = [
-                bp for bp in self.blueprints
+                bp
+                for bp in self.blueprints
                 if any(k in (bp.category or "").lower() for k in keywords)
                 or any(
-                    k in [t.lower() for t in (bp.metadata.tags or [])]
-                    for k in keywords
+                    k in [t.lower() for t in (bp.metadata.tags or [])] for k in keywords
                 )
             ]
 

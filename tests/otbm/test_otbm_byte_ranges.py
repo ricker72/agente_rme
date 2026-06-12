@@ -13,6 +13,7 @@ import pytest
 
 import sys
 import os
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from core.otbm.binary_writer import BinaryWriter
@@ -106,7 +107,7 @@ class TestBinaryWriterUint32:
     def test_u32_huge_value_clamps(self):
         bw = BinaryWriter()
         buf = io.BytesIO()
-        bw.write_u32(buf, 10 ** 30, context="test")
+        bw.write_u32(buf, 10**30, context="test")
         # Should be clamped to 0xFFFFFFFF
         assert buf.getvalue() == b"\xff\xff\xff\xff"
 
@@ -204,7 +205,8 @@ class TestTileEncoderByteRange:
         enc = TileEncoder()
         data = enc.encode_tile_from_dict(
             {"x": 500, "y": 500, "z": 7, "ground": 106, "items": []},
-            base_x=0, base_y=0,
+            base_x=0,
+            base_y=0,
         )
         # Must not raise; the offset is clamped to 255.
         assert len(data) > 0
@@ -213,21 +215,24 @@ class TestTileEncoderByteRange:
         enc = TileEncoder()
         data = enc.encode_tile_from_dict(
             {"x": 0, "y": 0, "z": 7, "ground": 106, "items": []},
-            base_x=500, base_y=500,
+            base_x=500,
+            base_y=500,
         )
         assert len(data) > 0
 
     def test_spawn_area_extreme_values(self):
         enc = TileEncoder()
         data = enc.encode_spawn_area_from_entry(
-            x=99999, y=99999, z=999, monster_name="Boss",
-            interval=999999, radius=999,
+            x=99999,
+            y=99999,
+            z=999,
+            monster_name="Boss",
+            interval=999999,
+            radius=999,
         )
         assert len(data) > 0
 
     def test_house_tile_extreme_id(self):
         enc = TileEncoder()
-        data = enc.encode_house_tile(
-            offset_x=0, offset_y=0, house_id=0xFFFFFFFF
-        )
+        data = enc.encode_house_tile(offset_x=0, offset_y=0, house_id=0xFFFFFFFF)
         assert len(data) > 0

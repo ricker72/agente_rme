@@ -1,0 +1,129 @@
+{
+  "audits": {
+    "architecture": {
+      "blockers": [],
+      "final_status": "CERTIFIED",
+      "path": "baseline/ui-freeze/UI10_1/UI10_1_ARCHITECTURE_CERTIFICATION.json",
+      "risks": [
+        "_helpers.py does not use lazy importlib loading",
+        "dashboard_adapter.py does not use lazy importlib loading"
+      ],
+      "status": "PASS"
+    },
+    "packaging": {
+      "blockers": [],
+      "final_status": "UI-10.4 PACKAGING AUDIT CERTIFIED",
+      "path": "baseline/ui-freeze/UI10_4/UI10_4_PACKAGING_CERTIFICATION.json",
+      "risks": [
+        "Optional VERSION file is absent; package includes pyproject.toml and requirements-lock.txt metadata instead.",
+        "PyInstaller warnings include optional/platform-specific imports; executable launch and resource smoke checks passed."
+      ],
+      "status": "PASS"
+    },
+    "quality_original": {
+      "blockers": [
+        {
+          "coverage": 0.0,
+          "file": "ui/dashboard_data_provider.py"
+        },
+        {
+          "coverage": 0.0,
+          "file": "ui/plugins/__init__.py"
+        },
+        {
+          "coverage": 0.0,
+          "file": "ui/widgets/status_card.py"
+        },
+        {
+          "coverage": 24.7,
+          "file": "ui/titlebar.py"
+        },
+        {
+          "coverage": 28.6,
+          "file": "ui/widgets/release_info_widget.py"
+        },
+        {
+          "coverage": 28.7,
+          "file": "ui/main_window.py"
+        },
+        {
+          "coverage": 28.9,
+          "file": "ui/widgets/system_status_widget.py"
+        },
+        {
+          "coverage": 30.0,
+          "file": "ui/widgets/health_widget.py"
+        },
+        {
+          "coverage": 30.4,
+          "file": "ui/widgets/recent_activity_widget.py"
+        },
+        {
+          "coverage": 33.3,
+          "file": "ui/sidebar.py"
+        },
+        {
+          "coverage": 39.5,
+          "file": "ui/statusbar.py"
+        },
+        {
+          "coverage": 41.0,
+          "file": "ui/console.py"
+        },
+        {
+          "coverage": 47.1,
+          "file": "ui/pages/architect_page.py"
+        },
+        {
+          "coverage": 47.1,
+          "file": "ui/pages/campaign_page.py"
+        },
+        {
+          "coverage": 47.1,
+          "file": "ui/pages/otbm_page.py"
+        },
+        {
+          "coverage": 47.1,
+          "file": "ui/pages/settings_page.py"
+        },
+        {
+          "coverage": 52.8,
+          "file": "ui/app.py"
+        },
+        {
+          "coverage": 65.9,
+          "file": "ui/pages/dashboard_page.py"
+        }
+      ],
+      "coverage": 78.6,
+      "final_status": "UI-10.2 QUALITY AUDIT NOT CERTIFIED",
+      "path": "baseline/ui-freeze/UI10_2/UI10_2_QUALITY_CERTIFICATION.json",
+      "status": "SUPERSEDED_BY_UI10_2_R"
+    },
+    "quality_remediation": {
+      "blockers": [],
+      "coverage": 95.94728990551964,
+      "final_status": "UI-10.2-R COVERAGE REMEDIATION CERTIFIED",
+      "path": "baseline/ui-freeze/UI10_2_R/coverage_delta.json",
+      "risks": [],
+      "status": "PASS"
+    },
+    "runtime": {
+      "blockers": [],
+      "final_status": "UI-10.3 RUNTIME AUDIT CERTIFIED",
+      "path": "baseline/ui-freeze/UI10_3/UI10_3_RUNTIME_CERTIFICATION.json",
+      "risks": [],
+      "status": "PASS"
+    }
+  },
+  "branch": "release/ui-v1",
+  "coverage_target_met": true,
+  "generated_at": "2026-06-12T06:42:35+00:00",
+  "notes": [
+    "UI-10.2 original quality artifact is retained as pre-remediation evidence and superseded by UI-10.2-R coverage remediation.",
+    "Production certification uses the latest passing evidence for quality, runtime, and packaging gates."
+  ],
+  "product": "Agente RME Studio UI",
+  "status": "PASS",
+  "unresolved_blockers": []
+}

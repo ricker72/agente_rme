@@ -26,7 +26,10 @@ class BossIndexer(BaseIndexer):
                 score = max(score, 0.9)
             if attrs.get("arena_type") in ("throne", "coliseum", "circular"):
                 score = max(score, 0.85)
-            if "arena" in (e.signature or "").lower() and "circular" in (e.signature or "").lower():
+            if (
+                "arena" in (e.signature or "").lower()
+                and "circular" in (e.signature or "").lower()
+            ):
                 score = max(score, 0.8)
             if score > 0:
                 out.append((e, score))

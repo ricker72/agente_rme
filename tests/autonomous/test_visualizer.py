@@ -1,8 +1,6 @@
 """Tests for the Autonomous Visualizer (with mocked matplotlib)."""
 
 import os
-import sys
-import pytest
 from unittest.mock import patch, MagicMock
 
 from core.autonomous.autonomous_visualizer import AutonomousVisualizer
@@ -17,12 +15,17 @@ def _build_result(iteration_scores):
     plan = DesignPlan(plan_id="p1", goal_id="g", regions=[region])
     res = DesignResult(result_id="r1", goal_id="g", plan=plan)
     for i, scores in enumerate(iteration_scores):
-        res.add_iteration(DesignIteration(
-            iteration_id=i, plan_snapshot=plan,
-            critic_score=scores[0], playtest_score=scores[1],
-            navigation_score=scores[2], density_score=scores[3],
-            reuse_score=scores[4],
-        ))
+        res.add_iteration(
+            DesignIteration(
+                iteration_id=i,
+                plan_snapshot=plan,
+                critic_score=scores[0],
+                playtest_score=scores[1],
+                navigation_score=scores[2],
+                density_score=scores[3],
+                reuse_score=scores[4],
+            )
+        )
     return res
 
 
@@ -61,13 +64,18 @@ class TestAutonomousVisualizer:
         fake_fig = MagicMock()
         fake_plt.subplots.return_value = (fake_fig, MagicMock())
         # Patch _try_matplotlib to return our fake
-        with patch("core.autonomous.autonomous_visualizer._try_matplotlib", return_value=fake_plt):
+        with patch(
+            "core.autonomous.autonomous_visualizer._try_matplotlib",
+            return_value=fake_plt,
+        ):
             v = AutonomousVisualizer(out)
-            result = _build_result([
-                (0.5, 0.6, 0.4, 0.5, 0.5),
-                (0.6, 0.7, 0.5, 0.6, 0.6),
-                (0.7, 0.8, 0.6, 0.7, 0.7),
-            ])
+            result = _build_result(
+                [
+                    (0.5, 0.6, 0.4, 0.5, 0.5),
+                    (0.6, 0.7, 0.5, 0.6, 0.6),
+                    (0.7, 0.8, 0.6, 0.7, 0.7),
+                ]
+            )
             path = v.plot_iteration_scores(result)
             assert path.endswith("iteration_scores.png")
             fake_plt.subplots.assert_called()
@@ -79,12 +87,17 @@ class TestAutonomousVisualizer:
         fake_plt = MagicMock()
         fake_fig = MagicMock()
         fake_plt.subplots.return_value = (fake_fig, MagicMock())
-        with patch("core.autonomous.autonomous_visualizer._try_matplotlib", return_value=fake_plt):
+        with patch(
+            "core.autonomous.autonomous_visualizer._try_matplotlib",
+            return_value=fake_plt,
+        ):
             v = AutonomousVisualizer(out)
-            result = _build_result([
-                (0.5, 0.6, 0.4, 0.5, 0.5),
-                (0.7, 0.8, 0.6, 0.7, 0.7),
-            ])
+            result = _build_result(
+                [
+                    (0.5, 0.6, 0.4, 0.5, 0.5),
+                    (0.7, 0.8, 0.6, 0.7, 0.7),
+                ]
+            )
             path = v.plot_critic_progress(result)
             assert path.endswith("critic_progress.png")
             fake_fig.savefig.assert_called()
@@ -94,12 +107,17 @@ class TestAutonomousVisualizer:
         fake_plt = MagicMock()
         fake_fig = MagicMock()
         fake_plt.subplots.return_value = (fake_fig, MagicMock())
-        with patch("core.autonomous.autonomous_visualizer._try_matplotlib", return_value=fake_plt):
+        with patch(
+            "core.autonomous.autonomous_visualizer._try_matplotlib",
+            return_value=fake_plt,
+        ):
             v = AutonomousVisualizer(out)
-            result = _build_result([
-                (0.5, 0.6, 0.4, 0.5, 0.5),
-                (0.7, 0.8, 0.6, 0.7, 0.7),
-            ])
+            result = _build_result(
+                [
+                    (0.5, 0.6, 0.4, 0.5, 0.5),
+                    (0.7, 0.8, 0.6, 0.7, 0.7),
+                ]
+            )
             path = v.plot_optimization_curve(result)
             assert path.endswith("optimization_curve.png")
             fake_fig.savefig.assert_called()

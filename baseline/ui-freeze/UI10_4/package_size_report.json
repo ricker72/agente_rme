@@ -1,0 +1,11 @@
+{
+  "audit": "UI-10.4 package size",
+  "classification_rule": "PASS <= 250 MB, WARNING <= 500 MB, FAIL > 500 MB",
+  "dist_bytes": 119173614,
+  "dist_mb": 113.65,
+  "executable_bytes": 2470326,
+  "executable_mb": 2.36,
+  "file_count": 209,
+  "generated_at": "2026-06-12T05:52:01+00:00",
+  "status": "PASS"
+}

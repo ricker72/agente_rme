@@ -3,8 +3,8 @@ main.py
 Agente IA de Diseño de Mapas para Remere's Map Editor
 GUI built with customtkinter — dark industrial aesthetic.
 """
+
 import os
-import sys
 import threading
 import tkinter as tk
 from tkinter import filedialog, messagebox
@@ -24,22 +24,22 @@ from core.studio import AIMapStudio
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
-ACCENT      = "#E8A020"   # amber/gold
-ACCENT_DIM  = "#9C6B10"
-BG_DARK     = "#0D0D0F"
-BG_MID      = "#16181C"
-BG_CARD     = "#1C1F26"
-BG_INPUT    = "#12141A"
-TEXT_MAIN   = "#E8E6DF"
-TEXT_DIM    = "#6B7280"
-TEXT_GREEN  = "#4ADE80"
-TEXT_RED    = "#F87171"
-FONT_TITLE  = ("Consolas", 22, "bold")
-FONT_LABEL  = ("Consolas", 11)
-FONT_SMALL  = ("Consolas", 9)
-FONT_CODE   = ("Consolas", 10)
-FONT_BTN    = ("Consolas", 11, "bold")
-ICON_PATH   = Path(__file__).resolve().parent / "recursos" / "favicon.ico"
+ACCENT = "#E8A020"  # amber/gold
+ACCENT_DIM = "#9C6B10"
+BG_DARK = "#0D0D0F"
+BG_MID = "#16181C"
+BG_CARD = "#1C1F26"
+BG_INPUT = "#12141A"
+TEXT_MAIN = "#E8E6DF"
+TEXT_DIM = "#6B7280"
+TEXT_GREEN = "#4ADE80"
+TEXT_RED = "#F87171"
+FONT_TITLE = ("Consolas", 22, "bold")
+FONT_LABEL = ("Consolas", 11)
+FONT_SMALL = ("Consolas", 9)
+FONT_CODE = ("Consolas", 10)
+FONT_BTN = ("Consolas", 11, "bold")
+ICON_PATH = Path(__file__).resolve().parent / "recursos" / "favicon.ico"
 
 
 def _apply_window_icon(window: tk.Tk | tk.Toplevel) -> None:
@@ -53,6 +53,7 @@ def _apply_window_icon(window: tk.Tk | tk.Toplevel) -> None:
 # ═══════════════════════════════════════════════════════════════════════════
 #  SETUP WIZARD WINDOW
 # ═══════════════════════════════════════════════════════════════════════════
+
 
 class SetupWizard(ctk.CTkToplevel):
     """First-run configuration wizard. Blocks main window until complete."""
@@ -101,11 +102,31 @@ class SetupWizard(ctk.CTkToplevel):
         self.status_labels = {}
 
         fields = [
-            ("tibia_client_path",  "1. Ruta del Cliente Tibia / appearances.dat", "archivo o carpeta", False),
-            ("items_xml_path",     "2. Archivo items.xml (servidor Canary / TFS)", "archivo .xml",      False),
-            ("monsters_folder",    "3. Carpeta de Monstruos  (data/monster/)",     "carpeta",            False),
-            ("npcs_folder",        "4. Carpeta de NPCs  (data/npc/)",              "carpeta",            False),
-            ("mounts_folder",      "5. Carpeta de Monturas  (data/mounts/) — OPCIONAL", "carpeta",       True),
+            (
+                "tibia_client_path",
+                "1. Ruta del Cliente Tibia / appearances.dat",
+                "archivo o carpeta",
+                False,
+            ),
+            (
+                "items_xml_path",
+                "2. Archivo items.xml (servidor Canary / TFS)",
+                "archivo .xml",
+                False,
+            ),
+            (
+                "monsters_folder",
+                "3. Carpeta de Monstruos  (data/monster/)",
+                "carpeta",
+                False,
+            ),
+            ("npcs_folder", "4. Carpeta de NPCs  (data/npc/)", "carpeta", False),
+            (
+                "mounts_folder",
+                "5. Carpeta de Monturas  (data/mounts/) — OPCIONAL",
+                "carpeta",
+                True,
+            ),
         ]
 
         for key, label_text, hint, optional in fields:
@@ -131,21 +152,28 @@ class SetupWizard(ctk.CTkToplevel):
         footer.pack_propagate(False)
 
         ctk.CTkButton(
-            footer, text="VALIDAR Y GUARDAR",
+            footer,
+            text="VALIDAR Y GUARDAR",
             font=FONT_BTN,
-            fg_color=ACCENT, hover_color=ACCENT_DIM,
+            fg_color=ACCENT,
+            hover_color=ACCENT_DIM,
             text_color="#000000",
-            width=200, height=38,
+            width=200,
+            height=38,
             command=self._validate_and_save,
         ).place(x=24, y=11)
 
         ctk.CTkButton(
-            footer, text="Cancelar",
+            footer,
+            text="Cancelar",
             font=FONT_BTN,
-            fg_color="transparent", hover_color=BG_MID,
+            fg_color="transparent",
+            hover_color=BG_MID,
             text_color=TEXT_DIM,
-            border_color=TEXT_DIM, border_width=1,
-            width=110, height=38,
+            border_color=TEXT_DIM,
+            border_width=1,
+            width=110,
+            height=38,
             command=self._on_close,
         ).place(x=238, y=11)
 
@@ -153,8 +181,9 @@ class SetupWizard(ctk.CTkToplevel):
         frame = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=8)
         frame.pack(fill="x", padx=20, pady=6)
 
-        ctk.CTkLabel(frame, text=label_text, font=FONT_LABEL, text_color=TEXT_MAIN,
-                     anchor="w").pack(fill="x", padx=14, pady=(10, 2))
+        ctk.CTkLabel(
+            frame, text=label_text, font=FONT_LABEL, text_color=TEXT_MAIN, anchor="w"
+        ).pack(fill="x", padx=14, pady=(10, 2))
 
         row = ctk.CTkFrame(frame, fg_color="transparent")
         row.pack(fill="x", padx=14, pady=(0, 8))
@@ -163,7 +192,8 @@ class SetupWizard(ctk.CTkToplevel):
         self.field_vars[key] = var
 
         entry = ctk.CTkEntry(
-            row, textvariable=var,
+            row,
+            textvariable=var,
             fg_color=BG_INPUT,
             border_color="#2A2D35",
             text_color=TEXT_MAIN,
@@ -180,32 +210,43 @@ class SetupWizard(ctk.CTkToplevel):
                 if k == "tibia_client_path":
                     path = filedialog.askopenfilename(
                         title="Selecciona appearances.dat o archivo de cliente",
-                        filetypes=[("Archivos de datos", "*.dat *.otb *.spr"), ("Todos", "*.*")]
+                        filetypes=[
+                            ("Archivos de datos", "*.dat *.otb *.spr"),
+                            ("Todos", "*.*"),
+                        ],
                     )
                     if not path:
-                        path = filedialog.askdirectory(title="O selecciona la carpeta del cliente Tibia")
+                        path = filedialog.askdirectory(
+                            title="O selecciona la carpeta del cliente Tibia"
+                        )
                 else:
-                    path = filedialog.askdirectory(title=f"Selecciona carpeta para: {k}")
+                    path = filedialog.askdirectory(
+                        title=f"Selecciona carpeta para: {k}"
+                    )
             else:
                 path = filedialog.askopenfilename(
                     title="Selecciona items.xml",
-                    filetypes=[("XML", "*.xml"), ("Todos", "*.*")]
+                    filetypes=[("XML", "*.xml"), ("Todos", "*.*")],
                 )
             if path:
                 self.field_vars[k].set(path)
 
         ctk.CTkButton(
-            row, text="Examinar...",
+            row,
+            text="Examinar...",
             font=FONT_SMALL,
-            fg_color=BG_MID, hover_color="#2A2D35",
+            fg_color=BG_MID,
+            hover_color="#2A2D35",
             text_color=TEXT_DIM,
-            width=90, height=34,
+            width=90,
+            height=34,
             command=_browse,
         ).pack(side="right")
 
         # Status label
-        status = ctk.CTkLabel(frame, text="", font=FONT_SMALL,
-                              text_color=TEXT_DIM, anchor="w")
+        status = ctk.CTkLabel(
+            frame, text="", font=FONT_SMALL, text_color=TEXT_DIM, anchor="w"
+        )
         status.pack(fill="x", padx=14, pady=(0, 6))
         self.status_labels[key] = status
 
@@ -239,10 +280,16 @@ class SetupWizard(ctk.CTkToplevel):
         if all_ok:
             self.config["configured"] = True
             cm.save_config(self.config)
-            self._set_status("\n".join(log_lines) + "\n\n✓ Configuración guardada exitosamente.")
-            self.after(800, lambda: (self.grab_release(), self.destroy(), self.on_complete()))
+            self._set_status(
+                "\n".join(log_lines) + "\n\n✓ Configuración guardada exitosamente."
+            )
+            self.after(
+                800, lambda: (self.grab_release(), self.destroy(), self.on_complete())
+            )
         else:
-            self._set_status("\n".join(log_lines) + "\n\n✗ Corrige los errores antes de continuar.")
+            self._set_status(
+                "\n".join(log_lines) + "\n\n✗ Corrige los errores antes de continuar."
+            )
 
     def _set_status(self, text: str):
         self.status_box.configure(state="normal")
@@ -263,6 +310,7 @@ class SetupWizard(ctk.CTkToplevel):
 # ═══════════════════════════════════════════════════════════════════════════
 #  MAIN APPLICATION WINDOW
 # ═══════════════════════════════════════════════════════════════════════════
+
 
 class RMEAgentApp(ctk.CTk):
     def __init__(self):
@@ -313,11 +361,16 @@ class RMEAgentApp(ctk.CTk):
 
         # Settings button
         ctk.CTkButton(
-            topbar, text="⚙ Reconfigurar",
+            topbar,
+            text="⚙ Reconfigurar",
             font=FONT_SMALL,
-            fg_color="transparent", hover_color=BG_MID,
-            text_color=TEXT_DIM, border_color="#2A2D35", border_width=1,
-            width=130, height=30,
+            fg_color="transparent",
+            hover_color=BG_MID,
+            text_color=TEXT_DIM,
+            border_color="#2A2D35",
+            border_width=1,
+            width=130,
+            height=30,
             command=self._open_setup_wizard,
         ).place(relx=1.0, x=-155, y=14)
 
@@ -337,9 +390,12 @@ class RMEAgentApp(ctk.CTk):
 
         # Status bar
         self.statusbar = ctk.CTkLabel(
-            self, text="● Listo",
-            font=FONT_SMALL, text_color=TEXT_DIM,
-            fg_color=BG_CARD, anchor="w",
+            self,
+            text="● Listo",
+            font=FONT_SMALL,
+            text_color=TEXT_DIM,
+            fg_color=BG_CARD,
+            anchor="w",
         )
         self.statusbar.pack(fill="x", side="bottom", ipady=4, padx=10)
 
@@ -348,8 +404,9 @@ class RMEAgentApp(ctk.CTk):
         card1 = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=10)
         card1.pack(fill="x", padx=14, pady=(14, 6))
 
-        ctk.CTkLabel(card1, text="MODELO OLLAMA", font=FONT_SMALL,
-                     text_color=ACCENT).pack(anchor="w", padx=14, pady=(10, 2))
+        ctk.CTkLabel(
+            card1, text="MODELO OLLAMA", font=FONT_SMALL, text_color=ACCENT
+        ).pack(anchor="w", padx=14, pady=(10, 2))
 
         model_row = ctk.CTkFrame(card1, fg_color="transparent")
         model_row.pack(fill="x", padx=14, pady=(0, 10))
@@ -371,11 +428,14 @@ class RMEAgentApp(ctk.CTk):
         self.model_menu.pack(side="left", fill="x", expand=True, padx=(0, 6))
 
         ctk.CTkButton(
-            model_row, text="↺",
+            model_row,
+            text="↺",
             font=("Consolas", 14),
-            fg_color=BG_MID, hover_color="#2A2D35",
+            fg_color=BG_MID,
+            hover_color="#2A2D35",
             text_color=TEXT_DIM,
-            width=34, height=34,
+            width=34,
+            height=34,
             command=self._refresh_models,
         ).pack(side="right")
 
@@ -388,8 +448,9 @@ class RMEAgentApp(ctk.CTk):
         card2 = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=10)
         card2.pack(fill="x", padx=14, pady=6)
 
-        ctk.CTkLabel(card2, text="DESCRIPCIÓN DEL MAPA", font=FONT_SMALL,
-                     text_color=ACCENT).pack(anchor="w", padx=14, pady=(10, 4))
+        ctk.CTkLabel(
+            card2, text="DESCRIPCIÓN DEL MAPA", font=FONT_SMALL, text_color=ACCENT
+        ).pack(anchor="w", padx=14, pady=(10, 4))
 
         self.prompt_box = ctk.CTkTextbox(
             card2,
@@ -403,31 +464,48 @@ class RMEAgentApp(ctk.CTk):
             border_width=1,
         )
         self.prompt_box.pack(fill="x", padx=14, pady=(0, 10))
-        self.prompt_box.insert("end",
+        self.prompt_box.insert(
+            "end",
             "Crea una mazmorra subterránea de 30x30 para nivel 100.\n"
             "Incluye dragones, cofres con tesoro, paredes de piedra,\n"
-            "antorchas decorativas y una puerta de entrada bloqueada."
+            "antorchas decorativas y una puerta de entrada bloqueada.",
         )
 
         # Examples
-        ctk.CTkLabel(card2, text="Ejemplos rápidos:", font=FONT_SMALL,
-                     text_color=TEXT_DIM).pack(anchor="w", padx=14)
+        ctk.CTkLabel(
+            card2, text="Ejemplos rápidos:", font=FONT_SMALL, text_color=TEXT_DIM
+        ).pack(anchor="w", padx=14)
         examples_frame = ctk.CTkFrame(card2, fg_color="transparent")
         examples_frame.pack(fill="x", padx=14, pady=(4, 10))
 
         examples = [
-            ("🐉 Mazmorra", "Crea una mazmorra de 20x20 con dragones, paredes de piedra y cofres de tesoro."),
-            ("🌲 Bosque", "Genera un área boscosa de 40x40 con árboles, caminos de tierra y decoraciones naturales."),
-            ("🏰 Castillo", "Diseña el interior de un castillo con sala del trono, paredes de ladrillo y puertas."),
-            ("🌊 Puerto", "Crea un área portuaria con muelles de madera, agua y decoraciones marinas."),
+            (
+                "🐉 Mazmorra",
+                "Crea una mazmorra de 20x20 con dragones, paredes de piedra y cofres de tesoro.",
+            ),
+            (
+                "🌲 Bosque",
+                "Genera un área boscosa de 40x40 con árboles, caminos de tierra y decoraciones naturales.",
+            ),
+            (
+                "🏰 Castillo",
+                "Diseña el interior de un castillo con sala del trono, paredes de ladrillo y puertas.",
+            ),
+            (
+                "🌊 Puerto",
+                "Crea un área portuaria con muelles de madera, agua y decoraciones marinas.",
+            ),
         ]
         for label, prompt in examples:
             ctk.CTkButton(
-                examples_frame, text=label,
+                examples_frame,
+                text=label,
                 font=FONT_SMALL,
-                fg_color=BG_MID, hover_color="#2A2D35",
+                fg_color=BG_MID,
+                hover_color="#2A2D35",
                 text_color=TEXT_DIM,
-                width=82, height=28,
+                width=82,
+                height=28,
                 command=lambda p=prompt: self._set_prompt(p),
             ).pack(side="left", padx=(0, 4))
 
@@ -435,14 +513,18 @@ class RMEAgentApp(ctk.CTk):
         self.rag_card = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=10)
         self.rag_card.pack(fill="x", padx=14, pady=6)
 
-        ctk.CTkLabel(self.rag_card, text="DATOS CARGADOS", font=FONT_SMALL,
-                     text_color=ACCENT).pack(anchor="w", padx=14, pady=(10, 4))
+        ctk.CTkLabel(
+            self.rag_card, text="DATOS CARGADOS", font=FONT_SMALL, text_color=ACCENT
+        ).pack(anchor="w", padx=14, pady=(10, 4))
 
         self.rag_info = ctk.CTkLabel(
             self.rag_card,
             text="Cargando datos...",
-            font=FONT_SMALL, text_color=TEXT_DIM, anchor="w",
-            wraplength=360, justify="left",
+            font=FONT_SMALL,
+            text_color=TEXT_DIM,
+            anchor="w",
+            wraplength=360,
+            justify="left",
         )
         self.rag_info.pack(fill="x", padx=14, pady=(0, 10))
 
@@ -451,7 +533,8 @@ class RMEAgentApp(ctk.CTk):
             parent,
             text="▶  GENERAR SCRIPT LUA",
             font=("Consolas", 13, "bold"),
-            fg_color=ACCENT, hover_color=ACCENT_DIM,
+            fg_color=ACCENT,
+            hover_color=ACCENT_DIM,
             text_color="#000000",
             height=48,
             corner_radius=8,
@@ -461,8 +544,11 @@ class RMEAgentApp(ctk.CTk):
         self.gen_btn.pack(fill="x", padx=14, pady=(10, 4))
 
         self.progress = ctk.CTkProgressBar(
-            parent, fg_color=BG_CARD, progress_color=ACCENT,
-            height=4, corner_radius=2,
+            parent,
+            fg_color=BG_CARD,
+            progress_color=ACCENT,
+            height=4,
+            corner_radius=2,
         )
         self.progress.pack(fill="x", padx=14, pady=(0, 4))
         self.progress.set(0)
@@ -473,27 +559,38 @@ class RMEAgentApp(ctk.CTk):
         hdr.pack(fill="x")
         hdr.pack_propagate(False)
 
-        ctk.CTkLabel(hdr, text="SCRIPT LUA GENERADO", font=FONT_SMALL,
-                     text_color=ACCENT).place(x=14, y=12)
+        ctk.CTkLabel(
+            hdr, text="SCRIPT LUA GENERADO", font=FONT_SMALL, text_color=ACCENT
+        ).place(x=14, y=12)
 
         btn_row = ctk.CTkFrame(hdr, fg_color="transparent")
         btn_row.place(relx=1.0, x=-10, y=6, anchor="ne")
 
         ctk.CTkButton(
-            btn_row, text="💾 Guardar .lua",
+            btn_row,
+            text="💾 Guardar .lua",
             font=FONT_SMALL,
-            fg_color=BG_MID, hover_color="#2A2D35",
-            text_color=TEXT_DIM, border_color="#2A2D35", border_width=1,
-            width=120, height=30,
+            fg_color=BG_MID,
+            hover_color="#2A2D35",
+            text_color=TEXT_DIM,
+            border_color="#2A2D35",
+            border_width=1,
+            width=120,
+            height=30,
             command=self._save_script,
         ).pack(side="right", padx=(4, 0))
 
         ctk.CTkButton(
-            btn_row, text="🗑 Limpiar",
+            btn_row,
+            text="🗑 Limpiar",
             font=FONT_SMALL,
-            fg_color=BG_MID, hover_color="#2A2D35",
-            text_color=TEXT_DIM, border_color="#2A2D35", border_width=1,
-            width=80, height=30,
+            fg_color=BG_MID,
+            hover_color="#2A2D35",
+            text_color=TEXT_DIM,
+            border_color="#2A2D35",
+            border_width=1,
+            width=80,
+            height=30,
             command=self._clear_output,
         ).pack(side="right")
 
@@ -523,20 +620,26 @@ class RMEAgentApp(ctk.CTk):
             if xml_path and os.path.exists(xml_path):
                 self._cache, item_docs = load_items(xml_path)
                 total_items = len(self._cache)
-                self.after(0, lambda: self.rag_info.configure(
-                    text=(
-                        f"✓ {total_items:,} items analizados\n"
-                        f"✓ {total_items:,} entradas indexadas\n"
-                        f"✓ RAG base construida para generación de mapas"
+                self.after(
+                    0,
+                    lambda: self.rag_info.configure(
+                        text=(
+                            f"✓ {total_items:,} items analizados\n"
+                            f"✓ {total_items:,} entradas indexadas\n"
+                            f"✓ RAG base construida para generación de mapas"
+                        ),
+                        text_color=TEXT_GREEN,
                     ),
-                    text_color=TEXT_GREEN,
-                ))
+                )
             else:
                 item_docs = []
-                self.after(0, lambda: self.rag_info.configure(
-                    text="⚠ items.xml no configurado. Reconfigura la app.",
-                    text_color=TEXT_RED,
-                ))
+                self.after(
+                    0,
+                    lambda: self.rag_info.configure(
+                        text="⚠ items.xml no configurado. Reconfigura la app.",
+                        text_color=TEXT_RED,
+                    ),
+                )
 
             monster_docs = []
             monsters_folder = self.config.get("monsters_folder", "")
@@ -550,14 +653,21 @@ class RMEAgentApp(ctk.CTk):
 
             self._studio = AIMapStudio(self.config, item_docs, monster_docs, npc_docs)
             self.after(0, self._enable_generate_btn)
-            self.after(0, lambda: self._set_status(
-                f"✓ Datos cargados — {len(self._monster_names)} monstruos, {len(self._npc_names)} NPCs"
-            ))
+            self.after(
+                0,
+                lambda: self._set_status(
+                    f"✓ Datos cargados — {len(self._monster_names)} monstruos, {len(self._npc_names)} NPCs"
+                ),
+            )
         except Exception as e:
-            self.after(0, lambda: self.rag_info.configure(
-                text=f"✗ Error al cargar datos:\n{e}", text_color=TEXT_RED
-            ))
-            self.after(0, lambda: self._set_status(f"Error: {e}"))
+            error_msg = str(e)
+            self.after(
+                0,
+                lambda msg=error_msg: self.rag_info.configure(
+                    text=f"✗ Error al cargar datos:\n{msg}", text_color=TEXT_RED
+                ),
+            )
+            self.after(0, lambda msg=error_msg: self._set_status(f"Error: {msg}"))
 
         self.after(0, self._refresh_models)
 
@@ -568,13 +678,17 @@ class RMEAgentApp(ctk.CTk):
 
     def _refresh_models(self):
         if self._studio is None:
-            self.ollama_status.configure(text="⚠ Cargando RME Studio...", text_color=TEXT_RED)
+            self.ollama_status.configure(
+                text="⚠ Cargando RME Studio...", text_color=TEXT_RED
+            )
             self.model_menu.configure(values=["Cargando..."])
             return
 
         models = self._studio.available_models()
         if models:
-            self.ollama_status.configure(text="● Ollama disponible", text_color=TEXT_GREEN)
+            self.ollama_status.configure(
+                text="● Ollama disponible", text_color=TEXT_GREEN
+            )
             self.model_menu.configure(values=models)
             saved = self.config.get("last_model", "")
             if saved in models:
@@ -582,7 +696,9 @@ class RMEAgentApp(ctk.CTk):
             else:
                 self.model_var.set(models[0])
         else:
-            self.ollama_status.configure(text="✗ Ollama no disponible", text_color=TEXT_RED)
+            self.ollama_status.configure(
+                text="✗ Ollama no disponible", text_color=TEXT_RED
+            )
             self.model_menu.configure(values=["Ollama no disponible"])
             self.model_var.set("Ollama no disponible")
 
@@ -594,18 +710,26 @@ class RMEAgentApp(ctk.CTk):
 
         prompt = self.prompt_box.get("1.0", "end").strip()
         if not prompt:
-            messagebox.showwarning("Prompt vacío", "Escribe una descripción del mapa.", parent=self)
+            messagebox.showwarning(
+                "Prompt vacío", "Escribe una descripción del mapa.", parent=self
+            )
             return
 
         model = self.model_var.get()
         if not model or "no disponible" in model.lower() or "cargando" in model.lower():
-            messagebox.showerror("Modelo no disponible",
-                                 "Selecciona un modelo de Ollama válido.", parent=self)
+            messagebox.showerror(
+                "Modelo no disponible",
+                "Selecciona un modelo de Ollama válido.",
+                parent=self,
+            )
             return
 
         if self._studio is None:
-            messagebox.showwarning("Datos no cargados",
-                                   "Los datos del estudio AI aún no están listos.", parent=self)
+            messagebox.showwarning(
+                "Datos no cargados",
+                "Los datos del estudio AI aún no están listos.",
+                parent=self,
+            )
             return
 
         self._generating = True
@@ -617,7 +741,12 @@ class RMEAgentApp(ctk.CTk):
         self.output_box.delete("1.0", "end")
         self.output_box.configure(text_color="#A8D8A8")
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.output_box.insert("end", f"-- Generado por AI OpenTibia Map Studio  [{timestamp}]\n-- Modelo: {model}\n-- Descripción: {prompt[:80]}...\n\n")
+        self.output_box.insert(
+            "end",
+            f"-- Generado por AI OpenTibia Map Studio  [{timestamp}]\n"
+            f"-- Modelo: {model}\n"
+            f"-- Descripción: {prompt[:80]}...\n\n",
+        )
 
         # Save model preference
         self.config["last_model"] = model
@@ -626,7 +755,15 @@ class RMEAgentApp(ctk.CTk):
         # Stream in background thread
         threading.Thread(
             target=self._studio.generate_script,
-            args=(prompt, model, self._monster_names, self._npc_names, self._on_chunk, self._on_done, self._on_error),
+            args=(
+                prompt,
+                model,
+                self._monster_names,
+                self._npc_names,
+                self._on_chunk,
+                self._on_done,
+                self._on_error,
+            ),
             daemon=True,
         ).start()
 
@@ -648,7 +785,9 @@ class RMEAgentApp(ctk.CTk):
         self._generating = False
         self.progress.set(1)
         self.gen_btn.configure(state="normal", text="▶  GENERAR SCRIPT LUA")
-        self._set_status("✓ Script generado exitosamente. Usa 'Guardar .lua' para exportarlo.")
+        self._set_status(
+            "✓ Script generado exitosamente. Usa 'Guardar .lua' para exportarlo."
+        )
         self.after(2000, lambda: self.progress.set(0))
 
     def _generation_error(self, msg: str):
@@ -703,7 +842,9 @@ class RMEAgentApp(ctk.CTk):
     def _save_script(self):
         content = self.output_box.get("1.0", "end").strip()
         if not content or content.startswith("-- El script Lua generado aparecerá"):
-            messagebox.showwarning("Sin contenido", "No hay script para guardar.", parent=self)
+            messagebox.showwarning(
+                "Sin contenido", "No hay script para guardar.", parent=self
+            )
             return
 
         default_name = f"rme_map_{datetime.now().strftime('%Y%m%d_%H%M%S')}.lua"

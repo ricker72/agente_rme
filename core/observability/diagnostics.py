@@ -91,7 +91,9 @@ class Diagnostics:
         log_dir = self._project_root / "logs"
         if not log_dir.exists():
             return []
-        logs = sorted(log_dir.glob("*.log"), key=lambda p: p.stat().st_mtime, reverse=True)
+        logs = sorted(
+            log_dir.glob("*.log"), key=lambda p: p.stat().st_mtime, reverse=True
+        )
         if not logs:
             return []
         latest = logs[0]
@@ -113,18 +115,27 @@ class Diagnostics:
 
     def _check_configs(self) -> Dict[str, bool]:
         return {
-            "config/production.yaml": (self._project_root / "config/production.yaml").exists(),
-            "config/development.yaml": (self._project_root / "config/development.yaml").exists(),
-            "config/default.yaml": (self._project_root / "config/default.yaml").exists(),
+            "config/production.yaml": (
+                self._project_root / "config/production.yaml"
+            ).exists(),
+            "config/development.yaml": (
+                self._project_root / "config/development.yaml"
+            ).exists(),
+            "config/default.yaml": (
+                self._project_root / "config/default.yaml"
+            ).exists(),
             "config.json": (self._project_root / "config.json").exists(),
             "pyproject.toml": (self._project_root / "pyproject.toml").exists(),
             "requirements.txt": (self._project_root / "requirements.txt").exists(),
-            "requirements-lock.txt": (self._project_root / "requirements-lock.txt").exists(),
+            "requirements-lock.txt": (
+                self._project_root / "requirements-lock.txt"
+            ).exists(),
         }
 
     def _check_ollama(self) -> bool:
         try:
             import requests  # type: ignore
+
             r = requests.get("http://localhost:11434/api/tags", timeout=2)
             return r.status_code == 200
         except Exception:

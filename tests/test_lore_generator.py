@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 
 from core.campaign.lore_generator import LoreGenerator, LoreEntry
 
@@ -77,8 +76,9 @@ class TestLoreGeneratorSpecial:
 
 class TestLoreEntryData:
     def test_to_dict(self):
-        entry = LoreEntry(title="Test", category="history",
-                          content="Content", importance=3)
+        entry = LoreEntry(
+            title="Test", category="history", content="Content", importance=3
+        )
         d = entry.to_dict()
         assert d["title"] == "Test"
         assert d["category"] == "history"

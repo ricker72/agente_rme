@@ -15,11 +15,21 @@ def _src(name: str, theme: str) -> dict:
     return {
         "meta": {"name": name, "theme": theme},
         "regions": [
-            {"name": f"{name}_hunt", "theme": theme, "min_level": 250,
-             "max_level": 400, "tags": ["circular"]},
-            {"name": f"{name}_boss_arena", "category": "boss_room",
-             "theme": theme, "tags": ["boss", "circular"], "width": 30,
-             "height": 30},
+            {
+                "name": f"{name}_hunt",
+                "theme": theme,
+                "min_level": 250,
+                "max_level": 400,
+                "tags": ["circular"],
+            },
+            {
+                "name": f"{name}_boss_arena",
+                "category": "boss_room",
+                "theme": theme,
+                "tags": ["boss", "circular"],
+                "width": 30,
+                "height": 30,
+            },
         ],
         "cities": [{"name": f"{name}_city", "theme": theme}],
         "spawns": [
@@ -31,8 +41,7 @@ def _src(name: str, theme: str) -> dict:
 class TestKnowledgeCriticIntegration(unittest.TestCase):
     def test_critic_scores_merge_into_entries(self):
         builder = DatasetBuilder()
-        sources = [_src("roshamuul", "roshamuul"),
-                  _src("issavi", "issavi")]
+        sources = [_src("roshamuul", "roshamuul"), _src("issavi", "issavi")]
         ds = builder.build_from_sources(sources)
         # Pretend a critic report scored the two hunts
         builder.attach_scores(

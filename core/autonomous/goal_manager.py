@@ -4,7 +4,6 @@ Goal Manager - manages design goals and determines when to stop the optimization
 
 from dataclasses import dataclass, field
 from typing import Dict, Any, List, Optional
-from datetime import datetime
 from .models.design_goal import DesignGoal
 from .models.design_result import DesignResult
 
@@ -27,7 +26,7 @@ class GoalManager:
         """Initialize default stop conditions."""
         if not self.stop_conditions:
             self.stop_conditions = {
-                "critic_score": 0.9,    # 0-1 normalised
+                "critic_score": 0.9,  # 0-1 normalised
                 "playtest_score": 0.8,  # 0-1 normalised
                 "max_iterations": 20,
                 "min_improvement": 0.005,
@@ -65,7 +64,9 @@ class GoalManager:
         if critic >= critic_target:
             return True
 
-        playtest_target = _normalise_target(self.stop_conditions.get("playtest_score", 0.8))
+        playtest_target = _normalise_target(
+            self.stop_conditions.get("playtest_score", 0.8)
+        )
         if playtest >= playtest_target:
             return True
 
@@ -77,7 +78,9 @@ class GoalManager:
         # Convergence: last 3 iterations flat
         if len(result.convergence_data) >= 3:
             recent = result.convergence_data[-3:]
-            if max(recent) - min(recent) < self.stop_conditions.get("convergence_threshold", 0.01):
+            if max(recent) - min(recent) < self.stop_conditions.get(
+                "convergence_threshold", 0.01
+            ):
                 return True
 
         # No improvement in the last iteration
@@ -127,11 +130,15 @@ class GoalManager:
         progress_sum = 0.0
         total_weight = 0.0
 
-        critic_progress = min(1.0, result.final_scores.get("critic", 0) / max(target_critic, 1e-9))
+        critic_progress = min(
+            1.0, result.final_scores.get("critic", 0) / max(target_critic, 1e-9)
+        )
         progress_sum += critic_progress * 0.6  # 60% weight for critic score
         total_weight += 0.6
 
-        playtest_progress = min(1.0, result.final_scores.get("playtest", 0) / max(target_playtest, 1e-9))
+        playtest_progress = min(
+            1.0, result.final_scores.get("playtest", 0) / max(target_playtest, 1e-9)
+        )
         progress_sum += playtest_progress * 0.4  # 40% weight for playtest score
         total_weight += 0.4
 

@@ -1,0 +1,310 @@
+{
+  "audit": "Widget Architecture",
+  "audit_id": "AUDIT 7",
+  "widget_files_analyzed": 43,
+  "details": {
+    "__init__.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_artifacts_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_chart_viewer.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": true,
+      "issues": []
+    },
+    "autonomous_constraints_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_control_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_decision_feed.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_goal_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_iteration_table.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_metrics_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "autonomous_status_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_analysis_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_heatmap_viewer.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": true,
+      "issues": []
+    },
+    "critic_issue_list.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_recommendation_list.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_report_summary.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_score_card.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_score_grid.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "critic_world_selector.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "generation_history_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "generation_metrics_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "generation_progress_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "generation_settings_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "generation_summary_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "health_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_dataset_summary.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_entry_viewer.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_filters_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_metrics_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_recommendation_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_results_table.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_search_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "knowledge_similarity_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": true,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "metric_card.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "quick_action_card.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "recent_activity_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "recent_artifacts_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "recent_projects_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "release_info_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "status_card.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "system_health_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "system_status_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    },
+    "world_preview_widget.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": true,
+      "issues": []
+    },
+    "world_prompt_panel.py": {
+      "core_imports": [],
+      "agents_imports": [],
+      "uses_dto": false,
+      "has_filesystem": false,
+      "issues": []
+    }
+  },
+  "total_issues": 0,
+  "status": "PASS"
+}

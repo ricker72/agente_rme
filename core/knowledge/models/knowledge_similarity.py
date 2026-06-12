@@ -191,7 +191,14 @@ def pattern_similarity(
             matches += 1
     cont_matches = 0.0
     cont_total = 0
-    for k in ("size", "spawns", "escape_routes", "spawn_density", "monsters", "tile_count"):
+    for k in (
+        "size",
+        "spawns",
+        "escape_routes",
+        "spawn_density",
+        "monsters",
+        "tile_count",
+    ):
         a = _as_number(a_attrs.get(k))
         b = _as_number(b_attrs.get(k))
         if a is None or b is None:

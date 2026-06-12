@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional
 @dataclass
 class NPC:
     """A non-player character in the campaign."""
+
     name: str = ""
     role: str = ""  # "quest_giver", "merchant", "ally", "enemy", "neutral"
     faction: str = ""
@@ -20,43 +21,88 @@ class NPC:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "name": self.name, "role": self.role, "faction": self.faction,
-            "location": self.location, "dialogue_greeting": self.dialogue_greeting,
+            "name": self.name,
+            "role": self.role,
+            "faction": self.faction,
+            "location": self.location,
+            "dialogue_greeting": self.dialogue_greeting,
             "dialogue_farewell": self.dialogue_farewell,
-            "quest_ids": self.quest_ids, "combat_level": self.combat_level,
+            "quest_ids": self.quest_ids,
+            "combat_level": self.combat_level,
             "is_boss": self.is_boss,
         }
 
 
 NPC_NAMES_BY_ROLE: Dict[str, List[str]] = {
-    "quest_giver": ["Elder Theron", "Captain Lyra", "Scholar Voss", "Healer Miriel",
-                     "Scout Renna", "Commander Draven", "Sage Altheris", "Mayor Corbin"],
-    "merchant": ["Trader Zara", "Merchant Grix", "Peddler Nysta", "Blacksmith Orren",
-                  "Alchemist Fez", "Armorer Krell"],
-    "ally": ["Warrior Sera", "Ranger Finn", "Mage Celestia", "Paladin Aldric",
-              "Rogue Vex", "Healer Thessa"],
-    "enemy": ["Warlord Krazath", "Sorceress Nyx", "Commander Vexul", "Beast Tamer Grul",
-               "Necromancer Zethis", "Assassin Shade"],
-    "neutral": ["Bartender Max", "Innkeeper Helga", "Guard Captain Brom",
-                 "Fisherman Old Tom", "Wanderer Nyssa"],
+    "quest_giver": [
+        "Elder Theron",
+        "Captain Lyra",
+        "Scholar Voss",
+        "Healer Miriel",
+        "Scout Renna",
+        "Commander Draven",
+        "Sage Altheris",
+        "Mayor Corbin",
+    ],
+    "merchant": [
+        "Trader Zara",
+        "Merchant Grix",
+        "Peddler Nysta",
+        "Blacksmith Orren",
+        "Alchemist Fez",
+        "Armorer Krell",
+    ],
+    "ally": [
+        "Warrior Sera",
+        "Ranger Finn",
+        "Mage Celestia",
+        "Paladin Aldric",
+        "Rogue Vex",
+        "Healer Thessa",
+    ],
+    "enemy": [
+        "Warlord Krazath",
+        "Sorceress Nyx",
+        "Commander Vexul",
+        "Beast Tamer Grul",
+        "Necromancer Zethis",
+        "Assassin Shade",
+    ],
+    "neutral": [
+        "Bartender Max",
+        "Innkeeper Helga",
+        "Guard Captain Brom",
+        "Fisherman Old Tom",
+        "Wanderer Nyssa",
+    ],
 }
 
 GREETINGS: Dict[str, List[str]] = {
-    "quest_giver": ["Greetings, adventurer. I need your help.",
-                     "Brave one, come closer. I have a task for you.",
-                     "Thank the gods you're here! We need assistance."],
-    "merchant": ["Welcome! Browse my wares, all top quality.",
-                  "Looking to buy or sell? I've got what you need.",
-                  "Finest goods in all of {location}!"],
-    "ally": ["I'll fight beside you, friend.",
-              "We stand together against the darkness.",
-              "Ready when you are, partner."],
-    "enemy": ["You dare enter my domain?",
-               "Your journey ends here, fool.",
-               "Prepare to face your doom!"],
-    "neutral": ["Hmm? Oh, hello there.",
-                 "Nice weather we're having... considering everything.",
-                 "If you need information, talk to someone important."],
+    "quest_giver": [
+        "Greetings, adventurer. I need your help.",
+        "Brave one, come closer. I have a task for you.",
+        "Thank the gods you're here! We need assistance.",
+    ],
+    "merchant": [
+        "Welcome! Browse my wares, all top quality.",
+        "Looking to buy or sell? I've got what you need.",
+        "Finest goods in all of {location}!",
+    ],
+    "ally": [
+        "I'll fight beside you, friend.",
+        "We stand together against the darkness.",
+        "Ready when you are, partner.",
+    ],
+    "enemy": [
+        "You dare enter my domain?",
+        "Your journey ends here, fool.",
+        "Prepare to face your doom!",
+    ],
+    "neutral": [
+        "Hmm? Oh, hello there.",
+        "Nice weather we're having... considering everything.",
+        "If you need information, talk to someone important.",
+    ],
 }
 
 
@@ -67,10 +113,13 @@ class NPCGenerator:
         self._seed = seed
         self._used_names: set = set()
 
-    def generate(self, theme: str = "default",
-                 faction_names: Optional[List[str]] = None,
-                 count: int = 8,
-                 locations: Optional[List[str]] = None) -> List[NPC]:
+    def generate(
+        self,
+        theme: str = "default",
+        faction_names: Optional[List[str]] = None,
+        count: int = 8,
+        locations: Optional[List[str]] = None,
+    ) -> List[NPC]:
         """Generate a set of NPCs for the campaign."""
         faction_names = faction_names or []
         locations = locations or ["Town Center"]
@@ -86,8 +135,7 @@ class NPCGenerator:
 
         return npcs
 
-    def _create_npc(self, role: str, faction: str,
-                    location: str, index: int) -> NPC:
+    def _create_npc(self, role: str, faction: str, location: str, index: int) -> NPC:
         names = NPC_NAMES_BY_ROLE.get(role, NPC_NAMES_BY_ROLE["neutral"])
         name = names[index % len(names)]
         if name in self._used_names:
@@ -97,8 +145,12 @@ class NPCGenerator:
         greetings = GREETINGS.get(role, GREETINGS["neutral"])
         greeting = greetings[index % len(greetings)].replace("{location}", location)
 
-        farewell_templates = ["Farewell, adventurer.", "May the gods protect you.",
-                              "Be safe out there.", "Until we meet again."]
+        farewell_templates = [
+            "Farewell, adventurer.",
+            "May the gods protect you.",
+            "Be safe out there.",
+            "Until we meet again.",
+        ]
         farewell = farewell_templates[index % len(farewell_templates)]
 
         level = 1
@@ -110,17 +162,27 @@ class NPCGenerator:
             level = 1
 
         return NPC(
-            name=name, role=role, faction=faction, location=location,
-            dialogue_greeting=greeting, dialogue_farewell=farewell,
-            combat_level=level, is_boss=(role == "enemy" and index > 3),
+            name=name,
+            role=role,
+            faction=faction,
+            location=location,
+            dialogue_greeting=greeting,
+            dialogue_farewell=farewell,
+            combat_level=level,
+            is_boss=(role == "enemy" and index > 3),
         )
 
-    def generate_boss(self, name: str, faction: str,
-                      location: str, level: int = 300) -> NPC:
+    def generate_boss(
+        self, name: str, faction: str, location: str, level: int = 300
+    ) -> NPC:
         """Generate a single boss NPC."""
         return NPC(
-            name=name, role="enemy", faction=faction, location=location,
+            name=name,
+            role="enemy",
+            faction=faction,
+            location=location,
             dialogue_greeting=f"YOU DARE CHALLENGE ME, MORTAL? I AM {name.upper()}!",
             dialogue_farewell="This... cannot be...",
-            combat_level=level, is_boss=True,
+            combat_level=level,
+            is_boss=True,
         )

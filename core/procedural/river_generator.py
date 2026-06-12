@@ -35,43 +35,42 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Sequence, Tuple
-
+from typing import Any, Dict, List, Optional, Tuple
 
 # =============================================================================
 # Static knowledge: river tile IDs per theme
 # =============================================================================
 
 RIVER_GROUND_IDS: Dict[str, int] = {
-    "generic":    4597,
-    "issavi":     4597,
-    "roshamuul":  4598,
-    "soul_war":   600,            # lava-style
-    "library":    4597,
-    "yalahar":    4597,
-    "falcon":     4597,
-    "cobra":      4597,
-    "ice":        4597,
-    "jungle":     4597,
-    "thais":      4597,
-    "venore":     4598,
-    "ankrahmun":  4597,
+    "generic": 4597,
+    "issavi": 4597,
+    "roshamuul": 4598,
+    "soul_war": 600,  # lava-style
+    "library": 4597,
+    "yalahar": 4597,
+    "falcon": 4597,
+    "cobra": 4597,
+    "ice": 4597,
+    "jungle": 4597,
+    "thais": 4597,
+    "venore": 4598,
+    "ankrahmun": 4597,
 }
 
 RIVER_BANK_IDS: Dict[str, int] = {
-    "generic":    361,
-    "issavi":     103,
-    "roshamuul":  231,
-    "soul_war":   231,
-    "library":    103,
-    "yalahar":    103,
-    "falcon":     103,
-    "cobra":      103,
-    "ice":        672,
-    "jungle":     103,
-    "thais":      103,
-    "venore":     103,
-    "ankrahmun":  103,
+    "generic": 361,
+    "issavi": 103,
+    "roshamuul": 231,
+    "soul_war": 231,
+    "library": 103,
+    "yalahar": 103,
+    "falcon": 103,
+    "cobra": 103,
+    "ice": 672,
+    "jungle": 103,
+    "thais": 103,
+    "venore": 103,
+    "ankrahmun": 103,
 }
 
 
@@ -97,6 +96,7 @@ def _theme_name(theme: Any) -> str:
 # Data classes
 # =============================================================================
 
+
 @dataclass
 class RiverPoint:
     x: int
@@ -108,7 +108,9 @@ class RiverPoint:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "x": self.x, "y": self.y, "z": self.z,
+            "x": self.x,
+            "y": self.y,
+            "z": self.z,
             "width": self.width,
             "is_mouth": self.is_mouth,
             "is_source": self.is_source,
@@ -118,13 +120,14 @@ class RiverPoint:
 @dataclass
 class River:
     """A single river from source to mouth."""
+
     name: str
     points: List[RiverPoint]
     z: int
     ground_id: int
     bank_id: int
     width: int = 1
-    kind: str = "river"            # "river" | "lava_river" | "stream"
+    kind: str = "river"  # "river" | "lava_river" | "stream"
     tiles_written: int = 0
     bank_tiles: int = 0
     metadata: Dict[str, Any] = field(default_factory=dict)
@@ -152,6 +155,7 @@ class River:
 # =============================================================================
 # RiverGenerator
 # =============================================================================
+
 
 class RiverGenerator:
     """
@@ -211,7 +215,9 @@ class RiverGenerator:
         bid = bank_id if bank_id is not None else get_river_bank_id(theme)
 
         path = self._trace_path(
-            source=source, sink=sink, meander=meander,
+            source=source,
+            sink=sink,
+            meander=meander,
             max_length=max_length,
         )
 
@@ -219,7 +225,11 @@ class RiverGenerator:
             return River(
                 name=name or "river_empty",
                 points=[],
-                z=z, ground_id=gid, bank_id=bid, width=width, kind=kind,
+                z=z,
+                ground_id=gid,
+                bank_id=bid,
+                width=width,
+                kind=kind,
             )
 
         from core.world.tile import Tile
@@ -230,7 +240,10 @@ class RiverGenerator:
             t = i / max(1, len(path) - 1)
             w = max(1, int(round(width * (0.5 + 0.5 * t))))
             rp = RiverPoint(
-                x=x, y=y, z=z, width=w,
+                x=x,
+                y=y,
+                z=z,
+                width=w,
                 is_source=(i == 0),
                 is_mouth=(i == len(path) - 1),
             )
@@ -242,14 +255,17 @@ class RiverGenerator:
                 if tx < 0 or ty < 0:
                     continue
                 existing = world.get_tile(tx, ty, z)
-                if existing is not None and existing.zone and (
-                    existing.zone.startswith("structure:")
-                    or existing.zone.startswith("city:")
-                    or existing.zone.startswith("spawn:")
+                if (
+                    existing is not None
+                    and existing.zone
+                    and (
+                        existing.zone.startswith("structure:")
+                        or existing.zone.startswith("city:")
+                        or existing.zone.startswith("spawn:")
+                    )
                 ):
                     continue
-                world.set_tile(Tile(x=tx, y=ty, z=z, ground=gid,
-                                    zone=f"river:{kind}"))
+                world.set_tile(Tile(x=tx, y=ty, z=z, ground=gid, zone=f"river:{kind}"))
 
         river = River(
             name=name or f"river_{source[0]}_{source[1]}_{sink[0]}_{sink[1]}",
@@ -274,15 +290,18 @@ class RiverGenerator:
                     if tx < 0 or ty < 0:
                         continue
                     existing = world.get_tile(tx, ty, z)
-                    if existing is not None and existing.zone and (
-                        existing.zone.startswith("structure:")
-                        or existing.zone.startswith("city:")
-                        or existing.zone.startswith("spawn:")
-                        or existing.zone.startswith("river:")
+                    if (
+                        existing is not None
+                        and existing.zone
+                        and (
+                            existing.zone.startswith("structure:")
+                            or existing.zone.startswith("city:")
+                            or existing.zone.startswith("spawn:")
+                            or existing.zone.startswith("river:")
+                        )
                     ):
                         continue
-                    world.set_tile(Tile(x=tx, y=ty, z=z, ground=bid,
-                                        zone=f"river:bank"))
+                    world.set_tile(Tile(x=tx, y=ty, z=z, ground=bid, zone="river:bank"))
                     bank_tiles += 1
             river.bank_tiles = bank_tiles
         return river
@@ -306,9 +325,16 @@ class RiverGenerator:
             s = sources[i % len(sources)]
             t = sinks[i % len(sinks)]
             r = self.generate_river(
-                world, source=s, sink=t, z=z, theme=theme,
-                width=width, kind=kind, meander=meander,
-                add_banks=add_banks, name=f"river_{i + 1}",
+                world,
+                source=s,
+                sink=t,
+                z=z,
+                theme=theme,
+                width=width,
+                kind=kind,
+                meander=meander,
+                add_banks=add_banks,
+                name=f"river_{i + 1}",
             )
             rivers.append(r)
         return rivers
@@ -335,8 +361,8 @@ class RiverGenerator:
             if abs(dx) <= 1 and abs(dy) <= 1:
                 path.append((tx, ty))
                 break
-            step_x = (1 if dx > 0 else (-1 if dx < 0 else 0))
-            step_y = (1 if dy > 0 else (-1 if dy < 0 else 0))
+            step_x = 1 if dx > 0 else (-1 if dx < 0 else 0)
+            step_y = 1 if dy > 0 else (-1 if dy < 0 else 0)
             # Pick a primary axis
             if abs(dx) >= abs(dy):
                 nx, ny = x + step_x, y
@@ -358,6 +384,7 @@ class RiverGenerator:
 # Module-level helpers
 # =============================================================================
 
+
 def generate_river(
     world: Any,
     source: Tuple[int, int],
@@ -372,8 +399,14 @@ def generate_river(
     """One-shot helper: build a single river."""
     gen = RiverGenerator(seed=seed)
     return gen.generate_river(
-        world, source, sink, z, theme,
-        width=width, kind=kind, meander=meander,
+        world,
+        source,
+        sink,
+        z,
+        theme,
+        width=width,
+        kind=kind,
+        meander=meander,
     )
 
 
@@ -391,6 +424,12 @@ def generate_rivers(
     """One-shot helper: build multiple rivers."""
     gen = RiverGenerator(seed=seed)
     return gen.generate_rivers(
-        world, sources, sinks, z, theme,
-        width=width, kind=kind, meander=meander,
+        world,
+        sources,
+        sinks,
+        z,
+        theme,
+        width=width,
+        kind=kind,
+        meander=meander,
     )

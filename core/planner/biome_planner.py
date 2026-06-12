@@ -13,7 +13,9 @@ class BiomePlanner:
         "soulwar": "infernal",
     }
 
-    def place_biome(self, theme: str, region: Optional[str] = None) -> Dict[str, object]:
+    def place_biome(
+        self, theme: str, region: Optional[str] = None
+    ) -> Dict[str, object]:
         biome = self.STYLE_TO_BIOME.get(theme.lower(), "generic")
         return {
             "theme": theme,

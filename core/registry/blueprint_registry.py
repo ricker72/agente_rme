@@ -17,8 +17,19 @@ class BlueprintRegistry:
         temple = reg.get_blueprint("temple", "issavi")
     """
 
-    VALID_TYPES = {"temple", "depot", "market", "house", "bridge", "boss_room",
-                   "plaza", "gate", "wall", "tower", "garrison"}
+    VALID_TYPES = {
+        "temple",
+        "depot",
+        "market",
+        "house",
+        "bridge",
+        "boss_room",
+        "plaza",
+        "gate",
+        "wall",
+        "tower",
+        "garrison",
+    }
 
     def __init__(self):
         self._blueprints: Dict[str, Dict[str, Any]] = {}  # type -> name -> spec
@@ -46,7 +57,9 @@ class BlueprintRegistry:
         """Register a single blueprint by type and name."""
         self._blueprints.setdefault(btype.lower(), {})[name] = spec
 
-    def get_blueprint(self, btype: str, name: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def get_blueprint(
+        self, btype: str, name: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
         """Get a blueprint by type, optionally filtered by name."""
         type_map = self._blueprints.get(btype.lower(), {})
         if name:

@@ -1,7 +1,5 @@
 """Tests for the Autonomous Planner."""
 
-import pytest
-
 from core.autonomous.autonomous_planner import AutonomousPlanner
 from core.autonomous.autonomous_director import AutonomousDirector
 from core.autonomous.models.design_goal import DesignGoal
@@ -23,7 +21,10 @@ class TestAutonomousPlanner:
     def test_create_plan_complexity(self):
         planner = AutonomousPlanner()
         goal = DesignGoal(
-            prompt="Complex plan", num_hunts=3, num_bosses=2, num_raids=1,
+            prompt="Complex plan",
+            num_hunts=3,
+            num_bosses=2,
+            num_raids=1,
         )
         plan = planner.create_plan(goal)
         assert plan.estimated_complexity > 0
@@ -35,7 +36,9 @@ class TestAutonomousPlanner:
         plan = planner.create_plan(goal)
         initial_count = len(plan.regions)
         new_region = RegionPlan(
-            region_id="new_1", region_name="New Region", region_type="boss",
+            region_id="new_1",
+            region_name="New Region",
+            region_type="boss",
         )
         updated_plan = planner.update_plan(plan, {"add_region": new_region})
         assert len(updated_plan.regions) == initial_count + 1
@@ -55,12 +58,15 @@ class TestAutonomousPlanner:
         plan = planner.create_plan(goal)
         region_id = plan.regions[0].region_id
         original_density = plan.regions[0].target_density
-        updated_plan = planner.update_plan(plan, {
-            "modify_region": {
-                "region_id": region_id,
-                "modifications": {"target_density": 0.9},
-            }
-        })
+        updated_plan = planner.update_plan(
+            plan,
+            {
+                "modify_region": {
+                    "region_id": region_id,
+                    "modifications": {"target_density": 0.9},
+                }
+            },
+        )
         modified_region = updated_plan.get_region(region_id)
         assert modified_region.target_density == 0.9
         assert modified_region.target_density != original_density

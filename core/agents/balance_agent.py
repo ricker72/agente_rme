@@ -1,4 +1,5 @@
 """core.agents.balance_agent — Real balance agent."""
+
 from __future__ import annotations
 import time
 from typing import Any, Dict
@@ -7,6 +8,7 @@ from .agent_registry import BaseAgent
 
 class BalanceAgent(BaseAgent):
     """Real balance agent. NO FALLBACKS."""
+
     AGENT_ID = "balance"
 
     def execute(self, request: Any) -> Dict[str, Any]:
@@ -22,6 +24,10 @@ class BalanceAgent(BaseAgent):
         return {
             "agent_id": self.agent_id,
             "success": True,
-            "balancers": [engine.__class__.__name__, diff.__class__.__name__, xp.__class__.__name__],
+            "balancers": [
+                engine.__class__.__name__,
+                diff.__class__.__name__,
+                xp.__class__.__name__,
+            ],
             "duration_ms": int((time.time() - t0) * 1000),
         }

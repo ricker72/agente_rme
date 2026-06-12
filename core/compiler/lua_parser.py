@@ -20,10 +20,12 @@ class ParseError(Exception):
 
 
 class LuaParser:
-    ASSIGNMENT_RE = re.compile(r'^(local\s+)?(.+?)=(.+)$')
-    IF_RE = re.compile(r'^if\s+(.+?)\s+then$')
-    FOR_RE = re.compile(r'^for\s+(\w+)\s*=\s*(.+?)\s*,\s*(.+?)(?:\s*,\s*(.+?))?\s*do$')
-    FUNCTION_CALL_RE = re.compile(r'^(?P<receiver>[\w\.]+)(?P<op>[:\.])(?P<name>\w+)\s*\((?P<args>.*)\)$')
+    ASSIGNMENT_RE = re.compile(r"^(local\s+)?(.+?)=(.+)$")
+    IF_RE = re.compile(r"^if\s+(.+?)\s+then$")
+    FOR_RE = re.compile(r"^for\s+(\w+)\s*=\s*(.+?)\s*,\s*(.+?)(?:\s*,\s*(.+?))?\s*do$")
+    FUNCTION_CALL_RE = re.compile(
+        r"^(?P<receiver>[\w\.]+)(?P<op>[:\.])(?P<name>\w+)\s*\((?P<args>.*)\)$"
+    )
 
     def parse(self, source: str) -> Block:
         root = Block()
@@ -42,7 +44,9 @@ class LuaParser:
                 if len(stack) < 2:
                     raise ParseError("Unexpected else without matching if")
                 parent_block = stack[-2]
-                last_stmt = parent_block.statements[-1] if parent_block.statements else None
+                last_stmt = (
+                    parent_block.statements[-1] if parent_block.statements else None
+                )
                 if not isinstance(last_stmt, IfStatement):
                     raise ParseError("Else without matching if statement")
                 last_stmt.else_body = Block()
@@ -76,9 +80,17 @@ class LuaParser:
                 continue
             if (assign_match := self.ASSIGNMENT_RE.match(line)) is not None:
                 is_local = bool(assign_match.group(1))
-                targets = [self.parse_expression(t.strip()) for t in self.split_comma_aware(assign_match.group(2).strip())]
-                values = [self.parse_expression(v.strip()) for v in self.split_comma_aware(assign_match.group(3).strip())]
-                assignment = Assignment(targets=targets, values=values, is_local=is_local)
+                targets = [
+                    self.parse_expression(t.strip())
+                    for t in self.split_comma_aware(assign_match.group(2).strip())
+                ]
+                values = [
+                    self.parse_expression(v.strip())
+                    for v in self.split_comma_aware(assign_match.group(3).strip())
+                ]
+                assignment = Assignment(
+                    targets=targets, values=values, is_local=is_local
+                )
                 stack[-1].statements.append(assignment)
                 continue
             statement = self.parse_statement(line)
@@ -108,8 +120,14 @@ class LuaParser:
             receiver = Variable(func_match.group("receiver"))
             name = func_match.group("name")
             op = func_match.group("op")
-            args = [self.parse_expression(arg.strip()) for arg in self.split_comma_aware(func_match.group("args").strip()) if arg.strip()]
-            return FunctionCall(receiver=receiver, name=name, args=args, is_method=op == ":")
+            args = [
+                self.parse_expression(arg.strip())
+                for arg in self.split_comma_aware(func_match.group("args").strip())
+                if arg.strip()
+            ]
+            return FunctionCall(
+                receiver=receiver, name=name, args=args, is_method=op == ":"
+            )
         if any(ch in text for ch in " +-*/%<>=!()") or " " in text:
             return RawExpression(text)
         return Variable(text)

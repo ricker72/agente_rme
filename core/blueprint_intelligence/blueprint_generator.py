@@ -9,14 +9,10 @@ Can generate from:
 
 from __future__ import annotations
 
-import json
-import os
-import random
 from typing import Any, Dict, List, Optional, Tuple
 
 from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
 from .models.blueprint_pattern import BlueprintPattern
-from .models.blueprint_embedding import BlueprintEmbedding
 from .blueprint_embedding_engine import BlueprintEmbeddingEngine
 from .blueprint_fusion_engine import BlueprintFusionEngine
 
@@ -133,6 +129,7 @@ class BlueprintGenerator:
     ) -> Blueprint:
         """Generate a blueprint by modifying a template."""
         import copy
+
         bp = copy.deepcopy(template)
 
         if modifications:
@@ -194,11 +191,13 @@ class BlueprintGenerator:
         # Add city services
         services = ["depot", "temple", "market", "bank"]
         for i, service in enumerate(services):
-            bp.zones.append({
-                "type": service,
-                "name": f"{service}_zone",
-                "position": {"x": i * 5, "y": 5},
-            })
+            bp.zones.append(
+                {
+                    "type": service,
+                    "name": f"{service}_zone",
+                    "position": {"x": i * 5, "y": 5},
+                }
+            )
 
         bp.tiles = self._generate_tiles_for_size(bp.size)
         return bp
@@ -218,11 +217,13 @@ class BlueprintGenerator:
                 difficulty="hard",
             ),
         )
-        bp.zones.append({
-            "type": "boss_room",
-            "name": "main_boss",
-            "difficulty": "hard",
-        })
+        bp.zones.append(
+            {
+                "type": "boss_room",
+                "name": "main_boss",
+                "difficulty": "hard",
+            }
+        )
         bp.tiles = self._generate_tiles_for_size(bp.size)
         return bp
 
@@ -261,20 +262,34 @@ class BlueprintGenerator:
     def _extract_level(prompt: str) -> int:
         """Extract level number from prompt."""
         import re
-        levels = re.findall(r'\b(\d{2,4})\b', prompt)
+
+        levels = re.findall(r"\b(\d{2,4})\b", prompt)
         for lvl in levels:
-            l = int(lvl)
-            if 8 <= l <= 2000:
-                return l
+            lvl_val = int(lvl)
+            if 8 <= lvl_val <= 2000:
+                return lvl_val
         return 300
 
     @staticmethod
     def _extract_theme(prompt: str) -> str:
         """Extract theme name from prompt."""
         known_themes = [
-            "roshamuul", "soul war", "issavi", "falcon", "ferumbras",
-            "library", "asylum", "catacomb", "ice", "fire", "death",
-            "dungeon", "city", "forest", "desert", "swamp",
+            "roshamuul",
+            "soul war",
+            "issavi",
+            "falcon",
+            "ferumbras",
+            "library",
+            "asylum",
+            "catacomb",
+            "ice",
+            "fire",
+            "death",
+            "dungeon",
+            "city",
+            "forest",
+            "desert",
+            "swamp",
         ]
         prompt_lower = prompt.lower()
         for theme in known_themes:
@@ -303,8 +318,9 @@ class BlueprintGenerator:
     ) -> Dict[str, float]:
         """Parse style ratios from a prompt (e.g., '70% Roshamuul 30% Soul War')."""
         import re
+
         ratios: Dict[str, float] = {}
-        pattern = r'(\d+)%\s*([A-Za-z\s]+?)(?=\s+\d+%|$)'
+        pattern = r"(\d+)%\s*([A-Za-z\s]+?)(?=\s+\d+%|$)"
         matches = re.findall(pattern, prompt)
         for pct, name in matches:
             ratios[name.strip()] = float(pct) / 100.0

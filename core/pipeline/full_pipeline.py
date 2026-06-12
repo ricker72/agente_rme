@@ -9,7 +9,6 @@ from core.world.world_model import WorldModel
 from core.world.tile import Tile
 from core.world.spawn import Spawn
 from core.world.region import Region
-from core.world.structure import Structure
 from core.balance.balance_engine import BalanceEngine, BalanceReport
 from core.expansion.expansion_ai import ExpansionAI, ExpansionReport
 from core.campaign.campaign_generator import CampaignGenerator, Campaign
@@ -19,6 +18,7 @@ from core.playtest.playtest_engine import PlaytestEngine
 @dataclass
 class PipelineResult:
     """Result of the full pipeline execution."""
+
     prompt: str = ""
     theme: str = "default"
     level_range: tuple = (1, 100)
@@ -68,9 +68,13 @@ class FullPipeline:
         self._expansion_ai = ExpansionAI()
         self._campaign_gen = CampaignGenerator()
 
-    def run(self, prompt: str = "", theme: str = "default",
-            level_range: tuple = (1, 100),
-            output_dir: Optional[str] = None) -> PipelineResult:
+    def run(
+        self,
+        prompt: str = "",
+        theme: str = "default",
+        level_range: tuple = (1, 100),
+        output_dir: Optional[str] = None,
+    ) -> PipelineResult:
         """
         Execute the full pipeline.
 
@@ -84,13 +88,14 @@ class FullPipeline:
             PipelineResult with all generated content.
         """
         start_time = time.time()
-        result = PipelineResult(prompt=prompt, theme=theme,
-                                level_range=level_range)
+        result = PipelineResult(prompt=prompt, theme=theme, level_range=level_range)
         out = output_dir or self._output_dir
 
         try:
             # Stage 1: Parse prompt
-            self._stage(result, "parse_prompt", lambda: self._parse_prompt(prompt, result))
+            self._stage(
+                result, "parse_prompt", lambda: self._parse_prompt(prompt, result)
+            )
 
             # Stage 2: Generate world
             self._stage(result, "generate_world", lambda: self._generate_world(result))
@@ -105,7 +110,9 @@ class FullPipeline:
             self._stage(result, "balance", lambda: self._balance(result))
 
             # Stage 6: Generate campaign
-            self._stage(result, "generate_campaign", lambda: self._generate_campaign(result))
+            self._stage(
+                result, "generate_campaign", lambda: self._generate_campaign(result)
+            )
 
             # Stage 7: Export
             self._stage(result, "export", lambda: self._export(result, out))
@@ -113,11 +120,13 @@ class FullPipeline:
             result.success = True
 
         except Exception as e:
-            result.pipeline_stages.append({
-                "stage": "error",
-                "success": False,
-                "error": str(e),
-            })
+            result.pipeline_stages.append(
+                {
+                    "stage": "error",
+                    "success": False,
+                    "error": str(e),
+                }
+            )
 
         result.total_time_seconds = round(time.time() - start_time, 2)
         return result
@@ -125,8 +134,17 @@ class FullPipeline:
     def _parse_prompt(self, prompt: str, result: PipelineResult) -> None:
         """Parse natural language prompt into parameters."""
         lower = prompt.lower()
-        themes = ["issavi", "darashia", "roshamuul", "venore", "thais",
-                   "carlin", "ab dendriel", "kazordoon", "svargrond"]
+        themes = [
+            "issavi",
+            "darashia",
+            "roshamuul",
+            "venore",
+            "thais",
+            "carlin",
+            "ab dendriel",
+            "kazordoon",
+            "svargrond",
+        ]
         for t in themes:
             if t in lower:
                 result.theme = t.title()
@@ -143,10 +161,13 @@ class FullPipeline:
         theme = result.theme
 
         # Create base region
-        region = Region(name=f"{theme}_base", theme=theme.lower(),
-                        min_level=result.level_range[0],
-                        max_level=result.level_range[1],
-                        tags=["base", "auto_generated"])
+        region = Region(
+            name=f"{theme}_base",
+            theme=theme.lower(),
+            min_level=result.level_range[0],
+            max_level=result.level_range[1],
+            tags=["base", "auto_generated"],
+        )
         world.add_region(region)
 
         # Generate ground tiles
@@ -154,8 +175,7 @@ class FullPipeline:
         ground_id = 817  # default grass
         for x in range(size):
             for y in range(size):
-                tile = Tile(x=x, y=y, z=7, ground=ground_id,
-                            zone=f"{theme}_base")
+                tile = Tile(x=x, y=y, z=7, ground=ground_id, zone=f"{theme}_base")
                 world.set_tile(tile)
 
         # Add some spawns
@@ -167,7 +187,8 @@ class FullPipeline:
                 if tile is not None:
                     tile.spawn = Spawn(
                         monster=monsters[idx % len(monsters)],
-                        respawn=60, radius=5,
+                        respawn=60,
+                        radius=5,
                     )
                     idx += 1
 
@@ -178,8 +199,7 @@ class FullPipeline:
         if result.world is None:
             return
         _, report = self._expansion_ai.expand(
-            result.world, max_hunts=3, max_boss_rooms=2,
-            max_quest_zones=2, theme="cave"
+            result.world, max_hunts=3, max_boss_rooms=2, max_quest_zones=2, theme="cave"
         )
         result.expansion_report = report
 
@@ -205,13 +225,15 @@ class FullPipeline:
         campaign = self._campaign_gen.generate(
             theme=result.theme,
             level_range=result.level_range,
-            npc_count=8, faction_count=3,
+            npc_count=8,
+            faction_count=3,
         )
         result.campaign = campaign
 
     def _export(self, result: PipelineResult, output_dir: str) -> None:
         """Export all generated content to files."""
         import os
+
         os.makedirs(output_dir, exist_ok=True)
 
         # Export campaign as JSON
@@ -227,8 +249,11 @@ class FullPipeline:
             try:
                 with open(report_path, "w", encoding="utf-8") as f:
                     if hasattr(result.playtest_report, "to_dict"):
-                        f.write(json.dumps(result.playtest_report.to_dict(),
-                                            indent=2, default=str))
+                        f.write(
+                            json.dumps(
+                                result.playtest_report.to_dict(), indent=2, default=str
+                            )
+                        )
                     else:
                         f.write(json.dumps({"status": "completed"}, indent=2))
                 result.output_files["report"] = report_path
@@ -239,16 +264,14 @@ class FullPipeline:
         expansion_path = os.path.join(output_dir, "expansion_report.json")
         if result.expansion_report:
             with open(expansion_path, "w", encoding="utf-8") as f:
-                f.write(json.dumps(result.expansion_report.to_dict(),
-                                    indent=2))
+                f.write(json.dumps(result.expansion_report.to_dict(), indent=2))
             result.output_files["expansion_report"] = expansion_path
 
         # Export balance report
         balance_path = os.path.join(output_dir, "balance_report.json")
         if result.balance_report:
             with open(balance_path, "w", encoding="utf-8") as f:
-                f.write(json.dumps(result.balance_report.to_dict(),
-                                    indent=2))
+                f.write(json.dumps(result.balance_report.to_dict(), indent=2))
             result.output_files["balance_report"] = balance_path
 
         # Export world summary
@@ -264,13 +287,20 @@ class FullPipeline:
         try:
             fn()
             elapsed = round(time.time() - start, 3)
-            result.pipeline_stages.append({
-                "stage": name, "success": True,
-                "time_seconds": elapsed,
-            })
+            result.pipeline_stages.append(
+                {
+                    "stage": name,
+                    "success": True,
+                    "time_seconds": elapsed,
+                }
+            )
         except Exception as e:
             elapsed = round(time.time() - start, 3)
-            result.pipeline_stages.append({
-                "stage": name, "success": False,
-                "time_seconds": elapsed, "error": str(e),
-            })
+            result.pipeline_stages.append(
+                {
+                    "stage": name,
+                    "success": False,
+                    "time_seconds": elapsed,
+                    "error": str(e),
+                }
+            )

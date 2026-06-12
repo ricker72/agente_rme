@@ -11,14 +11,14 @@ from core.knowledge import (
     EntryType,
     KnowledgeCatalog,
     KnowledgeEngine,
-    KnowledgeMetrics,
     KnowledgeReport,
     build_metrics,
 )
 
 
-def _src(name: str, theme: str = "roshamuul", with_hunt: bool = True,
-        with_city: bool = True) -> dict:
+def _src(
+    name: str, theme: str = "roshamuul", with_hunt: bool = True, with_city: bool = True
+) -> dict:
     src = {
         "meta": {"name": name, "theme": theme},
         "cities": [],
@@ -29,18 +29,31 @@ def _src(name: str, theme: str = "roshamuul", with_hunt: bool = True,
         "quests": [],
     }
     if with_hunt:
-        src["regions"].append({
-            "name": f"{name}_hunt", "theme": theme,
-            "min_level": 250, "max_level": 400, "tags": ["circular"],
-        })
-        src["spawns"].append({
-            "monster": "Guzzlemaw", "zone": f"{name}_hunt", "level": 300,
-        })
+        src["regions"].append(
+            {
+                "name": f"{name}_hunt",
+                "theme": theme,
+                "min_level": 250,
+                "max_level": 400,
+                "tags": ["circular"],
+            }
+        )
+        src["spawns"].append(
+            {
+                "monster": "Guzzlemaw",
+                "zone": f"{name}_hunt",
+                "level": 300,
+            }
+        )
     if with_city:
-        src["cities"].append({
-            "name": f"{name} City", "theme": theme,
-            "min_level": 200, "max_level": 500,
-        })
+        src["cities"].append(
+            {
+                "name": f"{name} City",
+                "theme": theme,
+                "min_level": 200,
+                "max_level": 500,
+            }
+        )
     return src
 
 
@@ -51,13 +64,16 @@ class TestKnowledgePipeline(unittest.TestCase):
             _src("roshamuul", with_hunt=True, with_city=True),
             _src("issavi", theme="issavi"),
             _src("soul_war", with_hunt=True),
-            _src("ferumbras_raid", theme="ferumbras", with_hunt=False,
-                  with_city=False),
+            _src("ferumbras_raid", theme="ferumbras", with_hunt=False, with_city=False),
         ]
         # Add a raid
-        sources[-1]["raids"] = [{
-            "name": "Ferumbras Raid", "min_level": 300, "max_level": 9999,
-        }]
+        sources[-1]["raids"] = [
+            {
+                "name": "Ferumbras Raid",
+                "min_level": 300,
+                "max_level": 9999,
+            }
+        ]
 
         builder = DatasetBuilder()
         ds = builder.build_from_sources(sources)
@@ -86,8 +102,7 @@ class TestKnowledgePipeline(unittest.TestCase):
         # The "raid" text query returns a raid entry
         raid_r = engine.query_text("raid", k=5)
         self.assertGreater(raid_r.total, 0)
-        self.assertIn(EntryType.RAID,
-                      {m.entry.entry_type for m in raid_r.matches})
+        self.assertIn(EntryType.RAID, {m.entry.entry_type for m in raid_r.matches})
 
         # Metrics
         metrics = build_metrics(ds)

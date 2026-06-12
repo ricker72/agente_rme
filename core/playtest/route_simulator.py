@@ -9,22 +9,22 @@ before exporting map blueprints.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
-import math
-
+from typing import Dict, List
 
 # ---------------------------------------------------------------------------
 # Data types
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class RouteMetrics:
     """Aggregated metrics for a hunting route."""
+
     total_xp: int = 0
     total_profit: int = 0
-    travel_time_seconds: float = 0.0       # time spent walking between spawns
-    combat_time_seconds: float = 0.0       # time spent in combat
-    total_time_seconds: float = 0.0        # sum of travel + combat
+    travel_time_seconds: float = 0.0  # time spent walking between spawns
+    combat_time_seconds: float = 0.0  # time spent in combat
+    total_time_seconds: float = 0.0  # sum of travel + combat
     monsters_killed: int = 0
     deaths: int = 0
 
@@ -69,6 +69,7 @@ class RouteMetrics:
 @dataclass
 class RouteResult:
     """Complete result of a route simulation."""
+
     route_name: str
     metrics: RouteMetrics = field(default_factory=RouteMetrics)
     viable: bool = True
@@ -87,6 +88,7 @@ class RouteResult:
 # Waypoint / spawn zone
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class SpawnZone:
     """
@@ -94,12 +96,13 @@ class SpawnZone:
 
     Contains a group of monsters that respawn and can be fought.
     """
+
     name: str
     monster_name: str
-    monster_count: int          # how many monsters are in this zone
-    monster_xp_each: int        # XP per monster kill
-    monster_damage_each: int    # average damage per monster per turn
-    monster_hp_each: int        # HP per monster
+    monster_count: int  # how many monsters are in this zone
+    monster_xp_each: int  # XP per monster kill
+    monster_damage_each: int  # average damage per monster per turn
+    monster_hp_each: int  # HP per monster
     respawn_seconds: float = 30.0  # respawn delay
     travel_from_previous_seconds: float = 10.0  # walk time from last zone
 
@@ -107,6 +110,7 @@ class SpawnZone:
 # ---------------------------------------------------------------------------
 # Route Simulator
 # ---------------------------------------------------------------------------
+
 
 class RouteSimulator:
     """
@@ -127,9 +131,9 @@ class RouteSimulator:
     def run(
         self,
         player_dps: float,
-        max_combat_duration: float = 300.0,   # max seconds before stopping combat
-        cycles: int = 1,                       # how many times to loop the route
-        loot_gp_per_kill: int = 0,             # average gp loot per kill
+        max_combat_duration: float = 300.0,  # max seconds before stopping combat
+        cycles: int = 1,  # how many times to loop the route
+        loot_gp_per_kill: int = 0,  # average gp loot per kill
     ) -> RouteResult:
         """
         Run the route simulation.
@@ -179,12 +183,16 @@ class RouteSimulator:
                     combat_time += killable * ttk
 
                     # Incoming damage while fighting
-                    avg_alive = (monsters_alive + killable / 2)
-                    total_incoming_damage = avg_alive * zone.monster_damage_each * ttk * killable
+                    avg_alive = monsters_alive + killable / 2
+                    total_incoming_damage = (
+                        avg_alive * zone.monster_damage_each * ttk * killable
+                    )
 
                     # Check for deaths: if incoming damage per second > effective HP buffer
                     # Simplified death check: if a zone does enough damage to kill in < 5s
-                    effective_health = 1500.0  # default assumption; overridden by combat sim
+                    effective_health = (
+                        1500.0  # default assumption; overridden by combat sim
+                    )
                     if total_incoming_damage > effective_health * 2:
                         deaths = int(total_incoming_damage / effective_health) - 1
                         metrics.deaths += max(0, deaths)
@@ -192,7 +200,9 @@ class RouteSimulator:
                     # If respawn happened during combat, refill some
                     if combat_time >= zone.respawn_seconds and monsters_alive == 0:
                         monsters_alive = zone.monster_count
-                        zone.respawn_seconds += zone.respawn_seconds  # next respawn later
+                        zone.respawn_seconds += (
+                            zone.respawn_seconds
+                        )  # next respawn later
 
                 metrics.combat_time_seconds += combat_time
                 metrics.monsters_killed += kills_this_zone
@@ -202,13 +212,18 @@ class RouteSimulator:
                 metrics.total_profit += kills_this_zone * loot_gp_per_kill
 
                 # Warnings
-                if combat_time >= max_combat_duration and kills_this_zone < zone.monster_count * 0.5:
+                if (
+                    combat_time >= max_combat_duration
+                    and kills_this_zone < zone.monster_count * 0.5
+                ):
                     warnings.append(
                         f"Zone '{zone.name}' too difficult: only {kills_this_zone}/{zone.monster_count} "
                         f"killed before time cap ({max_combat_duration}s)"
                     )
 
-        metrics.total_time_seconds = metrics.travel_time_seconds + metrics.combat_time_seconds
+        metrics.total_time_seconds = (
+            metrics.travel_time_seconds + metrics.combat_time_seconds
+        )
 
         # Viability assessment
         viable = True
@@ -254,16 +269,20 @@ class RouteSimulator:
         """
         sim = cls(route_name)
         for z in zones:
-            sim.add_zone(SpawnZone(
-                name=z["name"],
-                monster_name=z["monster_name"],
-                monster_count=z.get("monster_count", 5),
-                monster_xp_each=z.get("monster_xp_each", 1000),
-                monster_damage_each=z.get("monster_damage_each", 100),
-                monster_hp_each=z.get("monster_hp_each", 2000),
-                respawn_seconds=float(z.get("respawn_seconds", 30)),
-                travel_from_previous_seconds=float(z.get("travel_from_previous_seconds", 10)),
-            ))
+            sim.add_zone(
+                SpawnZone(
+                    name=z["name"],
+                    monster_name=z["monster_name"],
+                    monster_count=z.get("monster_count", 5),
+                    monster_xp_each=z.get("monster_xp_each", 1000),
+                    monster_damage_each=z.get("monster_damage_each", 100),
+                    monster_hp_each=z.get("monster_hp_each", 2000),
+                    respawn_seconds=float(z.get("respawn_seconds", 30)),
+                    travel_from_previous_seconds=float(
+                        z.get("travel_from_previous_seconds", 10)
+                    ),
+                )
+            )
         return sim
 
     @classmethod
@@ -279,13 +298,15 @@ class RouteSimulator:
     ) -> RouteSimulator:
         """Create a single-zone route for quick testing."""
         sim = cls(name)
-        sim.add_zone(SpawnZone(
-            name=name,
-            monster_name=monster_name,
-            monster_count=count,
-            monster_xp_each=xp,
-            monster_damage_each=damage,
-            monster_hp_each=hp,
-            travel_from_previous_seconds=travel,
-        ))
+        sim.add_zone(
+            SpawnZone(
+                name=name,
+                monster_name=monster_name,
+                monster_count=count,
+                monster_xp_each=xp,
+                monster_damage_each=damage,
+                monster_hp_each=hp,
+                travel_from_previous_seconds=travel,
+            )
+        )
         return sim

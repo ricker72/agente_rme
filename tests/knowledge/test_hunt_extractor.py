@@ -26,10 +26,17 @@ class TestHuntExtractor(unittest.TestCase):
         self.ext = HuntExtractor()
 
     def test_extracts_hunt_region(self):
-        w = _world(regions=[{
-            "name": "roshamuul_circular_hunt", "theme": "roshamuul",
-            "min_level": 280, "max_level": 380, "tags": ["circular"],
-        }])
+        w = _world(
+            regions=[
+                {
+                    "name": "roshamuul_circular_hunt",
+                    "theme": "roshamuul",
+                    "min_level": 280,
+                    "max_level": 380,
+                    "tags": ["circular"],
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(len(out), 1)
         e = out[0]
@@ -39,8 +46,14 @@ class TestHuntExtractor(unittest.TestCase):
 
     def test_groups_spawns(self):
         w = _world(
-            regions=[{"name": "soul_war_hunt", "theme": "roshamuul",
-                      "min_level": 250, "max_level": 500}],
+            regions=[
+                {
+                    "name": "soul_war_hunt",
+                    "theme": "roshamuul",
+                    "min_level": 250,
+                    "max_level": 500,
+                }
+            ],
             spawns=[
                 {"monster": "Guzzlemaw", "zone": "soul_war_hunt", "level": 280},
                 {"monster": "Hellflayer", "zone": "soul_war_hunt", "level": 320},
@@ -60,21 +73,33 @@ class TestHuntExtractor(unittest.TestCase):
             (500, 700, "extreme"),
         ]
         for mn, mx, expected in cases:
-            w = _world(regions=[{
-                "name": f"hunt_{mn}_{mx}", "theme": "x",
-                "min_level": mn, "max_level": mx,
-            }])
+            w = _world(
+                regions=[
+                    {
+                        "name": f"hunt_{mn}_{mx}",
+                        "theme": "x",
+                        "min_level": mn,
+                        "max_level": mx,
+                    }
+                ]
+            )
             out = self.ext.extract(w, source="src")
             self.assertEqual(len(out), 1)
             self.assertEqual(
-                out[0].attributes["difficulty"], expected,
+                out[0].attributes["difficulty"],
+                expected,
                 f"failed for {mn}-{mx}",
             )
 
     def test_skips_non_hunt(self):
-        w = _world(regions=[{
-            "name": "issavi_city_center", "theme": "issavi",
-        }])
+        w = _world(
+            regions=[
+                {
+                    "name": "issavi_city_center",
+                    "theme": "issavi",
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(len(out), 0)
 
@@ -82,9 +107,14 @@ class TestHuntExtractor(unittest.TestCase):
         self.assertEqual(self.ext.extract(_world()), [])
 
     def test_route_inference(self):
-        w = _world(regions=[{
-            "name": "roshamuul_circular_hunt", "theme": "roshamuul",
-        }])
+        w = _world(
+            regions=[
+                {
+                    "name": "roshamuul_circular_hunt",
+                    "theme": "roshamuul",
+                }
+            ]
+        )
         out = self.ext.extract(w, source="src")
         self.assertEqual(out[0].attributes["route"], "circular")
 

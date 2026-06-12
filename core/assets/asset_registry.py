@@ -15,10 +15,8 @@ API:
 
 from __future__ import annotations
 
-import json
 import os
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set
 
 from .item_indexer import ItemIndexer
 from .monster_indexer import MonsterIndexer
@@ -46,9 +44,12 @@ class AssetRegistry:
     # Load
     # ------------------------------------------------------------------
 
-    def load(self, items_path: Optional[str] = None,
-             monster_path: Optional[str] = None,
-             npc_path: Optional[str] = None) -> bool:
+    def load(
+        self,
+        items_path: Optional[str] = None,
+        monster_path: Optional[str] = None,
+        npc_path: Optional[str] = None,
+    ) -> bool:
         """
         Load all assets. Uses cache if available, otherwise indexes from XML.
 

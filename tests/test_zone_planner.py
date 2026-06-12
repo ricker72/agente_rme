@@ -13,15 +13,20 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from core.architect import (
-    ZonePlanner, CityPlan, DungeonPlan, HuntPlan, BossPlan, QuestPlan,
-    ThemeResolver, resolve_theme,
+    ZonePlanner,
+    CityPlan,
+    DungeonPlan,
+    HuntPlan,
+    BossPlan,
+    QuestPlan,
+    resolve_theme,
     DIFFICULTY_BANDS,
 )
-
 
 # =============================================================================
 # Difficulty classification
 # =============================================================================
+
 
 def test_difficulty_bands_defined():
     """All 6 bands defined."""
@@ -99,6 +104,7 @@ def test_difficulty_rank():
 # plan_city
 # =============================================================================
 
+
 def test_plan_city_basic():
     p = ZonePlanner()
     theme = resolve_theme("issavi")
@@ -165,6 +171,7 @@ def test_plan_city_to_dict():
 # plan_dungeon
 # =============================================================================
 
+
 def test_plan_dungeon_basic():
     p = ZonePlanner()
     theme = resolve_theme("library")
@@ -225,6 +232,7 @@ def test_plan_dungeon_to_dict():
 # plan_hunt
 # =============================================================================
 
+
 def test_plan_hunt_basic():
     p = ZonePlanner()
     theme = resolve_theme("issavi")
@@ -265,6 +273,7 @@ def test_plan_hunt_to_dict():
 # plan_boss
 # =============================================================================
 
+
 def test_plan_boss_basic():
     p = ZonePlanner()
     theme = resolve_theme("issavi")
@@ -290,7 +299,9 @@ def test_plan_boss_mechanics_scale_with_difficulty():
 def test_plan_boss_explicit_monster():
     p = ZonePlanner()
     theme = resolve_theme("issavi")
-    boss = p.plan_boss("X", theme, boss_monster="CUSTOM_MONSTER", min_level=300, max_level=500)
+    boss = p.plan_boss(
+        "X", theme, boss_monster="CUSTOM_MONSTER", min_level=300, max_level=500
+    )
     assert boss.boss_monster == "CUSTOM_MONSTER"
     print("  [OK] test_plan_boss_explicit_monster")
 
@@ -310,6 +321,7 @@ def test_plan_boss_to_dict():
 # =============================================================================
 # plan_quest
 # =============================================================================
+
 
 def test_plan_quest_basic():
     p = ZonePlanner()
@@ -359,6 +371,7 @@ def test_plan_quest_to_dict():
 # Integration
 # =============================================================================
 
+
 def test_all_zones_have_themes():
     """All plan_* methods return plans with valid themes."""
     p = ZonePlanner()
@@ -388,6 +401,7 @@ def test_seed_reproducibility():
 # =============================================================================
 # Runner
 # =============================================================================
+
 
 def run_all():
     print("=" * 60)

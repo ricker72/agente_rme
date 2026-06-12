@@ -2,7 +2,6 @@
 
 import json
 import os
-import pytest
 
 from core.autonomous import AutonomousWorldDesigner
 
@@ -54,10 +53,11 @@ def test_visualisation_png_when_matplotlib(tmp_path):
     pngs = [f for f in os.listdir(out) if f.endswith(".png")]
     # At least one of the three expected PNGs should exist
     expected = {"iteration_scores.png", "critic_progress.png", "optimization_curve.png"}
-    found = expected & set(pngs)
+    expected & set(pngs)
     # If matplotlib is installed, all three should be there
     try:
         import matplotlib  # noqa
+
         assert expected.issubset(set(pngs)), f"Expected all three PNGs, got {pngs}"
     except ImportError:
         # Without matplotlib we may get none — that's also acceptable

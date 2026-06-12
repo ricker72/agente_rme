@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 from core.world.world_model import WorldModel
 from core.world.spawn import Spawn
@@ -11,6 +11,7 @@ from core.world.region import Region
 @dataclass
 class RiskAssessment:
     """Risk profile for a zone."""
+
     zone_name: str = ""
     risk_score: float = 0.0  # 0-100 (0=safe, 100=lethal)
     risk_level: str = ""  # "safe", "low", "medium", "high", "extreme"
@@ -34,6 +35,7 @@ class RiskAssessment:
 @dataclass
 class RiskAdjustment:
     """Record of a single risk adjustment."""
+
     zone_name: str
     action: str  # "reduce_density", "add_safe_zone", "adjust_spawn"
     old_value: Any = None
@@ -53,6 +55,7 @@ class RiskAdjustment:
 @dataclass
 class RiskBalanceResult:
     """Result of risk balancing operation."""
+
     assessments: List[RiskAssessment] = field(default_factory=list)
     adjustments: List[RiskAdjustment] = field(default_factory=list)
     zones_modified: List[str] = field(default_factory=list)
@@ -67,17 +70,37 @@ class RiskBalanceResult:
 
 # Monster danger ratings
 MONSTER_DANGER: Dict[str, float] = {
-    "Rat": 5, "Spider": 5, "Cave Rat": 5,
-    "Troll": 10, "Orc": 10, "Goblin": 8, "Skeleton": 12,
-    "Dwarf": 15, "Lizard": 18, "Cyclops": 22, "Ghoul": 14,
-    "Mummy": 20, "Vampire": 28,
-    "Dragon": 45, "Hydra": 50, "Giant Spider": 48,
-    "Warlock": 55, "Nightmare": 52, "Banshee": 30,
+    "Rat": 5,
+    "Spider": 5,
+    "Cave Rat": 5,
+    "Troll": 10,
+    "Orc": 10,
+    "Goblin": 8,
+    "Skeleton": 12,
+    "Dwarf": 15,
+    "Lizard": 18,
+    "Cyclops": 22,
+    "Ghoul": 14,
+    "Mummy": 20,
+    "Vampire": 28,
+    "Dragon": 45,
+    "Hydra": 50,
+    "Giant Spider": 48,
+    "Warlock": 55,
+    "Nightmare": 52,
+    "Banshee": 30,
     "Sea Serpent": 42,
-    "Dragon Lord": 75, "Demon": 85, "Black Knight": 80,
-    "Serpent Spawn": 82, "Medusa": 80, "Behemoth": 65,
-    "Eternal Guardian": 78, "Hero": 72, "Iron Golem": 90,
-    "Hellfire Fighter": 60, "Diabolic Imp": 55,
+    "Dragon Lord": 75,
+    "Demon": 85,
+    "Black Knight": 80,
+    "Serpent Spawn": 82,
+    "Medusa": 80,
+    "Behemoth": 65,
+    "Eternal Guardian": 78,
+    "Hero": 72,
+    "Iron Golem": 90,
+    "Hellfire Fighter": 60,
+    "Diabolic Imp": 55,
 }
 
 
@@ -97,8 +120,9 @@ class RiskBalancer:
     MIN_RISK_SCORE = 10.0
     MAX_DEATH_PROBABILITY = 0.2
 
-    def balance(self, world: WorldModel, region: Region,
-                player_level: int = 150) -> RiskBalanceResult:
+    def balance(
+        self, world: WorldModel, region: Region, player_level: int = 150
+    ) -> RiskBalanceResult:
         """
         Assess and balance risk for a region.
 
@@ -122,8 +146,9 @@ class RiskBalancer:
 
         return result
 
-    def _assess_risk(self, world: WorldModel, region: Region,
-                     player_level: int) -> RiskAssessment:
+    def _assess_risk(
+        self, world: WorldModel, region: Region, player_level: int
+    ) -> RiskAssessment:
         """Calculate risk profile for a zone."""
         zone_spawns = self._collect_spawns(world, region)
         total_danger = 0.0
@@ -187,8 +212,9 @@ class RiskBalancer:
             recommendations=recommendations,
         )
 
-    def _collect_spawns(self, world: WorldModel,
-                        region: Region) -> List[Tuple[int, int, int, Spawn]]:
+    def _collect_spawns(
+        self, world: WorldModel, region: Region
+    ) -> List[Tuple[int, int, int, Spawn]]:
         """Collect spawns in region."""
         spawns: List[Tuple[int, int, int, Spawn]] = []
         for tile in world.tiles.values():
@@ -196,9 +222,13 @@ class RiskBalancer:
                 spawns.append((tile.x, tile.y, tile.z, tile.spawn))
         return spawns
 
-    def _reduce_risk(self, world: WorldModel, region: Region,
-                     assessment: RiskAssessment,
-                     result: RiskBalanceResult) -> None:
+    def _reduce_risk(
+        self,
+        world: WorldModel,
+        region: Region,
+        assessment: RiskAssessment,
+        result: RiskBalanceResult,
+    ) -> None:
         """Reduce risk by removing excess spawns."""
         zone_spawns = self._collect_spawns(world, region)
         target_remove = max(1, len(zone_spawns) // 3)
@@ -218,24 +248,31 @@ class RiskBalancer:
             if tile is not None:
                 tile.spawn = None
                 removed += 1
-                result.adjustments.append(RiskAdjustment(
-                    zone_name=region.name,
-                    action="reduce_density",
-                    old_value=spawn.to_dict(),
-                    new_value=None,
-                    reason=f"Risk score too high ({assessment.risk_score} > {self.MAX_RISK_SCORE})",
-                ))
+                result.adjustments.append(
+                    RiskAdjustment(
+                        zone_name=region.name,
+                        action="reduce_density",
+                        old_value=spawn.to_dict(),
+                        new_value=None,
+                        reason=f"Risk score too high ({assessment.risk_score} > {self.MAX_RISK_SCORE})",
+                    )
+                )
 
         if removed > 0:
             result.zones_modified.append(region.name)
 
-    def _increase_risk_interest(self, world: WorldModel, region: Region,
-                                assessment: RiskAssessment,
-                                result: RiskBalanceResult) -> None:
+    def _increase_risk_interest(
+        self,
+        world: WorldModel,
+        region: Region,
+        assessment: RiskAssessment,
+        result: RiskBalanceResult,
+    ) -> None:
         """Add some danger to a completely safe zone."""
-        zone_spawns = self._collect_spawns(world, region)
-        empty_tiles = [t for t in world.tiles.values()
-                       if t.zone == region.name and t.spawn is None]
+        self._collect_spawns(world, region)
+        empty_tiles = [
+            t for t in world.tiles.values() if t.zone == region.name and t.spawn is None
+        ]
 
         if not empty_tiles:
             return
@@ -245,17 +282,20 @@ class RiskBalancer:
         tile = empty_tiles[0]
         new_spawn = Spawn(monster=target_monster, respawn=60, radius=5)
         tile.spawn = new_spawn
-        result.adjustments.append(RiskAdjustment(
-            zone_name=region.name,
-            action="adjust_spawn",
-            old_value=None,
-            new_value=new_spawn.to_dict(),
-            reason=f"Zone too safe (risk={assessment.risk_score}, min={self.MIN_RISK_SCORE})",
-        ))
+        result.adjustments.append(
+            RiskAdjustment(
+                zone_name=region.name,
+                action="adjust_spawn",
+                old_value=None,
+                new_value=new_spawn.to_dict(),
+                reason=f"Zone too safe (risk={assessment.risk_score}, min={self.MIN_RISK_SCORE})",
+            )
+        )
         result.zones_modified.append(region.name)
 
-    def assess_risk(self, world: WorldModel, region: Region,
-                    player_level: int = 150) -> RiskAssessment:
+    def assess_risk(
+        self, world: WorldModel, region: Region, player_level: int = 150
+    ) -> RiskAssessment:
         """
         Assess risk without modifying the world.
 

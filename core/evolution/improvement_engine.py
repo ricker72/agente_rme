@@ -6,7 +6,6 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .quality_detector import (
     QualityDetector,
-    ZoneQualityReport,
     ZoneCategory,
     MapQualityReport,
 )
@@ -104,8 +103,12 @@ class ImprovementEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def improve(self, otbm_data: Dict[str, Any], map_name: str = "unknown",
-                target_score: int = 85) -> ImprovementResult:
+    def improve(
+        self,
+        otbm_data: Dict[str, Any],
+        map_name: str = "unknown",
+        target_score: int = 85,
+    ) -> ImprovementResult:
         """Analyze and improve an OTBM map, targeting a minimum quality score."""
         report = self.quality_detector.analyze(otbm_data, map_name)
         score_before = report.overall_score
@@ -140,7 +143,9 @@ class ImprovementEngine:
     # Plan generation
     # ------------------------------------------------------------------
 
-    def _generate_plans(self, report: MapQualityReport, target_score: int) -> List[ImprovementPlan]:
+    def _generate_plans(
+        self, report: MapQualityReport, target_score: int
+    ) -> List[ImprovementPlan]:
         """Generate prioritized improvement plans for zones below target."""
         plans: List[ImprovementPlan] = []
 
@@ -176,7 +181,9 @@ class ImprovementEngine:
                 plan.improvements.append(ImprovementType.ADD_TRANSITIONS)
 
             seen: Set[ImprovementType] = set()
-            plan.improvements = [i for i in plan.improvements if not (i in seen or seen.add(i))]
+            plan.improvements = [
+                i for i in plan.improvements if not (i in seen or seen.add(i))
+            ]
 
             plan.details = {
                 "metrics": {
@@ -201,7 +208,9 @@ class ImprovementEngine:
     # Plan execution
     # ------------------------------------------------------------------
 
-    def _execute_plan(self, plan: ImprovementPlan, otbm_data: Dict[str, Any]) -> Dict[str, Any]:
+    def _execute_plan(
+        self, plan: ImprovementPlan, otbm_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Execute a single improvement plan on the OTBM data."""
         data = otbm_data
         for improvement in plan.improvements:
@@ -254,7 +263,9 @@ class ImprovementEngine:
             data["spawns"] = spawns
         return data
 
-    def _find_disconnected_clusters(self, tile_set: Set[Tuple[int, int]]) -> List[Set[Tuple[int, int]]]:
+    def _find_disconnected_clusters(
+        self, tile_set: Set[Tuple[int, int]]
+    ) -> List[Set[Tuple[int, int]]]:
         """Find disconnected clusters of tiles using BFS."""
         visited: Set[Tuple[int, int]] = set()
         clusters: List[Set[Tuple[int, int]]] = []
@@ -278,8 +289,9 @@ class ImprovementEngine:
 
         return clusters
 
-    def _closest_points(self, cluster_a: Set[Tuple[int, int]],
-                        cluster_b: Set[Tuple[int, int]]) -> Tuple[Optional[Tuple[int, int]], Optional[Tuple[int, int]]]:
+    def _closest_points(
+        self, cluster_a: Set[Tuple[int, int]], cluster_b: Set[Tuple[int, int]]
+    ) -> Tuple[Optional[Tuple[int, int]], Optional[Tuple[int, int]]]:
         """Find the two closest points between two clusters."""
         best_a = None
         best_b = None
@@ -295,7 +307,9 @@ class ImprovementEngine:
 
         return best_a, best_b
 
-    def _bresenham_path(self, start: Tuple[int, int], end: Tuple[int, int]) -> List[Tuple[int, int]]:
+    def _bresenham_path(
+        self, start: Tuple[int, int], end: Tuple[int, int]
+    ) -> List[Tuple[int, int]]:
         """Generate a path between two points using Bresenham's line algorithm."""
         x1, y1 = start
         x2, y2 = end
@@ -325,7 +339,9 @@ class ImprovementEngine:
     # Improvement handlers
     # ------------------------------------------------------------------
 
-    def _add_paths(self, data: Dict[str, Any], _plan: ImprovementPlan) -> Dict[str, Any]:
+    def _add_paths(
+        self, data: Dict[str, Any], _plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Add path corridors to improve zone connectivity."""
         tiles = self._get_tiles(data)
         if not tiles:
@@ -362,7 +378,9 @@ class ImprovementEngine:
             return self._set_tiles(data, tiles)
         return data
 
-    def _create_shortcuts(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _create_shortcuts(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Create shortcuts by connecting dead ends to nearby paths."""
         tiles = self._get_tiles(data)
         if not tiles:
@@ -374,7 +392,8 @@ class ImprovementEngine:
         dead_ends = []
         for tx, ty in tile_set:
             neighbors = sum(
-                1 for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
+                1
+                for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
                 if (tx + dx, ty + dy) in tile_set
             )
             if neighbors == 1:
@@ -389,7 +408,10 @@ class ImprovementEngine:
             # Try to find a nearby tile in a different direction to connect
             for sdx, sdy in [(2, 0), (-2, 0), (0, 2), (0, -2)]:
                 target = (dx + sdx, dy + sdy)
-                if target in tile_set and (dx + sdx // 2, dy + sdy // 2) not in tile_set:
+                if (
+                    target in tile_set
+                    and (dx + sdx // 2, dy + sdy // 2) not in tile_set
+                ):
                     mid_x, mid_y = dx + sdx // 2, dy + sdy // 2
                     new_tile = {
                         "x": mid_x,
@@ -405,7 +427,9 @@ class ImprovementEngine:
 
         return self._set_tiles(data, tiles)
 
-    def _reorganize_spawns(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _reorganize_spawns(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Reorganize spawns for better distribution and variety."""
         spawns = self._get_spawns(data)
         if not spawns:
@@ -421,24 +445,41 @@ class ImprovementEngine:
             for spawn in spawns:
                 spawn["monsters"] = spawn.get("monsters", [])
                 if len(spawn["monsters"]) < 2:
-                    spawn["monsters"].append({"name": default_monsters[idx], "count": 2})
+                    spawn["monsters"].append(
+                        {"name": default_monsters[idx], "count": 2}
+                    )
 
         # Add new spawn points if needed
         tiles = self._get_tiles(data)
         if tiles and spawns_needed > 0:
             for i in range(spawns_needed):
-                center_tile = tiles[len(tiles) // (i + 2)] if tiles else {"x": 10 + i * 5, "y": 10 + i * 5}
+                center_tile = (
+                    tiles[len(tiles) // (i + 2)]
+                    if tiles
+                    else {"x": 10 + i * 5, "y": 10 + i * 5}
+                )
                 new_spawn = {
                     "name": f"spawn_improved_{i + 1}",
-                    "center_position": (center_tile.get("x", 10), center_tile.get("y", 10), 7),
+                    "center_position": (
+                        center_tile.get("x", 10),
+                        center_tile.get("y", 10),
+                        7,
+                    ),
                     "radius": 8,
-                    "monsters": [{"name": default_monsters[i % len(default_monsters)], "count": 2}],
+                    "monsters": [
+                        {
+                            "name": default_monsters[i % len(default_monsters)],
+                            "count": 2,
+                        }
+                    ],
                 }
                 spawns.append(new_spawn)
 
         return self._set_spawns(data, spawns)
 
-    def _expand_hunts(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _expand_hunts(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Expand hunt areas by adding adjacent rooms."""
         tiles = self._get_tiles(data)
         if not tiles:
@@ -447,7 +488,7 @@ class ImprovementEngine:
         tile_set = {(t.get("x", 0), t.get("y", 0)) for t in tiles}
 
         # Find the bounding box of existing tiles
-        min_x = min(t[0] for t in tile_set) if tile_set else 0
+        min(t[0] for t in tile_set) if tile_set else 0
         max_x = max(t[0] for t in tile_set) if tile_set else 0
         min_y = min(t[1] for t in tile_set) if tile_set else 0
         max_y = max(t[1] for t in tile_set) if tile_set else 0
@@ -465,27 +506,37 @@ class ImprovementEngine:
 
         for cx, cy in corridor:
             if (cx, cy) not in tile_set:
-                tiles.append({
-                    "x": cx, "y": cy, "z": 7,
-                    "items": [{"id": self.PATH_GROUND_IDS["stone"], "count": 1}],
-                    "flags": 0,
-                })
+                tiles.append(
+                    {
+                        "x": cx,
+                        "y": cy,
+                        "z": 7,
+                        "items": [{"id": self.PATH_GROUND_IDS["stone"], "count": 1}],
+                        "flags": 0,
+                    }
+                )
                 tile_set.add((cx, cy))
 
         # Create the new room
         for rx in range(offset_x, offset_x + room_width):
             for ry in range(offset_y, offset_y + room_height):
                 if (rx, ry) not in tile_set:
-                    tiles.append({
-                        "x": rx, "y": ry, "z": 7,
-                        "items": [{"id": self.PATH_GROUND_IDS["dirt"], "count": 1}],
-                        "flags": 0,
-                    })
+                    tiles.append(
+                        {
+                            "x": rx,
+                            "y": ry,
+                            "z": 7,
+                            "items": [{"id": self.PATH_GROUND_IDS["dirt"], "count": 1}],
+                            "flags": 0,
+                        }
+                    )
                     tile_set.add((rx, ry))
 
         return self._set_tiles(data, tiles)
 
-    def _add_decoration(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _add_decoration(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Add decorative items to barren tiles."""
         tiles = self._get_tiles(data)
         if not tiles:
@@ -494,7 +545,6 @@ class ImprovementEngine:
         decor_keys = list(self.DECORATION_IDS.keys())
         decor_count = max(1, len(tiles) // 10)
 
-        import random
         for i in range(min(decor_count, len(tiles))):
             tile_idx = (i * 7 + 3) % len(tiles)
             tile = tiles[tile_idx]
@@ -504,12 +554,14 @@ class ImprovementEngine:
 
         return self._set_tiles(data, tiles)
 
-    def _fill_empty_zone(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _fill_empty_zone(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Fill an empty zone with basic content."""
         tiles = self._get_tiles(data)
 
         # Use details to determine zone bounds
-        details = plan.details.get("metrics", {})
+        plan.details.get("metrics", {})
         base_x = 50
         base_y = 50
         width = 10
@@ -517,34 +569,51 @@ class ImprovementEngine:
 
         for x in range(base_x, base_x + width):
             for y in range(base_y, base_y + height):
-                tiles.append({
-                    "x": x, "y": y, "z": 7,
-                    "items": [
-                        {"id": self.PATH_GROUND_IDS["dirt"], "count": 1},
-                        {"id": self.DECORATION_IDS["small_stone"], "count": 1},
-                    ] if (x + y) % 3 == 0 else [{"id": self.PATH_GROUND_IDS["dirt"], "count": 1}],
-                    "flags": 0,
-                })
+                tiles.append(
+                    {
+                        "x": x,
+                        "y": y,
+                        "z": 7,
+                        "items": (
+                            [
+                                {"id": self.PATH_GROUND_IDS["dirt"], "count": 1},
+                                {"id": self.DECORATION_IDS["small_stone"], "count": 1},
+                            ]
+                            if (x + y) % 3 == 0
+                            else [{"id": self.PATH_GROUND_IDS["dirt"], "count": 1}]
+                        ),
+                        "flags": 0,
+                    }
+                )
 
         # Add some spawns
         spawns = self._get_spawns(data)
-        spawns.append({
-            "name": f"filled_zone_{plan.zone_name}",
-            "center_position": (base_x + width // 2, base_y + height // 2, 7),
-            "radius": 8,
-            "monsters": [{"name": "Troll", "count": 3}, {"name": "Orc", "count": 2}],
-        })
+        spawns.append(
+            {
+                "name": f"filled_zone_{plan.zone_name}",
+                "center_position": (base_x + width // 2, base_y + height // 2, 7),
+                "radius": 8,
+                "monsters": [
+                    {"name": "Troll", "count": 3},
+                    {"name": "Orc", "count": 2},
+                ],
+            }
+        )
 
         data = self._set_spawns(data, spawns)
         return self._set_tiles(data, tiles)
 
-    def _balance_density(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _balance_density(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Balance tile density by opening blocked areas or filling sparse ones."""
         tiles = self._get_tiles(data)
         if not tiles:
             return data
 
-        walkable = sum(1 for t in tiles if t.get("flags", 0) == 0 or t.get("flags", 0) & 1)
+        walkable = sum(
+            1 for t in tiles if t.get("flags", 0) == 0 or t.get("flags", 0) & 1
+        )
         total = len(tiles)
         if total == 0:
             return data
@@ -562,21 +631,27 @@ class ImprovementEngine:
             blocked = 0
             for tx, ty in list(tile_set):
                 neighbors = sum(
-                    1 for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
+                    1
+                    for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]
                     if (tx + dx, ty + dy) in tile_set
                 )
                 if neighbors <= 2 and blocked < 5:
-                    tiles.append({
-                        "x": tx + 1, "y": ty,
-                        "z": 7,
-                        "items": [{"id": 1000, "count": 1}],  # Wall item
-                        "flags": 64,
-                    })
+                    tiles.append(
+                        {
+                            "x": tx + 1,
+                            "y": ty,
+                            "z": 7,
+                            "items": [{"id": 1000, "count": 1}],  # Wall item
+                            "flags": 64,
+                        }
+                    )
                     blocked += 1
 
         return self._set_tiles(data, tiles)
 
-    def _improve_connectivity(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _improve_connectivity(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Improve connectivity by filling gaps and removing isolated tiles."""
         tiles = self._get_tiles(data)
         if not tiles:
@@ -593,24 +668,32 @@ class ImprovementEngine:
                 nx, ny = tx + dx, ty + dy
                 mx, my = tx + dx // 2, ty + dy // 2
                 if (nx, ny) in tile_set and (mx, my) not in tile_set:
-                    tiles.append({
-                        "x": mx, "y": my, "z": 7,
-                        "items": [{"id": self.PATH_GROUND_IDS["gravel"], "count": 1}],
-                        "flags": 0,
-                    })
+                    tiles.append(
+                        {
+                            "x": mx,
+                            "y": my,
+                            "z": 7,
+                            "items": [
+                                {"id": self.PATH_GROUND_IDS["gravel"], "count": 1}
+                            ],
+                            "flags": 0,
+                        }
+                    )
                     tile_set.add((mx, my))
                     gaps_filled += 1
                     break
 
         return self._set_tiles(data, tiles)
 
-    def _add_transitions(self, data: Dict[str, Any], plan: ImprovementPlan) -> Dict[str, Any]:
+    def _add_transitions(
+        self, data: Dict[str, Any], plan: ImprovementPlan
+    ) -> Dict[str, Any]:
         """Add transition tiles (stairs, ladders, teleports) between levels."""
         tiles = self._get_tiles(data)
         if not tiles:
             return data
 
-        tile_set = {(t.get("x", 0), t.get("y", 0), t.get("z", 7)) for t in tiles}
+        {(t.get("x", 0), t.get("y", 0), t.get("z", 7)) for t in tiles}
 
         # Find a good location for a transition
         if tiles:
@@ -618,23 +701,31 @@ class ImprovementEngine:
             tx, ty, tz = mid.get("x", 10), mid.get("y", 10), mid.get("z", 7)
 
             # Add a stair tile going up
-            tiles.append({
-                "x": tx + 1, "y": ty + 1, "z": tz,
-                "items": [
-                    {"id": self.PATH_GROUND_IDS["stone"], "count": 1},
-                    {"id": 1386, "count": 1},  # Ladder / stair item
-                ],
-                "flags": 0,
-            })
+            tiles.append(
+                {
+                    "x": tx + 1,
+                    "y": ty + 1,
+                    "z": tz,
+                    "items": [
+                        {"id": self.PATH_GROUND_IDS["stone"], "count": 1},
+                        {"id": 1386, "count": 1},  # Ladder / stair item
+                    ],
+                    "flags": 0,
+                }
+            )
 
             # Add corresponding tile on the level above
-            tiles.append({
-                "x": tx + 1, "y": ty + 1, "z": tz - 1,
-                "items": [
-                    {"id": self.PATH_GROUND_IDS["stone"], "count": 1},
-                    {"id": 1386, "count": 1},
-                ],
-                "flags": 0,
-            })
+            tiles.append(
+                {
+                    "x": tx + 1,
+                    "y": ty + 1,
+                    "z": tz - 1,
+                    "items": [
+                        {"id": self.PATH_GROUND_IDS["stone"], "count": 1},
+                        {"id": 1386, "count": 1},
+                    ],
+                    "flags": 0,
+                }
+            )
 
         return self._set_tiles(data, tiles)

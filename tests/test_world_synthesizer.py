@@ -24,14 +24,19 @@ from pathlib import Path
 # Make sure the project root is on sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from core.world import WorldModel, Tile, Item, Spawn, Structure, Region
-from core.world import WorldValidator, WorldValidationResult
-from core.architect import AIArchitect, WorldPlan
+from core.world import WorldModel, Tile, Structure, Region
+from core.world import WorldValidationResult
+from core.architect import AIArchitect
 from core.procedural import (
-    WorldSynthesizer, SynthesisReport, ContinentResult,
-    synthesize, merge, validate_synthesis,
-    attach_ai_architect, attach_blueprint_registry,
-    generate_continent, generate_from_prompt,
+    WorldSynthesizer,
+    SynthesisReport,
+    ContinentResult,
+    synthesize,
+    merge,
+    validate_synthesis,
+    attach_ai_architect,
+    attach_blueprint_registry,
+    generate_from_prompt,
 )
 
 # Test world size - keeps tests fast
@@ -42,6 +47,7 @@ TEST_H = 60
 # =============================================================================
 # Tests
 # =============================================================================
+
 
 def test_synthesizer_creation():
     """WorldSynthesizer should be instantiable with no args."""
@@ -62,7 +68,8 @@ def test_synthesize_accepts_plan():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = synthesize(plan, seed=42)
     assert isinstance(world, WorldModel)
@@ -75,9 +82,11 @@ def test_synthesize_accepts_continent_result():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     from core.procedural import ContinentGenerator
+
     cg = ContinentGenerator(seed=42, theme_resolver=architect.theme_resolver)
     world = cg.generate(plan)
     result = ContinentResult(
@@ -96,7 +105,8 @@ def test_synthesize_creates_report():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     synth.synthesize(plan)
@@ -112,17 +122,24 @@ def test_synthesize_report_includes_all_fields():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
-    world = synth.synthesize(plan)
+    synth.synthesize(plan)
     r = synth.last_report
     d = r.to_dict()
     expected_keys = {
-        "total_tiles", "total_structures", "total_spawns",
-        "total_regions", "total_chunks", "themes_used",
-        "ai_architect_attached", "blueprint_registry_attached",
-        "validation", "metadata",
+        "total_tiles",
+        "total_structures",
+        "total_spawns",
+        "total_regions",
+        "total_chunks",
+        "themes_used",
+        "ai_architect_attached",
+        "blueprint_registry_attached",
+        "validation",
+        "metadata",
     }
     assert expected_keys.issubset(set(d.keys()))
     print("  [OK] test_synthesize_report_includes_all_fields")
@@ -133,7 +150,8 @@ def test_synthesize_attaches_ai_architect():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     world = synth.synthesize(plan, ai_architect=architect)
@@ -146,10 +164,12 @@ def test_synthesize_attaches_ai_architect():
 def test_synthesize_attaches_blueprint_registry():
     """synthesize should attach a BlueprintRegistry when passed one."""
     from core.registry import BlueprintRegistry
+
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     reg = BlueprintRegistry()
@@ -165,7 +185,8 @@ def test_synthesize_validates_by_default():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42, auto_validate=True)
     synth.synthesize(plan)
@@ -179,7 +200,8 @@ def test_synthesize_validation_pass():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     synth.synthesize(plan)
@@ -193,7 +215,8 @@ def test_synthesize_deterministic_with_seed():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     s1 = WorldSynthesizer(seed=99)
     s2 = WorldSynthesizer(seed=99)
@@ -213,7 +236,8 @@ def test_synthesize_supports_auto_validate_false():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42, auto_validate=False)
     synth.synthesize(plan)
@@ -224,23 +248,30 @@ def test_synthesize_supports_auto_validate_false():
 def test_synthesize_with_dependencies_injection():
     """synthesize should use the injected ContinentGenerator."""
     from core.procedural import (
-        ContinentGenerator, BiomeGenerator, TerrainGenerator,
-        RoadGenerator, RiverGenerator,
+        ContinentGenerator,
+        BiomeGenerator,
+        TerrainGenerator,
+        RoadGenerator,
+        RiverGenerator,
     )
+
     bg = BiomeGenerator(seed=1)
     tg = TerrainGenerator(seed=2)
     rg = RoadGenerator(seed=3)
     rivg = RiverGenerator(seed=4)
     cg = ContinentGenerator(
-        biome_generator=bg, terrain_generator=tg,
-        road_generator=rg, river_generator=rivg,
+        biome_generator=bg,
+        terrain_generator=tg,
+        road_generator=rg,
+        river_generator=rivg,
         seed=42,
     )
     synth = WorldSynthesizer(continent_generator=cg)
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 1 hunt and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = synth.synthesize(plan)
     assert world.tile_count() > 0
@@ -288,11 +319,31 @@ def test_synthesizer_merge_combines_structures():
     """merge() should combine structures from all worlds."""
     synth = WorldSynthesizer()
     w1 = WorldModel()
-    w1.add_structure(Structure(name="s1", category="city", x=0, y=0, z=7,
-                                width=10, height=10, tile_count=100))
+    w1.add_structure(
+        Structure(
+            name="s1",
+            category="city",
+            x=0,
+            y=0,
+            z=7,
+            width=10,
+            height=10,
+            tile_count=100,
+        )
+    )
     w2 = WorldModel()
-    w2.add_structure(Structure(name="s2", category="hunt_zone", x=20, y=20, z=7,
-                                width=10, height=10, tile_count=100))
+    w2.add_structure(
+        Structure(
+            name="s2",
+            category="hunt_zone",
+            x=20,
+            y=20,
+            z=7,
+            width=10,
+            height=10,
+            tile_count=100,
+        )
+    )
     out = synth.merge([w1, w2])
     assert out.structure_count() == 2
     names = {s.name for s in out.structures}
@@ -329,6 +380,7 @@ def test_synthesizer_merge_normalizes_negative_coords():
 def test_synthesize_normalize():
     """synthesize should normalize invalid tiles (negative coords)."""
     from core.procedural import ContinentResult
+
     w = WorldModel()
     w.set_tile(Tile(x=-5, y=5, z=7, ground=100))
     w.set_tile(Tile(x=5, y=5, z=7, ground=200))
@@ -345,10 +397,12 @@ def test_synthesize_normalize():
 def test_synthesis_report_to_dict():
     """SynthesisReport.to_dict() should produce a JSON-serializable dict."""
     import json
+
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 1 hunt and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     synth.synthesize(plan)
@@ -362,7 +416,8 @@ def test_synthesis_report_includes_themes():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi + Roshamuul with 1 hunt and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     synth.synthesize(plan)
@@ -375,7 +430,8 @@ def test_module_level_synthesize():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 1 hunt and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     world = synthesize(plan, seed=42)
     assert isinstance(world, WorldModel)
@@ -415,6 +471,7 @@ def test_module_level_attach_ai_architect():
 def test_module_level_attach_blueprint_registry():
     """attach_blueprint_registry() should attach the registry to the world."""
     from core.registry import BlueprintRegistry
+
     w = WorldModel()
     reg = BlueprintRegistry()
     attach_blueprint_registry(w, reg)
@@ -427,7 +484,8 @@ def test_synthesize_end_to_end_pipeline():
     architect = AIArchitect()
     plan = architect.plan(
         "Generate Issavi city with 2 hunts level 200 and a boss",
-        world_width=TEST_W, world_height=TEST_H,
+        world_width=TEST_W,
+        world_height=TEST_H,
     )
     synth = WorldSynthesizer(seed=42)
     world = synth.synthesize(plan, ai_architect=architect)
@@ -454,6 +512,7 @@ def test_generate_then_synthesize():
 # =============================================================================
 # Runner
 # =============================================================================
+
 
 def run_all():
     tests = [
@@ -496,6 +555,7 @@ def run_all():
             t()
         except Exception as e:
             import traceback
+
             tb = traceback.format_exc()
             failures.append((t.__name__, f"{type(e).__name__}: {e}\n{tb}"))
             print(f"  [FAIL] {t.__name__}: {type(e).__name__}: {e}")

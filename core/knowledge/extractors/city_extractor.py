@@ -19,8 +19,16 @@ class CityExtractor(BaseExtractor):
     NAME = "city"
 
     CITY_KEYWORDS = ("city", "town", "village", "hub", "market", "outpost")
-    CITY_CATEGORIES = ("city", "town", "village", "hub", "market",
-                       "temple", "depot", "bank")
+    CITY_CATEGORIES = (
+        "city",
+        "town",
+        "village",
+        "hub",
+        "market",
+        "temple",
+        "depot",
+        "bank",
+    )
 
     def extract(self, world: Dict[str, Any], source: str = "") -> List[KnowledgeEntry]:
         entries: List[KnowledgeEntry] = []
@@ -36,12 +44,16 @@ class CityExtractor(BaseExtractor):
                 entry_type=EntryType.CITY,
                 name=name,
                 source=_as_str(c.get("source", source)),
-                biome=_as_str(c.get("biome", world.get("meta", {}).get("theme", "generic"))),
+                biome=_as_str(
+                    c.get("biome", world.get("meta", {}).get("theme", "generic"))
+                ),
                 min_level=_as_int(c.get("min_level", c.get("level_min", 1))),
                 max_level=_as_int(c.get("max_level", c.get("level_max", 9999))),
                 tags=_coerce_tags(c),
                 attributes={
-                    "theme": _as_str(c.get("theme", world.get("meta", {}).get("theme", "generic"))),
+                    "theme": _as_str(
+                        c.get("theme", world.get("meta", {}).get("theme", "generic"))
+                    ),
                     "style": _as_str(c.get("style", "medieval")),
                     "size": _as_int(c.get("size", 0)),
                     "has_depot": bool(c.get("has_depot", "depot" in name.lower())),
@@ -62,24 +74,27 @@ class CityExtractor(BaseExtractor):
             lname = rname.lower()
             if not rname or lname in seen:
                 continue
-            if any(kw in lname for kw in self.CITY_KEYWORDS) and \
-                    not any(svc in lname for svc in ("depot", "temple", "npc_hub")):
+            if any(kw in lname for kw in self.CITY_KEYWORDS) and not any(
+                svc in lname for svc in ("depot", "temple", "npc_hub")
+            ):
                 seen.add(lname)
-                entries.append(KnowledgeEntry.build(
-                    entry_type=EntryType.CITY,
-                    name=rname,
-                    source=source,
-                    biome=_as_str(r.get("theme", "generic")),
-                    min_level=_as_int(r.get("min_level", 1)),
-                    max_level=_as_int(r.get("max_level", 9999)),
-                    tags=_coerce_tags(r),
-                    attributes={
-                        "theme": _as_str(r.get("theme", "generic")),
-                        "style": "region",
-                        "layout": "open",
-                        "tags": _as_list(r.get("tags", [])),
-                    },
-                ))
+                entries.append(
+                    KnowledgeEntry.build(
+                        entry_type=EntryType.CITY,
+                        name=rname,
+                        source=source,
+                        biome=_as_str(r.get("theme", "generic")),
+                        min_level=_as_int(r.get("min_level", 1)),
+                        max_level=_as_int(r.get("max_level", 9999)),
+                        tags=_coerce_tags(r),
+                        attributes={
+                            "theme": _as_str(r.get("theme", "generic")),
+                            "style": "region",
+                            "layout": "open",
+                            "tags": _as_list(r.get("tags", [])),
+                        },
+                    )
+                )
 
         # 3) structures of city category
         for s in _as_list(world.get("structures")):
@@ -91,23 +106,29 @@ class CityExtractor(BaseExtractor):
                 continue
             seen.add(name.lower())
             # Use 'biome' if present, else 'theme', else world meta theme.
-            biome = _as_str(s.get("biome")) or _as_str(s.get("theme")) \
+            biome = (
+                _as_str(s.get("biome"))
+                or _as_str(s.get("theme"))
                 or _as_str(world.get("meta", {}).get("theme", "generic"))
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.CITY,
-                name=name,
-                source=source,
-                biome=biome,
-                min_level=_as_int(s.get("min_level", 1)),
-                max_level=_as_int(s.get("max_level", 9999)),
-                tags=_coerce_tags(s),
-                attributes={
-                    "theme": _as_str(s.get("theme", "generic")),
-                    "style": cat,
-                    "size": _as_int(s.get("width", 0)) * _as_int(s.get("height", 0)),
-                    "layout": _as_str(s.get("layout", "open")),
-                },
-            ))
+            )
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.CITY,
+                    name=name,
+                    source=source,
+                    biome=biome,
+                    min_level=_as_int(s.get("min_level", 1)),
+                    max_level=_as_int(s.get("max_level", 9999)),
+                    tags=_coerce_tags(s),
+                    attributes={
+                        "theme": _as_str(s.get("theme", "generic")),
+                        "style": cat,
+                        "size": _as_int(s.get("width", 0))
+                        * _as_int(s.get("height", 0)),
+                        "layout": _as_str(s.get("layout", "open")),
+                    },
+                )
+            )
         return entries
 
 

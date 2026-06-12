@@ -1,7 +1,5 @@
 """Integration test: Autonomous Designer + Blueprint Intelligence."""
 
-import pytest
-
 from core.autonomous import AutonomousWorldDesigner
 from core.autonomous.autonomous_decision_engine import AutonomousDecisionEngine
 from core.autonomous.models.region_plan import RegionPlan

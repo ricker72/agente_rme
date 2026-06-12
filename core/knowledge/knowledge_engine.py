@@ -12,10 +12,7 @@ Example:
 
 from __future__ import annotations
 
-import json
-import os
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from .dataset_builder import DatasetBuilder
 from .knowledge_catalog import KnowledgeCatalog
@@ -27,7 +24,6 @@ from .knowledge_search import KnowledgeSearch
 from .models import (
     EntryType,
     KnowledgeDataset,
-    KnowledgeEntry,
     KnowledgeQueryResult,
 )
 
@@ -134,19 +130,38 @@ class KnowledgeEngine:
         direct = indexer.get(name)
         if direct is not None:
             res = self.search.find_similar(direct, k=k)
-            out: List[Dict[str, Any]] = [{
-                "name": direct.name,
-                "score": 1.0,
-                "biome": direct.biome,
-                "entry_type": direct.entry_type.value,
-                "min_level": direct.min_level,
-                "max_level": direct.max_level,
-                "match_type": "exact",
-            }]
+            out: List[Dict[str, Any]] = [
+                {
+                    "name": direct.name,
+                    "score": 1.0,
+                    "biome": direct.biome,
+                    "entry_type": direct.entry_type.value,
+                    "min_level": direct.min_level,
+                    "max_level": direct.max_level,
+                    "match_type": "exact",
+                }
+            ]
             for m in res.matches[:k]:
                 if m.entry.id == direct.id:
                     continue
-                out.append({
+                out.append(
+                    {
+                        "name": m.entry.name,
+                        "score": round(float(m.score), 4),
+                        "biome": m.entry.biome,
+                        "entry_type": m.entry.entry_type.value,
+                        "min_level": m.entry.min_level,
+                        "max_level": m.entry.max_level,
+                        "match_type": m.match_type,
+                    }
+                )
+            return out[:k]
+        # Fall back to text search
+        res = self.search.find_by_text(name, k=k)
+        out2: List[Dict[str, Any]] = []
+        for m in res.matches[:k]:
+            out2.append(
+                {
                     "name": m.entry.name,
                     "score": round(float(m.score), 4),
                     "biome": m.entry.biome,
@@ -154,21 +169,8 @@ class KnowledgeEngine:
                     "min_level": m.entry.min_level,
                     "max_level": m.entry.max_level,
                     "match_type": m.match_type,
-                })
-            return out[:k]
-        # Fall back to text search
-        res = self.search.find_by_text(name, k=k)
-        out2: List[Dict[str, Any]] = []
-        for m in res.matches[:k]:
-            out2.append({
-                "name": m.entry.name,
-                "score": round(float(m.score), 4),
-                "biome": m.entry.biome,
-                "entry_type": m.entry.entry_type.value,
-                "min_level": m.entry.min_level,
-                "max_level": m.entry.max_level,
-                "match_type": m.match_type,
-            })
+                }
+            )
         return out2
 
     # ------------------------------------------------------------------
@@ -215,6 +217,7 @@ class KnowledgeEngine:
         of similar entries to inspire the generation.
         """
         from .knowledge_query import parse_query
+
         parsed = parse_query(prompt)
         out: Dict[str, Any] = {
             "prompt": prompt,
@@ -228,7 +231,9 @@ class KnowledgeEngine:
         }
         if parsed.entry_type is not None:
             res = self.search.search(
-                prompt, k=k, entry_type=parsed.entry_type,
+                prompt,
+                k=k,
+                entry_type=parsed.entry_type,
                 min_level=parsed.min_level,
                 max_level=parsed.max_level,
                 biome=parsed.biome,

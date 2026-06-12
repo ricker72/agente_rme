@@ -1,5 +1,3 @@
-import pytest
-
 from validators.qa_pipeline import QAPipeline
 
 

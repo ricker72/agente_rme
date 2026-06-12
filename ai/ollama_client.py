@@ -1,5 +1,5 @@
 import logging
-from typing import Callable, Optional
+from typing import Callable
 
 import requests
 
@@ -9,6 +9,7 @@ except ImportError:
     Ollama = None
 
 logger = logging.getLogger(__name__)
+
 
 class OllamaClient:
     """Local Ollama client wrapper with SDK or HTTP fallback."""

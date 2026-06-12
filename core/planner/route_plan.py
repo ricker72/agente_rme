@@ -23,7 +23,14 @@ class RoutePlan:
 
 
 class RoutePlanner:
-    def plan_route(self, start: str, end: str, start_xy: Dict[str, int], end_xy: Dict[str, int], route_type: str = "road") -> RoutePlan:
+    def plan_route(
+        self,
+        start: str,
+        end: str,
+        start_xy: Dict[str, int],
+        end_xy: Dict[str, int],
+        route_type: str = "road",
+    ) -> RoutePlan:
         dx = abs(end_xy["x"] - start_xy["x"])
         dy = abs(end_xy["y"] - start_xy["y"])
         length = dx + dy
@@ -38,4 +45,6 @@ class RoutePlanner:
             path.append({"x": x, "y": y})
             y += step_y
         path.append({"x": end_xy["x"], "y": end_xy["y"]})
-        return RoutePlan(start=start, end=end, route_type=route_type, path=path, length=length)
+        return RoutePlan(
+            start=start, end=end, route_type=route_type, path=path, length=length
+        )

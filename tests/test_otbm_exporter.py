@@ -26,10 +26,10 @@ from core.otbm import OTBMExporter, OtbmValidator
 from core.world import WorldModel, Tile, Spawn, Item, Structure, Region
 from core.generators import WorldGenerator
 
-
 # =========================================================================
 # TEST OBLIGATORIO
 # =========================================================================
+
 
 def test_mandatory_export():
     """
@@ -60,14 +60,17 @@ def test_mandatory_export():
     validation = validator.validate(open("output/test_mandatory.otbm", "rb").read())
     assert validation.is_valid, f"OTBM inválido: {validation.errors}"
 
-    print(f"  [OK] Test obligatorio: output/test_mandatory.otbm "
-          f"({os.path.getsize('output/test_mandatory.otbm')} bytes, "
-          f"valid={validation.is_valid}, tiles={validation.stats['tiles']})")
+    print(
+        f"  [OK] Test obligatorio: output/test_mandatory.otbm "
+        f"({os.path.getsize('output/test_mandatory.otbm')} bytes, "
+        f"valid={validation.is_valid}, tiles={validation.stats['tiles']})"
+    )
 
 
 # =========================================================================
 # Tests de integración
 # =========================================================================
+
 
 def test_export_generated_world():
     """Exportar un mundo generado con WorldGenerator a .otbm."""
@@ -95,9 +98,11 @@ def test_export_generated_world():
     assert json_report["tiles"] > 0
     assert json_report["status"] == "success"
 
-    print(f"  [OK] Export generated world: {report['tiles']} tiles, "
-          f"{report['items']} items, {report['spawns']} spawns, "
-          f"{report['otbm_bytes']} bytes")
+    print(
+        f"  [OK] Export generated world: {report['tiles']} tiles, "
+        f"{report['items']} items, {report['spawns']} spawns, "
+        f"{report['otbm_bytes']} bytes"
+    )
 
 
 def test_export_with_spawns_and_items():
@@ -120,10 +125,17 @@ def test_export_with_spawns_and_items():
     world.set_tile(tile_with_spawn)
 
     # Estructura y región
-    world.add_structure(Structure(
-        name="temple", category="temple",
-        x=100, y=100, z=7, width=10, height=10,
-    ))
+    world.add_structure(
+        Structure(
+            name="temple",
+            category="temple",
+            x=100,
+            y=100,
+            z=7,
+            width=10,
+            height=10,
+        )
+    )
     world.add_region(Region(name="test", theme="issavi"))
 
     exporter = OTBMExporter(generate_templates=True)
@@ -138,8 +150,10 @@ def test_export_with_spawns_and_items():
     monster_xml = Path("output/test_spawns.monster.xml").read_text()
     assert "Dragon" in monster_xml
 
-    print(f"  [OK] Export with spawns: {report['tiles']} tiles, "
-          f"{report['items']} items, {report['spawns']} spawns")
+    print(
+        f"  [OK] Export with spawns: {report['tiles']} tiles, "
+        f"{report['items']} items, {report['spawns']} spawns"
+    )
 
 
 def test_export_bytes():
@@ -185,8 +199,10 @@ def test_validate():
     bad_result = exporter.validate(b"INVALID")
     assert not bad_result.is_valid
 
-    print(f"  [OK] Validate: valid={result.is_valid}, "
-          f"tiles={result.stats.get('tiles', 0)}")
+    print(
+        f"  [OK] Validate: valid={result.is_valid}, "
+        f"tiles={result.stats.get('tiles', 0)}"
+    )
 
 
 def test_generate_xmls():
@@ -197,10 +213,17 @@ def test_generate_xmls():
     tile.spawn = Spawn(monster="Dragon", respawn=60)
     tile.items.append(Item(itemid=2050))
 
-    world.add_structure(Structure(
-        name="test_house", category="house",
-        x=0, y=0, z=7, width=5, height=5,
-    ))
+    world.add_structure(
+        Structure(
+            name="test_house",
+            category="house",
+            x=0,
+            y=0,
+            z=7,
+            width=5,
+            height=5,
+        )
+    )
 
     exporter = OTBMExporter()
 
@@ -214,8 +237,10 @@ def test_generate_xmls():
     waypoint_xml = exporter.generate_waypoint_xml(world)
     assert isinstance(waypoint_xml, str)
 
-    print(f"  [OK] Generate XMLs: monster={len(monster_xml)} chars, "
-          f"house={len(house_xml)} chars, waypoint={len(waypoint_xml)} chars")
+    print(
+        f"  [OK] Generate XMLs: monster={len(monster_xml)} chars, "
+        f"house={len(house_xml)} chars, waypoint={len(waypoint_xml)} chars"
+    )
 
 
 def test_export_report_structure():
@@ -226,8 +251,17 @@ def test_export_report_structure():
     exporter = OTBMExporter(generate_templates=False)
     report = exporter.export(world, "output/test_report.otbm")
 
-    required_keys = {"tiles", "items", "spawns", "houses", "waypoints",
-                     "otbm_bytes", "validation", "status", "files"}
+    required_keys = {
+        "tiles",
+        "items",
+        "spawns",
+        "houses",
+        "waypoints",
+        "otbm_bytes",
+        "validation",
+        "status",
+        "files",
+    }
     for key in required_keys:
         assert key in report, f"Falta clave: {key}"
 
@@ -262,6 +296,7 @@ if __name__ == "__main__":
         except Exception as e:
             failed += 1
             import traceback
+
             print(f"  [FAIL] {name}: {e}")
             traceback.print_exc()
         print()

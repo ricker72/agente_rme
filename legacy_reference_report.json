@@ -1,0 +1,952 @@
+{
+  "total_legacy_references": 134,
+  "classification_counts": {
+    "SAFE": 74,
+    "WARNING": 45,
+    "CRITICAL": 15
+  },
+  "critical_references": [
+    {
+      "file": "check_utcnow.py",
+      "line": 4,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "Fails if any production .py file contains ``datetime.utcnow()`` or the literal"
+    },
+    {
+      "file": "check_utcnow.py",
+      "line": 71,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "print(f\"\\nFAIL: {path} contains datetime.utcnow() references.\")"
+    },
+    {
+      "file": "check_utcnow.py",
+      "line": 83,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "print(f\"\\nFAIL: Found {total} datetime.utcnow() reference(s) in production code.\")"
+    },
+    {
+      "file": "check_utcnow.py",
+      "line": 86,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "print(\"OK: No datetime.utcnow() found in production code.\")"
+    },
+    {
+      "file": "core\\critic\\critic_report.py",
+      "line": 183,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "generated_at=datetime.datetime.utcnow().isoformat(),"
+    },
+    {
+      "file": "core\\critic\\models\\critic_result.py",
+      "line": 82,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "self.timestamp = datetime.datetime.utcnow().isoformat()"
+    },
+    {
+      "file": "fix_utcnow.py",
+      "line": 1,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "\"\"\"Replace datetime.utcnow() with datetime.now(timezone.utc) in project files.\"\"\""
+    },
+    {
+      "file": "fix_utcnow.py",
+      "line": 15,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "# agent_response.py — uses `import datetime` and `datetime.datetime.utcnow()`"
+    },
+    {
+      "file": "fix_utcnow.py",
+      "line": 33,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "# orchestrator_agent.py — uses `import datetime` and `datetime.datetime.utcnow()`"
+    },
+    {
+      "file": "fix_utcnow.py",
+      "line": 64,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "# 1) `datetime.utcnow()` -> `datetime.now(timezone.utc)`"
+    },
+    {
+      "file": "fix_utcnow.py",
+      "line": 66,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "# 2) `datetime.datetime.utcnow()` -> `datetime.datetime.now(datetime.timezone.utc)`"
+    },
+    {
+      "file": "test_utcnow.py",
+      "line": 1,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "\"\"\"Verify datetime.utcnow was removed and replaced.\"\"\""
+    },
+    {
+      "file": "validate_hito_26_1e.py",
+      "line": 5,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "1. No datetime.utcnow() in production .py files"
+    },
+    {
+      "file": "validate_hito_26_1e.py",
+      "line": 84,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "print(f\"RESULT: {errors} file(s) with datetime.utcnow() — FAIL\")"
+    },
+    {
+      "file": "validate_hito_26_1e.py",
+      "line": 87,
+      "pattern": "datetime.utcnow",
+      "classification": "CRITICAL",
+      "context": "print(\"RESULT: ALL CLEAN — No datetime.utcnow() found\")"
+    }
+  ],
+  "warning_references": [
+    {
+      "file": "boss_generator.py",
+      "line": 46,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "self.assertNotIn(\"TODO\", ability)"
+    },
+    {
+      "file": "core\\blueprint_intelligence\\blueprint_embedding_engine.py",
+      "line": 103,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# Try legacy layout"
+    },
+    {
+      "file": "core\\blueprints\\blueprint.py",
+      "line": 74,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# Descriptive mode (legacy)"
+    },
+    {
+      "file": "core\\blueprints\\blueprint_loader.py",
+      "line": 20,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "tile-based format and the legacy descriptive format."
+    },
+    {
+      "file": "core\\content\\quest_package.py",
+      "line": 73,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "elif \"TODO\" in obj:"
+    },
+    {
+      "file": "core\\content\\quest_package.py",
+      "line": 74,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "errors.append(f\"objective[{i}] contains TODO placeholder\")"
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 48,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "Updates legacy Tibia maps (8.6, 10.x, etc.) to modern standards."
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 108,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "# Old deprecated items that should be replaced"
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 255,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "data = self._remove_deprecated_items(data, report)"
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 429,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "def _remove_deprecated_items("
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 433,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "# Known deprecated item IDs"
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 434,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "deprecated_ids = {104, 105, 106, 400, 401, 430}  # Already mapped in ITEM_MIGRATION"
+    },
+    {
+      "file": "core\\evolution\\modernization_engine.py",
+      "line": 444,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "if item_id in deprecated_ids:"
+    },
+    {
+      "file": "core\\game_design\\lore_generator.py",
+      "line": 17,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "\"expansion_legacy\": f\"{expansion_name} ties together old Tibia myth and emerging endgame conflict across Issavi and Rosh"
+    },
+    {
+      "file": "core\\generators\\hunt_generator.py",
+      "line": 64,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "self._legacy_width = kwargs.get(\"width\", self.DEFAULT_WIDTH)"
+    },
+    {
+      "file": "core\\generators\\hunt_generator.py",
+      "line": 65,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "self._legacy_height = kwargs.get(\"height\", self.DEFAULT_HEIGHT)"
+    },
+    {
+      "file": "core\\otbm\\node_encoder.py",
+      "line": 23,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "OTBM_NODE_TILE_SQUARE = 0x05  # deprecated / unused in modern TFS"
+    },
+    {
+      "file": "core\\otbm\\node_encoder.py",
+      "line": 35,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "ATTR_EXT_HOUSE_FILE = 0x02  # string (deprecated extension style)"
+    },
+    {
+      "file": "core\\otbm\\node_encoder.py",
+      "line": 36,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "ATTR_EXT_SPAWN_FILE = 0x03  # string (deprecated extension style)"
+    },
+    {
+      "file": "core\\otbm\\node_encoder.py",
+      "line": 43,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "ATTR_DESC = 0x0A  # string (deprecated)"
+    },
+    {
+      "file": "ga_certify.py",
+      "line": 155,
+      "pattern": "deprecated",
+      "classification": "WARNING",
+      "context": "f\"- Deprecated APIs: {quality.get('summary', {}).get('deprecated_apis', 0)}\","
+    },
+    {
+      "file": "ga_certify.py",
+      "line": 156,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "f\"- Legacy markers: {quality.get('summary', {}).get('legacy_markers', 0)}\","
+    },
+    {
+      "file": "mission_generator.py",
+      "line": 47,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "self.assertNotIn(\"TODO\", obj)"
+    },
+    {
+      "file": "quest_generator.py",
+      "line": 46,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "self.assertNotEqual(quest.name, \"TODO\")"
+    },
+    {
+      "file": "quest_generator.py",
+      "line": 48,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "self.assertNotIn(\"TODO\", obj)"
+    },
+    {
+      "file": "raid_generator.py",
+      "line": 46,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "self.assertNotIn(\"TODO\", obj)"
+    },
+    {
+      "file": "reward_generator.py",
+      "line": 47,
+      "pattern": "TODO",
+      "classification": "WARNING",
+      "context": "self.assertNotIn(\"TODO\", reward.name)"
+    },
+    {
+      "file": "rme.py",
+      "line": 232,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# ── Wrapper: delegate to cli.py for legacy commands ──────────────────────────"
+    },
+    {
+      "file": "rme.py",
+      "line": 235,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "def cmd_legacy(args, original_args_list):"
+    },
+    {
+      "file": "rme.py",
+      "line": 236,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "\"\"\"Forward a sub-command to the legacy cli.main().\"\"\""
+    },
+    {
+      "file": "rme.py",
+      "line": 245,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "if hasattr(args, \"_raw_legacy_args\"):"
+    },
+    {
+      "file": "rme.py",
+      "line": 246,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "sys.argv = [\"cli.py\"] + args._raw_legacy_args"
+    },
+    {
+      "file": "rme.py",
+      "line": 312,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# The legacy cli.py exposes additional subcommands (generate, export,"
+    },
+    {
+      "file": "rme.py",
+      "line": 317,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# even run. We register them here with ``func=cmd_legacy_dispatch``"
+    },
+    {
+      "file": "rme.py",
+      "line": 319,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# ``cmd_legacy`` helper."
+    },
+    {
+      "file": "rme.py",
+      "line": 321,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "def _legacy_dispatch(_args):"
+    },
+    {
+      "file": "rme.py",
+      "line": 340,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "cmd_legacy(None, forwarded)"
+    },
+    {
+      "file": "rme.py",
+      "line": 342,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# v1.0.1 HOTFIX: legacy subcommands accept arbitrary additional"
+    },
+    {
+      "file": "rme.py",
+      "line": 356,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "p.set_defaults(func=_legacy_dispatch)"
+    },
+    {
+      "file": "rme.py",
+      "line": 376,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# Otherwise, forward to the legacy cli.py for generate/export/etc."
+    },
+    {
+      "file": "rme.py",
+      "line": 396,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "cmd_legacy(None, forwarded)"
+    },
+    {
+      "file": "rme.py",
+      "line": 413,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "# Otherwise, forward to the legacy cli.py for generate/export/etc."
+    },
+    {
+      "file": "rme.py",
+      "line": 433,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "cmd_legacy(None, forwarded)"
+    },
+    {
+      "file": "tools\\hotfix_regression.py",
+      "line": 118,
+      "pattern": "legacy",
+      "classification": "WARNING",
+      "context": "#  - rme.py CLI dispatcher now supports legacy subcommands"
+    },
+    {
+      "file": "ui\\plugins\\__init__.py",
+      "line": 98,
+      "pattern": "FIXME",
+      "classification": "WARNING",
+      "context": "pass  # FIXME: log failure"
+    }
+  ],
+  "safe_references": [
+    {
+      "file": "config_manager.py",
+      "line": 4,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "Uses lxml for fast, robust XML validation with stdlib ET as fallback."
+    },
+    {
+      "file": "core\\agents\\__init__.py",
+      "line": 4,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "All agents use real engines (no mocks, no fallbacks, no simulations)."
+    },
+    {
+      "file": "core\\analyzer\\map_analyzer.py",
+      "line": 195,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"\"\"Direct OTBM byte analysis (fallback without importer).\"\"\""
+    },
+    {
+      "file": "core\\architect\\theme_resolver.py",
+      "line": 108,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Built-in theme knowledge (used as the last fallback if no JSON / registry)"
+    },
+    {
+      "file": "core\\architect\\theme_resolver.py",
+      "line": 476,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "4. Generic fallback"
+    },
+    {
+      "file": "core\\architect\\theme_resolver.py",
+      "line": 542,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "4. Generic fallback"
+    },
+    {
+      "file": "core\\architect\\world_planner.py",
+      "line": 95,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Final fallback: if still nothing at all, default to a single hunt"
+    },
+    {
+      "file": "core\\architect\\zone_planner.py",
+      "line": 354,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Out-of-range fallbacks"
+    },
+    {
+      "file": "core\\assets\\asset_classifier.py",
+      "line": 367,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# 7. ID range fallback"
+    },
+    {
+      "file": "core\\assets\\asset_classifier.py",
+      "line": 423,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# ID-range fallback has lower confidence"
+    },
+    {
+      "file": "core\\assets\\asset_registry.py",
+      "line": 99,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "self._monster_indexer.index_fallback_monsters()"
+    },
+    {
+      "file": "core\\assets\\monster_indexer.py",
+      "line": 79,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Ensure fallback monsters are always included"
+    },
+    {
+      "file": "core\\assets\\monster_indexer.py",
+      "line": 84,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"file\": f\"fallback/{name.lower().replace(' ', '_')}.lua\","
+    },
+    {
+      "file": "core\\assets\\monster_indexer.py",
+      "line": 89,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def index_fallback_monsters(self) -> int:"
+    },
+    {
+      "file": "core\\assets\\monster_indexer.py",
+      "line": 90,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"\"\"Index the built-in fallback monster list.\"\"\""
+    },
+    {
+      "file": "core\\assets\\monster_indexer.py",
+      "line": 94,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"file\": f\"fallback/{name.lower().replace(' ', '_')}.lua\","
+    },
+    {
+      "file": "core\\assets\\npc_indexer.py",
+      "line": 40,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def index_fallback_npcs(self) -> int:"
+    },
+    {
+      "file": "core\\assets\\npc_indexer.py",
+      "line": 42,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "fallback = [\"Sam\", \"Rashid\", \"Gregor\", \"Yasir\", \"Telas\"]"
+    },
+    {
+      "file": "core\\assets\\npc_indexer.py",
+      "line": 43,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "for name in fallback:"
+    },
+    {
+      "file": "core\\assets\\npc_indexer.py",
+      "line": 44,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "self._npcs[name] = {\"name\": name, \"file\": f\"fallback/{name.lower()}.lua\"}"
+    },
+    {
+      "file": "core\\autonomous\\world_strategy.py",
+      "line": 79,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"\"\"Get balanced weights as fallback.\"\"\""
+    },
+    {
+      "file": "core\\blueprints\\blueprint_extractor.py",
+      "line": 205,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Patrones agregados (fallback si no hay posicionales)"
+    },
+    {
+      "file": "core\\blueprints\\blueprint_extractor.py",
+      "line": 394,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return BlueprintExtractor._import_otbm_fallback(otbm_path)"
+    },
+    {
+      "file": "core\\blueprints\\blueprint_extractor.py",
+      "line": 397,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return BlueprintExtractor._import_otbm_fallback(otbm_path)"
+    },
+    {
+      "file": "core\\blueprints\\blueprint_extractor.py",
+      "line": 402,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def _import_otbm_fallback(otbm_path: str) -> Optional[Dict[str, Any]]:"
+    },
+    {
+      "file": "core\\blueprints\\theme_classifier.py",
+      "line": 20,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "- generic (fallback)"
+    },
+    {
+      "file": "core\\campaign\\campaign_generator.py",
+      "line": 130,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"CampaignGenerator.generate failed; returning minimal fallback: %s\","
+    },
+    {
+      "file": "core\\campaign\\package.py",
+      "line": 15,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "or a safety fallback."
+    },
+    {
+      "file": "core\\campaign\\package.py",
+      "line": 36,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "FALLBACK = \"fallback\"  # Pipeline errored, fallback produced"
+    },
+    {
+      "file": "core\\campaign\\package.py",
+      "line": 80,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Factory: minimal / safe fallback"
+    },
+    {
+      "file": "core\\campaign\\package.py",
+      "line": 94,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "Used as a guaranteed-last-resort fallback so the export stage"
+    },
+    {
+      "file": "core\\generators\\dungeon\\dungeon_to_worldmodel.py",
+      "line": 204,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return (20, 20, z)  # fallback"
+    },
+    {
+      "file": "core\\generators\\spawn_generator.py",
+      "line": 43,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Difficulty-based monster pools (fallback if theme has no defined monsters)"
+    },
+    {
+      "file": "core\\generators\\theme_generator.py",
+      "line": 56,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# -- Built-in theme definitions (fallback if JSON templates not found) --"
+    },
+    {
+      "file": "core\\generators\\theme_generator.py",
+      "line": 171,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Absolute fallback: generic"
+    },
+    {
+      "file": "core\\knowledge\\extractors\\base_extractor.py",
+      "line": 162,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Non-JSON sources: try the OTBM importer, else fallback to empty."
+    },
+    {
+      "file": "core\\lua\\lua_generator.py",
+      "line": 164,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# WorldModel-style fallback: pull from world.tiles"
+    },
+    {
+      "file": "core\\lua\\lua_generator.py",
+      "line": 179,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Resolve spawns from plan or fallback"
+    },
+    {
+      "file": "core\\playtest\\party_bot.py",
+      "line": 132,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# fallback: highest HP"
+    },
+    {
+      "file": "core\\preview\\preview_generator.py",
+      "line": 165,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return self._fallback_ascii(world_model, output_path)"
+    },
+    {
+      "file": "core\\preview\\preview_generator.py",
+      "line": 328,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def _fallback_ascii(self, world_model: Any, output_path: str) -> Optional[str]:"
+    },
+    {
+      "file": "core\\procedural\\river_generator.py",
+      "line": 77,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def get_river_ground_id(theme: Any, fallback: int = 4597) -> int:"
+    },
+    {
+      "file": "core\\procedural\\river_generator.py",
+      "line": 79,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return RIVER_GROUND_IDS.get(name, fallback)"
+    },
+    {
+      "file": "core\\procedural\\river_generator.py",
+      "line": 82,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def get_river_bank_id(theme: Any, fallback: int = 361) -> int:"
+    },
+    {
+      "file": "core\\procedural\\river_generator.py",
+      "line": 84,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return RIVER_BANK_IDS.get(name, fallback)"
+    },
+    {
+      "file": "core\\procedural\\road_generator.py",
+      "line": 82,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def get_road_ground_id(theme: Any, fallback: int = 360) -> int:"
+    },
+    {
+      "file": "core\\procedural\\road_generator.py",
+      "line": 84,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return ROAD_GROUND_IDS.get(name, fallback)"
+    },
+    {
+      "file": "core\\procedural\\road_generator.py",
+      "line": 87,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def get_bridge_ground_id(theme: Any, fallback: int = 3610) -> int:"
+    },
+    {
+      "file": "core\\procedural\\road_generator.py",
+      "line": 89,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return BRIDGE_GROUND_IDS.get(name, fallback)"
+    },
+    {
+      "file": "core\\procedural\\terrain_generator.py",
+      "line": 203,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "def get_terrain_ground_id(theme: Any, kind: str, fallback: int = 0) -> int:"
+    },
+    {
+      "file": "core\\procedural\\terrain_generator.py",
+      "line": 211,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "if fallback:"
+    },
+    {
+      "file": "core\\procedural\\terrain_generator.py",
+      "line": 212,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "return palette.get(kind, fallback)"
+    },
+    {
+      "file": "core\\prompt_interpreter.py",
+      "line": 112,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Spanish language fallbacks"
+    },
+    {
+      "file": "core\\spawn\\spawn_generator.py",
+      "line": 148,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# WorldModel-based auto-generation (used by LuaGenerator fallback)"
+    },
+    {
+      "file": "core\\themes\\theme_resolver.py",
+      "line": 28,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "and also provide fallback data if the JSON is unavailable."
+    },
+    {
+      "file": "core\\themes\\theme_resolver.py",
+      "line": 73,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "Priority: JSON template > Built-in fallback > empty theme"
+    },
+    {
+      "file": "core\\world_brain\\reasoning_engine.py",
+      "line": 84,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Generic fallback"
+    },
+    {
+      "file": "rme.py",
+      "line": 316,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# with \"invalid choice\" before the forward-to-cli.py fallback could"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 147,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "fallbacks_detected: List[str] = []"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 149,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Check for ACTIVE fallbacks (not in docstrings, not in agent definitions)"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 150,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "# Only flag if there's an actual try/except ImportError with fallback"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 157,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "active_fallback_patterns = ["
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 178,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "for pattern in active_fallback_patterns:"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 182,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "fallbacks_detected.append(f\"{f.name}: {m[:80]}\")"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 197,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "has_fallbacks = len(fallbacks_detected) > 0"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 198,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "if has_fallbacks:"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 237,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"fallbacks_detected\": fallbacks_detected,"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 286,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"zero_fallbacks\": len(audit[\"fallbacks_detected\"]) == 0,"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 300,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "\"fallbacks_detected_count\": len(audit[\"fallbacks_detected\"]),"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 356,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "- **Fallbacks Detected:** {len(audit['fallbacks_detected'])}"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 383,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "| Zero Fallbacks | {'PASS' if cert['criteria']['zero_fallbacks'] else 'FAIL'} |"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 393,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "- **fallbacks_detected:** {len(audit['fallbacks_detected'])}"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 426,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "- 100% of subsystems use real engines (no mocks, no simulations, no fallbacks)"
+    },
+    {
+      "file": "tools\\run_rc1_1.py",
+      "line": 448,
+      "pattern": "fallback",
+      "classification": "SAFE",
+      "context": "- 0 fallbacks detected"
+    }
+  ]
+}

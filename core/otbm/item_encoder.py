@@ -11,7 +11,7 @@ Nodo OTBM ITEM por cada item.
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Any
 
 from .node_encoder import NodeEncoder
 
@@ -42,8 +42,17 @@ class ItemEncoder:
         Returns:
             bytes: Nodo OTBM ITEM listo para insertar en un TILE.
         """
-        item_id, count, action_id, unique_id, text, subtype, charges, duration, decaying = \
-            self._extract_attributes(item)
+        (
+            item_id,
+            count,
+            action_id,
+            unique_id,
+            text,
+            subtype,
+            charges,
+            duration,
+            decaying,
+        ) = self._extract_attributes(item)
 
         return self.node.encode_item(
             item_id=item_id,
@@ -107,4 +116,14 @@ class ItemEncoder:
         else:
             item_id = int(getattr(item, "id", getattr(item, "itemid", 0)))
 
-        return item_id, count, action_id, unique_id, text, subtype, charges, duration, decaying
+        return (
+            item_id,
+            count,
+            action_id,
+            unique_id,
+            text,
+            subtype,
+            charges,
+            duration,
+            decaying,
+        )

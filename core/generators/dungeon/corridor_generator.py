@@ -9,11 +9,15 @@ class CorridorGenerator:
         corridors: List[List[Tuple[int, int]]] = []
         sorted_rooms = sorted(rooms, key=lambda room: room.center())
         for first, second in zip(sorted_rooms, sorted_rooms[1:]):
-            corridors.append(CorridorGenerator._create_corridor(first.center(), second.center()))
+            corridors.append(
+                CorridorGenerator._create_corridor(first.center(), second.center())
+            )
         return corridors
 
     @staticmethod
-    def _create_corridor(a: Tuple[int, int], b: Tuple[int, int]) -> List[Tuple[int, int]]:
+    def _create_corridor(
+        a: Tuple[int, int], b: Tuple[int, int]
+    ) -> List[Tuple[int, int]]:
         path: List[Tuple[int, int]] = []
         x1, y1 = a
         x2, y2 = b

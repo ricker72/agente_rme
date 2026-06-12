@@ -28,19 +28,24 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from .palette import (
-    GROUND, WALL, WATER, SPAWN, BOSS, DECORATION, TEMPLE, EMPTY, STRUCTURE,
-    WALL_IDS, GROUND_IDS, WATER_IDS, DECORATION_IDS, BOSS_MONSTERS,
-    get_color_for_ground, get_color_for_item, is_boss,
+    GROUND,
+    WALL,
+    SPAWN,
+    BOSS,
+    DECORATION,
+    TEMPLE,
 )
 from .preview_renderer import (
-    render_tile, render_layer, render_all_layers,
-    compute_bounds, add_structure_overlay,
+    render_layer,
+    compute_bounds,
+    add_structure_overlay,
 )
-from .minimap_renderer import render_minimap, save_minimap, SCALES
+from .minimap_renderer import save_minimap
 from .preview_report import generate_report
 
 try:
     from PIL import Image, ImageDraw, ImageFont
+
     HAS_PIL = True
 except ImportError:
     HAS_PIL = False
@@ -176,8 +181,12 @@ class PreviewGenerator:
 
         # Overlay de estructuras
         img = add_structure_overlay(
-            img, structures, bounds,
-            z=z, tile_size=self.tile_size, padding=1,
+            img,
+            structures,
+            bounds,
+            z=z,
+            tile_size=self.tile_size,
+            padding=1,
         )
 
         # Leyenda
@@ -219,9 +228,11 @@ class PreviewGenerator:
 
         Path(output_path).parent.mkdir(parents=True, exist_ok=True)
         return save_minimap(
-            tiles, structures,
+            tiles,
+            structures,
             output_path=output_path,
-            z=z, scale=self.minimap_scale,
+            z=z,
+            scale=self.minimap_scale,
         )
 
     # ------------------------------------------------------------------
@@ -295,13 +306,21 @@ class PreviewGenerator:
         # Título
         regions = getattr(world_model, "regions", [])
         title = regions[0].theme if regions else "World"
-        draw.text((10, img.height + 4), f"Tema: {title} | Z={z}",
-                  fill=(200, 200, 200), font=font)
+        draw.text(
+            (10, img.height + 4),
+            f"Tema: {title} | Z={z}",
+            fill=(200, 200, 200),
+            font=font,
+        )
 
         # Items de leyenda
         legend_items = [
-            (GROUND, "Ground"), (WALL, "Wall"), (SPAWN, "Spawn"),
-            (BOSS, "Boss"), (DECORATION, "Deco"), (TEMPLE, "Structure"),
+            (GROUND, "Ground"),
+            (WALL, "Wall"),
+            (SPAWN, "Spawn"),
+            (BOSS, "Boss"),
+            (DECORATION, "Deco"),
+            (TEMPLE, "Structure"),
         ]
         for i, (color, name) in enumerate(legend_items):
             lx = 10 + i * 110
@@ -324,7 +343,9 @@ class PreviewGenerator:
             return None
 
         lines = [f"Preview: {bounds.get('tile_count', 0)} tiles"]
-        lines.append(f"Bounds: ({bounds['min_x']},{bounds['min_y']})~({bounds['max_x']},{bounds['max_y']})")
+        lines.append(
+            f"Bounds: ({bounds['min_x']},{bounds['min_y']})~({bounds['max_x']},{bounds['max_y']})"
+        )
         lines.append(f"Z: {bounds['min_z']}–{bounds['max_z']}")
 
         ascii_path = output_path.replace(".png", ".txt")

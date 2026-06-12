@@ -1,12 +1,12 @@
 import json
 from typing import Dict, List
 
-from .biomes import BIOMES, get_biome
-from .cities import CITIES, get_city
-from .monsters import MONSTERS, get_monster
-from .npcs import NPCS, get_npc
-from .progression import HUNTING_RANGES, get_hunting_range
-from .themes import THEMES, get_theme
+from .biomes import BIOMES
+from .cities import CITIES
+from .monsters import MONSTERS
+from .npcs import NPCS
+from .progression import get_hunting_range
+from .themes import THEMES
 from core.architecture import ArchitectureGraph, PatternLibrary
 
 
@@ -27,7 +27,11 @@ class KnowledgeGraph:
 
     def ingest_analysis(self, source: str, analysis_data: dict) -> None:
         self.analysis_store[source] = analysis_data
-        graph_data = analysis_data.get("architecture_graph") if isinstance(analysis_data, dict) else None
+        graph_data = (
+            analysis_data.get("architecture_graph")
+            if isinstance(analysis_data, dict)
+            else None
+        )
         if isinstance(graph_data, dict):
             self.architecture_graph.graph.update(graph_data)
 
@@ -102,13 +106,15 @@ class KnowledgeGraph:
         for name in monster_names:
             monster = self.find_monster(name)
             if monster:
-                resolved.append({
-                    "name": monster.name,
-                    "classification": monster.classification,
-                    "health": monster.health,
-                    "experience": monster.experience,
-                    "race": monster.race,
-                })
+                resolved.append(
+                    {
+                        "name": monster.name,
+                        "classification": monster.classification,
+                        "health": monster.health,
+                        "experience": monster.experience,
+                        "race": monster.race,
+                    }
+                )
         return resolved
 
     def _resolve_npcs(self, npc_names: List[str]) -> List[Dict[str, object]]:
@@ -116,12 +122,14 @@ class KnowledgeGraph:
         for name in npc_names:
             npc = self.find_npc(name)
             if npc:
-                resolved.append({
-                    "name": npc.name,
-                    "role": npc.role,
-                    "location": npc.location,
-                    "type": npc.type,
-                })
+                resolved.append(
+                    {
+                        "name": npc.name,
+                        "role": npc.role,
+                        "location": npc.location,
+                        "type": npc.type,
+                    }
+                )
         return resolved
 
     def find_npc(self, name: str):
@@ -149,8 +157,13 @@ class KnowledgeGraph:
 
     def _build_pattern_summary(self) -> Dict[str, object]:
         return {
-            "categories": {category: len(patterns) for category, patterns in self.pattern_library.patterns.items()},
-            "total_patterns": sum(len(patterns) for patterns in self.pattern_library.patterns.values()),
+            "categories": {
+                category: len(patterns)
+                for category, patterns in self.pattern_library.patterns.items()
+            },
+            "total_patterns": sum(
+                len(patterns) for patterns in self.pattern_library.patterns.values()
+            ),
         }
 
     def to_json(self, data: Dict[str, object]) -> str:

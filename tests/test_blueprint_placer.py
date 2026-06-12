@@ -102,8 +102,9 @@ class TestBlueprintPlacer:
         """Tiles already occupied should be skipped with collision check."""
         world = placer.place(tile_based_bp, x=0, y=0, z=7, check_collision=True)
         # Place the same blueprint at the same position
-        world2 = placer.place(tile_based_bp, x=0, y=0, z=7,
-                              world_model=world, check_collision=True)
+        world2 = placer.place(
+            tile_based_bp, x=0, y=0, z=7, world_model=world, check_collision=True
+        )
         # No new tiles should be added
         assert len(world2.tiles) == 16  # Should remain the same
 

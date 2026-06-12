@@ -93,7 +93,15 @@ class WorldModel:
             "quests": self.quests,
             "bosses": self.bosses,
             "spawns": self.spawns,
-            "chunks": [{"x_index": c.x_index, "y_index": c.y_index, "size": c.size, "tile_count": c.tile_count()} for c in self.chunks],
+            "chunks": [
+                {
+                    "x_index": c.x_index,
+                    "y_index": c.y_index,
+                    "size": c.size,
+                    "tile_count": c.tile_count(),
+                }
+                for c in self.chunks
+            ],
         }
 
 
@@ -112,7 +120,16 @@ class BiomeApplicator:
 
 
 class StructurePlacer:
-    def place(self, world_model: WorldModel, x: int, y: int, z: int, width: int, height: int, ground: str = "floor") -> None:
+    def place(
+        self,
+        world_model: WorldModel,
+        x: int,
+        y: int,
+        z: int,
+        width: int,
+        height: int,
+        ground: str = "floor",
+    ) -> None:
         for iy in range(height):
             for ix in range(width):
                 tile = Tile(x=x + ix, y=y + iy, z=z, ground=ground)
@@ -120,7 +137,9 @@ class StructurePlacer:
 
 
 class CollisionEngine:
-    def validate(self, world_model: WorldModel, x: int, y: int, z: int, width: int, height: int) -> bool:
+    def validate(
+        self, world_model: WorldModel, x: int, y: int, z: int, width: int, height: int
+    ) -> bool:
         for iy in range(height):
             for ix in range(width):
                 key = f"{x + ix}:{y + iy}:{z}"
@@ -165,7 +184,9 @@ class WorldEngine:
     def build(self, world_plan: WorldPlan) -> WorldModel:
         world_model = self.builder.build(world_plan)
         self.profiler.inc_tiles(len(world_model.tiles))
-        self.profiler.inc_structures(len(world_model.cities) + len(world_model.dungeons) + len(world_model.roads))
+        self.profiler.inc_structures(
+            len(world_model.cities) + len(world_model.dungeons) + len(world_model.roads)
+        )
         return world_model
 
     def export(self, world_model: WorldModel) -> str:

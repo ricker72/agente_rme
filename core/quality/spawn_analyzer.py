@@ -15,8 +15,14 @@ class SpawnAnalyzer:
         spawn_tiles = [spawn for spawn in spawns if spawn.get("monster")]
         density = len(spawn_tiles) / max(len(tiles), 1)
 
-        respawn_times = [spawn.get("respawn_time", 0) for spawn in spawn_tiles if isinstance(spawn.get("respawn_time"), (int, float))]
-        rerolls = [spawn for spawn in spawn_tiles if spawn.get("respawn_time") in (0, None)]
+        [
+            spawn.get("respawn_time", 0)
+            for spawn in spawn_tiles
+            if isinstance(spawn.get("respawn_time"), (int, float))
+        ]
+        rerolls = [
+            spawn for spawn in spawn_tiles if spawn.get("respawn_time") in (0, None)
+        ]
 
         difficulties = []
         for entry in spawn_tiles:
@@ -39,7 +45,9 @@ class SpawnAnalyzer:
             "spawn_count": len(spawn_tiles),
             "density": round(density, 3),
             "density_trend": density_trend,
-            "respawn_balance": "unbalanced" if len(rerolls) > len(spawn_tiles) * 0.3 else "balanced",
+            "respawn_balance": (
+                "unbalanced" if len(rerolls) > len(spawn_tiles) * 0.3 else "balanced"
+            ),
             "difficulty_spikes": difficulty_spike,
             "balance": balance,
         }

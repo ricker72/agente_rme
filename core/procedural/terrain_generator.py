@@ -40,17 +40,18 @@ import random
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
-
 # =============================================================================
 # TerrainFeature: a region of the world with a specific shape
 # =============================================================================
 
+
 @dataclass
 class TerrainFeature:
     """A region of the world shaped by a single terrain pass."""
+
     name: str
-    kind: str                              # "mountain" | "hill" | "water" | "lava" | "forest"
-    bounds: Tuple[int, int, int, int]      # (x1, y1, x2, y2) inclusive
+    kind: str  # "mountain" | "hill" | "water" | "lava" | "forest"
+    bounds: Tuple[int, int, int, int]  # (x1, y1, x2, y2) inclusive
     ground_id: int
     z: int = 7
     tiles_written: int = 0
@@ -66,12 +67,16 @@ class TerrainFeature:
 
     @property
     def size(self) -> Tuple[int, int]:
-        return (self.bounds[2] - self.bounds[0] + 1,
-                self.bounds[3] - self.bounds[1] + 1)
+        return (
+            self.bounds[2] - self.bounds[0] + 1,
+            self.bounds[3] - self.bounds[1] + 1,
+        )
 
     def contains(self, x: int, y: int) -> bool:
-        return (self.bounds[0] <= x <= self.bounds[2]
-                and self.bounds[1] <= y <= self.bounds[3])
+        return (
+            self.bounds[0] <= x <= self.bounds[2]
+            and self.bounds[1] <= y <= self.bounds[3]
+        )
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -94,32 +99,110 @@ class TerrainFeature:
 
 TERRAIN_GROUND_IDS: Dict[str, Dict[str, int]] = {
     # primary ground id for each terrain kind, per theme
-    "generic":    {"mountain": 361, "hill": 103, "water": 4597, "lava": 598,
-                   "forest_floor": 397, "rock": 102},
-    "issavi":     {"mountain": 103, "hill": 421, "water": 4597, "lava": 598,
-                   "forest_floor": 415, "rock": 102},
-    "roshamuul":  {"mountain": 231, "hill": 358, "water": 4597, "lava": 599,
-                   "forest_floor": 1056, "rock": 358},
-    "soul_war":   {"mountain": 231, "hill": 358, "water": 4597, "lava": 600,
-                   "forest_floor": 514, "rock": 231},
-    "library":    {"mountain": 103, "hill": 102, "water": 4597, "lava": 598,
-                   "forest_floor": 396, "rock": 103},
-    "yalahar":    {"mountain": 103, "hill": 454, "water": 4597, "lava": 598,
-                   "forest_floor": 450, "rock": 103},
-    "falcon":     {"mountain": 103, "hill": 430, "water": 4597, "lava": 598,
-                   "forest_floor": 428, "rock": 102},
-    "cobra":      {"mountain": 103, "hill": 516, "water": 4597, "lava": 598,
-                   "forest_floor": 514, "rock": 103},
-    "ice":        {"mountain": 672, "hill": 671, "water": 4597, "lava": 598,
-                   "forest_floor": 670, "rock": 672},
-    "jungle":     {"mountain": 103, "hill": 444, "water": 4597, "lava": 598,
-                   "forest_floor": 440, "rock": 103},
-    "thais":      {"mountain": 103, "hill": 351, "water": 4597, "lava": 598,
-                   "forest_floor": 351, "rock": 102},
-    "venore":     {"mountain": 103, "hill": 360, "water": 4598, "lava": 598,
-                   "forest_floor": 360, "rock": 102},
-    "ankrahmun":  {"mountain": 103, "hill": 482, "water": 4597, "lava": 598,
-                   "forest_floor": 481, "rock": 103},
+    "generic": {
+        "mountain": 361,
+        "hill": 103,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 397,
+        "rock": 102,
+    },
+    "issavi": {
+        "mountain": 103,
+        "hill": 421,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 415,
+        "rock": 102,
+    },
+    "roshamuul": {
+        "mountain": 231,
+        "hill": 358,
+        "water": 4597,
+        "lava": 599,
+        "forest_floor": 1056,
+        "rock": 358,
+    },
+    "soul_war": {
+        "mountain": 231,
+        "hill": 358,
+        "water": 4597,
+        "lava": 600,
+        "forest_floor": 514,
+        "rock": 231,
+    },
+    "library": {
+        "mountain": 103,
+        "hill": 102,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 396,
+        "rock": 103,
+    },
+    "yalahar": {
+        "mountain": 103,
+        "hill": 454,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 450,
+        "rock": 103,
+    },
+    "falcon": {
+        "mountain": 103,
+        "hill": 430,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 428,
+        "rock": 102,
+    },
+    "cobra": {
+        "mountain": 103,
+        "hill": 516,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 514,
+        "rock": 103,
+    },
+    "ice": {
+        "mountain": 672,
+        "hill": 671,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 670,
+        "rock": 672,
+    },
+    "jungle": {
+        "mountain": 103,
+        "hill": 444,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 440,
+        "rock": 103,
+    },
+    "thais": {
+        "mountain": 103,
+        "hill": 351,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 351,
+        "rock": 102,
+    },
+    "venore": {
+        "mountain": 103,
+        "hill": 360,
+        "water": 4598,
+        "lava": 598,
+        "forest_floor": 360,
+        "rock": 102,
+    },
+    "ankrahmun": {
+        "mountain": 103,
+        "hill": 482,
+        "water": 4597,
+        "lava": 598,
+        "forest_floor": 481,
+        "rock": 103,
+    },
 }
 
 
@@ -140,6 +223,7 @@ def get_terrain_ground_id(theme: Any, kind: str, fallback: int = 0) -> int:
 # Deterministic value-noise (no external dependencies)
 # =============================================================================
 
+
 def _hash2d(ix: int, iy: int, seed: int) -> float:
     """Cheap deterministic 2D hash -> [0, 1)."""
     h = (ix * 374761393) ^ (iy * 668265263) ^ (seed * 2147483647)
@@ -159,20 +243,15 @@ def value_noise_2d(x: float, y: float, seed: int = 0) -> float:
     fx = x - ix
     fy = y - iy
 
-    v00 = _hash2d(ix,     iy,     seed)
-    v10 = _hash2d(ix + 1, iy,     seed)
-    v01 = _hash2d(ix,     iy + 1, seed)
+    v00 = _hash2d(ix, iy, seed)
+    v10 = _hash2d(ix + 1, iy, seed)
+    v01 = _hash2d(ix, iy + 1, seed)
     v11 = _hash2d(ix + 1, iy + 1, seed)
 
     u = _smoothstep(fx)
     v = _smoothstep(fy)
 
-    return (
-        v00 * (1 - u) * (1 - v)
-        + v10 * u * (1 - v)
-        + v01 * (1 - u) * v
-        + v11 * u * v
-    )
+    return v00 * (1 - u) * (1 - v) + v10 * u * (1 - v) + v01 * (1 - u) * v + v11 * u * v
 
 
 def fbm_noise_2d(
@@ -202,6 +281,7 @@ def fbm_noise_2d(
 # TerrainGenerator
 # =============================================================================
 
+
 class TerrainGenerator:
     """
     Generates terrain features inside a bounding rectangle.
@@ -228,7 +308,10 @@ class TerrainGenerator:
     def generate_mountains(
         self,
         world: Any,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         theme: Any,
         threshold: float = 0.78,
@@ -252,7 +335,11 @@ class TerrainGenerator:
         Returns:
             The TerrainFeature describing the result.
         """
-        gid = ground_id if ground_id is not None else get_terrain_ground_id(theme, "mountain")
+        gid = (
+            ground_id
+            if ground_id is not None
+            else get_terrain_ground_id(theme, "mountain")
+        )
         feat = TerrainFeature(
             name="mountains",
             kind="mountain",
@@ -262,20 +349,23 @@ class TerrainGenerator:
             seed=self._seed,
         )
         from core.world.tile import Tile
+
         count = 0
         for iy in range(y1, y2 + 1):
             for ix in range(x1, x2 + 1):
                 if max_tiles is not None and count >= max_tiles:
                     feat.tiles_written = count
                     return feat
-                n = fbm_noise_2d(ix * noise_scale, iy * noise_scale, self._seed,
-                                 octaves=5)
+                n = fbm_noise_2d(
+                    ix * noise_scale, iy * noise_scale, self._seed, octaves=5
+                )
                 if n < threshold:
                     continue
                 if world.has_tile(ix, iy, z):
                     continue
-                world.set_tile(Tile(x=ix, y=iy, z=z, ground=gid,
-                                    zone="terrain:mountain"))
+                world.set_tile(
+                    Tile(x=ix, y=iy, z=z, ground=gid, zone="terrain:mountain")
+                )
                 count += 1
         feat.tiles_written = count
         return feat
@@ -283,7 +373,10 @@ class TerrainGenerator:
     def generate_hills(
         self,
         world: Any,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         theme: Any,
         threshold: float = 0.62,
@@ -293,7 +386,9 @@ class TerrainGenerator:
         max_tiles: Optional[int] = None,
     ) -> TerrainFeature:
         """Mark medium-noise tiles as hills (between threshold and max_threshold)."""
-        gid = ground_id if ground_id is not None else get_terrain_ground_id(theme, "hill")
+        gid = (
+            ground_id if ground_id is not None else get_terrain_ground_id(theme, "hill")
+        )
         feat = TerrainFeature(
             name="hills",
             kind="hill",
@@ -303,20 +398,21 @@ class TerrainGenerator:
             seed=self._seed ^ 0x5A5A,
         )
         from core.world.tile import Tile
+
         count = 0
         for iy in range(y1, y2 + 1):
             for ix in range(x1, x2 + 1):
                 if max_tiles is not None and count >= max_tiles:
                     feat.tiles_written = count
                     return feat
-                n = fbm_noise_2d(ix * noise_scale, iy * noise_scale,
-                                 self._seed ^ 0x5A5A, octaves=4)
+                n = fbm_noise_2d(
+                    ix * noise_scale, iy * noise_scale, self._seed ^ 0x5A5A, octaves=4
+                )
                 if n < threshold or n > max_threshold:
                     continue
                 if world.has_tile(ix, iy, z):
                     continue
-                world.set_tile(Tile(x=ix, y=iy, z=z, ground=gid,
-                                    zone="terrain:hill"))
+                world.set_tile(Tile(x=ix, y=iy, z=z, ground=gid, zone="terrain:hill"))
                 count += 1
         feat.tiles_written = count
         return feat
@@ -324,7 +420,10 @@ class TerrainGenerator:
     def generate_water_bodies(
         self,
         world: Any,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         theme: Any,
         threshold: float = 0.35,
@@ -336,14 +435,20 @@ class TerrainGenerator:
         Mark low-noise tiles as water. We treat contiguous water tiles as a
         single "body" and return one feature per body.
         """
-        gid = ground_id if ground_id is not None else get_terrain_ground_id(theme, "water")
+        gid = (
+            ground_id
+            if ground_id is not None
+            else get_terrain_ground_id(theme, "water")
+        )
         from core.world.tile import Tile
+
         # Mark candidate cells
         is_water: Dict[Tuple[int, int], bool] = {}
         for iy in range(y1, y2 + 1):
             for ix in range(x1, x2 + 1):
-                n = fbm_noise_2d(ix * noise_scale, iy * noise_scale,
-                                 self._seed ^ 0x33CC, octaves=3)
+                n = fbm_noise_2d(
+                    ix * noise_scale, iy * noise_scale, self._seed ^ 0x33CC, octaves=3
+                )
                 is_water[(ix, iy)] = n < threshold
 
         # Connected-component labelling
@@ -364,8 +469,9 @@ class TerrainGenerator:
                         continue
                     visited[(cx, cy)] = True
                     cells.append((cx, cy))
-                    stack.extend([(cx + 1, cy), (cx - 1, cy),
-                                  (cx, cy + 1), (cx, cy - 1)])
+                    stack.extend(
+                        [(cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)]
+                    )
                 if len(cells) < 4:
                     continue
                 xs = [c[0] for c in cells]
@@ -384,8 +490,9 @@ class TerrainGenerator:
                         break
                     if world.has_tile(cx, cy, z):
                         continue
-                    world.set_tile(Tile(x=cx, y=cy, z=z, ground=gid,
-                                        zone="terrain:water"))
+                    world.set_tile(
+                        Tile(x=cx, y=cy, z=z, ground=gid, zone="terrain:water")
+                    )
                     count += 1
                 feat.tiles_written = count
                 bodies.append(feat)
@@ -394,7 +501,10 @@ class TerrainGenerator:
     def generate_lava_fields(
         self,
         world: Any,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         theme: Any,
         threshold: float = 0.85,
@@ -403,13 +513,17 @@ class TerrainGenerator:
         max_tiles: Optional[int] = None,
     ) -> List[TerrainFeature]:
         """Mark very-high-noise tiles as lava. Returns one feature per cluster."""
-        gid = ground_id if ground_id is not None else get_terrain_ground_id(theme, "lava")
+        gid = (
+            ground_id if ground_id is not None else get_terrain_ground_id(theme, "lava")
+        )
         from core.world.tile import Tile
+
         is_lava: Dict[Tuple[int, int], bool] = {}
         for iy in range(y1, y2 + 1):
             for ix in range(x1, x2 + 1):
-                n = fbm_noise_2d(ix * noise_scale, iy * noise_scale,
-                                 self._seed ^ 0xA55A, octaves=3)
+                n = fbm_noise_2d(
+                    ix * noise_scale, iy * noise_scale, self._seed ^ 0xA55A, octaves=3
+                )
                 is_lava[(ix, iy)] = n > threshold
 
         bodies: List[TerrainFeature] = []
@@ -428,8 +542,9 @@ class TerrainGenerator:
                         continue
                     visited[(cx, cy)] = True
                     cells.append((cx, cy))
-                    stack.extend([(cx + 1, cy), (cx - 1, cy),
-                                  (cx, cy + 1), (cx, cy - 1)])
+                    stack.extend(
+                        [(cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)]
+                    )
                 if len(cells) < 3:
                     continue
                 xs = [c[0] for c in cells]
@@ -448,8 +563,9 @@ class TerrainGenerator:
                         break
                     if world.has_tile(cx, cy, z):
                         continue
-                    world.set_tile(Tile(x=cx, y=cy, z=z, ground=gid,
-                                        zone="terrain:lava"))
+                    world.set_tile(
+                        Tile(x=cx, y=cy, z=z, ground=gid, zone="terrain:lava")
+                    )
                     count += 1
                 feat.tiles_written = count
                 bodies.append(feat)
@@ -458,7 +574,10 @@ class TerrainGenerator:
     def generate_forest_decorations(
         self,
         world: Any,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         theme: Any,
         density: float = 0.15,
@@ -471,6 +590,7 @@ class TerrainGenerator:
         the tile (so it represents trees, rocks, bushes, etc).
         """
         from core.world.item import Item
+
         deco_ids = decoration_ids or list(getattr(theme, "decorations", []) or [])
         if not deco_ids:
             # Fallback to known nature-like items
@@ -504,7 +624,10 @@ class TerrainGenerator:
     def generate_all(
         self,
         world: Any,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         theme: Any,
         with_water: bool = True,
@@ -520,23 +643,53 @@ class TerrainGenerator:
         results: Dict[str, Any] = {}
         if with_mountains:
             results["mountains"] = self.generate_mountains(
-                world, x1, y1, x2, y2, z, theme,
+                world,
+                x1,
+                y1,
+                x2,
+                y2,
+                z,
+                theme,
             )
         if with_hills:
             results["hills"] = self.generate_hills(
-                world, x1, y1, x2, y2, z, theme,
+                world,
+                x1,
+                y1,
+                x2,
+                y2,
+                z,
+                theme,
             )
         if with_water:
             results["water"] = self.generate_water_bodies(
-                world, x1, y1, x2, y2, z, theme,
+                world,
+                x1,
+                y1,
+                x2,
+                y2,
+                z,
+                theme,
             )
         if with_lava:
             results["lava"] = self.generate_lava_fields(
-                world, x1, y1, x2, y2, z, theme,
+                world,
+                x1,
+                y1,
+                x2,
+                y2,
+                z,
+                theme,
             )
         if with_forest:
             results["forest"] = self.generate_forest_decorations(
-                world, x1, y1, x2, y2, z, theme,
+                world,
+                x1,
+                y1,
+                x2,
+                y2,
+                z,
+                theme,
             )
         return results
 
@@ -545,9 +698,13 @@ class TerrainGenerator:
 # Module-level helpers
 # =============================================================================
 
+
 def generate_terrain(
     world: Any,
-    x1: int, y1: int, x2: int, y2: int,
+    x1: int,
+    y1: int,
+    x2: int,
+    y2: int,
     z: int,
     theme: Any,
     seed: Optional[int] = None,
@@ -560,7 +717,13 @@ def generate_terrain(
     """One-shot helper: run all terrain passes and return the result dict."""
     gen = TerrainGenerator(seed=seed)
     return gen.generate_all(
-        world, x1, y1, x2, y2, z, theme,
+        world,
+        x1,
+        y1,
+        x2,
+        y2,
+        z,
+        theme,
         with_water=with_water,
         with_lava=with_lava,
         with_mountains=with_mountains,
@@ -571,7 +734,10 @@ def generate_terrain(
 
 def generate_mountains(
     world: Any,
-    x1: int, y1: int, x2: int, y2: int,
+    x1: int,
+    y1: int,
+    x2: int,
+    y2: int,
     z: int,
     theme: Any,
     seed: Optional[int] = None,
@@ -581,14 +747,24 @@ def generate_mountains(
     """One-shot helper for mountain generation."""
     gen = TerrainGenerator(seed=seed)
     return gen.generate_mountains(
-        world, x1, y1, x2, y2, z, theme,
-        threshold=threshold, max_tiles=max_tiles,
+        world,
+        x1,
+        y1,
+        x2,
+        y2,
+        z,
+        theme,
+        threshold=threshold,
+        max_tiles=max_tiles,
     )
 
 
 def generate_hills(
     world: Any,
-    x1: int, y1: int, x2: int, y2: int,
+    x1: int,
+    y1: int,
+    x2: int,
+    y2: int,
     z: int,
     theme: Any,
     seed: Optional[int] = None,
@@ -597,13 +773,23 @@ def generate_hills(
     """One-shot helper for hill generation."""
     gen = TerrainGenerator(seed=seed)
     return gen.generate_hills(
-        world, x1, y1, x2, y2, z, theme, max_tiles=max_tiles,
+        world,
+        x1,
+        y1,
+        x2,
+        y2,
+        z,
+        theme,
+        max_tiles=max_tiles,
     )
 
 
 def generate_water_bodies(
     world: Any,
-    x1: int, y1: int, x2: int, y2: int,
+    x1: int,
+    y1: int,
+    x2: int,
+    y2: int,
     z: int,
     theme: Any,
     seed: Optional[int] = None,
@@ -612,13 +798,23 @@ def generate_water_bodies(
     """One-shot helper for water body generation."""
     gen = TerrainGenerator(seed=seed)
     return gen.generate_water_bodies(
-        world, x1, y1, x2, y2, z, theme, max_tiles=max_tiles,
+        world,
+        x1,
+        y1,
+        x2,
+        y2,
+        z,
+        theme,
+        max_tiles=max_tiles,
     )
 
 
 def generate_lava_fields(
     world: Any,
-    x1: int, y1: int, x2: int, y2: int,
+    x1: int,
+    y1: int,
+    x2: int,
+    y2: int,
     z: int,
     theme: Any,
     seed: Optional[int] = None,
@@ -627,13 +823,27 @@ def generate_lava_fields(
     """One-shot helper for lava field generation."""
     gen = TerrainGenerator(seed=seed)
     return gen.generate_lava_fields(
-        world, x1, y1, x2, y2, z, theme, max_tiles=max_tiles,
+        world,
+        x1,
+        y1,
+        x2,
+        y2,
+        z,
+        theme,
+        max_tiles=max_tiles,
     )
 
 
 # Backwards-compatible alias for the old string-returning Lua-style helper.
-def noise_generator_script(origin_x: int, origin_y: int, width: int, height: int,
-                           z: int, floor_high: int, floor_low: int) -> str:
+def noise_generator_script(
+    origin_x: int,
+    origin_y: int,
+    width: int,
+    height: int,
+    z: int,
+    floor_high: int,
+    floor_low: int,
+) -> str:
     """Legacy Lua-style helper preserved for compatibility."""
     return (
         f"-- Procedural noise terrain generator\n"

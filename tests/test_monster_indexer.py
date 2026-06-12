@@ -1,5 +1,3 @@
-import pytest
-
 from core.assets.monster_indexer import MonsterIndexer
 
 

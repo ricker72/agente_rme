@@ -11,7 +11,6 @@ from core.critic.models import CriticScore, CriticIssue, IssueSeverity
 
 
 class ScoreCalculatorTests(unittest.TestCase):
-
     def test_combine_empty(self):
         calc = ScoreCalculator()
         self.assertEqual(calc.combine({}), 0.0)
@@ -50,9 +49,24 @@ class ScoreCalculatorTests(unittest.TestCase):
 
     def test_issues_penalty_sum(self):
         issues = [
-            CriticIssue(issue_type="empty_region", category="x", message="a", severity=IssueSeverity.WARNING),
-            CriticIssue(issue_type="isolated_region", category="x", message="b", severity=IssueSeverity.CRITICAL),
-            CriticIssue(issue_type="dead_end", category="x", message="c", severity=IssueSeverity.INFO),
+            CriticIssue(
+                issue_type="empty_region",
+                category="x",
+                message="a",
+                severity=IssueSeverity.WARNING,
+            ),
+            CriticIssue(
+                issue_type="isolated_region",
+                category="x",
+                message="b",
+                severity=IssueSeverity.CRITICAL,
+            ),
+            CriticIssue(
+                issue_type="dead_end",
+                category="x",
+                message="c",
+                severity=IssueSeverity.INFO,
+            ),
         ]
         # 5 + 20 + 1 = 26
         self.assertEqual(ScoreCalculator.issues_penalty(issues), 26.0)

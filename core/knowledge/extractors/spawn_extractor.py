@@ -23,9 +23,15 @@ class SpawnExtractor(BaseExtractor):
 
         # 1) Group by (zone, monster) pair -> a stable spawn entry
         pair_index: Dict[str, Dict[str, Any]] = defaultdict(
-            lambda: {"count": 0, "level_min": 9999, "level_max": 0,
-                     "x_sum": 0, "y_sum": 0, "n_pos": 0,
-                     "biome": "generic"}
+            lambda: {
+                "count": 0,
+                "level_min": 9999,
+                "level_max": 0,
+                "x_sum": 0,
+                "y_sum": 0,
+                "n_pos": 0,
+                "biome": "generic",
+            }
         )
         # 2) Group by monster alone (no zone info)
         monster_index: Dict[str, Dict[str, Any]] = defaultdict(
@@ -42,7 +48,9 @@ class SpawnExtractor(BaseExtractor):
             monster = _as_str(s.get("monster") or s.get("name") or s.get("type"))
             zone = _as_str(s.get("zone") or s.get("region") or s.get("area"))
             level = _as_int(s.get("level", s.get("monster_level", 0)))
-            biome = _as_str(s.get("biome", world.get("meta", {}).get("theme", "generic")))
+            biome = _as_str(
+                s.get("biome", world.get("meta", {}).get("theme", "generic"))
+            )
             if not monster:
                 continue
             monster_index[monster]["count"] += 1
@@ -100,16 +108,18 @@ class SpawnExtractor(BaseExtractor):
                     int(rec["x_sum"] / rec["n_pos"]),
                     int(rec["y_sum"] / rec["n_pos"]),
                 )
-            entries.append(KnowledgeEntry.build(
-                entry_type=EntryType.SPAWN,
-                name=name,
-                source=source,
-                biome=rec["biome"],
-                min_level=min_lv or 1,
-                max_level=max_lv or 9999,
-                tags=[rec["biome"], "spawn"] + ([zone] if zone else []),
-                attributes=attrs,
-            ))
+            entries.append(
+                KnowledgeEntry.build(
+                    entry_type=EntryType.SPAWN,
+                    name=name,
+                    source=source,
+                    biome=rec["biome"],
+                    min_level=min_lv or 1,
+                    max_level=max_lv or 9999,
+                    tags=[rec["biome"], "spawn"] + ([zone] if zone else []),
+                    attributes=attrs,
+                )
+            )
 
         # Emit a "global" entry per monster family if no zoned entries exist
         if not entries and monster_index:
@@ -120,21 +130,23 @@ class SpawnExtractor(BaseExtractor):
                 seen.add(name.lower())
                 min_lv = rec["level_min"] if rec["level_min"] != 9999 else 0
                 max_lv = rec["level_max"]
-                entries.append(KnowledgeEntry.build(
-                    entry_type=EntryType.SPAWN,
-                    name=name,
-                    source=source,
-                    biome="generic",
-                    min_level=min_lv or 1,
-                    max_level=max_lv or 9999,
-                    tags=["spawn"],
-                    attributes={
-                        "monster": monster.title(),
-                        "count": rec["count"],
-                        "difficulty": _difficulty_for(max_lv or min_lv),
-                        "zones": sorted(rec["zones"]),
-                    },
-                ))
+                entries.append(
+                    KnowledgeEntry.build(
+                        entry_type=EntryType.SPAWN,
+                        name=name,
+                        source=source,
+                        biome="generic",
+                        min_level=min_lv or 1,
+                        max_level=max_lv or 9999,
+                        tags=["spawn"],
+                        attributes={
+                            "monster": monster.title(),
+                            "count": rec["count"],
+                            "difficulty": _difficulty_for(max_lv or min_lv),
+                            "zones": sorted(rec["zones"]),
+                        },
+                    )
+                )
         return entries
 
 

@@ -51,9 +51,7 @@ def _make_engine(num_regions: int = 5) -> SimilarityEngine:
         vector = [float(i == j) for j in range(5)]
         style = "issavi" if i % 2 == 0 else "roshamuul"
         region_type = ["temple", "dungeon", "market", "city", "hunt"][i % 5]
-        embeddings.append(
-            _Emb(region_id, vector, style=style, region_type=region_type)
-        )
+        embeddings.append(_Emb(region_id, vector, style=style, region_type=region_type))
         region_data[region_id] = {"name": region_id, "type": region_type}
     engine.build_index(embeddings, region_data=region_data)
     return engine
@@ -119,14 +117,10 @@ class TestSimilarityEngineSimilarity(unittest.TestCase):
 
     def test_style_similarity_grouped(self):
         # Both bright group
-        self.assertEqual(
-            self.engine._style_similarity("issavi", "thais"), 0.7
-        )
+        self.assertEqual(self.engine._style_similarity("issavi", "thais"), 0.7)
 
     def test_style_similarity_unrelated(self):
-        self.assertEqual(
-            self.engine._style_similarity("issavi", "roshamuul"), 0.3
-        )
+        self.assertEqual(self.engine._style_similarity("issavi", "roshamuul"), 0.3)
 
     def test_pattern_similarity_with_dicts(self):
         a = {"grid_score": 0.5, "symmetry_score": 0.6}
@@ -186,9 +180,7 @@ class TestSimilaritySearch(unittest.TestCase):
 
     def test_find_similar_to_vector_min_similarity(self):
         v = [1, 0, 0, 0, 0]
-        results = self.engine.find_similar_to_vector(
-            v, top_k=5, min_similarity=0.9
-        )
+        results = self.engine.find_similar_to_vector(v, top_k=5, min_similarity=0.9)
         for r in results:
             self.assertGreaterEqual(r.similarity_score, 0.9)
 
@@ -248,9 +240,7 @@ class TestSimilarityStatistics(unittest.TestCase):
 class TestSimilarityPersistence(unittest.TestCase):
     def test_save_and_load_index(self):
         engine = _make_engine(4)
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".json", delete=False
-        ) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             temp_path = f.name
         try:
             engine.save_index(temp_path)
@@ -277,9 +267,7 @@ class TestSimilarityPersistence(unittest.TestCase):
 
     def test_loaded_file_is_valid_json(self):
         engine = _make_engine(3)
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".json", delete=False
-        ) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             temp_path = f.name
         try:
             engine.save_index(temp_path)

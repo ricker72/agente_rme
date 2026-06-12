@@ -1,0 +1,65 @@
+{
+  "stages": [
+    {
+      "stage": "Prompt",
+      "status": "PASS",
+      "module": "pipeline_runner.py"
+    },
+    {
+      "stage": "Architect",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "World",
+      "status": "PASS",
+      "module": "pipeline_runner.py"
+    },
+    {
+      "stage": "Expansion",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "Playtest",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "Balance",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "Critic",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "Campaign",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "Knowledge",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "Blueprint",
+      "status": "NOT_FOUND",
+      "module": null
+    },
+    {
+      "stage": "OTBM",
+      "status": "PASS",
+      "module": "pipeline_runner.py"
+    },
+    {
+      "stage": "Export",
+      "status": "PASS",
+      "module": "pipeline_runner.py"
+    }
+  ],
+  "note": "Stages looked up in pipeline_runner.py and pipeline*.py files"
+}

@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-import math
 import logging
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from .tile import Tile
-from .item import Item
 from .spawn import Spawn
 from .structure import Structure
 from .region import Region
@@ -92,14 +90,13 @@ class WorldModel:
         """Total number of tiles in the world."""
         return self._tile_count
 
-    def get_tiles_in_area(self, x1: int, y1: int, x2: int, y2: int,
-                          z: int = 7) -> List[Tile]:
+    def get_tiles_in_area(
+        self, x1: int, y1: int, x2: int, y2: int, z: int = 7
+    ) -> List[Tile]:
         """Get all tiles within a rectangular area (inclusive)."""
         result: List[Tile] = []
         for key, tile in self.tiles.items():
-            if (tile.z == z and
-                    x1 <= tile.x <= x2 and
-                    y1 <= tile.y <= y2):
+            if tile.z == z and x1 <= tile.x <= x2 and y1 <= tile.y <= y2:
                 result.append(tile)
         return result
 
@@ -122,7 +119,9 @@ class WorldModel:
         """Get all structures of a given category."""
         return [s for s in self.structures if s.category == category]
 
-    def get_structures_in_area(self, x1: int, y1: int, x2: int, y2: int) -> List[Structure]:
+    def get_structures_in_area(
+        self, x1: int, y1: int, x2: int, y2: int
+    ) -> List[Structure]:
         """Get all structures whose bounds intersect the given area."""
         return [s for s in self.structures if self._bounds_intersect(s, x1, y1, x2, y2)]
 
@@ -179,8 +178,9 @@ class WorldModel:
     # Query
     # ------------------------------------------------------------------
 
-    def get_ground_ids_in_area(self, x1: int, y1: int, x2: int, y2: int,
-                               z: int = 7) -> List[int]:
+    def get_ground_ids_in_area(
+        self, x1: int, y1: int, x2: int, y2: int, z: int = 7
+    ) -> List[int]:
         """Get all unique ground IDs in an area."""
         grounds: set = set()
         for tile in self.get_tiles_in_area(x1, y1, x2, y2, z):
@@ -188,8 +188,9 @@ class WorldModel:
                 grounds.add(tile.ground)
         return sorted(grounds)
 
-    def get_spawns_in_area(self, x1: int, y1: int, x2: int, y2: int,
-                           z: int = 7) -> List[Spawn]:
+    def get_spawns_in_area(
+        self, x1: int, y1: int, x2: int, y2: int, z: int = 7
+    ) -> List[Spawn]:
         """Get all spawns in an area."""
         spawns: List[Spawn] = []
         for tile in self.get_tiles_in_area(x1, y1, x2, y2, z):
@@ -254,8 +255,9 @@ class WorldModel:
         cx, cy = Chunk.world_to_chunk(wx, wy, self._chunk_size)
         key = f"{cx}:{cy}"
         if key not in self.chunks:
-            self.chunks[key] = Chunk(chunk_x=cx, chunk_y=cy,
-                                     chunk_size=self._chunk_size)
+            self.chunks[key] = Chunk(
+                chunk_x=cx, chunk_y=cy, chunk_size=self._chunk_size
+            )
         return self.chunks[key]
 
     @staticmethod
@@ -266,8 +268,8 @@ class WorldModel:
         """Calculate world bounds from existing tiles."""
         if not self.tiles:
             return None
-        min_x = min_y = min_z = float('inf')
-        max_x = max_y = max_z = float('-inf')
+        min_x = min_y = min_z = float("inf")
+        max_x = max_y = max_z = float("-inf")
         for tile in self.tiles.values():
             min_x = min(min_x, tile.x)
             max_x = max(max_x, tile.x)
@@ -276,14 +278,16 @@ class WorldModel:
             min_z = min(min_z, tile.z)
             max_z = max(max_z, tile.z)
         return {
-            "min_x": int(min_x), "max_x": int(max_x),
-            "min_y": int(min_y), "max_y": int(max_y),
-            "min_z": int(min_z), "max_z": int(max_z),
+            "min_x": int(min_x),
+            "max_x": int(max_x),
+            "min_y": int(min_y),
+            "max_y": int(max_y),
+            "min_z": int(min_z),
+            "max_z": int(max_z),
         }
 
     @staticmethod
-    def _bounds_intersect(s: Structure, x1: int, y1: int,
-                          x2: int, y2: int) -> bool:
+    def _bounds_intersect(s: Structure, x1: int, y1: int, x2: int, y2: int) -> bool:
         """Check if a structure's bounds intersect a rectangle."""
         sx1, sy1, sx2, sy2 = s.bounds
         return not (sx2 <= x1 or sx1 >= x2 or sy2 <= y1 or sy1 >= y2)

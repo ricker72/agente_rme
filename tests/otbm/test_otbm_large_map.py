@@ -8,7 +8,6 @@ structures without raising struct errors.
 
 import os
 import sys
-import struct
 import time
 import pytest
 
@@ -17,7 +16,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from core.otbm.otbm_serializer import OtbmSerializer
 from core.otbm.otbm_importer import OTBMImporter
 from core.otbm.otbm_validator import OtbmValidator
-from core.otbm.otbm_exporter import OTBMExporter
 from core.otbm.byte_validator import (
     ByteValidator,
     validate_byte,
@@ -93,7 +91,7 @@ class TestByteValidatorAPI:
         assert v.coerce_byte(500) == 255
         assert v.coerce_byte(-5) == 0
         assert v.coerce_word(99999) == 65535
-        assert v.coerce_dword(10 ** 30) == 0xFFFFFFFF
+        assert v.coerce_dword(10**30) == 0xFFFFFFFF
         assert v.coerce_z(99) == 99
         assert v.coerce_z(999) == 255
 
@@ -113,8 +111,11 @@ class TestByteValidatorAPI:
     def test_byte_validator_validates_tile_dict(self):
         v = ByteValidator()
         tile = {
-            "x": 0, "y": 0, "z": 7,
-            "offset_x": 300, "offset_y": 500,
+            "x": 0,
+            "y": 0,
+            "z": 7,
+            "offset_x": 300,
+            "offset_y": 500,
             "items": [
                 {"id": 99999, "action_id": 70000, "subtype": 200},
                 {"id": -5},
@@ -167,8 +168,9 @@ class TestLargeMapExport:
             for j in range(10):
                 world.set_tile(_make_tile(i, j, 7))
         world.cities = [
-            {"name": f"City{i}", "temple_x": i*10, "temple_y": j*10, "temple_z": 7}
-            for i in range(5) for j in [0]
+            {"name": f"City{i}", "temple_x": i * 10, "temple_y": j * 10, "temple_z": 7}
+            for i in range(5)
+            for j in [0]
         ]
         ser = OtbmSerializer()
         data = ser.serialize(world)
@@ -181,8 +183,9 @@ class TestLargeMapExport:
             for j in range(5):
                 world.set_tile(_make_tile(i, j, 7))
         world.waypoints = [
-            {"name": f"WP{i}", "x": i*10, "y": j*10, "z": 7}
-            for i in range(5) for j in [0]
+            {"name": f"WP{i}", "x": i * 10, "y": j * 10, "z": 7}
+            for i in range(5)
+            for j in [0]
         ]
         ser = OtbmSerializer()
         data = ser.serialize(world)
@@ -195,7 +198,8 @@ class TestLargeMapExport:
                 world.set_tile(_make_tile(i, j, 7))
         world.spawns = [
             {"x": i, "y": j, "z": 7, "monster": "Dragon", "interval": 60, "radius": 3}
-            for i in range(5) for j in range(5)
+            for i in range(5)
+            for j in range(5)
         ]
         ser = OtbmSerializer()
         data = ser.serialize(world)
@@ -241,11 +245,15 @@ class TestLargeMapExport:
         world = WorldModel()
         for i in range(5):
             for j in range(5):
-                world.set_tile(_make_tile(
-                    i, j, 7,
-                    ground=106,
-                    items=[{"id": 2050}, {"id": 2016}],
-                ))
+                world.set_tile(
+                    _make_tile(
+                        i,
+                        j,
+                        7,
+                        ground=106,
+                        items=[{"id": 2050}, {"id": 2016}],
+                    )
+                )
         ser = OtbmSerializer()
         data = ser.serialize(world)
         assert data[:4] == b"OTBM"
@@ -285,7 +293,7 @@ class TestLargeMapExport:
 
 
 class TestLargeMapRoundtrip:
-    """Verify roundtrip import → export for large worlds."""
+    """Verify roundtrip import -> export for large worlds."""
 
     def test_roundtrip_small_world(self):
         world = WorldModel()

@@ -8,7 +8,7 @@ class DungeonGenerator:
         return (
             "-- Dungeon generator script for RME\n"
             "if not app.hasMap() then\n"
-            "  error(\"No hay mapa cargado en RME.\")\n"
+            '  error("No hay mapa cargado en RME.")\n'
             "end\n\n"
             "app.transaction(function(map)\n"
             "  -- Crear habitaciones subterráneas y corredores\n"

@@ -97,8 +97,9 @@ def snapshots_by_z(snapshots: List[TileSnapshot]) -> Dict[int, List[TileSnapshot
     return out
 
 
-def find_regions(snapshots: List[TileSnapshot], z: int,
-                 connectivity: int = 4) -> List[Region]:
+def find_regions(
+    snapshots: List[TileSnapshot], z: int, connectivity: int = 4
+) -> List[Region]:
     """
     Find connected components among ground-bearing tiles on a given z.
 

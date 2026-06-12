@@ -25,14 +25,11 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import sys
-import time
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional
-
 
 _OBS_LOCK = threading.Lock()
 _OBS_LOGGER: Optional["ObservabilityLogger"] = None
@@ -68,7 +65,9 @@ class ObservabilityLogger:
         self._logger.addHandler(console)
 
         date_str = datetime.now().strftime("%Y%m%d")
-        fh = logging.FileHandler(self.LOG_DIR / f"observability_{date_str}.log", encoding="utf-8")
+        fh = logging.FileHandler(
+            self.LOG_DIR / f"observability_{date_str}.log", encoding="utf-8"
+        )
         fh.setFormatter(fmt)
         self._logger.addHandler(fh)
 
@@ -98,7 +97,9 @@ class ObservabilityLogger:
         try:
             line = json.dumps(record, default=str, ensure_ascii=False)
         except (TypeError, ValueError):
-            line = json.dumps({"ts": record["ts"], "event": name, "error": "non-serializable"})
+            line = json.dumps(
+                {"ts": record["ts"], "event": name, "error": "non-serializable"}
+            )
         self._logger.log(level, line)
         # Also append to JSONL stream
         try:

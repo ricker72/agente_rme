@@ -3,17 +3,17 @@
   "regions": 1,
   "lua_bytes": 185012,
   "otbm_tiles": 2500,
-  "otbm_bytes": 25442,
+  "otbm_bytes": 25495,
   "import_success": true,
   "imported_tiles": 2500,
   "timings": {
-    "generation": 0.028,
+    "generation": 0.023,
     "validation": 0.002,
-    "lua_export": 0.008,
-    "lua_validate": 0.034,
-    "otbm_export": 0.058,
-    "preview": 0.066,
-    "otbm_import": 0.1,
-    "total": 0.296
+    "lua_export": 0.005,
+    "lua_validate": 0.033,
+    "otbm_export": 0.076,
+    "preview": 0.053,
+    "otbm_import": 0.128,
+    "total": 0.32
   }
 }

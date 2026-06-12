@@ -16,14 +16,16 @@ def main() -> None:
     print(f"Bosses: {len(expansion.get('bosses', []))}")
     print(f"Quests: {len(expansion.get('quests', []))}")
     print(f"Rewards: {list(expansion.get('rewards', {}).keys())}")
-    print(f"Progression tiers: {[tier['name'] for tier in expansion.get('progression', {}).get('tiers', [])]}\n")
+    print(
+        f"Progression tiers: {[tier['name'] for tier in expansion.get('progression', {}).get('tiers', [])]}\n"
+    )
 
     print("=== Lore ===")
-    for key, value in expansion.get('lore', {}).items():
+    for key, value in expansion.get("lore", {}).items():
         print(f"{key}: {value}")
 
     print("\n=== World Plan Summary ===")
-    world_plan = result.get('world_plan', {})
+    world_plan = result.get("world_plan", {})
     print(f"Cities: {len(world_plan.get('cities', []))}")
     print(f"Hunting zones: {len(world_plan.get('hunting_zones', []))}")
     print(f"Boss zones: {len(world_plan.get('boss_zones', []))}")

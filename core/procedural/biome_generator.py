@@ -28,27 +28,31 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass, field
-from typing import Any, Dict, Iterable, List, Optional, Tuple
-
+from typing import Any, Dict, List, Optional
 
 # =============================================================================
 # Tile result dataclass
 # =============================================================================
 
+
 @dataclass
 class BiomeTile:
     """A single biome tile produced by the generator."""
+
     x: int
     y: int
     z: int
     ground: int
-    tag: str = "biome"           # "grass" | "sand" | "water" | "stone" | ...
+    tag: str = "biome"  # "grass" | "sand" | "water" | "stone" | ...
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "x": self.x, "y": self.y, "z": self.z,
-            "ground": self.ground, "tag": self.tag,
+            "x": self.x,
+            "y": self.y,
+            "z": self.z,
+            "ground": self.ground,
+            "tag": self.tag,
             "metadata": dict(self.metadata),
         }
 
@@ -63,144 +67,145 @@ class BiomeTile:
 BIOME_PALETTES: Dict[str, Dict[str, List[int]]] = {
     "generic": {
         "grass": [396, 397, 398],
-        "dirt":  [360, 361, 362],
+        "dirt": [360, 361, 362],
         "stone": [361, 103, 102],
-        "sand":  [360, 361],
+        "sand": [360, 361],
         "water": [4597, 4598, 4600],
-        "snow":  [670, 671, 672],
-        "lava":  [598, 599],
+        "snow": [670, 671, 672],
+        "lava": [598, 599],
     },
     "issavi": {
-        "grass":  [415, 393, 421],
-        "dirt":   [103, 102],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361, 362],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [415, 393, 421],
+        "dirt": [103, 102],
+        "stone": [103, 102, 361],
+        "sand": [360, 361, 362],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "roshamuul": {
-        "grass":  [1053, 1056, 1057],
-        "dirt":   [447, 231, 358],
-        "stone":  [231, 358, 103],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599, 600],
+        "grass": [1053, 1056, 1057],
+        "dirt": [447, 231, 358],
+        "stone": [231, 358, 103],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599, 600],
     },
     "soul_war": {
-        "grass":  [514, 513, 516],
-        "dirt":   [514, 516],
-        "stone":  [231, 358, 103],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599, 600],
+        "grass": [514, 513, 516],
+        "dirt": [514, 516],
+        "stone": [231, 358, 103],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599, 600],
     },
     "library": {
-        "grass":  [396, 397, 398],
-        "dirt":   [360, 361],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [396, 397, 398],
+        "dirt": [360, 361],
+        "stone": [103, 102, 361],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "yalahar": {
-        "grass":  [450, 451, 452],
-        "dirt":   [450, 453, 454],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [450, 451, 452],
+        "dirt": [450, 453, 454],
+        "stone": [103, 102, 361],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "falcon": {
-        "grass":  [428, 429, 430],
-        "dirt":   [431, 432],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671, 672],
-        "lava":   [598, 599],
+        "grass": [428, 429, 430],
+        "dirt": [431, 432],
+        "stone": [103, 102, 361],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671, 672],
+        "lava": [598, 599],
     },
     "cobra": {
-        "grass":  [514, 513, 516],
-        "dirt":   [514, 516],
-        "stone":  [231, 358, 103],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [514, 513, 516],
+        "dirt": [514, 516],
+        "stone": [231, 358, 103],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "ice": {
-        "grass":  [670, 671, 672],
-        "dirt":   [673, 674],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671, 672, 673],
-        "lava":   [598, 599],
+        "grass": [670, 671, 672],
+        "dirt": [673, 674],
+        "stone": [103, 102, 361],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671, 672, 673],
+        "lava": [598, 599],
     },
     "jungle": {
-        "grass":  [440, 441, 442],
-        "dirt":   [443, 444],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [440, 441, 442],
+        "dirt": [443, 444],
+        "stone": [103, 102, 361],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "thais": {
-        "grass":  [351, 352, 353],
-        "dirt":   [354],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [351, 352, 353],
+        "dirt": [354],
+        "stone": [103, 102, 361],
+        "sand": [360, 361],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "venore": {
-        "grass":  [360, 361, 362],
-        "dirt":   [363],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361, 362],
-        "water":  [4597, 4598, 4600, 4601],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [360, 361, 362],
+        "dirt": [363],
+        "stone": [103, 102, 361],
+        "sand": [360, 361, 362],
+        "water": [4597, 4598, 4600, 4601],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
     "ankrahmun": {
-        "grass":  [480, 481, 482],
-        "dirt":   [483],
-        "stone":  [103, 102, 361],
-        "sand":   [360, 361, 362, 363],
-        "water":  [4597, 4598, 4600],
-        "snow":   [670, 671],
-        "lava":   [598, 599],
+        "grass": [480, 481, 482],
+        "dirt": [483],
+        "stone": [103, 102, 361],
+        "sand": [360, 361, 362, 363],
+        "water": [4597, 4598, 4600],
+        "snow": [670, 671],
+        "lava": [598, 599],
     },
 }
 
 # Mapping: theme.metadata["biome"] -> primary surface tag
 BIOME_TAG_BY_THEME: Dict[str, str] = {
-    "desert":       "sand",
+    "desert": "sand",
     "desert_ruins": "sand",
-    "desert_city":  "sand",
-    "nightmare":    "stone",
-    "nether":       "stone",
-    "arcane":       "stone",
+    "desert_city": "sand",
+    "nightmare": "stone",
+    "nether": "stone",
+    "arcane": "stone",
     "exotic_urban": "grass",
-    "mountain":     "stone",
-    "swamp":        "dirt",
-    "arctic":       "snow",
-    "tropical":     "grass",
-    "temperate":    "grass",
-    "generic":      "grass",
+    "mountain": "stone",
+    "swamp": "dirt",
+    "arctic": "snow",
+    "tropical": "grass",
+    "temperate": "grass",
+    "generic": "grass",
 }
 
 
 # =============================================================================
 # Helpers
 # =============================================================================
+
 
 def get_biome_palette(theme: Any) -> Dict[str, List[int]]:
     """
@@ -251,6 +256,7 @@ def pick_primary_tag(theme: Any) -> str:
 # BiomeGenerator
 # =============================================================================
 
+
 class BiomeGenerator:
     """
     Fills an area with biome-appropriate ground tiles.
@@ -270,12 +276,12 @@ class BiomeGenerator:
     """
 
     DEFAULT_EDGE_TAGS: Dict[str, List[str]] = {
-        "sand":  ["grass", "dirt"],
+        "sand": ["grass", "dirt"],
         "grass": ["dirt", "sand"],
-        "dirt":  ["grass", "stone"],
+        "dirt": ["grass", "stone"],
         "stone": ["dirt", "grass"],
-        "snow":  ["stone", "dirt"],
-        "lava":  ["stone", "dirt"],
+        "snow": ["stone", "dirt"],
+        "lava": ["stone", "dirt"],
     }
 
     def __init__(self, seed: Optional[int] = None):
@@ -339,8 +345,14 @@ class BiomeGenerator:
                     tag = "water"
                 else:
                     tag = self._tag_for_position(
-                        ix, iy, x1, y1, x2, y2,
-                        primary=primary, edge=edge_tag,
+                        ix,
+                        iy,
+                        x1,
+                        y1,
+                        x2,
+                        y2,
+                        primary=primary,
+                        edge=edge_tag,
                         edge_thickness=edge_thickness,
                     )
 
@@ -359,16 +371,19 @@ class BiomeGenerator:
         self,
         ix: int,
         iy: int,
-        x1: int, y1: int, x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         primary: str,
         edge: str,
         edge_thickness: int,
     ) -> str:
         """Decide which tag (primary, edge, ...) a tile should belong to."""
         # Distance to the nearest border
-        d_left   = ix - x1
-        d_right  = x2 - ix
-        d_top    = iy - y1
+        d_left = ix - x1
+        d_right = x2 - ix
+        d_top = iy - y1
         d_bottom = y2 - iy
         d_min = min(d_left, d_right, d_top, d_bottom)
 
@@ -385,9 +400,13 @@ class BiomeGenerator:
 # Module-level helpers
 # =============================================================================
 
+
 def generate_biome(
     world: Any,
-    x1: int, y1: int, x2: int, y2: int,
+    x1: int,
+    y1: int,
+    x2: int,
+    y2: int,
     z: int,
     theme: Any,
     primary_tag: Optional[str] = None,
@@ -400,7 +419,13 @@ def generate_biome(
     """
     gen = BiomeGenerator(seed=seed)
     return gen.generate(
-        world, x1, y1, x2, y2, z, theme,
+        world,
+        x1,
+        y1,
+        x2,
+        y2,
+        z,
+        theme,
         primary_tag=primary_tag,
         water_chance=water_chance,
         overwrite=overwrite,
@@ -422,14 +447,25 @@ def generate_continental_biome(
     a background before zones are placed).
     """
     return generate_biome(
-        world, 0, 0, world_width, world_height, z, theme,
-        seed=seed, water_chance=water_chance, overwrite=False,
+        world,
+        0,
+        0,
+        world_width,
+        world_height,
+        z,
+        theme,
+        seed=seed,
+        water_chance=water_chance,
+        overwrite=False,
     )
 
 
 def generate_zone_biome(
     world: Any,
-    x: int, y: int, width: int, height: int,
+    x: int,
+    y: int,
+    width: int,
+    height: int,
     z: int,
     theme: Any,
     primary_tag: Optional[str] = None,
@@ -440,10 +476,20 @@ def generate_zone_biome(
     Fill the area of a single placed zone (top-left + size).
     """
     return generate_biome(
-        world, x, y, x + width - 1, y + height - 1, z, theme,
-        primary_tag=primary_tag, seed=seed, water_chance=water_chance,
+        world,
+        x,
+        y,
+        x + width - 1,
+        y + height - 1,
+        z,
+        theme,
+        primary_tag=primary_tag,
+        seed=seed,
+        water_chance=water_chance,
         overwrite=False,
     )
+
+
 # Backwards-compatible alias for the old string-returning Lua-style helper.
 def biome_generator_lua(theme: str, x1: int, y1: int, x2: int, y2: int, z: int) -> str:
     """Legacy compatibility shim - returns a Lua code string."""

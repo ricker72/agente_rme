@@ -9,14 +9,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum, auto
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional
 
-from .player_bot import PlayerBot, Vocation, VocationStats
-
+from .player_bot import PlayerBot, Vocation
 
 # ---------------------------------------------------------------------------
 # Party Roles
 # ---------------------------------------------------------------------------
+
 
 class PartyRole(Enum):
     TANK = auto()
@@ -30,11 +30,11 @@ class PartyRole(Enum):
 
 # Role assignment map
 _ROLE_ASSIGN: Dict[Vocation, PartyRole] = {
-    Vocation.KNIGHT:   PartyRole.TANK,
-    Vocation.PALADIN:  PartyRole.DAMAGE,
-    Vocation.DRUID:    PartyRole.HEALER,
+    Vocation.KNIGHT: PartyRole.TANK,
+    Vocation.PALADIN: PartyRole.DAMAGE,
+    Vocation.DRUID: PartyRole.HEALER,
     Vocation.SORCERER: PartyRole.DAMAGE,
-    Vocation.MONK:     PartyRole.SUPPORT,
+    Vocation.MONK: PartyRole.SUPPORT,
 }
 
 
@@ -43,20 +43,26 @@ _ROLE_ASSIGN: Dict[Vocation, PartyRole] = {
 # ---------------------------------------------------------------------------
 
 PARTY_TEMPLATES: Dict[str, List[Vocation]] = {
-    "classic_4":  [Vocation.KNIGHT, Vocation.PALADIN, Vocation.DRUID, Vocation.SORCERER],
-    "double_mage": [Vocation.KNIGHT, Vocation.DRUID, Vocation.SORCERER, Vocation.SORCERER],
+    "classic_4": [Vocation.KNIGHT, Vocation.PALADIN, Vocation.DRUID, Vocation.SORCERER],
+    "double_mage": [
+        Vocation.KNIGHT,
+        Vocation.DRUID,
+        Vocation.SORCERER,
+        Vocation.SORCERER,
+    ],
     "monk_hybrid": [Vocation.KNIGHT, Vocation.DRUID, Vocation.MONK, Vocation.SORCERER],
-    "duo_ek_ed":  [Vocation.KNIGHT, Vocation.DRUID],
-    "duo_rp_ed":  [Vocation.PALADIN, Vocation.DRUID],
-    "duo_ms_ed":  [Vocation.SORCERER, Vocation.DRUID],
-    "solo":       [],  # filled dynamically
-    "trio":       [Vocation.KNIGHT, Vocation.DRUID, Vocation.SORCERER],
+    "duo_ek_ed": [Vocation.KNIGHT, Vocation.DRUID],
+    "duo_rp_ed": [Vocation.PALADIN, Vocation.DRUID],
+    "duo_ms_ed": [Vocation.SORCERER, Vocation.DRUID],
+    "solo": [],  # filled dynamically
+    "trio": [Vocation.KNIGHT, Vocation.DRUID, Vocation.SORCERER],
 }
 
 
 # ---------------------------------------------------------------------------
 # PartyBot
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class PartyBot:
@@ -66,6 +72,7 @@ class PartyBot:
     Tracks aggro redistribution, healing assignment, and damage
     amplification from party buffs.
     """
+
     name: str
     members: List[PlayerBot] = field(default_factory=list)
     party_buff: float = 1.0  # flat multiplier applied during combat
@@ -101,7 +108,7 @@ class PartyBot:
         party = cls(name=name)
         for i, voc in enumerate(vocs):
             lvl = levels[i] if i < len(levels) else levels[-1]
-            bot = PlayerBot(name=f"{name}_{voc}_{i+1}", vocation=voc, level=lvl)
+            bot = PlayerBot(name=f"{name}_{voc}_{i + 1}", vocation=voc, level=lvl)
             party.add_member(bot)
 
         return party
@@ -202,7 +209,9 @@ class PartyBot:
             )
             if lowest:
                 heal_amt = int(healer.stats.magic_damage * 0.8 * self.party_buff)
-                lowest.current_hp = min(lowest.stats.max_hp, lowest.current_hp + heal_amt)
+                lowest.current_hp = min(
+                    lowest.stats.max_hp, lowest.current_hp + heal_amt
+                )
 
         return damage_dealt
 

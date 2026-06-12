@@ -3,9 +3,9 @@ tools/real_memory_profile.py — Phase 9: Real Memory Profile.
 
 100 generations tracking memory to detect leaks, object accumulation, cache growth.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
 import time
 import gc
@@ -37,25 +37,34 @@ def run(n: int = 100) -> Dict[str, Any]:
     for i in range(n):
         t0 = time.time()
         try:
-            plan = ai.plan(f"memory profile world {i}", world_width=128, world_height=128)
-            critic.analyze(plan.to_dict() if hasattr(plan, "to_dict") else dict(plan), map_name=f"mem_{i}")
+            plan = ai.plan(
+                f"memory profile world {i}", world_width=128, world_height=128
+            )
+            critic.analyze(
+                plan.to_dict() if hasattr(plan, "to_dict") else dict(plan),
+                map_name=f"mem_{i}",
+            )
         except Exception as e:
-            print(f"  [{i+1}/{n}] ERROR: {e}")
+            print(f"  [{i + 1}/{n}] ERROR: {e}")
         elapsed = time.time() - t0
         durations.append(elapsed)
 
         current, peak = tracemalloc.get_traced_memory()
         obj_count = len(gc.get_objects())
         object_counts.append(obj_count)
-        samples.append({
-            "iteration": i,
-            "current_mb": current / (1024 * 1024),
-            "peak_mb": peak / (1024 * 1024),
-            "objects": obj_count,
-            "duration_s": elapsed,
-        })
+        samples.append(
+            {
+                "iteration": i,
+                "current_mb": current / (1024 * 1024),
+                "peak_mb": peak / (1024 * 1024),
+                "objects": obj_count,
+                "duration_s": elapsed,
+            }
+        )
         if i % 20 == 0:
-            print(f"  [{i+1}/{n}] cur={current/(1024*1024):.2f}MB peak={peak/(1024*1024):.2f}MB objects={obj_count}")
+            print(
+                f"  [{i + 1}/{n}] cur={current / (1024 * 1024):.2f}MB peak={peak / (1024 * 1024):.2f}MB objects={obj_count}"
+            )
         # Force GC every 20 iterations
         if i % 20 == 0:
             gc.collect()

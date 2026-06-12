@@ -1,6 +1,5 @@
 """Tests for pattern mining (integrated in BlueprintIntelligenceEngine)."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_intelligence_engine import (
     BlueprintIntelligenceEngine,

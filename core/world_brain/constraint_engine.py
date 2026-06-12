@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional
 
 
 class ConstraintSeverity(Enum):
-    FATAL = "fatal"        # Must pass or design is invalid
+    FATAL = "fatal"  # Must pass or design is invalid
     REQUIRED = "required"  # Should pass; high priority
     OPTIONAL = "optional"  # Nice-to-have; can be relaxed
 
@@ -14,6 +14,7 @@ class ConstraintSeverity(Enum):
 @dataclass
 class DesignConstraint:
     """A single design constraint with validation logic."""
+
     name: str
     category: str  # "level", "size", "theme", "difficulty"
     description: str
@@ -36,6 +37,7 @@ class DesignConstraint:
 @dataclass
 class ConstraintValidationResult:
     """Result of validating constraints against a design."""
+
     passed: bool
     total: int = 0
     passed_count: int = 0
@@ -71,37 +73,79 @@ class ConstraintEngine:
     CONSTRAINT_PROFILES = {
         "newbie_area": {
             "level": {"min_level": 1, "max_level": 30, "monster_xp_range": (0, 150)},
-            "size": {"min_width": 10, "max_width": 50, "min_height": 10, "max_height": 50},
+            "size": {
+                "min_width": 10,
+                "max_width": 50,
+                "min_height": 10,
+                "max_height": 50,
+            },
             "theme": {"themes": ["green", "tutorial", "safe"]},
             "difficulty": {"max_difficulty": 2, "no_bosses": True},
         },
         "mid_hunt": {
-            "level": {"min_level": 50, "max_level": 150, "monster_xp_range": (150, 800)},
-            "size": {"min_width": 20, "max_width": 100, "min_height": 20, "max_height": 100},
+            "level": {
+                "min_level": 50,
+                "max_level": 150,
+                "monster_xp_range": (150, 800),
+            },
+            "size": {
+                "min_width": 20,
+                "max_width": 100,
+                "min_height": 20,
+                "max_height": 100,
+            },
             "theme": {"themes": ["cave", "dungeon", "forest", "desert"]},
             "difficulty": {"max_difficulty": 5},
         },
         "high_end_hunt": {
-            "level": {"min_level": 150, "max_level": 400, "monster_xp_range": (800, 5000)},
-            "size": {"min_width": 30, "max_width": 200, "min_height": 30, "max_height": 200},
+            "level": {
+                "min_level": 150,
+                "max_level": 400,
+                "monster_xp_range": (800, 5000),
+            },
+            "size": {
+                "min_width": 30,
+                "max_width": 200,
+                "min_height": 30,
+                "max_height": 200,
+            },
             "theme": {"themes": ["roshamuul", "issavi", "prison", "corruption"]},
             "difficulty": {"max_difficulty": 8},
         },
         "boss_room": {
-            "level": {"min_level": 100, "max_level": 999, "monster_xp_range": (5000, 50000)},
-            "size": {"min_width": 8, "max_width": 30, "min_height": 8, "max_height": 30},
+            "level": {
+                "min_level": 100,
+                "max_level": 999,
+                "monster_xp_range": (5000, 50000),
+            },
+            "size": {
+                "min_width": 8,
+                "max_width": 30,
+                "min_height": 8,
+                "max_height": 30,
+            },
             "theme": {"themes": ["dark", "epic", "boss"]},
             "difficulty": {"max_difficulty": 10, "min_difficulty": 6},
         },
         "city": {
             "level": {"min_level": 1, "max_level": 999},
-            "size": {"min_width": 20, "max_width": 300, "min_height": 20, "max_height": 300},
+            "size": {
+                "min_width": 20,
+                "max_width": 300,
+                "min_height": 20,
+                "max_height": 300,
+            },
             "theme": {"themes": ["medieval", "oriental", "desert", "port"]},
             "difficulty": {"max_difficulty": 1, "no_spawns": True},
         },
         "quest_zone": {
             "level": {"min_level": 20, "max_level": 500},
-            "size": {"min_width": 10, "max_width": 80, "min_height": 10, "max_height": 80},
+            "size": {
+                "min_width": 10,
+                "max_width": 80,
+                "min_height": 10,
+                "max_height": 80,
+            },
             "theme": {"themes": ["magic", "library", "dungeon", "temple"]},
             "difficulty": {"max_difficulty": 7, "chests": True},
         },
@@ -198,7 +242,9 @@ class ConstraintEngine:
 
         return result
 
-    def suggest_relaxation(self, failed_constraints: List[DesignConstraint]) -> List[Dict[str, Any]]:
+    def suggest_relaxation(
+        self, failed_constraints: List[DesignConstraint]
+    ) -> List[Dict[str, Any]]:
         """
         Suggest how to relax constraints to make a design valid.
 
@@ -211,19 +257,23 @@ class ConstraintEngine:
             for key, value in c.params.items():
                 if isinstance(value, (int, float)):
                     if key.startswith("min_"):
-                        suggestions.append({
-                            "constraint": f"{c.category}.{key}",
-                            "current": value,
-                            "suggestion": f"Reduce {key} from {value} to {value // 2}",
-                            "new_value": value // 2,
-                        })
+                        suggestions.append(
+                            {
+                                "constraint": f"{c.category}.{key}",
+                                "current": value,
+                                "suggestion": f"Reduce {key} from {value} to {value // 2}",
+                                "new_value": value // 2,
+                            }
+                        )
                     elif key.startswith("max_"):
-                        suggestions.append({
-                            "constraint": f"{c.category}.{key}",
-                            "current": value,
-                            "suggestion": f"Increase {key} from {value} to {value + int(value * 0.5)}",
-                            "new_value": value + int(value * 0.5),
-                        })
+                        suggestions.append(
+                            {
+                                "constraint": f"{c.category}.{key}",
+                                "current": value,
+                                "suggestion": f"Increase {key} from {value} to {value + int(value * 0.5)}",
+                                "new_value": value + int(value * 0.5),
+                            }
+                        )
         return suggestions
 
     def detect_profile_for_map(self, map_data: Dict[str, Any]) -> str:
@@ -254,8 +304,9 @@ class ConstraintEngine:
     # Internal validation
     # ------------------------------------------------------------------
 
-    def _validate_single(self, constraint: DesignConstraint,
-                         context: Dict[str, Any]) -> List[str]:
+    def _validate_single(
+        self, constraint: DesignConstraint, context: Dict[str, Any]
+    ) -> List[str]:
         """Validate a single constraint against the design context."""
         violations = []
         params = constraint.params
@@ -268,13 +319,9 @@ class ConstraintEngine:
 
             if isinstance(value, (int, float)):
                 if key.startswith("min_") and context_value < value:
-                    violations.append(
-                        f"Expected {key} >= {value}, got {context_value}"
-                    )
+                    violations.append(f"Expected {key} >= {value}, got {context_value}")
                 elif key.startswith("max_") and context_value > value:
-                    violations.append(
-                        f"Expected {key} <= {value}, got {context_value}"
-                    )
+                    violations.append(f"Expected {key} <= {value}, got {context_value}")
 
             elif isinstance(value, (list, set, tuple)):
                 if isinstance(context_value, str):
@@ -296,12 +343,17 @@ class ConstraintEngine:
 
         return violations
 
-    def _extract_constraints_from_profile(self, profile: Dict[str, Any],
-                                          profile_name: str) -> None:
+    def _extract_constraints_from_profile(
+        self, profile: Dict[str, Any], profile_name: str
+    ) -> None:
         """Extract DesignConstraint objects from a profile dict."""
         for category, params in profile.items():
             for key, value in params.items():
-                severity = ConstraintSeverity.FATAL if "no_" in key or "min_" in key else ConstraintSeverity.REQUIRED
+                severity = (
+                    ConstraintSeverity.FATAL
+                    if "no_" in key or "min_" in key
+                    else ConstraintSeverity.REQUIRED
+                )
 
                 constraint = DesignConstraint(
                     name=f"{profile_name}.{category}.{key}",

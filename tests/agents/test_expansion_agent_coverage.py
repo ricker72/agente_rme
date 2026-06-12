@@ -1,7 +1,7 @@
 """
 Coverage tests for ExpansionAgent.
 
-Hito 26.1D — covers all branches:
+Hito 26.1D â€” covers all branches:
   * Happy path with world_model
   * Missing ExpansionAI (fallback)
   * Theme and parameters
@@ -13,12 +13,11 @@ Hito 26.1D — covers all branches:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from agente_rme.core.agents.expansion_agent import ExpansionAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.expansion_agent import ExpansionAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestExpansionAgentHappyPath:
@@ -56,7 +55,9 @@ class TestExpansionAgentHappyPath:
         agent = ExpansionAgent()
         world = {"tiles": {}, "structures": [], "regions": []}
         request = AgentRequest(
-            agent_id="expansion", prompt="expand", input_data=world,
+            agent_id="expansion",
+            prompt="expand",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success:
@@ -74,7 +75,9 @@ class TestExpansionAgentHappyPath:
             "regions": [],
         }
         request = AgentRequest(
-            agent_id="expansion", prompt="expand", input_data=world,
+            agent_id="expansion",
+            prompt="expand",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success and "tiles" in response.output_data:
@@ -118,7 +121,8 @@ class TestExpansionAgentErrorHandling:
     def test_expansion_with_custom_parameters(self):
         agent = ExpansionAgent()
         request = AgentRequest(
-            agent_id="expansion", prompt="expand",
+            agent_id="expansion",
+            prompt="expand",
             input_data={"tiles": {}, "structures": [], "regions": []},
             parameters={"max_hunts": 5, "max_boss_rooms": 3, "theme": "roshamuul"},
         )
@@ -153,6 +157,7 @@ class TestExpansionAgentErrorHandling:
                     "structures": [],
                     "regions": [],
                 }
+
         result = agent._world_to_dict(FakeWorld())
         assert result["tiles"]["0,0,7"] == {"x": 0}
 
@@ -169,6 +174,7 @@ class TestExpansionAgentErrorHandling:
         class FakeWorld:
             def to_dict(self):
                 return {"tiles": "bad", "structures": [], "regions": []}
+
         result = agent._world_to_dict(FakeWorld())
         assert result["tiles"] == {}
 
@@ -179,6 +185,7 @@ class TestExpansionAgentErrorHandling:
         class FakeWorld:
             def to_dict(self):
                 return {"tiles": {"0,0,7": {"x": 0}}, "structures": [], "regions": []}
+
         result = agent._world_to_dict(FakeWorld())
         assert isinstance(result["tiles"], dict)
         assert "0,0,7" in result["tiles"]
@@ -186,7 +193,9 @@ class TestExpansionAgentErrorHandling:
     def test_expansion_resolve_world_with_dict(self):
         """_resolve_world with dict input."""
         agent = ExpansionAgent()
-        result = agent._resolve_world({"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}})
+        result = agent._resolve_world(
+            {"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}}
+        )
         assert result is not None
 
     def test_expansion_resolve_world_passthrough(self):

@@ -2,9 +2,8 @@
 Tests for QAAgent.
 """
 
-import pytest
-from agente_rme.core.agents import QAAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import QAAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestQAAgent:

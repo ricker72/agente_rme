@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import time
-from dataclasses import dataclass, field
-from typing import List, Optional
+from dataclasses import dataclass
+from typing import List
 import tracemalloc
 
 
@@ -39,12 +39,17 @@ class BenchmarkRunner:
         duration_ms = (time.perf_counter() - self._start_time) * 1000
         mem_used = 0.0
         if tracemalloc.is_tracing():
-            mem_used = max(0, tracemalloc.get_traced_memory()[0] / 1024 - self._start_memory)
+            mem_used = max(
+                0, tracemalloc.get_traced_memory()[0] / 1024 - self._start_memory
+            )
         tps = tiles / (duration_ms / 1000) if duration_ms > 0 else 0
         result = BenchmarkResult(
-            name=self._track_name, duration_ms=duration_ms,
-            memory_kb=mem_used, tiles_generated=tiles,
-            tiles_per_second=tps, export_duration_ms=export_ms,
+            name=self._track_name,
+            duration_ms=duration_ms,
+            memory_kb=mem_used,
+            tiles_generated=tiles,
+            tiles_per_second=tps,
+            export_duration_ms=export_ms,
             total_iterations=self.iterations,
         )
         self._results.append(result)
@@ -61,17 +66,26 @@ class BenchmarkRunner:
             r = self.stop(tiles=tiles)
             durations.append(r.duration_ms)
             memories.append(r.memory_kb)
-        avg = lambda xs: sum(xs) / len(xs) if xs else 0
+
+        def avg(xs):
+            return sum(xs) / len(xs) if xs else 0
+
         return BenchmarkResult(
-            name=name, duration_ms=avg(durations),
-            memory_kb=avg(memories), tiles_generated=tiles_expected,
-            tiles_per_second=tiles_expected / (avg(durations) / 1000) if avg(durations) > 0 else 0,
+            name=name,
+            duration_ms=avg(durations),
+            memory_kb=avg(memories),
+            tiles_generated=tiles_expected,
+            tiles_per_second=tiles_expected / (avg(durations) / 1000)
+            if avg(durations) > 0
+            else 0,
             total_iterations=self.iterations,
         )
 
     def summary(self) -> str:
         lines = ["=" * 50, "  BENCHMARK RESULTS", "=" * 50]
         for r in self._results:
-            lines.append(f"  {r.name}: {r.duration_ms:.1f}ms | {r.tiles_per_second:.0f} tps | {r.memory_kb:.0f}KB")
+            lines.append(
+                f"  {r.name}: {r.duration_ms:.1f}ms | {r.tiles_per_second:.0f} tps | {r.memory_kb:.0f}KB"
+            )
         lines.append("=" * 50)
         return "\n".join(lines)

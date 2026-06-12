@@ -1,5 +1,5 @@
 """
-Tests for HITO 17 — Pattern Miner.
+Tests for HITO 17 â€” Pattern Miner.
 
 The miner aggregates samples from MapAnalysis / Blueprint objects
 and produces MinedPattern records once a structure type has at
@@ -16,7 +16,7 @@ from typing import Any, Dict, List
 
 from core.analyzer.map_analyzer import MapAnalysis
 from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
-from agente_rme.core.learning.pattern_miner import PatternMiner, MinedPattern
+from core.learning.pattern_miner import PatternMiner, MinedPattern
 
 
 def _make_sample_tiles(count: int = 50) -> List[Dict[str, Any]]:
@@ -34,7 +34,9 @@ def _make_sample_tiles(count: int = 50) -> List[Dict[str, Any]]:
     return tiles
 
 
-def _make_sample_analysis(style: str = "temple", keyword: str = "temple") -> MapAnalysis:
+def _make_sample_analysis(
+    style: str = "temple", keyword: str = "temple"
+) -> MapAnalysis:
     tiles = _make_sample_tiles(80)
     ground_counter: Dict[str, int] = {}
     for t in tiles:
@@ -48,7 +50,13 @@ def _make_sample_analysis(style: str = "temple", keyword: str = "temple") -> Map
     analysis.item_count = sum(len(t["items"]) for t in tiles)
     analysis.spawns = [{"monster": "demon", "x": 10, "y": 10, "radius": 5}]
     analysis.houses = [
-        {"id": 1, "name": f"{keyword} house", "temple_x": 5, "temple_y": 5, "temple_z": 7},
+        {
+            "id": 1,
+            "name": f"{keyword} house",
+            "temple_x": 5,
+            "temple_y": 5,
+            "temple_z": 7,
+        },
     ]
     analysis.waypoints = [{"name": f"{keyword}_wp", "x": 0, "y": 0, "z": 7}]
     analysis.style = style
@@ -106,8 +114,13 @@ class TestPatternMinerInitialization(unittest.TestCase):
     def test_structure_keywords_complete(self):
         """Required structure types are present in keyword map."""
         required = [
-            "temple", "depot", "market", "boss_room",
-            "house", "bridge", "camp",
+            "temple",
+            "depot",
+            "market",
+            "boss_room",
+            "house",
+            "bridge",
+            "camp",
         ]
         for kind in required:
             self.assertIn(kind, PatternMiner.STRUCTURE_KEYWORDS)
@@ -384,9 +397,7 @@ class TestPatternMinerPersistence(unittest.TestCase):
     """save_patterns / load_patterns round trip."""
 
     def test_save_and_load(self):
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".json", delete=False
-        ) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             temp_path = f.name
         try:
             miner = PatternMiner(min_samples=2)
@@ -408,9 +419,7 @@ class TestPatternMinerPersistence(unittest.TestCase):
                 os.unlink(temp_path)
 
     def test_saved_file_is_valid_json(self):
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".json", delete=False
-        ) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             temp_path = f.name
         try:
             miner = PatternMiner(min_samples=2)

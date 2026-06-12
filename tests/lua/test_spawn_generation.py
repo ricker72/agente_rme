@@ -10,7 +10,6 @@ build a :class:`SpawnPlan` from the world. These tests exercise
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
@@ -25,8 +24,15 @@ from core.world.tile import Tile
 from core.world.spawn import Spawn
 
 
-def _make_tile(x: int, y: int, z: int = 7, *, monster: str = None,
-               respawn: int = 60, is_boss: bool = False) -> Tile:
+def _make_tile(
+    x: int,
+    y: int,
+    z: int = 7,
+    *,
+    monster: str = None,
+    respawn: int = 60,
+    is_boss: bool = False,
+) -> Tile:
     """Build a Tile, optionally with a Spawn attached."""
     tile = Tile(x=x, y=y, z=z, ground=106)
     if monster is not None:
@@ -117,7 +123,11 @@ class TestSpawnGeneratorGenerateForWorld:
                 {"x": 0, "y": 0, "z": 7, "monster_name": "Mob", "interval": 60},
             ],
             "boss_spawn": {
-                "x": 10, "y": 10, "z": 7, "monster_name": "Boss", "interval": 600
+                "x": 10,
+                "y": 10,
+                "z": 7,
+                "monster_name": "Boss",
+                "interval": 600,
             },
         }
         plan = gen.generate_for_world(world)

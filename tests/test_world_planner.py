@@ -14,22 +14,21 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from core.architect import (
-    WorldPlanner, WorldPlan, WorldRequest, PromptParser,
-    ZonePlanner, DifficultyPlanner, LayoutPlanner,
-    ThemeResolver, resolve_theme, ThemeAssets,
-    CityPlan, DungeonPlan, HuntPlan, BossPlan, QuestPlan,
-    ZoneDifficulty,
-    WorldLayout,
+    WorldPlanner,
+    WorldPlan,
+    PromptParser,
 )
-
 
 # =============================================================================
 # PromptParser
 # =============================================================================
 
+
 def test_prompt_parser_basic():
     p = PromptParser()
-    parsed = p.parse("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    parsed = p.parse(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     assert "issavi" in parsed["themes"]
     assert parsed["level_min"] == 300
     assert parsed["level_max"] == 500
@@ -132,6 +131,7 @@ def test_prompt_parser_zone_order():
 # WorldPlanner - basic API
 # =============================================================================
 
+
 def test_world_planner_creation():
     p = WorldPlanner()
     assert p is not None
@@ -153,7 +153,9 @@ def test_world_planner_plan_returns_worldplan():
 def test_world_planner_full_example():
     """The canonical example from the task spec."""
     p = WorldPlanner()
-    plan = p.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    plan = p.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     assert isinstance(plan, WorldPlan)
     assert plan.primary_theme == "issavi"
     assert len(plan.cities) == 1
@@ -178,9 +180,12 @@ def test_world_planner_call_alias():
 # WorldPlan - structure
 # =============================================================================
 
+
 def test_world_plan_structure():
     p = WorldPlanner()
-    plan = p.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    plan = p.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     # All expected fields present
     assert plan.cities is not None
     assert plan.dungeons is not None
@@ -228,6 +233,7 @@ def test_world_plan_summary():
 # Difficulty progression
 # =============================================================================
 
+
 def test_difficulty_progression_smooth():
     """Multiple hunts should use smooth progression style."""
     p = WorldPlanner()
@@ -264,6 +270,7 @@ def test_difficulty_progression_per_zone_levels():
 # =============================================================================
 # Layout
 # =============================================================================
+
 
 def test_layout_strategy_city_centric():
     """City + boss triggers city_centric strategy."""
@@ -334,6 +341,7 @@ def test_layout_waypoints_per_zone():
 # Theme resolution
 # =============================================================================
 
+
 def test_plan_uses_resolved_theme_assets():
     """Each zone in the plan should use a theme's assets."""
     p = WorldPlanner()
@@ -346,9 +354,19 @@ def test_plan_uses_resolved_theme_assets():
         assert "grounds" in hunt.metadata
         assert "monsters" in [k for k in hunt.metadata]
         # The hunt should have at least one issavi monster
-        assert any(m in ["Frazzlemaw", "Sphinx", "Cloak Of Terror", "Crypt Warden",
-                         "Priestess", "Vexclaw", "Guzzlemaw"]
-                   for m in hunt.monster_pool)
+        assert any(
+            m
+            in [
+                "Frazzlemaw",
+                "Sphinx",
+                "Cloak Of Terror",
+                "Crypt Warden",
+                "Priestess",
+                "Vexclaw",
+                "Guzzlemaw",
+            ]
+            for m in hunt.monster_pool
+        )
     print("  [OK] test_plan_uses_resolved_theme_assets")
 
 
@@ -365,9 +383,11 @@ def test_plan_hybrid_themes():
 # Integration with WorldGenerator
 # =============================================================================
 
+
 def test_world_planner_with_world_generator():
     """WorldPlanner should be able to invoke the WorldGenerator."""
     from core.generators import WorldGenerator
+
     p = WorldPlanner(world_generator=WorldGenerator(seed=42))
     plan = p.plan("Generate Issavi hunt level 300")
     # The generator should have been called
@@ -380,6 +400,7 @@ def test_world_planner_with_world_generator():
 def test_world_planner_with_blueprint_registry():
     """WorldPlanner should be able to use the BlueprintRegistry."""
     from core.registry import BlueprintRegistry
+
     reg = BlueprintRegistry()
     p = WorldPlanner(blueprint_registry=reg)
     plan = p.plan("ciudad + hunt issavi level 300")
@@ -391,6 +412,7 @@ def test_world_planner_with_blueprint_registry():
 def test_world_planner_with_asset_registry():
     """WorldPlanner should be able to use the AssetRegistry."""
     from core.registry import AssetRegistry
+
     reg = AssetRegistry()
     p = WorldPlanner(asset_registry=reg)
     plan = p.plan("ciudad + hunt issavi level 300")
@@ -401,6 +423,7 @@ def test_world_planner_with_asset_registry():
 # =============================================================================
 # Edge cases
 # =============================================================================
+
 
 def test_world_plan_empty_prompt():
     p = WorldPlanner()
@@ -440,8 +463,8 @@ def test_world_plan_different_seeds_differ():
     plan1 = p1.plan("library dungeon level 200-400")
     plan2 = p2.plan("library dungeon level 200-400")
     # At least one room should differ
-    types1 = set(r["type"] for r in plan1.dungeons[0].rooms)
-    types2 = set(r["type"] for r in plan2.dungeons[0].rooms)
+    set(r["type"] for r in plan1.dungeons[0].rooms)
+    set(r["type"] for r in plan2.dungeons[0].rooms)
     # They may be the same, but the rooms may differ
     print("  [OK] test_world_plan_different_seeds_differ")
 
@@ -450,9 +473,12 @@ def test_world_plan_different_seeds_differ():
 # WorldRequest
 # =============================================================================
 
+
 def test_world_request_properties():
     p = WorldPlanner()
-    plan = p.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    plan = p.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     request = plan.request
     assert request is not None
     assert request.has_city
@@ -469,6 +495,7 @@ def test_world_request_properties():
 # =============================================================================
 # Runner
 # =============================================================================
+
 
 def run_all():
     print("=" * 60)

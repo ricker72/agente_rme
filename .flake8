@@ -1,0 +1,34 @@
+[flake8]
+max-line-length = 120
+extend-ignore = E203,W503
+exclude =
+    .git,
+    .venv,
+    venv,
+    __pycache__,
+    .mypy_cache,
+    .pytest_cache,
+    htmlcov,
+    htmlcov_autonomous,
+    htmlcov_critic,
+    htmlcov_critic_final,
+    node_modules,
+    output,
+    output_benchmark,
+    cache,
+    logs
+per-file-ignores =
+    core/critic/analyzers/*:E501
+    core/otbm/otbm_templates.py:E501
+    core/world_engine/export_pipeline.py:E501
+    tests/*:E402
+    test_*.py:E402
+    _*.py:E402
+    examples/*:E402
+    benchmark_*.py:E402
+    smoke_*.py:E402
+    validate_*.py:E402
+    *_diag.py:E402
+    _fix_*.py:F841,W293,W292
+    tools/run_rc1_1.py:E501
+    tools/real_memory_profile.py:E501

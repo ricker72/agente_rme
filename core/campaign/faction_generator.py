@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 @dataclass
 class Faction:
     """A faction in the campaign world."""
+
     name: str = ""
     alignment: str = ""  # "good", "evil", "neutral", "chaotic"
     description: str = ""
@@ -21,8 +22,10 @@ class Faction:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "name": self.name, "alignment": self.alignment,
-            "description": self.description, "leader": self.leader,
+            "name": self.name,
+            "alignment": self.alignment,
+            "description": self.description,
+            "leader": self.leader,
             "member_count": self.member_count,
             "primary_color": self.primary_color,
             "enemy_factions": self.enemy_factions,
@@ -34,52 +37,92 @@ class Faction:
 
 FACTION_TEMPLATES: Dict[str, Dict[str, Any]] = {
     "Issavi": [
-        {"name": "The Crimson Guard", "alignment": "good",
-         "description": "Elite defenders of Issavi, sworn to reclaim the city.",
-         "primary_color": "red", "specialities": ["melee", "defense"],
-         "capital": "Issavi Outpost"},
-        {"name": "Shadow Council", "alignment": "evil",
-         "description": "Secret cabal that summoned the demons to Issavi.",
-         "primary_color": "purple", "specialities": ["magic", "deception"],
-         "capital": "Hidden Sanctum"},
-        {"name": "Merchant Coalition", "alignment": "neutral",
-         "description": "Traders who profit from both sides of the conflict.",
-         "primary_color": "gold", "specialities": ["trade", "crafting"],
-         "capital": "Trade District"},
+        {
+            "name": "The Crimson Guard",
+            "alignment": "good",
+            "description": "Elite defenders of Issavi, sworn to reclaim the city.",
+            "primary_color": "red",
+            "specialities": ["melee", "defense"],
+            "capital": "Issavi Outpost",
+        },
+        {
+            "name": "Shadow Council",
+            "alignment": "evil",
+            "description": "Secret cabal that summoned the demons to Issavi.",
+            "primary_color": "purple",
+            "specialities": ["magic", "deception"],
+            "capital": "Hidden Sanctum",
+        },
+        {
+            "name": "Merchant Coalition",
+            "alignment": "neutral",
+            "description": "Traders who profit from both sides of the conflict.",
+            "primary_color": "gold",
+            "specialities": ["trade", "crafting"],
+            "capital": "Trade District",
+        },
     ],
     "Darashia": [
-        {"name": "Desert Hawks", "alignment": "good",
-         "description": "Nomadic warriors protecting Darashia's people.",
-         "primary_color": "brown", "specialities": ["archery", "survival"],
-         "capital": "Oasis Camp"},
-        {"name": "Sand Wraiths", "alignment": "evil",
-         "description": "Undead legion serving the ancient Pharaoh.",
-         "primary_color": "black", "specialities": ["necromancy", "sand"],
-         "capital": "Tomb of Kings"},
+        {
+            "name": "Desert Hawks",
+            "alignment": "good",
+            "description": "Nomadic warriors protecting Darashia's people.",
+            "primary_color": "brown",
+            "specialities": ["archery", "survival"],
+            "capital": "Oasis Camp",
+        },
+        {
+            "name": "Sand Wraiths",
+            "alignment": "evil",
+            "description": "Undead legion serving the ancient Pharaoh.",
+            "primary_color": "black",
+            "specialities": ["necromancy", "sand"],
+            "capital": "Tomb of Kings",
+        },
     ],
     "Roshamuul": [
-        {"name": "Order of Dawn", "alignment": "good",
-         "description": "Last bastion of light on the cursed isle.",
-         "primary_color": "white", "specialities": ["holy", "healing"],
-         "capital": "Dawn Fortress"},
-        {"name": "Plague Reapers", "alignment": "evil",
-         "description": "Cult spreading the undeath plague across Roshamuul.",
-         "primary_color": "green", "specialities": ["disease", "poison"],
-         "capital": "Blight Tower"},
+        {
+            "name": "Order of Dawn",
+            "alignment": "good",
+            "description": "Last bastion of light on the cursed isle.",
+            "primary_color": "white",
+            "specialities": ["holy", "healing"],
+            "capital": "Dawn Fortress",
+        },
+        {
+            "name": "Plague Reapers",
+            "alignment": "evil",
+            "description": "Cult spreading the undeath plague across Roshamuul.",
+            "primary_color": "green",
+            "specialities": ["disease", "poison"],
+            "capital": "Blight Tower",
+        },
     ],
     "default": [
-        {"name": "The Iron Brotherhood", "alignment": "good",
-         "description": "Warriors bound by honor to protect the innocent.",
-         "primary_color": "silver", "specialities": ["combat", "strategy"],
-         "capital": "Iron Hold"},
-        {"name": "The Void Collective", "alignment": "evil",
-         "description": "Servants of the void seeking to unmake reality.",
-         "primary_color": "dark", "specialities": ["dark magic", "corruption"],
-         "capital": "Void Nexus"},
-        {"name": "Wanderers' Pact", "alignment": "neutral",
-         "description": "A loose alliance of travelers and explorers.",
-         "primary_color": "green", "specialities": ["exploration", "trade"],
-         "capital": "Crossroads Inn"},
+        {
+            "name": "The Iron Brotherhood",
+            "alignment": "good",
+            "description": "Warriors bound by honor to protect the innocent.",
+            "primary_color": "silver",
+            "specialities": ["combat", "strategy"],
+            "capital": "Iron Hold",
+        },
+        {
+            "name": "The Void Collective",
+            "alignment": "evil",
+            "description": "Servants of the void seeking to unmake reality.",
+            "primary_color": "dark",
+            "specialities": ["dark magic", "corruption"],
+            "capital": "Void Nexus",
+        },
+        {
+            "name": "Wanderers' Pact",
+            "alignment": "neutral",
+            "description": "A loose alliance of travelers and explorers.",
+            "primary_color": "green",
+            "specialities": ["exploration", "trade"],
+            "capital": "Crossroads Inn",
+        },
     ],
 }
 
@@ -90,8 +133,7 @@ class FactionGenerator:
     def __init__(self, seed: int = 42):
         self._seed = seed
 
-    def generate(self, theme: str = "default",
-                 count: int = 3) -> List[Faction]:
+    def generate(self, theme: str = "default", count: int = 3) -> List[Faction]:
         """
         Generate factions for a theme.
 
@@ -108,7 +150,8 @@ class FactionGenerator:
         for i in range(min(count, len(templates))):
             t = templates[i]
             faction = Faction(
-                name=t["name"], alignment=t["alignment"],
+                name=t["name"],
+                alignment=t["alignment"],
                 description=t["description"],
                 primary_color=t["primary_color"],
                 specialities=list(t["specialities"]),

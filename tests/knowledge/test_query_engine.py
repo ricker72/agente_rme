@@ -11,7 +11,10 @@ from core.knowledge.models import KnowledgeEntry, KnowledgeDataset
 
 def _entry(name: str, et: EntryType = EntryType.HUNT, **kw) -> KnowledgeEntry:
     return KnowledgeEntry.build(
-        entry_type=et, name=name, source="src", **kw,
+        entry_type=et,
+        name=name,
+        source="src",
+        **kw,
     )
 
 
@@ -48,15 +51,36 @@ class TestParseQuery(unittest.TestCase):
 class TestKnowledgeQuery(unittest.TestCase):
     def setUp(self):
         ds = KnowledgeDataset()
-        ds.add(_entry("roshamuul_circular_hunt", EntryType.HUNT,
-                      biome="roshamuul", min_level=250, max_level=380,
-                      attributes={"circular": True}))
-        ds.add(_entry("issavi_sewers_hunt", EntryType.HUNT,
-                      biome="issavi", min_level=250, max_level=400,
-                      attributes={"circular": False}))
-        ds.add(_entry("roshamuul_boss_arena", EntryType.BOSS_ROOM,
-                      biome="roshamuul", min_level=300, max_level=500,
-                      attributes={"shape": "circular"}))
+        ds.add(
+            _entry(
+                "roshamuul_circular_hunt",
+                EntryType.HUNT,
+                biome="roshamuul",
+                min_level=250,
+                max_level=380,
+                attributes={"circular": True},
+            )
+        )
+        ds.add(
+            _entry(
+                "issavi_sewers_hunt",
+                EntryType.HUNT,
+                biome="issavi",
+                min_level=250,
+                max_level=400,
+                attributes={"circular": False},
+            )
+        )
+        ds.add(
+            _entry(
+                "roshamuul_boss_arena",
+                EntryType.BOSS_ROOM,
+                biome="roshamuul",
+                min_level=300,
+                max_level=500,
+                attributes={"shape": "circular"},
+            )
+        )
         self.ds = ds
         self.index = KnowledgeIndex()
         self.index.sync(ds)

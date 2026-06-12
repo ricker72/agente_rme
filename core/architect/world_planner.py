@@ -11,19 +11,24 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from .theme_resolver import ThemeResolver
 from .zone_planner import (
-    ZonePlanner, CityPlan, DungeonPlan, HuntPlan, BossPlan, QuestPlan,
+    ZonePlanner,
+    CityPlan,
+    DungeonPlan,
+    HuntPlan,
+    BossPlan,
+    QuestPlan,
 )
 from .difficulty_planner import DifficultyPlanner, ZoneDifficulty
 from .layout_planner import LayoutPlanner, WorldLayout
 
-
 # =============================================================================
 # PromptParser
 # =============================================================================
+
 
 class PromptParser:
     """Parses a free-form prompt into a structured dict."""
@@ -88,8 +93,9 @@ class PromptParser:
                 result["quest_count"] = 1
 
         # Final fallback: if still nothing at all, default to a single hunt
-        total = sum(result[f"{k}_count"] for k in
-                    ("hunt", "boss", "dungeon", "city", "quest"))
+        total = sum(
+            result[f"{k}_count"] for k in ("hunt", "boss", "dungeon", "city", "quest")
+        )
         if total == 0:
             result["hunt_count"] = 1
 
@@ -125,6 +131,7 @@ class PromptParser:
 # =============================================================================
 # WorldRequest
 # =============================================================================
+
 
 @dataclass
 class WorldRequest:
@@ -183,6 +190,7 @@ class WorldRequest:
 # WorldPlan - final output
 # =============================================================================
 
+
 @dataclass
 class WorldPlan:
     prompt: str
@@ -222,7 +230,9 @@ class WorldPlan:
             "teleports": self.teleports,
             "ports": self.ports,
             "waypoints": self.waypoints,
-            "difficulty_progression": [d.to_dict() for d in self.difficulty_progression],
+            "difficulty_progression": [
+                d.to_dict() for d in self.difficulty_progression
+            ],
             "layout": self.layout.to_dict() if self.layout else None,
             "world_width": self.world_width,
             "world_height": self.world_height,
@@ -244,11 +254,10 @@ class WorldPlan:
         return "WorldPlan(" + ", ".join(parts) + ")"
 
 
-
-
 # =============================================================================
 # WorldPlanner
 # =============================================================================
+
 
 class WorldPlanner:
     """The full AI Architect pipeline."""
@@ -332,21 +341,27 @@ class WorldPlanner:
             if kind == "city":
                 c = self.zone_planner.plan_city(
                     name=f"{theme.name.capitalize()} Capital",
-                    theme=theme, min_level=lo, max_level=hi,
+                    theme=theme,
+                    min_level=lo,
+                    max_level=hi,
                 )
                 cities.append(c)
                 all_zones.append(c)
             elif kind == "dungeon":
                 d = self.zone_planner.plan_dungeon(
                     name=f"{theme.name.capitalize()} Depths",
-                    theme=theme, min_level=lo, max_level=hi,
+                    theme=theme,
+                    min_level=lo,
+                    max_level=hi,
                 )
                 dungeons.append(d)
                 all_zones.append(d)
             elif kind == "hunt":
                 h = self.zone_planner.plan_hunt(
                     name=f"{theme.name.capitalize()} Hunt {len(hunts) + 1}",
-                    theme=theme, min_level=lo, max_level=hi,
+                    theme=theme,
+                    min_level=lo,
+                    max_level=hi,
                     density=diff.spawn_density if diff else "medium",
                 )
                 hunts.append(h)
@@ -354,24 +369,32 @@ class WorldPlanner:
             elif kind == "boss":
                 b = self.zone_planner.plan_boss(
                     name=f"{theme.name.capitalize()} Final Boss",
-                    theme=theme, min_level=lo, max_level=hi,
+                    theme=theme,
+                    min_level=lo,
+                    max_level=hi,
                 )
                 bosses.append(b)
                 all_zones.append(b)
             elif kind == "quest":
                 q = self.zone_planner.plan_quest(
                     title=f"{theme.name.capitalize()} Trial {len(quests) + 1}",
-                    theme=theme, min_level=lo, max_level=hi,
+                    theme=theme,
+                    min_level=lo,
+                    max_level=hi,
                 )
                 quests.append(q)
                 all_zones.append(q)
 
         # 5. Layout
-        layout = self.layout_planner.arrange(
-            all_zones,
-            world_width=world_width,
-            world_height=world_height,
-        ) if all_zones else None
+        layout = (
+            self.layout_planner.arrange(
+                all_zones,
+                world_width=world_width,
+                world_height=world_height,
+            )
+            if all_zones
+            else None
+        )
 
         # 6. Build meta WorldPlan
         wp = WorldPlan(
@@ -411,7 +434,9 @@ class WorldPlanner:
             try:
                 world_model = self.world_generator.generate(wp.to_dict())
                 wp.metadata["world_model_tile_count"] = (
-                    world_model.tile_count() if hasattr(world_model, "tile_count") else None
+                    world_model.tile_count()
+                    if hasattr(world_model, "tile_count")
+                    else None
                 )
             except Exception as exc:
                 wp.metadata["world_generator_error"] = str(exc)
@@ -420,6 +445,9 @@ class WorldPlanner:
 
     # Backward-compat alias
     def __call__(
-        self, prompt: str, world_width: int = 200, world_height: int = 200,
+        self,
+        prompt: str,
+        world_width: int = 200,
+        world_height: int = 200,
     ) -> WorldPlan:
         return self.plan(prompt, world_width, world_height)

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+
 
 @dataclass
 class NPC:
@@ -7,6 +7,7 @@ class NPC:
     role: str
     location: str
     type: str
+
 
 NPCS = [
     NPC(name="Thais Guard", role="guard", location="Thais", type="city"),
@@ -17,6 +18,7 @@ NPCS = [
 ]
 
 NPC_BY_NAME = {npc.name.lower(): npc for npc in NPCS}
+
 
 def get_npc(name: str):
     return NPC_BY_NAME.get(name.lower())

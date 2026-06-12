@@ -23,13 +23,23 @@ def main() -> None:
             "style": "issavi-inspired",
             "monster_density": 0.13,
             "spawn_regions": [
-                {"area": "northeast_gate", "monsters": ["witch", "orc"], "density": 0.12},
-                {"area": "central_plaza", "monsters": ["minotaur", "gnarlhound"], "density": 0.18},
+                {
+                    "area": "northeast_gate",
+                    "monsters": ["witch", "orc"],
+                    "density": 0.12,
+                },
+                {
+                    "area": "central_plaza",
+                    "monsters": ["minotaur", "gnarlhound"],
+                    "density": 0.18,
+                },
             ],
         }
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
-    output_file.write_text(json.dumps(analysis, ensure_ascii=False, indent=2), encoding="utf-8")
+    output_file.write_text(
+        json.dumps(analysis, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     print(f"Saved analysis to {output_file}")
 
     dataset_builder = DatasetBuilder(root="analysis")

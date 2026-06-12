@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 class RoomType(enum.Enum):
     """Types of special rooms that can appear in content."""
+
     NONE = "none"
     LEVER = "lever"
     PUZZLE = "puzzle"
@@ -41,6 +42,7 @@ class QuestPackage:
         theme: Visual/gameplay theme string.
         metadata: Arbitrary extra data for advanced integrations.
     """
+
     name: str
     level_min: int
     level_max: int
@@ -62,9 +64,7 @@ class QuestPackage:
         if self.level_min < 1:
             errors.append(f"level_min={self.level_min} must be >= 1")
         if self.level_max < self.level_min:
-            errors.append(
-                f"level_max={self.level_max} < level_min={self.level_min}"
-            )
+            errors.append(f"level_max={self.level_max} < level_min={self.level_min}")
         if not self.objectives:
             errors.append("objectives list is empty")
         for i, obj in enumerate(self.objectives):

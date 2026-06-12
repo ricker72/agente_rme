@@ -4,10 +4,9 @@ ScoreCalculator — combines per-category scores into a final overall_score.
 
 from __future__ import annotations
 
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, Optional
 
 from .models import CriticScore
-
 
 # Default weights for the final overall_score.
 # Tuned to give visual and navigation slightly more influence.
@@ -39,7 +38,9 @@ class ScoreCalculator:
     weights: Dict[str, float] = dict(DEFAULT_WEIGHTS)
 
     def __init__(self, weights: Optional[Dict[str, float]] = None):
-        self.weights: Dict[str, float] = dict(weights) if weights else dict(DEFAULT_WEIGHTS)
+        self.weights: Dict[str, float] = (
+            dict(weights) if weights else dict(DEFAULT_WEIGHTS)
+        )
 
     def combine(self, scores: Dict[str, float]) -> float:
         """
@@ -66,10 +67,9 @@ class ScoreCalculator:
         """Combine CriticScore objects."""
         return self.combine({k: v.value for k, v in scores.items()})
 
-    def penalized(self,
-                  scores: Dict[str, float],
-                  issues_penalty: float,
-                  max_penalty: float = 50.0) -> float:
+    def penalized(
+        self, scores: Dict[str, float], issues_penalty: float, max_penalty: float = 50.0
+    ) -> float:
         """
         Apply a penalty (deducted from the combined score) based on issue severity.
         """

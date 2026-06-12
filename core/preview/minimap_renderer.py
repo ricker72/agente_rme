@@ -11,17 +11,17 @@ Usa preview_renderer.py para pintar y aplica escalado.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional
 
 try:
     from PIL import Image  # noqa: F401  (imported to resolve the "Image.Image" forward reference)
+
     HAS_PIL = True
 except ImportError:
     Image = None  # type: ignore[assignment,misc]
     HAS_PIL = False
 
 from .preview_renderer import render_layer, compute_bounds, add_structure_overlay
-
 
 # Escalas disponibles: nombre → tile_size
 SCALES = {
@@ -34,7 +34,7 @@ SCALES = {
 class MinimapRenderer:
     """
     Legacy MinimapRenderer (V1) — mantiene compatibilidad con core/__init__.py.
-    
+
     Nuevo uso: usar funciones sueltas render_minimap() / save_minimap().
     """
 
@@ -122,8 +122,12 @@ def render_minimap(
         bounds = compute_bounds(tiles)
         if bounds:
             img = add_structure_overlay(
-                img, structures, bounds,
-                z=z, tile_size=tile_size, padding=1,
+                img,
+                structures,
+                bounds,
+                z=z,
+                tile_size=tile_size,
+                padding=1,
             )
 
     return img

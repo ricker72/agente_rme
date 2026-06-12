@@ -2,9 +2,8 @@
 Tests for BalanceAgent.
 """
 
-import pytest
-from agente_rme.core.agents import BalanceAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents import BalanceAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestBalanceAgent:

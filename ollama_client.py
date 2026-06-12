@@ -1,13 +1,15 @@
 """
 ollama_client.py
-Comunicación con Ollama para generar scripts Lua válidos para OpenTibiaBR RME.
+Communication with Ollama to generate valid Lua scripts for OpenTibiaBR RME.
 """
+
 import json
-from typing import Callable, Optional
+from typing import Callable
 
 # Try official SDK first
 try:
     import ollama as _ollama_sdk
+
     _SDK = True
 except ImportError:
     _SDK = False
@@ -17,9 +19,9 @@ import requests
 OLLAMA_BASE = "http://localhost:11434"
 TIMEOUT = 10
 
-RME_SYSTEM_PROMPT = """Genera exclusivamente scripts Lua compatibles con OpenTibiaBR Remere's Map Editor.
+RME_SYSTEM_PROMPT = """Generate exclusively Lua scripts compatible with OpenTibiaBR Remere's Map Editor.
 
-Usa únicamente:
+Use only:
 
 app.transaction()
 app.hasMap()
@@ -34,7 +36,7 @@ tile:borderize()
 tile:setSpawn()
 tile:setCreature()
 
-No utilices nunca:
+Never use:
 
 Map.addItem
 Map.addCreature
@@ -43,7 +45,7 @@ Map.setTile
 Position
 Game.createTile
 
-Responde únicamente con el script Lua, sin explicaciones adicionales y sin bloques markdown.
+Respond only with the Lua script, without additional explanations and without markdown blocks.
 """
 
 
@@ -55,17 +57,20 @@ class OllamaClient:
         if self.client is not None:
             try:
                 self.client.list()
-                return True, "Ollama SDK activo."
+                return True, "Ollama SDK active."
             except Exception as exc:
                 return False, f"SDK error: {exc}"
 
         try:
             response = requests.get(f"{OLLAMA_BASE}/api/tags", timeout=TIMEOUT)
             if response.status_code == 200:
-                return True, "Ollama HTTP activo."
-            return False, f"Ollama respondió HTTP {response.status_code}"
+                return True, "Ollama HTTP active."
+            return False, f"Ollama responded HTTP {response.status_code}"
         except requests.ConnectionError:
-            return False, "No se pudo conectar a Ollama en localhost:11434. ¿Está iniciado?"
+            return (
+                False,
+                "Could not connect to Ollama at localhost:11434. Is it running?",
+            )
         except Exception as exc:
             return False, f"Error: {exc}"
 
@@ -73,7 +78,9 @@ class OllamaClient:
         if self.client is not None:
             try:
                 response = self.client.list()
-                models = response.get("models", []) if isinstance(response, dict) else []
+                models = (
+                    response.get("models", []) if isinstance(response, dict) else []
+                )
                 return [m.get("name", "") for m in models if m.get("name")]
             except Exception:
                 pass
@@ -94,16 +101,18 @@ class OllamaClient:
         monster_names: list[str],
         npc_names: list[str],
     ) -> str:
-        monsters_str = ", ".join(monster_names[:20]) if monster_names else "Ninguno disponible"
-        npcs_str = ", ".join(npc_names[:10]) if npc_names else "Ninguno disponible"
+        monsters_str = (
+            ", ".join(monster_names[:20]) if monster_names else "None available"
+        )
+        npcs_str = ", ".join(npc_names[:10]) if npc_names else "None available"
         knowledge_json = json.dumps(knowledge_context, ensure_ascii=False, indent=2)
         return (
-            f"CONTEXTO DE DATOS DISPONIBLES:\n{rag_context}\n\n"
-            f"CONTEXTO DE CONOCIMIENTO EXPERTO:\n{knowledge_json}\n\n"
-            f"MONSTRUOS DISPONIBLES (usa estos nombres exactos):\n{monsters_str}\n\n"
-            f"NPCs DISPONIBLES (usa estos nombres exactos):\n{npcs_str}\n\n"
-            f"SOLICITUD DEL USUARIO:\n{user_prompt}\n\n"
-            f"Genera un script Lua válido para OpenTibiaBR RME con esta información."
+            f"AVAILABLE DATA CONTEXT:\n{rag_context}\n\n"
+            f"EXPERT KNOWLEDGE CONTEXT:\n{knowledge_json}\n\n"
+            f"AVAILABLE MONSTERS (use these exact names):\n{monsters_str}\n\n"
+            f"AVAILABLE NPCS (use these exact names):\n{npcs_str}\n\n"
+            f"USER REQUEST:\n{user_prompt}\n\n"
+            f"Generate a valid Lua script for OpenTibiaBR RME with this information."
         )
 
     def generate_stream(
@@ -137,7 +146,9 @@ class OllamaClient:
                 if isinstance(chunk, dict):
                     delta = chunk.get("message", {}).get("content", "")
                 else:
-                    delta = getattr(getattr(chunk, "message", None), "content", "") or ""
+                    delta = (
+                        getattr(getattr(chunk, "message", None), "content", "") or ""
+                    )
                 if delta:
                     full_text.append(delta)
                     on_chunk(delta)
@@ -157,7 +168,9 @@ class OllamaClient:
                 f"{OLLAMA_BASE}/api/chat", json=payload, stream=True, timeout=120
             ) as response:
                 if response.status_code != 200:
-                    on_error(f"Error de Ollama: HTTP {response.status_code} — {response.text[:200]}")
+                    on_error(
+                        f"Ollama error: HTTP {response.status_code} — {response.text[:200]}"
+                    )
                     return
                 full_text = []
                 for line in response.iter_lines():
@@ -175,8 +188,8 @@ class OllamaClient:
                     except json.JSONDecodeError:
                         continue
         except requests.ConnectionError:
-            on_error("Conexión perdida con Ollama. ¿Sigue en ejecución?")
+            on_error("Connection lost with Ollama. Is it still running?")
         except requests.Timeout:
-            on_error("Tiempo de espera agotado. El modelo tardó demasiado.")
+            on_error("Timeout exceeded. The model took too long.")
         except Exception as exc:
-            on_error(f"Error inesperado: {exc}")
+            on_error(f"Unexpected error: {exc}")

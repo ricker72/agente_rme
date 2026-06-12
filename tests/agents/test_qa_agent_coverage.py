@@ -1,7 +1,7 @@
 """
 Coverage tests for QAAgent.
 
-Hito 26.1D — covers all branches:
+Hito 26.1D â€” covers all branches:
   * Happy path with world_model, campaign, playtest
   * Missing validators (fallback)
   * Validation of artifacts
@@ -14,12 +14,11 @@ Hito 26.1D — covers all branches:
 
 import os
 import sys
-import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from agente_rme.core.agents.qa_agent import QAAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.qa_agent import QAAgent
+from core.agents.contracts import AgentRequest
 
 
 class TestQAAgentHappyPath:
@@ -48,10 +47,14 @@ class TestQAAgentHappyPath:
         artifacts = {"otbm": "/tmp/out.otbm", "lua": "/tmp/out.lua"}
 
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data=world,
-            context={"campaign": campaign, "playtest_report": playtest,
-                     "artifacts": artifacts},
+            context={
+                "campaign": campaign,
+                "playtest_report": playtest,
+                "artifacts": artifacts,
+            },
         )
         response = agent.execute(request)
         assert response.success
@@ -60,7 +63,9 @@ class TestQAAgentHappyPath:
         agent = QAAgent()
         world = {"tiles": {}}
         request = AgentRequest(
-            agent_id="qa", prompt="qa", input_data=world,
+            agent_id="qa",
+            prompt="qa",
+            input_data=world,
         )
         response = agent.execute(request)
         if response.success:
@@ -70,7 +75,8 @@ class TestQAAgentHappyPath:
         agent = QAAgent()
         campaign = {"theme": "issavi", "lore": ["..."], "factions": []}
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"campaign": campaign},
         )
@@ -83,7 +89,8 @@ class TestQAAgentHappyPath:
         agent = QAAgent()
         playtest = {"player_level": 200, "issues": []}
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"playtest_report": playtest},
         )
@@ -95,7 +102,8 @@ class TestQAAgentHappyPath:
         agent = QAAgent()
         artifacts = {"nonexistent": "/tmp/__does_not_exist__.otbm"}
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"artifacts": artifacts},
         )
@@ -107,7 +115,8 @@ class TestQAAgentHappyPath:
     def test_qa_computes_overall_score(self):
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
         )
         response = agent.execute(request)
@@ -152,7 +161,8 @@ class TestQAAgentErrorHandling:
     def test_qa_empty_campaign_fails(self):
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"campaign": {}},
         )
@@ -164,7 +174,9 @@ class TestQAAgentErrorHandling:
         agent = QAAgent()
         world = {"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}}
         request = AgentRequest(
-            agent_id="qa", prompt="qa", input_data=world,
+            agent_id="qa",
+            prompt="qa",
+            input_data=world,
         )
         response = agent.execute(request)
         assert response.success
@@ -178,7 +190,8 @@ class TestQAAgentErrorHandling:
         artifact_path.write_text('{"ok": true}')
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={
                 "artifacts": {"myartifact": str(artifact_path)},
@@ -201,7 +214,8 @@ class TestQAAgentErrorHandling:
             "summary": "all good",
         }
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"playtest_report": playtest},
         )
@@ -216,16 +230,24 @@ class TestQAAgentErrorHandling:
         f3 = tmp_path / "missing.json"
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
-            context={"artifacts": {
-                "otbm": str(f1), "lua": str(f2), "missing": str(f3),
-            }},
+            context={
+                "artifacts": {
+                    "otbm": str(f1),
+                    "lua": str(f2),
+                    "missing": str(f3),
+                }
+            },
         )
         response = agent.execute(request)
         if response.success:
             assert response.output_data["artifacts"]["valid"] is False
-            checks = {c["name"]: c["passed"] for c in response.output_data["artifacts"]["checks"]}
+            checks = {
+                c["name"]: c["passed"]
+                for c in response.output_data["artifacts"]["checks"]
+            }
             assert checks["otbm"] is True
             assert checks["lua"] is True
             assert checks["missing"] is False
@@ -270,7 +292,8 @@ class TestQAAgentErrorHandling:
     def test_qa_validates_all_four_categories(self):
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={
                 "campaign": {"theme": "issavi", "lore": ["x"], "factions": []},
@@ -286,7 +309,8 @@ class TestQAAgentErrorHandling:
     def test_qa_overall_score_is_numeric(self):
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}},
         )
         response = agent.execute(request)
@@ -303,6 +327,7 @@ class TestQAAgentErrorHandling:
             is_valid = True
             errors = []
             warnings = []
+
             def to_dict(self):
                 return {"valid": True, "checks": []}
 
@@ -314,7 +339,8 @@ class TestQAAgentErrorHandling:
         agent._world_validator = FakeValidator()
 
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}},
         )
         response = agent.execute(request)
@@ -334,7 +360,8 @@ class TestQAAgentErrorHandling:
         agent._world_validator = FakeValidatorDict()
 
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}},
         )
         response = agent.execute(request)
@@ -354,7 +381,8 @@ class TestQAAgentErrorHandling:
         agent._world_validator = FakeValidatorOther()
 
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {"0,0,7": {"x": 0, "y": 0, "z": 7, "ground": 106}}},
         )
         response = agent.execute(request)
@@ -377,7 +405,8 @@ class TestQAAgentErrorHandling:
         """Playtest validation with empty data."""
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"playtest_report": {}},
         )
@@ -389,13 +418,14 @@ class TestQAAgentErrorHandling:
         """Campaign validation with partial data."""
         agent = QAAgent()
         request = AgentRequest(
-            agent_id="qa", prompt="qa",
+            agent_id="qa",
+            prompt="qa",
             input_data={"tiles": {}},
             context={"campaign": {"theme": "issavi"}},  # missing lore/factions
         )
         response = agent.execute(request)
         if response.success:
-            campaign = response.output_data["campaign"]
+            response.output_data["campaign"]
             # In the fallback path, theme alone counts as valid;
             # only truly empty dict fails.
             campaign2 = response.output_data.get("campaign", {})

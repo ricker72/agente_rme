@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import pytest
 
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
@@ -13,10 +12,10 @@ from core.balance.loot_balancer import LootBalancer
 from core.balance.difficulty_balancer import DifficultyBalancer
 from core.balance.risk_balancer import RiskBalancer
 
-
 # ---------------------------------------------------------------------------
 # World builders
 # ---------------------------------------------------------------------------
+
 
 def _build_simple_world() -> WorldModel:
     """Build a simple world with one region and spawns."""
@@ -122,14 +121,14 @@ def _build_trivial_world() -> WorldModel:
 
 def _count_spawns(world: WorldModel, zone_name: str) -> int:
     return sum(
-        1 for t in world.tiles.values()
-        if t.zone == zone_name and t.spawn is not None
+        1 for t in world.tiles.values() if t.zone == zone_name and t.spawn is not None
     )
 
 
 # ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
+
 
 class TestBalanceEngineInit:
     def test_create_default(self):

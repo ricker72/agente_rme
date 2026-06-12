@@ -15,7 +15,7 @@ Output: a final score in [0, 1].
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 
 from .models import KnowledgeEntry
 

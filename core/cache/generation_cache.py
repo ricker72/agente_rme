@@ -19,8 +19,9 @@ class GenerationCache:
         biome = cache.get("biome:issavi")
     """
 
-    def __init__(self, cache_dir: str = ".cache", max_size_mb: int = 256,
-                 ttl_seconds: int = 3600):
+    def __init__(
+        self, cache_dir: str = ".cache", max_size_mb: int = 256, ttl_seconds: int = 3600
+    ):
         self._dir = Path(cache_dir)
         self._dir.mkdir(parents=True, exist_ok=True)
         self._max_size = max_size_mb * 1024 * 1024
@@ -28,7 +29,7 @@ class GenerationCache:
         self._index: Dict[str, float] = {}
 
     def _path(self, key: str) -> Path:
-        h = hashlib.md5(key.encode()).hexdigest()
+        h = hashlib.md5(key.encode(), usedforsecurity=False).hexdigest()
         return self._dir / f"{h}.json"
 
     def get(self, key: str) -> Optional[Any]:

@@ -18,25 +18,29 @@ Target: 80%+ coverage across all modules.
 import sys
 import os
 import json
-import tempfile
 import time
 from pathlib import Path
-from unittest.mock import patch, MagicMock
 
 # Ensure project root is on sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from core.world import WorldModel, WorldValidator, Tile, Spawn, Item, Structure, Region
-from core.generators import WorldGenerator, HuntGenerator, CityGenerator, DungeonGenerator, ThemeGenerator
-from core.exporters import LuaExporter, LuaValidator, LuaWriter
-from core.otbm import OTBMExporter, OTBMImporter, OtbmValidator
-from core.preview import PreviewGenerator
-
+from core.world import WorldModel, WorldValidator, Tile, Spawn, Item, Structure, Region  # noqa: E402
+from core.generators import (  # noqa: E402
+    WorldGenerator,
+    HuntGenerator,
+    CityGenerator,
+    DungeonGenerator,
+    ThemeGenerator,
+)
+from core.exporters import LuaExporter, LuaValidator, LuaWriter  # noqa: E402
+from core.otbm import OTBMExporter, OTBMImporter  # noqa: E402
+from core.preview import PreviewGenerator  # noqa: E402
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # WORLD MODEL TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 class TestWorldModel:
     def test_empty_world(self):
@@ -74,8 +78,13 @@ class TestWorldModel:
     def test_add_structure(self):
         world = WorldModel()
         struct = Structure(
-            name="temple", category="temple",
-            x=100, y=100, z=7, width=10, height=10,
+            name="temple",
+            category="temple",
+            x=100,
+            y=100,
+            z=7,
+            width=10,
+            height=10,
         )
         world.add_structure(struct)
         assert len(world.structures) == 1
@@ -113,6 +122,7 @@ class TestWorldModel:
 # GENERATOR TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 class TestGenerators:
     def test_world_generator_hunt(self):
         gen = WorldGenerator(seed=42)
@@ -122,50 +132,63 @@ class TestGenerators:
 
     def test_world_generator_city(self):
         gen = WorldGenerator(seed=42)
-        world = gen.generate({
-            "type": "city",
-            "theme": "issavi",
-            "level_min": 50,
-            "level_max": 200,
-        })
+        world = gen.generate(
+            {
+                "type": "city",
+                "theme": "issavi",
+                "level_min": 50,
+                "level_max": 200,
+            }
+        )
         assert world.tile_count() > 0
 
     def test_world_generator_dungeon(self):
         gen = WorldGenerator(seed=42)
-        world = gen.generate({
-            "type": "dungeon",
-            "theme": "library",
-            "level_min": 200,
-            "level_max": 400,
-        })
+        world = gen.generate(
+            {
+                "type": "dungeon",
+                "theme": "library",
+                "level_min": 200,
+                "level_max": 400,
+            }
+        )
         assert world.tile_count() > 0
 
     def test_hunt_generator_direct(self):
         hg = HuntGenerator(seed=42)
-        world = hg.generate(WorldModel(), {
-            "theme": "issavi",
-            "level_min": 300,
-            "level_max": 500,
-            "density": "high",
-        })
+        world = hg.generate(
+            WorldModel(),
+            {
+                "theme": "issavi",
+                "level_min": 300,
+                "level_max": 500,
+                "density": "high",
+            },
+        )
         assert world.tile_count() > 0
 
     def test_city_generator_direct(self):
         cg = CityGenerator(seed=42)
-        world = cg.generate(WorldModel(), {
-            "theme": "issavi",
-            "level_min": 50,
-            "level_max": 200,
-        })
+        world = cg.generate(
+            WorldModel(),
+            {
+                "theme": "issavi",
+                "level_min": 50,
+                "level_max": 200,
+            },
+        )
         assert world.tile_count() > 0
 
     def test_dungeon_generator_direct(self):
         dg = DungeonGenerator(seed=42)
-        world = dg.generate(WorldModel(), {
-            "theme": "library",
-            "level_min": 200,
-            "level_max": 400,
-        })
+        world = dg.generate(
+            WorldModel(),
+            {
+                "theme": "library",
+                "level_min": 200,
+                "level_max": 400,
+            },
+        )
         assert world.tile_count() > 0
 
     def test_theme_generator(self):
@@ -182,6 +205,7 @@ class TestGenerators:
 # ═══════════════════════════════════════════════════════════════════════════════
 # LUA EXPORTER TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 class TestLuaExporter:
     def test_lua_export_basic(self):
@@ -248,6 +272,7 @@ class TestLuaExporter:
 # ═══════════════════════════════════════════════════════════════════════════════
 # OTBM EXPORTER TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 class TestOTBMExporter:
     def test_mandatory_export(self):
@@ -316,6 +341,7 @@ class TestOTBMExporter:
 # OTBM IMPORTER TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 class TestOTBMImporter:
     def test_import_file(self):
         # First export a world
@@ -374,6 +400,7 @@ class TestOTBMImporter:
 # PREVIEW GENERATOR TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 class TestPreviewGenerator:
     def test_preview_generation(self):
         gen = WorldGenerator(seed=42)
@@ -413,51 +440,61 @@ class TestPreviewGenerator:
 # CONFIG MANAGER TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 class TestConfigManager:
     def test_load_config(self):
         import config_manager as cm
+
         config = cm.load_config()
         assert isinstance(config, dict)
         assert "configured" in config
 
     def test_default_config(self):
         import config_manager as cm
+
         config = cm.DEFAULT_CONFIG
         assert config["configured"] is False
         assert "items_xml_path" in config
 
     def test_is_configured(self):
         import config_manager as cm
+
         assert not cm.is_configured({"configured": False})
         assert cm.is_configured({"configured": True})
 
     def test_validate_items_xml_missing(self):
         import config_manager as cm
+
         ok, msg = cm.validate_items_xml("")
         assert not ok
 
     def test_validate_tibia_path_missing(self):
         import config_manager as cm
+
         ok, msg = cm.validate_tibia_path("")
         assert not ok
 
     def test_validate_monsters_folder_missing(self):
         import config_manager as cm
+
         ok, msg = cm.validate_monsters_folder("")
         assert not ok
 
     def test_validate_npcs_folder_missing(self):
         import config_manager as cm
+
         ok, msg = cm.validate_npcs_folder("")
         assert not ok
 
     def test_validate_mounts_folder_empty(self):
         import config_manager as cm
+
         ok, msg = cm.validate_mounts_folder("")
         assert ok  # Optional
 
     def test_validate_all(self):
         import config_manager as cm
+
         config = {
             "tibia_client_path": "",
             "items_xml_path": "",
@@ -473,12 +510,15 @@ class TestConfigManager:
 # CLI TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 class TestCLI:
     def test_cli_info(self):
         import subprocess
+
         result = subprocess.run(
             [sys.executable, "cli.py", "info"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             cwd=str(PROJECT_ROOT),
         )
         assert result.returncode == 0
@@ -486,9 +526,11 @@ class TestCLI:
 
     def test_cli_help(self):
         import subprocess
+
         result = subprocess.run(
             [sys.executable, "cli.py", "--help"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             cwd=str(PROJECT_ROOT),
         )
         assert result.returncode == 0
@@ -496,10 +538,18 @@ class TestCLI:
 
     def test_cli_generate(self):
         import subprocess
+
         result = subprocess.run(
-            [sys.executable, "cli.py", "generate", "Generate Issavi hunt level 300",
-             "--output", "output/cli_test"],
-            capture_output=True, text=True,
+            [
+                sys.executable,
+                "cli.py",
+                "generate",
+                "Generate Issavi hunt level 300",
+                "--output",
+                "output/cli_test",
+            ],
+            capture_output=True,
+            text=True,
             cwd=str(PROJECT_ROOT),
             timeout=60,
         )
@@ -509,10 +559,19 @@ class TestCLI:
 
     def test_cli_export_lua(self):
         import subprocess
+
         result = subprocess.run(
-            [sys.executable, "cli.py", "export", "--format", "lua",
-             "--output", "output/cli_export_test"],
-            capture_output=True, text=True,
+            [
+                sys.executable,
+                "cli.py",
+                "export",
+                "--format",
+                "lua",
+                "--output",
+                "output/cli_export_test",
+            ],
+            capture_output=True,
+            text=True,
             cwd=str(PROJECT_ROOT),
             timeout=60,
         )
@@ -524,21 +583,26 @@ class TestCLI:
 # INSTALLER TESTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 class TestInstaller:
     def test_installer_check(self):
         import subprocess
+
         result = subprocess.run(
             [sys.executable, "installer/setup.py", "--check-only"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             cwd=str(PROJECT_ROOT),
         )
         assert result.returncode == 0
 
     def test_installer_creates_dirs(self):
         import subprocess
-        result = subprocess.run(
+
+        subprocess.run(
             [sys.executable, "installer/setup.py", "--check-only"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             cwd=str(PROJECT_ROOT),
         )
         assert Path(PROJECT_ROOT / "output").exists()
@@ -549,6 +613,7 @@ class TestInstaller:
 # ═══════════════════════════════════════════════════════════════════════════════
 # END-TO-END PIPELINE TEST
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 class TestEndToEnd:
     def test_full_pipeline(self):
@@ -589,8 +654,9 @@ class TestEndToEnd:
 
         # Step 6: Generate Preview
         preview_gen = PreviewGenerator()
-        preview_result = preview_gen.generate(
-            world, output_png="output/e2e_preview.png",
+        preview_gen.generate(
+            world,
+            output_png="output/e2e_preview.png",
         )
         t6 = time.time()
 
@@ -623,7 +689,7 @@ class TestEndToEnd:
         with open("output/e2e_report.json", "w") as f:
             json.dump(e2e_report, f, indent=2)
 
-        print(f"\n  E2E Pipeline Summary:")
+        print("\n  E2E Pipeline Summary:")
         print(f"    World: {world.tile_count()} tiles")
         print(f"    Lua: {len(lua_code)} bytes")
         print(f"    OTBM: {report['otbm_bytes']} bytes, {report['tiles']} tiles")
@@ -637,4 +703,5 @@ class TestEndToEnd:
 
 if __name__ == "__main__":
     import pytest
+
     sys.exit(pytest.main([__file__, "-v", "--tb=short"]))

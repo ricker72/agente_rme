@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 
 @dataclass
@@ -14,6 +14,7 @@ class Spawn:
       - respawn: Respawn time in seconds (default 60).
       - radius: Spawn radius in tiles (default 5).
     """
+
     monster: str
     respawn: int = 60
     radius: int = 5

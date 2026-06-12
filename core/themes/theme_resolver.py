@@ -35,13 +35,23 @@ class ThemeResolver:
             grounds=[415, 393, 421, 103, 102],
             walls=[1495, 1496, 1497, 112],
             decorations=[2153, 2117, 1803, 1700, 1703],
-            monsters=["Frazzlemaw", "Sphinx", "Cloak Of Terror", "Crypt Warden", "Priestess"],
+            monsters=[
+                "Frazzlemaw",
+                "Sphinx",
+                "Cloak Of Terror",
+                "Crypt Warden",
+                "Priestess",
+            ],
             difficulty="medium",
             metadata={
                 "biome": "desert",
                 "description": "Ancient Egyptian-inspired desert ruins with sandstone temples",
                 "level_range": [250, 600],
-                "colors": {"primary": "#D4A574", "secondary": "#E8D5B7", "accent": "#C49000"},
+                "colors": {
+                    "primary": "#D4A574",
+                    "secondary": "#E8D5B7",
+                    "accent": "#C49000",
+                },
             },
         ),
         "roshamuul": ThemeData(
@@ -55,7 +65,11 @@ class ThemeResolver:
                 "biome": "nightmare",
                 "description": "Dark nightmare realm with twisted stone formations",
                 "level_range": [300, 700],
-                "colors": {"primary": "#3A3A4A", "secondary": "#5A4A6A", "accent": "#7A0090"},
+                "colors": {
+                    "primary": "#3A3A4A",
+                    "secondary": "#5A4A6A",
+                    "accent": "#7A0090",
+                },
             },
         ),
     }
@@ -64,7 +78,9 @@ class ThemeResolver:
         if templates_dir:
             self.templates_dir = Path(templates_dir)
         else:
-            self.templates_dir = Path(__file__).resolve().parent.parent.parent / "templates"
+            self.templates_dir = (
+                Path(__file__).resolve().parent.parent.parent / "templates"
+            )
 
     def resolve(self, theme_name: str) -> ThemeData:
         """
@@ -118,10 +134,14 @@ class ThemeResolver:
             merged.walls.extend([w for w in theme.walls if w not in seen_walls])
             seen_walls.update(theme.walls)
 
-            merged.decorations.extend([d for d in theme.decorations if d not in seen_decorations])
+            merged.decorations.extend(
+                [d for d in theme.decorations if d not in seen_decorations]
+            )
             seen_decorations.update(theme.decorations)
 
-            merged.monsters.extend([m for m in theme.monsters if m not in seen_monsters])
+            merged.monsters.extend(
+                [m for m in theme.monsters if m not in seen_monsters]
+            )
             seen_monsters.update(theme.monsters)
 
         # Merge metadata
@@ -153,6 +173,10 @@ class ThemeResolver:
             walls=data.get("walls", []),
             decorations=data.get("decorations", []),
             monsters=data.get("monsters", []),
-            difficulty=data.get("metadata", {}).get("difficulty", "medium") if isinstance(data.get("metadata"), dict) else "medium",
+            difficulty=(
+                data.get("metadata", {}).get("difficulty", "medium")
+                if isinstance(data.get("metadata"), dict)
+                else "medium"
+            ),
             metadata=data.get("metadata", {}),
         )

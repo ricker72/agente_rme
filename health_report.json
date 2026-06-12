@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-09T05:50:50.071634+00:00",
+  "timestamp": "2026-06-09T09:29:36.108948+00:00",
   "overall_status": "healthy",
   "summary": {
     "healthy": 11,
@@ -17,10 +17,10 @@
         "platform": "win32",
         "psutil": "unavailable",
         "disk_total_gb": 474.84,
-        "disk_free_gb": 288.98,
-        "disk_percent": 39.14
+        "disk_free_gb": 287.04,
+        "disk_percent": 39.55
       },
-      "timestamp": "2026-06-09T05:50:49.912579+00:00"
+      "timestamp": "2026-06-09T09:29:35.844352+00:00"
     },
     {
       "name": "generators",
@@ -28,7 +28,7 @@
       "status": "healthy",
       "message": "import ok: core.generators",
       "details": {},
-      "timestamp": "2026-06-09T05:50:49.927971+00:00"
+      "timestamp": "2026-06-09T09:29:35.859964+00:00"
     },
     {
       "name": "exporters",
@@ -36,7 +36,7 @@
       "status": "healthy",
       "message": "import ok: core.exporters",
       "details": {},
-      "timestamp": "2026-06-09T05:50:49.937527+00:00"
+      "timestamp": "2026-06-09T09:29:35.871098+00:00"
     },
     {
       "name": "otbm",
@@ -44,7 +44,7 @@
       "status": "healthy",
       "message": "import ok: core.otbm",
       "details": {},
-      "timestamp": "2026-06-09T05:50:49.937557+00:00"
+      "timestamp": "2026-06-09T09:29:35.871133+00:00"
     },
     {
       "name": "preview",
@@ -52,7 +52,7 @@
       "status": "healthy",
       "message": "import ok: core.preview",
       "details": {},
-      "timestamp": "2026-06-09T05:50:49.937568+00:00"
+      "timestamp": "2026-06-09T09:29:35.871146+00:00"
     },
     {
       "name": "knowledge",
@@ -60,7 +60,7 @@
       "status": "healthy",
       "message": "import ok: core.knowledge",
       "details": {},
-      "timestamp": "2026-06-09T05:50:49.937578+00:00"
+      "timestamp": "2026-06-09T09:29:35.871159+00:00"
     },
     {
       "name": "critic",
@@ -68,7 +68,7 @@
       "status": "healthy",
       "message": "import ok: core.critic",
       "details": {},
-      "timestamp": "2026-06-09T05:50:49.987483+00:00"
+      "timestamp": "2026-06-09T09:29:35.932042+00:00"
     },
     {
       "name": "blueprint_intelligence",
@@ -76,7 +76,7 @@
       "status": "healthy",
       "message": "import ok: core.blueprint_intelligence",
       "details": {},
-      "timestamp": "2026-06-09T05:50:50.049248+00:00"
+      "timestamp": "2026-06-09T09:29:36.072963+00:00"
     },
     {
       "name": "pipeline",
@@ -86,7 +86,7 @@
       "details": {
         "tiles": 64
       },
-      "timestamp": "2026-06-09T05:50:50.058722+00:00"
+      "timestamp": "2026-06-09T09:29:36.087192+00:00"
     },
     {
       "name": "knowledge",
@@ -97,7 +97,7 @@
         "path": "output\\knowledge_dataset.json",
         "entries": 0
       },
-      "timestamp": "2026-06-09T05:50:50.068485+00:00"
+      "timestamp": "2026-06-09T09:29:36.105932+00:00"
     },
     {
       "name": "blueprints",
@@ -107,7 +107,7 @@
       "details": {
         "count": 8
       },
-      "timestamp": "2026-06-09T05:50:50.071586+00:00"
+      "timestamp": "2026-06-09T09:29:36.108891+00:00"
     }
   ]
 }

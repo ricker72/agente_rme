@@ -86,14 +86,16 @@ class BlueprintRecommender:
         for bp in relevant:
             embedding = self.embedding_engine.embed(bp)
             score = self._calc_relevance_score(bp, embedding, query_type)
-            scored.append({
-                "recommendation": f"Use {bp.name} {query_type} pattern",
-                "blueprint_name": bp.name,
-                "category": bp.category,
-                "theme": bp.theme,
-                "confidence": round(score, 2),
-                "source": "pattern_library",
-            })
+            scored.append(
+                {
+                    "recommendation": f"Use {bp.name} {query_type} pattern",
+                    "blueprint_name": bp.name,
+                    "category": bp.category,
+                    "theme": bp.theme,
+                    "confidence": round(score, 2),
+                    "source": "pattern_library",
+                }
+            )
 
         scored.sort(key=lambda x: x["confidence"], reverse=True)
         return scored[:top_k]
@@ -128,14 +130,16 @@ class BlueprintRecommender:
                     score += 0.3
 
             if score > 0:
-                scored.append({
-                    "recommendation": f"Use {bp.name} layout",
-                    "blueprint_name": bp.name,
-                    "category": bp.category,
-                    "theme": bp.theme,
-                    "confidence": round(min(1.0, score), 2),
-                    "source": "layout_library",
-                })
+                scored.append(
+                    {
+                        "recommendation": f"Use {bp.name} layout",
+                        "blueprint_name": bp.name,
+                        "category": bp.category,
+                        "theme": bp.theme,
+                        "confidence": round(min(1.0, score), 2),
+                        "source": "layout_library",
+                    }
+                )
 
         scored.sort(key=lambda x: x["confidence"], reverse=True)
         return scored[:top_k]
@@ -179,35 +183,41 @@ class BlueprintRecommender:
             # Boost high-quality blueprints
             if embedding.critic_score > 0.7:
                 base_score += 0.2
-                recommendations.append({
-                    "recommendation": f"Use {bp.name} design pattern (high critic score)",
-                    "blueprint_name": bp.name,
-                    "category": bp.category,
-                    "theme": bp.theme,
-                    "confidence": round(base_score, 2),
-                    "source": "quality_recommendation",
-                })
+                recommendations.append(
+                    {
+                        "recommendation": f"Use {bp.name} design pattern (high critic score)",
+                        "blueprint_name": bp.name,
+                        "category": bp.category,
+                        "theme": bp.theme,
+                        "confidence": round(base_score, 2),
+                        "source": "quality_recommendation",
+                    }
+                )
 
             if embedding.playtest_score > 0.7:
                 base_score += 0.1
-                recommendations.append({
-                    "recommendation": f"Use {bp.name} layout (high playtest score)",
-                    "blueprint_name": bp.name,
-                    "category": bp.category,
-                    "theme": bp.theme,
-                    "confidence": round(base_score, 2),
-                    "source": "playtest_recommendation",
-                })
+                recommendations.append(
+                    {
+                        "recommendation": f"Use {bp.name} layout (high playtest score)",
+                        "blueprint_name": bp.name,
+                        "category": bp.category,
+                        "theme": bp.theme,
+                        "confidence": round(base_score, 2),
+                        "source": "playtest_recommendation",
+                    }
+                )
 
             if bp.metadata.hybrid:
-                recommendations.append({
-                    "recommendation": f"Consider {bp.name} hybrid design",
-                    "blueprint_name": bp.name,
-                    "category": bp.category,
-                    "theme": bp.theme,
-                    "confidence": 0.85,
-                    "source": "hybrid_recommendation",
-                })
+                recommendations.append(
+                    {
+                        "recommendation": f"Consider {bp.name} hybrid design",
+                        "blueprint_name": bp.name,
+                        "category": bp.category,
+                        "theme": bp.theme,
+                        "confidence": 0.85,
+                        "source": "hybrid_recommendation",
+                    }
+                )
 
         recommendations.sort(key=lambda x: x["confidence"], reverse=True)
         return recommendations[:top_k]

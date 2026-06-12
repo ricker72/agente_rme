@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 @dataclass
@@ -17,6 +17,7 @@ class Structure:
       - tiles: List of (x, y) offsets relative to the structure origin.
                Used for collision detection and removal.
     """
+
     name: str
     category: str
     x: int
@@ -38,8 +39,9 @@ class Structure:
 
     def contains(self, wx: int, wy: int) -> bool:
         """Check if a world coordinate falls within this structure."""
-        return (self.x <= wx < self.x + self.width and
-                self.y <= wy < self.y + self.height)
+        return (
+            self.x <= wx < self.x + self.width and self.y <= wy < self.y + self.height
+        )
 
     # ------------------------------------------------------------------
     # Serialization

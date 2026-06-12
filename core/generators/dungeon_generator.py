@@ -121,9 +121,7 @@ class DungeonGenerator(BaseGenerator):
         self._connect_rooms(world, theme_def, rooms, z)
 
         # 4. Generate boss room
-        boss_room = self._generate_boss_room(
-            world, theme_def, ox, oy, width, height, z
-        )
+        boss_room = self._generate_boss_room(world, theme_def, ox, oy, width, height, z)
 
         # 5. Generate exit near boss room
         self._generate_exit(world, theme_def, boss_room, z)
@@ -154,6 +152,7 @@ class DungeonGenerator(BaseGenerator):
 
         # 8. Validate
         from core.world import WorldValidator
+
         validator = WorldValidator()
         result = validator.validate(world)
         if not result.passed:
@@ -173,7 +172,8 @@ class DungeonGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
+        ox: int,
+        oy: int,
         width: int,
         z: int,
     ) -> Tuple[int, int]:
@@ -211,8 +211,10 @@ class DungeonGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
         num_rooms: int,
     ) -> List[Dict[str, int]]:
@@ -238,10 +240,12 @@ class DungeonGenerator(BaseGenerator):
             # Check for collisions with existing rooms
             collision = False
             for existing in rooms:
-                if not (rx + rw + padding < existing["x"] or
-                        rx > existing["x"] + existing["w"] + padding or
-                        ry + rh + padding < existing["y"] or
-                        ry > existing["y"] + existing["h"] + padding):
+                if not (
+                    rx + rw + padding < existing["x"]
+                    or rx > existing["x"] + existing["w"] + padding
+                    or ry + rh + padding < existing["y"]
+                    or ry > existing["y"] + existing["h"] + padding
+                ):
                     collision = True
                     break
 
@@ -300,21 +304,33 @@ class DungeonGenerator(BaseGenerator):
 
             # L-shaped corridor
             self._carve_corridor(
-                world, room_a["cx"], room_a["cy"],
-                room_b["cx"], room_a["cy"],
-                z, ground_id, "corridor_h"
+                world,
+                room_a["cx"],
+                room_a["cy"],
+                room_b["cx"],
+                room_a["cy"],
+                z,
+                ground_id,
+                "corridor_h",
             )
             self._carve_corridor(
-                world, room_b["cx"], room_a["cy"],
-                room_b["cx"], room_b["cy"],
-                z, ground_id, "corridor_v"
+                world,
+                room_b["cx"],
+                room_a["cy"],
+                room_b["cx"],
+                room_b["cy"],
+                z,
+                ground_id,
+                "corridor_v",
             )
 
     def _carve_corridor(
         self,
         world: WorldModel,
-        x1: int, y1: int,
-        x2: int, y2: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
         z: int,
         ground_id: int,
         zone: str,
@@ -341,8 +357,10 @@ class DungeonGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
     ) -> Dict[str, int]:
         """Generate a large boss room at the far end of the dungeon."""
@@ -363,7 +381,8 @@ class DungeonGenerator(BaseGenerator):
         boss_tile = world.get_tile(boss_cx, boss_cy, z)
         if boss_tile:
             boss_monsters = [
-                m for m in theme_def.monsters
+                m
+                for m in theme_def.monsters
                 if m in ["Frazzlemaw", "Guzzlemaw", "Cloak Of Terror", "Vexclaw"]
             ] or (theme_def.monsters[:1] if theme_def.monsters else ["Demon"])
             boss_tile.spawn = Spawn(
@@ -385,8 +404,14 @@ class DungeonGenerator(BaseGenerator):
         )
         world.add_structure(structure)
 
-        return {"x": bx, "y": by, "w": boss_size, "h": boss_size,
-                "cx": boss_cx, "cy": boss_cy}
+        return {
+            "x": bx,
+            "y": by,
+            "w": boss_size,
+            "h": boss_size,
+            "cx": boss_cx,
+            "cy": boss_cy,
+        }
 
     def _generate_exit(
         self,

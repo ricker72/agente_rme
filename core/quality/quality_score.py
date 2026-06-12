@@ -71,9 +71,13 @@ class QualityScore:
 
     def _score_progression(self, progression_report: Dict[str, Any]) -> int:
         score = 100
-        if progression_report.get("quests", 0) < progression_report.get("recommended_quests", 3):
+        if progression_report.get("quests", 0) < progression_report.get(
+            "recommended_quests", 3
+        ):
             score -= 18
-        if progression_report.get("bosses", 0) < progression_report.get("recommended_bosses", 2):
+        if progression_report.get("bosses", 0) < progression_report.get(
+            "recommended_bosses", 2
+        ):
             score -= 20
         if progression_report.get("tier_count", 0) < 2:
             score -= 10

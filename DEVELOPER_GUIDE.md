@@ -40,7 +40,7 @@ p.add_argument("--foo", default="bar")
 p.set_defaults(func=cmd_mycommand)
 ```
 
-3. Optional: support `--json` by emitting `json.dumps(payload, indent=2)` when `getattr(args, "json", False)` is true.
+1. Optional: support `--json` by emitting `json.dumps(payload, indent=2)` when `getattr(args, "json", False)` is true.
 
 ## Adding a new health check
 

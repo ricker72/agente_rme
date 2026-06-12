@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 try:
     from PIL import Image, ImageDraw, ImageFont
+
     HAS_PIL = True
 except ImportError:
     HAS_PIL = False
@@ -24,7 +25,7 @@ from . import palette
 def compute_bounds(tiles) -> Optional[Dict[str, int]]:
     """
     Calcula el bounding box de un conjunto de tiles.
-    
+
     Returns:
         Dict con min_x, max_x, min_y, max_y, min_z, max_z
         o None si no hay tiles.
@@ -45,9 +46,12 @@ def compute_bounds(tiles) -> Optional[Dict[str, int]]:
         return None
 
     return {
-        "min_x": min(xs), "max_x": max(xs),
-        "min_y": min(ys), "max_y": max(ys),
-        "min_z": min(zs), "max_z": max(zs),
+        "min_x": min(xs),
+        "max_x": max(xs),
+        "min_y": min(ys),
+        "max_y": max(ys),
+        "min_z": min(zs),
+        "max_z": max(zs),
     }
 
 

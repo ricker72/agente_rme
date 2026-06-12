@@ -23,7 +23,9 @@ class VisualAnalyzer:
             1
             for tile in tiles
             if "wall" in getattr(tile, "ground", "").lower()
-            or any("wall" in str(deco).lower() for deco in getattr(tile, "decorations", []))
+            or any(
+                "wall" in str(deco).lower() for deco in getattr(tile, "decorations", [])
+            )
         )
         empty_ratio = self._compute_empty_space_ratio(tiles)
         overdecorated_zones = [
@@ -34,7 +36,8 @@ class VisualAnalyzer:
                 "decorations": len(getattr(tile, "decorations", [])),
             }
             for tile in tiles
-            if len(getattr(tile, "decorations", [])) > 3 or len(getattr(tile, "items", [])) > 4
+            if len(getattr(tile, "decorations", [])) > 3
+            or len(getattr(tile, "items", [])) > 4
         ]
 
         return {

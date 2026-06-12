@@ -5,7 +5,6 @@ HuntAnalyzer — analyzes hunt zones for farming flow, rotation, and respawn.
 from __future__ import annotations
 
 import logging
-from collections import Counter, defaultdict
 from typing import Any, Dict, List, Tuple
 
 from core.world.world_model import WorldModel
@@ -33,16 +32,18 @@ class HuntAnalyzer:
     CATEGORY = "hunt"
     HUNT_KEYWORDS = ("hunt", "spawn", "farm", "cave", "-")
 
-    def __init__(self,
-                 min_hunt_tiles: int = 10,
-                 optimal_respawn_seconds: int = 60):
+    def __init__(self, min_hunt_tiles: int = 10, optimal_respawn_seconds: int = 60):
         self.min_hunt_tiles = min_hunt_tiles
         self.optimal_respawn_seconds = optimal_respawn_seconds
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snapshots = build_snapshots(world)
@@ -60,7 +61,9 @@ class HuntAnalyzer:
         if not hunts:
             return {
                 "category": self.CATEGORY,
-                "score": CriticScore(self.CATEGORY, 50.0, notes="No hunt zones identified"),
+                "score": CriticScore(
+                    self.CATEGORY, 50.0, notes="No hunt zones identified"
+                ),
                 "issues": [],
                 "recommendations": [
                     CriticRecommendation(
@@ -104,13 +107,15 @@ class HuntAnalyzer:
                 for j in range(i + 1, len(centroids)):
                     d = manhattan(centroids[i], centroids[j])
                     if d > 80:
-                        issues.append(CriticIssue(
-                            issue_type=IssueType.HUNT_GAP,
-                            severity=IssueSeverity.WARNING,
-                            category=self.CATEGORY,
-                            message=f"Hunts {i} and {j} are {d} tiles apart — consider adding a closer hunt",
-                            details={"distance": d},
-                        ))
+                        issues.append(
+                            CriticIssue(
+                                issue_type=IssueType.HUNT_GAP,
+                                severity=IssueSeverity.WARNING,
+                                category=self.CATEGORY,
+                                message=f"Hunts {i} and {j} are {d} tiles apart — consider adding a closer hunt",
+                                details={"distance": d},
+                            )
+                        )
 
         return {
             "category": self.CATEGORY,
@@ -131,29 +136,38 @@ class HuntAnalyzer:
         by_zone = snapshots_by_zone(snapshots)
         for name, items in by_zone.items():
             if any(kw in name.lower() for kw in self.HUNT_KEYWORDS):
-                hunts.append({
-                    "name": name,
-                    "snapshots": items,
-                    "source": "zone_name",
-                })
+                hunts.append(
+                    {
+                        "name": name,
+                        "snapshots": items,
+                        "source": "zone_name",
+                    }
+                )
 
         # Second: if no explicit hunts, derive from regions
         if not hunts:
             for region in world.regions:
                 if any(kw in region.name.lower() for kw in self.HUNT_KEYWORDS):
                     zone_snaps = by_zone.get(region.name, [])
-                    hunts.append({
-                        "name": region.name,
-                        "snapshots": zone_snaps,
-                        "source": "region_name",
-                    })
+                    hunts.append(
+                        {
+                            "name": region.name,
+                            "snapshots": zone_snaps,
+                            "source": "region_name",
+                        }
+                    )
 
         return hunts
 
-    def _analyze_hunt(self, hunt: Dict[str, Any]) -> Tuple[float, List, List, Dict[str, Any]]:
+    def _analyze_hunt(
+        self, hunt: Dict[str, Any]
+    ) -> Tuple[float, List, List, Dict[str, Any]]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         snaps = hunt["snapshots"]
@@ -161,12 +175,17 @@ class HuntAnalyzer:
         spawns = [s for s in snaps if s.has_spawn]
         tiles = snaps
         if len(tiles) < self.min_hunt_tiles:
-            return 50.0, [], [], {
-                "name": name,
-                "size": len(tiles),
-                "spawns": len(spawns),
-                "centroid": (0, 0),
-            }
+            return (
+                50.0,
+                [],
+                [],
+                {
+                    "name": name,
+                    "size": len(tiles),
+                    "spawns": len(spawns),
+                    "centroid": (0, 0),
+                },
+            )
 
         spawn_density = safe_ratio(len(spawns), len(tiles))
         # Quality components
@@ -186,7 +205,6 @@ class HuntAnalyzer:
         diversity = min(1.0, len(monster_types) / 3.0) if monster_types else 0.5
 
         # 3. respawn health — average respawn time vs target
-        respawns: List[int] = []
         for s in snaps:
             if s.has_spawn and s.zone:
                 # Use zone as proxy; we don't have direct respawn in snapshots
@@ -228,30 +246,39 @@ class HuntAnalyzer:
         recs: List = []
 
         if spawn_density < 0.03:
-            issues.append(CriticIssue(
-                issue_type=IssueType.LOW_SPAWN_DENSITY,
-                severity=IssueSeverity.WARNING,
-                category=self.CATEGORY,
-                location=name,
-                message=f"Hunt '{name}' has low spawn density ({spawn_density*100:.1f}%)",
-            ))
-            recs.append(CriticRecommendation(
-                title=f"Increase spawn density in {name}",
-                description=f"Hunt '{name}' has only {spawn_density*100:.1f}% spawn coverage. Add more spawns.",
-                category=self.CATEGORY,
-                priority=RecommendationPriority.MEDIUM,
-                target_location=name,
-            ))
+            issues.append(
+                CriticIssue(
+                    issue_type=IssueType.LOW_SPAWN_DENSITY,
+                    severity=IssueSeverity.WARNING,
+                    category=self.CATEGORY,
+                    location=name,
+                    message=f"Hunt '{name}' has low spawn density ({spawn_density * 100:.1f}%)",
+                )
+            )
+            recs.append(
+                CriticRecommendation(
+                    title=f"Increase spawn density in {name}",
+                    description=f"Hunt '{name}' has only {spawn_density * 100:.1f}% spawn coverage. Add more spawns.",
+                    category=self.CATEGORY,
+                    priority=RecommendationPriority.MEDIUM,
+                    target_location=name,
+                )
+            )
 
         # Centroid
         cx = sum(s.x for s in tiles) / len(tiles)
         cy = sum(s.y for s in tiles) / len(tiles)
 
-        return score, issues, recs, {
-            "name": name,
-            "size": len(tiles),
-            "spawns": len(spawns),
-            "spawn_density": round(spawn_density, 4),
-            "diversity": round(diversity, 2),
-            "centroid": (int(cx), int(cy)),
-        }
+        return (
+            score,
+            issues,
+            recs,
+            {
+                "name": name,
+                "size": len(tiles),
+                "spawns": len(spawns),
+                "spawn_density": round(spawn_density, 4),
+                "diversity": round(diversity, 2),
+                "centroid": (int(cx), int(cy)),
+            },
+        )

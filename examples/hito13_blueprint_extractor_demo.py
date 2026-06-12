@@ -15,8 +15,6 @@ Ejemplos incluidos:
 
 from __future__ import annotations
 
-import json
-import os
 import sys
 from pathlib import Path
 
@@ -26,12 +24,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core.blueprints.theme_classifier import ThemeClassifier
 from core.blueprints.pattern_detector import PatternDetector
 from core.blueprints.structure_detector import StructureDetector
-from core.blueprints.blueprint_extractor import BlueprintExtractor, ExtractionResult
-
+from core.blueprints.blueprint_extractor import BlueprintExtractor
 
 # ═══════════════════════════════════════════════════════════════════════
 # DATOS DE EJEMPLO
 # ═══════════════════════════════════════════════════════════════════════
+
 
 def make_issavi_temple_data():
     """Genera datos simulados de un templo issavi."""
@@ -52,12 +50,16 @@ def make_issavi_temple_data():
             if (x % 10 == 0 and y % 10 == 0) and x > 0 and x < 49 and y > 0 and y < 49:
                 items.append({"item_id": 1001})  # pillar
 
-            tiles.append({
-                "x": x, "y": y, "z": 7,
-                "ground": ground,
-                "items": items,
-                "all_items": [],
-            })
+            tiles.append(
+                {
+                    "x": x,
+                    "y": y,
+                    "z": 7,
+                    "ground": ground,
+                    "items": items,
+                    "all_items": [],
+                }
+            )
 
     return {
         "version": 3,
@@ -77,8 +79,12 @@ def make_issavi_temple_data():
             {
                 "name": "Issavi Temple",
                 "town_id": 1,
-                "temple_x": 25, "temple_y": 25, "temple_z": 7,
-                "x": 25, "y": 25, "z": 7,
+                "temple_x": 25,
+                "temple_y": 25,
+                "temple_z": 7,
+                "x": 25,
+                "y": 25,
+                "z": 7,
             }
         ],
         "waypoints": [
@@ -104,12 +110,16 @@ def make_roshamuul_dungeon_data():
             if x == 0 or x == 39 or y == 0 or y == 29:
                 items.append({"item_id": 2104})  # roshamuul wall
 
-            tiles.append({
-                "x": x, "y": y, "z": 8,
-                "ground": ground,
-                "items": items,
-                "all_items": [],
-            })
+            tiles.append(
+                {
+                    "x": x,
+                    "y": y,
+                    "z": 8,
+                    "ground": ground,
+                    "items": items,
+                    "all_items": [],
+                }
+            )
 
     return {
         "version": 3,
@@ -149,12 +159,16 @@ def make_city_data():
             items = []
             if x % 5 == 0 or y % 5 == 0:
                 items.append({"item_id": 108})  # city wall
-            tiles.append({
-                "x": x, "y": y, "z": 7,
-                "ground": ground,
-                "items": items,
-                "all_items": [],
-            })
+            tiles.append(
+                {
+                    "x": x,
+                    "y": y,
+                    "z": 7,
+                    "ground": ground,
+                    "items": items,
+                    "all_items": [],
+                }
+            )
 
     return {
         "version": 3,
@@ -168,10 +182,46 @@ def make_city_data():
         "tiles": tiles,
         "spawns": [],
         "cities": [
-            {"name": "City Hall", "town_id": 1, "temple_x": 15, "temple_y": 15, "temple_z": 7, "x": 15, "y": 15, "z": 7},
-            {"name": "Market", "town_id": 2, "temple_x": 10, "temple_y": 5, "temple_z": 7, "x": 10, "y": 5, "z": 7},
-            {"name": "Depot", "town_id": 3, "temple_x": 20, "temple_y": 5, "temple_z": 7, "x": 20, "y": 5, "z": 7},
-            {"name": "Temple", "town_id": 4, "temple_x": 15, "temple_y": 10, "temple_z": 7, "x": 15, "y": 10, "z": 7},
+            {
+                "name": "City Hall",
+                "town_id": 1,
+                "temple_x": 15,
+                "temple_y": 15,
+                "temple_z": 7,
+                "x": 15,
+                "y": 15,
+                "z": 7,
+            },
+            {
+                "name": "Market",
+                "town_id": 2,
+                "temple_x": 10,
+                "temple_y": 5,
+                "temple_z": 7,
+                "x": 10,
+                "y": 5,
+                "z": 7,
+            },
+            {
+                "name": "Depot",
+                "town_id": 3,
+                "temple_x": 20,
+                "temple_y": 5,
+                "temple_z": 7,
+                "x": 20,
+                "y": 5,
+                "z": 7,
+            },
+            {
+                "name": "Temple",
+                "town_id": 4,
+                "temple_x": 15,
+                "temple_y": 10,
+                "temple_z": 7,
+                "x": 15,
+                "y": 10,
+                "z": 7,
+            },
         ],
         "waypoints": [
             {"name": "city_gate", "x": 0, "y": 15, "z": 7},
@@ -188,6 +238,7 @@ def make_city_data():
 # DEMOS
 # ═══════════════════════════════════════════════════════════════════════
 
+
 def demo_1_theme_classifier():
     """Demo 1: Clasificacion de temas."""
     print("=" * 60)
@@ -199,24 +250,32 @@ def demo_1_theme_classifier():
     # Templo issavi (sandstone)
     issavi_tiles = {"sandstone_floor": 2000, "sandstone": 500}
     result = classifier.classify(issavi_tiles)
-    print(f"\nIssavi Tiles → {result['primary_theme']} (confidence: {result['confidence']})")
+    print(
+        f"\nIssavi Tiles → {result['primary_theme']} (confidence: {result['confidence']})"
+    )
     print(f"  Scores: {result['theme_scores']}")
     print(f"  Secondary: {result['secondary_themes']}")
 
     # Dungeon (mossy stone)
     dungeon_tiles = {"mossy_stone": 800, "dungeon_floor": 400}
     result = classifier.classify(dungeon_tiles)
-    print(f"\nDungeon Tiles → {result['primary_theme']} (confidence: {result['confidence']})")
+    print(
+        f"\nDungeon Tiles → {result['primary_theme']} (confidence: {result['confidence']})"
+    )
 
     # Hunt con spawns
     hunt_tiles = {"sandstone_floor": 300}
     hunt_spawns = [
-        {"monster": "dragon"}, {"monster": "dragon_lord"},
-        {"monster": "demon"}, {"monster": "hydra"},
+        {"monster": "dragon"},
+        {"monster": "dragon_lord"},
+        {"monster": "demon"},
+        {"monster": "hydra"},
         {"monster": "behemoth"},
     ]
     result = classifier.classify(hunt_tiles, spawns=hunt_spawns)
-    print(f"\nHunt Area → {result['primary_theme']} (is_hunt: {result['is_hunt_area']})")
+    print(
+        f"\nHunt Area → {result['primary_theme']} (is_hunt: {result['is_hunt_area']})"
+    )
 
     # Ciudad
     city_tiles = {"polished_stone": 600, "cobblestone": 200}
@@ -225,8 +284,12 @@ def demo_1_theme_classifier():
     print(f"\nCity Tiles → {result['primary_theme']} (is_urban: {result['is_urban']})")
 
     # Quick classify
-    print(f"\nQuick classify 'issavi_temple' → {classifier.quick_classify('issavi_temple')}")
-    print(f"Quick classify 'roshamuul_dungeon' → {classifier.quick_classify('roshamuul_dungeon')}")
+    print(
+        f"\nQuick classify 'issavi_temple' → {classifier.quick_classify('issavi_temple')}"
+    )
+    print(
+        f"Quick classify 'roshamuul_dungeon' → {classifier.quick_classify('roshamuul_dungeon')}"
+    )
     print()
 
 
@@ -247,11 +310,15 @@ def demo_2_pattern_detector():
                 items.append({"item_id": 101})  # wall
             if (x == 3 or x == 4) and (y == 0 or y == 7):
                 items.append({"item_id": 1210})  # door
-            tiles.append({
-                "x": x, "y": y, "z": 7,
-                "ground": 415,
-                "items": items,
-            })
+            tiles.append(
+                {
+                    "x": x,
+                    "y": y,
+                    "z": 7,
+                    "ground": 415,
+                    "items": items,
+                }
+            )
 
     patterns = detector.detect(tiles, {}, [])
     print(f"\nTiles analizados: {len(tiles)}")
@@ -275,11 +342,15 @@ def demo_2_pattern_detector():
     repeating_tiles = []
     for i in range(30):
         items = [{"item_id": 101}] if i % 3 == 0 else []
-        repeating_tiles.append({
-            "x": i, "y": 0, "z": 7,
-            "ground": 415,
-            "items": items,
-        })
+        repeating_tiles.append(
+            {
+                "x": i,
+                "y": 0,
+                "z": 7,
+                "ground": 415,
+                "items": items,
+            }
+        )
     repeating = detector.find_repeating_patterns(repeating_tiles, min_repetitions=3)
     print(f"\nPatrones repetitivos encontrados: {len(repeating)}")
     for r in repeating[:5]:
@@ -303,9 +374,15 @@ def demo_3_structure_detector():
             items = []
             if x == 0 or x == 19 or y == 0 or y == 19:
                 items.append({"item_id": 1000})
-            tiles.append({
-                "x": x, "y": y, "z": 7, "ground": ground, "items": items,
-            })
+            tiles.append(
+                {
+                    "x": x,
+                    "y": y,
+                    "z": 7,
+                    "ground": ground,
+                    "items": items,
+                }
+            )
 
     spawns = [
         {"monster": "dragon", "x": 5, "y": 5},
@@ -319,8 +396,10 @@ def demo_3_structure_detector():
     ]
 
     structures = detector.detect(
-        tiles=tiles, items={},
-        spawns=spawns, houses=houses,
+        tiles=tiles,
+        items={},
+        spawns=spawns,
+        houses=houses,
         waypoints=waypoints,
         map_size={"width": 20, "height": 20},
     )
@@ -340,7 +419,7 @@ def demo_3_structure_detector():
     hierarchy = [s for s in structures if s.structure_type == "hierarchy"]
     if hierarchy:
         h = hierarchy[0]
-        print(f"\nJerarquia estructural:")
+        print("\nJerarquia estructural:")
         print(f"  Niveles: {h.properties.get('levels')}")
         print(f"  Resumen: {h.properties.get('summary')}")
     print()
@@ -363,13 +442,13 @@ def demo_4_blueprint_extractor_issavi():
     if result.errors:
         print(f"  Errors: {result.errors}")
 
-    print(f"\nStats:")
+    print("\nStats:")
     print(f"  Tiles: {result.stats.get('tile_count')}")
     print(f"  Spawns: {result.stats.get('spawn_count')}")
     print(f"  Cities: {result.stats.get('city_count')}")
     print(f"  Waypoints: {result.stats.get('waypoint_count')}")
 
-    print(f"\nTheme:")
+    print("\nTheme:")
     print(f"  Primary: {result.theme.get('primary_theme')}")
     print(f"  Confidence: {result.theme.get('confidence')}")
     print(f"  Secondary: {result.theme.get('secondary_themes')}")
@@ -386,7 +465,7 @@ def demo_4_blueprint_extractor_issavi():
 
     if result.blueprint:
         bp = result.blueprint
-        print(f"\nBlueprint:")
+        print("\nBlueprint:")
         print(f"  Name: {bp.name}")
         print(f"  Theme: {bp.theme}")
         print(f"  Category: {bp.category}")
@@ -395,8 +474,10 @@ def demo_4_blueprint_extractor_issavi():
         print(f"  Tiles: {len(bp.tiles)}")
         print(f"  Rooms: {len(bp.rooms)}")
         print(f"  Zones: {len(bp.zones)}")
-        print(f"  Metadata: style={bp.metadata.style}, era={bp.metadata.era}, "
-              f"difficulty={bp.metadata.difficulty}")
+        print(
+            f"  Metadata: style={bp.metadata.style}, era={bp.metadata.era}, "
+            f"difficulty={bp.metadata.difficulty}"
+        )
         print(f"  Tags: {bp.metadata.tags}")
 
     if result.saved_path:
@@ -420,9 +501,7 @@ def demo_5_batch_extraction():
 
     results = []
     for name, data in datasets:
-        result = extractor.extract_from_world_dict(
-            data, source_name=name, save=True
-        )
+        result = extractor.extract_from_world_dict(data, source_name=name, save=True)
         results.append(result)
 
         status = "✓" if result.success else "✗"
@@ -432,7 +511,7 @@ def demo_5_batch_extraction():
         print(f"  {status} {name:25s} → {theme:12s} ({confidence:.2f}) | {bp_name}")
 
     # Listar blueprints guardados
-    print(f"\nBlueprints guardados:")
+    print("\nBlueprints guardados:")
     for name in extractor.list_blueprints():
         print(f"  - {name}")
     print()
@@ -459,8 +538,10 @@ def demo_6_theme_classification_deep():
             "tiles": {"roshamuul_floor": 1200, "roshamuul_stone": 300},
             "items": {"item_2104": 80, "item_2105": 40},
             "spawns": [
-                {"monster": "demon"}, {"monster": "behemoth"},
-                {"monster": "dragon_lord"}, {"monster": "warlock"},
+                {"monster": "demon"},
+                {"monster": "behemoth"},
+                {"monster": "dragon_lord"},
+                {"monster": "warlock"},
             ],
             "houses": [],
         },
@@ -470,8 +551,10 @@ def demo_6_theme_classification_deep():
             "items": {},
             "spawns": [],
             "houses": [
-                {"name": "City Hall"}, {"name": "Market"},
-                {"name": "Depot"}, {"name": "Temple"},
+                {"name": "City Hall"},
+                {"name": "Market"},
+                {"name": "Depot"},
+                {"name": "Temple"},
                 {"name": "Arena"},
             ],
         },
@@ -505,6 +588,7 @@ def demo_6_theme_classification_deep():
 # ═══════════════════════════════════════════════════════════════════════
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════
+
 
 def main():
     """Ejecuta todos los demos funcionales de HITO 13."""

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 @dataclass
 class DialogLine:
     """A single line of NPC dialog."""
+
     speaker: str = ""
     text: str = ""
     mood: str = "neutral"  # "neutral", "happy", "angry", "sad", "urgent"
@@ -19,7 +20,9 @@ class DialogLine:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "speaker": self.speaker, "text": self.text, "mood": self.mood,
+            "speaker": self.speaker,
+            "text": self.text,
+            "mood": self.mood,
             "response_options": self.response_options,
             "next_dialog_id": self.next_dialog_id,
             "conditions": self.conditions,
@@ -78,8 +81,9 @@ class DialogGenerator:
     def __init__(self, seed: int = 42):
         self._seed = seed
 
-    def generate(self, npc_name: str, role: str = "quest_giver",
-                 dialog_count: int = 3) -> List[DialogLine]:
+    def generate(
+        self, npc_name: str, role: str = "quest_giver", dialog_count: int = 3
+    ) -> List[DialogLine]:
         """
         Generate a dialog tree for an NPC.
 
@@ -105,13 +109,15 @@ class DialogGenerator:
 
             response_options = self._generate_responses(role, mood)
 
-            dialogs.append(DialogLine(
-                speaker=npc_name,
-                text=text,
-                mood=mood,
-                response_options=response_options,
-                next_dialog_id=f"dialog_{i + 1}" if i < dialog_count - 1 else "",
-            ))
+            dialogs.append(
+                DialogLine(
+                    speaker=npc_name,
+                    text=text,
+                    mood=mood,
+                    response_options=response_options,
+                    next_dialog_id=f"dialog_{i + 1}" if i < dialog_count - 1 else "",
+                )
+            )
 
         return dialogs
 
@@ -130,38 +136,33 @@ class DialogGenerator:
         return [
             DialogLine(
                 speaker=boss_name,
-                text=f"I am {boss_name}, the destroyer of worlds! "
-                     f"You dare challenge ME?!",
+                text=f"I am {boss_name}, the destroyer of worlds! You dare challenge ME?!",
                 mood="angry",
                 response_options=["I will stop you!"],
                 next_dialog_id="boss_fight",
             ),
             DialogLine(
                 speaker=boss_name,
-                text="You think you can defeat me? I have consumed "
-                     "a thousand souls!",
+                text="You think you can defeat me? I have consumed a thousand souls!",
                 mood="angry",
                 response_options=["Your reign of terror ends now!"],
                 next_dialog_id="boss_fight_start",
             ),
         ]
 
-    def generate_quest_dialog(self, npc_name: str,
-                              quest_name: str) -> List[DialogLine]:
+    def generate_quest_dialog(self, npc_name: str, quest_name: str) -> List[DialogLine]:
         """Generate quest acceptance dialog."""
         return [
             DialogLine(
                 speaker=npc_name,
-                text=f"I need you to complete a mission: {quest_name}. "
-                     f"Are you up to the task?",
+                text=f"I need you to complete a mission: {quest_name}. Are you up to the task?",
                 mood="neutral",
                 response_options=["I accept!", "Tell me more.", "Not now."],
                 next_dialog_id="quest_offer",
             ),
             DialogLine(
                 speaker=npc_name,
-                text=f"Excellent! Report back when you've completed {quest_name}. "
-                     f"May the gods protect you.",
+                text=f"Excellent! Report back when you've completed {quest_name}. May the gods protect you.",
                 mood="happy",
                 response_options=["I won't let you down!"],
                 next_dialog_id="quest_accepted",

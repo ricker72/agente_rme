@@ -1,42 +1,44 @@
 """
-HITO 12 — Spawn Analyzer: analiza spawns desde .otbm (vía pipeline) y .xml.
-Soporta análisis binario directo y vía OTBMImporter/NodeDecoder.
+HITO 12 — Spawn Analyzer: analyzes spawns from .otbm (via pipeline) and .xml.
+Supports direct binary analysis and via OTBMImporter/NodeDecoder.
 """
 
 from __future__ import annotations
 
 import struct
 import xml.etree.ElementTree as ET
-from collections import Counter, defaultdict
+from collections import Counter
 from typing import Any, Dict, List, Optional, Tuple
 
 
 class SpawnAnalyzer:
-    """Analiza spawns de monstruos desde OTBM o XML."""
+    """Analyze monster spawns from OTBM or XML."""
 
-    # Marcadores binarios OTBM
+    # OTBM binary markers
     _NODE_MONSTER = 0x0F
     _NODE_SPAWN_AREA = 0x06
 
     def __init__(self, otbm_importer: Optional[Any] = None):
         """
         Args:
-            otbm_importer: Instancia opcional de OTBMImporter.
+            otbm_importer: Optional OTBMImporter instance.
         """
         self._otbm_importer = otbm_importer
 
     # ------------------------------------------------------------------
-    # Análisis desde OTBM (world_dict)
+    # Analysis from OTBM (world_dict)
     # ------------------------------------------------------------------
 
-    def analyze_otbm_spawns(self, spawns_raw: List[Dict[str, Any]]) -> List[Dict[str, object]]:
-        """Analiza spawns desde lista extraída del world_dict.
+    def analyze_otbm_spawns(
+        self, spawns_raw: List[Dict[str, Any]]
+    ) -> List[Dict[str, object]]:
+        """Analyze spawns from list extracted from world_dict.
 
         Args:
-            spawns_raw: Lista de spawns del world_dict de WorldBuilder.
+            spawns_raw: List of spawns from WorldBuilder world_dict.
 
         Returns:
-            Lista estandarizada de spawns con metadata.
+            Standardized list of spawns with metadata.
         """
         if not spawns_raw:
             return []
@@ -61,17 +63,17 @@ class SpawnAnalyzer:
         return results
 
     # ------------------------------------------------------------------
-    # Análisis OTBM directo (bytes)
+    # Direct OTBM analysis (bytes)
     # ------------------------------------------------------------------
 
     def analyze_otbm_direct(self, data: bytes) -> List[Dict[str, object]]:
-        """Extrae y analiza spawns directamente desde bytes OTBM.
+        """Extract and analyze spawns directly from OTBM bytes.
 
-        Busca estructura: SPAWNS -> SPAWN_AREA -> MONSTER.
+        Looks for structure: SPAWNS -> SPAWN_AREA -> MONSTER.
         """
         spawns = []
 
-        # Buscar todos los nodos SPAWN_AREA (0x06) con hijos MONSTER (0x0F)
+        # Find all SPAWN_AREA nodes (0x06) with MONSTER children (0x0F)
         offset = 0
         while True:
             idx = data.find(bytes([self._NODE_SPAWN_AREA]), offset)
@@ -93,20 +95,22 @@ class SpawnAnalyzer:
                 center_z = area_payload[4]
                 radius = area_payload[5]
 
-                # Buscar hijos MONSTER dentro del área
+                # Find MONSTER children within the area
                 monsters = self._parse_monsters_in_area(
                     data, idx + 3 + 6, idx + 3 + area_size
                 )
                 for monster in monsters:
-                    spawns.append({
-                        "monster": monster.get("name", "unknown"),
-                        "x": center_x,
-                        "y": center_y,
-                        "z": center_z,
-                        "radius": radius,
-                        "direction": monster.get("direction", 2),
-                        "spawntime": monster.get("spawntime", 60),
-                    })
+                    spawns.append(
+                        {
+                            "monster": monster.get("name", "unknown"),
+                            "x": center_x,
+                            "y": center_y,
+                            "z": center_z,
+                            "radius": radius,
+                            "direction": monster.get("direction", 2),
+                            "spawntime": monster.get("spawntime", 60),
+                        }
+                    )
 
                 offset = idx + 3 + area_size
 
@@ -118,7 +122,7 @@ class SpawnAnalyzer:
     def _parse_monsters_in_area(
         self, data: bytes, start: int, end: int
     ) -> List[Dict[str, Any]]:
-        """Busca nodos MONSTER dentro de un rango de bytes."""
+        """Find MONSTER nodes within a byte range."""
         monsters = []
         offset = start
         while offset < end:
@@ -132,39 +136,47 @@ class SpawnAnalyzer:
                     continue
                 mon_payload = data[idx + 3 : idx + 3 + mon_size]
                 name, name_offset = _read_string(mon_payload, 0)
-                direction = mon_payload[name_offset] if name_offset < len(mon_payload) else 2
+                direction = (
+                    mon_payload[name_offset] if name_offset < len(mon_payload) else 2
+                )
                 spawntime = 60
                 if name_offset + 5 <= len(mon_payload):
-                    spawntime = struct.unpack_from("<I", mon_payload, name_offset + 1)[0]
-                monsters.append({
-                    "name": name,
-                    "direction": direction,
-                    "spawntime": spawntime,
-                })
+                    spawntime = struct.unpack_from("<I", mon_payload, name_offset + 1)[
+                        0
+                    ]
+                monsters.append(
+                    {
+                        "name": name,
+                        "direction": direction,
+                        "spawntime": spawntime,
+                    }
+                )
                 offset = idx + 3 + mon_size
             except (struct.error, IndexError):
                 offset = idx + 1
         return monsters
 
     # ------------------------------------------------------------------
-    # Análisis XML
+    # XML analysis
     # ------------------------------------------------------------------
 
     def analyze_spawn_xml(self, root: ET.Element) -> List[Dict[str, object]]:
-        """Extrae spawns desde XML (<spawns><spawn>...)."""
+        """Extract spawns from XML (<spawns><spawn>...)."""
         spawns = []
         for spawn in root.findall("spawns/spawn"):
-            spawns.append({
-                "monster": spawn.get("monster", ""),
-                "x": int(spawn.get("x", 0)),
-                "y": int(spawn.get("y", 0)),
-                "z": int(spawn.get("z", 0)),
-                "radius": int(spawn.get("radius", 0)),
-            })
+            spawns.append(
+                {
+                    "monster": spawn.get("monster", ""),
+                    "x": int(spawn.get("x", 0)),
+                    "y": int(spawn.get("y", 0)),
+                    "z": int(spawn.get("z", 0)),
+                    "radius": int(spawn.get("radius", 0)),
+                }
+            )
         return spawns
 
     def analyze_monster_file(self, path: str) -> Dict[str, object]:
-        """Analiza archivo monster.xml externo."""
+        """Analyze external monster.xml file."""
         tree = ET.parse(path)
         root = tree.getroot()
         counts = Counter()
@@ -177,7 +189,7 @@ class SpawnAnalyzer:
         }
 
     # ------------------------------------------------------------------
-    # Clasificación y agregación
+    # Classification and aggregation
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -195,7 +207,7 @@ class SpawnAnalyzer:
 
     @staticmethod
     def summarize_spawns(spawns: List[Dict[str, object]]) -> Dict[str, object]:
-        """Genera resumen estadístico de spawns."""
+        """Generate statistical summary of spawns."""
         if not spawns:
             return {
                 "total_spawns": 0,
@@ -230,7 +242,7 @@ class SpawnAnalyzer:
 
 
 def _read_string(data: bytes, offset: int) -> Tuple[str, int]:
-    """Lee un string length-prefixed (uint16) desde bytes."""
+    """Read a length-prefixed (uint16) string from bytes."""
     if offset + 2 > len(data):
         return "", offset
     length = struct.unpack_from("<H", data, offset)[0]

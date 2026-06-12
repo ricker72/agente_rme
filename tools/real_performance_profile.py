@@ -3,11 +3,10 @@ tools/real_performance_profile.py — Phase 10: Real Performance Profile.
 
 Profiling all critical components.
 """
+
 from __future__ import annotations
 import sys
-import os
 import json
-import time
 import cProfile
 import pstats
 import io
@@ -31,13 +30,25 @@ COMPONENTS = [
     ("Balance", "core.balance.balance_engine", "BalanceEngine", "analyze"),
     ("Critic", "core.critic.visual_critic", "VisualCritic", "analyze"),
     ("Knowledge", "core.knowledge.knowledge_engine", "KnowledgeEngine", "query"),
-    ("Blueprint", "core.blueprints.blueprint_extractor", "BlueprintExtractor", "extract_from_otbm"),
-    ("Autonomous", "core.autonomous.autonomous_director", "AutonomousDirector", "design_world"),
+    (
+        "Blueprint",
+        "core.blueprints.blueprint_extractor",
+        "BlueprintExtractor",
+        "extract_from_otbm",
+    ),
+    (
+        "Autonomous",
+        "core.autonomous.autonomous_director",
+        "AutonomousDirector",
+        "design_world",
+    ),
     ("Export", "core.export.release_builder", "ReleaseBuilder", "build"),
 ]
 
 
-def profile_component(name: str, module_path: str, class_name: str, method_name: str) -> Dict[str, Any]:
+def profile_component(
+    name: str, module_path: str, class_name: str, method_name: str
+) -> Dict[str, Any]:
     """Profile a single component using cProfile."""
     try:
         mod = __import__(module_path, fromlist=[class_name])

@@ -1,7 +1,6 @@
 """Tests for BlueprintRanker."""
 
-import pytest
-from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
+from core.blueprints.blueprint import Blueprint, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_ranker import BlueprintRanker
 
 
@@ -22,7 +21,9 @@ class TestBlueprintRanker:
 
     def test_rank_single(self):
         """Test ranking a single blueprint."""
-        bp = self._make_bp("test_hunt", raw={"critic_score": 80.0, "playtest_score": 70.0})
+        bp = self._make_bp(
+            "test_hunt", raw={"critic_score": 80.0, "playtest_score": 70.0}
+        )
         ranked = self.ranker.rank_single(bp)
         assert ranked.blueprint_name == "test_hunt"
         assert ranked.overall_rank > 0.0
@@ -77,9 +78,17 @@ class TestBlueprintRanker:
 
     def test_custom_weights(self):
         """Test custom ranking weights."""
-        weights = {"critic": 0.5, "playtest": 0.5, "reuse": 0.0, "knowledge": 0.0, "complexity": 0.0}
+        weights = {
+            "critic": 0.5,
+            "playtest": 0.5,
+            "reuse": 0.0,
+            "knowledge": 0.0,
+            "complexity": 0.0,
+        }
         ranker = BlueprintRanker(weights=weights)
-        bp = self._make_bp("weighted", raw={"critic_score": 90.0, "playtest_score": 80.0})
+        bp = self._make_bp(
+            "weighted", raw={"critic_score": 90.0, "playtest_score": 80.0}
+        )
         ranked = ranker.rank_single(bp)
         assert ranked.critic_score == 90.0
         assert ranked.playtest_score == 80.0

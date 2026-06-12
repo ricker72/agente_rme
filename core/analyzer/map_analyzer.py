@@ -1,6 +1,6 @@
 """
-HITO 12 — Map Analyzer: analiza tiles, items, spawns, houses y waypoints
-desde archivos .otbm o .xml, usando el pipeline OTBM completo.
+HITO 12 — Map Analyzer: analyzes tiles, items, spawns, houses and waypoints
+from .otbm or .xml files, using the complete OTBM pipeline.
 """
 
 from __future__ import annotations
@@ -27,7 +27,8 @@ from .architecture_analyzer import ArchitectureAnalyzer
 
 @dataclass
 class MapAnalysis:
-    """Resultado completo de análisis de un mapa."""
+    """Complete result of a map analysis."""
+
     source: str
     map_size: Dict[str, int] = field(default_factory=dict)
     floors: List[int] = field(default_factory=list)
@@ -46,7 +47,7 @@ class MapAnalysis:
     architecture_analysis: Optional[Dict[str, object]] = None
 
     def to_dict(self) -> Dict[str, object]:
-        """Exporta el análisis como diccionario serializable a JSON."""
+        """Export the analysis as a JSON-serializable dictionary."""
         return {
             "source": self.source,
             "map_size": self.map_size,
@@ -77,13 +78,13 @@ class MapAnalysis:
 
 
 class MapAnalyzer:
-    """Analizador principal de mapas OTBM/XML con pipeline completo."""
+    """Main OTBM/XML map analyzer with complete pipeline."""
 
     def __init__(self, otbm_importer: Optional[Any] = None):
         """
         Args:
-            otbm_importer: Instancia opcional de OTBMImporter para análisis OTBM completo.
-                           Si no se proporciona, se usará análisis básico de bytes.
+            otbm_importer: Optional OTBMImporter instance for full OTBM analysis.
+                           If not provided, basic byte analysis will be used.
         """
         self.tile_analyzer = TileAnalyzer()
         self.room_analyzer = RoomAnalyzer()
@@ -97,14 +98,14 @@ class MapAnalyzer:
         self._otbm_importer = otbm_importer
 
     # ------------------------------------------------------------------
-    # Punto de entrada principal
+    # Main entry point
     # ------------------------------------------------------------------
 
     def analyze(self, path: str) -> MapAnalysis:
-        """Analiza un archivo de mapa y devuelve MapAnalysis completo.
+        """Analyze a map file and return a complete MapAnalysis.
 
         Args:
-            path: Ruta al archivo .otbm o .xml
+            path: Path to .otbm or .xml file
         """
         analysis = MapAnalysis(source=path)
 
@@ -113,19 +114,19 @@ class MapAnalyzer:
         elif path.endswith(".xml"):
             self._analyze_xml(path, analysis)
         else:
-            raise ValueError(f"Formato no soportado: {path}")
+            raise ValueError(f"Unsupported format: {path}")
 
-        # Ejecutar análisis derivados
+        # Run derived analyses
         self._run_derived_analysis(analysis)
 
         return analysis
 
     # ------------------------------------------------------------------
-    # Análisis OTBM (usando pipeline completo cuando esté disponible)
+    # OTBM analysis (using full pipeline when available)
     # ------------------------------------------------------------------
 
     def _analyze_otbm(self, path: str, analysis: MapAnalysis) -> None:
-        """Analiza archivo .otbm usando el pipeline OTBM completo."""
+        """Analyze .otbm file using the complete OTBM pipeline."""
         data = self._read_file_bytes(path)
 
         if self._otbm_importer is not None:
@@ -134,22 +135,22 @@ class MapAnalyzer:
             self._analyze_otbm_direct(data, path, analysis)
 
     def _analyze_otbm_with_importer(self, path: str, analysis: MapAnalysis) -> None:
-        """Análisis usando OTBMImporter + NodeDecoder para extracción completa."""
+        """Analysis using OTBMImporter + NodeDecoder for complete extraction."""
         try:
             result = self._otbm_importer.import_file(path)
             if not result.get("success"):
                 return
 
             world_dict = result.get("world_dict", {})
-            stats = result.get("stats", {})
+            result.get("stats", {})
 
-            # Dimensiones del mapa
+            # Map dimensions
             analysis.map_size = {
                 "width": world_dict.get("width", 0),
                 "height": world_dict.get("height", 0),
             }
 
-            # Tiles e items desde world_dict
+            # Tiles and items from world_dict
             tiles_raw = world_dict.get("tiles", [])
             analysis.tile_count = len(tiles_raw)
             self._extract_tiles_and_items_from_world_dict(tiles_raw, analysis)
@@ -158,7 +159,7 @@ class MapAnalyzer:
             spawns_raw = world_dict.get("spawns", [])
             analysis.spawns = self.spawn_analyzer.analyze_otbm_spawns(spawns_raw)
 
-            # Houses (desde towns como houses)
+            # Houses (from towns as houses)
             cities_raw = world_dict.get("cities", [])
             analysis.houses = self._cities_to_houses(cities_raw)
 
@@ -166,7 +167,7 @@ class MapAnalyzer:
             waypoints_raw = world_dict.get("waypoints", [])
             analysis.waypoints = self._normalize_waypoints(waypoints_raw)
 
-            # Floors desde tiles
+            # Floors from tiles
             floors = set()
             for tile in tiles_raw:
                 z = tile.get("z", 0)
@@ -174,10 +175,10 @@ class MapAnalyzer:
                     floors.add(z)
             analysis.floors = sorted(floors)
 
-            # Estilo
+            # Style
             analysis.style = self.style_analyzer.detect_style(analysis.tiles)
 
-            # Patrón
+            # Pattern
             analysis.patterns.append(
                 self.pattern_extractor.extract_pattern(
                     source=os.path.basename(path),
@@ -190,42 +191,42 @@ class MapAnalyzer:
             )
 
         except Exception:
-            # Fallback a análisis directo
+            # Fallback to direct analysis
             data = self._read_file_bytes(path)
             self._analyze_otbm_direct(data, path, analysis)
 
     def _analyze_otbm_direct(
         self, data: bytes, path: str, analysis: MapAnalysis
     ) -> None:
-        """Análisis directo de bytes OTBM (fallback sin importer)."""
-        # Dimensiones desde header OTBM
+        """Direct OTBM byte analysis (fallback without importer)."""
+        # Dimensions from OTBM header
         if len(data) > 20 and data[:4] == b"OTBM":
-            version = struct.unpack_from("<I", data, 4)[0]
+            struct.unpack_from("<I", data, 4)[0]
             width = struct.unpack_from("<H", data, 8)[0]
             height = struct.unpack_from("<H", data, 10)[0]
             analysis.map_size = {"width": width, "height": height}
         else:
             analysis.map_size = {"width": 100, "height": 100}
 
-        # Extraer tiles usando el tile_analyzer para bytes
+        # Extract tiles using tile_analyzer for bytes
         analysis.tiles = self._extract_binary_tiles_enhanced(data)
         analysis.items = self._extract_binary_items(data)
         analysis.tile_count = sum(analysis.tiles.values())
         analysis.item_count = sum(analysis.items.values())
 
-        # Spawns desde datos binarios
+        # Spawns from binary data
         analysis.spawns = self.spawn_analyzer.analyze_otbm_direct(data)
 
-        # Waypoints desde datos binarios
+        # Waypoints from binary data
         analysis.waypoints = self._extract_binary_waypoints(data)
 
-        # Houses desde towns en el binario
+        # Houses from towns in binary
         analysis.houses = self._extract_binary_houses(data)
 
-        # Floors desde TILE_AREA (base_z)
+        # Floors from TILE_AREA (base_z)
         analysis.floors = self._extract_binary_floors(data)
 
-        # Estilo y patrones
+        # Style and patterns
         analysis.style = self.style_analyzer.detect_style(analysis.tiles)
         analysis.patterns.append(
             self.pattern_extractor.extract_pattern(
@@ -241,7 +242,7 @@ class MapAnalyzer:
     def _extract_tiles_and_items_from_world_dict(
         self, tiles_raw: List[Dict[str, Any]], analysis: MapAnalysis
     ) -> None:
-        """Extrae estadísticas de tiles e items desde world_dict."""
+        """Extract tile and item statistics from world_dict."""
         tile_counter = Counter()
         item_counter = Counter()
 
@@ -267,15 +268,15 @@ class MapAnalyzer:
             analysis.tile_count = sum(tile_counter.values())
 
     # ------------------------------------------------------------------
-    # Análisis XML
+    # XML analysis
     # ------------------------------------------------------------------
 
     def _analyze_xml(self, path: str, analysis: MapAnalysis) -> None:
-        """Analiza archivo XML."""
+        """Analyze XML file."""
         tree = ET.parse(path)
         root = tree.getroot()
 
-        # Tamaño del mapa
+        # Map size
         analysis.map_size = self._extract_map_size(root)
 
         # Floors
@@ -285,7 +286,7 @@ class MapAnalyzer:
         analysis.tiles = self.tile_analyzer.analyze_xml_tiles(root)
         analysis.tile_count = sum(analysis.tiles.values())
 
-        # Items desde tiles
+        # Items from tiles
         item_counter = Counter()
         for tile in root.findall("map/tile"):
             for item in tile.findall("item"):
@@ -305,7 +306,7 @@ class MapAnalyzer:
         # Zones
         analysis.zones = self._extract_zones(root)
 
-        # Estilo y patrones
+        # Style and patterns
         analysis.style = self.style_analyzer.detect_style(analysis.tiles)
         analysis.patterns.append(
             self.pattern_extractor.extract_pattern(
@@ -319,11 +320,11 @@ class MapAnalyzer:
         )
 
     # ------------------------------------------------------------------
-    # Análisis derivados (path, density, architecture)
+    # Derived analyses (path, density, architecture)
     # ------------------------------------------------------------------
 
     def _run_derived_analysis(self, analysis: MapAnalysis) -> None:
-        """Ejecuta análisis derivados: path, density, architecture."""
+        """Run derived analyses: path, density, architecture."""
         try:
             analysis.path_analysis = self.path_analyzer.analyze(
                 waypoints=analysis.waypoints,
@@ -355,21 +356,21 @@ class MapAnalyzer:
             analysis.architecture_analysis = None
 
     # ------------------------------------------------------------------
-    # Métodos de extracción binaria mejorados
+    # Enhanced binary extraction methods
     # ------------------------------------------------------------------
 
     @staticmethod
     def _read_file_bytes(path: str) -> bytes:
-        """Lee un archivo como bytes, retorna vacío si no existe."""
+        """Read a file as bytes, return empty if it does not exist."""
         try:
             return Path(path).read_bytes()
         except FileNotFoundError:
             return b""
 
     def _extract_binary_tiles_enhanced(self, data: bytes) -> Dict[str, int]:
-        """Extrae tiles desde binario con detección mejorada."""
+        """Extract tiles from binary with enhanced detection."""
         counts = defaultdict(int)
-        # IDs de suelo conocidos
+        # Known ground IDs
         ground_ids = [393, 415, 416, 396, 1053, 1056]
         ground_names = {
             393: "sandstone_floor",
@@ -391,9 +392,9 @@ class MapAnalyzer:
 
     @staticmethod
     def _extract_binary_items(data: bytes) -> Dict[str, int]:
-        """Extrae conteo de items desde binario."""
+        """Extract item count from binary."""
         counts = defaultdict(int)
-        # Buscar nodos ITEM (0x04)
+        # Search for ITEM nodes (0x04)
         offset = 0
         while True:
             idx = data.find(b"\x04", offset)
@@ -416,7 +417,7 @@ class MapAnalyzer:
 
     @staticmethod
     def _extract_binary_waypoints(data: bytes) -> List[Dict[str, object]]:
-        """Extrae waypoints desde nodos binarios WAYPOINT."""
+        """Extract waypoints from binary WAYPOINT nodes."""
         waypoints = []
         offset = 0
         marker = b"\x19"  # OTBM_NODE_WAYPOINT
@@ -443,10 +444,10 @@ class MapAnalyzer:
 
     @staticmethod
     def _extract_binary_houses(data: bytes) -> List[Dict[str, object]]:
-        """Extrae houses/towns desde binario."""
+        """Extract houses/towns from binary."""
         houses = []
         offset = 0
-        marker = b"\x0D"  # OTBM_NODE_TOWN
+        marker = b"\x0d"  # OTBM_NODE_TOWN
         while True:
             idx = data.find(marker, offset)
             if idx == -1 or idx + 3 >= len(data):
@@ -462,14 +463,20 @@ class MapAnalyzer:
                 if name_offset + 5 <= len(payload):
                     tx = struct.unpack_from("<H", payload, name_offset)[0]
                     ty = struct.unpack_from("<H", payload, name_offset + 2)[0]
-                    tz = payload[name_offset + 4] if name_offset + 4 < len(payload) else 7
-                    houses.append({
-                        "id": town_id,
-                        "name": name,
-                        "temple_x": tx,
-                        "temple_y": ty,
-                        "temple_z": tz,
-                    })
+                    tz = (
+                        payload[name_offset + 4]
+                        if name_offset + 4 < len(payload)
+                        else 7
+                    )
+                    houses.append(
+                        {
+                            "id": town_id,
+                            "name": name,
+                            "temple_x": tx,
+                            "temple_y": ty,
+                            "temple_z": tz,
+                        }
+                    )
                 offset = idx + 3 + town_size
             except (struct.error, IndexError):
                 offset = idx + 1
@@ -477,7 +484,7 @@ class MapAnalyzer:
 
     @staticmethod
     def _extract_binary_floors(data: bytes) -> List[int]:
-        """Extrae floors desde TILE_AREA (base_z)."""
+        """Extract floors from TILE_AREA (base_z)."""
         floors = set()
         offset = 0
         marker = b"\x02"  # OTBM_NODE_TILE_AREA
@@ -500,7 +507,7 @@ class MapAnalyzer:
         return sorted(floors) if floors else [0]
 
     # ------------------------------------------------------------------
-    # Métodos de extracción XML (mantenidos e igualados)
+    # XML extraction methods (maintained and aligned)
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -522,82 +529,92 @@ class MapAnalyzer:
     def _extract_houses(root: ET.Element) -> List[Dict[str, object]]:
         houses = []
         for house in root.findall("houses/house"):
-            houses.append({
-                "id": int(house.get("id", 0)),
-                "name": house.get("name", ""),
-                "rent": int(house.get("rent", 0)),
-                "temple_x": int(house.get("temple_x", 0)),
-                "temple_y": int(house.get("temple_y", 0)),
-                "temple_z": int(house.get("temple_z", 0)),
-            })
+            houses.append(
+                {
+                    "id": int(house.get("id", 0)),
+                    "name": house.get("name", ""),
+                    "rent": int(house.get("rent", 0)),
+                    "temple_x": int(house.get("temple_x", 0)),
+                    "temple_y": int(house.get("temple_y", 0)),
+                    "temple_z": int(house.get("temple_z", 0)),
+                }
+            )
         return houses
 
     @staticmethod
     def _extract_waypoints(root: ET.Element) -> List[Dict[str, object]]:
         waypoints = []
         for waypoint in root.findall("waypoints/waypoint"):
-            waypoints.append({
-                "name": waypoint.get("name", ""),
-                "x": int(waypoint.get("x", 0)),
-                "y": int(waypoint.get("y", 0)),
-                "z": int(waypoint.get("z", 0)),
-            })
+            waypoints.append(
+                {
+                    "name": waypoint.get("name", ""),
+                    "x": int(waypoint.get("x", 0)),
+                    "y": int(waypoint.get("y", 0)),
+                    "z": int(waypoint.get("z", 0)),
+                }
+            )
         return waypoints
 
     @staticmethod
     def _extract_zones(root: ET.Element) -> List[Dict[str, object]]:
         zones = []
         for zone in root.findall("zones/zone"):
-            zones.append({
-                "name": zone.get("name", ""),
-                "type": zone.get("type", ""),
-                "x1": int(zone.get("x1", 0)),
-                "y1": int(zone.get("y1", 0)),
-                "x2": int(zone.get("x2", 0)),
-                "y2": int(zone.get("y2", 0)),
-                "z": int(zone.get("z", 0)),
-            })
+            zones.append(
+                {
+                    "name": zone.get("name", ""),
+                    "type": zone.get("type", ""),
+                    "x1": int(zone.get("x1", 0)),
+                    "y1": int(zone.get("y1", 0)),
+                    "x2": int(zone.get("x2", 0)),
+                    "y2": int(zone.get("y2", 0)),
+                    "z": int(zone.get("z", 0)),
+                }
+            )
         return zones
 
     @staticmethod
     def _normalize_waypoints(raw: List[Dict[str, Any]]) -> List[Dict[str, object]]:
-        """Normaliza waypoints a formato estándar."""
+        """Normalize waypoints to standard format."""
         if not raw:
             return []
         result = []
         for wp in raw:
-            result.append({
-                "name": wp.get("name", ""),
-                "x": int(wp.get("x", 0)),
-                "y": int(wp.get("y", 0)),
-                "z": int(wp.get("z", 0)),
-            })
+            result.append(
+                {
+                    "name": wp.get("name", ""),
+                    "x": int(wp.get("x", 0)),
+                    "y": int(wp.get("y", 0)),
+                    "z": int(wp.get("z", 0)),
+                }
+            )
         return result
 
     @staticmethod
     def _cities_to_houses(cities: List[Dict[str, Any]]) -> List[Dict[str, object]]:
-        """Convierte ciudades/towns a formato de houses."""
+        """Convert cities/towns to houses format."""
         houses = []
         for city in cities:
-            houses.append({
-                "id": city.get("town_id", 0),
-                "name": city.get("name", ""),
-                "temple_x": city.get("temple_x", city.get("x", 0)),
-                "temple_y": city.get("temple_y", city.get("y", 0)),
-                "temple_z": city.get("temple_z", city.get("z", 0)),
-            })
+            houses.append(
+                {
+                    "id": city.get("town_id", 0),
+                    "name": city.get("name", ""),
+                    "temple_x": city.get("temple_x", city.get("x", 0)),
+                    "temple_y": city.get("temple_y", city.get("y", 0)),
+                    "temple_z": city.get("temple_z", city.get("z", 0)),
+                }
+            )
         return houses
 
     # ------------------------------------------------------------------
-    # Reporte a JSON
+    # JSON report
     # ------------------------------------------------------------------
 
     def analyze_to_json(self, path: str, output_path: Optional[str] = None) -> str:
-        """Analiza y exporta a JSON.
+        """Analyze and export to JSON.
 
         Args:
-            path: Ruta del archivo de mapa.
-            output_path: Ruta de salida opcional para el JSON.
+            path: Path to map file.
+            output_path: Optional output path for JSON.
         """
         analysis = self.analyze(path)
         report = analysis.to_dict()
@@ -611,11 +628,12 @@ class MapAnalyzer:
 
 
 # ------------------------------------------------------------------
-# Helpers a nivel módulo
+# Module-level helpers
 # ------------------------------------------------------------------
 
+
 def _read_string(data: bytes, offset: int) -> Tuple[str, int]:
-    """Lee un string length-prefixed (uint16) desde bytes."""
+    """Read a length-prefixed (uint16) string from bytes."""
     if offset + 2 > len(data):
         return "", offset
     length = struct.unpack_from("<H", data, offset)[0]

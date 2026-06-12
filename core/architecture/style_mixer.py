@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 
 class StyleMixer:
@@ -18,14 +18,25 @@ class StyleMixer:
         theme_a = blueprint_a.get("theme", "unknown")
         theme_b = blueprint_b.get("theme", "unknown")
         category = blueprint_a.get("category", blueprint_b.get("category", "Mixed"))
-        mixed_name = name or f"{blueprint_a.get('name')}_{blueprint_b.get('name')}_blend"
+        mixed_name = (
+            name or f"{blueprint_a.get('name')}_{blueprint_b.get('name')}_blend"
+        )
         tiles_a = blueprint_a.get("tiles", [])
         tiles_b = blueprint_b.get("tiles", [])
         combined = []
         for index, tile in enumerate(tiles_a):
-            combined.append({**tile, "source": "a", "x": tile.get("x"), "y": tile.get("y")})
+            combined.append(
+                {**tile, "source": "a", "x": tile.get("x"), "y": tile.get("y")}
+            )
         for index, tile in enumerate(tiles_b):
-            combined.append({**tile, "source": "b", "x": tile.get("x", 0) + 1, "y": tile.get("y", 0) + 1})
+            combined.append(
+                {
+                    **tile,
+                    "source": "b",
+                    "x": tile.get("x", 0) + 1,
+                    "y": tile.get("y", 0) + 1,
+                }
+            )
         return {
             "name": mixed_name,
             "category": category,

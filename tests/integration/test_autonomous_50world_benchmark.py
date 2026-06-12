@@ -11,14 +11,12 @@ Validates that the autonomous designer can:
 import json
 import logging
 import os
-import pytest
 
 # Silence OTBM warnings that flood the test output
 logging.getLogger("core.otbm").setLevel(logging.ERROR)
 logging.getLogger("core.critic").setLevel(logging.ERROR)
 
-from core.autonomous import AutonomousWorldDesigner
-from benchmark_autonomous import run_benchmark
+from benchmark_autonomous import run_benchmark  # noqa: E402
 
 
 def test_50_world_benchmark_completes(tmp_path):

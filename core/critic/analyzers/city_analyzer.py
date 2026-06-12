@@ -12,10 +12,8 @@ from core.world.world_model import WorldModel
 from .base_analyzer import (
     build_snapshots,
     snapshots_by_zone,
-    safe_ratio,
     clamp,
     average,
-    manhattan,
 )
 
 logger = logging.getLogger(__name__)
@@ -40,15 +38,18 @@ class CityAnalyzer:
 
     def analyze(self, world: WorldModel) -> Dict[str, Any]:
         from ..models import (
-            CriticScore, CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticScore,
+            CriticRecommendation,
+            RecommendationPriority,
         )
 
         cities = self._identify_cities(world)
         if not cities:
             return {
                 "category": self.CATEGORY,
-                "score": CriticScore(self.CATEGORY, 60.0, notes="No city zones identified"),
+                "score": CriticScore(
+                    self.CATEGORY, 60.0, notes="No city zones identified"
+                ),
                 "issues": [],
                 "recommendations": [
                     CriticRecommendation(
@@ -98,17 +99,25 @@ class CityAnalyzer:
         for r in world.regions:
             lname = r.name.lower()
             # Skip sub-zones that are themselves services (depot/temple/npc)
-            if any(svc in lname for svc in self.REQUIRED_SERVICES + self.OPTIONAL_SERVICES):
+            if any(
+                svc in lname for svc in self.REQUIRED_SERVICES + self.OPTIONAL_SERVICES
+            ):
                 continue
             if any(kw in lname for kw in self.CITY_KEYWORDS):
-                out.append({"name": r.name, "min_level": r.min_level, "max_level": r.max_level})
+                out.append(
+                    {"name": r.name, "min_level": r.min_level, "max_level": r.max_level}
+                )
         return out
 
-    def _analyze_city(self, city: Dict[str, Any], by_zone: Dict[str, List],
-                      world: WorldModel) -> Tuple[float, List, List, Dict[str, Any]]:
+    def _analyze_city(
+        self, city: Dict[str, Any], by_zone: Dict[str, List], world: WorldModel
+    ) -> Tuple[float, List, List, Dict[str, Any]]:
         from ..models import (
-            CriticIssue, CriticRecommendation,
-            IssueType, IssueSeverity, RecommendationPriority,
+            CriticIssue,
+            CriticRecommendation,
+            IssueType,
+            IssueSeverity,
+            RecommendationPriority,
         )
 
         issues: List = []
@@ -125,29 +134,35 @@ class CityAnalyzer:
 
         for svc in self.REQUIRED_SERVICES:
             if services.get(svc, 0) == 0:
-                issues.append(CriticIssue(
-                    issue_type=IssueType.CITY_MISSING_SERVICES,
-                    severity=IssueSeverity.ERROR,
-                    category=self.CATEGORY,
-                    location=name,
-                    message=f"City '{name}' is missing required service: {svc}",
-                ))
+                issues.append(
+                    CriticIssue(
+                        issue_type=IssueType.CITY_MISSING_SERVICES,
+                        severity=IssueSeverity.ERROR,
+                        category=self.CATEGORY,
+                        location=name,
+                        message=f"City '{name}' is missing required service: {svc}",
+                    )
+                )
                 if svc == "depot":
-                    recs.append(CriticRecommendation(
-                        title=f"Add depot to {name}",
-                        description=f"City '{name}' has no depot zone. Add a zone named like 'city_{name}_depot'.",
-                        category=self.CATEGORY,
-                        priority=RecommendationPriority.HIGH,
-                        target_location=name,
-                    ))
+                    recs.append(
+                        CriticRecommendation(
+                            title=f"Add depot to {name}",
+                            description=f"City '{name}' has no depot zone. Add a zone named like 'city_{name}_depot'.",
+                            category=self.CATEGORY,
+                            priority=RecommendationPriority.HIGH,
+                            target_location=name,
+                        )
+                    )
                 elif svc == "temple":
-                    recs.append(CriticRecommendation(
-                        title=f"Add temple to {name}",
-                        description=f"City '{name}' has no temple zone. Add a zone named like 'city_{name}_temple'.",
-                        category=self.CATEGORY,
-                        priority=RecommendationPriority.HIGH,
-                        target_location=name,
-                    ))
+                    recs.append(
+                        CriticRecommendation(
+                            title=f"Add temple to {name}",
+                            description=f"City '{name}' has no temple zone. Add a zone named like 'city_{name}_temple'.",
+                            category=self.CATEGORY,
+                            priority=RecommendationPriority.HIGH,
+                            target_location=name,
+                        )
+                    )
 
         # Street connectivity: how many of the city's ground tiles are
         # connected to the main city cluster
@@ -165,10 +180,22 @@ class CityAnalyzer:
         # Connectivity: distance between depot and temple, depot and temple
         # should be < 50 tiles
         if services.get("depot", 0) and services.get("temple", 0):
-            depot_zone = next((s for s in world.regions if "depot" in s.name.lower()
-                              and name.lower() in s.name.lower()), None)
-            temple_zone = next((s for s in world.regions if "temple" in s.name.lower()
-                               and name.lower() in s.name.lower()), None)
+            depot_zone = next(
+                (
+                    s
+                    for s in world.regions
+                    if "depot" in s.name.lower() and name.lower() in s.name.lower()
+                ),
+                None,
+            )
+            temple_zone = next(
+                (
+                    s
+                    for s in world.regions
+                    if "temple" in s.name.lower() and name.lower() in s.name.lower()
+                ),
+                None,
+            )
             if depot_zone and temple_zone:
                 # Use min/max_level as proxy for location (region has no x/y)
                 distance = abs(depot_zone.min_level - temple_zone.min_level)
@@ -186,12 +213,17 @@ class CityAnalyzer:
             + npc_score * 0.10
         )
 
-        return overall, issues, recs, {
-            "name": name,
-            "services": services,
-            "tiles": len(city_snaps),
-            "street_score": round(street_score, 2),
-            "depot_score": round(depot_score, 2),
-            "temple_score": round(temple_score, 2),
-            "npc_score": round(npc_score, 2),
-        }
+        return (
+            overall,
+            issues,
+            recs,
+            {
+                "name": name,
+                "services": services,
+                "tiles": len(city_snaps),
+                "street_score": round(street_score, 2),
+                "depot_score": round(depot_score, 2),
+                "temple_score": round(temple_score, 2),
+                "npc_score": round(npc_score, 2),
+            },
+        )

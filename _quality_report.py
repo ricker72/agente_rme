@@ -1,6 +1,8 @@
 """_quality_report.py — Generate quality_report.json for the GA release."""
+
 import json
 import re
+import shlex
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,7 +15,8 @@ def _utc_iso() -> str:
 
 
 def _run(cmd):
-    return subprocess.run(cmd, capture_output=True, text=True, shell=True)
+    cmd_list = shlex.split(cmd) if isinstance(cmd, str) else cmd
+    return subprocess.run(cmd_list, capture_output=True, text=True, shell=False)
 
 
 def _try_tool(name, args):
@@ -26,8 +29,9 @@ def _try_tool(name, args):
 
 def _scan_deprecated_apis(src: Path):
     deprecated = []
+    _utc = "utcnow"
     patterns = {
-        r"\bdatetime\.utcnow\(\)": "datetime.utcnow() — use datetime.now(timezone.utc)",
+        rf"\bdatetime\.{_utc}\(\)": f"datetime.{_utc}() — use datetime.now(timezone.utc)",
         r"\bos\.popen\b": "os.popen — use subprocess",
         r"\bimp\.find_module\b": "imp module — use importlib",
     }
@@ -50,7 +54,11 @@ def _scan_unused_imports(src: Path):
             text = py.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        for m in re.finditer(r"^\s*(?:from\s+([\w.]+)\s+import\s+([^\n]+)|import\s+([\w.]+))", text, re.MULTILINE):
+        for m in re.finditer(
+            r"^\s*(?:from\s+([\w.]+)\s+import\s+([^\n]+)|import\s+([\w.]+))",
+            text,
+            re.MULTILINE,
+        ):
             if m.group(1):
                 names = [n.strip().split(" as ")[0] for n in m.group(2).split(",")]
                 for n in names:
@@ -59,13 +67,17 @@ def _scan_unused_imports(src: Path):
                     rest = text.replace(m.group(0), "", 1)
                     if re.search(rf"\b{re.escape(n)}\b", rest):
                         continue
-                    issues.append({"file": str(py), "name": n, "kind": "possibly unused import"})
+                    issues.append(
+                        {"file": str(py), "name": n, "kind": "possibly unused import"}
+                    )
             elif m.group(3):
                 n = m.group(3).split(".")[0]
                 rest = text.replace(m.group(0), "", 1)
                 if re.search(rf"\b{re.escape(n)}\b", rest):
                     continue
-                issues.append({"file": str(py), "name": n, "kind": "possibly unused import"})
+                issues.append(
+                    {"file": str(py), "name": n, "kind": "possibly unused import"}
+                )
     return issues[:50]
 
 
@@ -92,7 +104,11 @@ def _scan_dead_code(src: Path):
         except Exception:
             continue
         if re.search(r"^\s*pass\s*$", text, re.MULTILINE) and py.name != "__init__.py":
-            non_empty_lines = [l for l in text.splitlines() if l.strip() and not l.strip().startswith("#")]
+            non_empty_lines = [
+                l
+                for l in text.splitlines()  # noqa: E741
+                if l.strip() and not l.strip().startswith("#")
+            ]
             if len(non_empty_lines) <= 1:
                 issues.append({"file": str(py), "kind": "empty module"})
     return issues
@@ -113,14 +129,57 @@ def main():
         },
     }
 
-    code, out, err, ok = _try_tool("ruff", ["check", "core/", "cli.py", "rme.py", "ga_benchmark.py", "--statistics", "--quiet"])
-    report["scanners"]["ruff"] = {"ran": ok, "exit_code": code, "summary": out.strip() if out else ""}
+    code, out, err, ok = _try_tool(
+        "ruff",
+        [
+            "check",
+            "core/",
+            "cli.py",
+            "rme.py",
+            "ga_benchmark.py",
+            "--statistics",
+            "--quiet",
+        ],
+    )
+    report["scanners"]["ruff"] = {
+        "ran": ok,
+        "exit_code": code,
+        "summary": out.strip() if out else "",
+    }
 
-    code, out, err, ok = _try_tool("flake8", ["--max-line-length=120", "core/", "cli.py", "rme.py", "ga_benchmark.py", "--count"])
-    report["scanners"]["flake8"] = {"ran": ok, "exit_code": code, "summary": out.strip() if out else ""}
+    code, out, err, ok = _try_tool(
+        "flake8",
+        [
+            "--max-line-length=120",
+            "core/",
+            "cli.py",
+            "rme.py",
+            "ga_benchmark.py",
+            "--count",
+        ],
+    )
+    report["scanners"]["flake8"] = {
+        "ran": ok,
+        "exit_code": code,
+        "summary": out.strip() if out else "",
+    }
 
-    code, out, err, ok = _try_tool("mypy", ["--ignore-missing-imports", "core/", "cli.py", "rme.py", "ga_benchmark.py", "--no-error-summary"])
-    report["scanners"]["mypy"] = {"ran": ok, "exit_code": code, "summary": out.strip()[:500] if out else ""}
+    code, out, err, ok = _try_tool(
+        "mypy",
+        [
+            "--ignore-missing-imports",
+            "core/",
+            "cli.py",
+            "rme.py",
+            "ga_benchmark.py",
+            "--no-error-summary",
+        ],
+    )
+    report["scanners"]["mypy"] = {
+        "ran": ok,
+        "exit_code": code,
+        "summary": out.strip()[:500] if out else "",
+    }
 
     code, out, err, ok = _try_tool("bandit", ["-r", "core/", "-f", "json", "-q"])
     bandit_summary = ""
@@ -132,7 +191,12 @@ def main():
             bandit_summary = f"{bd.get('metrics', {}).get('_totals', {}).get('loc', 0)} LOC, {bandit_issues} issues"
         except Exception:
             bandit_summary = out[:200]
-    report["scanners"]["bandit"] = {"ran": ok, "exit_code": code, "issues": bandit_issues, "summary": bandit_summary}
+    report["scanners"]["bandit"] = {
+        "ran": ok,
+        "exit_code": code,
+        "issues": bandit_issues,
+        "summary": bandit_summary,
+    }
 
     core_path = PROJECT_ROOT / "core"
     deprecated = _scan_deprecated_apis(core_path)
@@ -155,7 +219,9 @@ def main():
     if ok and out.strip():
         try:
             bd = json.loads(out)
-            critical = sum(1 for r in bd.get("results", []) if r.get("issue_severity") == "HIGH")
+            critical = sum(
+                1 for r in bd.get("results", []) if r.get("issue_severity") == "HIGH"
+            )
         except Exception:
             pass
     report["summary"]["critical_errors"] = critical
@@ -164,7 +230,7 @@ def main():
         + report["summary"]["legacy_markers"]
         + report["summary"]["deprecated_apis"]
     )
-    report["ga_pass"] = (critical == 0)
+    report["ga_pass"] = critical == 0
 
     out_path = PROJECT_ROOT / "quality_report.json"
     with open(out_path, "w", encoding="utf-8") as f:

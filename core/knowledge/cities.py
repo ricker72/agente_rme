@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class City:
     name: str
@@ -9,6 +10,7 @@ class City:
     walls: List[int]
     floors: List[int]
     decorations: List[int]
+
 
 CITIES = [
     City(

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 @dataclass
 class EconomyData:
     """Economy configuration for a campaign."""
+
     theme: str = ""
     currency_name: str = "Gold"
     base_item_value: int = 100
@@ -19,7 +20,8 @@ class EconomyData:
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "theme": self.theme, "currency_name": self.currency_name,
+            "theme": self.theme,
+            "currency_name": self.currency_name,
             "base_item_value": self.base_item_value,
             "price_inflation": self.price_inflation,
             "loot_multiplier": self.loot_multiplier,
@@ -111,8 +113,9 @@ class EconomyGenerator:
     def __init__(self, seed: int = 42):
         self._seed = seed
 
-    def generate(self, theme: str = "default",
-                 level_range: tuple = (1, 100)) -> EconomyData:
+    def generate(
+        self, theme: str = "default", level_range: tuple = (1, 100)
+    ) -> EconomyData:
         """
         Generate economy data for a theme and level range.
 
@@ -170,24 +173,24 @@ class EconomyGenerator:
         base_items = MERCHANT_ITEMS_BY_TIER[tier]
         economy.merchant_items = []
         for item in base_items:
-            adjusted_price = int(item["base_price"] * level_factor *
-                                 config["price_inflation"])
-            economy.merchant_items.append({
-                "name": item["name"],
-                "type": item["type"],
-                "price": adjusted_price,
-                "stock": 10,
-            })
+            adjusted_price = int(
+                item["base_price"] * level_factor * config["price_inflation"]
+            )
+            economy.merchant_items.append(
+                {
+                    "name": item["name"],
+                    "type": item["type"],
+                    "price": adjusted_price,
+                    "stock": 10,
+                }
+            )
 
         return economy
 
-    def calculate_profit(self, economy: EconomyData,
-                         base_profit: int) -> int:
+    def calculate_profit(self, economy: EconomyData, base_profit: int) -> int:
         """Calculate adjusted profit based on economy."""
-        return int(base_profit * economy.loot_multiplier /
-                   economy.price_inflation)
+        return int(base_profit * economy.loot_multiplier / economy.price_inflation)
 
-    def calculate_supply_cost(self, economy: EconomyData,
-                              base_cost: int) -> int:
+    def calculate_supply_cost(self, economy: EconomyData, base_cost: int) -> int:
         """Calculate adjusted supply cost based on economy."""
         return int(base_cost * economy.supply_cost_multiplier)

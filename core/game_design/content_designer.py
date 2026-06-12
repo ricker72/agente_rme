@@ -37,28 +37,58 @@ class ContentDesigner:
             }
         ]
 
-    def _design_hunts(self, theme: str, progression: Dict[str, object]) -> List[Dict[str, object]]:
+    def _design_hunts(
+        self, theme: str, progression: Dict[str, object]
+    ) -> List[Dict[str, object]]:
         hunts = []
         for i, tier in enumerate(progression.get("tiers", []), start=1):
             if i > 3:
                 break
-            hunts.append(self.hunt_designer.design(recommended_level=tier.get("recommended_level", "50-100"), theme=theme, index=i))
+            hunts.append(
+                self.hunt_designer.design(
+                    recommended_level=tier.get("recommended_level", "50-100"),
+                    theme=theme,
+                    index=i,
+                )
+            )
         return hunts
 
-    def _design_bosses(self, theme: str, progression: Dict[str, object]) -> List[Dict[str, object]]:
+    def _design_bosses(
+        self, theme: str, progression: Dict[str, object]
+    ) -> List[Dict[str, object]]:
         bosses = []
         for index, tier in enumerate(progression.get("tiers", []), start=1):
             if index > 5:
                 break
-            bosses.append(self.boss_designer.design(theme=theme, difficulty=tier.get("difficulty", "hard"), index=index))
+            bosses.append(
+                self.boss_designer.design(
+                    theme=theme, difficulty=tier.get("difficulty", "hard"), index=index
+                )
+            )
         return bosses
 
-    def _design_quests(self, theme: str, bosses: List[Dict[str, object]]) -> List[Dict[str, object]]:
+    def _design_quests(
+        self, theme: str, bosses: List[Dict[str, object]]
+    ) -> List[Dict[str, object]]:
         quest_chain = []
-        quest_chain.append(self.quest_designer.design("story", theme, f"Begin the {theme} saga."))
-        quest_chain.append(self.quest_designer.design("exploration", theme, "Survey the outer wilds."))
+        quest_chain.append(
+            self.quest_designer.design("story", theme, f"Begin the {theme} saga.")
+        )
+        quest_chain.append(
+            self.quest_designer.design("exploration", theme, "Survey the outer wilds.")
+        )
         if bosses:
-            quest_chain.append(self.quest_designer.design("boss", theme, f"Confront {bosses[0].get('name')}"))
-        quest_chain.append(self.quest_designer.design("collection", theme, "Gather relics for the city."))
-        quest_chain.append(self.quest_designer.design("puzzle", theme, "Unlock the ancient gate."))
+            quest_chain.append(
+                self.quest_designer.design(
+                    "boss", theme, f"Confront {bosses[0].get('name')}"
+                )
+            )
+        quest_chain.append(
+            self.quest_designer.design(
+                "collection", theme, "Gather relics for the city."
+            )
+        )
+        quest_chain.append(
+            self.quest_designer.design("puzzle", theme, "Unlock the ancient gate.")
+        )
         return quest_chain

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Tuple
 
 
 @dataclass
 class XPAnalysis:
     """Analysis of XP rates for a hunt zone."""
+
     zone_name: str = ""
     xp_per_kill: Dict[str, int] = field(default_factory=dict)  # monster → XP
     kills_per_hour: float = 0.0
@@ -55,16 +56,16 @@ class XPAnalyzer:
 
     # Reference XP curves (XP/h range per level bracket)
     XP_CURVES = {
-        (0, 50):       (50000, 150000),
-        (50, 100):     (150000, 400000),
-        (100, 150):    (400000, 600000),
-        (150, 200):    (600000, 800000),
-        (200, 300):    (800000, 1200000),
-        (300, 400):    (1200000, 1500000),
-        (400, 500):    (1500000, 2000000),
-        (500, 700):    (2000000, 2500000),
-        (700, 1000):   (2500000, 3000000),
-        (1000, 9999):  (3000000, 5000000),
+        (0, 50): (50000, 150000),
+        (50, 100): (150000, 400000),
+        (100, 150): (400000, 600000),
+        (150, 200): (600000, 800000),
+        (200, 300): (800000, 1200000),
+        (300, 400): (1200000, 1500000),
+        (400, 500): (1500000, 2000000),
+        (500, 700): (2000000, 2500000),
+        (700, 1000): (2500000, 3000000),
+        (1000, 9999): (3000000, 5000000),
     }
 
     # Kill rate assumptions per mode
@@ -77,8 +78,9 @@ class XPAnalyzer:
     # Public API
     # ------------------------------------------------------------------
 
-    def analyze_zone(self, zone_name: str, spawns: List[Dict[str, Any]],
-                     monsters: Dict[str, int]) -> XPAnalysis:
+    def analyze_zone(
+        self, zone_name: str, spawns: List[Dict[str, Any]], monsters: Dict[str, int]
+    ) -> XPAnalysis:
         """
         Analyze XP rates for a hunt zone.
 
@@ -129,7 +131,9 @@ class XPAnalyzer:
         # Efficiency score and rating
         efficiency = self._calc_efficiency(xp_solo, optimal_min, optimal_max)
         rating = self._rate_xp(xp_solo, optimal_min, optimal_max)
-        warnings = self._generate_warnings(xp_solo, xp_duo, xp_party, efficiency, rating)
+        warnings = self._generate_warnings(
+            xp_solo, xp_duo, xp_party, efficiency, rating
+        )
 
         analysis = XPAnalysis(
             zone_name=zone_name,
@@ -223,7 +227,9 @@ class XPAnalyzer:
 
         return base
 
-    def _find_optimal_level(self, xp_hour: float, avg_xp_per_kill: float) -> Tuple[int, int]:
+    def _find_optimal_level(
+        self, xp_hour: float, avg_xp_per_kill: float
+    ) -> Tuple[int, int]:
         """Find the optimal level range for this XP rate."""
         for (lo, hi), (min_xp, max_xp) in self.XP_CURVES.items():
             if min_xp <= xp_hour <= max_xp * 1.3:
@@ -288,14 +294,21 @@ class XPAnalyzer:
         else:
             return "overpowered"
 
-    def _generate_warnings(self, xp_solo: float, xp_duo: float,
-                           xp_party: float, efficiency: float,
-                           rating: str) -> List[str]:
+    def _generate_warnings(
+        self,
+        xp_solo: float,
+        xp_duo: float,
+        xp_party: float,
+        efficiency: float,
+        rating: str,
+    ) -> List[str]:
         """Generate warnings based on XP analysis."""
         warnings = []
 
         if rating == "poor":
-            warnings.append("XP rate is very low; consider increasing monster XP or density")
+            warnings.append(
+                "XP rate is very low; consider increasing monster XP or density"
+            )
         elif rating == "overpowered":
             warnings.append("XP rate is too high; risk of overpowered leveling")
 

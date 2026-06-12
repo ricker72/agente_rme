@@ -24,13 +24,12 @@ from __future__ import annotations
 
 import logging
 import random
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional
 
 from .base_generator import BaseGenerator
 from .theme_generator import ThemeGenerator, ThemeDefinition
 from .spawn_generator import SpawnGenerator
-from core.world import WorldModel, Tile, Spawn, Structure, Region
+from core.world import WorldModel, Tile, Structure, Region
 
 logger = logging.getLogger(__name__)
 
@@ -158,14 +157,14 @@ class HuntGenerator(BaseGenerator):
 
         # --- 9. Validate and return ---
         from core.world import WorldValidator
+
         validator = WorldValidator()
         result = validator.validate(world)
         if not result.passed:
             logger.warning(f"HuntGenerator validation warnings:\n{result.summary()}")
 
         logger.info(
-            f"HuntGenerator: generated '{theme_def.theme}' hunt zone "
-            f"({width}x{height}) with {world.tile_count()} tiles"
+            f"HuntGenerator: generated '{theme_def.theme}' hunt zone ({width}x{height}) with {world.tile_count()} tiles"
         )
         return world
 
@@ -177,8 +176,10 @@ class HuntGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
     ) -> None:
         """Fill the zone with ground tiles using theme-appropriate IDs."""
@@ -194,8 +195,10 @@ class HuntGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
     ) -> None:
         """Add boundary walls around the hunt zone."""
@@ -215,7 +218,9 @@ class HuntGenerator(BaseGenerator):
     def _place_wall(
         self,
         world: WorldModel,
-        x: int, y: int, z: int,
+        x: int,
+        y: int,
+        z: int,
         wall_id: int,
     ) -> None:
         """Place a wall on a tile, preserving any existing ground."""
@@ -229,8 +234,10 @@ class HuntGenerator(BaseGenerator):
         self,
         world: WorldModel,
         theme_def: ThemeDefinition,
-        ox: int, oy: int,
-        width: int, height: int,
+        ox: int,
+        oy: int,
+        width: int,
+        height: int,
         z: int,
         density: float = 0.03,
     ) -> None:
@@ -243,8 +250,12 @@ class HuntGenerator(BaseGenerator):
         for tile in world.tiles.values():
             if tile.z != z:
                 continue
-            if (tile.x == ox or tile.x == ox + width - 1 or
-                    tile.y == oy or tile.y == oy + height - 1):
+            if (
+                tile.x == ox
+                or tile.x == ox + width - 1
+                or tile.y == oy
+                or tile.y == oy + height - 1
+            ):
                 continue  # skip walls
             if self._rng.random() < density:
                 deco_id = self._rng.choice(decorations)

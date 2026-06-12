@@ -5,9 +5,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from .quality_detector import QualityDetector, MapQualityReport
-from .improvement_engine import ImprovementEngine, ImprovementResult, ImprovementPlan
-from .expansion_engine import ExpansionEngine, ExpansionResult, ExpansionPlan, ExpansionType
-from .modernization_engine import ModernizationEngine, ModernizationReport, MapVersion
+from .improvement_engine import ImprovementEngine, ImprovementResult
+from .expansion_engine import ExpansionEngine, ExpansionResult, ExpansionType
+from .modernization_engine import ModernizationEngine, ModernizationReport
 
 
 @dataclass
@@ -17,6 +17,7 @@ class EvolutionResult:
 
     Contains all intermediate reports and the final improved map data.
     """
+
     original_path: str
     evolved_path: str
     quality_report: Optional[MapQualityReport] = None
@@ -53,6 +54,7 @@ class EvolutionResult:
 
     def to_json(self) -> str:
         import json
+
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
     def summary(self) -> str:
@@ -60,9 +62,11 @@ class EvolutionResult:
         lines.append("=" * 60)
         lines.append(f"  MAP EVOLUTION: {Path(self.original_path).stem}")
         lines.append("=" * 60)
-        lines.append(f"  Score: {self.overall_score_before} → {self.overall_score_after} "
-                     f"({'+' if self.overall_score_after >= self.overall_score_before else ''}"
-                     f"{self.overall_score_after - self.overall_score_before} pts)")
+        lines.append(
+            f"  Score: {self.overall_score_before} → {self.overall_score_after} "
+            f"({'+' if self.overall_score_after >= self.overall_score_before else ''}"
+            f"{self.overall_score_after - self.overall_score_before} pts)"
+        )
         lines.append(f"  Success: {'✅' if self.success else '❌'}")
         lines.append("")
 
@@ -101,10 +105,14 @@ class MapEvolver:
     # Public API
     # ------------------------------------------------------------------
 
-    def evolve(self, input_path: str, output_path: Optional[str] = None,
-               target_score: int = 85,
-               enable_expansion: bool = True,
-               enable_modernization: bool = True) -> EvolutionResult:
+    def evolve(
+        self,
+        input_path: str,
+        output_path: Optional[str] = None,
+        target_score: int = 85,
+        enable_expansion: bool = True,
+        enable_modernization: bool = True,
+    ) -> EvolutionResult:
         """
         Evolve a map from an OTBM file to an improved version.
 
@@ -129,7 +137,7 @@ class MapEvolver:
         )
 
         result.pipeline_log.append("=" * 40)
-        result.pipeline_log.append(f"EVOLUTION PIPELINE STARTED")
+        result.pipeline_log.append("EVOLUTION PIPELINE STARTED")
         result.pipeline_log.append(f"Input:  {input_path}")
         result.pipeline_log.append(f"Output: {output_path}")
         result.pipeline_log.append(f"Target: {target_score} pts")
@@ -147,10 +155,16 @@ class MapEvolver:
             quality_report = self.quality_detector.analyze(otbm_data, map_name)
             result.quality_report = quality_report
             result.overall_score_before = quality_report.overall_score
-            result.pipeline_log.append(f"       Initial score: {quality_report.overall_score}/100")
-            result.pipeline_log.append(f"       Zones detected: {len(quality_report.zone_reports)}")
+            result.pipeline_log.append(
+                f"       Initial score: {quality_report.overall_score}/100"
+            )
+            result.pipeline_log.append(
+                f"       Zones detected: {len(quality_report.zone_reports)}"
+            )
             for zr in quality_report.zone_reports:
-                result.pipeline_log.append(f"         [{zr.category.value}] {zr.zone_name}: {zr.score}/100")
+                result.pipeline_log.append(
+                    f"         [{zr.category.value}] {zr.zone_name}: {zr.score}/100"
+                )
 
             if quality_report.global_issues:
                 for issue in quality_report.global_issues:
@@ -178,7 +192,9 @@ class MapEvolver:
             # Step 5: Modernization
             if enable_modernization:
                 result.pipeline_log.append("[5/6] Modernizing map...")
-                modernized_data, mod_report = self.modernization_engine.modernize(otbm_data)
+                modernized_data, mod_report = self.modernization_engine.modernize(
+                    otbm_data
+                )
                 result.modernization_report = mod_report
                 result.pipeline_log.append(f"       {mod_report.summary}")
                 otbm_data = modernized_data
@@ -197,22 +213,28 @@ class MapEvolver:
 
             result.pipeline_log.append("")
             result.pipeline_log.append("=" * 40)
-            result.pipeline_log.append(f"EVOLUTION COMPLETE ✅")
-            result.pipeline_log.append(f"Score: {result.overall_score_before} → {result.overall_score_after}")
+            result.pipeline_log.append("EVOLUTION COMPLETE ✅")
+            result.pipeline_log.append(
+                f"Score: {result.overall_score_before} → {result.overall_score_after}"
+            )
             result.pipeline_log.append(f"Output saved to: {output_path}")
             result.pipeline_log.append("=" * 40)
 
         except Exception as e:
-            result.pipeline_log.append(f"")
+            result.pipeline_log.append("")
             result.pipeline_log.append(f"❌ EVOLUTION FAILED: {e}")
             result.success = False
 
         return result
 
-    def evolve_from_data(self, otbm_data: Dict[str, Any], map_name: str = "unknown",
-                         target_score: int = 85,
-                         enable_expansion: bool = True,
-                         enable_modernization: bool = True) -> EvolutionResult:
+    def evolve_from_data(
+        self,
+        otbm_data: Dict[str, Any],
+        map_name: str = "unknown",
+        target_score: int = 85,
+        enable_expansion: bool = True,
+        enable_modernization: bool = True,
+    ) -> EvolutionResult:
         """
         Evolve a map from already-loaded OTBM data (no file I/O).
 
@@ -230,10 +252,14 @@ class MapEvolver:
             quality_report = self.quality_detector.analyze(otbm_data, map_name)
             result.quality_report = quality_report
             result.overall_score_before = quality_report.overall_score
-            result.pipeline_log.append(f"Initial score: {quality_report.overall_score}/100")
+            result.pipeline_log.append(
+                f"Initial score: {quality_report.overall_score}/100"
+            )
 
             # Improvement
-            improvement_result = self.improvement_engine.improve(otbm_data, map_name, target_score)
+            improvement_result = self.improvement_engine.improve(
+                otbm_data, map_name, target_score
+            )
             result.improvement_result = improvement_result
             result.pipeline_log.append(improvement_result.summary)
             otbm_data = improvement_result.improved_data
@@ -247,7 +273,9 @@ class MapEvolver:
 
             # Modernization
             if enable_modernization:
-                modernized_data, mod_report = self.modernization_engine.modernize(otbm_data)
+                modernized_data, mod_report = self.modernization_engine.modernize(
+                    otbm_data
+                )
                 result.modernization_report = mod_report
                 result.pipeline_log.append(mod_report.summary)
                 otbm_data = modernized_data
@@ -278,6 +306,7 @@ class MapEvolver:
         # Use the existing OtbmReader if available, otherwise raw bytes
         try:
             from core.otbm import OtbmReader
+
             reader = OtbmReader()
             return reader.read(file_path)
         except ImportError:
@@ -302,11 +331,13 @@ class MapEvolver:
 
         try:
             from core.otbm import OtbmWriter
+
             writer = OtbmWriter()
             writer.write(file_path, data)
         except ImportError:
             # Fallback: serialize as JSON metadata + raw bytes
             import json
+
             meta_path = path.with_suffix(".evolution.json")
             serializable = {
                 "otbm_version": data.get("otbm_version", 4),
@@ -332,8 +363,9 @@ class MapEvolver:
         map_name = Path(input_path).stem
         return self.quality_detector.analyze(otbm_data, map_name)
 
-    def improve_only(self, input_path: str, output_path: Optional[str] = None,
-                     target_score: int = 85) -> ImprovementResult:
+    def improve_only(
+        self, input_path: str, output_path: Optional[str] = None, target_score: int = 85
+    ) -> ImprovementResult:
         """Run only the improvement engine on a map file."""
         otbm_data = self._read_otbm(input_path)
         map_name = Path(input_path).stem
@@ -344,8 +376,12 @@ class MapEvolver:
 
         return result
 
-    def expand_only(self, input_path: str, output_path: Optional[str] = None,
-                    expansions: Optional[List[str]] = None) -> ExpansionResult:
+    def expand_only(
+        self,
+        input_path: str,
+        output_path: Optional[str] = None,
+        expansions: Optional[List[str]] = None,
+    ) -> ExpansionResult:
         """Run only the expansion engine on a map file."""
         otbm_data = self._read_otbm(input_path)
 
@@ -360,8 +396,12 @@ class MapEvolver:
 
         return result
 
-    def modernize_only(self, input_path: str, output_path: Optional[str] = None,
-                       to_version: str = "14.x") -> tuple:
+    def modernize_only(
+        self,
+        input_path: str,
+        output_path: Optional[str] = None,
+        to_version: str = "14.x",
+    ) -> tuple:
         """Run only the modernization engine on a map file."""
         otbm_data = self._read_otbm(input_path)
         modernized_data, report = self.modernization_engine.modernize(

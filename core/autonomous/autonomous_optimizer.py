@@ -39,6 +39,7 @@ logger = logging.getLogger(__name__)
 def _try_import_visual_critic():
     try:
         from core.critic import VisualCritic  # type: ignore
+
         return VisualCritic
     except Exception:  # pragma: no cover
         return None
@@ -47,6 +48,7 @@ def _try_import_visual_critic():
 def _try_import_playtest_engine():
     try:
         from core.playtest import PlaytestEngine  # type: ignore
+
         return PlaytestEngine
     except Exception:  # pragma: no cover
         return None
@@ -55,6 +57,7 @@ def _try_import_playtest_engine():
 def _try_import_balance_engine():
     try:
         from core.balance import BalanceEngine  # type: ignore
+
         return BalanceEngine
     except Exception:  # pragma: no cover
         return None
@@ -63,6 +66,7 @@ def _try_import_balance_engine():
 def _try_import_otbm_exporter():
     try:
         from core.otbm import OTBMExporter  # type: ignore
+
         return OTBMExporter
     except Exception:  # pragma: no cover
         return None
@@ -138,7 +142,9 @@ class AutonomousOptimizer:
             iteration += 1
 
         result.total_duration_seconds = time.time() - start
-        result.success = result.final_scores.get("critic", 0) >= goal.target_critic_score
+        result.success = (
+            result.final_scores.get("critic", 0) >= goal.target_critic_score
+        )
         return result
 
     def get_optimization_stats(self) -> Dict[str, Any]:
@@ -219,7 +225,7 @@ class AutonomousOptimizer:
         world = WorldModel()
         cursor_x = 0
         for region in plan.regions:
-            width = max(2, int(region.target_size ** 0.5))
+            width = max(2, int(region.target_size**0.5))
             height = max(2, int((region.target_size / max(1, width))))
             for dx in range(width):
                 for dy in range(height):
@@ -237,7 +243,10 @@ class AutonomousOptimizer:
                                 {"itemid": 200 + (dx * 7 + dy * 13) % 50, "count": 1}
                             ]
                     # Spawns on a portion of tiles
-                    if region.region_type in ("hunt", "raid", "boss") and (dx + dy) % 3 == 0:
+                    if (
+                        region.region_type in ("hunt", "raid", "boss")
+                        and (dx + dy) % 3 == 0
+                    ):
                         try:
                             tile.spawn = Spawn(monster="Demon", respawn=60, radius=2)
                         except Exception:
@@ -245,30 +254,39 @@ class AutonomousOptimizer:
                     world.set_tile(tile)
 
             try:
-                world.add_region(Region(
-                    name=region.region_id,
-                    theme=region.region_name,
-                    min_level=region.level_range[0],
-                    max_level=region.level_range[1],
-                ))
+                world.add_region(
+                    Region(
+                        name=region.region_id,
+                        theme=region.region_name,
+                        min_level=region.level_range[0],
+                        max_level=region.level_range[1],
+                    )
+                )
             except Exception:
                 pass
 
             if region.region_type in ("boss", "raid", "city"):
                 try:
-                    world.add_structure(Structure(
-                        name=f"struct_{region.region_id}",
-                        category=region.region_type,
-                        x=cursor_x, y=0, z=7,
-                        width=width, height=height,
-                        tags=[region.region_type],
-                    ))
+                    world.add_structure(
+                        Structure(
+                            name=f"struct_{region.region_id}",
+                            category=region.region_type,
+                            x=cursor_x,
+                            y=0,
+                            z=7,
+                            width=width,
+                            height=height,
+                            tags=[region.region_type],
+                        )
+                    )
                 except Exception:
                     pass
             cursor_x += width + 4
         return world
 
-    def _evaluate_world(self, world: Any, plan: DesignPlan, goal: DesignGoal) -> Dict[str, float]:
+    def _evaluate_world(
+        self, world: Any, plan: DesignPlan, goal: DesignGoal
+    ) -> Dict[str, float]:
         """Run critic + playtest + balance on the world and aggregate scores."""
         return {
             "critic": self._critic_score(world),
@@ -304,7 +322,11 @@ class AutonomousOptimizer:
             overall = getattr(report, "overall_score", None)
             if overall is None and isinstance(report, dict):
                 overall = report.get("overall_score")
-            score = (float(overall) / 100.0) if overall is not None else (0.7 if playable else 0.3)
+            score = (
+                (float(overall) / 100.0)
+                if overall is not None
+                else (0.7 if playable else 0.3)
+            )
             return max(0.0, min(1.0, score))
         except Exception as exc:
             logger.debug("PlaytestEngine failed: %s", exc)
@@ -345,7 +367,7 @@ class AutonomousOptimizer:
             return 0.5
         populated = 0
         for t in getattr(world, "tiles", {}).values():
-            if (getattr(t, "items", None) or getattr(t, "spawn", None)):
+            if getattr(t, "items", None) or getattr(t, "spawn", None):
                 populated += 1
         return 0.5 + 0.4 * min(1.0, populated / max(1, tile_count))
 
@@ -428,5 +450,8 @@ class AutonomousOptimizer:
             optimizer.max_iterations = int(data["max_iterations"])
         if "iteration_history" in data:
             from .models.design_iteration import DesignIteration
-            optimizer.iteration_history = [DesignIteration.from_dict(i) for i in data["iteration_history"]]
+
+            optimizer.iteration_history = [
+                DesignIteration.from_dict(i) for i in data["iteration_history"]
+            ]
         return optimizer

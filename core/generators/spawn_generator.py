@@ -10,11 +10,11 @@ from __future__ import annotations
 
 import logging
 import random
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from .base_generator import BaseGenerator
 from .theme_generator import ThemeDefinition
-from core.world import WorldModel, Tile, Spawn, Region
+from core.world import WorldModel, Tile, Spawn
 
 logger = logging.getLogger(__name__)
 
@@ -43,20 +43,33 @@ class SpawnGenerator(BaseGenerator):
     # Difficulty-based monster pools (fallback if theme has no defined monsters)
     MONSTER_TIERS = {
         "easy": [
-            "Crypt Warden", "Skeleton", "Demon Skeleton",
-            "Priestess", "Death Priest",
+            "Crypt Warden",
+            "Skeleton",
+            "Demon Skeleton",
+            "Priestess",
+            "Death Priest",
         ],
         "medium": [
-            "Frazzlemaw", "Sphinx", "Cloak Of Terror",
-            "Crypt Warden", "Vexclaw",
+            "Frazzlemaw",
+            "Sphinx",
+            "Cloak Of Terror",
+            "Crypt Warden",
+            "Vexclaw",
         ],
         "hard": [
-            "Frazzlemaw", "Guzzlemaw", "Cloak Of Terror",
-            "Sphinx", "Vexclaw", "Shrieker",
+            "Frazzlemaw",
+            "Guzzlemaw",
+            "Cloak Of Terror",
+            "Sphinx",
+            "Vexclaw",
+            "Shrieker",
         ],
         "extreme": [
-            "Guzzlemaw", "Cloak Of Terror", "Vexclaw",
-            "Shrieker", "Frazzlemaw",
+            "Guzzlemaw",
+            "Cloak Of Terror",
+            "Vexclaw",
+            "Shrieker",
+            "Frazzlemaw",
         ],
     }
 
@@ -111,8 +124,7 @@ class SpawnGenerator(BaseGenerator):
         if area:
             x1, y1, x2, y2 = area
             tiles_to_process = [
-                t for t in tiles_to_process
-                if x1 <= t.x <= x2 and y1 <= t.y <= y2
+                t for t in tiles_to_process if x1 <= t.x <= x2 and y1 <= t.y <= y2
             ]
 
         # Place spawns randomly across eligible tiles
@@ -126,8 +138,7 @@ class SpawnGenerator(BaseGenerator):
                 )
 
         logger.info(
-            f"SpawnGenerator: placed spawns on "
-            f"{sum(1 for t in tiles_to_process if t.spawn is not None)} tiles"
+            f"SpawnGenerator: placed spawns on {sum(1 for t in tiles_to_process if t.spawn is not None)} tiles"
         )
 
         return world

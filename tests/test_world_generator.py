@@ -7,6 +7,7 @@ prompt string to validated WorldModel.
 
 import sys
 import os
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from core.generators import WorldGenerator
@@ -33,12 +34,14 @@ def test_world_generator_basic_prompt():
 def test_world_generator_hunt_config():
     """Test with structured config dict for hunt."""
     generator = WorldGenerator(seed=42)
-    world = generator.generate({
-        "type": "hunt",
-        "theme": "issavi",
-        "level_min": 300,
-        "level_max": 500,
-    })
+    world = generator.generate(
+        {
+            "type": "hunt",
+            "theme": "issavi",
+            "level_min": 300,
+            "level_max": 500,
+        }
+    )
     assert world.tile_count() > 0
     assert world.region_count() == 1
 
@@ -46,12 +49,14 @@ def test_world_generator_hunt_config():
 def test_world_generator_city_config():
     """Test with structured config dict for city."""
     generator = WorldGenerator(seed=42)
-    world = generator.generate({
-        "type": "city",
-        "theme": "issavi",
-        "level_min": 50,
-        "level_max": 200,
-    })
+    world = generator.generate(
+        {
+            "type": "city",
+            "theme": "issavi",
+            "level_min": 50,
+            "level_max": 200,
+        }
+    )
     assert world.tile_count() > 0
     assert world.region_count() == 1
 
@@ -59,12 +64,14 @@ def test_world_generator_city_config():
 def test_world_generator_dungeon_config():
     """Test with structured config dict for dungeon."""
     generator = WorldGenerator(seed=42)
-    world = generator.generate({
-        "type": "dungeon",
-        "theme": "library",
-        "level_min": 200,
-        "level_max": 400,
-    })
+    world = generator.generate(
+        {
+            "type": "dungeon",
+            "theme": "library",
+            "level_min": 200,
+            "level_max": 400,
+        }
+    )
     assert world.tile_count() > 0
     assert world.region_count() == 1
 
@@ -120,10 +127,13 @@ def test_world_generator_existing_world():
     """Test passing an existing WorldModel."""
     generator = WorldGenerator(seed=42)
     existing = WorldModel()
-    world = generator.generate(existing, {
-        "type": "hunt",
-        "theme": "issavi",
-    })
+    world = generator.generate(
+        existing,
+        {
+            "type": "hunt",
+            "theme": "issavi",
+        },
+    )
     assert world is existing  # Same instance
     assert world.tile_count() > 0
 

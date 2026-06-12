@@ -21,9 +21,11 @@ def load_items(items_path: str) -> Tuple[dict, list[dict]]:
             "name": name,
             "description": description,
         }
-        documents.append({
-            "title": f"Item {item_id}",
-            "text": f"{name}: {description}".strip(),
-            "metadata": {"type": "item", "id": item_id},
-        })
+        documents.append(
+            {
+                "title": f"Item {item_id}",
+                "text": f"{name}: {description}".strip(),
+                "metadata": {"type": "item", "id": item_id},
+            }
+        )
     return items_catalog, documents

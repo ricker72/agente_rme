@@ -35,9 +35,17 @@ logger = logging.getLogger(__name__)
 # ── Theme → archetype hints used by the heuristics ──────────────────────────
 THEME_HINTS: Dict[str, Dict[str, str]] = {
     "issavi": {"city": "issavi_city", "hunt": "issavi_dunes", "boss": "issavi_pharaoh"},
-    "roshamuul": {"city": "roshamuul_hub", "hunt": "roshamuul_citadel", "boss": "roshamuul_lord"},
+    "roshamuul": {
+        "city": "roshamuul_hub",
+        "hunt": "roshamuul_citadel",
+        "boss": "roshamuul_lord",
+    },
     "desert": {"city": "desert_oasis", "hunt": "desert_dunes", "boss": "desert_sphinx"},
-    "forest": {"city": "forest_grove", "hunt": "forest_clearing", "boss": "forest_treant"},
+    "forest": {
+        "city": "forest_grove",
+        "hunt": "forest_clearing",
+        "boss": "forest_treant",
+    },
     "ice": {"city": "frosthold", "hunt": "frozen_tundra", "boss": "ice_dragon"},
 }
 
@@ -100,19 +108,29 @@ class AutonomousDirector:
         theme = self._detect_theme(goal.prompt)
 
         for i in range(goal.num_hunts):
-            regions.append(self._make_region(goal, idx=i, region_type="hunt", theme=theme))
+            regions.append(
+                self._make_region(goal, idx=i, region_type="hunt", theme=theme)
+            )
         for i in range(goal.num_bosses):
-            regions.append(self._make_region(goal, idx=i, region_type="boss", theme=theme))
+            regions.append(
+                self._make_region(goal, idx=i, region_type="boss", theme=theme)
+            )
         for i in range(goal.num_raids):
-            regions.append(self._make_region(goal, idx=i, region_type="raid", theme=theme))
+            regions.append(
+                self._make_region(goal, idx=i, region_type="raid", theme=theme)
+            )
 
         # Always include at least a city hub (unless strategy is purely hunt focused
         # and zero cities are explicitly requested via prompt).
         if "compact" not in goal.prompt.lower() or goal.num_hunts == 0:
-            regions.append(self._make_region(goal, idx=0, region_type="city", theme=theme))
+            regions.append(
+                self._make_region(goal, idx=0, region_type="city", theme=theme)
+            )
         else:
             # Compact city-only mode: produce a single city region
-            regions.append(self._make_region(goal, idx=0, region_type="city", theme=theme))
+            regions.append(
+                self._make_region(goal, idx=0, region_type="city", theme=theme)
+            )
 
         return regions
 
@@ -126,7 +144,9 @@ class AutonomousDirector:
         if self.blueprint_intelligence is not None:
             try:
                 # Use a type-based query that the engine understands
-                recs = self.blueprint_intelligence.recommend(region.region_type, top_k=5)
+                recs = self.blueprint_intelligence.recommend(
+                    region.region_type, top_k=5
+                )
                 for rec in recs[:3]:
                     if isinstance(rec, dict):
                         name = rec.get("name") or rec.get("recommendation")
@@ -165,7 +185,9 @@ class AutonomousDirector:
                     "raid": self.knowledge_engine.find_similar_raids,
                     "mixed": self.knowledge_engine.find_similar_regions,
                 }
-                finder = finders.get(region.region_type, self.knowledge_engine.find_similar_regions)
+                finder = finders.get(
+                    region.region_type, self.knowledge_engine.find_similar_regions
+                )
                 results = finder(region.region_name, k=3)
                 for entry in results:
                     if isinstance(entry, dict):
@@ -204,7 +226,12 @@ class AutonomousDirector:
     def get_memory_stats(self) -> Dict[str, Any]:
         """Return aggregate statistics over the decision memory."""
         if not self.decision_memory:
-            return {"total_decisions": 0, "average_score": 0.0, "best_score": 0.0, "worst_score": 0.0}
+            return {
+                "total_decisions": 0,
+                "average_score": 0.0,
+                "best_score": 0.0,
+                "worst_score": 0.0,
+            }
 
         scores = [float(d["score"]) for d in self.decision_memory]
         return {
@@ -245,7 +272,9 @@ class AutonomousDirector:
         return "issavi"
 
     @staticmethod
-    def _make_region(goal: DesignGoal, idx: int, region_type: str, theme: str) -> RegionPlan:
+    def _make_region(
+        goal: DesignGoal, idx: int, region_type: str, theme: str
+    ) -> RegionPlan:
         defaults = {
             "hunt": {"size": 1200, "density": 0.55, "difficulty": 0.4},
             "boss": {"size": 600, "density": 0.70, "difficulty": 0.85},
@@ -271,9 +300,7 @@ class AutonomousDirector:
     @staticmethod
     def _heuristic_blueprints(region: RegionPlan) -> List[str]:
         base = region.region_type
-        return [
-            f"blueprint_{base}_core_{i + 1}" for i in range(3)
-        ]
+        return [f"blueprint_{base}_core_{i + 1}" for i in range(3)]
 
     @staticmethod
     def _heuristic_patterns(region: RegionPlan) -> List[str]:

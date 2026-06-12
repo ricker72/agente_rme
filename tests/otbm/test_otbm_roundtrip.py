@@ -8,11 +8,11 @@ Verifica:
   - Boss room: boss spawn + flag PZ
   - Serialización → validación → deserialización
 """
+
 from __future__ import annotations
 
 import struct
 import sys
-import os
 from pathlib import Path
 
 # Asegurar que podemos importar del proyecto
@@ -23,16 +23,11 @@ from core.otbm import (
     OtbmSerializer,
     OtbmValidator,
     NodeEncoder,
-    TileEncoder,
     OTBM_NODE_ROOT,
-    OTBM_NODE_MAP_DATA,
-    OTBM_NODE_TILE_AREA,
     OTBM_NODE_TILE,
     OTBM_NODE_ITEM,
-    OTBM_NODE_SPAWNS,
     OTBM_NODE_SPAWN_AREA,
     OTBM_NODE_MONSTER,
-    TILESTATE_PROTECTIONZONE,
 )
 
 
@@ -44,6 +39,7 @@ def _dump_hex_header(data: bytes, max_len: int = 64) -> str:
 # Test 1: Small map (4 tiles + 1 spawn)
 # ============================================================
 
+
 def test_small_map():
     """Genera un mapa pequeño y verifica roundtrip completo."""
     wm = WorldModel()
@@ -51,7 +47,9 @@ def test_small_map():
     wm.add_tile(Tile(x=1001, y=1000, z=7, ground="106"))
     wm.add_tile(Tile(x=1000, y=1001, z=7, ground="106"))
     wm.add_tile(Tile(x=1001, y=1001, z=7, ground="106"))
-    wm.spawns.append({"monster": "Dragon Lord", "x": 1000, "y": 1000, "z": 7, "respawn": 60})
+    wm.spawns.append(
+        {"monster": "Dragon Lord", "x": 1000, "y": 1000, "z": 7, "respawn": 60}
+    )
 
     serializer = OtbmSerializer()
     data = serializer.serialize(wm)
@@ -63,8 +61,12 @@ def test_small_map():
     validator = OtbmValidator()
     result = validator.validate(data)
     assert result.status == "success", f"Validación falló: {result.errors}"
-    assert result.stats["tiles"] == 4, f"Esperados 4 tiles, encontrados {result.stats['tiles']}"
-    assert result.stats["monsters"] == 1, f"Esperado 1 monster, encontrados {result.stats['monsters']}"
+    assert result.stats["tiles"] == 4, (
+        f"Esperados 4 tiles, encontrados {result.stats['tiles']}"
+    )
+    assert result.stats["monsters"] == 1, (
+        f"Esperado 1 monster, encontrados {result.stats['monsters']}"
+    )
 
     # Deserializar
     decoded = serializer.deserialize(data)
@@ -75,12 +77,15 @@ def test_small_map():
     assert decoded["spawns"][0]["monsters"][0]["name"] == "Dragon Lord"
     assert decoded["item_version"] == (3, 57)
 
-    print(f"[PASS] test_small_map — {len(decoded['tiles'])} tiles, {len(decoded['spawns'])} spawns, {len(data)} bytes")
+    print(
+        f"[PASS] test_small_map — {len(decoded['tiles'])} tiles, {len(decoded['spawns'])} spawns, {len(data)} bytes"
+    )
 
 
 # ============================================================
 # Test 2: City map (múltiples tiles con items decorativos)
 # ============================================================
+
 
 def test_city_map():
     """Genera un mapa tipo ciudad con items decorativos."""
@@ -94,10 +99,14 @@ def test_city_map():
             wm.add_tile(tile)
 
     # Ciudad con templo
-    wm.cities.append({
-        "name": "TestCity",
-        "temple_x": 102, "temple_y": 102, "temple_z": 7,
-    })
+    wm.cities.append(
+        {
+            "name": "TestCity",
+            "temple_x": 102,
+            "temple_y": 102,
+            "temple_z": 7,
+        }
+    )
 
     serializer = OtbmSerializer()
     data = serializer.serialize(wm)
@@ -113,12 +122,15 @@ def test_city_map():
     assert len(decoded["towns"]) >= 1
     assert decoded["towns"][0]["name"] == "TestCity"
 
-    print(f"[PASS] test_city_map — {len(decoded['tiles'])} tiles, {len(decoded['towns'])} towns, {len(data)} bytes")
+    print(
+        f"[PASS] test_city_map — {len(decoded['tiles'])} tiles, {len(decoded['towns'])} towns, {len(data)} bytes"
+    )
 
 
 # ============================================================
 # Test 3: Hunt map (simula HuntArea del pipeline_runner)
 # ============================================================
+
 
 def test_hunt_map():
     """Simula la salida del pipeline (HuntArea) para verificar exportabilidad."""
@@ -133,11 +145,17 @@ def test_hunt_map():
             wm.add_tile(tile)
 
     # Spawns estilo hunt
-    wm.spawns.append({"monster": "Serpent Spawn", "x": 502, "y": 502, "z": 8, "respawn": 50})
+    wm.spawns.append(
+        {"monster": "Serpent Spawn", "x": 502, "y": 502, "z": 8, "respawn": 50}
+    )
     wm.spawns.append({"monster": "Medusa", "x": 504, "y": 504, "z": 8, "respawn": 50})
     wm.spawns.append({"monster": "Hydra", "x": 506, "y": 506, "z": 8, "respawn": 50})
-    wm.spawns.append({"monster": "Dragon Lord", "x": 508, "y": 508, "z": 8, "respawn": 50})
-    wm.spawns.append({"monster": "Grand Canon Dominant", "x": 505, "y": 505, "z": 8, "respawn": 300})
+    wm.spawns.append(
+        {"monster": "Dragon Lord", "x": 508, "y": 508, "z": 8, "respawn": 50}
+    )
+    wm.spawns.append(
+        {"monster": "Grand Canon Dominant", "x": 505, "y": 505, "z": 8, "respawn": 300}
+    )
 
     serializer = OtbmSerializer()
     data = serializer.serialize(wm)
@@ -154,12 +172,15 @@ def test_hunt_map():
     assert "Serpent Spawn" in monster_names
     assert "Hydra" in monster_names
 
-    print(f"[PASS] test_hunt_map — {len(decoded['tiles'])} tiles, {len(decoded['spawns'])} spawn areas")
+    print(
+        f"[PASS] test_hunt_map — {len(decoded['tiles'])} tiles, {len(decoded['spawns'])} spawn areas"
+    )
 
 
 # ============================================================
 # Test 4: Boss room (boss + flag PZ)
 # ============================================================
+
 
 def test_boss_room():
     """Genera un boss room con PZ flag."""
@@ -174,8 +195,12 @@ def test_boss_room():
             wm.add_tile(tile)
 
     # Boss spawn
-    wm.spawns.append({"monster": "Grand Canon Dominant", "x": 203, "y": 203, "z": 8, "respawn": 600})
-    wm.spawns.append({"monster": "Crystal Guardian", "x": 200, "y": 200, "z": 8, "respawn": 60})
+    wm.spawns.append(
+        {"monster": "Grand Canon Dominant", "x": 203, "y": 203, "z": 8, "respawn": 600}
+    )
+    wm.spawns.append(
+        {"monster": "Crystal Guardian", "x": 200, "y": 200, "z": 8, "respawn": 60}
+    )
 
     serializer = OtbmSerializer()
     data = serializer.serialize(wm)
@@ -195,12 +220,15 @@ def test_boss_room():
     assert len(decoded["tiles"]) == 25
     assert len(decoded["spawns"]) == 2
 
-    print(f"[PASS] test_boss_room — {len(decoded['tiles'])} tiles, {len(decoded['spawns'])} spawns")
+    print(
+        f"[PASS] test_boss_room — {len(decoded['tiles'])} tiles, {len(decoded['spawns'])} spawns"
+    )
 
 
 # ============================================================
 # Test 5: WorldModelToOTBM (high-level API)
 # ============================================================
+
 
 def test_worldmodel_to_otbm():
     """Verifica el API de alto nivel WorldModelToOTBM."""
@@ -223,12 +251,13 @@ def test_worldmodel_to_otbm():
     assert path.read_bytes()[:4] == b"OTBM"
     path.unlink()  # Limpiar
 
-    print(f"[PASS] test_worldmodel_to_otbm — API alto nivel funciona")
+    print("[PASS] test_worldmodel_to_otbm — API alto nivel funciona")
 
 
 # ============================================================
 # Test 6: NodeEncoder low-level
 # ============================================================
+
 
 def test_node_encoder():
     """Verifica que NodeEncoder genera nodos bien formados."""
@@ -258,17 +287,17 @@ def test_node_encoder():
 
     # SPAWN_AREA
     spawn_area = encoder.encode_spawn_area(
-        center_x=1000, center_y=1000, center_z=7, radius=3,
-        children=monster_node
+        center_x=1000, center_y=1000, center_z=7, radius=3, children=monster_node
     )
     assert spawn_area[0] == OTBM_NODE_SPAWN_AREA
 
-    print(f"[PASS] test_node_encoder — nodos binarios correctos")
+    print("[PASS] test_node_encoder — nodos binarios correctos")
 
 
 # ============================================================
 # Test 7: OpenTibiaBR compatibility constraints
 # ============================================================
+
 
 def test_otbr_compatibility():
     """Verifica restricciones de compatibilidad OpenTibiaBR."""
@@ -294,7 +323,9 @@ def test_otbr_compatibility():
     assert result2.status == "success"
     assert result2.stats["tiles"] == 2500
 
-    print(f"[PASS] test_otbr_compatibility — {result2.stats['tiles']} tiles, {len(data2)} bytes")
+    print(
+        f"[PASS] test_otbr_compatibility — {result2.stats['tiles']} tiles, {len(data2)} bytes"
+    )
 
 
 # ============================================================
@@ -327,6 +358,7 @@ if __name__ == "__main__":
         except Exception as e:
             failed += 1
             import traceback
+
             print(f"[FAIL] {test_fn.__name__}: {e}")
             traceback.print_exc()
 

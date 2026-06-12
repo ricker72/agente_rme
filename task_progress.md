@@ -1,66 +1,44 @@
-# Task Progress for Autonomous World Designer
+# English Compliance Task - Todo List
 
-## 1. Set up directory structure
-- [ ] Create `core/autonomous/` package
-- [ ] Create `core/autonomous/models/` package
+## Phase 1: Exploration & Audit
+- [ ] Explore project structure (core/, ui/, agents/)
+- [ ] Run initial language audit
+- [ ] Run initial tests (pytest)
+- [ ] Run initial coverage (pytest --cov)
 
-## 2. Implement models (core/autonomous/models/)
-- [ ] `design_goal.py`
-- [ ] `design_plan.py`
-- [ ] `design_iteration.py`
-- [ ] `design_decision.py`
-- [ ] `design_result.py`
-- [ ] `region_plan.py` (internal)
-- [ ] `__init__.py` to expose models
+## Phase 2: Identifier Renaming (Safe Refactors)
+- [ ] Search for non-English identifiers in core/
+- [ ] Search for non-English identifiers in ui/
+- [ ] Search for non-English identifiers in agents/
+- [ ] Rename identifiers with all references updated
 
-## 3. Implement core modules (core/autonomous/)
-- [ ] `world_objective.py`
-- [ ] `world_strategy.py`
-- [ ] `goal_manager.py`
-- [ ] `autonomous_director.py`
-- [ ] `autonomous_planner.py`
-- [ ] `autonomous_decision_engine.py`
-- [ ] `autonomous_optimizer.py`
-- [ ] `autonomous_world_designer.py` (main façade)
+## Phase 3: Comments Translation
+- [ ] Translate comments in core/
+- [ ] Translate comments in ui/
+- [ ] Translate comments in agents/
 
-## 4. CLI integration (cli.py)
-- [ ] Add sub-commands: `autonomous generate`, `autonomous optimize`, `autonomous benchmark`, `autonomous report`
+## Phase 4: Docstrings Translation
+- [ ] Translate docstrings in core/
+- [ ] Translate docstrings in ui/
+- [ ] Translate docstrings in agents/
 
-## 5. Persistence & Export
-- [ ] Implement JSON export of history, decisions, iterations, metrics
-- [ ] Implement visualization (PNG) generation
+## Phase 5: Log Messages Translation
+- [ ] Translate log messages in core/
+- [ ] Translate log messages in ui/
+- [ ] Translate log messages in agents/
 
-## 6. Unit tests (tests/autonomous/)
-- [ ] `test_autonomous_director.py`
-- [ ] `test_autonomous_planner.py`
-- [ ] `test_goal_manager.py`
-- [ ] `test_decision_engine.py`
-- [ ] `test_optimizer.py`
-- [ ] `test_iteration_loop.py`
-- [ ] `test_world_objectives.py`
-- [ ] `test_strategy_engine.py`
-- [ ] `__init__.py`
+## Phase 6: Exception & Warning Messages Translation
+- [ ] Translate exception messages in core/
+- [ ] Translate exception messages in ui/
+- [ ] Translate exception messages in agents/
+- [ ] Translate warning messages
 
-## 7. Integration tests (tests/integration/)
-- [ ] `test_autonomous_pipeline.py`
-- [ ] `test_autonomous_critic_loop.py`
-- [ ] `test_autonomous_blueprint_integration.py`
-- [ ] `test_autonomous_knowledge_integration.py`
-- [ ] `test_autonomous_export_pipeline.py`
+## Phase 7: Validation
+- [ ] Run pytest (all tests pass)
+- [ ] Run pytest --cov (coverage unchanged/improved)
+- [ ] Run language_audit.py (Critical Issues = 0, Warnings < 50)
+- [ ] Generate english_compliance_report.md
 
-## 8. Benchmarking
-- [ ] `benchmark_autonomous.py` (standalone script)
-- [ ] CLI command `rme autonomous benchmark`
-
-## 9. Coverage enforcement
-- [ ] Update `pytest.ini` with coverage options
-- [ ] Create `run_coverage.py` script
-- [ ] Ensure coverage >= 90%
-
-## 10. Documentation
-- [ ] Update `README.md` with usage instructions
-
-## 11. Validation
-- [ ] Run all tests (unit + integration) and ensure they pass
-- [ ] Run benchmark and verify convergence
-- [ ] Verify no mocks/placeholders are left
+## Phase 8: Final Certification
+- [ ] Final validation passes
+- [ ] Deliver english_compliance_report.md

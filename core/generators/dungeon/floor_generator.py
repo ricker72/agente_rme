@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Dict
 
-from .room_generator import Room, RoomType, RoomGenerator
+from .room_generator import Room, RoomGenerator
 from .corridor_generator import CorridorGenerator
 from .boss_generator import BossGenerator
 from .quest_generator import QuestGenerator
@@ -36,7 +36,16 @@ class FloorGenerator:
             floor = Floor(level=-level, width=40, height=40)
             if self.style in ("roshamuul", "ice", "dragon", "ancient"):
                 CaveGenerator().carve_cave(floor)
-                floor.rooms = [Room(name="Cave Vault", type="CombatRoom", x=2, y=2, width=36, height=36)]
+                floor.rooms = [
+                    Room(
+                        name="Cave Vault",
+                        type="CombatRoom",
+                        x=2,
+                        y=2,
+                        width=36,
+                        height=36,
+                    )
+                ]
             else:
                 self._build_rooms_and_corridors(floor)
             floor.boss_rooms = BossGenerator().place_boss_room(floor, self.theme)

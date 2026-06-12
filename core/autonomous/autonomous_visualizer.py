@@ -23,8 +23,10 @@ from .models.design_result import DesignResult
 def _try_matplotlib():
     try:
         import matplotlib
+
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
+
         return plt
     except Exception:  # pragma: no cover
         return None

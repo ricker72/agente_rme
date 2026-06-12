@@ -1,6 +1,5 @@
 """Tests for BlueprintRecommender."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_recommender import BlueprintRecommender
 
@@ -78,8 +77,10 @@ class TestBlueprintRecommender:
 
     def test_save_load_patterns(self, tmp_path):
         """Test saving and loading patterns."""
-        import json
-        from core.blueprint_intelligence.models.blueprint_pattern import BlueprintPattern
+        from core.blueprint_intelligence.models.blueprint_pattern import (
+            BlueprintPattern,
+        )
+
         pattern = BlueprintPattern(name="test_pattern", pattern_type="hunt")
         self.recommender.patterns = [pattern]
         path = str(tmp_path / "patterns.json")

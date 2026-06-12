@@ -7,17 +7,16 @@ by the prompt-to-knowledge integration in the knowledge engine.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Optional
 
 from .knowledge_index import KnowledgeIndex
-from .knowledge_query import KnowledgeQuery, parse_query
+from .knowledge_query import KnowledgeQuery
 from .knowledge_ranker import KnowledgeRanker
 from .models import (
     EntryType,
     KnowledgeEntry,
     KnowledgeQueryResult,
     QueryMatch,
-    hybrid_similarity,
 )
 
 
@@ -65,7 +64,8 @@ class KnowledgeSearch:
             # Apply optional level filter on top
             if min_level is not None or max_level is not None:
                 r.matches = [
-                    m for m in r.matches
+                    m
+                    for m in r.matches
                     if self.query._passes_level(m.entry, min_level, max_level)
                 ]
                 r.total = len(r.matches)
@@ -87,11 +87,14 @@ class KnowledgeSearch:
         for e, score in scored:
             if e.id == entry.id:
                 continue
-            result.add(QueryMatch(
-                entry=e, score=float(score),
-                match_type="similarity",
-                explanation=f"hybrid={score:.3f}",
-            ))
+            result.add(
+                QueryMatch(
+                    entry=e,
+                    score=float(score),
+                    match_type="similarity",
+                    explanation=f"hybrid={score:.3f}",
+                )
+            )
         result.sort()
         return result
 

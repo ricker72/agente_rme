@@ -14,8 +14,14 @@ from .score_calculator import ScoreCalculator
 from .heatmap_renderer import HeatmapRenderer
 from .visual_critic import VisualCritic
 from .models import (
-    CriticScore, CriticIssue, CriticRecommendation, CriticResult,
-    CriticCategoryResult, IssueType, IssueSeverity, RecommendationPriority,
+    CriticScore,
+    CriticIssue,
+    CriticRecommendation,
+    CriticResult,
+    CriticCategoryResult,
+    IssueType,
+    IssueSeverity,
+    RecommendationPriority,
 )
 
 __all__ = [

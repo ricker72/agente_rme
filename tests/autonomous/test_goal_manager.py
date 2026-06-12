@@ -12,15 +12,21 @@ from core.autonomous.models.region_plan import RegionPlan
 
 def _make_result(critic_scores):
     region = RegionPlan(
-        region_id="r1", region_name="r", region_type="hunt",
+        region_id="r1",
+        region_name="r",
+        region_type="hunt",
     )
     plan = DesignPlan(plan_id="p1", goal_id="g", regions=[region])
     res = DesignResult(result_id="r1", goal_id="g", plan=plan)
     for i, score in enumerate(critic_scores):
-        res.add_iteration(DesignIteration(
-            iteration_id=i, plan_snapshot=plan,
-            critic_score=score, playtest_score=0.7,
-        ))
+        res.add_iteration(
+            DesignIteration(
+                iteration_id=i,
+                plan_snapshot=plan,
+                critic_score=score,
+                playtest_score=0.7,
+            )
+        )
     return res
 
 
@@ -97,9 +103,17 @@ class TestGoalManager:
 
     def test_get_progress(self):
         gm = GoalManager()
-        gm.add_goal(DesignGoal(prompt="t", target_critic_score=90.0, target_playtest_score=80.0))
+        gm.add_goal(
+            DesignGoal(prompt="t", target_critic_score=90.0, target_playtest_score=80.0)
+        )
         res = _make_result([0.6, 0.7])
-        res.final_scores = {"critic": 0.7, "playtest": 0.8, "navigation": 0.5, "density": 0.5, "reuse": 0.5}
+        res.final_scores = {
+            "critic": 0.7,
+            "playtest": 0.8,
+            "navigation": 0.5,
+            "density": 0.5,
+            "reuse": 0.5,
+        }
         progress = gm.get_progress(res)
         assert progress["critic_score"]["current"] == 0.7
         assert progress["critic_score"]["target"] == pytest.approx(0.9)
@@ -108,7 +122,9 @@ class TestGoalManager:
 
     def test_overall_progress_percent(self):
         gm = GoalManager()
-        gm.add_goal(DesignGoal(prompt="t", target_critic_score=90.0, target_playtest_score=80.0))
+        gm.add_goal(
+            DesignGoal(prompt="t", target_critic_score=90.0, target_playtest_score=80.0)
+        )
         res = _make_result([0.9])
         res.final_scores = {"critic": 0.9, "playtest": 0.8}
         progress = gm._calculate_overall_progress(res)

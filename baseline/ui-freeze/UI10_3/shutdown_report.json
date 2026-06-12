@@ -1,0 +1,12 @@
+{
+  "active_timers_after": 0,
+  "active_timers_before": 0,
+  "close_time_ms": 27.917,
+  "closed": true,
+  "no_dangling_qthreads": true,
+  "no_hanging_process": true,
+  "running_qthreads_after": 0,
+  "running_qthreads_before": 0,
+  "status": "PASS",
+  "timers_stopped": true
+}

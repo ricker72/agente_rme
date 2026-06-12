@@ -1,4 +1,10 @@
 .venv/
+venv/
 __pycache__/
+*.pyc
 .pytest_cache/
-.cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/
+CLAUDE.md

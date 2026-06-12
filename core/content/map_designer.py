@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import logging
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from core.world.world_model import WorldModel
 from core.world.structure import Structure
@@ -25,12 +25,32 @@ _ZONES: List[Dict[str, Any]] = [
     {"name": "Venore Swamps", "theme": "swamp", "level_min": 1, "level_max": 50},
     {"name": "Thais Plains", "theme": "plains", "level_min": 1, "level_max": 30},
     {"name": "Carlin Forest", "theme": "forest", "level_min": 10, "level_max": 80},
-    {"name:": "Kazordoon Depths", "theme": "mountain", "level_min": 50, "level_max": 150},
-    {"name": "Ab'Dendriel Jungle", "theme": "jungle", "level_min": 30, "level_max": 120},
+    {
+        "name:": "Kazordoon Depths",
+        "theme": "mountain",
+        "level_min": 50,
+        "level_max": 150,
+    },
+    {
+        "name": "Ab'Dendriel Jungle",
+        "theme": "jungle",
+        "level_min": 30,
+        "level_max": 120,
+    },
     {"name": "Darashia Desert", "theme": "desert", "level_min": 100, "level_max": 250},
     {"name": "Svargrond Tundra", "theme": "tundra", "level_min": 150, "level_max": 300},
-    {"name": "Issavi Catacombs", "theme": "catacomb", "level_min": 250, "level_max": 450},
-    {"name": "Roshamuul Fortress", "theme": "fortress", "level_min": 350, "level_max": 500},
+    {
+        "name": "Issavi Catacombs",
+        "theme": "catacomb",
+        "level_min": 250,
+        "level_max": 450,
+    },
+    {
+        "name": "Roshamuul Fortress",
+        "theme": "fortress",
+        "level_min": 350,
+        "level_max": 500,
+    },
     {"name": "Feyrist Depths", "theme": "fey", "level_min": 200, "level_max": 400},
     {"name": "Goroma Volcano", "theme": "volcano", "level_min": 80, "level_max": 200},
     {"name": "Monkey Island", "theme": "island", "level_min": 20, "level_max": 60},
@@ -51,17 +71,47 @@ _BOSS_POOLS: Dict[str, List[Dict[str, Any]]] = {
     ],
     "mid": [
         {"name": "Dragon Lord", "abilities": ["fire breath", "tail swipe", "fear"]},
-        {"name": "Grim Reaper", "abilities": ["scythe strike", "life drain", "summon wraiths"]},
+        {
+            "name": "Grim Reaper",
+            "abilities": ["scythe strike", "life drain", "summon wraiths"],
+        },
         {"name": "Werewolf Alpha", "abilities": ["howl", "claw fury", "regenerate"]},
     ],
     "high": [
-        {"name": "Dracola", "abilities": ["blood drain", "bat swarm", "charm", "dark aura"]},
-        {"name": "Morgaroth", "abilities": ["inferno", "meteor", "summon demons", "hell storm"]},
-        {"name": "Orshabaal", "abilities": ["crushing blow", "fire wave", "demon army", "berserk"]},
+        {
+            "name": "Dracola",
+            "abilities": ["blood drain", "bat swarm", "charm", "dark aura"],
+        },
+        {
+            "name": "Morgaroth",
+            "abilities": ["inferno", "meteor", "summon demons", "hell storm"],
+        },
+        {
+            "name": "Orshabaal",
+            "abilities": ["crushing blow", "fire wave", "demon army", "berserk"],
+        },
     ],
     "extreme": [
-        {"name": "The Scourge of Oblivion", "abilities": ["void strike", "reality tear", "soul harvest", "dimensional rift", "entropy"]},
-        {"name": "Astral Whisper", "abilities": ["mind shatter", "cosmic ray", "phase shift", "gravity well", "astral prison"]},
+        {
+            "name": "The Scourge of Oblivion",
+            "abilities": [
+                "void strike",
+                "reality tear",
+                "soul harvest",
+                "dimensional rift",
+                "entropy",
+            ],
+        },
+        {
+            "name": "Astral Whisper",
+            "abilities": [
+                "mind shatter",
+                "cosmic ray",
+                "phase shift",
+                "gravity well",
+                "astral prison",
+            ],
+        },
     ],
 }
 
@@ -139,27 +189,47 @@ _LEVER_ROOM_TEMPLATES: List[Dict[str, Any]] = [
     {
         "name": "Flood Gate Lever",
         "description": "Pull the lever to flood the lower passage, revealing hidden treasures.",
-        "objectives": ["Locate the rusted lever", "Pull the lever to activate the flood gate", "Collect items from the flooded chamber"],
+        "objectives": [
+            "Locate the rusted lever",
+            "Pull the lever to activate the flood gate",
+            "Collect items from the flooded chamber",
+        ],
     },
     {
         "name": "Collapsing Bridge Switch",
         "description": "Activate the switch to extend the bridge over the chasm.",
-        "objectives": ["Find the pressure plate", "Activate the bridge mechanism", "Cross before it collapses"],
+        "objectives": [
+            "Find the pressure plate",
+            "Activate the bridge mechanism",
+            "Cross before it collapses",
+        ],
     },
     {
         "name": "Poison Gas Release",
         "description": "Pull the lever to release toxic gas, weakening the boss ahead.",
-        "objectives": ["Locate the valve lever", "Pull the lever to release poison gas", "Engage the weakened boss"],
+        "objectives": [
+            "Locate the valve lever",
+            "Pull the lever to release poison gas",
+            "Engage the weakened boss",
+        ],
     },
     {
         "name": "Spinning Blade Room",
         "description": "The lever controls the deadly spinning blades blocking the path.",
-        "objectives": ["Dodge the blades to reach the lever", "Pull the lever to stop the blades", "Proceed through the corridor"],
+        "objectives": [
+            "Dodge the blades to reach the lever",
+            "Pull the lever to stop the blades",
+            "Proceed through the corridor",
+        ],
     },
     {
         "name": "Teleporter Activation",
         "description": "Activate the ancient lever to power up the teleporter pad.",
-        "objectives": ["Find the energy crystal", "Place the crystal in the lever mechanism", "Step onto the activated teleporter"],
+        "objectives": [
+            "Find the energy crystal",
+            "Place the crystal in the lever mechanism",
+            "Step onto the activated teleporter",
+        ],
     },
 ]
 
@@ -167,27 +237,47 @@ _PUZZLE_ROOM_TEMPLATES: List[Dict[str, Any]] = [
     {
         "name": "Rune Sequence Chamber",
         "description": "Ancient runes on the floor must be activated in the correct order.",
-        "objectives": ["Examine the hint inscriptions on the walls", "Activate runes in the correct sequence", "Claim the reward from the opened vault"],
+        "objectives": [
+            "Examine the hint inscriptions on the walls",
+            "Activate runes in the correct sequence",
+            "Claim the reward from the opened vault",
+        ],
     },
     {
         "name": "Elemental Pillar Puzzle",
         "description": "Four elemental pillars must be aligned to unlock the sealed door.",
-        "objectives": ["Identify the element of each pillar", "Rotate pillars to match the correct alignment", "Enter the opened chamber"],
+        "objectives": [
+            "Identify the element of each pillar",
+            "Rotate pillars to match the correct alignment",
+            "Enter the opened chamber",
+        ],
     },
     {
         "name": "Mirror Reflection Maze",
         "description": "Redirect the light beam using mirrors to unlock the exit.",
-        "objectives": ["Adjust the first mirror angle", "Bounce the beam through all mirrors", "Hit the target crystal to open the gate"],
+        "objectives": [
+            "Adjust the first mirror angle",
+            "Bounce the beam through all mirrors",
+            "Hit the target crystal to open the gate",
+        ],
     },
     {
         "name": "Weight Balance Puzzle",
         "description": "Place the correct weights on the scale to open the passage.",
-        "objectives": ["Search the room for weight tokens", "Calculate the correct balance", "Place weights and open the door"],
+        "objectives": [
+            "Search the room for weight tokens",
+            "Calculate the correct balance",
+            "Place weights and open the door",
+        ],
     },
     {
         "name": "Memory Rune Challenge",
         "description": "Remember and repeat the rune sequence shown at the entrance.",
-        "objectives": ["Watch the initial rune sequence carefully", "Repeat the sequence from memory", "Pass through the opened door"],
+        "objectives": [
+            "Watch the initial rune sequence carefully",
+            "Repeat the sequence from memory",
+            "Pass through the opened door",
+        ],
     },
 ]
 
@@ -233,12 +323,11 @@ class MapDesigner:
     # Zone selection
     # ------------------------------------------------------------------
 
-    def _matching_zones(
-        self, min_level: int, max_level: int
-    ) -> List[Dict[str, Any]]:
+    def _matching_zones(self, min_level: int, max_level: int) -> List[Dict[str, Any]]:
         """Return zones whose level band overlaps the requested range."""
         return [
-            z for z in _ZONES
+            z
+            for z in _ZONES
             if z["level_min"] <= max_level and z["level_max"] >= min_level
         ]
 
@@ -262,9 +351,7 @@ class MapDesigner:
     # Public API used by generators
     # ------------------------------------------------------------------
 
-    def find_valid_location(
-        self, min_level: int, max_level: int
-    ) -> str:
+    def find_valid_location(self, min_level: int, max_level: int) -> str:
         """
         Find a valid named location for a quest within the level range.
 
@@ -273,9 +360,7 @@ class MapDesigner:
         zone = self._pick_zone(min_level, max_level, hint="quest")
         return zone["name"]
 
-    def select_raid_zone(
-        self, min_level: int, max_level: int
-    ) -> str:
+    def select_raid_zone(self, min_level: int, max_level: int) -> str:
         """
         Select a zone appropriate for raid content.
 
@@ -284,9 +369,7 @@ class MapDesigner:
         zone = self._pick_zone(min_level, max_level, hint="raid")
         return zone["name"]
 
-    def get_boss_lair(
-        self, min_level: int, max_level: int
-    ) -> str:
+    def get_boss_lair(self, min_level: int, max_level: int) -> str:
         """
         Find a boss lair location within the level range.
 
@@ -305,9 +388,7 @@ class MapDesigner:
         bonuses = {"low": 50, "mid": 200, "high": 500, "extreme": 1500}
         return bonuses.get(band, 100)
 
-    def select_mission_area(
-        self, min_level: int, max_level: int
-    ) -> str:
+    def select_mission_area(self, min_level: int, max_level: int) -> str:
         """
         Select an area for mission content.
 
@@ -345,9 +426,7 @@ class MapDesigner:
     # Reward selection
     # ------------------------------------------------------------------
 
-    def select_rewards(
-        self, min_level: int, count: int = 2
-    ) -> List[Dict[str, Any]]:
+    def select_rewards(self, min_level: int, count: int = 2) -> List[Dict[str, Any]]:
         """
         Select reward items appropriate for the level.
 
@@ -389,9 +468,7 @@ class MapDesigner:
     # Lever and Puzzle rooms
     # ------------------------------------------------------------------
 
-    def get_lever_room(
-        self, min_level: int, max_level: int
-    ) -> Dict[str, Any]:
+    def get_lever_room(self, min_level: int, max_level: int) -> Dict[str, Any]:
         """
         Generate a lever room configuration.
 
@@ -401,9 +478,7 @@ class MapDesigner:
         idx = self._deterministic_offset(key, len(_LEVER_ROOM_TEMPLATES))
         return dict(_LEVER_ROOM_TEMPLATES[idx])
 
-    def get_puzzle_room(
-        self, min_level: int, max_level: int
-    ) -> Dict[str, Any]:
+    def get_puzzle_room(self, min_level: int, max_level: int) -> Dict[str, Any]:
         """
         Generate a puzzle room configuration.
 

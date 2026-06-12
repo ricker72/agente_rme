@@ -8,7 +8,7 @@ Exporta:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .node_encoder import NodeEncoder
 
@@ -45,28 +45,34 @@ class HouseEncoder:
         for tile in tiles.values():
             ground = getattr(tile, "ground", None)
             house_id = getattr(tile, "house_id", None)
-            if house_id is not None or (ground is not None and ground in self.HOUSE_GROUND_IDS):
-                houses.append({
-                    "id": house_id or len(houses) + 1,
-                    "x": getattr(tile, "x", 0),
-                    "y": getattr(tile, "y", 0),
-                    "z": getattr(tile, "z", 7),
-                    "tiles": [getattr(tile, "x", 0), getattr(tile, "y", 0)],
-                })
+            if house_id is not None or (
+                ground is not None and ground in self.HOUSE_GROUND_IDS
+            ):
+                houses.append(
+                    {
+                        "id": house_id or len(houses) + 1,
+                        "x": getattr(tile, "x", 0),
+                        "y": getattr(tile, "y", 0),
+                        "z": getattr(tile, "z", 7),
+                        "tiles": [getattr(tile, "x", 0), getattr(tile, "y", 0)],
+                    }
+                )
 
         # Detectar por estructuras con categoría house
         structures = getattr(world_model, "structures", [])
         for s in structures:
             if getattr(s, "category", "") == "house":
-                houses.append({
-                    "id": len(houses) + 1,
-                    "x": getattr(s, "x", 0),
-                    "y": getattr(s, "y", 0),
-                    "z": getattr(s, "z", 7),
-                    "name": getattr(s, "name", f"House{len(houses) + 1}"),
-                    "size": (getattr(s, "width", 10), getattr(s, "height", 10)),
-                    "tiles": [getattr(s, "x", 0), getattr(s, "y", 0)],
-                })
+                houses.append(
+                    {
+                        "id": len(houses) + 1,
+                        "x": getattr(s, "x", 0),
+                        "y": getattr(s, "y", 0),
+                        "z": getattr(s, "z", 7),
+                        "name": getattr(s, "name", f"House{len(houses) + 1}"),
+                        "size": (getattr(s, "width", 10), getattr(s, "height", 10)),
+                        "tiles": [getattr(s, "x", 0), getattr(s, "y", 0)],
+                    }
+                )
 
         # Asignar IDs consistentes
         for i, h in enumerate(houses, start=1):
@@ -92,9 +98,7 @@ class HouseEncoder:
         for h in houses:
             name = h.get("name", f"House{h['id']}")
             lines.append(
-                f'  <house id="{h["id"]}" name="{name}">'
-                f'<entry x="{h["x"]}" y="{h["y"]}" z="{h["z"]}" />'
-                f'</house>'
+                f'  <house id="{h["id"]}" name="{name}"><entry x="{h["x"]}" y="{h["y"]}" z="{h["z"]}" /></house>'
             )
         lines.append("</houses>")
         return "\n".join(lines)

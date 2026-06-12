@@ -36,13 +36,9 @@ def validate_byte(value, context: str = "byte") -> int:
     try:
         iv = int(value)
     except (TypeError, ValueError):
-        raise ValueError(
-            f"{context}: cannot convert {value!r} to uint8"
-        )
+        raise ValueError(f"{context}: cannot convert {value!r} to uint8")
     if iv < 0 or iv > 255:
-        raise ValueError(
-            f"{context}: value {iv} out of uint8 range [0, 255]"
-        )
+        raise ValueError(f"{context}: value {iv} out of uint8 range [0, 255]")
     return iv
 
 
@@ -53,13 +49,9 @@ def validate_word(value, context: str = "word") -> int:
     try:
         iv = int(value)
     except (TypeError, ValueError):
-        raise ValueError(
-            f"{context}: cannot convert {value!r} to uint16"
-        )
+        raise ValueError(f"{context}: cannot convert {value!r} to uint16")
     if iv < 0 or iv > 65535:
-        raise ValueError(
-            f"{context}: value {iv} out of uint16 range [0, 65535]"
-        )
+        raise ValueError(f"{context}: value {iv} out of uint16 range [0, 65535]")
     return iv
 
 
@@ -70,13 +62,9 @@ def validate_dword(value, context: str = "dword") -> int:
     try:
         iv = int(value)
     except (TypeError, ValueError):
-        raise ValueError(
-            f"{context}: cannot convert {value!r} to uint32"
-        )
+        raise ValueError(f"{context}: cannot convert {value!r} to uint32")
     if iv < 0 or iv > 0xFFFFFFFF:
-        raise ValueError(
-            f"{context}: value {iv} out of uint32 range [0, 4294967295]"
-        )
+        raise ValueError(f"{context}: value {iv} out of uint32 range [0, 4294967295]")
     return iv
 
 
@@ -219,9 +207,13 @@ class ByteValidator:
                     if sub in item and item[sub] is not None:
                         try:
                             if sub in ("action_id", "unique_id"):
-                                self.coerce_word(item[sub], context=f"tile.item[{i}].{sub}")
+                                self.coerce_word(
+                                    item[sub], context=f"tile.item[{i}].{sub}"
+                                )
                             else:
-                                self.coerce_byte(item[sub], context=f"tile.item[{i}].{sub}")
+                                self.coerce_byte(
+                                    item[sub], context=f"tile.item[{i}].{sub}"
+                                )
                         except ValueError as e:
                             local.append(str(e))
 

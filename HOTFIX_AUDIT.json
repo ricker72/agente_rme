@@ -1,0 +1,2020 @@
+{
+  "audit_version": "1.0.1",
+  "generated_at": "2026-06-09T08:19:59.016579+00:00",
+  "project_root": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme",
+  "phase": "FASE 1 - POST-GA AUDIT",
+  "logs": {
+    "scanned_files": 391,
+    "workflow_files": 387,
+    "levels": {
+      "DEBUG": 24
+    },
+    "totals": {
+      "exceptions": 0,
+      "warnings": 0,
+      "slow_paths": 0,
+      "memory_mentions": 0,
+      "failed_workflows": 43
+    }
+  },
+  "log_files": [
+    {
+      "path": "logs\\agent_20260605.log",
+      "size_bytes": 328,
+      "line_count": 4,
+      "levels": {
+        "DEBUG": 4
+      },
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\agent_20260606.log",
+      "size_bytes": 984,
+      "line_count": 12,
+      "levels": {
+        "DEBUG": 12
+      },
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\agent_20260607.log",
+      "size_bytes": 246,
+      "line_count": 3,
+      "levels": {
+        "DEBUG": 3
+      },
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\agent_20260608.log",
+      "size_bytes": 410,
+      "line_count": 5,
+      "levels": {
+        "DEBUG": 5
+      },
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_00520194.log",
+      "size_bytes": 4224,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_00793d28.log",
+      "size_bytes": 4225,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_014d0544.log",
+      "size_bytes": 4221,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_02630a05.log",
+      "size_bytes": 4209,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03782631.log",
+      "size_bytes": 4219,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_038f5eae.log",
+      "size_bytes": 4373,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03d95d93.log",
+      "size_bytes": 4067,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03da5362.log",
+      "size_bytes": 4225,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03f59e2a.log",
+      "size_bytes": 1804,
+      "line_count": 11,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_042410cf.log",
+      "size_bytes": 4064,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_04a864f8.log",
+      "size_bytes": 4222,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_04b33859.log",
+      "size_bytes": 915,
+      "line_count": 5,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_059a6ea6.log",
+      "size_bytes": 4057,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_062b1815.log",
+      "size_bytes": 4211,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_06fa5444.log",
+      "size_bytes": 464,
+      "line_count": 2,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_073814ee.log",
+      "size_bytes": 4073,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07530cd6.log",
+      "size_bytes": 4059,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07a8dcba.log",
+      "size_bytes": 4211,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07aca95c.log",
+      "size_bytes": 4067,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07bbbb5f.log",
+      "size_bytes": 4062,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_08649e82.log",
+      "size_bytes": 4219,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_08809bc1.log",
+      "size_bytes": 4441,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_093b8b80.log",
+      "size_bytes": 4218,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_09473817.log",
+      "size_bytes": 1869,
+      "line_count": 11,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0b061cce.log",
+      "size_bytes": 1863,
+      "line_count": 11,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0b0c00b6.log",
+      "size_bytes": 4219,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0c3365ca.log",
+      "size_bytes": 4384,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0c491273.log",
+      "size_bytes": 4214,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0ca4b602.log",
+      "size_bytes": 4208,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0d828aa3.log",
+      "size_bytes": 4206,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0ed296a0.log",
+      "size_bytes": 4222,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0eef7d4f.log",
+      "size_bytes": 4064,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0f41fc66.log",
+      "size_bytes": 516,
+      "line_count": 2,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_1059c6c7.log",
+      "size_bytes": 4066,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_10ff398a.log",
+      "size_bytes": 1870,
+      "line_count": 11,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_11141212.log",
+      "size_bytes": 517,
+      "line_count": 2,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_1149a0e0.log",
+      "size_bytes": 4211,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_13bb5867.log",
+      "size_bytes": 4215,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_1584a6d1.log",
+      "size_bytes": 4224,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_15945567.log",
+      "size_bytes": 4069,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_15b97c3b.log",
+      "size_bytes": 4080,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_160a6a8f.log",
+      "size_bytes": 4222,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_161031cb.log",
+      "size_bytes": 4057,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_1678d872.log",
+      "size_bytes": 4228,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_16c450ec.log",
+      "size_bytes": 4071,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_18048dff.log",
+      "size_bytes": 4217,
+      "line_count": 26,
+      "levels": {},
+      "exceptions": [],
+      "warnings": [],
+      "slow_paths": [],
+      "memory_mentions": []
+    }
+  ],
+  "workflow_files_sample": [
+    {
+      "path": "logs\\multi_agent\\workflow_00520194.json",
+      "workflow_id": "00520194",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.067,
+      "total_duration_s": 2.6746,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_00793d28.json",
+      "workflow_id": "00793d28",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.1683,
+      "total_duration_s": 2.9133,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_014d0544.json",
+      "workflow_id": "014d0544",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.2643,
+      "total_duration_s": 2.6537,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_02630a05.json",
+      "workflow_id": "02630a05",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.2521,
+      "total_duration_s": 3.138,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03782631.json",
+      "workflow_id": "03782631",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.3227,
+      "total_duration_s": 3.2187,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_038f5eae.json",
+      "workflow_id": "038f5eae",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 8,
+      "agent_warnings": 0,
+      "error_tasks": [
+        {
+          "task_id": "cc5b7da7",
+          "agent": "architect",
+          "error": "export failed"
+        },
+        {
+          "task_id": "e7193c84",
+          "agent": "mapper",
+          "error": "export failed"
+        },
+        {
+          "task_id": "d7918c9d",
+          "agent": "expansion",
+          "error": "export failed"
+        },
+        {
+          "task_id": "ed9b4485",
+          "agent": "quest",
+          "error": "export failed"
+        },
+        {
+          "task_id": "faacd495",
+          "agent": "playtest",
+          "error": "export failed"
+        }
+      ],
+      "max_duration_s": 0.0001,
+      "total_duration_s": 0.0006,
+      "per_agent": {
+        "architect": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "export": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03d95d93.json",
+      "workflow_id": "03d95d93",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.8179,
+      "total_duration_s": 1.7878,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03da5362.json",
+      "workflow_id": "03da5362",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.2368,
+      "total_duration_s": 2.8104,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_03f59e2a.json",
+      "workflow_id": "03f59e2a",
+      "status": "completed",
+      "agents": 3,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.0339,
+      "total_duration_s": 0.0358,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_042410cf.json",
+      "workflow_id": "042410cf",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.8652,
+      "total_duration_s": 1.9276,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_04a864f8.json",
+      "workflow_id": "04a864f8",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.6028,
+      "total_duration_s": 3.8902,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_04b33859.json",
+      "workflow_id": "04b33859",
+      "status": "completed",
+      "agents": 1,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.0001,
+      "total_duration_s": 0.0001,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_059a6ea6.json",
+      "workflow_id": "059a6ea6",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.9592,
+      "total_duration_s": 2.0579,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_062b1815.json",
+      "workflow_id": "062b1815",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.9586,
+      "total_duration_s": 2.3315,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_06fa5444.json",
+      "workflow_id": "06fa5444",
+      "status": "completed",
+      "agents": 0,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.0,
+      "total_duration_s": 0,
+      "per_agent": {}
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_073814ee.json",
+      "workflow_id": "073814ee",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.9962,
+      "total_duration_s": 2.0812,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07530cd6.json",
+      "workflow_id": "07530cd6",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.7943,
+      "total_duration_s": 1.7256,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07a8dcba.json",
+      "workflow_id": "07a8dcba",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.1179,
+      "total_duration_s": 2.7209,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07aca95c.json",
+      "workflow_id": "07aca95c",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.7879,
+      "total_duration_s": 1.6883,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_07bbbb5f.json",
+      "workflow_id": "07bbbb5f",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.9573,
+      "total_duration_s": 2.0901,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_08649e82.json",
+      "workflow_id": "08649e82",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.1275,
+      "total_duration_s": 2.5213,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_08809bc1.json",
+      "workflow_id": "08809bc1",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 4,
+      "agent_warnings": 0,
+      "error_tasks": [
+        {
+          "task_id": "c18e6483",
+          "agent": "expansion",
+          "error": "'list' object has no attribute 'items'"
+        },
+        {
+          "task_id": "b9f57b3a",
+          "agent": "playtest",
+          "error": "'list' object has no attribute 'items'"
+        },
+        {
+          "task_id": "e5a49e78",
+          "agent": "balance",
+          "error": "'list' object has no attribute 'items'"
+        },
+        {
+          "task_id": "53f96ea1",
+          "agent": "export",
+          "error": "'list' object has no attribute 'items'"
+        }
+      ],
+      "max_duration_s": 0.0536,
+      "total_duration_s": 0.085,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 0,
+          "fail": 1,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_093b8b80.json",
+      "workflow_id": "093b8b80",
+      "status": "completed",
+      "agents": 8,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 1.5429,
+      "total_duration_s": 3.5315,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "expansion": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "playtest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "balance": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "qa": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "export": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_09473817.json",
+      "workflow_id": "09473817",
+      "status": "completed",
+      "agents": 3,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.0366,
+      "total_duration_s": 0.0393,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    },
+    {
+      "path": "logs\\multi_agent\\workflow_0b061cce.json",
+      "workflow_id": "0b061cce",
+      "status": "completed",
+      "agents": 3,
+      "agent_failures": 0,
+      "agent_warnings": 0,
+      "error_tasks": [],
+      "max_duration_s": 0.0337,
+      "total_duration_s": 0.0342,
+      "per_agent": {
+        "architect": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "mapper": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        },
+        "quest": {
+          "ok": 1,
+          "fail": 0,
+          "warn": 0
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "metrics.json": {
+      "timestamp": "2026-06-09T05:45:00.856098+00:00",
+      "uptime_seconds": 0.0,
+      "cpu_percent": 0.0,
+      "memory_mb": 0.0,
+      "memory_peak_mb": 0.0,
+      "errors_total": 0,
+      "generations_total": 0,
+      "last_generation_ms": 0.0,
+      "otbm": {
+        "tiles": 0,
+        "items": 0,
+        "spawns": 0,
+        "regions": 0,
+        "last_export_ms": 0.0
+      },
+      "agents": {}
+    },
+    "health_report.json": {
+      "timestamp": "2026-06-09T05:50:50.071634+00:00",
+      "overall_status": "healthy",
+      "summary": {
+        "healthy": 11,
+        "degraded": 0,
+        "unhealthy": 0
+      },
+      "checks": [
+        {
+          "name": "system",
+          "category": "system",
+          "status": "healthy",
+          "message": "system operational",
+          "details": {
+            "python": "3.14.5",
+            "platform": "win32",
+            "psutil": "unavailable",
+            "disk_total_gb": 474.84,
+            "disk_free_gb": 288.98,
+            "disk_percent": 39.14
+          },
+          "timestamp": "2026-06-09T05:50:49.912579+00:00"
+        },
+        {
+          "name": "generators",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.generators",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:49.927971+00:00"
+        },
+        {
+          "name": "exporters",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.exporters",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:49.937527+00:00"
+        },
+        {
+          "name": "otbm",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.otbm",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:49.937557+00:00"
+        },
+        {
+          "name": "preview",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.preview",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:49.937568+00:00"
+        },
+        {
+          "name": "knowledge",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.knowledge",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:49.937578+00:00"
+        },
+        {
+          "name": "critic",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.critic",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:49.987483+00:00"
+        },
+        {
+          "name": "blueprint_intelligence",
+          "category": "module",
+          "status": "healthy",
+          "message": "import ok: core.blueprint_intelligence",
+          "details": {},
+          "timestamp": "2026-06-09T05:50:50.049248+00:00"
+        },
+        {
+          "name": "pipeline",
+          "category": "pipeline",
+          "status": "healthy",
+          "message": "pipeline ok (64 tiles)",
+          "details": {
+            "tiles": 64
+          },
+          "timestamp": "2026-06-09T05:50:50.058722+00:00"
+        },
+        {
+          "name": "knowledge",
+          "category": "knowledge",
+          "status": "healthy",
+          "message": "dataset ok (0 entries)",
+          "details": {
+            "path": "output\\knowledge_dataset.json",
+            "entries": 0
+          },
+          "timestamp": "2026-06-09T05:50:50.068485+00:00"
+        },
+        {
+          "name": "blueprints",
+          "category": "blueprint",
+          "status": "healthy",
+          "message": "8 blueprint file(s) present",
+          "details": {
+            "count": 8
+          },
+          "timestamp": "2026-06-09T05:50:50.071586+00:00"
+        }
+      ]
+    },
+    "diagnostics.json": {
+      "timestamp": "2026-06-09T05:45:01.736403+00:00",
+      "python": "3.14.5",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "cwd": "c:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme",
+      "project_root": "C:\\Users\\samatha\\OneDrive\\Desktop\\agente_rme",
+      "uptime_seconds": 0.23802423477172852,
+      "file_counts": {
+        "logs": 778,
+        "output": 320,
+        "exports": 0,
+        "release": 17
+      },
+      "recent_errors": [],
+      "config_present": {
+        "config/production.yaml": true,
+        "config/development.yaml": true,
+        "config/default.yaml": true,
+        "config.json": true,
+        "pyproject.toml": true,
+        "requirements.txt": true,
+        "requirements-lock.txt": true
+      },
+      "ollama_reachable": false
+    },
+    "GA_METRICS.json": {
+      "version": "1.0.0",
+      "generated_at": "2026-06-09T05:50:49.000658+00:00",
+      "benchmark": {
+        "count": 500,
+        "successful": 500,
+        "success_rate": 1.0,
+        "elapsed_seconds": 2.195,
+        "worlds_per_second": 227.84,
+        "score": {
+          "avg": 62.94,
+          "min": 62.94,
+          "max": 62.94
+        },
+        "generation_ms": {
+          "avg": 4.39,
+          "min": 2.94,
+          "max": 9.34
+        },
+        "memory_mb": {
+          "avg": 0.0,
+          "peak": 0.0
+        },
+        "cpu_percent_avg": 0.0,
+        "tiles": {
+          "avg": 144.0,
+          "min": 144,
+          "max": 144
+        },
+        "regions": {
+          "avg": 1.0,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "health": {
+        "overall": "healthy",
+        "summary": {
+          "healthy": 11,
+          "degraded": 0,
+          "unhealthy": 0
+        },
+        "checks_total": 11
+      },
+      "quality": {
+        "critical_errors": 0,
+        "ga_pass": true
+      },
+      "diagnostics": {
+        "python": "3.14.5",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "ollama_reachable": false
+      },
+      "criteria": {
+        "target_success_rate": 0.99,
+        "achieved_success_rate": 1.0,
+        "pass": true
+      }
+    },
+    "GA_CERTIFICATION.json": {
+      "product": "Agente RME",
+      "version": "1.0.0",
+      "status": "GA",
+      "build": "GENERAL AVAILABILITY",
+      "release_date": "2026-06-09T05:50:48.998504+00:00",
+      "checks": {
+        "all_tests_pass": true,
+        "coverage_maintained": true,
+        "no_crashes": true,
+        "no_otbm_corruption": true,
+        "cli_stable": true,
+        "installer_functional": true,
+        "health_checks_pass": true,
+        "recovery_pass": true,
+        "observability_pass": true
+      },
+      "overall_pass": true,
+      "signoff": {
+        "release_manager": "Agente RME Release Engineering",
+        "qa": "Auto-cert pipeline",
+        "support_tier": "STANDARD"
+      }
+    }
+  },
+  "anomalies": [],
+  "otbm_anomalies": {
+    "count": 0,
+    "issues": []
+  },
+  "hotfix_classifications": [
+    {
+      "category": "stability_fix",
+      "severity": "high",
+      "summary": "43 workflows with agent failures"
+    }
+  ],
+  "error_signatures": [
+    {
+      "signature": "export failed",
+      "count": 105
+    },
+    {
+      "signature": "'list' object has no attribute 'items'",
+      "count": 88
+    }
+  ],
+  "verdict": {
+    "critical_count": 43,
+    "ready_for_hotfix": false
+  }
+}

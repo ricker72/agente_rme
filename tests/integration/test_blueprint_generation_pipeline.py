@@ -1,6 +1,5 @@
 """Integration tests for Blueprint Generation Pipeline."""
 
-import pytest
 from core.blueprints.blueprint import Blueprint, BlueprintTile, BlueprintMetadata
 from core.blueprint_intelligence.blueprint_intelligence_engine import (
     BlueprintIntelligenceEngine,
@@ -13,7 +12,15 @@ class TestBlueprintGenerationPipeline:
     def setup_method(self):
         self.engine = BlueprintIntelligenceEngine()
 
-    def _make_bp(self, name="test", category="hunt", theme="generic", tags=None, tiles=None, raw=None):
+    def _make_bp(
+        self,
+        name="test",
+        category="hunt",
+        theme="generic",
+        tags=None,
+        tiles=None,
+        raw=None,
+    ):
         return Blueprint(
             name=name,
             category=category,
@@ -27,8 +34,12 @@ class TestBlueprintGenerationPipeline:
     def test_e2e_generate_hybrid_hunt(self):
         """E2E: Generate hunt with 70% Roshamuul 30% Soul War."""
         bps = [
-            self._make_bp("Roshamuul_Hunt", "hunt", "roshamuul", tags=["hunt", "roshamuul"]),
-            self._make_bp("Soul_War_Hunt", "hunt", "soul_war", tags=["hunt", "soul_war"]),
+            self._make_bp(
+                "Roshamuul_Hunt", "hunt", "roshamuul", tags=["hunt", "roshamuul"]
+            ),
+            self._make_bp(
+                "Soul_War_Hunt", "hunt", "soul_war", tags=["hunt", "soul_war"]
+            ),
         ]
         self.engine.load_blueprints(bps)
         result = self.engine.run_pipeline(
@@ -40,12 +51,12 @@ class TestBlueprintGenerationPipeline:
 
     def test_e2e_generate_city_compact(self):
         """E2E: Generate city Issavi style compact."""
-        bps = [
+        [
             self._make_bp("Issavi_City", "city", "issavi", tags=["city", "issavi"]),
         ]
         generated = self.engine.generate("Generate city Issavi style compact version")
         assert generated.category == "city"
-        issavi = "issavi" in generated.theme or "issavi" in str(generated.metadata.tags).lower()
+        "issavi" in generated.theme or "issavi" in str(generated.metadata.tags).lower()
 
     def test_e2e_evolve_blueprint(self):
         """E2E: Evolve blueprint until critic score improves."""

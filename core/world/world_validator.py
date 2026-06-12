@@ -1,10 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, List
 
 from .tile import Tile
-from .item import Item
-from .spawn import Spawn
 from .world_model import WorldModel
 
 
@@ -99,7 +97,9 @@ class WorldValidator:
     # Individual checks
     # ------------------------------------------------------------------
 
-    def _validate_tile_count(self, world: WorldModel, result: WorldValidationResult) -> None:
+    def _validate_tile_count(
+        self, world: WorldModel, result: WorldValidationResult
+    ) -> None:
         """Check that the tile count is valid."""
         tc = world.tile_count()
         if tc < 0:
@@ -107,7 +107,9 @@ class WorldValidator:
         if tc > 10_000_000:
             result.add_warning(f"Very large tile count: {tc}")
 
-    def _validate_tile_coordinates(self, world: WorldModel, result: WorldValidationResult) -> None:
+    def _validate_tile_coordinates(
+        self, world: WorldModel, result: WorldValidationResult
+    ) -> None:
         """Check that all tiles have valid coordinates."""
         for tile in world.tiles.values():
             self._check_tile_coords(tile, result)
@@ -119,13 +121,17 @@ class WorldValidator:
         if tile.y < self.MIN_COORD:
             result.add_error(f"Tile at ({tile.x},{tile.y},z={tile.z}) has negative Y")
         if tile.z < 0 or tile.z > 15:
-            result.add_warning(f"Tile at ({tile.x},{tile.y},z={tile.z}) has unusual Z layer")
+            result.add_warning(
+                f"Tile at ({tile.x},{tile.y},z={tile.z}) has unusual Z layer"
+            )
         if tile.x > self.MAX_COORD:
             result.add_warning(f"Tile at ({tile.x},{tile.y},z={tile.z}) exceeds max X")
         if tile.y > self.MAX_COORD:
             result.add_warning(f"Tile at ({tile.x},{tile.y},z={tile.z}) exceeds max Y")
 
-    def _validate_tile_keys(self, world: WorldModel, result: WorldValidationResult) -> None:
+    def _validate_tile_keys(
+        self, world: WorldModel, result: WorldValidationResult
+    ) -> None:
         """Verify tile dict keys match tile coordinates."""
         for key, tile in world.tiles.items():
             expected_key = tile.key
@@ -134,7 +140,9 @@ class WorldValidator:
                     f"Tile key mismatch: dict key '{key}' but tile key is '{expected_key}'"
                 )
 
-    def _validate_spawns(self, world: WorldModel, result: WorldValidationResult) -> None:
+    def _validate_spawns(
+        self, world: WorldModel, result: WorldValidationResult
+    ) -> None:
         """Validate spawns if asset registry is available."""
         if self._asset_registry is None:
             return
@@ -145,11 +153,14 @@ class WorldValidator:
 
         for tile in world.tiles.values():
             if tile.spawn is not None:
-                name = tile.spawn.monster if hasattr(tile.spawn, 'monster') else tile.spawn.get('name', '')
+                name = (
+                    tile.spawn.monster
+                    if hasattr(tile.spawn, "monster")
+                    else tile.spawn.get("name", "")
+                )
                 if name and name not in monsters:
                     result.add_warning(
-                        f"Tile ({tile.x},{tile.y},z={tile.z}): "
-                        f"spawn monster '{name}' not in asset registry"
+                        f"Tile ({tile.x},{tile.y},z={tile.z}): spawn monster '{name}' not in asset registry"
                     )
 
     def _validate_items(self, world: WorldModel, result: WorldValidationResult) -> None:
@@ -166,34 +177,39 @@ class WorldValidator:
             return
 
         for item in tile.items:
-            item_id = item.itemid if hasattr(item, 'itemid') else item.get('itemid', item.get('id', 0))
+            item_id = (
+                item.itemid
+                if hasattr(item, "itemid")
+                else item.get("itemid", item.get("id", 0))
+            )
             item_name = self._asset_registry.get_item_name(item_id)
             if item_name is None:
                 result.add_warning(
-                    f"Tile ({tile.x},{tile.y},z={tile.z}): "
-                    f"item ID {item_id} not found in asset registry"
+                    f"Tile ({tile.x},{tile.y},z={tile.z}): item ID {item_id} not found in asset registry"
                 )
 
-    def _validate_structures(self, world: WorldModel, result: WorldValidationResult) -> None:
+    def _validate_structures(
+        self, world: WorldModel, result: WorldValidationResult
+    ) -> None:
         """Validate structures."""
         for i, s in enumerate(world.structures):
             if not s.name:
                 result.add_warning(f"Structure at index {i} has no name")
             if s.width <= 0 or s.height <= 0:
                 result.add_warning(
-                    f"Structure '{s.name}' has non-positive dimensions "
-                    f"({s.width}x{s.height})"
+                    f"Structure '{s.name}' has non-positive dimensions ({s.width}x{s.height})"
                 )
             if s.x < 0 or s.y < 0:
                 result.add_warning(
                     f"Structure '{s.name}' has negative position ({s.x},{s.y})"
                 )
 
-    def _validate_chunks(self, world: WorldModel, result: WorldValidationResult) -> None:
+    def _validate_chunks(
+        self, world: WorldModel, result: WorldValidationResult
+    ) -> None:
         """Validate chunk consistency."""
         for chunk in world.chunks.values():
             if chunk.chunk_size <= 0:
                 result.add_warning(
-                    f"Chunk ({chunk.chunk_x},{chunk.chunk_y}) "
-                    f"has non-positive chunk size: {chunk.chunk_size}"
+                    f"Chunk ({chunk.chunk_x},{chunk.chunk_y}) has non-positive chunk size: {chunk.chunk_size}"
                 )

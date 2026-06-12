@@ -26,10 +26,14 @@ class ExpansionFactory:
         world_model = self.world_builder.build_model(campaign)
         lua_code = self.world_builder.export_lua(world_model)
 
-        output_dir = Path(output_path) if output_path else Path.cwd() / "expansion_output"
+        output_dir = (
+            Path(output_path) if output_path else Path.cwd() / "expansion_output"
+        )
         output_dir.mkdir(parents=True, exist_ok=True)
         filename = campaign.get("theme", "expansion").replace(" ", "_").lower()
-        otbm_path = self.world_builder.export_otbm(world_model, output_dir / f"{filename}.otbm")
+        otbm_path = self.world_builder.export_otbm(
+            world_model, output_dir / f"{filename}.otbm"
+        )
 
         return {
             "expansion": campaign,

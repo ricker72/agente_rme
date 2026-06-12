@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 from .tile import Tile
-
 
 # Default chunk size (64x64 tiles)
 DEFAULT_CHUNK_SIZE = 64
@@ -24,6 +23,7 @@ class Chunk:
       - chunk_size: Tile dimensions of this chunk (same for all chunks).
       - tiles: Dict of (local_x, local_y) -> Tile (local coords within chunk).
     """
+
     chunk_x: int
     chunk_y: int
     chunk_size: int = DEFAULT_CHUNK_SIZE
@@ -55,12 +55,16 @@ class Chunk:
     # ------------------------------------------------------------------
 
     @staticmethod
-    def world_to_chunk(wx: int, wy: int, chunk_size: int = DEFAULT_CHUNK_SIZE) -> Tuple[int, int]:
+    def world_to_chunk(
+        wx: int, wy: int, chunk_size: int = DEFAULT_CHUNK_SIZE
+    ) -> Tuple[int, int]:
         """Convert world coordinates to chunk indices."""
         return (wx // chunk_size, wy // chunk_size)
 
     @staticmethod
-    def world_to_local(wx: int, wy: int, chunk_size: int = DEFAULT_CHUNK_SIZE) -> Tuple[int, int]:
+    def world_to_local(
+        wx: int, wy: int, chunk_size: int = DEFAULT_CHUNK_SIZE
+    ) -> Tuple[int, int]:
         """Convert world coordinates to local coordinates within a chunk."""
         return (wx % chunk_size, wy % chunk_size)
 
@@ -121,7 +125,9 @@ class Chunk:
         tiles = {}
         for td in tiles_raw:
             tile = Tile.from_dict(td)
-            lx, ly = cls.world_to_local(tile.x, tile.y, data.get("chunk_size", DEFAULT_CHUNK_SIZE))
+            lx, ly = cls.world_to_local(
+                tile.x, tile.y, data.get("chunk_size", DEFAULT_CHUNK_SIZE)
+            )
             key = f"{lx}:{ly}"
             tiles[key] = tile
 

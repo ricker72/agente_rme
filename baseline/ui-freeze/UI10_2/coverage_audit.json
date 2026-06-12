@@ -1,0 +1,697 @@
+{
+  "audit": "UI-10.2 \u2014 Coverage Audit",
+  "branch": "release/ui-v1",
+  "overall_coverage": 78.61760318249627,
+  "total_statements": 4022,
+  "total_missing": 860,
+  "classification": {
+    "PASS_90_100": [
+      {
+        "file": "ui/adapters/world_adapter.py",
+        "statements": 54,
+        "missing": 5,
+        "covered": 49,
+        "coverage": 90.7
+      },
+      {
+        "file": "ui/widgets/critic_score_card.py",
+        "statements": 33,
+        "missing": 3,
+        "covered": 30,
+        "coverage": 90.9
+      },
+      {
+        "file": "ui/pages/critic_page.py",
+        "statements": 152,
+        "missing": 13,
+        "covered": 139,
+        "coverage": 91.4
+      },
+      {
+        "file": "ui/pages/knowledge_page.py",
+        "statements": 160,
+        "missing": 13,
+        "covered": 147,
+        "coverage": 91.9
+      },
+      {
+        "file": "ui/widgets/autonomous_chart_viewer.py",
+        "statements": 38,
+        "missing": 3,
+        "covered": 35,
+        "coverage": 92.1
+      },
+      {
+        "file": "ui/pages/autonomous_page.py",
+        "statements": 173,
+        "missing": 13,
+        "covered": 160,
+        "coverage": 92.5
+      },
+      {
+        "file": "ui/pages/world_page.py",
+        "statements": 155,
+        "missing": 11,
+        "covered": 144,
+        "coverage": 92.9
+      },
+      {
+        "file": "ui/widgets/world_preview_widget.py",
+        "statements": 30,
+        "missing": 2,
+        "covered": 28,
+        "coverage": 93.3
+      },
+      {
+        "file": "ui/widgets/critic_heatmap_viewer.py",
+        "statements": 48,
+        "missing": 3,
+        "covered": 45,
+        "coverage": 93.8
+      },
+      {
+        "file": "ui/widgets/generation_history_widget.py",
+        "statements": 52,
+        "missing": 3,
+        "covered": 49,
+        "coverage": 94.2
+      },
+      {
+        "file": "ui/services/service_container.py",
+        "statements": 92,
+        "missing": 5,
+        "covered": 87,
+        "coverage": 94.6
+      },
+      {
+        "file": "ui/event_bus.py",
+        "statements": 131,
+        "missing": 7,
+        "covered": 124,
+        "coverage": 94.7
+      },
+      {
+        "file": "ui/widgets/world_prompt_panel.py",
+        "statements": 44,
+        "missing": 2,
+        "covered": 42,
+        "coverage": 95.5
+      },
+      {
+        "file": "ui/widgets/knowledge_results_table.py",
+        "statements": 46,
+        "missing": 2,
+        "covered": 44,
+        "coverage": 95.7
+      },
+      {
+        "file": "ui/services/dashboard_data_provider.py",
+        "statements": 96,
+        "missing": 3,
+        "covered": 93,
+        "coverage": 96.9
+      },
+      {
+        "file": "ui/__init__.py",
+        "statements": 8,
+        "missing": 0,
+        "covered": 8,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/adapters/__init__.py",
+        "statements": 9,
+        "missing": 0,
+        "covered": 9,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/__init__.py",
+        "statements": 12,
+        "missing": 0,
+        "covered": 12,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/autonomous_dto.py",
+        "statements": 32,
+        "missing": 0,
+        "covered": 32,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/campaign_dto.py",
+        "statements": 23,
+        "missing": 0,
+        "covered": 23,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/critic_dto.py",
+        "statements": 28,
+        "missing": 0,
+        "covered": 28,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/dashboard_dto.py",
+        "statements": 26,
+        "missing": 0,
+        "covered": 26,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/knowledge_dto.py",
+        "statements": 24,
+        "missing": 0,
+        "covered": 24,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/otbm_dto.py",
+        "statements": 33,
+        "missing": 0,
+        "covered": 33,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/models/world_dto.py",
+        "statements": 29,
+        "missing": 0,
+        "covered": 29,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/navigation.py",
+        "statements": 51,
+        "missing": 0,
+        "covered": 51,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/page_registry.py",
+        "statements": 32,
+        "missing": 0,
+        "covered": 32,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/pages/__init__.py",
+        "statements": 10,
+        "missing": 0,
+        "covered": 10,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/services/__init__.py",
+        "statements": 14,
+        "missing": 0,
+        "covered": 14,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/services/null_services.py",
+        "statements": 65,
+        "missing": 0,
+        "covered": 65,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/services/service_exceptions.py",
+        "statements": 10,
+        "missing": 0,
+        "covered": 10,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/services/service_registry.py",
+        "statements": 44,
+        "missing": 0,
+        "covered": 44,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/__init__.py",
+        "statements": 8,
+        "missing": 0,
+        "covered": 8,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_artifacts_widget.py",
+        "statements": 19,
+        "missing": 0,
+        "covered": 19,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_constraints_panel.py",
+        "statements": 50,
+        "missing": 0,
+        "covered": 50,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_control_panel.py",
+        "statements": 22,
+        "missing": 0,
+        "covered": 22,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_decision_feed.py",
+        "statements": 23,
+        "missing": 0,
+        "covered": 23,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_goal_panel.py",
+        "statements": 41,
+        "missing": 0,
+        "covered": 41,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_iteration_table.py",
+        "statements": 21,
+        "missing": 0,
+        "covered": 21,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_metrics_widget.py",
+        "statements": 36,
+        "missing": 0,
+        "covered": 36,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/autonomous_status_widget.py",
+        "statements": 15,
+        "missing": 0,
+        "covered": 15,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/critic_analysis_panel.py",
+        "statements": 16,
+        "missing": 0,
+        "covered": 16,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/critic_issue_list.py",
+        "statements": 25,
+        "missing": 0,
+        "covered": 25,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/critic_recommendation_list.py",
+        "statements": 19,
+        "missing": 0,
+        "covered": 19,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/critic_report_summary.py",
+        "statements": 30,
+        "missing": 0,
+        "covered": 30,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/critic_score_grid.py",
+        "statements": 22,
+        "missing": 0,
+        "covered": 22,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/critic_world_selector.py",
+        "statements": 18,
+        "missing": 0,
+        "covered": 18,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/generation_metrics_widget.py",
+        "statements": 36,
+        "missing": 0,
+        "covered": 36,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/generation_progress_widget.py",
+        "statements": 24,
+        "missing": 0,
+        "covered": 24,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/generation_settings_panel.py",
+        "statements": 42,
+        "missing": 0,
+        "covered": 42,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/generation_summary_widget.py",
+        "statements": 32,
+        "missing": 0,
+        "covered": 32,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/knowledge_dataset_summary.py",
+        "statements": 14,
+        "missing": 0,
+        "covered": 14,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/knowledge_filters_widget.py",
+        "statements": 21,
+        "missing": 0,
+        "covered": 21,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/knowledge_metrics_widget.py",
+        "statements": 42,
+        "missing": 0,
+        "covered": 42,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/knowledge_recommendation_panel.py",
+        "statements": 21,
+        "missing": 0,
+        "covered": 21,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/knowledge_search_panel.py",
+        "statements": 31,
+        "missing": 0,
+        "covered": 31,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/knowledge_similarity_panel.py",
+        "statements": 21,
+        "missing": 0,
+        "covered": 21,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/metric_card.py",
+        "statements": 46,
+        "missing": 0,
+        "covered": 46,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/quick_action_card.py",
+        "statements": 40,
+        "missing": 0,
+        "covered": 40,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/recent_artifacts_widget.py",
+        "statements": 31,
+        "missing": 0,
+        "covered": 31,
+        "coverage": 100.0
+      },
+      {
+        "file": "ui/widgets/system_health_widget.py",
+        "statements": 39,
+        "missing": 0,
+        "covered": 39,
+        "coverage": 100.0
+      }
+    ],
+    "WARNING_80_89": [
+      {
+        "file": "ui/widgets/knowledge_entry_viewer.py",
+        "statements": 48,
+        "missing": 9,
+        "covered": 39,
+        "coverage": 81.2
+      },
+      {
+        "file": "ui/adapters/otbm_adapter.py",
+        "statements": 68,
+        "missing": 12,
+        "covered": 56,
+        "coverage": 82.4
+      },
+      {
+        "file": "ui/theme.py",
+        "statements": 59,
+        "missing": 10,
+        "covered": 49,
+        "coverage": 83.1
+      },
+      {
+        "file": "ui/adapters/autonomous_adapter.py",
+        "statements": 56,
+        "missing": 9,
+        "covered": 47,
+        "coverage": 83.9
+      },
+      {
+        "file": "ui/adapters/critic_adapter.py",
+        "statements": 50,
+        "missing": 6,
+        "covered": 44,
+        "coverage": 88.0
+      },
+      {
+        "file": "ui/adapters/campaign_adapter.py",
+        "statements": 44,
+        "missing": 5,
+        "covered": 39,
+        "coverage": 88.6
+      },
+      {
+        "file": "ui/widgets/recent_projects_widget.py",
+        "statements": 27,
+        "missing": 3,
+        "covered": 24,
+        "coverage": 88.9
+      },
+      {
+        "file": "ui/adapters/dashboard_adapter.py",
+        "statements": 29,
+        "missing": 3,
+        "covered": 26,
+        "coverage": 89.7
+      }
+    ],
+    "NEEDS_REVIEW_70_79": [
+      {
+        "file": "ui/services/autonomous_service.py",
+        "statements": 10,
+        "missing": 3,
+        "covered": 7,
+        "coverage": 70.0
+      },
+      {
+        "file": "ui/services/critic_service.py",
+        "statements": 10,
+        "missing": 3,
+        "covered": 7,
+        "coverage": 70.0
+      },
+      {
+        "file": "ui/services/knowledge_service.py",
+        "statements": 10,
+        "missing": 3,
+        "covered": 7,
+        "coverage": 70.0
+      },
+      {
+        "file": "ui/services/otbm_service.py",
+        "statements": 10,
+        "missing": 3,
+        "covered": 7,
+        "coverage": 70.0
+      },
+      {
+        "file": "ui/services/world_service.py",
+        "statements": 10,
+        "missing": 3,
+        "covered": 7,
+        "coverage": 70.0
+      },
+      {
+        "file": "ui/adapters/_helpers.py",
+        "statements": 24,
+        "missing": 7,
+        "covered": 17,
+        "coverage": 70.8
+      },
+      {
+        "file": "ui/adapters/knowledge_adapter.py",
+        "statements": 78,
+        "missing": 22,
+        "covered": 56,
+        "coverage": 71.8
+      },
+      {
+        "file": "ui/services/base_service.py",
+        "statements": 8,
+        "missing": 2,
+        "covered": 6,
+        "coverage": 75.0
+      },
+      {
+        "file": "ui/services/campaign_service.py",
+        "statements": 8,
+        "missing": 2,
+        "covered": 6,
+        "coverage": 75.0
+      },
+      {
+        "file": "ui/services/dashboard_service.py",
+        "statements": 8,
+        "missing": 2,
+        "covered": 6,
+        "coverage": 75.0
+      }
+    ],
+    "BLOCKER_0_69": [
+      {
+        "file": "ui/dashboard_data_provider.py",
+        "statements": 173,
+        "missing": 173,
+        "covered": 0,
+        "coverage": 0.0
+      },
+      {
+        "file": "ui/plugins/__init__.py",
+        "statements": 64,
+        "missing": 64,
+        "covered": 0,
+        "coverage": 0.0
+      },
+      {
+        "file": "ui/widgets/status_card.py",
+        "statements": 46,
+        "missing": 46,
+        "covered": 0,
+        "coverage": 0.0
+      },
+      {
+        "file": "ui/titlebar.py",
+        "statements": 73,
+        "missing": 55,
+        "covered": 18,
+        "coverage": 24.7
+      },
+      {
+        "file": "ui/widgets/release_info_widget.py",
+        "statements": 21,
+        "missing": 15,
+        "covered": 6,
+        "coverage": 28.6
+      },
+      {
+        "file": "ui/main_window.py",
+        "statements": 122,
+        "missing": 87,
+        "covered": 35,
+        "coverage": 28.7
+      },
+      {
+        "file": "ui/widgets/system_status_widget.py",
+        "statements": 45,
+        "missing": 32,
+        "covered": 13,
+        "coverage": 28.9
+      },
+      {
+        "file": "ui/widgets/health_widget.py",
+        "statements": 40,
+        "missing": 28,
+        "covered": 12,
+        "coverage": 30.0
+      },
+      {
+        "file": "ui/widgets/recent_activity_widget.py",
+        "statements": 23,
+        "missing": 16,
+        "covered": 7,
+        "coverage": 30.4
+      },
+      {
+        "file": "ui/sidebar.py",
+        "statements": 30,
+        "missing": 20,
+        "covered": 10,
+        "coverage": 33.3
+      },
+      {
+        "file": "ui/statusbar.py",
+        "statements": 38,
+        "missing": 23,
+        "covered": 15,
+        "coverage": 39.5
+      },
+      {
+        "file": "ui/console.py",
+        "statements": 39,
+        "missing": 23,
+        "covered": 16,
+        "coverage": 41.0
+      },
+      {
+        "file": "ui/pages/architect_page.py",
+        "statements": 17,
+        "missing": 9,
+        "covered": 8,
+        "coverage": 47.1
+      },
+      {
+        "file": "ui/pages/campaign_page.py",
+        "statements": 17,
+        "missing": 9,
+        "covered": 8,
+        "coverage": 47.1
+      },
+      {
+        "file": "ui/pages/otbm_page.py",
+        "statements": 17,
+        "missing": 9,
+        "covered": 8,
+        "coverage": 47.1
+      },
+      {
+        "file": "ui/pages/settings_page.py",
+        "statements": 17,
+        "missing": 9,
+        "covered": 8,
+        "coverage": 47.1
+      },
+      {
+        "file": "ui/app.py",
+        "statements": 36,
+        "missing": 17,
+        "covered": 19,
+        "coverage": 52.8
+      },
+      {
+        "file": "ui/pages/dashboard_page.py",
+        "statements": 88,
+        "missing": 30,
+        "covered": 58,
+        "coverage": 65.9
+      }
+    ]
+  },
+  "timestamp": "2026-06-11T22:00:00-06:00"
+}

@@ -1,15 +1,14 @@
 """Tests completos para HITO 12 — Map Analyzer y sub-analizadores."""
-import io
+
 import json
 import os
 import struct
 import sys
 import tempfile
 import unittest
-from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from core.analyzer.map_analyzer import MapAnalyzer, MapAnalysis
 from core.analyzer.spawn_analyzer import SpawnAnalyzer
@@ -20,20 +19,20 @@ from core.analyzer.tile_analyzer import TileAnalyzer
 from core.analyzer.style_analyzer import StyleAnalyzer
 from core.analyzer.pattern_extractor import PatternExtractor
 
-
 # ---------------------------------------------------------------------------
 # Helpers para crear datos sintéticos
 # ---------------------------------------------------------------------------
 
+
 def _make_minimal_otbm_bytes(width=10, height=10, version=0, tiles=4):
     """Crea bytes OTBM mínimos válidos para testing."""
     buf = bytearray()
-    buf.extend(b"OTBM")                          # magic
-    buf.extend(struct.pack("<I", version))        # version
-    buf.extend(struct.pack("<H", width))          # width
-    buf.extend(struct.pack("<H", height))         # height
-    buf.extend(struct.pack("<I", 3))              # item_major
-    buf.extend(struct.pack("<I", 57))             # item_minor
+    buf.extend(b"OTBM")  # magic
+    buf.extend(struct.pack("<I", version))  # version
+    buf.extend(struct.pack("<H", width))  # width
+    buf.extend(struct.pack("<H", height))  # height
+    buf.extend(struct.pack("<I", 3))  # item_major
+    buf.extend(struct.pack("<I", 57))  # item_minor
     # MAP_DATA node
     map_data = bytearray()
     # description string
@@ -50,15 +49,15 @@ def _make_minimal_otbm_bytes(width=10, height=10, version=0, tiles=4):
     map_data.extend(house_file)
     # TILE_AREA child
     tile_area = bytearray()
-    tile_area.extend(struct.pack("<H", 0))   # base_x
-    tile_area.extend(struct.pack("<H", 0))   # base_y
-    tile_area.append(7)                       # base_z
+    tile_area.extend(struct.pack("<H", 0))  # base_x
+    tile_area.extend(struct.pack("<H", 0))  # base_y
+    tile_area.append(7)  # base_z
     # Add some TILE nodes
     for i in range(tiles):
         tile = bytearray()
-        tile.append(0x00)                     # offset_x
-        tile.append(i)                        # offset_y
-        tile_area.append(0x03)                 # OTBM_NODE_TILE
+        tile.append(0x00)  # offset_x
+        tile.append(i)  # offset_y
+        tile_area.append(0x03)  # OTBM_NODE_TILE
         tile_area.extend(struct.pack("<H", len(tile)))
         tile_area.extend(tile)
     # Embed tile_area in map_data
@@ -75,6 +74,7 @@ def _make_minimal_otbm_bytes(width=10, height=10, version=0, tiles=4):
 # ---------------------------------------------------------------------------
 # MapAnalyzer Tests
 # ---------------------------------------------------------------------------
+
 
 class TestMapAnalyzer(unittest.TestCase):
     """Tests para MapAnalyzer — analizador principal."""
@@ -144,11 +144,33 @@ class TestMapAnalyzer(unittest.TestCase):
                 "width": 10,
                 "height": 10,
                 "tiles": [
-                    {"x": 0, "y": 0, "z": 7, "ground": 406, "items": [], "all_items": []},
-                    {"x": 1, "y": 0, "z": 7, "ground": 406, "items": [], "all_items": []},
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 7,
+                        "ground": 406,
+                        "items": [],
+                        "all_items": [],
+                    },
+                    {
+                        "x": 1,
+                        "y": 0,
+                        "z": 7,
+                        "ground": 406,
+                        "items": [],
+                        "all_items": [],
+                    },
                 ],
                 "spawns": [{"monster": "Rat", "x": 5, "y": 5, "z": 7, "radius": 3}],
-                "cities": [{"name": "Thais", "town_id": 1, "temple_x": 10, "temple_y": 10, "temple_z": 7}],
+                "cities": [
+                    {
+                        "name": "Thais",
+                        "town_id": 1,
+                        "temple_x": 10,
+                        "temple_y": 10,
+                        "temple_z": 7,
+                    }
+                ],
                 "waypoints": [{"name": "WP1", "x": 0, "y": 0, "z": 7}],
             },
             "stats": {"tiles": 2, "spawns": 1, "cities": 1, "waypoints": 1},
@@ -255,7 +277,15 @@ class TestMapAnalyzer(unittest.TestCase):
 
     def test_cities_to_houses(self):
         """_cities_to_houses convierte ciudades a formato houses."""
-        cities = [{"name": "Thais", "town_id": 1, "temple_x": 10, "temple_y": 10, "temple_z": 7}]
+        cities = [
+            {
+                "name": "Thais",
+                "town_id": 1,
+                "temple_x": 10,
+                "temple_y": 10,
+                "temple_z": 7,
+            }
+        ]
         houses = self.analyzer._cities_to_houses(cities)
         self.assertEqual(len(houses), 1)
         self.assertEqual(houses[0]["name"], "Thais")
@@ -268,6 +298,7 @@ class TestMapAnalyzer(unittest.TestCase):
     def test_extract_map_size(self):
         """_extract_map_size desde XML."""
         import xml.etree.ElementTree as ET
+
         root = ET.fromstring('<root><map><size x="50" y="60"/></map></root>')
         size = self.analyzer._extract_map_size(root)
         self.assertEqual(size["width"], 50)
@@ -276,18 +307,22 @@ class TestMapAnalyzer(unittest.TestCase):
     def test_extract_floors_xml(self):
         """_extract_floors desde XML."""
         import xml.etree.ElementTree as ET
-        root = ET.fromstring('<root><map><tile z="7"/><tile z="8"/><tile z="7"/></map></root>')
+
+        root = ET.fromstring(
+            '<root><map><tile z="7"/><tile z="8"/><tile z="7"/></map></root>'
+        )
         floors = self.analyzer._extract_floors(root)
         self.assertEqual(floors, [7, 8])
 
     def test_extract_houses_xml(self):
         """_extract_houses desde XML."""
         import xml.etree.ElementTree as ET
-        root = ET.fromstring('''
+
+        root = ET.fromstring("""
             <root><houses>
                 <house id="1" name="Thais" rent="100" temple_x="5" temple_y="5" temple_z="7"/>
             </houses></root>
-        ''')
+        """)
         houses = self.analyzer._extract_houses(root)
         self.assertEqual(len(houses), 1)
         self.assertEqual(houses[0]["name"], "Thais")
@@ -296,11 +331,12 @@ class TestMapAnalyzer(unittest.TestCase):
     def test_extract_waypoints_xml(self):
         """_extract_waypoints desde XML."""
         import xml.etree.ElementTree as ET
-        root = ET.fromstring('''
+
+        root = ET.fromstring("""
             <root><waypoints>
                 <waypoint name="Start" x="0" y="0" z="7"/>
             </waypoints></root>
-        ''')
+        """)
         wps = self.analyzer._extract_waypoints(root)
         self.assertEqual(len(wps), 1)
         self.assertEqual(wps[0]["name"], "Start")
@@ -308,11 +344,12 @@ class TestMapAnalyzer(unittest.TestCase):
     def test_extract_zones(self):
         """_extract_zones desde XML."""
         import xml.etree.ElementTree as ET
-        root = ET.fromstring('''
+
+        root = ET.fromstring("""
             <root><zones>
                 <zone name="PvP" type="pvp" x1="0" y1="0" x2="100" y2="100" z="7"/>
             </zones></root>
-        ''')
+        """)
         zones = self.analyzer._extract_zones(root)
         self.assertEqual(len(zones), 1)
         self.assertEqual(zones[0]["name"], "PvP")
@@ -335,6 +372,7 @@ class TestMapAnalyzer(unittest.TestCase):
 # SpawnAnalyzer Tests
 # ---------------------------------------------------------------------------
 
+
 class TestSpawnAnalyzer(unittest.TestCase):
     """Tests para SpawnAnalyzer."""
 
@@ -349,7 +387,15 @@ class TestSpawnAnalyzer(unittest.TestCase):
     def test_analyze_otbm_spawns_with_data(self):
         """analyze_otbm_spawns convierte spawns del world_dict."""
         raw = [
-            {"monster": "Rat", "x": 10, "y": 20, "z": 7, "radius": 5, "respawn": 60, "direction": 2},
+            {
+                "monster": "Rat",
+                "x": 10,
+                "y": 20,
+                "z": 7,
+                "radius": 5,
+                "respawn": 60,
+                "direction": 2,
+            },
             {"name": "Dragon", "x": 30, "y": 40, "z": 7, "radius": 8},
         ]
         result = self.analyzer.analyze_otbm_spawns(raw)
@@ -372,12 +418,13 @@ class TestSpawnAnalyzer(unittest.TestCase):
     def test_analyze_spawn_xml(self):
         """analyze_spawn_xml extrae spawns desde XML."""
         import xml.etree.ElementTree as ET
-        root = ET.fromstring('''
+
+        root = ET.fromstring("""
             <root><spawns>
                 <spawn monster="Rat" x="10" y="20" z="7" radius="3"/>
                 <spawn monster="Dragon" x="30" y="40" z="7" radius="5"/>
             </spawns></root>
-        ''')
+        """)
         spawns = self.analyzer.analyze_spawn_xml(root)
         self.assertEqual(len(spawns), 2)
         self.assertEqual(spawns[0]["monster"], "Rat")
@@ -392,12 +439,14 @@ class TestSpawnAnalyzer(unittest.TestCase):
     def test_classify_zones_empty(self):
         """_classify_zones con contador vacío."""
         from collections import Counter
+
         result = self.analyzer._classify_zones(Counter())
         self.assertEqual(result, {})
 
     def test_classify_zones_endgame(self):
         """_classify_zones detecta endgame."""
         from collections import Counter
+
         c = Counter({"rat": 300})
         result = self.analyzer._classify_zones(c)
         self.assertEqual(result["zone"], "endgame")
@@ -405,6 +454,7 @@ class TestSpawnAnalyzer(unittest.TestCase):
     def test_classify_zones_hard(self):
         """_classify_zones detecta hard."""
         from collections import Counter
+
         c = Counter({"rat": 150})
         result = self.analyzer._classify_zones(c)
         self.assertEqual(result["zone"], "hard")
@@ -412,6 +462,7 @@ class TestSpawnAnalyzer(unittest.TestCase):
     def test_classify_zones_medium(self):
         """_classify_zones detecta medium."""
         from collections import Counter
+
         c = Counter({"rat": 80})
         result = self.analyzer._classify_zones(c)
         self.assertEqual(result["zone"], "medium")
@@ -419,6 +470,7 @@ class TestSpawnAnalyzer(unittest.TestCase):
     def test_classify_zones_easy(self):
         """_classify_zones detecta easy."""
         from collections import Counter
+
         c = Counter({"rat": 10})
         result = self.analyzer._classify_zones(c)
         self.assertEqual(result["zone"], "easy")
@@ -447,6 +499,7 @@ class TestSpawnAnalyzer(unittest.TestCase):
 # ---------------------------------------------------------------------------
 # PathAnalyzer Tests
 # ---------------------------------------------------------------------------
+
 
 class TestPathAnalyzer(unittest.TestCase):
     """Tests para PathAnalyzer."""
@@ -562,6 +615,7 @@ class TestPathAnalyzer(unittest.TestCase):
 # DensityAnalyzer Tests
 # ---------------------------------------------------------------------------
 
+
 class TestDensityAnalyzer(unittest.TestCase):
     """Tests para DensityAnalyzer."""
 
@@ -581,7 +635,9 @@ class TestDensityAnalyzer(unittest.TestCase):
         """analyze con datos poblados."""
         tiles = {"sandstone_floor": 100, "polished_stone": 50}
         items = {"item_100": 30, "item_200": 20}
-        spawns = [{"monster": "Rat", "x": 10, "y": 10, "z": 7, "radius": 3} for _ in range(10)]
+        spawns = [
+            {"monster": "Rat", "x": 10, "y": 10, "z": 7, "radius": 3} for _ in range(10)
+        ]
         result = self.analyzer.analyze(
             tiles, items, spawns, {"width": 100, "height": 100}
         )
@@ -648,9 +704,7 @@ class TestDensityAnalyzer(unittest.TestCase):
 
     def test_compute_floor_distribution(self):
         """_compute_floor_distribution agrupa por floor."""
-        spawns = [
-            {"z": 7}, {"z": 7}, {"z": 8}
-        ]
+        spawns = [{"z": 7}, {"z": 7}, {"z": 8}]
         dist = self.analyzer._compute_floor_distribution(spawns)
         self.assertEqual(dist["by_floor"]["7"], 2)
         self.assertEqual(dist["by_floor"]["8"], 1)
@@ -679,6 +733,7 @@ class TestDensityAnalyzer(unittest.TestCase):
 # ArchitectureAnalyzer Tests
 # ---------------------------------------------------------------------------
 
+
 class TestArchitectureAnalyzer(unittest.TestCase):
     """Tests para ArchitectureAnalyzer."""
 
@@ -687,7 +742,9 @@ class TestArchitectureAnalyzer(unittest.TestCase):
 
     def test_analyze_empty(self):
         """analyze con datos vacíos."""
-        result = self.analyzer.analyze({}, {}, [], [], [], {"width": 100, "height": 100})
+        result = self.analyzer.analyze(
+            {}, {}, [], [], [], {"width": 100, "height": 100}
+        )
         self.assertIn("structural_composition", result)
         self.assertIn("urban_zones", result)
         self.assertIn("wall_analysis", result)
@@ -760,7 +817,9 @@ class TestArchitectureAnalyzer(unittest.TestCase):
         # 10 houses en 100x100 => house_density = 10 / (100*100/10000) = 10/1 = 10 > 5 => metropolis
         houses = [{"name": "t1"} for _ in range(10)]
         spawns = [{"monster": "Rat"} for _ in range(50)]
-        result = self.analyzer._classify_building(houses, spawns, {"width": 100, "height": 100})
+        result = self.analyzer._classify_building(
+            houses, spawns, {"width": 100, "height": 100}
+        )
         self.assertEqual(result["building_type"], "metropolis")
 
     def test_classify_building_wilderness(self):
@@ -810,6 +869,7 @@ class TestArchitectureAnalyzer(unittest.TestCase):
 # TileAnalyzer Tests
 # ---------------------------------------------------------------------------
 
+
 class TestTileAnalyzer(unittest.TestCase):
     """Tests existentes de TileAnalyzer."""
 
@@ -819,13 +879,14 @@ class TestTileAnalyzer(unittest.TestCase):
     def test_analyze_xml_tiles(self):
         """analyze_xml_tiles procesa XML tiles."""
         import xml.etree.ElementTree as ET
-        root = ET.fromstring('''
+
+        root = ET.fromstring("""
             <root><map>
                 <tile ground="393"/>
                 <tile ground="415"/>
                 <tile ground="393"><item id="100"/></tile>
             </map></root>
-        ''')
+        """)
         result = self.analyzer.analyze_xml_tiles(root)
         self.assertIn("sandstone_floor", result)
         self.assertEqual(result.get("sandstone_floor"), 2)
@@ -849,6 +910,7 @@ class TestTileAnalyzer(unittest.TestCase):
 # ---------------------------------------------------------------------------
 # StyleAnalyzer Tests
 # ---------------------------------------------------------------------------
+
 
 class TestStyleAnalyzer(unittest.TestCase):
     """Tests para StyleAnalyzer."""
@@ -887,6 +949,7 @@ class TestStyleAnalyzer(unittest.TestCase):
 # ---------------------------------------------------------------------------
 # PatternExtractor Tests
 # ---------------------------------------------------------------------------
+
 
 class TestPatternExtractor(unittest.TestCase):
     """Tests para PatternExtractor."""

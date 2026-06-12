@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 @dataclass
 class DocumentationResult:
     """Result of documentation generation."""
+
     files_created: List[str] = field(default_factory=list)
     summary: str = ""
 
@@ -38,9 +39,14 @@ class DocumentationBuilder:
     # Public API
     # ------------------------------------------------------------------
 
-    def build_all(self, map_data: Dict[str, Any], name: str = "expansion",
-                  version: str = "1.0.0", author: str = "RME AI",
-                  changelog_entries: Optional[List[str]] = None) -> DocumentationResult:
+    def build_all(
+        self,
+        map_data: Dict[str, Any],
+        name: str = "expansion",
+        version: str = "1.0.0",
+        author: str = "RME AI",
+        changelog_entries: Optional[List[str]] = None,
+    ) -> DocumentationResult:
         """
         Generate all documentation files.
 
@@ -92,8 +98,9 @@ class DocumentationBuilder:
             summary=f"Generated {len(created)} documentation files for '{name}' v{version}",
         )
 
-    def build_readme(self, map_data: Dict[str, Any], name: str,
-                     version: str, author: str) -> str:
+    def build_readme(
+        self, map_data: Dict[str, Any], name: str, version: str, author: str
+    ) -> str:
         """Generate README.md."""
         tiles = map_data.get("tiles", [])
         spawns = map_data.get("spawns", [])
@@ -150,8 +157,7 @@ A procedurally generated Tibia map expansion created by the RME (Recursive Map E
 - PZ zones in safe areas
 """
 
-    def build_changelog(self, version: str,
-                        entries: Optional[List[str]] = None) -> str:
+    def build_changelog(self, version: str, entries: Optional[List[str]] = None) -> str:
         """Generate CHANGELOG.md."""
         if entries is None:
             entries = [
@@ -172,13 +178,15 @@ A procedurally generated Tibia map expansion created by the RME (Recursive Map E
 
     def build_map_guide(self, map_data: Dict[str, Any], name: str) -> str:
         """Generate MAP_GUIDE.md with zone descriptions."""
-        tiles = map_data.get("tiles", [])
+        map_data.get("tiles", [])
         spawns = map_data.get("spawns", [])
         towns = map_data.get("towns", [])
 
         lines = [f"# {name.title()} — Map Guide", ""]
         lines.append("## Overview")
-        lines.append(f"This map contains {len(spawns)} spawn zones across {len(towns)} towns.")
+        lines.append(
+            f"This map contains {len(spawns)} spawn zones across {len(towns)} towns."
+        )
         lines.append("")
 
         # Town section
@@ -190,7 +198,9 @@ A procedurally generated Tibia map expansion created by the RME (Recursive Map E
                 tpos = town.get("position", (0, 0, 7))
                 temple = town.get("temple_position", "N/A")
                 lines.append(f"### {tname}")
-                lines.append(f"- Position: ({tpos[0]}, {tpos[1]}, {tpos[2] if len(tpos) > 2 else 7})")
+                lines.append(
+                    f"- Position: ({tpos[0]}, {tpos[1]}, {tpos[2] if len(tpos) > 2 else 7})"
+                )
                 lines.append(f"- Temple: {temple}")
                 lines.append("")
 
@@ -209,10 +219,14 @@ A procedurally generated Tibia map expansion created by the RME (Recursive Map E
                 monsters = spawn.get("monsters", [])
 
                 lines.append(f"### {zname}")
-                lines.append(f"- Center: ({pos[0]}, {pos[1]}, {pos[2] if len(pos) > 2 else 7})")
+                lines.append(
+                    f"- Center: ({pos[0]}, {pos[1]}, {pos[2] if len(pos) > 2 else 7})"
+                )
                 lines.append(f"- Radius: {radius} tiles")
                 if monsters:
-                    lines.append(f"- Monsters: {', '.join(m.get('name', '?') for m in monsters[:5])}")
+                    lines.append(
+                        f"- Monsters: {', '.join(m.get('name', '?') for m in monsters[:5])}"
+                    )
                 lines.append("")
 
         lines.append("## Navigation Tips")
@@ -295,7 +309,9 @@ A procedurally generated Tibia map expansion created by the RME (Recursive Map E
             monsters = spawn.get("monsters", [])
             pos_str = f"({pos[0]}, {pos[1]}, {pos[2] if len(pos) > 2 else 7})"
 
-            mstr = "; ".join(f"{m.get('name', '?')}x{m.get('count', 1)}" for m in monsters)
+            mstr = "; ".join(
+                f"{m.get('name', '?')}x{m.get('count', 1)}" for m in monsters
+            )
             raw_count = sum(m.get("count", 1) for m in monsters)
 
             lines.append(f"| {zname} | {pos_str} | {radius} | {mstr} | {raw_count} |")

@@ -1,5 +1,5 @@
 """
-HITO 26.1E — Timezone Compliance Tests
+HITO 26.1E â€” Timezone Compliance Tests
 
 Verifies that:
   * No production source file uses ``datetime.utcnow()``
@@ -9,7 +9,6 @@ Verifies that:
 
 import os
 import sys
-import re
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -39,6 +38,8 @@ class TestTimezoneCompliance:
             os.path.join("fix_utcnow.py"),
             os.path.join("test_utcnow.py"),
             os.path.join("validate_hito_26_1e.py"),
+            os.path.join("_quality_report.py"),
+            os.path.join("audit_dependency_consistency.py"),
         }
         for r, dirs, files in os.walk(root):
             dirs[:] = [d for d in dirs if d not in excluded_dirs]
@@ -70,9 +71,8 @@ class TestTimezoneCompliance:
                             offenders.append((path, i, line.rstrip()))
             except Exception:
                 pass
-        assert not offenders, (
-            "``datetime.utcnow()`` is still used in:\n"
-            + "\n".join(f"  {p}:{i}: {l}" for p, i, l in offenders)
+        assert not offenders, "``datetime.utcnow()`` is still used in:\n" + "\n".join(
+            f"  {p}:{i}: {l}" for p, i, l in offenders  # noqa: E741
         )
 
     # ------------------------------------------------------------------ #
@@ -80,9 +80,7 @@ class TestTimezoneCompliance:
     # ------------------------------------------------------------------ #
     def _assert_utc_iso(self, value: str, label: str):
         assert isinstance(value, str), f"{label} should be a string, got {type(value)}"
-        assert value.endswith(self.UTC_SUFFIX), (
-            f"{label} missing UTC suffix: {value!r}"
-        )
+        assert value.endswith(self.UTC_SUFFIX), f"{label} missing UTC suffix: {value!r}"
         # Validate ISO8601 round-trip
         try:
             datetime.fromisoformat(value)
@@ -90,23 +88,23 @@ class TestTimezoneCompliance:
             raise AssertionError(f"{label} is not valid ISO8601: {value!r}") from exc
 
     def test_multi_agent_result_completed_at(self):
-        """MultiAgentResult.completed_at → UTC + ISO8601."""
-        from agente_rme.core.agents.agent_result import MultiAgentResult
+        """MultiAgentResult.completed_at â†’ UTC + ISO8601."""
+        from core.agents.agent_result import MultiAgentResult
 
         r = MultiAgentResult()
         self._assert_utc_iso(r.completed_at, "MultiAgentResult.completed_at")
 
     def test_agent_response_timestamp(self):
-        """AgentResponse.timestamp → UTC + ISO8601."""
-        from agente_rme.core.agents.contracts.agent_response import AgentResponse
+        """AgentResponse.timestamp â†’ UTC + ISO8601."""
+        from core.agents.contracts.agent_response import AgentResponse
 
         ar = AgentResponse(agent_id="test")
         self._assert_utc_iso(ar.timestamp, "AgentResponse.timestamp")
 
     def test_agent_task_timestamps(self):
-        """AgentTask.{created_at,completed_at} → UTC + ISO8601."""
-        from agente_rme.core.agents.contracts.agent_task import AgentTask
-        from agente_rme.core.agents.contracts.agent_response import AgentResponse
+        """AgentTask.{created_at,completed_at} â†’ UTC + ISO8601."""
+        from core.agents.contracts.agent_task import AgentTask
+        from core.agents.contracts.agent_response import AgentResponse
 
         at = AgentTask(agent_id="test")
         self._assert_utc_iso(at.created_at, "AgentTask.created_at")
@@ -116,8 +114,8 @@ class TestTimezoneCompliance:
         self._assert_utc_iso(at.completed_at, "AgentTask.completed_at")
 
     def test_workflow_state_timestamps(self):
-        """WorkflowState.{started_at,completed_at} → UTC + ISO8601."""
-        from agente_rme.core.agents.contracts.workflow_state import WorkflowState
+        """WorkflowState.{started_at,completed_at} â†’ UTC + ISO8601."""
+        from core.agents.contracts.workflow_state import WorkflowState
 
         ws = WorkflowState()
         ws.start()

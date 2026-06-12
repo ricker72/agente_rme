@@ -22,6 +22,8 @@ ALLOWED_FILES = {
     "fix_utcnow.py",
     "test_utcnow.py",
     "validate_hito_26_1e.py",
+    "_quality_report.py",
+    "audit_dependency_consistency.py",
 }
 
 EXCLUDE_DIRS = {".venv", "__pycache__", ".git", "node_modules", "logs", "tests"}
@@ -80,7 +82,9 @@ def main():
             for lineno, line in offenders:
                 print(f"{path}:{lineno}: {line}")
         total = sum(len(o) for _, o in results)
-        print(f"\nFAIL: Found {total} datetime.utcnow() reference(s) in production code.")
+        print(
+            f"\nFAIL: Found {total} datetime.utcnow() reference(s) in production code."
+        )
         sys.exit(1)
 
     print("OK: No datetime.utcnow() found in production code.")

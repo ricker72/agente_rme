@@ -3,7 +3,9 @@ from typing import Dict, List
 from .district_generator import District
 
 
-def generate_temple_layout(district: District, theme: Dict[str, list]) -> List[Dict[str, object]]:
+def generate_temple_layout(
+    district: District, theme: Dict[str, list]
+) -> List[Dict[str, object]]:
     floor = theme.get("floors", [415])[0]
     wall = theme.get("walls", [1495])[0]
     decoration = theme.get("decorations", [2153])[0]

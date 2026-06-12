@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 
 @dataclass
@@ -51,11 +51,31 @@ class DesignRules:
     # ------------------------------------------------------------------
 
     CITY_MUST_HAVE = [
-        DesignRule("temple", "Central temple with respawn zone", required=True, min_count=1),
-        DesignRule("depot", "Storage depot near central area", required=True, min_count=1),
-        DesignRule("market", "Market plaza with stalls and fountain", required=True, min_count=1),
-        DesignRule("residential", "Housing district with walls", required=True, min_count=2, max_count=8),
-        DesignRule("roads", "Connected road network between districts", required=True, min_count=3),
+        DesignRule(
+            "temple", "Central temple with respawn zone", required=True, min_count=1
+        ),
+        DesignRule(
+            "depot", "Storage depot near central area", required=True, min_count=1
+        ),
+        DesignRule(
+            "market",
+            "Market plaza with stalls and fountain",
+            required=True,
+            min_count=1,
+        ),
+        DesignRule(
+            "residential",
+            "Housing district with walls",
+            required=True,
+            min_count=2,
+            max_count=8,
+        ),
+        DesignRule(
+            "roads",
+            "Connected road network between districts",
+            required=True,
+            min_count=3,
+        ),
         DesignRule("gate", "Entry/exit gate to the city", required=False, min_count=1),
         DesignRule("training", "Training area / arena", required=False),
         DesignRule("ship", "Ship/boat dock for travel", required=False),
@@ -70,17 +90,40 @@ class DesignRules:
     ]
 
     CITY_ZONES = [
-        ZoneDesign("Temple District", "Temple", "Safe respawn and blessing area",
-                   adjacent_to=["Market", "Residential"], avoid_near=["Harbor"]),
-        ZoneDesign("Depot Quarter", "Depot", "Item storage and banking",
-                   adjacent_to=["Market", "Residential"]),
-        ZoneDesign("Central Plaza", "Market", "Commerce, NPCs, fountain",
-                   adjacent_to=["Temple District", "Depot Quarter", "Residential"],
-                   suggested_size="large"),
-        ZoneDesign("Residential Block", "Residential", "Player housing",
-                   adjacent_to=["Central Plaza", "Depot Quarter"], min_count=2),
-        ZoneDesign("Harbor Front", "Harbor", "Docks and ship travel",
-                   adjacent_to=["Market"], avoid_near=["Temple District"]),
+        ZoneDesign(
+            "Temple District",
+            "Temple",
+            "Safe respawn and blessing area",
+            adjacent_to=["Market", "Residential"],
+            avoid_near=["Harbor"],
+        ),
+        ZoneDesign(
+            "Depot Quarter",
+            "Depot",
+            "Item storage and banking",
+            adjacent_to=["Market", "Residential"],
+        ),
+        ZoneDesign(
+            "Central Plaza",
+            "Market",
+            "Commerce, NPCs, fountain",
+            adjacent_to=["Temple District", "Depot Quarter", "Residential"],
+            suggested_size="large",
+        ),
+        ZoneDesign(
+            "Residential Block",
+            "Residential",
+            "Player housing",
+            adjacent_to=["Central Plaza", "Depot Quarter"],
+            min_count=2,
+        ),
+        ZoneDesign(
+            "Harbor Front",
+            "Harbor",
+            "Docks and ship travel",
+            adjacent_to=["Market"],
+            avoid_near=["Temple District"],
+        ),
     ]
 
     # ------------------------------------------------------------------
@@ -88,13 +131,32 @@ class DesignRules:
     # ------------------------------------------------------------------
 
     DUNGEON_MUST_HAVE = [
-        DesignRule("entrance", "Entry point to the dungeon", required=True, min_count=1),
-        DesignRule("loop", "Circular path allowing return without backtracking", required=True, min_count=1),
-        DesignRule("reward", "Treasure room or special loot area", required=True, min_count=1),
-        DesignRule("boss", "Boss room with special mechanics", required=True, min_count=1),
-        DesignRule("exit", "Exit point (may be same as entrance)", required=True, min_count=1),
+        DesignRule(
+            "entrance", "Entry point to the dungeon", required=True, min_count=1
+        ),
+        DesignRule(
+            "loop",
+            "Circular path allowing return without backtracking",
+            required=True,
+            min_count=1,
+        ),
+        DesignRule(
+            "reward", "Treasure room or special loot area", required=True, min_count=1
+        ),
+        DesignRule(
+            "boss", "Boss room with special mechanics", required=True, min_count=1
+        ),
+        DesignRule(
+            "exit", "Exit point (may be same as entrance)", required=True, min_count=1
+        ),
         DesignRule("quest", "Quest room with unique content", required=False),
-        DesignRule("shortcut", "Teleport or passage bypassing sections", required=False, min_count=0, max_count=4),
+        DesignRule(
+            "shortcut",
+            "Teleport or passage bypassing sections",
+            required=False,
+            min_count=0,
+            max_count=4,
+        ),
     ]
 
     DUNGEON_SHOULD_AVOID = [
@@ -106,20 +168,47 @@ class DesignRules:
     ]
 
     DUNGEON_ZONES = [
-        ZoneDesign("Grand Hall", "CombatRoom", "First combat encounter",
-                   adjacent_to=["Entrance"], suggested_size="large"),
-        ZoneDesign("Dark Passage", "Corridor", "Connecting corridor with ambush",
-                   adjacent_to=["Grand Hall", "Vault"]),
-        ZoneDesign("Crystal Vault", "TreasureRoom", "Loot and rare items",
-                   adjacent_to=["Dark Passage"], avoid_near=["Entrance"],
-                   min_distance_from_center=3),
-        ZoneDesign("Ancient Sanctum", "BossRoom", "Final boss encounter",
-                   adjacent_to=["Dark Passage"], avoid_near=["Entrance", "Crystal Vault"],
-                   suggested_size="large"),
-        ZoneDesign("Sealed Chamber", "QuestRoom", "Optional quest content",
-                   adjacent_to=["Dark Passage"]),
-        ZoneDesign("Collapsed Tunnel", "Shortcut", "Quick return path",
-                   adjacent_to=["Ancient Sanctum", "Grand Hall"]),
+        ZoneDesign(
+            "Grand Hall",
+            "CombatRoom",
+            "First combat encounter",
+            adjacent_to=["Entrance"],
+            suggested_size="large",
+        ),
+        ZoneDesign(
+            "Dark Passage",
+            "Corridor",
+            "Connecting corridor with ambush",
+            adjacent_to=["Grand Hall", "Vault"],
+        ),
+        ZoneDesign(
+            "Crystal Vault",
+            "TreasureRoom",
+            "Loot and rare items",
+            adjacent_to=["Dark Passage"],
+            avoid_near=["Entrance"],
+            min_distance_from_center=3,
+        ),
+        ZoneDesign(
+            "Ancient Sanctum",
+            "BossRoom",
+            "Final boss encounter",
+            adjacent_to=["Dark Passage"],
+            avoid_near=["Entrance", "Crystal Vault"],
+            suggested_size="large",
+        ),
+        ZoneDesign(
+            "Sealed Chamber",
+            "QuestRoom",
+            "Optional quest content",
+            adjacent_to=["Dark Passage"],
+        ),
+        ZoneDesign(
+            "Collapsed Tunnel",
+            "Shortcut",
+            "Quick return path",
+            adjacent_to=["Ancient Sanctum", "Grand Hall"],
+        ),
     ]
 
     # ------------------------------------------------------------------
@@ -130,8 +219,12 @@ class DesignRules:
         DesignRule("flow", "Smooth progression path through the hunt", required=True),
         DesignRule("risk", "Danger zones with harder monsters", required=True),
         DesignRule("reward", "Loot areas with valuable drops", required=True),
-        DesignRule("density", "Appropriate monster density for the level", required=True),
-        DesignRule("safe_spots", "Safe spots for regrouping", required=False, min_count=2),
+        DesignRule(
+            "density", "Appropriate monster density for the level", required=True
+        ),
+        DesignRule(
+            "safe_spots", "Safe spots for regrouping", required=False, min_count=2
+        ),
         DesignRule("variety", "Mixed monster types (not all same)", required=True),
     ]
 
@@ -144,19 +237,18 @@ class DesignRules:
     ]
 
     HUNT_ZONES = [
-        ZoneDesign("Entry Chamber", "Spawn", "warmup",
-                   suggested_size="medium"),
-        ZoneDesign("Hunting Grounds", "Spawn", "grinding",
-                   suggested_size="large"),
-        ZoneDesign("Elite Chamber", "Spawn", "risk",
-                   suggested_size="medium"),
-        ZoneDesign("Treasure Vault", "Reward", "reward",
-                   avoid_near=["Entry Chamber"]),
-        ZoneDesign("Boss Arena", "Boss", "boss",
-                   avoid_near=["Entry Chamber", "Treasure Vault"],
-                   suggested_size="large"),
-        ZoneDesign("Safe Corridor", "SafeZone", "safety",
-                   min_count=2),
+        ZoneDesign("Entry Chamber", "Spawn", "warmup", suggested_size="medium"),
+        ZoneDesign("Hunting Grounds", "Spawn", "grinding", suggested_size="large"),
+        ZoneDesign("Elite Chamber", "Spawn", "risk", suggested_size="medium"),
+        ZoneDesign("Treasure Vault", "Reward", "reward", avoid_near=["Entry Chamber"]),
+        ZoneDesign(
+            "Boss Arena",
+            "Boss",
+            "boss",
+            avoid_near=["Entry Chamber", "Treasure Vault"],
+            suggested_size="large",
+        ),
+        ZoneDesign("Safe Corridor", "SafeZone", "safety", min_count=2),
     ]
 
     # ------------------------------------------------------------------
@@ -187,13 +279,17 @@ class DesignRules:
     @classmethod
     def violations_for(cls, map_type: str, zones_present: List[str]) -> List[str]:
         """Check which required rules are violated by the current zones."""
-        required = cls.for_city() if map_type == "city" else (
-            cls.for_dungeon() if map_type == "dungeon" else cls.for_hunt()
+        required = (
+            cls.for_city()
+            if map_type == "city"
+            else (cls.for_dungeon() if map_type == "dungeon" else cls.for_hunt())
         )
         violations = []
         for rule in required:
             if rule.required and rule.name not in zones_present:
-                violations.append(f"Missing required element: {rule.name} ({rule.description})")
+                violations.append(
+                    f"Missing required element: {rule.name} ({rule.description})"
+                )
         return violations
 
     @classmethod

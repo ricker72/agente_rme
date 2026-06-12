@@ -11,30 +11,33 @@ import logging
 import os
 import struct
 import zlib
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, Tuple
 
 from core.world.world_model import WorldModel
 
-from .analyzers import build_snapshots, snapshots_by_zone, manhattan
+from .analyzers import build_snapshots
 
 logger = logging.getLogger(__name__)
 
 
 def _png(width: int, height: int, rgb_bytes: bytes) -> bytes:
     """Write a minimal RGB PNG (no external dependencies)."""
+
     def chunk(tag: bytes, data: bytes) -> bytes:
-        return (struct.pack(">I", len(data)) + tag + data +
-                struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF))
+        return (
+            struct.pack(">I", len(data))
+            + tag
+            + data
+            + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
+        )
 
     header = b"\x89PNG\r\n\x1a\n"
     ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
-    raw = b"".join(b"\x00" + rgb_bytes[y * width * 3:(y + 1) * width * 3]
-                   for y in range(height))
+    raw = b"".join(
+        b"\x00" + rgb_bytes[y * width * 3 : (y + 1) * width * 3] for y in range(height)
+    )
     idat = zlib.compress(raw, 9)
-    return (header +
-            chunk(b"IHDR", ihdr) +
-            chunk(b"IDAT", idat) +
-            chunk(b"IEND", b""))
+    return header + chunk(b"IHDR", ihdr) + chunk(b"IDAT", idat) + chunk(b"IEND", b"")
 
 
 def _color_for_value(v: float, vmin: float, vmax: float) -> Tuple[int, int, int]:
@@ -64,10 +67,7 @@ class HeatmapRenderer:
 
     CATEGORIES = ("visual", "navigation", "density", "spawn")
 
-    def __init__(self,
-                 cell_size: int = 4,
-                 padding: int = 2,
-                 max_dimension: int = 1024):
+    def __init__(self, cell_size: int = 4, padding: int = 2, max_dimension: int = 1024):
         self.cell_size = max(1, cell_size)
         self.padding = max(0, padding)
         self.max_dimension = max(64, max_dimension)
@@ -76,11 +76,13 @@ class HeatmapRenderer:
     # Public API
     # ------------------------------------------------------------------
 
-    def render_score_map(self,
-                         world: WorldModel,
-                         score_per_tile: Dict[Tuple[int, int], float],
-                         output_path: str,
-                         background: Tuple[int, int, int] = (32, 32, 32)) -> str:
+    def render_score_map(
+        self,
+        world: WorldModel,
+        score_per_tile: Dict[Tuple[int, int], float],
+        output_path: str,
+        background: Tuple[int, int, int] = (32, 32, 32),
+    ) -> str:
         """
         Render a 2D heatmap of per-tile scores.
 
@@ -102,10 +104,6 @@ class HeatmapRenderer:
         scale = 1.0
         if max(width, height) > self.max_dimension:
             scale = self.max_dimension / float(max(width, height))
-            new_w = max(1, int(width * scale))
-            new_h = max(1, int(height * scale))
-        else:
-            new_w, new_h = width, height
         cell = max(1, int(self.cell_size * scale))
         pad = max(0, int(self.padding * scale))
         map_w = (max_x - min_x + 1) * cell
@@ -114,7 +112,9 @@ class HeatmapRenderer:
         canvas_w = map_w + 2 * pad
         canvas_h = map_h + 2 * pad
 
-        rgb = bytearray([background[0], background[1], background[2]] * canvas_w * canvas_h)
+        rgb = bytearray(
+            [background[0], background[1], background[2]] * canvas_w * canvas_h
+        )
 
         values = list(score_per_tile.values())
         vmin = min(values) if values else 0.0
@@ -182,19 +182,24 @@ class HeatmapRenderer:
             scores[(s.x, s.y)] = min(100.0, base)
         return self.render_score_map(world, scores, output_path)
 
-    def render_all(self, world: WorldModel, output_dir: str,
-                   prefix: str = "") -> Dict[str, str]:
+    def render_all(
+        self, world: WorldModel, output_dir: str, prefix: str = ""
+    ) -> Dict[str, str]:
         os.makedirs(output_dir, exist_ok=True)
         p = (prefix + "_") if prefix else ""
         return {
             "visual": self.render_visual_heatmap(
-                world, os.path.join(output_dir, f"{p}visual_score.png")),
+                world, os.path.join(output_dir, f"{p}visual_score.png")
+            ),
             "navigation": self.render_navigation_heatmap(
-                world, os.path.join(output_dir, f"{p}navigation_heatmap.png")),
+                world, os.path.join(output_dir, f"{p}navigation_heatmap.png")
+            ),
             "density": self.render_density_heatmap(
-                world, os.path.join(output_dir, f"{p}density_heatmap.png")),
+                world, os.path.join(output_dir, f"{p}density_heatmap.png")
+            ),
             "spawn": self.render_spawn_heatmap(
-                world, os.path.join(output_dir, f"{p}spawn_heatmap.png")),
+                world, os.path.join(output_dir, f"{p}spawn_heatmap.png")
+            ),
         }
 
     # ------------------------------------------------------------------

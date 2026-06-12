@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict
 
 
 @dataclass
@@ -21,7 +21,9 @@ class ExpansionPlan:
 
 
 class ExpansionPlanner:
-    def reserve(self, category: str, width: int, height: int, reason: str) -> ExpansionPlan:
+    def reserve(
+        self, category: str, width: int, height: int, reason: str
+    ) -> ExpansionPlan:
         return ExpansionPlan(
             category=category,
             reserved_area={"width": width, "height": height},

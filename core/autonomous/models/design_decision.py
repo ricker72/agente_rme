@@ -3,14 +3,14 @@ Design Decision model - represents a decision made by the autonomous decision en
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, Dict, List
+from typing import Dict, List
 from datetime import datetime
 
 
 @dataclass
 class DesignDecision:
     """Represents a decision made by the autonomous decision engine."""
-    
+
     decision_id: str
     region_id: str
     decision_type: str  # "blueprint", "pattern", "cluster", "hybrid"
@@ -22,7 +22,7 @@ class DesignDecision:
     confidence: float = 0.0
     metadata: Dict = field(default_factory=dict)
     created_at: datetime = field(default_factory=datetime.now)
-    
+
     def __post_init__(self):
         """Validate decision after initialization."""
         valid_types = ["blueprint", "pattern", "cluster", "hybrid"]
@@ -34,18 +34,22 @@ class DesignDecision:
             raise ValueError("Selected option cannot be empty")
         if not (0 <= self.confidence <= 1):
             raise ValueError("Confidence must be between 0 and 1")
-        
+
         # Calculate total score from breakdown if not provided
         if self.total_score == 0.0 and self.score_breakdown:
-            self.total_score = sum(self.score_breakdown.values()) / len(self.score_breakdown)
-    
+            self.total_score = sum(self.score_breakdown.values()) / len(
+                self.score_breakdown
+            )
+
     def update_score(self, metric: str, score: float) -> None:
         """Update a specific score metric."""
         self.score_breakdown[metric] = score
         # Recalculate total score
         if self.score_breakdown:
-            self.total_score = sum(self.score_breakdown.values()) / len(self.score_breakdown)
-    
+            self.total_score = sum(self.score_breakdown.values()) / len(
+                self.score_breakdown
+            )
+
     def to_dict(self) -> dict:
         """Convert to dictionary for JSON serialization."""
         return {
@@ -61,7 +65,7 @@ class DesignDecision:
             "metadata": self.metadata,
             "created_at": self.created_at.isoformat(),
         }
-    
+
     @classmethod
     def from_dict(cls, data: dict) -> "DesignDecision":
         """Create from dictionary."""

@@ -11,8 +11,7 @@ Implements:
 
 from __future__ import annotations
 
-import math
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set
 
 from core.blueprints.blueprint import Blueprint
 from .models.blueprint_embedding import BlueprintEmbedding
@@ -91,9 +90,7 @@ class BlueprintSimilarityEngine:
         boss_candidates = [c for c in candidates if c.category == "boss_room"]
         return self.find_similar_blueprints(target, boss_candidates, top_k)
 
-    def compare(
-        self, a: Blueprint, b: Blueprint
-    ) -> BlueprintSimilarityResult:
+    def compare(self, a: Blueprint, b: Blueprint) -> BlueprintSimilarityResult:
         """Compute all similarity metrics between two blueprints."""
         return self._compute_similarity(a, b)
 

@@ -20,7 +20,6 @@ Examples included:
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -37,7 +36,9 @@ def demo_1_canonical_example():
     print("=" * 70)
     print()
     architect = AIArchitect()
-    p = architect.plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    p = architect.plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     print(architect.explain(p))
     print()
     return p
@@ -163,7 +164,9 @@ def demo_8_export_to_json():
     print("  DEMO 8: Export a plan to JSON")
     print("=" * 70)
     print()
-    p = ai_plan("Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final")
+    p = ai_plan(
+        "Genera una ciudad estilo Issavi con 3 hunts nivel 300-500 y un boss final"
+    )
     d = p.to_dict()
     json_str = json.dumps(d, default=str, indent=2)
     # Print just the first 800 chars to avoid clutter

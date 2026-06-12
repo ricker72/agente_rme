@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional, Tuple
 @dataclass
 class LootAnalysis:
     """Analysis of loot economy for a hunt zone."""
+
     zone_name: str = ""
     profit_per_hour: float = 0.0
     profit_solo: float = 0.0
@@ -54,16 +55,16 @@ class LootAnalyzer:
 
     # Reference profit ranges per level bracket (net profit/h)
     PROFIT_CURVES = {
-        (0, 50):       (5000, 20000),
-        (50, 100):     (20000, 60000),
-        (100, 150):    (60000, 150000),
-        (150, 200):    (150000, 300000),
-        (200, 300):    (300000, 500000),
-        (300, 400):    (500000, 800000),
-        (400, 500):    (800000, 1200000),
-        (500, 700):    (1200000, 2000000),
-        (700, 1000):   (2000000, 3000000),
-        (1000, 9999):  (3000000, 5000000),
+        (0, 50): (5000, 20000),
+        (50, 100): (20000, 60000),
+        (100, 150): (60000, 150000),
+        (150, 200): (150000, 300000),
+        (200, 300): (300000, 500000),
+        (300, 400): (500000, 800000),
+        (400, 500): (800000, 1200000),
+        (500, 700): (1200000, 2000000),
+        (700, 1000): (2000000, 3000000),
+        (1000, 9999): (3000000, 5000000),
     }
 
     # Supply cost per kill by monster difficulty
@@ -91,9 +92,13 @@ class LootAnalyzer:
     # Public API
     # ------------------------------------------------------------------
 
-    def analyze_zone(self, zone_name: str, spawns: List[Dict[str, Any]],
-                     loot_tables: Optional[Dict[str, List[Dict]]] = None,
-                     monster_difficulties: Optional[Dict[str, str]] = None) -> LootAnalysis:
+    def analyze_zone(
+        self,
+        zone_name: str,
+        spawns: List[Dict[str, Any]],
+        loot_tables: Optional[Dict[str, List[Dict]]] = None,
+        monster_difficulties: Optional[Dict[str, str]] = None,
+    ) -> LootAnalysis:
         """
         Analyze loot economy for a hunt zone.
 
@@ -124,7 +129,9 @@ class LootAnalyzer:
             loot_table = loot_tables.get(monster_name, []) if loot_tables else []
 
             if loot_table:
-                loot_value = self._calc_loot_per_kill(loot_table, monster_name, loot_breakdown)
+                loot_value = self._calc_loot_per_kill(
+                    loot_table, monster_name, loot_breakdown
+                )
                 for entry in loot_table:
                     if entry.get("chance", 0) < 0.01:  # Rare drops
                         rare_chance += entry["chance"]
@@ -184,8 +191,9 @@ class LootAnalyzer:
             "spread_ratio": best.profit_per_hour / max(worst.profit_per_hour, 1),
         }
 
-    def suggest_loot_adjustment(self, analysis: LootAnalysis,
-                                target_level: int = 150) -> Dict[str, Any]:
+    def suggest_loot_adjustment(
+        self, analysis: LootAnalysis, target_level: int = 150
+    ) -> Dict[str, Any]:
         """
         Suggest loot value adjustments.
 
@@ -213,8 +221,9 @@ class LootAnalyzer:
     # Internal
     # ------------------------------------------------------------------
 
-    def _calc_loot_per_kill(self, loot_table: List[Dict], monster_name: str,
-                             breakdown: Dict[str, float]) -> float:
+    def _calc_loot_per_kill(
+        self, loot_table: List[Dict], monster_name: str, breakdown: Dict[str, float]
+    ) -> float:
         """Calculate expected loot value per kill from a loot table."""
         total = 0.0
         for entry in loot_table:
@@ -274,8 +283,9 @@ class LootAnalyzer:
         else:
             return "excellent"
 
-    def _generate_warnings(self, profit: float, profit_solo: float,
-                           total_kills: float) -> List[str]:
+    def _generate_warnings(
+        self, profit: float, profit_solo: float, total_kills: float
+    ) -> List[str]:
         """Generate economy warnings."""
         warnings = []
 

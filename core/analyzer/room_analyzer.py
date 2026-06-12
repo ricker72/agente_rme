@@ -1,6 +1,6 @@
 from collections import deque
 from dataclasses import dataclass
-from typing import Dict, List, Tuple
+from typing import List, Tuple
 
 
 @dataclass
@@ -14,7 +14,9 @@ class RoomAnalysis:
 
 
 class RoomAnalyzer:
-    def detect_rooms(self, grid: List[List[int]], passable_ids: List[int]) -> List[RoomAnalysis]:
+    def detect_rooms(
+        self, grid: List[List[int]], passable_ids: List[int]
+    ) -> List[RoomAnalysis]:
         height = len(grid)
         width = len(grid[0]) if height > 0 else 0
         visited = [[False] * width for _ in range(height)]
@@ -30,7 +32,14 @@ class RoomAnalyzer:
                     rooms.append(room)
         return rooms
 
-    def _flood_fill(self, grid: List[List[int]], visited: List[List[bool]], start_x: int, start_y: int, passable_ids: List[int]) -> Tuple[int, int, int, int]:
+    def _flood_fill(
+        self,
+        grid: List[List[int]],
+        visited: List[List[bool]],
+        start_x: int,
+        start_y: int,
+        passable_ids: List[int],
+    ) -> Tuple[int, int, int, int]:
         width = len(grid[0])
         height = len(grid)
         q = deque([(start_x, start_y)])
@@ -48,7 +57,12 @@ class RoomAnalyzer:
             y_max = max(y_max, y)
             for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 nx, ny = x + dx, y + dy
-                if 0 <= nx < width and 0 <= ny < height and not visited[ny][nx] and grid[ny][nx] in passable_ids:
+                if (
+                    0 <= nx < width
+                    and 0 <= ny < height
+                    and not visited[ny][nx]
+                    and grid[ny][nx] in passable_ids
+                ):
                     visited[ny][nx] = True
                     q.append((nx, ny))
         return x_min, y_min, x_max, y_max
@@ -60,7 +74,14 @@ class RoomAnalyzer:
         area = width * height
         connectivity = (width + height) // 2
         room_type = self._classify_room(width, height)
-        return RoomAnalysis(width=width, height=height, area=area, connectivity=connectivity, type=room_type, bounds=bounds)
+        return RoomAnalysis(
+            width=width,
+            height=height,
+            area=area,
+            connectivity=connectivity,
+            type=room_type,
+            bounds=bounds,
+        )
 
     def _classify_room(self, width: int, height: int) -> str:
         if width * height >= 200:

@@ -16,7 +16,6 @@ Usage:
 
 import argparse
 import json
-import os
 import subprocess
 import sys
 from pathlib import Path
@@ -83,7 +82,10 @@ def check_python_version() -> Tuple[bool, str]:
     major, minor = sys.version_info[:2]
     if major >= REQUIRED_PYTHON[0] and minor >= REQUIRED_PYTHON[1]:
         return True, f"Python {major}.{minor}.{sys.version_info[2]}"
-    return False, f"Python {major}.{minor} (requires >= {REQUIRED_PYTHON[0]}.{REQUIRED_PYTHON[1]})"
+    return (
+        False,
+        f"Python {major}.{minor} (requires >= {REQUIRED_PYTHON[0]}.{REQUIRED_PYTHON[1]})",
+    )
 
 
 def check_packages(packages: list) -> List[Tuple[bool, str, str]]:
@@ -135,6 +137,7 @@ def create_directories():
 def check_ollama() -> Tuple[bool, str]:
     try:
         import requests
+
         r = requests.get("http://localhost:11434/api/tags", timeout=3)
         if r.status_code == 200:
             models = r.json().get("models", [])
@@ -270,7 +273,11 @@ def run(check_only=False, install_deps=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="RME Agent Installer")
-    parser.add_argument("--check-only", action="store_true", help="Only check, don't install")
-    parser.add_argument("--install-deps", action="store_true", help="Install missing dependencies")
+    parser.add_argument(
+        "--check-only", action="store_true", help="Only check, don't install"
+    )
+    parser.add_argument(
+        "--install-deps", action="store_true", help="Install missing dependencies"
+    )
     args = parser.parse_args()
     run(check_only=args.check_only, install_deps=args.install_deps)

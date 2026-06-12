@@ -14,7 +14,6 @@ from core.world.region import Region
 
 
 class HuntAnalyzerTests(unittest.TestCase):
-
     def test_no_hunts(self):
         w = WorldModel()
         for x in range(10):
@@ -48,8 +47,13 @@ class HuntAnalyzerTests(unittest.TestCase):
         for x, y in [(0, 0), (200, 200)]:
             for dx in range(10):
                 for dy in range(10):
-                    t = Tile(x=x + dx, y=y + dy, z=7, ground=100,
-                             zone=("hunt_north" if (x, y) == (0, 0) else "hunt_south"))
+                    t = Tile(
+                        x=x + dx,
+                        y=y + dy,
+                        z=7,
+                        ground=100,
+                        zone=("hunt_north" if (x, y) == (0, 0) else "hunt_south"),
+                    )
                     if (dx + dy) % 4 == 0:
                         t.spawn = Spawn(monster="Rat", respawn=60, radius=2)
                     w.set_tile(t)

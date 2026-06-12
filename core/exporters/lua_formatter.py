@@ -8,7 +8,6 @@ proyecto OpenTibiaBR RME.
 
 from __future__ import annotations
 
-import re
 from typing import List
 
 
@@ -85,7 +84,9 @@ class LuaFormatter:
                 continue
 
             # Palabras clave que decrementan indentación
-            if any(stripped.startswith(kw) for kw in ["end", "until", "else", "elseif"]):
+            if any(
+                stripped.startswith(kw) for kw in ["end", "until", "else", "elseif"]
+            ):
                 indent_level = max(0, indent_level - 1)
 
             # Aplicar indentación actual

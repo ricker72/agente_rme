@@ -16,8 +16,8 @@ import os
 import tempfile
 import unittest
 
-from agente_rme.core.agents.critic_agent import CriticAgent
-from agente_rme.core.agents.contracts import AgentRequest
+from core.agents.critic_agent import CriticAgent
+from core.agents.contracts import AgentRequest
 from core.critic import VisualCritic
 from core.world.world_model import WorldModel
 from core.world.tile import Tile
@@ -48,15 +48,21 @@ def _build_issavi_roshamuul_full() -> WorldModel:
         for dx in range(20):
             for dy in range(20):
                 t = Tile(
-                    x=ox + dx, y=dy, z=7, ground=200 + i,
+                    x=ox + dx,
+                    y=dy,
+                    z=7,
+                    ground=200 + i,
                     items=[{"itemid": 300 + (dx + dy) % 6, "count": 1}],
                     zone=f"hunt_{i}",
                 )
                 if (dx + dy) % 5 == 0:
                     t.spawn = Spawn(monster="Demon", respawn=60, radius=2)
                 w.set_tile(t)
-        w.add_region(Region(name=f"hunt_{i}", theme="issavi",
-                            min_level=300 + i * 50, max_level=500))
+        w.add_region(
+            Region(
+                name=f"hunt_{i}", theme="issavi", min_level=300 + i * 50, max_level=500
+            )
+        )
 
     # Connectors
     for i in range(3):
@@ -70,26 +76,48 @@ def _build_issavi_roshamuul_full() -> WorldModel:
         oy = 60
         for dx in range(15):
             for dy in range(15):
-                w.set_tile(Tile(x=ox + dx, y=oy + dy, z=7, ground=500 + i,
-                                items=[{"itemid": 900, "count": 1}],
-                                zone=f"boss_arena_{i}"))
-        w.add_structure(Structure(name=f"boss_arena_{i}", category="boss_room",
-                                  x=ox, y=oy, z=7, width=15, height=15,
-                                  tags=["boss"]))
+                w.set_tile(
+                    Tile(
+                        x=ox + dx,
+                        y=oy + dy,
+                        z=7,
+                        ground=500 + i,
+                        items=[{"itemid": 900, "count": 1}],
+                        zone=f"boss_arena_{i}",
+                    )
+                )
+        w.add_structure(
+            Structure(
+                name=f"boss_arena_{i}",
+                category="boss_room",
+                x=ox,
+                y=oy,
+                z=7,
+                width=15,
+                height=15,
+                tags=["boss"],
+            )
+        )
 
     # Raid
     w.add_region(Region(name="raid_zargoth", min_level=300, max_level=500))
     for x in range(180, 220):
         for y in range(180, 220):
-            w.set_tile(Tile(x=x, y=y, z=7, ground=600,
-                            items=[{"itemid": 777, "count": 1}],
-                            zone="raid_zargoth"))
+            w.set_tile(
+                Tile(
+                    x=x,
+                    y=y,
+                    z=7,
+                    ground=600,
+                    items=[{"itemid": 777, "count": 1}],
+                    zone="raid_zargoth",
+                )
+            )
 
     return w
 
 
 class CriticE2EPipelineTests(unittest.TestCase):
-
     def test_e2e_issavi_roshamuul_critic(self):
         """Full E2E: build world, run CriticAgent, validate outputs."""
         w = _build_issavi_roshamuul_full()
@@ -98,7 +126,7 @@ class CriticE2EPipelineTests(unittest.TestCase):
             agent = CriticAgent(output_dir=tmp)
             req = AgentRequest(
                 agent_id="critic",
-                prompt="Crear expansión Issavi + Roshamuul nivel 300-500",
+                prompt="Crear expansiÃ³n Issavi + Roshamuul nivel 300-500",
                 input_data=w,
                 context={"output_dir": tmp},
             )
@@ -123,8 +151,10 @@ class CriticE2EPipelineTests(unittest.TestCase):
 
             # The artifacts contain all generated paths
             for art_name, art_path in response.artifacts.items():
-                self.assertTrue(os.path.exists(art_path),
-                                f"Artifact missing: {art_name} -> {art_path}")
+                self.assertTrue(
+                    os.path.exists(art_path),
+                    f"Artifact missing: {art_name} -> {art_path}",
+                )
 
             # Step 3: Validate specific artifacts by checking files in tmp
             found_report = False
@@ -146,8 +176,11 @@ class CriticE2EPipelineTests(unittest.TestCase):
 
             # Step 4: Validate heatmaps were generated
             heatmaps = [f for f in os.listdir(tmp) if f.endswith(".png")]
-            self.assertGreaterEqual(len(heatmaps), 4,
-                                    f"Expected at least 4 heatmaps, found {len(heatmaps)}: {heatmaps}")
+            self.assertGreaterEqual(
+                len(heatmaps),
+                4,
+                f"Expected at least 4 heatmaps, found {len(heatmaps)}: {heatmaps}",
+            )
 
             # Step 5: Overall score is in valid range
             self.assertGreaterEqual(report["overall_score"], 0.0)
@@ -183,10 +216,18 @@ class CriticE2EPipelineTests(unittest.TestCase):
             # Verify the full expected report format
             data = result.to_dict()
             for field in (
-                "overall_score", "visual_score", "navigation_score",
-                "density_score", "spawn_score", "hunt_score",
-                "boss_score", "city_score", "decor_score",
-                "pathfinding_score", "issues", "recommendations",
+                "overall_score",
+                "visual_score",
+                "navigation_score",
+                "density_score",
+                "spawn_score",
+                "hunt_score",
+                "boss_score",
+                "city_score",
+                "decor_score",
+                "pathfinding_score",
+                "issues",
+                "recommendations",
             ):
                 self.assertIn(field, data)
             self.assertGreaterEqual(result.overall_score, 0.0)

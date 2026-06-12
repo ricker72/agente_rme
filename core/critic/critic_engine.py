@@ -11,14 +11,26 @@ from typing import Any, Dict, List, Optional
 from core.world.world_model import WorldModel
 
 from .models import (
-    CriticScore, CriticIssue, CriticRecommendation,
-    CriticResult, CriticCategoryResult, IssueType, IssueSeverity,
+    CriticScore,
+    CriticIssue,
+    CriticRecommendation,
+    CriticResult,
+    CriticCategoryResult,
+    IssueType,
+    IssueSeverity,
     RecommendationPriority,
 )
 from .analyzers import (
-    VisualAnalyzer, NavigationAnalyzer, DensityAnalyzer, SpawnAnalyzer,
-    HuntAnalyzer, BossRoomAnalyzer, CityAnalyzer, DecorAnalyzer,
-    RegionAnalyzer, PathfindingAnalyzer,
+    VisualAnalyzer,
+    NavigationAnalyzer,
+    DensityAnalyzer,
+    SpawnAnalyzer,
+    HuntAnalyzer,
+    BossRoomAnalyzer,
+    CityAnalyzer,
+    DecorAnalyzer,
+    RegionAnalyzer,
+    PathfindingAnalyzer,
 )
 from .score_calculator import ScoreCalculator
 
@@ -34,10 +46,12 @@ class CriticEngine:
         result = engine.analyze(world, map_name="issavi_roshamuul")
     """
 
-    def __init__(self,
-                 score_calculator: Optional[ScoreCalculator] = None,
-                 analyzers: Optional[Dict[str, Any]] = None,
-                 penalty_max: float = 30.0):
+    def __init__(
+        self,
+        score_calculator: Optional[ScoreCalculator] = None,
+        analyzers: Optional[Dict[str, Any]] = None,
+        penalty_max: float = 30.0,
+    ):
         self.score_calculator = score_calculator or ScoreCalculator()
         self.penalty_max = penalty_max
         self.analyzers: Dict[str, Any] = analyzers or self._default_analyzers()
@@ -61,9 +75,13 @@ class CriticEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def analyze(self, world: WorldModel, map_name: str = "",
-                preview_path: Optional[str] = None,
-                extra_context: Optional[Dict[str, Any]] = None) -> CriticResult:
+    def analyze(
+        self,
+        world: WorldModel,
+        map_name: str = "",
+        preview_path: Optional[str] = None,
+        extra_context: Optional[Dict[str, Any]] = None,
+    ) -> CriticResult:
         """
         Run all analyzers and return a CriticResult.
         """
@@ -152,8 +170,12 @@ class CriticEngine:
             },
         )
 
-    def analyze_dict(self, data: Dict[str, Any], map_name: str = "",
-                     preview_path: Optional[str] = None) -> CriticResult:
+    def analyze_dict(
+        self,
+        data: Dict[str, Any],
+        map_name: str = "",
+        preview_path: Optional[str] = None,
+    ) -> CriticResult:
         """Analyze a world described as a dict (tiles list, structures, regions)."""
         world = self._dict_to_world(data)
         return self.analyze(world, map_name=map_name, preview_path=preview_path)
@@ -185,15 +207,17 @@ class CriticEngine:
         for _key, td in iterable:
             if not isinstance(td, dict):
                 continue
-            world.set_tile(Tile(
-                x=int(td.get("x", 0)),
-                y=int(td.get("y", 0)),
-                z=int(td.get("z", 7)),
-                ground=td.get("ground"),
-                items=td.get("items", []) or [],
-                spawn=td.get("spawn"),
-                zone=td.get("zone"),
-            ))
+            world.set_tile(
+                Tile(
+                    x=int(td.get("x", 0)),
+                    y=int(td.get("y", 0)),
+                    z=int(td.get("z", 7)),
+                    ground=td.get("ground"),
+                    items=td.get("items", []) or [],
+                    spawn=td.get("spawn"),
+                    zone=td.get("zone"),
+                )
+            )
         for sd in data.get("structures", []) or []:
             if isinstance(sd, dict):
                 world.add_structure(Structure.from_dict(sd))
@@ -211,25 +235,31 @@ class CriticEngine:
         # If two or more critical issues exist, recommend a global review
         critical = [i for i in all_issues if i.severity == IssueSeverity.CRITICAL]
         if len(critical) >= 2:
-            all_recs.append(CriticRecommendation(
-                title="Critical issues detected — full map review",
-                description=f"{len(critical)} critical issues found. Consider a full review of the map.",
-                category="global",
-                priority=RecommendationPriority.CRITICAL,
-            ))
+            all_recs.append(
+                CriticRecommendation(
+                    title="Critical issues detected — full map review",
+                    description=f"{len(critical)} critical issues found. Consider a full review of the map.",
+                    category="global",
+                    priority=RecommendationPriority.CRITICAL,
+                )
+            )
         # If overall score is low, recommend a major rework
         scores = {cat: cr.score.value for cat, cr in category_results.items()}
         avg = (sum(scores.values()) / max(len(scores), 1)) if scores else 0.0
         if avg < 40.0:
-            all_recs.append(CriticRecommendation(
-                title="Major map rework suggested",
-                description=f"Average score is {avg:.1f}. A substantial rework is suggested.",
-                category="global",
-                priority=RecommendationPriority.HIGH,
-            ))
+            all_recs.append(
+                CriticRecommendation(
+                    title="Major map rework suggested",
+                    description=f"Average score is {avg:.1f}. A substantial rework is suggested.",
+                    category="global",
+                    priority=RecommendationPriority.HIGH,
+                )
+            )
 
     @staticmethod
-    def _dedupe_recommendations(recs: List[CriticRecommendation]) -> List[CriticRecommendation]:
+    def _dedupe_recommendations(
+        recs: List[CriticRecommendation],
+    ) -> List[CriticRecommendation]:
         seen = set()
         out: List[CriticRecommendation] = []
         for r in recs:
@@ -239,4 +269,3 @@ class CriticEngine:
             seen.add(key)
             out.append(r)
         return out
-       

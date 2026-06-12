@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .models import EntryType, KnowledgeDataset, KnowledgeEntry
+from .models import EntryType, KnowledgeDataset
 
 
 def _safe_avg(values: List[float]) -> float:
@@ -96,8 +96,12 @@ def build_metrics(
 
     if expected_types is None:
         expected_types = [
-            EntryType.CITY, EntryType.HUNT, EntryType.BOSS_ROOM,
-            EntryType.QUEST, EntryType.RAID, EntryType.REGION,
+            EntryType.CITY,
+            EntryType.HUNT,
+            EntryType.BOSS_ROOM,
+            EntryType.QUEST,
+            EntryType.RAID,
+            EntryType.REGION,
             EntryType.BIOME,
         ]
     # Map from JSON bucket keys (plural) to EntryType (singular)
@@ -112,8 +116,11 @@ def build_metrics(
         "spawns": EntryType.SPAWN,
         "waypoints": EntryType.WAYPOINT,
     }
-    present = {_BUCKET_TO_TYPE[k] for k, v in metrics.entries_by_type.items()
-               if v > 0 and k in _BUCKET_TO_TYPE}
+    present = {
+        _BUCKET_TO_TYPE[k]
+        for k, v in metrics.entries_by_type.items()
+        if v > 0 and k in _BUCKET_TO_TYPE
+    }
     coverage = len(present & set(expected_types)) / max(1, len(expected_types))
     metrics.coverage_pct = round(coverage * 100.0, 2)
 
@@ -134,11 +141,14 @@ def build_metrics(
         playtests.append(entry.playtest_score)
         reuses.append(entry.reuse_score)
         levels[_bucket_level(entry.min_level, entry.max_level)] += 1
-        if entry.entry_type == EntryType.HUNT and \
-                (entry.attributes or {}).get("circular"):
+        if entry.entry_type == EntryType.HUNT and (entry.attributes or {}).get(
+            "circular"
+        ):
             circular_hunts += 1
-        if entry.entry_type == EntryType.BOSS_ROOM and \
-                (entry.attributes or {}).get("shape") == "circular":
+        if (
+            entry.entry_type == EntryType.BOSS_ROOM
+            and (entry.attributes or {}).get("shape") == "circular"
+        ):
             circular_boss += 1
 
     metrics.entries_by_biome = dict(biome_counter.most_common())

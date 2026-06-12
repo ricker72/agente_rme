@@ -1,9 +1,9 @@
 {
   "playable": false,
   "difficulty": "easy",
-  "xp_hour": 856779,
-  "loot_hour": 171355,
-  "deaths": 431,
+  "xp_hour": 873396,
+  "loot_hour": 174679,
+  "deaths": 426,
   "issues": [
     "Monsters too weak for target level (ratio: 0.00)",
     "Monsters too weak for target level (ratio: 0.00)",
@@ -14,52 +14,52 @@
     "Monsters too weak for target level (ratio: 0.00)",
     "Monsters too weak for target level (ratio: 0.00)",
     "Knight has excessive deaths. Consider class-specific balance.",
-    "Dead zones (quest_temple_0, auto_hunt_2, boss_room_1) provide no value. Remove or rebalance.",
+    "Dead zones (default_base, quest_catacombs_1, boss_room_0) provide no value. Remove or rebalance.",
     "XP curve is erratic. Smooth monster level transitions.",
-    "Too many deaths (431 > 10/hr). Zone is unplayable.",
-    "Survival rate too low (58.2% < 70%). Players will quit."
+    "Too many deaths (426 > 10/hr). Zone is unplayable.",
+    "Survival rate too low (57.8% < 70%). Players will quit."
   ],
   "recommendations": [
     "Monster levels too low for target audience."
   ],
   "metrics": {
-    "survival_rate": 0.582,
-    "progression_smoothness": 0.549,
+    "survival_rate": 0.578,
+    "progression_smoothness": 0.546,
     "difficulty_score": 3.07,
     "zone_count": 8,
     "total_spawns": 1107
   },
   "vocation_results": {
     "knight": {
-      "xp_per_hour": 9097.472924187725,
+      "xp_per_hour": 9074.792243767313,
       "deaths": 248,
       "monsters_killed": 13,
-      "damage_per_second": 235.9030824770897
+      "damage_per_second": 236.49418282548476
     },
     "paladin": {
-      "xp_per_hour": 1002429.2845257904,
-      "deaths": 46,
-      "monsters_killed": 128,
-      "damage_per_second": 179.56017748197448
+      "xp_per_hour": 960796.0199004975,
+      "deaths": 52,
+      "monsters_killed": 123,
+      "damage_per_second": 178.25069098949697
     },
     "druid": {
-      "xp_per_hour": 1313775.312066574,
+      "xp_per_hour": 1320630.0082895828,
       "deaths": 0,
-      "monsters_killed": 185,
-      "damage_per_second": 287.4613037447989
+      "monsters_killed": 186,
+      "damage_per_second": 288.5026250345399
     },
     "sorcerer": {
-      "xp_per_hour": 699240.3659550872,
-      "deaths": 136,
-      "monsters_killed": 104,
-      "damage_per_second": 348.5284169670086
+      "xp_per_hour": 813050.4271149077,
+      "deaths": 126,
+      "monsters_killed": 119,
+      "damage_per_second": 349.17553044915957
     },
     "monk": {
-      "xp_per_hour": 1259354.4827586208,
-      "deaths": 1,
+      "xp_per_hour": 1263431.8872616745,
+      "deaths": 0,
       "monsters_killed": 158,
-      "damage_per_second": 132.2808275862069
+      "damage_per_second": 132.47333517546284
     }
   },
-  "timestamp": "2026-06-08T14:28:42.776146Z"
+  "timestamp": "2026-06-11T05:16:59.418395Z"
 }

@@ -1,0 +1,189 @@
+{
+  "audit": "Adapter Boundary",
+  "audit_id": "AUDIT 2",
+  "adapter_files_analyzed": 8,
+  "adapters": {
+    "_helpers.py": {
+      "core_references": [],
+      "dto_references": [],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": false,
+      "failure_dto_patterns": [],
+      "issues": 0
+    },
+    "autonomous_adapter.py": {
+      "core_references": [
+        {
+          "line": 107,
+          "code": "module = importlib.import_module(\"core.autonomous.autonomous_world_designer\")"
+        }
+      ],
+      "dto_references": [
+        {
+          "line": 12,
+          "code": "from ui.models.autonomous_dto import ("
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": true,
+      "failure_dto_patterns": [
+        {
+          "line": 62,
+          "code": "return AutonomousMetricsDTO(status=\"Metrics unavailable\", success=False)"
+        },
+        {
+          "line": 74,
+          "code": "return AutonomousMetricsDTO(status=CORE_EXECUTION_FAILED, success=False, error_message=safe_str(exc))"
+        }
+      ],
+      "issues": 0
+    },
+    "campaign_adapter.py": {
+      "core_references": [
+        {
+          "line": 72,
+          "code": "module = importlib.import_module(\"core.campaign.campaign_generator\")"
+        }
+      ],
+      "dto_references": [
+        {
+          "line": 10,
+          "code": "from ui.models.campaign_dto import CampaignDTO, CampaignRequestDTO, CampaignStageDTO"
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": true,
+      "failure_dto_patterns": [
+        {
+          "line": 64,
+          "code": "return CampaignDTO(status=status, success=False, error_message=message)"
+        }
+      ],
+      "issues": 0
+    },
+    "critic_adapter.py": {
+      "core_references": [
+        {
+          "line": 81,
+          "code": "module = importlib.import_module(\"core.critic.critic_engine\")"
+        }
+      ],
+      "dto_references": [
+        {
+          "line": 10,
+          "code": "from ui.models.critic_dto import CriticDTO, CriticIssueDTO, CriticRequestDTO, HeatmapDTO"
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": true,
+      "failure_dto_patterns": [
+        {
+          "line": 73,
+          "code": "return CriticDTO(summary=status, success=False, error_message=message)"
+        }
+      ],
+      "issues": 0
+    },
+    "dashboard_adapter.py": {
+      "core_references": [],
+      "dto_references": [
+        {
+          "line": 8,
+          "code": "from ui.models.dashboard_dto import DashboardDTO"
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": false,
+      "failure_dto_patterns": [
+        {
+          "line": 36,
+          "code": "return DashboardDTO(status=\"Core execution failed\", success=False, error_message=str(exc))"
+        },
+        {
+          "line": 45,
+          "code": "return DashboardDTO(status=\"Core execution failed\", success=False, error_message=str(exc))"
+        }
+      ],
+      "issues": 0
+    },
+    "knowledge_adapter.py": {
+      "core_references": [
+        {
+          "line": 113,
+          "code": "module = importlib.import_module(\"core.knowledge.knowledge_engine\")"
+        }
+      ],
+      "dto_references": [
+        {
+          "line": 11,
+          "code": "from ui.models.knowledge_dto import KnowledgeMetricsDTO, KnowledgeQueryDTO, KnowledgeResultDTO"
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": true,
+      "failure_dto_patterns": [],
+      "issues": 0
+    },
+    "otbm_adapter.py": {
+      "core_references": [
+        {
+          "line": 40,
+          "code": "importer_class = self._load_core_class(\"core.otbm.otbm_importer\", \"OTBMImporter\")"
+        },
+        {
+          "line": 63,
+          "code": "exporter_class = self._load_core_class(\"core.otbm.otbm_exporter\", \"OTBMExporter\")"
+        },
+        {
+          "line": 64,
+          "code": "world_class = self._load_core_class(\"core.world.world_model\", \"WorldModel\")"
+        },
+        {
+          "line": 93,
+          "code": "validator_class = self._load_core_class(\"core.otbm.otbm_validator\", \"OtbmValidator\")"
+        }
+      ],
+      "dto_references": [
+        {
+          "line": 11,
+          "code": "from ui.models.otbm_dto import ("
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": true,
+      "failure_dto_patterns": [
+        {
+          "line": 60,
+          "code": "return OTBMImportResultDTO(path=path, message=CORE_EXECUTION_FAILED, error_message=safe_str(exc))"
+        }
+      ],
+      "issues": 0
+    },
+    "world_adapter.py": {
+      "core_references": [
+        {
+          "line": 95,
+          "code": "module = importlib.import_module(\"core.generators.world_generator\")"
+        }
+      ],
+      "dto_references": [
+        {
+          "line": 10,
+          "code": "from ui.models.world_dto import WorldDTO, WorldGenerationRequestDTO, WorldSummaryDTO"
+        }
+      ],
+      "raw_core_imports": [],
+      "uses_lazy_importlib": true,
+      "failure_dto_patterns": [
+        {
+          "line": 87,
+          "code": "return WorldDTO(status=status, success=False, error_message=message)"
+        }
+      ],
+      "issues": 0
+    }
+  },
+  "adapter_total_issues": 0,
+  "container_issues": [],
+  "status": "PASS"
+}

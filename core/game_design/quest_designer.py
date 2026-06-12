@@ -23,9 +23,15 @@ class QuestDesigner:
 
     def _objectives_for_type(self, quest_type: str, theme: str):
         mapping = {
-            "story": [f"Meet the lorekeeper in {theme} City", "Uncover the first artifact"],
-            "exploration": [f"Chart three new zones around {theme}", "Report back with notes"],
-            "boss": [f"Defeat the marked boss", "Survive the arena encounter"],
+            "story": [
+                f"Meet the lorekeeper in {theme} City",
+                "Uncover the first artifact",
+            ],
+            "exploration": [
+                f"Chart three new zones around {theme}",
+                "Report back with notes",
+            ],
+            "boss": ["Defeat the marked boss", "Survive the arena encounter"],
             "collection": ["Collect 10 ancient shards", "Return to the city historian"],
             "lever": ["Activate the hidden lever", "Escape the collapsing chamber"],
             "puzzle": ["Solve the rune sequence", "Open the sealed gate"],

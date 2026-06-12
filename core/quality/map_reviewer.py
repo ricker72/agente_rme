@@ -64,13 +64,19 @@ class MapReviewer:
         progression = {
             "quests": len(quests),
             "bosses": len(bosses),
-            "tier_count": len({quest.get("tier") for quest in quests if quest.get("tier")}) if quests else 0,
+            "tier_count": (
+                len({quest.get("tier") for quest in quests if quest.get("tier")})
+                if quests
+                else 0
+            ),
             "recommended_quests": 3,
             "recommended_bosses": 2,
         }
         return progression
 
-    def _collect_accessibility_issues(self, pathing_report: Dict[str, Any]) -> List[str]:
+    def _collect_accessibility_issues(
+        self, pathing_report: Dict[str, Any]
+    ) -> List[str]:
         issues = []
         if pathing_report["dead_ends"]:
             issues.append(f"Dead ends detected: {len(pathing_report['dead_ends'])}")
@@ -79,7 +85,9 @@ class MapReviewer:
         if pathing_report["hard_locks"]:
             issues.append(f"Hard locks found: {len(pathing_report['hard_locks'])}")
         if pathing_report["unreachable_zones"]:
-            issues.append(f"Unreachable zones: {len(pathing_report['unreachable_zones'])}")
+            issues.append(
+                f"Unreachable zones: {len(pathing_report['unreachable_zones'])}"
+            )
         return issues
 
     def _collect_design_issues(self, visual_report: Dict[str, Any]) -> List[str]:
@@ -97,7 +105,9 @@ class MapReviewer:
     def _collect_navigation_issues(self, pathing_report: Dict[str, Any]) -> List[str]:
         return [issue for issue in pathing_report.get("warnings", [])]
 
-    def _collect_progression_issues(self, progression_report: Dict[str, Any]) -> List[str]:
+    def _collect_progression_issues(
+        self, progression_report: Dict[str, Any]
+    ) -> List[str]:
         issues = []
         if progression_report["quests"] < progression_report["recommended_quests"]:
             issues.append("Insufficient quest count for a satisfying progression loop.")
@@ -105,7 +115,9 @@ class MapReviewer:
             issues.append("Not enough boss encounters to anchor progression.")
         return issues
 
-    def _collect_density_issues(self, spawn_report: Dict[str, Any], visual_report: Dict[str, Any]) -> List[str]:
+    def _collect_density_issues(
+        self, spawn_report: Dict[str, Any], visual_report: Dict[str, Any]
+    ) -> List[str]:
         issues = []
         if spawn_report["density_trend"] != "balanced":
             issues.append("Monster density is not balanced.")
@@ -117,13 +129,21 @@ class MapReviewer:
         unreachable = review["pathing"]["unreachable_zones"]
         tiles = getattr(world_model, "tiles", {})
         if unreachable and tiles:
-            reachable_tiles = [coords for coords in self.pathing_analyzer._find_reachable_tiles(world_model)]
+            reachable_tiles = [
+                coords
+                for coords in self.pathing_analyzer._find_reachable_tiles(world_model)
+            ]
             if reachable_tiles:
                 target = reachable_tiles[0]
                 for zone in unreachable[:1]:
                     self._connect_zone(world_model, zone, target)
 
-    def _connect_zone(self, world_model: Any, zone_coords: Dict[str, int], target: tuple[int, int, int]) -> None:
+    def _connect_zone(
+        self,
+        world_model: Any,
+        zone_coords: Dict[str, int],
+        target: tuple[int, int, int],
+    ) -> None:
         x1, y1, z1 = zone_coords["x"], zone_coords["y"], zone_coords["z"]
         x2, y2, z2 = target
         step_x = 1 if x2 > x1 else -1 if x2 < x1 else 0
@@ -134,12 +154,21 @@ class MapReviewer:
                 current_x += step_x
             elif current_y != y2:
                 current_y += step_y
-            tile = getattr(world_model, "tiles", {}).get(f"{current_x}:{current_y}:{z1}")
+            tile = getattr(world_model, "tiles", {}).get(
+                f"{current_x}:{current_y}:{z1}"
+            )
             if tile is None:
-                new_tile = type(next(iter(world_model.tiles.values()))) if world_model.tiles else None
+                (
+                    type(next(iter(world_model.tiles.values())))
+                    if world_model.tiles
+                    else None
+                )
                 if hasattr(world_model, "add_tile"):
                     from core.world_engine.world_engine import Tile
-                    world_model.add_tile(Tile(x=current_x, y=current_y, z=z1, ground="floor"))
+
+                    world_model.add_tile(
+                        Tile(x=current_x, y=current_y, z=z1, ground="floor")
+                    )
 
     def _fix_spawns(self, world_model: Any, review: Dict[str, Any]) -> None:
         if review["spawn"]["density_trend"] == "high":

@@ -93,6 +93,7 @@ class BaseIndexer:
             for tok in set(d):
                 df[tok] += 1
         import math
+
         idf: Dict[str, float] = {}
         for tok, dfreq in df.items():
             idf[tok] = math.log((n + 1.0) / (dfreq + 1.0)) + 1.0
@@ -157,11 +158,17 @@ class BaseIndexer:
             return max(
                 0.6,
                 hybrid_similarity(
-                    query, entry.signature or entry.name,
-                    q_attrs, entry.attributes, idf=self._idf,
+                    query,
+                    entry.signature or entry.name,
+                    q_attrs,
+                    entry.attributes,
+                    idf=self._idf,
                 ),
             )
         return hybrid_similarity(
-            query, entry.signature or entry.name,
-            q_attrs, entry.attributes, idf=self._idf,
+            query,
+            entry.signature or entry.name,
+            q_attrs,
+            entry.attributes,
+            idf=self._idf,
         )
