@@ -1,0 +1,19 @@
+{
+  "ui_version": "1.0.0",
+  "status": "FROZEN",
+  "freeze_date": "2026-06-12T00:33:19Z",
+  "branch": "release/ui-v1",
+  "tag": "ui-freeze",
+  "certified_modules": [
+    "UI-1",
+    "UI-2",
+    "UI-3",
+    "UI-3.1",
+    "UI-4",
+    "UI-5",
+    "UI-6",
+    "UI-7",
+    "UI-8",
+    "UI-9"
+  ]
+}
