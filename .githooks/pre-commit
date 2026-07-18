@@ -1,0 +1,3 @@
+#!/bin/sh
+python scripts/secret_guard.py --staged || exit $?
+exec python scripts/github_size_guard.py --staged

@@ -1,0 +1,42 @@
+{
+  "name": "issavi_boss_arena",
+  "category": "boss_room",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [18, 18],
+  "description": "Arena de boss Issavi con columnas, fuego sagrado y spawns de minions",
+  "layout": {
+    "type": "arena",
+    "shape": "square",
+    "entrance": "south",
+    "entrance_position": [9, 16],
+    "boss_spawn": [9, 9],
+    "pillar_positions": [[4, 4], [14, 4], [4, 14], [14, 14]]
+  },
+  "zones": [
+    {"name": "arena_floor", "position": [1, 1], "size": [16, 14], "type": "battle_area"},
+    {"name": "entrance_hall", "position": [7, 15], "size": [4, 3], "type": "entrance"},
+    {"name": "spectator_ledge", "position": [0, 0], "size": [18, 1], "type": "decoration"}
+  ],
+  "features": [
+    {"type": "boss_spawn", "position": [9, 9], "monster": "Frazzlemaw"},
+    {"type": "minion_spawn", "position": [4, 6], "monster": "Sphinx"},
+    {"type": "minion_spawn", "position": [14, 6], "monster": "Sphinx"},
+    {"type": "minion_spawn", "position": [9, 12], "monster": "Cloak Of Terror"},
+    {"type": "holy_fire", "position": [9, 9], "item_id": 2064},
+    {"type": "reward_chest", "position": [9, 2], "item_id": 1740},
+    {"type": "lever", "position": [6, 15], "item_id": 1945},
+    {"type": "lever", "position": [12, 15], "item_id": 1945}
+  ],
+  "grounds": [426, 415, 393],
+  "walls_items": [1497, 1545],
+  "decorations": [1510, 1545, 2052, 2064, 2060],
+  "metadata": {
+    "style": "issavi",
+    "boss": "Frazzlemaw",
+    "minions": ["Sphinx", "Cloak Of Terror"],
+    "era": "modern",
+    "difficulty": "hard",
+    "tags": ["boss", "arena", "issavi", "frazzlemaw", "end_game"]
+  }
+}

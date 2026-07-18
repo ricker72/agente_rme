@@ -1,0 +1,7 @@
+{
+  "theme": "ice",
+  "grounds": [428, 429, 430],
+  "walls": [1507, 1508, 1509],
+  "decorations": [2158, 2159, 2160],
+  "monsters": ["White Deer", "Ice Golem", "Frost Dragon"]
+}

@@ -1,0 +1,196 @@
+{
+  "blueprint_id": "307bb7063ef8",
+  "style": "roshamuul",
+  "region_type": "temple",
+  "layout_pattern": "organic",
+  "rooms": [
+    {
+      "id": "room_0",
+      "x": 0,
+      "y": 0,
+      "width": 233,
+      "height": 210,
+      "area": 49149,
+      "shape": "L-shaped"
+    },
+    {
+      "id": "room_1",
+      "x": -0.5841719223685615,
+      "y": -9.013615305269676,
+      "width": 259,
+      "height": 338,
+      "area": 87638,
+      "shape": "irregular"
+    },
+    {
+      "id": "room_2",
+      "x": -15.197834655600486,
+      "y": 5.487476415707089,
+      "width": 226,
+      "height": 137,
+      "area": 31148,
+      "shape": "rectangular"
+    }
+  ],
+  "corridors": [
+    {
+      "id": "corridor_0_1",
+      "from": "room_0",
+      "to": "room_1",
+      "length": 9,
+      "width": 2
+    },
+    {
+      "id": "corridor_0_2",
+      "from": "room_0",
+      "to": "room_2",
+      "length": 16,
+      "width": 3
+    },
+    {
+      "id": "corridor_1_0",
+      "from": "room_1",
+      "to": "room_0",
+      "length": 9,
+      "width": 2
+    },
+    {
+      "id": "corridor_1_2",
+      "from": "room_1",
+      "to": "room_2",
+      "length": 20,
+      "width": 2
+    },
+    {
+      "id": "corridor_2_0",
+      "from": "room_2",
+      "to": "room_0",
+      "length": 16,
+      "width": 4
+    },
+    {
+      "id": "corridor_2_1",
+      "from": "room_2",
+      "to": "room_1",
+      "length": 20,
+      "width": 4
+    }
+  ],
+  "features": [
+    {
+      "id": "feature_room_0_0",
+      "room_id": "room_0",
+      "type": "light",
+      "x": 219.15336228664594,
+      "y": 14.945070333489312
+    },
+    {
+      "id": "feature_room_1_0",
+      "room_id": "room_1",
+      "type": "furniture",
+      "x": 173.1301569589288,
+      "y": 157.3948683020656
+    },
+    {
+      "id": "feature_room_2_0",
+      "room_id": "room_2",
+      "type": "decoration",
+      "x": 35.41469335559761,
+      "y": 107.91490656613156
+    }
+  ],
+  "ground_distribution": {
+    "roshamuul_stone": 0.3333333333333333,
+    "dark_tile": 0.3333333333333333,
+    "prison_floor": 0.3333333333333333
+  },
+  "wall_distribution": {},
+  "metadata": {
+    "generated_at": "2026-06-04T22:30:01.975332",
+    "style_guide": {
+      "style": "roshamuul",
+      "description": "Dark prison island with grim architecture",
+      "recommended_grounds": [
+        "roshamuul_stone",
+        "dark_tile",
+        "prison_floor"
+      ],
+      "recommended_walls": [],
+      "lighting": "dim",
+      "color_palette": [
+        [
+          80,
+          80,
+          80
+        ],
+        [
+          60,
+          60,
+          60
+        ],
+        [
+          100,
+          100,
+          100
+        ]
+      ],
+      "avg_room_size": 216.33333333333334,
+      "avg_corridor_length": 1.6666666666666667,
+      "connectivity_ratio": 0.16666666666666666,
+      "decoration_density": 0.0,
+      "room_shape_preferences": {
+        "rectangular": 1.0
+      }
+    },
+    "pattern_guide": {
+      "layout": {
+        "pattern_type": "layout",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      },
+      "connectivity": {
+        "pattern_type": "connectivity",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      },
+      "density": {
+        "pattern_type": "density",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      },
+      "architecture": {
+        "pattern_type": "architecture",
+        "room_arrangement": "organic",
+        "symmetry_score": 0.6788194444444443,
+        "axial_alignment": 0.13425925925925927,
+        "avg_degree": 0.47222222222222215,
+        "clustering_coefficient": 0.0,
+        "target_tile_density": 0.003983710481437755,
+        "target_feature_density": 0.0,
+        "complexity_score": 1.0,
+        "modularity_score": 0.5583333333333332
+      }
+    }
+  }
+}

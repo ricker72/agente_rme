@@ -1,0 +1,33 @@
+{
+  "name": "issavi_market",
+  "category": "market",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [16, 14],
+  "description": "Mercado Issavi con puestos de comercio, fuente central y zona de NPCs",
+  "layout": {
+    "type": "open_plaza",
+    "entrance": "east_west",
+    "fountain_position": [8, 7]
+  },
+  "stalls": [
+    {"name": "weapons_stall", "position": [2, 2], "size": [4, 2], "npc": "Nah'Bob"},
+    {"name": "armor_stall", "position": [10, 2], "size": [4, 2], "npc": "Alesar"},
+    {"name": "potions_stall", "position": [2, 10], "size": [4, 2], "npc": "Esrik"},
+    {"name": "runes_stall", "position": [10, 10], "size": [4, 2], "npc": "Alexander"}
+  ],
+  "features": [
+    {"type": "fountain", "position": [8, 7], "item_id": 1503},
+    {"type": "notice_board", "position": [7, 0], "item_id": 2596}
+  ],
+  "grounds": [415, 393, 421],
+  "walls_items": [1495],
+  "decorations": [2153, 2117, 1803, 1503, 2596],
+  "metadata": {
+    "style": "issavi",
+    "stall_count": 4,
+    "era": "modern",
+    "difficulty": "safe",
+    "tags": ["market", "oriental", "npc", "commerce", "plaza"]
+  }
+}

@@ -1,0 +1,81 @@
+# Python runtime and tooling
+.venv/
+venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage*.json
+htmlcov/
+*.egg-info/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated runtime state
+cache/
+logs/
+reports/
+roadmap/
+output/
+output_benchmark/
+exports/
+baseline/
+LIVE_GENERATION_TRACE.jsonl
+EVENT_STREAM.json
+TRACE_REGISTRY.json
+GENERATION_TIMELINE.json
+*_test_output*.txt
+*_pytest.log
+*_execution.log
+*_runtime.log
+*_performance.log
+*_REPORT.md
+*_REPORT.json
+*_AUDIT.json
+*_SUMMARY_FOR_CHATGPT.md
+
+# Generated datasets and local projects
+datasets/blueprint_datasets/
+datasets/real_world/world/
+projects/**
+_rme_reference/
+
+# Local official client assets (selected by each user)
+assets/appearances-*.dat
+assets/catalog-content.json
+
+# Build and packaging products
+build/
+dist/
+release/
+bin/
+obj/
+Debug/
+Release/
+*.spec.bak
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.obj
+*.ipch
+*.pch
+
+# Large local map/data packages
+*.otbm
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.zip
+*.7z
+
+# Local-only assistant configuration
+CLAUDE.md

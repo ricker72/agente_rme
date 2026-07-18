@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "applications": {
+    "rme-rendering": {
+      "version": "1.0.0",
+      "description": "Official sprite, draw-order, mapcolor and ingame rendering library",
+      "entry_point": "",
+      "owned_packages": ["rme_rendering"],
+      "owned_modules": [],
+      "internal_dependencies": [],
+      "optional_provider_modules": {},
+      "requirements": "deployment/requirements/rendering.txt",
+      "resources": ["assets"]
+    },
+    "rme-engine": {
+      "version": "1.0.0",
+      "description": "OTBM, RME brush, planner and editable workspace engine",
+      "entry_point": "rme:rme",
+      "owned_packages": ["core", "workspace_core", "mapping"],
+      "owned_modules": ["rme.py"],
+      "internal_dependencies": ["rme-rendering"],
+      "optional_provider_modules": {},
+      "requirements": "deployment/requirements/engine.txt",
+      "resources": ["assets", "config", "blueprints"]
+    },
+    "rme-live-editor": {
+      "version": "1.0.0",
+      "description": "RME-compatible visual editor and live preview",
+      "entry_point": "ui.main:main",
+      "owned_packages": ["ui"],
+      "owned_modules": [],
+      "internal_dependencies": ["rme-engine", "rme-rendering"],
+      "optional_provider_modules": {},
+      "requirements": "deployment/requirements/live-editor.txt",
+      "resources": ["assets", "config", "blueprints"]
+    },
+    "rme-ai-studio": {
+      "version": "4.0.0",
+      "description": "AI Studio desktop application",
+      "entry_point": "studio.main:main",
+      "owned_packages": ["studio"],
+      "owned_modules": [],
+      "internal_dependencies": ["rme-engine", "rme-rendering"],
+      "optional_provider_modules": {},
+      "requirements": "deployment/requirements/ai-studio.txt",
+      "resources": ["assets", "config", "templates"]
+    }
+  }
+}

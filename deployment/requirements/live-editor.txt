@@ -1,0 +1,6 @@
+rme-engine==1.0.0
+rme-rendering==1.0.0
+PySide6>=6.8,<7
+Pillow>=10.0,<13
+numpy>=1.24,<3
+psutil>=5.9,<8

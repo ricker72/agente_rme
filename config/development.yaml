@@ -1,0 +1,55 @@
+# OpenTibiaBR RME Agent — Development Configuration
+# V1.0
+
+environment: development
+debug: true
+log_level: DEBUG
+
+generation:
+  max_tiles: 500000
+  chunk_size: 128
+  default_floor: 7
+  min_level: 50
+  max_level: 500
+
+lua:
+  optimize: false
+  minify: false
+  comments: true
+
+otbm:
+  validate: true
+  auto_export: true
+  generate_templates: true
+  item_major_version: 3
+  item_minor_version: 57
+
+quality:
+  min_score: 70
+  check_boundaries: true
+  check_spawn_overlap: true
+  max_errors: 10
+
+ollama:
+  host: "http://localhost:11434"
+  model: "qwen3:8b"
+  temperature: 0.7
+  timeout: 60
+
+paths:
+  tibia: ""
+  items_xml: ""
+  monsters_dir: ""
+  npcs_dir: ""
+  output_dir: "output"
+  data_dir: "data"
+  templates_dir: "templates"
+
+cache:
+  enabled: true
+  ttl_seconds: 3600
+  max_size_mb: 256
+
+benchmark:
+  enabled: true
+  iterations: 3

@@ -1,0 +1,20 @@
+name: GitHub publication guards
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-publication:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reject credential values
+        run: python scripts/secret_guard.py --tracked --history
+      - name: Reject oversized Git objects
+        run: python scripts/github_size_guard.py --tracked --history

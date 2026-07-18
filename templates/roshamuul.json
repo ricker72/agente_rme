@@ -1,0 +1,7 @@
+{
+  "theme": "roshamuul",
+  "grounds": [1053, 1056, 1057],
+  "walls": [1500, 1501, 1502],
+  "decorations": [2150, 2151, 2152],
+  "monsters": ["Demon", "Nightmare", "Vampire" ]
+}

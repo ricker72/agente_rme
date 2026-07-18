@@ -1,0 +1,38 @@
+{
+  "name": "issavi_city",
+  "category": "city",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [80, 60],
+  "description": "Ciudad amurallada estilo oriental con templo central, mercado y depósito",
+  "zones": [
+    {"name": "temple_plaza", "type": "temple", "position": [40, 30], "size": [12, 12]},
+    {"name": "market_district", "type": "market", "position": [20, 20], "size": [15, 10]},
+    {"name": "depot_area", "type": "depot", "position": [55, 25], "size": [8, 8]},
+    {"name": "residential_east", "type": "housing", "position": [60, 40], "size": [18, 15]},
+    {"name": "residential_west", "type": "housing", "position": [10, 40], "size": [15, 15]},
+    {"name": "main_gate", "type": "gate", "position": [40, 3], "size": [6, 4]}
+  ],
+  "roads": [
+    {"name": "main_road_ns", "from": [40, 3], "to": [40, 57], "width": 4, "ground": "cobblestone"},
+    {"name": "market_road_ew", "from": [12, 24], "to": [72, 24], "width": 3, "ground": "cobblestone"},
+    {"name": "residential_loop", "nodes": [[10, 35], [10, 55], [75, 55], [75, 35], [10, 35]], "width": 2, "ground": "gravel"}
+  ],
+  "walls": {
+    "material": "stone_wall",
+    "thickness": 2,
+    "gates": ["main_gate"],
+    "towers": [[5, 5], [75, 5], [5, 55], [75, 55]]
+  },
+  "grounds": [415, 393, 421],
+  "walls_items": [1495, 1496, 1497],
+  "decorations": [2153, 2117, 1803, 1510, 1545],
+  "monsters": [],
+  "metadata": {
+    "style": "issavi",
+    "era": "modern",
+    "difficulty": "safe",
+    "population": "high",
+    "tags": ["oriental", "walled", "temple", "market", "depot"]
+  }
+}

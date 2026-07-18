@@ -1,0 +1,7 @@
+---
+description: Mandatory RME/OpenTibia evidence gate for every coding task
+globs: "**/*"
+alwaysApply: true
+---
+
+Read and obey `/AGENTS.md` and `/docs/wiki/AI_CODE_GUARDIAN.md` before touching code. Inspect the owning current Canary/RME/OpenTibia source or official material data and cite it. No evidence means no edit. Do not invent game data or add placeholder production behavior.

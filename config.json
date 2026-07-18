@@ -1,0 +1,9 @@
+{
+  "tibia_client_path": "C:/Users/samatha/OneDrive/Desktop/15.24 localhost/assets/appearances-ee339aff5b3cb38289287ff25cec261d8d2790e6e146938d4dfd9f138b065980.dat",
+  "items_xml_path": "C:/Users/samatha/OneDrive/Desktop/Servers/crystal_serve/crystal_serve/data/items/items.xml",
+  "monsters_folder": "C:/Users/samatha/OneDrive/Desktop/agente_rme/monster - npc",
+  "npcs_folder": "C:/Users/samatha/OneDrive/Desktop/agente_rme/monster - npc",
+  "mounts_folder": "",
+  "configured": true,
+  "last_model": "qwen3:8b"
+}

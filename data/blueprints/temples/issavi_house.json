@@ -1,0 +1,28 @@
+{
+  "name": "issavi_house",
+  "theme": "issavi",
+  "category": "housing",
+  "version": "1.0.0",
+  "size": [10, 10],
+  "entry": [5, 9],
+  "description": "Small Issavi-style house with living quarters and storage",
+  "tiles": [
+    {"x": 0, "y": 0, "ground": 817}, {"x": 1, "y": 0, "ground": 817}, {"x": 2, "y": 0, "ground": 817}, {"x": 3, "y": 0, "ground": 817}, {"x": 4, "y": 0, "ground": 817}, {"x": 5, "y": 0, "ground": 817}, {"x": 6, "y": 0, "ground": 817}, {"x": 7, "y": 0, "ground": 817}, {"x": 8, "y": 0, "ground": 817}, {"x": 9, "y": 0, "ground": 817},
+    {"x": 0, "y": 1, "ground": 817}, {"x": 1, "y": 1, "ground": 415}, {"x": 2, "y": 1, "ground": 415}, {"x": 3, "y": 1, "ground": 415}, {"x": 4, "y": 1, "ground": 415}, {"x": 5, "y": 1, "ground": 415}, {"x": 6, "y": 1, "ground": 415}, {"x": 7, "y": 1, "ground": 415}, {"x": 8, "y": 1, "ground": 415}, {"x": 9, "y": 1, "ground": 817},
+    {"x": 0, "y": 2, "ground": 817}, {"x": 1, "y": 2, "ground": 415}, {"x": 2, "y": 2, "ground": 415}, {"x": 3, "y": 2, "ground": 421}, {"x": 4, "y": 2, "ground": 421}, {"x": 5, "y": 2, "ground": 421}, {"x": 6, "y": 2, "ground": 421}, {"x": 7, "y": 2, "ground": 415}, {"x": 8, "y": 2, "ground": 415}, {"x": 9, "y": 2, "ground": 817},
+    {"x": 0, "y": 3, "ground": 817}, {"x": 1, "y": 3, "ground": 415}, {"x": 2, "y": 3, "ground": 415}, {"x": 3, "y": 3, "ground": 421}, {"x": 4, "y": 3, "ground": 415}, {"x": 5, "y": 3, "ground": 415}, {"x": 6, "y": 3, "ground": 421}, {"x": 7, "y": 3, "ground": 415}, {"x": 8, "y": 3, "ground": 415}, {"x": 9, "y": 3, "ground": 817},
+    {"x": 0, "y": 4, "ground": 817}, {"x": 1, "y": 4, "ground": 415}, {"x": 2, "y": 4, "ground": 415}, {"x": 3, "y": 4, "ground": 421}, {"x": 4, "y": 4, "ground": 415}, {"x": 5, "y": 4, "ground": 415}, {"x": 6, "y": 4, "ground": 421}, {"x": 7, "y": 4, "ground": 415}, {"x": 8, "y": 4, "ground": 415}, {"x": 9, "y": 4, "ground": 817},
+    {"x": 0, "y": 5, "ground": 817}, {"x": 1, "y": 5, "ground": 415}, {"x": 2, "y": 5, "ground": 415}, {"x": 3, "y": 5, "ground": 421}, {"x": 4, "y": 5, "ground": 415}, {"x": 5, "y": 5, "ground": 415}, {"x": 6, "y": 5, "ground": 421}, {"x": 7, "y": 5, "ground": 415}, {"x": 8, "y": 5, "ground": 415}, {"x": 9, "y": 5, "ground": 817},
+    {"x": 0, "y": 6, "ground": 817}, {"x": 1, "y": 6, "ground": 415}, {"x": 2, "y": 6, "ground": 415}, {"x": 3, "y": 6, "ground": 421}, {"x": 4, "y": 6, "ground": 421}, {"x": 5, "y": 6, "ground": 421}, {"x": 6, "y": 6, "ground": 421}, {"x": 7, "y": 6, "ground": 415}, {"x": 8, "y": 6, "ground": 415}, {"x": 9, "y": 6, "ground": 817},
+    {"x": 0, "y": 7, "ground": 817}, {"x": 1, "y": 7, "ground": 415}, {"x": 2, "y": 7, "ground": 415}, {"x": 3, "y": 7, "ground": 415}, {"x": 4, "y": 7, "ground": 415}, {"x": 5, "y": 7, "ground": 415}, {"x": 6, "y": 7, "ground": 415}, {"x": 7, "y": 7, "ground": 415}, {"x": 8, "y": 7, "ground": 415}, {"x": 9, "y": 7, "ground": 817},
+    {"x": 0, "y": 8, "ground": 817}, {"x": 1, "y": 8, "ground": 415}, {"x": 2, "y": 8, "ground": 415}, {"x": 3, "y": 8, "ground": 415}, {"x": 4, "y": 8, "ground": 415}, {"x": 5, "y": 8, "ground": 415}, {"x": 6, "y": 8, "ground": 415}, {"x": 7, "y": 8, "ground": 415}, {"x": 8, "y": 8, "ground": 415}, {"x": 9, "y": 8, "ground": 817},
+    {"x": 0, "y": 9, "ground": 817}, {"x": 1, "y": 9, "ground": 817}, {"x": 2, "y": 9, "ground": 817}, {"x": 3, "y": 9, "ground": 817}, {"x": 4, "y": 9, "ground": 415}, {"x": 5, "y": 9, "ground": 415}, {"x": 6, "y": 9, "ground": 817}, {"x": 7, "y": 9, "ground": 817}, {"x": 8, "y": 9, "ground": 817}, {"x": 9, "y": 9, "ground": 817}
+  ],
+  "metadata": {
+    "style": "issavi",
+    "capacity": "small",
+    "era": "modern",
+    "difficulty": "safe",
+    "tags": ["house", "issavi", "housing", "small"]
+  }
+}

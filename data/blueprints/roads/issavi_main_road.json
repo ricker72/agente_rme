@@ -1,0 +1,32 @@
+{
+  "name": "issavi_main_road",
+  "category": "road",
+  "theme": "issavi",
+  "version": "1.0.0",
+  "size": [4, 60],
+  "description": "Camino principal Issavi: calzada de piedra con bordes decorativos y antorchas",
+  "layout": {
+    "type": "straight",
+    "direction": "north_south",
+    "lanes": 2
+  },
+  "segments": [
+    {"from": [0, 0], "to": [0, 60], "width": 4, "ground": "cobblestone"},
+    {"from": [-1, 0], "to": [-1, 60], "width": 1, "ground": "gravel", "type": "border"},
+    {"from": [4, 0], "to": [4, 60], "width": 1, "ground": "gravel", "type": "border"}
+  ],
+  "features": [
+    {"type": "torch", "position": [1, 10], "item_id": 2050, "interval": 10},
+    {"type": "torch", "position": [3, 10], "item_id": 2050, "interval": 10},
+    {"type": "sign", "position": [2, 0], "item_id": 2597}
+  ],
+  "grounds": [421, 1294, 415],
+  "decorations": [2050, 2052, 2597],
+  "metadata": {
+    "style": "issavi",
+    "length": "60_tiles",
+    "era": "modern",
+    "traffic": "high",
+    "tags": ["road", "main", "cobblestone", "torches", "path"]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "issavi_temple",
+  "category": "Temple",
+  "theme": "issavi",
+  "tiles": [
+    {"x": 0, "y": 0, "type": "floor"},
+    {"x": 1, "y": 0, "type": "floor"},
+    {"x": 2, "y": 0, "type": "floor"},
+    {"x": 0, "y": 1, "type": "floor"},
+    {"x": 1, "y": 1, "type": "floor"},
+    {"x": 2, "y": 1, "type": "floor"},
+    {"x": 0, "y": 2, "type": "floor"},
+    {"x": 1, "y": 2, "type": "floor"},
+    {"x": 2, "y": 2, "type": "floor"}
+  ],
+  "metadata": {
+    "width": 3,
+    "height": 3,
+    "source": "template"
+  }
+}

@@ -1,0 +1,5 @@
+Pillow>=10.0,<13
+numpy>=1.24,<3
+lxml>=5.0,<7
+PyYAML>=6.0,<7
+rme-rendering==1.0.0

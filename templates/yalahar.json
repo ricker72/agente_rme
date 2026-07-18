@@ -1,0 +1,7 @@
+{
+  "theme": "yalahar",
+  "grounds": [396, 397, 398],
+  "walls": [1498, 1499, 1503],
+  "decorations": [2148, 2149, 2154],
+  "monsters": ["Siren", "Gargoyle", "Hydra"]
+}
