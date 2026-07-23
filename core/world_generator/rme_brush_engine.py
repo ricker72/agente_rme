@@ -388,13 +388,19 @@ class RMEBrushEngine:
         self.material_parse_errors = material_parse_errors
 
     @classmethod
-    def load(cls, root: Path, classification: dict[str, Any]) -> "RMEBrushEngine":
+    def load(
+        cls,
+        root: Path,
+        classification: dict[str, Any],
+        *,
+        material_root: str | Path | None = None,
+    ) -> "RMEBrushEngine":
         valid_base_ground = {int(i) for i in classification["categories"]["valid_base_ground"]}
         sprite_backed = {int(i) for i in classification["categories"].get("sprite_backed", [])}
         sprite_certification_source = "classification"
         if not sprite_backed:
             sprite_backed, sprite_certification_source = load_certified_sprite_backed_ids(root)
-        materials_dir = resolve_materials_dir(root)
+        materials_dir = resolve_materials_dir(root, material_root=material_root)
         borders = load_auto_borders(materials_dir)
         ground_brushes: dict[str, GroundBrush] = {}
         doodad_brushes: dict[str, DoodadBrush] = {}

@@ -8,6 +8,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from rme_rendering.asset_paths import resolve_client_asset_root
+
 
 PIXEL_EXTENSIONS = {".spr", ".bmp", ".png", ".lzma"}
 METADATA_EXTENSIONS = {".dat", ".otfi", ".json", ".xml", ".otb"}
@@ -50,6 +52,7 @@ class SpritePixelSourceDiscovery:
             self.workspace_root = Path(getattr(sys, "_MEIPASS", Path(sys.executable).resolve().parent))
         else:
             self.workspace_root = Path(workspace_root)
+        self.assets_root = resolve_client_asset_root(self.workspace_root)
         self._catalog_cache: list[dict[str, Any]] | None = None
         self.canary_root = (
             self.workspace_root
@@ -63,7 +66,7 @@ class SpritePixelSourceDiscovery:
         return [self._classify(path) for path in paths]
 
     def catalog_entries(self) -> list[SpriteSheetCatalogEntry]:
-        catalog = self.workspace_root / "assets" / "catalog-content.json"
+        catalog = self.assets_root / "catalog-content.json"
         if not catalog.exists():
             return []
         try:
@@ -104,12 +107,12 @@ class SpritePixelSourceDiscovery:
             "appearances.dat",
         }
         roots = [
-            self.workspace_root / "assets",
+            self.assets_root,
             self.canary_root,
             self.workspace_root / "projects" / "world",
         ]
         paths: dict[str, Path] = {}
-        catalog = self.workspace_root / "assets" / "catalog-content.json"
+        catalog = self.assets_root / "catalog-content.json"
         if catalog.exists():
             paths[str(catalog.resolve())] = catalog
             for entry in self._catalog_data(catalog):

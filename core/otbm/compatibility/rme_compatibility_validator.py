@@ -16,6 +16,7 @@ from .otbm_constants import (
     AGENTE_OTBM_NODE_ROOT,
     OTBM_ATTR_TILE_FLAGS,
     OTBM_HOUSETILE,
+    OTBM_ACCEPTED_IDENTIFIERS,
     OTBM_IDENTIFIER,
     OTBM_ITEM,
     OTBM_MAP_DATA,
@@ -169,25 +170,25 @@ class RMECompatibilityValidator:
             return ValidationResult(False, "OTBM file too short for header", None, "header")
 
         # Check magic identifier
-        if data[:4] != OTBM_IDENTIFIER:
+        if data[:4] not in OTBM_ACCEPTED_IDENTIFIERS:
             return ValidationResult(
                 False,
-                f"Invalid OTBM magic: expected {OTBM_IDENTIFIER!r}, got {data[:4]!r}",
+                f"Invalid OTBM magic: got {data[:4]!r}",
                 None,
                 "header",
             )
 
         # Check root node type
         root_type = data[4]
-        if root_type != OTBM_ROOTV1:
+        if root_type != 0xFE:
             return ValidationResult(
                 False,
-                f"Invalid root node: expected 0x{OTBM_ROOTV1:02X}, got 0x{root_type:02X}",
+                f"Invalid root node marker: expected 0xFE, got 0x{root_type:02X}",
                 root_type,
                 "header",
             )
 
-        return ValidationResult(True, "Valid OTBM header", OTBM_ROOTV1, "header")
+        return ValidationResult(True, "Valid OTBM header", root_type, "header")
 
     def _parse_root_node(self, data: bytes, offset: int) -> Tuple[int, Dict]:
         """Parse root node header."""

@@ -24,6 +24,16 @@ class SpawnDefinition:
     spawntime: int = 60
     kind: str = "monster"
 
+    def __post_init__(self) -> None:
+        if not self.name.strip():
+            raise ValueError("spawn creature name cannot be empty")
+        if self.kind not in {"monster", "npc"}:
+            raise ValueError("spawn kind must be 'monster' or 'npc'")
+        if int(self.radius) < 1:
+            raise ValueError("spawn radius must be at least 1")
+        if not 0 <= int(self.spawntime) <= 3600:
+            raise ValueError("spawn time must be between 0 and 3600 seconds")
+
 
 @dataclass(frozen=True)
 class ZoneDefinition:
@@ -135,7 +145,12 @@ class GameplayP1System:
         self.map.modified.add(house.exit)
 
     def add_spawn(self, spawn: SpawnDefinition) -> None:
-        tile = self.map.ensure_tile(spawn.position)
+        tile = self.map.get_tile(spawn.position)
+        if tile is None or tile.ground is None:
+            raise ValueError("spawn brushes require a ground tile")
+        collection = self.npc_spawns if spawn.kind == "npc" else self.monster_spawns
+        if any(existing.position == spawn.position for existing in collection):
+            raise ValueError(f"tile already owns a {spawn.kind} spawn center")
         if spawn.kind == "npc":
             tile.spawn_npcs.append(spawn.name)
             self.npc_spawns.append(spawn)
@@ -266,6 +281,8 @@ class GameplayP1System:
             "gameplay_p1_ready": True,
             "radius_location_counts": True,
             "overlap_detection": True,
+            "spawn_definition_validation": True,
+            "spawn_ground_center_validation": True,
             "source_coverage": [
                 "house.cpp/h",
                 "house_brush.cpp",

@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import secrets
+import shutil
 import sys
 import os
 import threading
@@ -18,6 +19,7 @@ from urllib.parse import urlparse
 
 HOST = "127.0.0.1"
 PORT = 8776
+PROTOCOL_VERSION = 4
 MAX_BODY_BYTES = 2_200_000
 
 
@@ -32,6 +34,7 @@ class PlannerDatabaseApplication:
         from core.world_generator.planner_knowledge_database import PlannerKnowledgeDatabase
         from core.world_generator.planner_material_brief import CertifiedMaterialBriefBuilder
         from core.world_generator.planner_reference_brief import CertifiedReferenceBriefBuilder
+        from core.world_generator.reference_corpus_live_service import ReferenceCorpusLiveService
         from core.ai.model_provider_orchestrator import ModelProviderOrchestrator
         from core.ai.planner_model_bridge import PlannerModelBridge
         from core.editor.viewport_observer import ViewportObserver
@@ -40,19 +43,26 @@ class PlannerDatabaseApplication:
         self.resource_root = _resource_root()
         writable_knowledge = self.root / "exports" / "planner_knowledge" / "RME_PLANNER_KNOWLEDGE.sqlite3"
         bundled_knowledge = self.resource_root / "exports" / "planner_knowledge" / "RME_PLANNER_KNOWLEDGE.sqlite3"
-        self.knowledge_path = writable_knowledge if writable_knowledge.is_file() else bundled_knowledge
+        writable_knowledge.parent.mkdir(parents=True, exist_ok=True)
+        if not writable_knowledge.is_file() and bundled_knowledge.is_file():
+            shutil.copy2(bundled_knowledge, writable_knowledge)
+        self.knowledge_path = writable_knowledge
         self.experience_path = self.root / "exports" / "planner_knowledge" / "RME_PLANNER_EXPERIENCE.sqlite3"
         self.token_path = self.root / "exports" / "planner_knowledge" / ".local_server_token"
         self.ai_preferences_path = self.root / "exports" / "planner_knowledge" / "AI_PROVIDER_PREFERENCES.json"
         self.token_path.parent.mkdir(parents=True, exist_ok=True)
         self.token = self._load_token()
         self.knowledge = PlannerKnowledgeDatabase(self.knowledge_path)
+        if not self.knowledge_path.is_file():
+            raise FileNotFoundError(f"Planner knowledge database is unavailable: {self.knowledge_path}")
         self.material_briefs = CertifiedMaterialBriefBuilder(self.knowledge_path)
         self.reference_briefs = CertifiedReferenceBriefBuilder(self.knowledge_path)
         self.experience = ExperienceLearningLoop(self.experience_path)
         self.models = ModelProviderOrchestrator(self.resource_root)
         self.ai_bridge = PlannerModelBridge(self.models, self.experience)
         self.viewport_observer = ViewportObserver(self.resource_root)
+        self.reference_corpus = ReferenceCorpusLiveService(self.root, self.knowledge)
+        self.reference_corpus.start()
         self._preferences_lock = threading.Lock()
         self._request_lock = threading.Lock()
         self._request_cache: dict[str, dict[str, Any]] = {}
@@ -94,6 +104,13 @@ class PlannerDatabaseApplication:
                     completed.set()
 
     def dispatch(self, route: str, payload: dict[str, Any]) -> dict[str, Any]:
+        if route == "/v1/knowledge/status":
+            return self.reference_corpus.status()
+        if route == "/v1/knowledge/reference-refresh":
+            return self.reference_corpus.trigger(
+                wait=bool(payload.get("wait", False)),
+                timeout=float(payload.get("timeout", 600.0)),
+            )
         if route == "/v1/viewport/feedback":
             report = payload.get("report", {})
             if not isinstance(report, dict):
@@ -372,8 +389,11 @@ class PlannerDatabaseApplication:
         return {
             "status": "PASS",
             "service": "RME Planner Database Server",
+            "protocol_version": PROTOCOL_VERSION,
+            "process_id": os.getpid(),
             "host": HOST,
             "knowledge_database": {"path": str(self.knowledge_path), "available": self.knowledge_path.is_file()},
+            "reference_corpus_live": self.reference_corpus.status(),
             "certified_material_grounding": {
                 "available": self.knowledge_path.is_file(),
                 "source": "Canary/RME materials database",
@@ -403,6 +423,9 @@ class PlannerDatabaseApplication:
             "browser_opened": False,
             "loopback_only": True,
         }
+
+    def close(self) -> None:
+        self.reference_corpus.close()
 
     def _ai_preferences(self) -> dict[str, str]:
         default = str(self.models._get("ai.default_mode", "auto")).strip().lower()  # noqa: SLF001
@@ -444,7 +467,7 @@ class PlannerDatabaseApplication:
 
 def handler_for(application: PlannerDatabaseApplication) -> type[BaseHTTPRequestHandler]:
     class Handler(BaseHTTPRequestHandler):
-        server_version = "RMEPlannerDB/1.0"
+        server_version = f"RMEPlannerDB/{PROTOCOL_VERSION}"
 
         def setup(self) -> None:
             super().setup()
@@ -498,7 +521,11 @@ def serve(root: str | Path, *, host: str = HOST, port: int = PORT) -> None:
     application = PlannerDatabaseApplication(root)
     server = _ExclusiveThreadingHTTPServer((HOST, int(port)), handler_for(application))
     server.daemon_threads = True
-    server.serve_forever(poll_interval=0.5)
+    try:
+        server.serve_forever(poll_interval=0.5)
+    finally:
+        server.server_close()
+        application.close()
 
 
 def _resource_root() -> Path:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -13,18 +14,41 @@ from core.otbm.otbm_importer import OTBMAttributeReader, OTBMNode, OTBMNodeReade
 from core.world_generator.reference_map_corpus import ReferenceMapCorpusAnalyzer
 
 
-SCANNER_VERSION = 2
+SCANNER_VERSION = 3
 FLOORS = tuple(range(16))
 EXCLUDED_TOWNS = {"krailos"}
+
+
+def resolve_world_path(root: str | Path = ".", world_path: str | Path | None = None) -> Path:
+    """Resolve the canonical world without requiring a Git-hosted 100+ MiB map."""
+
+    base = Path(root).resolve()
+    configured = world_path or os.environ.get("RME_WORLD_OTBM")
+    candidate = (
+        Path(configured).expanduser().resolve()
+        if configured
+        else base / "projects" / "world" / "world.otbm"
+    )
+    if not candidate.is_file():
+        raise FileNotFoundError(
+            f"Canonical world OTBM not found: {candidate}. Set RME_WORLD_OTBM to the official map."
+        )
+    return candidate
 
 
 class WorldTownScanner:
     """Build prompt-ready town knowledge without retaining world geometry."""
 
-    def __init__(self, root: str | Path = ".", *, radius: int = 64) -> None:
+    def __init__(
+        self,
+        root: str | Path = ".",
+        *,
+        radius: int = 64,
+        world_path: str | Path | None = None,
+    ) -> None:
         self.root = Path(root).resolve()
         self.radius = max(16, int(radius))
-        self.world_path = self.root / "projects" / "world" / "world.otbm"
+        self.world_path = resolve_world_path(self.root, world_path)
         self.cache_path = self.root / "exports" / "planner_knowledge" / "WORLD_TOWN_SCAN_REPORT.json"
         self.reference = ReferenceMapCorpusAnalyzer(self.root)
         self.item_semantics = self._load_item_semantics()
@@ -289,7 +313,7 @@ class WorldTownScanner:
     def _scan_houses(self, anchors: dict[str, dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
         by_id = {int(anchor["id"]): name for name, anchor in anchors.items()}
         result: dict[str, list[dict[str, Any]]] = defaultdict(list)
-        path = self.root / "projects" / "world" / "world-house.xml"
+        path = self.world_path.with_name(f"{self.world_path.stem}-house.xml")
         if not path.is_file():
             return result
         for element in ET.parse(path).getroot().iter("house"):
@@ -314,7 +338,7 @@ class WorldTownScanner:
                          "min_y": 65535, "max_y": 0, "floor": 0,
                      })}
         )
-        path = self.root / "projects" / "world" / "world-monster.xml"
+        path = self.world_path.with_name(f"{self.world_path.stem}-monster.xml")
         if not path.is_file():
             return result
         for group in ET.parse(path).getroot().iter("monster"):
@@ -356,7 +380,7 @@ class WorldTownScanner:
         result: dict[str, dict[str, Any]] = defaultdict(
             lambda: {"spawn_groups": 0, "floors": Counter(), "names": Counter()}
         )
-        path = self.root / "projects" / "world" / "world-npc.xml"
+        path = self.world_path.with_name(f"{self.world_path.stem}-npc.xml")
         if not path.is_file():
             return result
         for group in ET.parse(path).getroot().iter("npc"):
@@ -385,14 +409,60 @@ class WorldTownScanner:
 
     def _anchors(self) -> dict[str, dict[str, Any]]:
         path = self.root / "exports" / "planner_visual_memory" / "WORLD_NAMED_ANCHORS.json"
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        return {
+        source_sha256 = self._sha256(self.world_path)
+        payload: dict[str, Any] = {}
+        if path.is_file():
+            try:
+                candidate = json.loads(path.read_text(encoding="utf-8"))
+                if candidate.get("world_sha256") == source_sha256:
+                    payload = candidate
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                pass
+        if not payload.get("towns"):
+            payload = {
+                "format": "rme-world-town-anchors-v1",
+                "world_sha256": source_sha256,
+                "source": str(self.world_path),
+                "towns": self._read_town_nodes(),
+            }
+            path.parent.mkdir(parents=True, exist_ok=True)
+            temporary = path.with_suffix(".json.tmp")
+            temporary.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+            temporary.replace(path)
+        anchors = {
             str(row["name"]): {
                 "id": int(row["id"]), "x": int(row["x"]), "y": int(row["y"]), "z": int(row["z"]),
             }
             for row in payload.get("towns", ())
             if str(row.get("name", "")).lower() not in EXCLUDED_TOWNS
         }
+        if not anchors:
+            raise ValueError(f"No TOWN nodes found in canonical world: {self.world_path}")
+        return anchors
+
+    def town_anchors(self) -> list[dict[str, Any]]:
+        return [dict(name=name, **anchor) for name, anchor in sorted(self._anchors().items())]
+
+    def _read_town_nodes(self) -> list[dict[str, Any]]:
+        towns: list[dict[str, Any]] = []
+        with OTBMNodeReader(self.world_path) as reader:
+            def on_node(node: OTBMNode, _context: dict[str, Any]) -> None:
+                if node.node_type != 0x0D or len(node.attrs) < 11:
+                    return
+                town_id = OTBMAttributeReader.u32(node.attrs, 0)
+                name, offset = OTBMAttributeReader.string(node.attrs, 4)
+                if not name or offset + 5 > len(node.attrs):
+                    return
+                towns.append({
+                    "id": town_id,
+                    "name": name,
+                    "x": OTBMAttributeReader.u16(node.attrs, offset),
+                    "y": OTBMAttributeReader.u16(node.attrs, offset + 2),
+                    "z": node.attrs[offset + 4],
+                })
+
+            reader.traverse(on_node, max_nodes=None, max_bytes=None)
+        return towns
 
     def _load_item_semantics(self) -> dict[int, dict[str, Any]]:
         path = self.root / "APPEARANCE_ITEM_CATALOG.json"
@@ -612,4 +682,10 @@ class WorldTownScanner:
         return digest.hexdigest()
 
 
-__all__ = ["WorldTownScanner", "SCANNER_VERSION", "FLOORS", "EXCLUDED_TOWNS"]
+__all__ = [
+    "WorldTownScanner",
+    "resolve_world_path",
+    "SCANNER_VERSION",
+    "FLOORS",
+    "EXCLUDED_TOWNS",
+]

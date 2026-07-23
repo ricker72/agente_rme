@@ -106,10 +106,24 @@ def generate_wg18g_package(root: Path = ROOT) -> dict[str, Any]:
     return reports["WG18G_REPORT"]
 
 
-def load_material_catalog(root: Path = ROOT) -> dict[str, Any]:
-    materials_dir = resolve_materials_dir(root)
-    canary_items = materials_dir.parent / "items" / "items.xml"
-    items_xml = canary_items if canary_items.is_file() else root / "projects" / "items" / "items.xml"
+def load_material_catalog(
+    root: Path = ROOT,
+    *,
+    material_root: str | Path | None = None,
+) -> dict[str, Any]:
+    materials_dir = resolve_materials_dir(root, material_root=material_root)
+    item_candidates = (
+        materials_dir.parent / "items" / "items.xml",
+        root
+        / "projects"
+        / "canary-extracted"
+        / "canary-map-editor-v4.0-windows"
+        / "data"
+        / "items"
+        / "items.xml",
+        root / "projects" / "items" / "items.xml",
+    )
+    items_xml = next((path for path in item_candidates if path.is_file()), item_candidates[-1])
     items_json = root / "projects" / "items" / "items.json"
 
     item_catalog = parse_items_xml(items_xml) if items_xml.is_file() else {}
@@ -149,12 +163,52 @@ def load_material_catalog(root: Path = ROOT) -> dict[str, Any]:
     }
 
 
-def resolve_materials_dir(root: Path = ROOT) -> Path:
-    canonical = (
-        root / "projects" / "canary-extracted" / "canary-map-editor-v4.0-windows"
-        / "data" / "materials"
+def resolve_materials_dir(
+    root: Path = ROOT,
+    *,
+    material_root: str | Path | None = None,
+) -> Path:
+    root = Path(root)
+    if material_root is not None:
+        explicit = Path(material_root)
+        if _is_complete_materials_dir(explicit):
+            return explicit
+        raise FileNotFoundError(
+            "Official RME materials are incomplete or unavailable. "
+            f"Configured material root: {explicit}"
+        )
+    candidates = (
+        root
+        / "projects"
+        / "canary-extracted"
+        / "canary-map-editor-v4.0-windows"
+        / "data"
+        / "materials",
+        root / "resources" / "materials",
+        root / "projects" / "materials",
     )
-    return canonical if canonical.is_dir() else root / "projects" / "materials"
+    for candidate in candidates:
+        if _is_complete_materials_dir(candidate):
+            return candidate
+    searched = "; ".join(str(path) for path in candidates)
+    raise FileNotFoundError(
+        "Official RME materials are incomplete or unavailable. "
+        f"Searched: {searched}"
+    )
+
+
+def _is_complete_materials_dir(path: Path) -> bool:
+    return (
+        path.is_dir()
+        and all(
+            (path / name).is_file()
+            for name in ("materials.xml", "brushs.xml", "borders.xml", "tilesets.xml")
+        )
+        and all(
+            folder.is_dir() and any(folder.rglob("*.xml"))
+            for folder in (path / "brushs", path / "borders", path / "tilesets")
+        )
+    )
 
 
 def load_sprite_backed_item_ids(root: Path = ROOT) -> set[int]:

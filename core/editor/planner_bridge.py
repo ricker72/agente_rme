@@ -203,8 +203,9 @@ class WorkspacePlannerBridge:
         except (OSError, sqlite3.Error, ValueError) as exc:
             self.last_error = f"{type(exc).__name__}: {exc}"
             hierarchy = {"status": "BLOCKED", "reason": self.last_error}
+        hierarchy_status = str(hierarchy.get("status", "BLOCKED")).upper()
         return plan, {
-            "status": "PASS" if hierarchy.get("status") == "PASS" else "BLOCKED",
+            "status": "PASS" if hierarchy_status in {"PASS", "NOT_REQUESTED"} else "BLOCKED",
             "proposal_only": True,
             "writes_tiles_directly": False,
             "knowledge_database": str(self.database_path),

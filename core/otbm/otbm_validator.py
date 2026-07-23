@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from typing import List
 
 from .compatibility.otbm_constants import (
+    OTBM_ACCEPTED_IDENTIFIERS,
     OTBM_ROOTV1 as OTBM_NODE_ROOT,
     OTBM_MAP_DATA,
     OTBM_TILE_AREA,
@@ -100,9 +101,9 @@ class OtbmValidator:
             report.status = "failure"
             report.errors.append("Empty or truncated Canary/RME OTBM data")
             return report
-        if data[:4] != self.OTBM_MAGIC or data[4] != 0xFE:
+        if data[:4] not in OTBM_ACCEPTED_IDENTIFIERS or data[4] != 0xFE:
             report.status = "failure"
-            report.errors.append("Invalid Canary/RME OTBM header; expected 00000000 FE")
+            report.errors.append("Invalid Canary/RME OTBM header; expected 00000000 FE or OTBM FE")
             return report
         try:
             from .otbm_importer import OTBMNodeReader
@@ -158,10 +159,10 @@ class OtbmValidator:
             report.errors.append("Empty or truncated OTBM data (no magic identifier)")
             return report
 
-        if data[:4] != self.OTBM_MAGIC:
+        if data[:4] not in OTBM_ACCEPTED_IDENTIFIERS:
             report.status = "failure"
             report.errors.append(
-                f"Invalid OTBM magic identifier: expected {self.OTBM_MAGIC!r}, got {data[:4]!r}"
+                f"Invalid OTBM magic identifier: got {data[:4]!r}"
             )
             return report
 

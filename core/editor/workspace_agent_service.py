@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from threading import RLock
 from typing import Any
 
 from core.world_generator.color_first_map_pipeline import generate_color_first_map
@@ -18,12 +19,18 @@ class WorkspaceAgentService:
         self,
         root: str | Path,
         asset_root: str | Path | None = None,
+        material_root: str | Path | None = None,
         data_root: str | Path | None = None,
     ) -> None:
         self.root = Path(root).resolve()
         self.asset_root = Path(asset_root).resolve() if asset_root else self.root / "assets"
+        self.material_root = Path(material_root).resolve() if material_root else None
         self.data_root = Path(data_root).resolve() if data_root else self.root
         self.planner = WorkspacePlannerBridge(self.root)
+        self._prepared_lock = RLock()
+        self._prepared_objective = ""
+        self._prepared_plan: Any | None = None
+        self._prepared_audit: dict[str, Any] | None = None
         try:
             self.learning = PlannerDatabaseClient(self.data_root)
             self.database_server_mode = "LOCAL_SERVER"
@@ -35,7 +42,11 @@ class WorkspaceAgentService:
         objective = " ".join(str(objective).split())
         if not objective:
             raise ValueError("Mapper objective cannot be empty")
-        _plan, audit = self.planner.create_plan(objective)
+        plan, audit = self.planner.create_plan(objective)
+        with self._prepared_lock:
+            self._prepared_objective = objective
+            self._prepared_plan = plan
+            self._prepared_audit = dict(audit)
         return audit
 
     def generate(
@@ -51,18 +62,34 @@ class WorkspaceAgentService:
         if not output_name.lower().endswith(".otbm"):
             output_name += ".otbm"
         (self.root / "exports").mkdir(parents=True, exist_ok=True)
-        plan, planner_audit = self.planner.create_plan(objective)
+        with self._prepared_lock:
+            if objective == self._prepared_objective and self._prepared_plan is not None:
+                plan = self._prepared_plan
+                planner_audit = dict(self._prepared_audit or {})
+                self._prepared_objective = ""
+                self._prepared_plan = None
+                self._prepared_audit = None
+                reused_certified_plan = True
+            else:
+                plan = None
+                planner_audit = {}
+                reused_certified_plan = False
+        if plan is None:
+            plan, planner_audit = self.planner.create_plan(objective)
         report = generate_color_first_map(
             plan,
             root=self.root,
-            asset_root=self.root,
+            asset_root=self.asset_root,
+            material_root=self.material_root,
             output_name=output_name,
         )
         report["workspace_agent"] = {
             "status": "PASS",
             "planner": planner_audit,
             "official_asset_root": str(self.asset_root),
+            "official_material_root": str(self.material_root) if self.material_root else "auto",
             "ui_writes_tiles_directly": False,
+            "reused_certified_proposal_plan": reused_certified_plan,
         }
         return report
 
@@ -149,6 +176,7 @@ class WorkspaceAgentService:
             "status": "PASS",
             "root": str(self.root),
             "asset_root": str(self.asset_root),
+            "material_root": str(self.material_root) if self.material_root else "auto",
             "data_root": str(self.data_root),
             "planner": self.planner.audit(),
             "experience_learning": self.learning.audit(),

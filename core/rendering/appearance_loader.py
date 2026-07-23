@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from rme_rendering.asset_paths import resolve_client_asset_root
+
 from .appearance_models import AppearanceParseReport, AppearanceRecord
 
 
@@ -21,7 +23,8 @@ class AppearanceLoader:
         workspace_root: str | Path = ".",
     ) -> None:
         self.workspace_root = self._runtime_root(Path(workspace_root))
-        self.catalog_path = self.workspace_root / "assets" / "catalog-content.json"
+        self.assets_root = resolve_client_asset_root(self.workspace_root)
+        self.catalog_path = self.assets_root / "catalog-content.json"
         self.catalog_entries: list[dict[str, Any]] = []
         self.appearances_path = (
             self._resolve_appearances_path()

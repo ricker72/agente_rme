@@ -55,7 +55,8 @@ class CertifiedReferenceBriefBuilder:
     @staticmethod
     def _rank_reference_maps(connection: sqlite3.Connection, tokens: set[str], limit: int) -> list[sqlite3.Row]:
         rows = connection.execute(
-            "SELECT id,name,tile_count,min_floor,max_floor FROM reference_maps ORDER BY name"
+            "SELECT id,name,tile_count,min_floor,max_floor,profile_json "
+            "FROM reference_maps ORDER BY name"
         ).fetchall()
         aliases = {
             "nature": {"nature", "forest", "vegetation", "vegetacion", "jungle", "swamp"},
@@ -65,6 +66,14 @@ class CertifiedReferenceBriefBuilder:
             "krailos": {"krailos", "dry", "ruin", "sand", "hunt", "roca"},
             "montana": {"mountain", "mountains", "cliff", "montana", "roca"},
             "firecave": {"fire", "cave", "lava", "volcanic", "cueva", "fuego"},
+            "roshamuul_map": {"roshamuul", "dark", "mountain", "ruin", "hunt", "wall"},
+            "pantano": {"swamp", "pantano", "water", "nature", "mud"},
+            "nor": {"island", "isla", "sea", "coast", "nature"},
+            "carlin town": {"carlin", "town", "city", "ciudad", "house", "depot"},
+            "dawnport": {"dawnport", "town", "tutorial", "temple"},
+            "nature town": {"nature", "town", "forest", "city", "ciudad"},
+            "rathleton town": {"rathleton", "town", "city", "industrial"},
+            "venore town": {"venore", "town", "swamp", "city", "wood"},
         }
         ranked = []
         for row in rows:
@@ -98,6 +107,7 @@ class CertifiedReferenceBriefBuilder:
     @staticmethod
     def _reference_profile(connection: sqlite3.Connection, reference: sqlite3.Row) -> dict[str, Any]:
         reference_id = int(reference["id"])
+        raw_profile = json.loads(reference["profile_json"]) if reference["profile_json"] else {}
         floors = [dict(row) for row in connection.execute(
             "SELECT floor,tile_count,item_density,ground_diversity FROM reference_floor_profiles "
             "WHERE reference_id=? ORDER BY tile_count DESC LIMIT 4",
@@ -141,6 +151,9 @@ class CertifiedReferenceBriefBuilder:
             "dominant_brushes": brush_usage,
             "ground_transitions": transitions,
             "ground_border_mixes": border_mixes,
+            "family_coverage": raw_profile.get("family_coverage", [])[:20],
+            "biome_family_mixes": raw_profile.get("biome_family_mixes", [])[:20],
+            "vertical_connectors": raw_profile.get("vertical_connectors", [])[:20],
             "coordinates_included": False,
         }
 

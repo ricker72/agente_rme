@@ -9,6 +9,7 @@ from .tile_encoder import TileEncoder
 
 # Import constants directly to avoid circular imports
 from .compatibility.otbm_constants import (
+    OTBM_ACCEPTED_IDENTIFIERS,
     OTBM_ATTR_ACTION_ID as ATTR_ACTION_ID,
     OTBM_ATTR_CHARGES as ATTR_CHARGES,
     OTBM_ATTR_COUNT as ATTR_COUNT,
@@ -768,8 +769,8 @@ class OtbmSerializer:
             raise ValueError(f"Truncated OTBM data: {len(data)} bytes")
 
         magic = data[:4]
-        if magic != OTBM_MAGIC:
-            raise ValueError(f"Invalid OTBM magic: got {magic.hex()}, expected 00000000")
+        if magic not in OTBM_ACCEPTED_IDENTIFIERS:
+            raise ValueError(f"Invalid OTBM magic: got {magic.hex()}")
 
         offset = 4
         result: Dict[str, Any] = {

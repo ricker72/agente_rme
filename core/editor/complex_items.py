@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass, field
 from typing import Any, Iterable
 
@@ -32,11 +33,12 @@ class EditableItem:
     house_door_id: int = 0
     teleport_destination: TeleportDestination | None = None
     children: list["EditableItem"] = field(default_factory=list)
+    extra_attributes: dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         _range("item id", self.item_id, 0xFFFF, minimum=1)
-        _range("action id", self.action_id, 0xFFFF)
-        _range("unique id", self.unique_id, 0xFFFF)
+        _optional_range("action id", self.action_id, 100, 0xFFFF)
+        _optional_range("unique id", self.unique_id, 1000, 0xFFFF)
         _range("depot id", self.depot_id, 0xFFFF)
         _range("house door id", self.house_door_id, 0xFF)
         if self.count is not None:
@@ -58,7 +60,7 @@ class EditableItem:
             yield from child.walk()
 
     def attributes(self) -> dict[str, Any]:
-        values: dict[str, Any] = {}
+        values: dict[str, Any] = copy.deepcopy(self.extra_attributes)
         for key, value in (
             ("action_id", self.action_id),
             ("unique_id", self.unique_id),
@@ -87,9 +89,15 @@ class EditableItem:
             house_door_id=self.house_door_id,
             teleport_destination=self.teleport_destination,
             children=[child.copy() for child in self.children],
+            extra_attributes=copy.deepcopy(self.extra_attributes),
         )
 
 
 def _range(name: str, value: int, maximum: int, minimum: int = 0) -> None:
     if not minimum <= int(value) <= maximum:
         raise ValueError(f"{name} must be between {minimum} and {maximum}")
+
+
+def _optional_range(name: str, value: int, minimum: int, maximum: int) -> None:
+    if int(value) != 0 and not minimum <= int(value) <= maximum:
+        raise ValueError(f"{name} must be 0 or between {minimum} and {maximum}")

@@ -45,12 +45,21 @@ class RMEItemTypeCatalog:
         self.items = items or {}
 
     @classmethod
-    def load(cls, root: str | Path = ".") -> "RMEItemTypeCatalog":
+    def load(
+        cls,
+        root: str | Path = ".",
+        *,
+        appearances_path: str | Path | None = None,
+        material_root: str | Path | None = None,
+    ) -> "RMEItemTypeCatalog":
         base = Path(root)
-        exact = _load_canary_protobuf_item_types(base)
+        exact = _load_canary_protobuf_item_types(
+            base,
+            Path(appearances_path) if appearances_path is not None else None,
+        )
         if exact:
             _apply_game_xml_exact(base, exact)
-            _apply_source_role_hints(base, exact)
+            _apply_source_role_hints(base, exact, material_root=material_root)
             return cls(exact)
         items_xml = _first_existing(
             [
@@ -62,7 +71,7 @@ class RMEItemTypeCatalog:
         items: dict[int, RMEItemType] = {}
         if items_xml is not None:
             items.update(_load_items_xml(items_xml))
-        _apply_source_role_hints(base, items)
+        _apply_source_role_hints(base, items, material_root=material_root)
         _apply_generated_ground_hints(base, items)
         return cls(items)
 
@@ -119,10 +128,14 @@ class RMEItemTypeCatalog:
             "ground_equivalent": sum(1 for item in self.items.values() if item.ground_equivalent),
         }
         return {
-            "item_type_catalog_ready": True,
+            "item_type_catalog_ready": bool(self.items),
             "item_count": len(self.items),
             "role_counts": role_counts,
             "exact_canary_flag_items": sum(
+                item.flag_source == "appearances.dat:Canary loadFromProtobuf"
+                for item in self.items.values()
+            ),
+            "certified": any(
                 item.flag_source == "appearances.dat:Canary loadFromProtobuf"
                 for item in self.items.values()
             ),
@@ -130,8 +143,13 @@ class RMEItemTypeCatalog:
         }
 
 
-def _load_canary_protobuf_item_types(base: Path) -> dict[int, RMEItemType]:
-    appearances = base / "assets" / "appearances-ee339aff5b3cb38289287ff25cec261d8d2790e6e146938d4dfd9f138b065980.dat"
+def _load_canary_protobuf_item_types(
+    base: Path,
+    appearances_path: Path | None = None,
+) -> dict[int, RMEItemType]:
+    appearances = appearances_path or (
+        base / "assets" / "appearances-ee339aff5b3cb38289287ff25cec261d8d2790e6e146938d4dfd9f138b065980.dat"
+    )
     render_catalog_path = base / "APPEARANCE_RENDER_CATALOG.json"
     if not appearances.exists() or not render_catalog_path.exists():
         return {}
@@ -255,9 +273,21 @@ def _load_items_xml(path: Path) -> dict[int, RMEItemType]:
     return items
 
 
-def _apply_source_role_hints(base: Path, items: dict[int, RMEItemType]) -> None:
-    materials = base / "projects" / "materials"
-    if not materials.exists():
+def _apply_source_role_hints(
+    base: Path,
+    items: dict[int, RMEItemType],
+    *,
+    material_root: str | Path | None = None,
+) -> None:
+    materials = _first_existing(
+        [
+            Path(material_root) if material_root is not None else base / "__missing_material_root__",
+            base / "projects" / "materials",
+            base / "projects" / "canary-extracted" / "canary-map-editor-v4.0-windows" / "data" / "materials",
+            base / "resources" / "materials",
+        ]
+    )
+    if materials is None:
         return
     role_by_type = {
         "ground": "is_ground",

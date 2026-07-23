@@ -33,13 +33,26 @@ class ReferenceMapCorpusAnalyzer:
         self.brush_engine = RMEBrushEngine.load(self.root, self.classification)
         self.category_by_item = self._category_index()
         self.brush_by_item = self._brush_index()
+        self.family_members = self._family_members()
+        self.vertical_connector_by_item = self._vertical_connector_index()
         self.automap_colors = automap_colors if automap_colors is not None else self._load_automap_colors()
+
+    def reference_paths(self) -> list[Path]:
+        return sorted(self.corpus_root.rglob("*.otbm"))
+
+    def analyze_path(self, path: str | Path) -> dict[str, Any]:
+        candidate = Path(path).resolve()
+        if not candidate.is_relative_to(self.corpus_root):
+            raise ValueError("Reference map must be inside projects/Mapas Referencia")
+        if candidate.suffix.casefold() != ".otbm" or not candidate.is_file():
+            raise ValueError(f"Reference OTBM does not exist: {candidate}")
+        return self._analyze_map(candidate)
 
     def analyze(self) -> dict[str, Any]:
         profiles = []
-        for path in sorted(self.corpus_root.rglob("*.otbm")):
+        for path in self.reference_paths():
             try:
-                profiles.append(self._analyze_map(path))
+                profiles.append(self.analyze_path(path))
             except (OSError, UnicodeError, ValueError, struct.error) as exc:
                 profiles.append({
                     "status": "BLOCKED",
@@ -89,6 +102,8 @@ class ReferenceMapCorpusAnalyzer:
         minimap_color_materials: Counter[tuple[int, int, str]] = Counter()
         floors: dict[int, list[dict[str, Any]]] = defaultdict(list)
         ground_by_position: dict[tuple[int, int, int], int] = {}
+        families_by_position: dict[tuple[int, int, int], set[tuple[str, str]]] = {}
+        connectors_by_position: dict[tuple[int, int, int], set[str]] = {}
         for tile in tiles:
             floors[tile["z"]].append(tile)
             stack_sizes[len(tile["items"])] += 1
@@ -98,6 +113,14 @@ class ReferenceMapCorpusAnalyzer:
                 category_counts.update(categories or ("unclassified",))
                 for brush in self.brush_by_item.get(item_id, ()):
                     brush_counts[brush] += 1
+                    families_by_position.setdefault(
+                        (tile["x"], tile["y"], tile["z"]), set()
+                    ).add(brush)
+                connector_families = self.vertical_connector_by_item.get(item_id, ())
+                if connector_families:
+                    connectors_by_position.setdefault(
+                        (tile["x"], tile["y"], tile["z"]), set()
+                    ).update(connector_families)
             ground = next((item_id for item_id in tile["items"] if self._is_ground(item_id)), None)
             if ground is not None:
                 ground_counts[ground] += 1
@@ -148,6 +171,12 @@ class ReferenceMapCorpusAnalyzer:
             "ground_transitions": self._ground_transitions(ground_by_position),
             "border_mixes": self._border_mixes(tiles, ground_by_position),
             "vertical_overlap": self._vertical_overlap(ground_by_position),
+            "vertical_connectors": self._vertical_connectors(
+                connectors_by_position,
+                ground_by_position,
+            ),
+            "family_coverage": self._family_coverage(brush_counts, item_counts),
+            "biome_family_mixes": self._biome_family_mixes(families_by_position),
             "minimap_color_profile": self._minimap_color_profile(
                 minimap_colors,
                 minimap_color_materials,
@@ -427,6 +456,129 @@ class ReferenceMapCorpusAnalyzer:
             for item_id in item_ids(border.edges):
                 reverse[item_id].add(("border", str(border_id)))
         return {item_id: tuple(sorted(values)) for item_id, values in reverse.items()}
+
+    def _family_members(self) -> dict[tuple[str, str], set[int]]:
+        members: dict[tuple[str, str], set[int]] = defaultdict(set)
+        for item_id, families in self.brush_by_item.items():
+            for family in families:
+                members[family].add(int(item_id))
+        return dict(members)
+
+    def _vertical_connector_index(self) -> dict[int, tuple[str, ...]]:
+        """Resolve connector membership from RME's official stairs tileset."""
+        candidates = (
+            self.root / "projects" / "canary-extracted" / "canary-map-editor-v4.0-windows"
+            / "data" / "materials" / "tilesets" / "stairs.xml",
+            self.root / "data" / "materials" / "tilesets" / "stairs.xml",
+        )
+        source = next((path for path in candidates if path.is_file()), None)
+        if source is None:
+            return {}
+        root = ET.parse(source).getroot()
+        connector_families: dict[int, set[str]] = defaultdict(set)
+        for element in root.iter():
+            if element.tag == "brush" and element.get("name"):
+                name = str(element.get("name"))
+                for item_id, families in self.brush_by_item.items():
+                    if any(family_name == name for _kind, family_name in families):
+                        connector_families[int(item_id)].add(name)
+            elif element.tag == "item" and element.get("id", "").isdigit():
+                connector_families[int(element.get("id"))].add("Stairs / Ramps / Ladders RAW")
+            elif (
+                element.tag == "item"
+                and element.get("fromid", "").isdigit()
+                and element.get("toid", "").isdigit()
+            ):
+                start, end = int(element.get("fromid")), int(element.get("toid"))
+                for item_id in range(start, end + 1):
+                    connector_families[item_id].add("Stairs / Ramps / Ladders RAW")
+        return {
+            item_id: tuple(sorted(families))
+            for item_id, families in connector_families.items()
+        }
+
+    def _family_coverage(
+        self,
+        brush_counts: Counter[tuple[str, str]],
+        item_counts: Counter[int],
+    ) -> list[dict[str, Any]]:
+        used_members: dict[tuple[str, str], set[int]] = defaultdict(set)
+        for item_id, families in self.brush_by_item.items():
+            if not item_counts.get(item_id, 0):
+                continue
+            for family in families:
+                used_members[family].add(item_id)
+        rows = []
+        for family, usage_count in brush_counts.most_common():
+            official_count = len(self.family_members.get(family, ()))
+            used_count = len(used_members.get(family, ()))
+            rows.append({
+                "kind": family[0],
+                "name": family[1],
+                "usage_count": usage_count,
+                "used_members": used_count,
+                "official_members": official_count,
+                "coverage_ratio": round(used_count / max(1, official_count), 6),
+            })
+        return rows
+
+    @staticmethod
+    def _biome_family_mixes(
+        families_by_position: dict[tuple[int, int, int], set[tuple[str, str]]],
+    ) -> list[dict[str, Any]]:
+        ecological_kinds = {"ground", "doodad", "wall"}
+        mixes: Counter[tuple[int, tuple[str, str], tuple[str, str]]] = Counter()
+        for (x, y, z), families in families_by_position.items():
+            for dx, dy in ((1, 0), (0, 1)):
+                adjacent = families_by_position.get((x + dx, y + dy, z), set())
+                for left in families:
+                    for right in adjacent:
+                        if (
+                            left == right
+                            or left[0] not in ecological_kinds
+                            or right[0] not in ecological_kinds
+                        ):
+                            continue
+                        first, second = sorted((left, right))
+                        mixes[(z, first, second)] += 1
+        return [
+            {
+                "floor": floor,
+                "family_a": {"kind": left[0], "name": left[1]},
+                "family_b": {"kind": right[0], "name": right[1]},
+                "adjacency_count": count,
+            }
+            for (floor, left, right), count in mixes.most_common(256)
+        ]
+
+    @staticmethod
+    def _vertical_connectors(
+        connectors: dict[tuple[int, int, int], set[str]],
+        grounds: dict[tuple[int, int, int], int],
+    ) -> list[dict[str, Any]]:
+        rows: Counter[tuple[int, str, bool, bool]] = Counter()
+        for (x, y, z), families in connectors.items():
+            upper_support = any(
+                (x + dx, y + dy, z - 1) in grounds
+                for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+            )
+            lower_support = any(
+                (x + dx, y + dy, z + 1) in grounds
+                for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+            )
+            for family in families:
+                rows[(z, family, upper_support, lower_support)] += 1
+        return [
+            {
+                "floor": floor,
+                "family": family,
+                "usage_count": count,
+                "adjacent_upper_floor_support": upper,
+                "adjacent_lower_floor_support": lower,
+                "coordinates_included": False,
+            }
+            for (floor, family, upper, lower), count in rows.most_common()
+        ]
 
     def _is_ground(self, item_id: int) -> bool:
         return item_id in self.brush_engine.valid_base_ground or any(

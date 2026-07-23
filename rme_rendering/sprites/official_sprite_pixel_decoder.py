@@ -10,6 +10,8 @@ from typing import Any
 
 from PIL import Image
 
+from ..asset_paths import resolve_client_asset_root
+
 
 @dataclass(frozen=True)
 class SpriteBundleReference:
@@ -31,7 +33,7 @@ class OfficialSpritePixelDecoder:
 
     def __init__(self, workspace_root: str | Path | None = None, sprite_size: int = 32) -> None:
         self.workspace_root = Path(workspace_root or Path.cwd())
-        self.assets_root = self.workspace_root / "assets"
+        self.assets_root = resolve_client_asset_root(self.workspace_root)
         self.sprite_size = int(sprite_size)
         self.bundles: list[SpriteBundleReference] = []
         self._sheet_cache: dict[Path, Image.Image | None] = {}

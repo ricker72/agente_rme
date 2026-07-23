@@ -278,8 +278,14 @@ class ModelProviderOrchestrator:
             return None, {"provider": provider.name, "code": "NOT_CONFIGURED"}, ""
         if self._circuit_is_open(provider.name):
             return None, {"provider": provider.name, "code": "CIRCUIT_OPEN"}, ""
+        deadline = time.monotonic() + self.timeout
         try:
-            raw, actual_model = self._request(provider, user_payload, system_prompt=_VIEWPORT_SYSTEM_PROMPT)
+            raw, actual_model = self._request(
+                provider,
+                user_payload,
+                system_prompt=_VIEWPORT_SYSTEM_PROMPT,
+                deadline=deadline,
+            )
             issue_ids = {str(item.get("issue_id", "")) for item in user_payload["viewport_observations"]}
             repair_permissions = {
                 str(item.get("issue_id", "")): (
@@ -361,8 +367,9 @@ class ModelProviderOrchestrator:
             return None, {"provider": provider.name, "code": "NOT_CONFIGURED"}, ""
         if self._circuit_is_open(provider.name):
             return None, {"provider": provider.name, "code": "CIRCUIT_OPEN"}, ""
+        deadline = time.monotonic() + self.timeout
         try:
-            raw, actual_model = self._request(provider, user_payload)
+            raw, actual_model = self._request(provider, user_payload, deadline=deadline)
             allowed_keys = set(
                 user_payload.get("abstract_context", {})
                 .get("certified_material_brief", {})
@@ -382,7 +389,7 @@ class ModelProviderOrchestrator:
                     "reference_facts": [],
                     "instruction": "Return a corrected JSON object using only the certified allowlist.",
                 }
-                raw, actual_model = self._request(provider, retry_payload)
+                raw, actual_model = self._request(provider, retry_payload, deadline=deadline)
                 guidance = _validate_guidance(_extract_json(raw), allowed_material_keys=allowed_keys)
         except (requests.RequestException, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
             self._record_failure(provider.name)
@@ -396,7 +403,12 @@ class ModelProviderOrchestrator:
         return provider.kind == "ollama" or self.secret_store.configured(provider.name)
 
     def _request(
-        self, provider: _Provider, user_payload: dict[str, Any], *, system_prompt: str = _SYSTEM_PROMPT
+        self,
+        provider: _Provider,
+        user_payload: dict[str, Any],
+        *,
+        system_prompt: str = _SYSTEM_PROMPT,
+        deadline: float | None = None,
     ) -> tuple[str, str]:
         messages = [
             {"role": "system", "content": system_prompt},
@@ -422,7 +434,7 @@ class ModelProviderOrchestrator:
                     f"{provider.base_url}/api/chat",
                     headers=headers,
                     json={"model": model, "messages": messages, "stream": False, "format": "json", "options": {"temperature": 0.35, "num_predict": self.max_output_tokens}},
-                    timeout=self.timeout,
+                    timeout=self._remaining_timeout(deadline),
                 )
                 try:
                     response.raise_for_status()
@@ -449,13 +461,31 @@ class ModelProviderOrchestrator:
             "max_tokens": self.max_output_tokens,
             "response_format": {"type": "json_object"},
         }
-        response = requests.post(f"{provider.base_url}/chat/completions", headers=headers, json=payload, timeout=self.timeout)
+        response = requests.post(
+            f"{provider.base_url}/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=self._remaining_timeout(deadline),
+        )
         if response.status_code in {400, 404, 422}:
             # Some OpenAI-compatible services do not implement response_format.
             payload.pop("response_format", None)
-            response = requests.post(f"{provider.base_url}/chat/completions", headers=headers, json=payload, timeout=self.timeout)
+            response = requests.post(
+                f"{provider.base_url}/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=self._remaining_timeout(deadline),
+            )
         response.raise_for_status()
         return str(response.json()["choices"][0]["message"]["content"]), provider.model
+
+    def _remaining_timeout(self, deadline: float | None) -> float:
+        if deadline is None:
+            return self.timeout
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise requests.Timeout("AI provider attempt exceeded its total time budget")
+        return max(0.25, remaining)
 
     @classmethod
     def _circuit_is_open(cls, name: str) -> bool:

@@ -8,7 +8,7 @@ from typing import Any
 from core.world_generator.reference_map_corpus import ReferenceMapCorpusAnalyzer
 
 
-SCANNER_VERSION = 3
+SCANNER_VERSION = 4
 
 
 class ReferenceMapScanner:
@@ -77,6 +77,9 @@ class ReferenceMapScanner:
                 "dominant_brushes": profile["top_brushes"],
                 "border_mix_count": len(profile["border_mixes"]),
                 "minimap_colors": profile["minimap_color_profile"],
+                "family_coverage": profile.get("family_coverage", []),
+                "biome_family_mixes": profile.get("biome_family_mixes", []),
+                "vertical_connectors": profile.get("vertical_connectors", []),
             },
             "border_mixes": profile["border_mixes"],
             "generation_rules": profile["generation_rules"],
@@ -96,6 +99,9 @@ class ReferenceMapScanner:
             "nature": summary["nature_ids"][:limit],
             "borders": summary["border_ids"][:limit],
             "dominant_brushes": summary["dominant_brushes"][:limit],
+            "family_coverage": summary.get("family_coverage", [])[:limit],
+            "biome_family_mixes": summary.get("biome_family_mixes", [])[:limit],
+            "vertical_connectors": summary.get("vertical_connectors", [])[:limit],
             "minimap_colors": {
                 "coverage": summary["minimap_colors"]["coverage"],
                 "distinct_colors": summary["minimap_colors"]["distinct_colors"],
@@ -136,10 +142,15 @@ class ReferenceMapScanner:
         borders: list[dict[str, Any]],
     ) -> list[str]:
         floors = profile["dimensions"]
+        connector_count = len(profile.get("vertical_connectors", ()))
+        family_count = len(profile.get("family_coverage", ()))
         return [
             f"Usa como referencia abstracta los pisos {floors['min_floor']} a {floors['max_floor']}.",
             f"Se detectaron {len(grounds)} ground IDs, {len(borders)} border IDs y {len(nature)} nature IDs.",
+            f"Se certificaron {family_count} familias RME usadas y {connector_count} patrones de conectividad vertical.",
             "Resuelve materiales por brush oficial y contexto de vecinos; no reproduzcas coordenadas fuente.",
+            "Para montanas y edificios, conserva soporte transitable alrededor de escaleras, rampas y ladders.",
+            "Mezcla biomas mediante familias vecinas observadas; no uses parches rectangulares ni familias incompletas.",
             "Conserva proporciones y familias visuales, pero genera topologia y geometria nuevas.",
         ]
 

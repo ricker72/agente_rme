@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import signal
 import subprocess
 import sys
 import threading
@@ -14,7 +15,7 @@ import uuid
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
-from core.world_generator.planner_database_server import HOST, PORT
+from core.world_generator.planner_database_server import HOST, PORT, PROTOCOL_VERSION
 
 
 class PlannerDatabaseClient:
@@ -34,6 +35,8 @@ class PlannerDatabaseClient:
             health = self.health()
             if health.get("status") == "PASS":
                 return health
+            if health.get("status") == "WRONG_PROTOCOL":
+                self._stop_stale_server(health)
             if health.get("status") == "WRONG_ROOT":
                 raise RuntimeError(
                     "Planner server port is owned by a different agent root: "
@@ -63,6 +66,14 @@ class PlannerDatabaseClient:
             actual = str(payload.get("experience_database", {}).get("database", ""))
             if Path(actual).resolve() != Path(expected).resolve():
                 return {"status": "WRONG_ROOT", "expected": expected, "actual": actual}
+            actual_protocol = int(payload.get("protocol_version", 0))
+            if actual_protocol != PROTOCOL_VERSION:
+                return {
+                    "status": "WRONG_PROTOCOL",
+                    "expected": PROTOCOL_VERSION,
+                    "actual": actual_protocol,
+                    "process_id": int(payload.get("process_id", 0)),
+                }
             return payload
         except (OSError, urllib.error.URLError, json.JSONDecodeError, ValueError):
             return {"status": "OFFLINE"}
@@ -127,6 +138,18 @@ class PlannerDatabaseClient:
 
     def reference_brief(self, objective: str) -> dict[str, Any]:
         return self.request("/v1/planner/reference-brief", {"objective": objective})
+
+    def knowledge_status(self) -> dict[str, Any]:
+        return self.request("/v1/knowledge/status", {})
+
+    def refresh_reference_corpus(
+        self, *, wait: bool = True, timeout: float = 600.0
+    ) -> dict[str, Any]:
+        return self.request(
+            "/v1/knowledge/reference-refresh",
+            {"wait": bool(wait), "timeout": float(timeout)},
+            timeout=max(30.0, float(timeout) + 5.0) if wait else 30.0,
+        )
 
     def ai_plan(
         self,
@@ -250,6 +273,21 @@ class PlannerDatabaseClient:
             startupinfo.wShowWindow = 0
             kwargs["startupinfo"] = startupinfo
         self._process = subprocess.Popen(command, **kwargs)
+
+    @staticmethod
+    def _stop_stale_server(health: Mapping[str, Any]) -> None:
+        process_id = int(health.get("process_id", 0))
+        if process_id <= 0 or process_id == os.getpid():
+            raise RuntimeError("Stale Planner server has no safe process identity")
+        os.kill(process_id, signal.SIGTERM)
+        deadline = time.monotonic() + 5.0
+        while time.monotonic() < deadline:
+            try:
+                os.kill(process_id, 0)
+            except OSError:
+                return
+            time.sleep(0.05)
+        raise RuntimeError("Stale Planner server did not stop")
 
     def _token(self) -> str:
         if not self.token_path.is_file():

@@ -27,6 +27,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
+from .compatibility.otbm_constants import OTBM_ACCEPTED_IDENTIFIERS
 from .otbm_validator import OtbmValidator
 
 
@@ -34,7 +35,6 @@ class OtbmParseError(ValueError):
     """Raised when a canonical Canary/RME OTBM stream is malformed."""
 
 
-RME_WILDCARD_IDENTIFIER = b"\x00\x00\x00\x00"
 RME_NODE_START = 0xFE
 RME_NODE_END = 0xFF
 RME_ESCAPE = 0xFD
@@ -318,7 +318,7 @@ class OTBMNodeReader:
     def validate_header(self) -> None:
         if self.file_size < 6:
             raise ValueError("truncated OTBM data")
-        if self._data[0:4] != RME_WILDCARD_IDENTIFIER:
+        if bytes(self._data[0:4]) not in OTBM_ACCEPTED_IDENTIFIERS:
             raise ValueError(f"invalid OTBM identifier: {bytes(self._data[0:4])!r}")
         if self._data[4] != RME_NODE_START:
             raise ValueError("root NODE_START not found at byte 4")
@@ -971,7 +971,7 @@ class OTBMImporter:
     def _is_rme_delimited_otbm(data: bytes) -> bool:
         return (
             len(data) >= 6
-            and data[:4] == RME_WILDCARD_IDENTIFIER
+            and data[:4] in OTBM_ACCEPTED_IDENTIFIERS
             and data[4] == RME_NODE_START
         )
 

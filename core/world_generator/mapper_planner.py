@@ -225,7 +225,7 @@ def _objective_anchor(objective: str) -> tuple[int, int, int]:
 
 def _objective_town_name(objective: str) -> str:
     match = re.search(
-        r"\btown\s*(?:name)?\s*[:=]\s*([A-Za-z][A-Za-z0-9 _-]{0,39}?)(?=\s+(?:x\s*[:=]|coordenadas?|coordinates?)|[,;]|$)",
+        r"\btown(?:\s+name)?\s*(?::|=)?\s*([A-Za-z][A-Za-z0-9 _-]{0,39}?)(?=\s+(?:x\s*[:=]|coordenadas?|coordinates?)|[,;]|$)",
         objective,
         flags=re.IGNORECASE,
     )
@@ -810,23 +810,31 @@ def _terrain_token(terrain: str) -> str:
 
 def _paint_original_structures(blueprint: SemanticColorBlueprint, plan: MapperPlan, z: int) -> None:
     city = next((region for region in plan.regions if "city" in region.tags and "landmass" in region.tags), None)
-    if city is None:
+    settlements = list(plan.architecture.get("settlements", ()))
+    if city is None and not settlements:
         return
     reference_tiles = int(plan.reference_style.get("median_house_component_tiles", 0) or 0)
     side = max(6, min(13, int(math.sqrt(reference_tiles)) if reference_tiles else 9))
     planned_buildings = [
         building
-        for settlement in plan.architecture.get("settlements", ())
+        for settlement in settlements
         for building in settlement.get("buildings", ())
+        if not (
+            plan.policies.get("plan_scale") == "compact"
+            and str(building.get("function", "")) == "temple"
+            and any("temple" in region.tags for region in plan.regions)
+        )
     ]
     offsets = ((-48, -30), (-22, -42), (18, -40), (48, -26), (-50, 25), (-20, 40), (20, 42), (50, 24))
     terrain = set(blueprint.mask(BlueprintLayer.TERRAIN).cells)
     occupied: set[tuple[int, int, int]] = set()
     generated_house_count = 0
-    candidates = planned_buildings or [
-        {"center": [city.anchor[0] + dx, city.anchor[1] + dy], "width": side + index % 3 - 1, "height": max(6, side - index % 2), "floors": 1}
-        for index, (dx, dy) in enumerate(offsets)
-    ]
+    candidates = planned_buildings
+    if not candidates and city is not None:
+        candidates = [
+            {"center": [city.anchor[0] + dx, city.anchor[1] + dy], "width": side + index % 3 - 1, "height": max(6, side - index % 2), "floors": 1}
+            for index, (dx, dy) in enumerate(offsets)
+        ]
     for index, building in enumerate(candidates):
         width = int(building["width"])
         height = int(building["height"])
@@ -840,14 +848,16 @@ def _paint_original_structures(blueprint: SemanticColorBlueprint, plan: MapperPl
             for y in range(y1, y2 + 1)
             if x in (x1, x2) or y in (y1, y2)
         }
-        door = ((x1 + x2) // 2, y2, z)
-        footprint = interior | walls | {door}
+        function = str(building.get("function", "house"))
+        doorway = ((x1 + x2) // 2, y2, z)
+        footprint = interior | walls | {doorway}
         if not footprint.issubset(terrain):
             continue
-        walls.discard(door)
+        walls.discard(doorway)
         blueprint.paint(BlueprintLayer.STRUCTURE_GROUND, interior | walls, "interior")
         blueprint.paint(BlueprintLayer.WALL, walls, "wall")
-        blueprint.paint(BlueprintLayer.DOOR_WINDOW, [door], "door")
+        if function != "temple":
+            blueprint.paint(BlueprintLayer.DOOR_WINDOW, [doorway], "door")
         occupied.update(footprint)
         generated_house_count += 1
     blueprint.metadata["generated_structure_tiles"] = len(occupied)

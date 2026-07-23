@@ -88,6 +88,8 @@ class ByteValidator:
     MAX_HOUSE_ID = 0xFFFFFFFF
     MAX_ACTION_ID = 65535
     MAX_UNIQUE_ID = 65535
+    MIN_ACTION_ID = 100
+    MIN_UNIQUE_ID = 1000
     MAX_ZONE_ID = 0xFFFFFFFF
     MAX_SPAWN_RADIUS = 255
     MAX_TILE_OFFSET = 255
@@ -110,10 +112,17 @@ class ByteValidator:
         return validate_dword(value, context)
 
     def validate_action_id(self, value, context: str = "action_id") -> int:
-        return validate_word(value, context)
+        return self._validate_optional_id(value, self.MIN_ACTION_ID, self.MAX_ACTION_ID, context)
 
     def validate_unique_id(self, value, context: str = "unique_id") -> int:
-        return validate_word(value, context)
+        return self._validate_optional_id(value, self.MIN_UNIQUE_ID, self.MAX_UNIQUE_ID, context)
+
+    @staticmethod
+    def _validate_optional_id(value, minimum: int, maximum: int, context: str) -> int:
+        iv = validate_word(value, context)
+        if iv != 0 and not minimum <= iv <= maximum:
+            raise ValueError(f"{context}: value {iv} must be 0 or in [{minimum}, {maximum}]")
+        return iv
 
     def validate_zone_id(self, value, context: str = "zone_id") -> int:
         return validate_dword(value, context)
@@ -207,7 +216,12 @@ class ByteValidator:
                     if sub in item and item[sub] is not None:
                         try:
                             if sub in ("action_id", "unique_id"):
-                                self.coerce_word(item[sub], context=f"tile.item[{i}].{sub}")
+                                validator = (
+                                    self.validate_action_id
+                                    if sub == "action_id"
+                                    else self.validate_unique_id
+                                )
+                                validator(item[sub], context=f"tile.item[{i}].{sub}")
                             else:
                                 self.coerce_byte(item[sub], context=f"tile.item[{i}].{sub}")
                         except ValueError as e:
@@ -219,4 +233,4 @@ class ByteValidator:
             except ValueError as e:
                 local.append(str(e))
 
-        return self.warnings[before_warn:]
+        return [*local, *self.warnings[before_warn:]]

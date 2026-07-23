@@ -25,6 +25,7 @@ from .otbm_constants import (
     AGENTE_OTBM_NODE_WAYPOINT,
     AGENTE_OTBM_NODE_WAYPOINTS,
     OTBM_HOUSETILE,
+    OTBM_ACCEPTED_IDENTIFIERS,
     OTBM_IDENTIFIER,
     OTBM_ITEM,
     OTBM_ITEM_DEF,
@@ -314,10 +315,10 @@ class CanaryReferenceAudit:
             )
 
         # Check magic identifier
-        if data[:4] != OTBM_IDENTIFIER:
+        if data[:4] not in OTBM_ACCEPTED_IDENTIFIERS:
             return ValidationResult(
                 False,
-                f"Invalid OTBM magic: expected {OTBM_IDENTIFIER!r}, got {data[:4]!r}",
+                f"Invalid OTBM magic: got {data[:4]!r}",
                 None,
                 "header_validation",
             )
@@ -329,10 +330,10 @@ class CanaryReferenceAudit:
             )
 
         root_node_type = data[4]
-        if root_node_type != OTBM_ROOTV1:
+        if root_node_type != 0xFE:
             return ValidationResult(
                 False,
-                f"Invalid root node type: expected 0x{OTBM_ROOTV1:02X}, got 0x{root_node_type:02X}",
+                f"Invalid root node marker: expected 0xFE, got 0x{root_node_type:02X}",
                 root_node_type,
                 "header_validation",
             )

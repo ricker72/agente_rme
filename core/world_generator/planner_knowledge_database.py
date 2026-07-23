@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import sqlite3
+import threading
+import time
 import unicodedata
 import zlib
 import xml.etree.ElementTree as ET
@@ -30,6 +33,10 @@ _LIVE_RME_TERRAIN_TILESETS = (
 )
 
 
+class ReferenceCorpusChangedError(RuntimeError):
+    """A live reference changed before its staged database could be published."""
+
+
 class PlannerKnowledgeDatabase:
     """Build the Planner's normalized, provenance-aware technical catalog."""
 
@@ -41,13 +48,17 @@ class PlannerKnowledgeDatabase:
             connection = sqlite3.connect(
                 f"file:{self.path.resolve().as_posix()}?mode=ro",
                 uri=True,
-                timeout=5.0,
+                timeout=30.0,
             )
             connection.execute("PRAGMA query_only = ON")
         else:
-            connection = sqlite3.connect(self.path, timeout=5.0)
+            connection = sqlite3.connect(self.path, timeout=30.0)
         connection.row_factory = sqlite3.Row
         connection.execute("PRAGMA foreign_keys = ON")
+        connection.execute("PRAGMA busy_timeout = 30000")
+        if not read_only:
+            connection.execute("PRAGMA journal_mode = WAL")
+            connection.execute("PRAGMA synchronous = NORMAL")
         return connection
 
     def search_materials(self, query: str, limit: int = 50) -> list[dict[str, Any]]:
@@ -149,6 +160,94 @@ class PlannerKnowledgeDatabase:
             "integrity": integrity,
         }
 
+    def refresh_reference_corpus(self, root: str | Path = ".") -> dict[str, Any]:
+        """Rebuild references off-line and publish them without stopping live readers."""
+        base = Path(root).resolve()
+        source_snapshot = _reference_source_snapshot(base)
+        dependent_tables = (
+            "reference_minimap_color_materials",
+            "reference_minimap_colors",
+            "reference_border_mixes",
+            "reference_floor_material_usage",
+            "reference_scan_reports",
+            "reference_ground_transitions",
+            "reference_brush_usage",
+            "reference_floor_profiles",
+            "reference_material_usage",
+            "reference_source_archives",
+            "reference_maps",
+            "reference_archetypes",
+        )
+        temporary = self.path.with_name(
+            f".{self.path.name}.reference-refresh-{os.getpid()}-{threading.get_ident()}.tmp"
+        )
+        temporary.unlink(missing_ok=True)
+        started = time.monotonic()
+        try:
+            source = self.connect(read_only=True)
+            staging = sqlite3.connect(temporary, timeout=30.0)
+            try:
+                source.backup(staging)
+            finally:
+                staging.close()
+                source.close()
+            connection = sqlite3.connect(temporary, timeout=30.0)
+            connection.row_factory = sqlite3.Row
+            connection.execute("PRAGMA foreign_keys = ON")
+            try:
+                connection.execute("BEGIN IMMEDIATE")
+                try:
+                    for table in dependent_tables:
+                        connection.execute(f"DELETE FROM {table}")
+                    self._reference_map_corpus(connection, base)
+                    connection.commit()
+                except Exception:
+                    connection.rollback()
+                    raise
+                integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
+                counts = {
+                    table: int(connection.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
+                    for table in dependent_tables
+                }
+            finally:
+                connection.close()
+            if integrity != "ok":
+                raise sqlite3.DatabaseError(
+                    f"Reference staging database failed integrity_check: {integrity}"
+                )
+            if _reference_source_snapshot(base) != source_snapshot:
+                raise ReferenceCorpusChangedError(
+                    "Reference corpus changed while its staging database was being built"
+                )
+            self._publish_live_database(temporary)
+        except Exception:
+            temporary.unlink(missing_ok=True)
+            raise
+        return {
+            "status": "PASS" if integrity == "ok" else "BLOCKED",
+            "database": str(self.path),
+            "schema_version": SCHEMA_VERSION,
+            "integrity": integrity,
+            "counts": counts,
+            "elapsed_seconds": round(time.monotonic() - started, 3),
+            "readers_remained_available": True,
+        }
+    def _publish_live_database(self, temporary: Path) -> None:
+        source = sqlite3.connect(temporary, timeout=30.0)
+        destination = self.connect()
+        try:
+            source.backup(destination)
+            destination.commit()
+            integrity = destination.execute("PRAGMA integrity_check").fetchone()[0]
+            if integrity != "ok":
+                raise sqlite3.DatabaseError(
+                    f"Published Planner database failed integrity_check: {integrity}"
+                )
+        finally:
+            destination.close()
+            source.close()
+            temporary.unlink(missing_ok=True)
+
     def tileset_knowledge(self, query: str = "", limit: int = 32) -> list[dict[str, Any]]:
         """Expose the complete RME tileset membership already cached in SQLite."""
         normalized = unicodedata.normalize("NFKD", query.casefold()).encode("ascii", "ignore").decode("ascii")
@@ -221,6 +320,10 @@ class PlannerKnowledgeDatabase:
             "miniboats": {"miniboats", "boat", "boats", "barco", "barcos", "bote", "muelle", "dock"},
             "towers": {"tower", "towers", "torre", "torres", "vertical", "multifloor", "pisos"},
             "krailos": {"krailos", "dry", "seco", "ruins", "ruinas", "hunt", "roca", "rocky"},
+            "roshamuul_map": {
+                "roshamuul", "dark", "oscuro", "ruins", "ruinas", "hunt",
+                "mountain", "montana", "moss", "muddy", "swamp", "pavement",
+            },
             "montaña": {"montana", "mountain", "mountains", "montana", "relieve", "cliff", "acantilado"},
             "firecave": {"firecave", "fire", "cave", "cueva", "fuego", "lava", "volcanic", "volcanico"},
         }
@@ -257,6 +360,10 @@ class PlannerKnowledgeDatabase:
             "miniboats": {"boat", "boats", "barco", "barcos", "bote", "muelle"},
             "towers": {"tower", "towers", "torre", "torres", "vertical", "pisos"},
             "krailos": {"krailos", "seco", "ruinas", "hunt", "roca", "rocky"},
+            "roshamuul_map": {
+                "roshamuul", "oscuro", "ruinas", "hunt", "montana",
+                "moss", "muddy", "swamp", "pavement",
+            },
             "montana": {"montana", "mountain", "mountains", "relieve", "cliff", "acantilado"},
             "firecave": {"firecave", "fire", "cave", "cueva", "fuego", "lava", "volcanic", "volcanico"},
         }
@@ -271,12 +378,17 @@ class PlannerKnowledgeDatabase:
             name = unicodedata.normalize("NFKD", row["name"].lower()).encode("ascii", "ignore").decode("ascii")
             searchable = json.dumps(report["guidance"] + [report["generation_rules"]], sort_keys=True).lower()
             score = sum(1 for token in tokens if token in searchable)
-            score += 3 * len(tokens.intersection(aliases.get(name, set())))
-            ranked.append((score, name, ReferenceMapScanner.compact_for_prompt(report)))
+            alias_matches = tokens.intersection(aliases.get(name, set()))
+            score += 3 * len(alias_matches)
+            explicitly_named = bool(
+                tokens.intersection({token for token in name.replace("_", " ").split() if len(token) > 2})
+                or alias_matches
+            )
+            ranked.append((score, name, explicitly_named, ReferenceMapScanner.compact_for_prompt(report)))
         ranked.sort(key=lambda entry: (-entry[0], entry[1]))
-        explicitly_named = [entry for entry in ranked if entry[1] in tokens]
+        explicitly_named = [entry for entry in ranked if entry[2]]
         relevant = explicitly_named or ([entry for entry in ranked if entry[0] > 0] if tokens else ranked)
-        return [payload for _, _, payload in relevant[: max(1, int(limit))]]
+        return [payload for _, _, _, payload in relevant[: max(1, int(limit))]]
 
     def world_town_scans(self, objective: str = "", limit: int = 3) -> list[dict[str, Any]]:
         """Return compact town scans from SQLite; never reopen world.otbm."""
@@ -548,7 +660,7 @@ class PlannerKnowledgeDatabase:
             }
         finally:
             connection.close()
-        temporary.replace(self.path)
+        self._publish_database(temporary)
         return {
             "status": "PASS" if integrity == "ok" else "BLOCKED",
             "database": str(self.path),
@@ -562,6 +674,30 @@ class PlannerKnowledgeDatabase:
                 "or tile stacks"
             ),
         }
+
+    def _publish_database(self, temporary: Path) -> None:
+        """Publish a complete build even when the local server holds a read handle."""
+        try:
+            temporary.replace(self.path)
+            return
+        except PermissionError:
+            if not self.path.is_file():
+                raise
+
+        source = sqlite3.connect(temporary, timeout=30.0)
+        destination = sqlite3.connect(self.path, timeout=30.0)
+        try:
+            source.backup(destination)
+            destination.commit()
+            integrity = destination.execute("PRAGMA integrity_check").fetchone()[0]
+            if integrity != "ok":
+                raise sqlite3.DatabaseError(
+                    f"Published Planner database failed integrity_check: {integrity}"
+                )
+        finally:
+            destination.close()
+            source.close()
+        temporary.unlink()
 
     @staticmethod
     def _metadata(db: sqlite3.Connection) -> None:
@@ -603,6 +739,7 @@ class PlannerKnowledgeDatabase:
             ("wall_brush", "connected_orientation", {"commit": "atomic", "reorient_existing_neighbors": True, "parts": ["horizontal", "vertical", "corner", "pole", "intersection"]}),
             ("viewport", "dirty_region_contract", {"source": "operation affected_coords", "forbidden": "seed footprint only", "reason": "postprocessors mutate neighbors"}),
             ("viewport", "nonblank_chunk_replacement", {"cache_ring_chunks": 1, "minimum_cached_chunks": 96, "pan_refresh": "leading-edge prefetch at most once per frame", "replacement": "retain prior pixmap until the newly rendered TileState exists", "forbidden": ["remove cached chunk before replacement", "restart refresh timer on every key repeat"]}),
+            ("viewport", "visible_first_chunk_scheduler", {"phase_1": "render current-floor chunks intersecting the visible rectangle", "phase_2": "prefetch the safety ring after the visible frame", "phase_3": "refresh projected-floor overlays independently", "replacement": "keep prior pixels until replacement exists", "forbidden": ["whole-map refresh on pan", "overlay work blocking the first visible frame"]}),
             ("viewport", "default_grid", {"visible": False, "user_toggle": True, "shortcut": "Shift+G"}),
             ("ai_studio", "indexed_otbm_preview_materialization", {"source_mode": "indexed", "tile_area_size": 256, "load": "all indexed areas from the generated preview", "deduplicate": "x/y/z", "mutation": "none before explicit approval", "verified_changed_tiles": 11252}),
             ("ai_studio", "responsive_proposal_pipeline", {"worker_thread": ["model proposal", "Planner materialization", "OTBM indexed extraction", "visual diff construction"], "ui_thread": ["bounded diff presentation", "explicit approval"], "visible_diff_limit": 500, "complete_diff_retained": True}),
@@ -615,14 +752,22 @@ class PlannerKnowledgeDatabase:
             ("palette", "house_page_contract", {"source": "palette_house.cpp", "town_filter": True, "house_list": "sorted names for selected town", "actions": ["Add", "Edit", "Remove"], "brushes": ["House tiles", "Select Exit"], "double_click": "edit house", "map_refresh": "reload towns and houses when active document changes", "brush_size": True}),
             ("palette", "waypoint_page_contract", {"source": "palette_waypoints.cpp", "list": "single selection editable labels", "actions": ["Add", "Remove"], "select": "center viewport and bind waypoint brush", "rename": "must remain unique", "empty_name": "remove", "minimum_otbm": 3, "brush_size": False}),
             ("palette", "zone_page_contract", {"source": "palette_zones.cpp", "list": "single selection editable labels", "actions": ["Add", "Remove", "Import", "Export"], "left_select": "bind zone brush", "right_select": "bind zone brush and center first zone position", "xml": {"root": "zones", "zone_attributes": ["name", "id"], "positions": ["x", "y", "z"]}, "minimum_otbm": 3, "brush_size": False}),
-            ("palette", "monster_page_contract", {"source": "palette_monster.cpp", "controls": ["tileset", "name search", "monster list", "place monster", "spawn monster", "spawn time", "spawn size"], "selection": "place selected monster or spawn area", "spawn_settings_persist": True, "brush_size_source": "spawn size"}),
-            ("palette", "npc_page_contract", {"source": "palette_npc.cpp", "controls": ["tileset", "npc list", "place npc", "spawn npc", "spawn time", "spawn size"], "selection": "place selected NPC or spawn area", "spawn_settings_persist": True, "brush_size_source": "spawn size", "catalog_category": "npc is independent from creature and RAW"}),
+            ("palette", "monster_page_contract", {"sources": ["palette_monster.cpp", "spawn_monster.cpp"], "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "controls": ["tileset", "name search", "checkable sorted monster list", "place monster", "spawn monster", "spawn time 0..3600", "spawn size", "density percentage control 0..3600", "default weight 0..100"], "selection": "monster brush uses selected row; spawn brush uses checked rows as candidates", "spawn_settings_persist": True, "brush_size_source": "spawn size", "monster_constraints": ["ground required", "non-blocking tile", "spawn coverage or automatic spawn", "protection zone rejected", "same monster is not duplicated"], "spawn_center": "ground required and one monster spawn center per tile", "spawn_area": "square side 2*radius+1", "materialization_bound": "never request more unique placements than the finite square contains"}),
+            ("palette", "npc_page_contract", {"sources": ["palette_npc.cpp", "spawn_npc.cpp"], "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "controls": ["tileset", "sorted npc list", "place npc", "spawn npc", "spawn time 0..3600", "spawn size"], "selection": "place selected NPC or spawn center", "spawn_settings_persist": True, "brush_size_source": "spawn size", "catalog_category": "npc is independent from creature and RAW", "npc_constraints": ["ground required", "non-blocking tile", "spawn coverage or automatic spawn", "protection zone allowed", "existing NPC is replaced"], "spawn_center": "ground required and one NPC spawn center per tile", "spawn_area": "square side 2*radius+1"}),
+            ("palette", "monster_type_catalog_source", {"sources": ["monsters.cpp", "lua_parser.h", "preferences.cpp", "settings.h"], "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "preference": "MONSTERS_LUA_DIRECTORY", "lua_declarations": ["Game.createMonsterType(\"name\")", "local internalMonsterName = \"name\""], "required_outfit": [".outfit", ":outfit("], "required_look": ["lookType", "lookTypeEx"], "xml_fallback": {"root": "monster", "name": "declaration name", "look_attributes": ["type", "item", "lookex", "typeex"]}, "spawn_sidecar": "instance references only; never a resolved appearance catalog", "failure_policy": "keep unresolved names disabled and request the configured Lua directory"}),
+            ("palette", "npc_type_catalog_source", {"sources": ["npcs.cpp", "lua_parser.h", "preferences.cpp", "settings.h"], "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "preference": "NPCS_LUA_DIRECTORY", "lua_declarations": ["Game.createNpcType(\"name\")", "local internalNpcName = \"name\""], "required_outfit": [".outfit", ":outfit("], "required_look": ["lookType", "lookTypeEx"], "xml_fallback": {"root": "npc", "name": "filename stem", "look_attributes": ["type", "item", "lookex", "typeex"]}, "spawn_sidecar": "instance references only; never a resolved appearance catalog", "failure_policy": "keep unresolved names disabled and request the configured Lua directory"}),
+            ("editing", "missing_creature_type_resolution", {"sources": ["application.cpp", "monsters.cpp", "npcs.cpp"], "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "trigger": "opened map references an unknown monster or NPC", "official_flow": ["offer Preferences", "configure the corresponding Lua directory", "reload missing definitions", "refresh palette"], "workspace_flow": ["File/Preferences", "persist both Lua directories", "rebuild certified catalogs", "refresh Monster and Npc palettes"], "forbidden": ["invent lookType", "infer appearance from a name", "treat spawn sidecars as type definitions"]}),
             ("editing", "semantic_palette_mutation_contract", {"sources": ["brush.cpp FlagBrush", "tile.h", "palette_house.cpp", "palette_waypoints.cpp", "palette_zones.cpp", "palette_monster.cpp", "palette_npc.cpp"], "sprite_required": False, "tile_flags": {"protection_zone": 1, "no_pvp": 4, "no_logout": 8, "pvp_zone": 16}, "metadata_tools": ["house_tiles", "house_exit", "waypoint", "zone"], "entity_tools": ["monster", "npc", "monster_spawn", "npc_spawn"], "transaction": "one gesture and one rollback boundary", "invariant": "semantic tools must not be rejected merely because no item sprite is selected", "verified": {"workspace_smoke": "PASS", "combined_flag_mask": 29}}),
             ("wall_brush", "door_tool_family_transform", {"source": "brush.cpp DoorBrush::draw", "precondition": "target tile contains a wall member owned by an official WallBrush", "resolve": ["wall family", "wall alignment", "door type", "open state"], "types": ["normal", "locked", "magic", "quest", "hatch_window", "window"], "mutation": "transform the existing wall item; never append an unrelated door ID", "fallback": "same family and alignment close match", "postprocess": "wallize when automagic", "verified": {"source_wall_id": 6251, "locked_wall_id": 6256, "workspace_smoke": "PASS"}}),
             ("doodad_brush", "custom_thickness_runtime", {"sources": ["palette_common.cpp BrushThicknessPanel", "gui.cpp GUI::SetBrushThickness", "gui.cpp FillDoodadPreviewBuffer"], "slider_lookup": [1, 2, 3, 5, 8, 13, 23, 35, 50, 80], "ratio_denominator": 100, "object_range": "floor(brush_area * selected_value / 100)", "final_count": "max(1, object_range + random(object_range))", "scope": "selected DoodadBrush gesture", "verified": {"workspace_density_override": "PASS"}}),
             ("palette", "terrain_tilesets", {"names": list(_LIVE_RME_TERRAIN_TILESETS), "source": "Canary materials plus live UI"}),
             ("document", "new_map_behavior", {"action": "create Untitled document immediately", "dialog": False}),
-            ("menus", "top_level_order", {"menus": ["File", "Edit", "Map", "Select", "View", "Window", "Floor", "Scripts", "About"]}),
+            ("menus", "top_level_order", {"official_rme": ["File", "Edit", "Map", "Select", "View", "Window", "Floor", "Scripts", "About"], "workspace_successor": ["File", "Edit", "Map", "Select", "View", "Window", "Floor", "AI Studio", "About"], "extension": "AI Studio replaces the empty Scripts surface by explicit product requirement", "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406"}),
+            ("menus", "edit_command_grammar", {"source": "data/menubar.xml", "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "groups": [["Undo", "Redo"], ["Find Item", "Replace Items", "Find on Map"], ["Border Options", "Tools"], ["Previous Position", "Go To Position", "Jump to Brush", "Jump to Item"], ["Cut", "Copy", "Paste"]], "find_categories": ["everything", "unique", "action", "container", "writeable", "duplicates", "walls upon walls"], "scope": "all floors for Find on Map"}),
+            ("menus", "map_command_grammar", {"source": "data/menubar.xml", "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "commands": ["Edit Towns", "Edit Items", "Edit Monsters", "Cleanup", "Properties", "Statistics"], "source_status": {"Edit Items": "empty official handler", "Edit Monsters": "empty official handler"}, "workspace_policy": "empty official handlers remain disabled rather than reporting fake success"}),
+            ("menus", "select_command_grammar", {"source": "data/menubar.xml", "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "operations": ["replace items", "find item", "remove item", "remove monsters", "count monsters", "remove duplicates", "update monster spawntime"], "find_categories": ["everything", "unique", "action", "container", "writeable", "duplicates", "walls upon walls"], "selection_modes": ["compensate", "current floor", "lower floors", "visible floors"], "postprocess": ["borderize selection", "randomize selection"]}),
+            ("menus", "view_window_command_grammar", {"source": "data/menubar.xml", "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "view_groups": ["toolbars", "new view/fullscreen/screenshot", "zoom", "floor display", "lights/grid/highlight", "monster/npc/spawn overlays", "minimap/colors/modified/houses/pathing/tooltips/preview", "indicators"], "window_primary": ["Minimap", "Actions History", "SQLite Materials Inspector", "New Palette"], "palette_shortcuts": {"terrain": "T", "doodad": "D", "item": "I", "house": "H", "creature": "C", "npc": "N", "waypoint": "W", "zones": "Z", "raw": "R"}}),
+            ("editing", "spawn_cleanup_and_spawntime", {"sources": ["main_menubar.cpp", "spawn_monster.cpp", "spawn_npc.cpp"], "rme_commit": "57ee0e5b915909f207aa7a60968c8ed6e4f7f406", "empty_spawn_cleanup": "search square radius around every center and remove centers without matching entities", "monster_spawntime_selection": {"minimum": 1, "maximum": 3600}, "transaction": "one atomic BatchAction per command"}),
             ("shortcuts", "document_and_search", {"new": "Ctrl+N", "open": "Ctrl+O", "save": "Ctrl+S", "close_document": "Ctrl+Q", "find_item": "Ctrl+F", "replace_items": "Ctrl+Shift+F"}),
             ("shortcuts", "map_navigation", {"go_to_position": "Ctrl+G", "jump_to_brush": "J", "jump_to_item": "Ctrl+J", "floor_up": "+", "floor_down": "-", "zoom_in": "Ctrl++", "zoom_out": "Ctrl+-", "zoom_reset": "Ctrl+0"}),
             ("shortcuts", "view_and_metadata", {"toggle_grid": "Shift+G", "show_all_floors": "Ctrl+W", "minimap": "M", "map_statistics": "F8", "towns": "Ctrl+T", "map_properties": "Ctrl+P"}),
@@ -647,6 +792,7 @@ class PlannerKnowledgeDatabase:
             ("wall_brush", "door_brush_undraw_exact", {"source": ["brush.cpp DoorBrush::undraw", "official materials/brushs/walls.xml"], "erase": "replace the door with a positive-chance normal wall member", "context": ["same WallBrush family", "same horizontal/vertical alignment"], "forbidden": ["delete the complete wall", "pick a wall from another family"], "verified": {"locked_door": 6256, "restored_horizontal_wall": 1295, "workspace_smoke": "PASS"}}),
             ("palette", "agent_palette_live_control_bridge", {"source": ["palette_window.cpp", "palette_common.cpp", "live workspace comparison"], "order": ["Terrain", "Doodad", "Item", "House", "Waypoint", "Zone", "Monster", "Npc", "RAW"], "terrain_tools": 12, "tool_grid": [6, 2], "brush_sizes": [1, 2, 3, 5, 7, 9, 12], "selection": "sprite selection activates the brush tool", "callbacks": ["semantic tool", "brush size", "brush shape", "doodad thickness"], "verified": {"agent_qt_smoke": "PASS"}}),
             ("editing", "context_groundbrush_resolution", {"action": "Select Groundbrush", "lookup": "find GroundBrush whose ground_ids own clicked ground id", "forbidden": "select clicked ground as a RAW brush substitute"}),
+            ("editing", "field_context_menu_contract", {"source": "map_display.cpp", "state": {"cut_copy_delete": "selection required", "paste": "editor clipboard required", "copy_item_id_name": "exactly one resolved stack item", "properties": "editable tile or item metadata required"}, "dynamic_selectors": ["RAW", "ground", "wall", "carpet", "table", "doodad", "door", "house"], "selector_visibility": "show only when the clicked stack has a real owning brush or house relationship", "browse_field": "inspect complete ordered stack without mutation", "mutation": "reuse transactional command handlers"}),
             ("editing", "viewport_mouse_precedence", {"left_click": "commit active brush", "right_click": "field context menu", "ctrl_right_drag": "semantic Brush::undraw successor shortcut", "ctrl_left_drag": "paint; never implicit erase", "precedence": ["official source contract", "verified live behavior", "successor extension"]}),
             ("editing", "gesture_history", {"paint_gesture": "one BatchAction", "postprocessors_in_same_action": True, "undo_restores_clean_state_when_at_saved_revision": True, "reference_maps_never_auto_saved": True}),
             ("editing", "tool_surface", {"tools": ["brush", "border", "erase", "select", "move", "fill", "replace", "protection_zone", "no_pvp", "pvp", "logout", "locked", "magic", "quest", "hatch", "normal_window"]}),
@@ -671,13 +817,23 @@ class PlannerKnowledgeDatabase:
 
     @staticmethod
     def _sources(db: sqlite3.Connection, root: Path) -> None:
+        from core.world_generator.world_town_scanner import resolve_world_path
+
         candidates = [
             root / "assets" / "appearances-ee339aff5b3cb38289287ff25cec261d8d2790e6e146938d4dfd9f138b065980.dat",
             root / "assets" / "catalog-content.json",
             root / "APPEARANCE_RENDER_CATALOG.json",
             root / "APPEARANCE_ITEM_CATALOG.json",
-            root / "projects" / "world" / "world.otbm",
         ]
+        try:
+            world_path = resolve_world_path(root)
+            candidates.append(world_path)
+            candidates.extend(
+                world_path.with_name(f"{world_path.stem}-{kind}.xml")
+                for kind in ("house", "monster", "npc", "zones")
+            )
+        except FileNotFoundError:
+            pass
         candidates.extend(path for path in resolve_materials_dir(root).rglob("*") if path.is_file())
         reference_root = root / "projects" / "Mapas Referencia"
         candidates.extend(path for path in reference_root.rglob("*") if path.is_file())
@@ -1253,12 +1409,14 @@ class PlannerKnowledgeDatabase:
 
     @staticmethod
     def _towns(db: sqlite3.Connection, root: Path) -> None:
-        anchors = _read_json(root / "exports" / "planner_visual_memory" / "WORLD_NAMED_ANCHORS.json", {})
+        from core.world_generator.world_town_scanner import WorldTownScanner
+
+        anchors = WorldTownScanner(root).town_anchors()
         db.executemany(
             "INSERT INTO towns(town_id, name, anchor_x, anchor_y, anchor_z, source) VALUES (?, ?, ?, ?, ?, ?)",
             (
                 (row.get("id"), row["name"], row.get("x"), row.get("y"), row.get("z"), "world.otbm:TOWN")
-                for row in anchors.get("towns", ())
+                for row in anchors
             ),
         )
 
@@ -1385,6 +1543,23 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _reference_source_snapshot(root: Path) -> tuple[tuple[str, int, int], ...]:
+    corpus_root = root / "projects" / "Mapas Referencia"
+    if not corpus_root.is_dir():
+        return ()
+    records = []
+    for path in corpus_root.rglob("*"):
+        if not path.is_file() or path.suffix.casefold() not in {".otbm", ".xml"}:
+            continue
+        stat = path.stat()
+        records.append((
+            path.relative_to(corpus_root).as_posix(),
+            int(stat.st_mtime_ns),
+            int(stat.st_size),
+        ))
+    return tuple(sorted(records))
 
 
 def _quote_identifier(value: str) -> str:

@@ -1,7 +1,18 @@
 {
   "theme": "roshamuul",
-  "grounds": [1053, 1056, 1057],
-  "walls": [1500, 1501, 1502],
-  "decorations": [2150, 2151, 2152],
-  "monsters": ["Demon", "Nightmare", "Vampire" ]
+  "grounds": [19825, 19826, 19827, 19828, 19829, 19830, 19831, 19832],
+  "walls": [19456, 19453, 19457, 19449],
+  "doors": [19461, 19462],
+  "railings": [19460, 19459, 19458],
+  "roofs": [19628, 19629, 19632, 19633, 19638, 19639, 19640, 19641],
+  "stairs": [20253, 20254, 20255, 20256],
+  "rubble": [19600, 19601, 19602, 19603, 19824],
+  "nature_grass": [4515],
+  "nature_earth": [101],
+  "muddy_sand": [19271, 19272, 19273, 19274, 19275, 19276, 19277, 19278],
+  "terracotta": [17544, 17545, 17546, 17547],
+  "stone_floor": [436],
+  "decorations": [19849, 19850, 19851, 19852, 19853, 19854, 19855, 19856, 19857, 19858, 19859, 19860],
+  "monsters": ["Roshamuul Guardian", "Roshamuul Effigy", "Roshamuul Protector"],
+  "source": "RME grounds.xml/walls.xml/doodads.xml brush definitions"
 }

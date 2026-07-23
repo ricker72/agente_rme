@@ -7,8 +7,10 @@ This wiki describes the executable editor and mapper code. It is intentionally l
 - [Runtime architecture](RUNTIME_ARCHITECTURE.md)
 - [RME compatibility](RME_COMPATIBILITY.md)
 - [Planner ecology](PLANNER_ECOLOGY.md)
+- [Live reference knowledge](LIVE_REFERENCE_KNOWLEDGE.md)
 - [Code cleanup policy](CODE_CLEANUP_POLICY.md)
 - [AI code guardian](AI_CODE_GUARDIAN.md)
+- [Open Code operating plan](OPEN_CODE_OPERATING_PLAN.md)
 - [GitHub storage policy](GITHUB_STORAGE_POLICY.md)
 - [Secret handling policy](SECRET_HANDLING_POLICY.md)
 

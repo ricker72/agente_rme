@@ -13,6 +13,7 @@ from ..appearance_dat_flags import (
     AppearanceDatFlagExtractor,
     SpriteAnimationInfo,
 )
+from ..asset_paths import resolve_client_asset_root
 
 
 @dataclass(frozen=True)
@@ -43,7 +44,7 @@ class SpriteReferenceLoader:
     def load(self) -> "SpriteReferenceLoader":
         self.render_catalog = self._load_json("APPEARANCE_RENDER_CATALOG.json")
         self.item_catalog = self._load_json("APPEARANCE_ITEM_CATALOG.json")
-        appearances = sorted((self.workspace_root / "assets").glob("appearances-*.dat"))
+        appearances = sorted(resolve_client_asset_root(self.workspace_root).glob("appearances-*.dat"))
         if appearances:
             self.dat_extractor = AppearanceDatFlagExtractor(appearances[0])
         return self

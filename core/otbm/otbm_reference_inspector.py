@@ -6,6 +6,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from .compatibility.otbm_constants import OTBM_ACCEPTED_IDENTIFIERS
+
 NODE_START = 0xFE
 NODE_END = 0xFF
 ESCAPE_BYTE = 0xFD
@@ -72,7 +74,7 @@ class _Inspector:
         root_payload_size = max(0, len(self.data) - 6)
         root_header = self._read_root_header(6) if root_marker == NODE_START else {}
 
-        if self.data[:4] == b"\x00\x00\x00\x00" and root_marker == NODE_START:
+        if self.data[:4] in OTBM_ACCEPTED_IDENTIFIERS and root_marker == NODE_START:
             try:
                 node, offset = self._parse_node(4, None, None, 0)
                 self.node_tree.append(node)

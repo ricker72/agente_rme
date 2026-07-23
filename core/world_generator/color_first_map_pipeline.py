@@ -40,6 +40,7 @@ def generate_color_first_map(
     *,
     root: str | Path = ".",
     asset_root: str | Path | None = None,
+    material_root: str | Path | None = None,
     output_name: str = "generated_color.otbm",
     footprints: dict[str, list[list[int]]] | None = None,
     entity_plan: dict[str, Any] | None = None,
@@ -70,6 +71,7 @@ def generate_color_first_map(
             plan,
             root=base,
             asset_root=asset_root,
+            material_root=material_root,
             output_name=output_name,
             footprints=footprints,
             entity_plan=entity_plan,
@@ -91,15 +93,21 @@ def _generate_color_first_map_impl(
     *,
     root: str | Path = ".",
     asset_root: str | Path | None = None,
+    material_root: str | Path | None = None,
     output_name: str = "generated_color.otbm",
     footprints: dict[str, list[list[int]]] | None = None,
     entity_plan: dict[str, Any] | None = None,
     hunt_blueprint: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     base = Path(root)
-    assets = Path(asset_root) if asset_root is not None else base
-    classification = classify_items(load_material_catalog(assets))
-    brush_engine = RMEBrushEngine.load(assets, classification)
+    classification = classify_items(
+        load_material_catalog(base, material_root=material_root)
+    )
+    brush_engine = RMEBrushEngine.load(
+        base,
+        classification,
+        material_root=material_root,
+    )
     palette = (
         SemanticColorPalette.official_defaults()
         .apply_planner_material_intents(plan)
@@ -209,7 +217,7 @@ def _generate_color_first_map_impl(
             "layers": {layer.name: len(mask.cells) for layer, mask in blueprint.layers.items()},
         },
         "palette": palette.audit(),
-        "wall_visual_footprints": WallBrushVisualFootprintModel.load(assets).audit(
+        "wall_visual_footprints": WallBrushVisualFootprintModel.load(base).audit(
             brush_engine,
             {
                 token.brush_name

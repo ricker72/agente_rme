@@ -31,9 +31,20 @@ class ViewportObservation:
 class ViewportObserver:
     """Apply certified ItemType and neighborhood rules without mutating the map."""
 
-    def __init__(self, root: str | Path | None = None) -> None:
+    def __init__(
+        self,
+        root: str | Path | None = None,
+        *,
+        catalog: RMEItemTypeCatalog | None = None,
+        appearances_path: str | Path | None = None,
+        material_root: str | Path | None = None,
+    ) -> None:
         project_root = Path(root).resolve() if root else Path(__file__).resolve().parents[2]
-        self.catalog = RMEItemTypeCatalog.load(project_root)
+        self.catalog = catalog or RMEItemTypeCatalog.load(
+            project_root,
+            appearances_path=appearances_path,
+            material_root=material_root,
+        )
 
     def analyze(self, snapshot: Mapping[str, Any]) -> dict[str, Any]:
         raw_tiles = list(snapshot.get("tiles", ()))
@@ -45,6 +56,15 @@ class ViewportObserver:
         topology_complete = int(snapshot.get("sample_step", 1) or 1) == 1
         bounds = tuple(int(value) for value in snapshot.get("bounds", ()))
         observations: list[ViewportObservation] = []
+        catalog_audit = self.catalog.audit()
+        if not catalog_audit.get("certified"):
+            observations.append(self._issue(
+                "ITEM_TYPE_CATALOG_UNAVAILABLE", "error", "asset", (0, 0, int(snapshot.get("floor", 7))),
+                "El catalogo ItemType certificado no esta disponible.",
+                "appearances.dat no fue conectado al catalogo compartido",
+                prompt_hint="Localiza los assets oficiales de Tibia antes de editar o generar.",
+            ))
+            return self._report(snapshot, bounds, observations)
         for coord, tile in tiles.items():
             x, y, z = coord
             ground_id = _optional_int(tile.get("ground_id"))
@@ -113,14 +133,24 @@ class ViewportObserver:
                     repair_kind="REBUILD_AUTOBORDER",
                     prompt_hint="Reaplica el GroundBrush con AutoBorder en el limite del bioma.",
                 ))
+        return self._report(snapshot, bounds, observations, tile_count=len(tiles))
+
+    @staticmethod
+    def _report(
+        snapshot: Mapping[str, Any],
+        bounds: tuple[int, ...],
+        observations: list[ViewportObservation],
+        *,
+        tile_count: int = 0,
+    ) -> dict[str, Any]:
         payload = [asdict(item) for item in observations]
-        snapshot_hash = _stable_hash({"tiles": raw_tiles, "floor": snapshot.get("floor")})
+        snapshot_hash = _stable_hash({"tiles": list(snapshot.get("tiles", ())), "floor": snapshot.get("floor")})
         return {
             "status": "PASS" if not any(item.severity == "error" for item in observations) else "ISSUES",
             "snapshot_hash": snapshot_hash,
             "floor": snapshot.get("floor"),
             "bounds": list(snapshot.get("bounds", ())),
-            "tile_count": len(tiles),
+            "tile_count": tile_count,
             "observations": payload,
             "counts": {
                 severity: sum(item.severity == severity for item in observations)
